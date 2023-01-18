@@ -18,10 +18,10 @@ $.fn.prayerTimes = function(options = {}) {
     "منتصف الليل"
   ];
   const defaultOptions = {
-    method: typeof options.method === 'undefined' ? 4 : options.method,
+    method: typeof options.method === 'undefined' ? 1 : options.method,
     school: typeof options.school === 'undefined' ? 0 : options.school,
-    city: options.city || null,
-    country: options.country || null,
+    city: options.city === 'Edmonton',
+    country: options.country === 'Canada',
     imsak: typeof options.imsak === 'undefined' ? true : options.imsak,
     sunrise: typeof options.sunrise === 'undefined' ? true : options.sunrise,
     sunset: typeof options.sunset === 'undefined' ? true : options.sunset,
