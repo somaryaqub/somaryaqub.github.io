@@ -39,7 +39,7 @@ src="https://pagead2.googlesyndication.com/pagead/show_ads.js">
 </div>
 </div>
   <div class="container">
-    <h1>Today's Date In Hijri Example</h1>
+    <h1>Today's Date In Hijri Example2</h1>
     <p class="lead">A tiny jQuery plugin that displays today's date in Muslim Hijri Calendar.</p>
     <h2>Today's Date</h2>
   <div class="my-date"></div>
@@ -86,5 +86,27 @@ try {
   console.log(error);
 }
 </script>
+  
+  <!-- jquery file -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+<!-- jquery.prayer.times file -->
+<script src="jquery.prayer.times.min.js"></script>
+  <script>
+    $('.prayer-times').prayerTimes({
+  arabic: true,
+  method: 2,
+  school: 1,
+  city: Edmonton,
+  country: Canada,    
+  militaryTime: false,
+  imsak: false,
+  sunset: false,
+  midnight: false
+});
+  </script>
+  <div class="prayer-times"></div>
+Testo
+  
 </body>
 </html>
