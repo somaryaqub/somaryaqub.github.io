@@ -17,13 +17,13 @@
   <script type="text/javascript" src="../PrayTimes.js"></script>
 
 <br>
-<p align="center">Waterloo, ON, Canada<p>
+<p align="center">Edmonton, Ab, Canada<p>
 <div align="center" id="table"></div>
 
 <script type="text/javascript">
 	
 	var date = new Date(); // today
-	var times = prayTimes.getTimes(date, [43, -80], -5);
+	var times = prayTimes.getTimes(date, [53, -80], -5);
 	var list = ['Fajr', 'Sunrise', 'Dhuhr', 'Asr', 'Maghrib', 'Isha', 'Midnight'];
 	 prayTimes.adjust( {fajr: 16, dhuhr: '5 min', asr: 'Hanafi', isha: 15} );
 
