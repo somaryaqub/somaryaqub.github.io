@@ -14,5 +14,28 @@
 <body>
 786 
 
+  <script type="text/javascript" src="../PrayTimes.js"></script>
+
+<br>
+<p align="center">Waterloo, ON, Canada<p>
+<div align="center" id="table"></div>
+
+<script type="text/javascript">
+	
+	var date = new Date(); // today
+	var times = prayTimes.getTimes(date, [43, -80], -5);
+	var list = ['Fajr', 'Sunrise', 'Dhuhr', 'Asr', 'Maghrib', 'Isha', 'Midnight'];
+
+	var html = '<table id="timetable">';
+	html += '<tr><th colspan="2">'+ date.toLocaleDateString()+ '</th></tr>';
+	for(var i in list)	{
+		html += '<tr><td>'+ list[i]+ '</td>';
+		html += '<td>'+ times[list[i].toLowerCase()]+ '</td></tr>';
+	}
+	html += '</table>';
+	document.getElementById('table').innerHTML = html;
+
+</script>
+  
 </body>
 </html>
