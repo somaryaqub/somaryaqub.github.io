@@ -25,6 +25,7 @@
 	var date = new Date(); // today
 	var times = prayTimes.getTimes(date, [43, -80], -5);
 	var list = ['Fajr', 'Sunrise', 'Dhuhr', 'Asr', 'Maghrib', 'Isha', 'Midnight'];
+	 prayTimes.adjust( {fajr: 16, dhuhr: '5 min', asr: 'Hanafi', isha: 15} );
 
 	var html = '<table id="timetable">';
 	html += '<tr><th colspan="2">'+ date.toLocaleDateString()+ '</th></tr>';
