@@ -106,7 +106,6 @@ try {
 });
   </script>
   <div class="prayer-times"></div>
-Testo1
   
    <script type="text/javascript" src="../PrayTimes.js"></script>
 
@@ -116,18 +115,47 @@ Testo1
 
 <script type="text/javascript">
 	
-	var date = new Date(); // today
-	var times = prayTimes.getTimes(date, [53, -80], -5);
-	var list = ['Fajr', 'Sunrise', 'Dhuhr', 'Asr', 'Maghrib', 'Isha', 'Midnight'];
-	 prayTimes.adjust( {fajr: 16, dhuhr: '5 min', asr: 'Hanafi', isha: 15} );
+	var currDate = new Date(); // today
+	var times = prayTimes.getTimes(currDate, [53, -80], -5);
+	var prayers = ['Fajr', 'Sunrise', 'Dhuhr', 'Asr', 'Maghrib', 'Isha', 'Midnight'];
+	var currPrayer = prayers[0]
+  var nextPrayer = prayers[1];
+  var min = Number.POSITIVE_INFINITY;
+
+  prayTimes.adjust( {fajr: 16, dhuhr: '5 min', asr: 'Hanafi', isha: 15} );
 
 	var html = '<table id="timetable">';
-	html += '<tr><th colspan="2">'+ date.toLocaleDateString()+ '</th></tr>';
-	for(var i in list)	{
-		html += '<tr><td>'+ list[i]+ '</td>';
-		html += '<td>'+ times[list[i].toLowerCase()]+ '</td></tr>';
-	}
+	html += '<tr><th colspan="2">'+ currDate.toLocaleDateString()+ '</th></tr>';
+	
+  for(var prayer in prayers)	{
+
+    prayerTimeRaw = times[prayers[prayer].toLowerCase()].split(':');
+    hour = parseInt(prayerTimeRaw[0]);
+    mins = parseInt(prayerTimeRaw[1]);
+
+    prayerTime = new Date();
+    prayerTime.setHours(hour, mins, 0, 0);
+    prayerDiff = Math.floor(((currTime - prayerTime)/1000)/60);
+
+    
+    if ((prayerDiff >= 0) && (prayerDiff <= min)) {
+        min = prayerDiff;
+        currPrayer = prayers[prayer];
+        nextPrayer = prayers[(prayer + 1) % 7];
+    }
+
+    if (prayers[prayer] == currPrayer) {
+      html += '<tr><td><strong>' + prayers[prayer] + '</strong></td>';
+    } else {
+      html += '<tr><td>'+ prayer[prayers]+ '</td>';
+    }
+
+		html += '<td>'+ times[prayers[prayer].toLowerCase()]+ '</td></tr>';
+	
+  }
+
 	html += '</table>';
+
 	document.getElementById('table').innerHTML = html;
 
 </script>
