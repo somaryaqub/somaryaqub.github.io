@@ -108,8 +108,6 @@ try {
 
   prayTimes.adjust( {fajr: 16, dhuhr: '5 min', asr: 'Hanafi', isha: 15} );
 
-if (currPrayer == 'Sunrise')  {
- html += '<strong>786</strong>' ; } else  { html += '<strong>Else' +currPrayer+ '</strong>';  }
 	
 	
 	var html = '<table id="timetable">';
@@ -132,6 +130,10 @@ if (currPrayer == 'Sunrise')  {
         nextPrayer = prayers[(prayer + 1) % 7];
     }
 
+	  if (currPrayer == 'Sunrise')  {
+ html += '<strong>786</strong>' ; } else  { html += '<strong>Else' +currPrayer+ '</strong>';  }
+
+	  
     html += '<tr><td>' + prayers[prayer] + '</td>';
 		html += '<td>'+ times[prayers[prayer].toLowerCase()]+ '</td></tr>';
 	
