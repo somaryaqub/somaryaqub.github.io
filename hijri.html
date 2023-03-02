@@ -121,6 +121,9 @@ try {
     prayerTime.setHours(hour, mins, 0, 0);
     prayerDiff = Math.floor(((currDate - prayerTime)/1000)/60);
 
+if (currPrayer == 'Sunrise')  {
+ html += '<strong>TESTO</strong>' ; } else  { html += '<strong>Else' +currPrayer+ '</strong>';  }
+
     
     if ((prayerDiff >= 0) && (prayerDiff <= min)) {
         min = prayerDiff;
@@ -135,12 +138,9 @@ try {
   }
 
   html += '</table>';
-  document.getElementById('prayer').innerHTML = '<strong><i>' + currPrayer + '36</i></strong>';
+  document.getElementById('prayer').innerHTML = '<strong><i>' + currPrayer + '38</i></strong>';
   document.getElementById('table').innerHTML = html;
 	
-if (currPrayer == 'Sunrise')  {
- html += '<strong>TESTO</strong>' ; } else  { html += '<strong>Else' +currPrayer+ '</strong>';  }
-
 
 </script>
 </body>
