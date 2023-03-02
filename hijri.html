@@ -108,9 +108,13 @@ try {
 
   prayTimes.adjust( {fajr: 16, dhuhr: '5 min', asr: 'Hanafi', isha: 15} );
 
+if (currPrayer == 'Sunrise')  {
+ html += '<strong>TESTO</strong>' ; } else  { html += '<strong>Else' +currPrayer+ '</strong>';  }
+	
+	
 	var html = '<table id="timetable">';
 	html += '<tr><th colspan="2">'+ currDate.toLocaleDateString()+ '</th></tr>';
-	
+		
   for(var prayer in prayers)	{
 
     prayerTimeRaw = times[prayers[prayer].toLowerCase()].split(':');
@@ -121,9 +125,6 @@ try {
     prayerTime.setHours(hour, mins, 0, 0);
     prayerDiff = Math.floor(((currDate - prayerTime)/1000)/60);
 
-if (currPrayer == 'Sunrise')  {
- html += '<strong>TESTO</strong>' ; } else  { html += '<strong>Else' +currPrayer+ '</strong>';  }
-
     
     if ((prayerDiff >= 0) && (prayerDiff <= min)) {
         min = prayerDiff;
@@ -133,12 +134,12 @@ if (currPrayer == 'Sunrise')  {
 
     html += '<tr><td>' + prayers[prayer] + '</td>';
 		html += '<td>'+ times[prayers[prayer].toLowerCase()]+ '</td></tr>';
-
 	
   }
 
+	
   html += '</table>';
-  document.getElementById('prayer').innerHTML = '<strong><i>' + currPrayer + '38</i></strong>';
+  document.getElementById('prayer').innerHTML = '<strong><i>' + currPrayer + '40</i></strong>';
   document.getElementById('table').innerHTML = html;
 	
 
