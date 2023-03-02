@@ -16,14 +16,14 @@
 body { background-color: #fafafa; line-height:1.6;}
 .lead { font-size: 1.5rem; font-weight: 300; }
 .container { margin: 0px; max-width: 800px; color: #cccccc; }
-.my-date, .my-date2 { color: orange; font-size: 1.25rem; }
+.my-date, .my-date2 { color: orange; font-size: 1.25rem; align: center;}
 </style>
 </head>
 
 <body>
   <div class="container">
- <div class="my-date"></div>
-  <div class="my-date2"></div>
+
+  <div class="my-date2">
 
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
 <script src="jquery.hijri.date.js"></script>
@@ -39,6 +39,8 @@ $('.my-date2').hijriDate({gregorian: false, showWeekDay: false,
   gregLang: 'en',
   correction: +1});
 </script>
+
+	</div>	  
 <script type="text/javascript">
 
   var _gaq = _gaq || [];
