@@ -97,8 +97,8 @@ try {
   arabic: true,
   method: 2,
   school: 1,
-  city: Edmonton,
-  country: Canada,    
+  city: 'Edmonton',
+  country: 'Canada',    
   militaryTime: false,
   imsak: false,
   sunset: false,
@@ -110,7 +110,8 @@ try {
    <script type="text/javascript" src="../PrayTimes.js"></script>
 
 <br>
-<p align="center">Edmonton, Ab, Canada<p>
+<p align="center">Edmonton, Ab, Canada</p>
+<p align="center" id="prayer"></p>
 <div align="center" id="table"></div>
 
 <script type="text/javascript">
@@ -135,7 +136,7 @@ try {
 
     prayerTime = new Date();
     prayerTime.setHours(hour, mins, 0, 0);
-    prayerDiff = Math.floor(((currTime - prayerTime)/1000)/60);
+    prayerDiff = Math.floor(((currDate - prayerTime)/1000)/60);
 
     
     if ((prayerDiff >= 0) && (prayerDiff <= min)) {
@@ -144,18 +145,14 @@ try {
         nextPrayer = prayers[(prayer + 1) % 7];
     }
 
-    if (prayers[prayer] == currPrayer) {
-      html += '<tr><td><strong>' + prayers[prayer] + '</strong></td>';
-    } else {
-      html += '<tr><td>'+ prayer[prayers]+ '</td>';
-    }
-
+    html += '<tr><td>' + prayers[prayer] + '</td>';
 		html += '<td>'+ times[prayers[prayer].toLowerCase()]+ '</td></tr>';
 	
   }
 
 	html += '</table>';
 
+  document.getElementById('prayer').innerHTML = '<strong>' + currPrayer + '</strong>';
 	document.getElementById('table').innerHTML = html;
 
 </script>
