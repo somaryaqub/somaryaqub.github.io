@@ -11,12 +11,11 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Merriweather">
 
 <style>
-
-  html,* { font-family: 'Merriweather'; box-sizing: border-box; }
-body { background-color: #fafafa; line-height:1.6;}
-.lead { font-size: 1.5rem; font-weight: 300; }
-.container { margin: 0px; max-width: 800px; color: #777777; }
-.my-date, .my-date2 { color: orange; font-size: 1.25rem; align: center;  align: "center";}
+	html,* { font-family: 'Merriweather'; box-sizing: border-box; }
+	body { background-color: #fafafa; line-height:1.6;}
+	.lead { font-size: 1.5rem; font-weight: 300; }
+	.container { margin: 0px; max-width: 800px; color: #777777; }
+	.my-date, .my-date2 { color: orange; font-size: 1.25rem; align: center;  align: "center";}
 </style>
 </head>
 
@@ -25,50 +24,14 @@ body { background-color: #fafafa; line-height:1.6;}
 
   <div class="my-date2" align="center">
 
-<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-<script src="jquery.hijri.date.js"></script>
-<script>
-$('.my-date').hijriDate();
-$('.my-date2').hijriDate({gregorian: false, showWeekDay: false,
+	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+	<script src="jquery.hijri.date.js"></script>
+	<script>
+		$('.my-date').hijriDate();
+		$('.my-date2').hijriDate({gregorian: false, showWeekDay: false, showGregDate: false,  separator: '&nbsp;|&nbsp;',  weekDayLang: 'en',  hijriLang: 'en',  gregLang: 'en', correction: +1});
+	</script>
 
-
-  showGregDate: false,
-  separator: '&nbsp;|&nbsp;',
-  weekDayLang: 'en',
-  hijriLang: 'en',
-  gregLang: 'en',
-  correction: +1});
-</script>
-
-	</div>	  
-<script type="text/javascript">
-
-  var _gaq = _gaq || [];
-  _gaq.push(['_setAccount', 'UA-36251023-1']);
-  _gaq.push(['_setDomainName', 'jqueryscript.net']);
-  _gaq.push(['_trackPageview']);
-
-  (function() {
-    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-  })();
-
-</script>
-<script>
-try {
-  fetch(new Request("https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js", { method: 'HEAD', mode: 'no-cors' })).then(function(response) {
-    return true;
-  }).catch(function(e) {
-    var carbonScript = document.createElement("script");
-    carbonScript.src = "//cdn.carbonads.com/carbon.js?serve=CK7DKKQU&placement=wwwjqueryscriptnet";
-    carbonScript.id = "_carbonads_js";
-    document.getElementById("carbon-block").appendChild(carbonScript);
-  });
-} catch (error) {
-  console.log(error);
-}
-</script>
+</div>	  
   
   <!-- jquery file -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -138,7 +101,7 @@ try {
   	
 	html += '<p>Start';
 
-	document.getElementById('prayer').innerHTML = '<strong><i>' + currPrayer + '40</i></strong>';
+	document.getElementById('prayer').innerHTML = '<strong><i>' + currPrayer + '59</i></strong>';
   	document.getElementById('table').innerHTML = html;
 
     	prayerTimeRaw = times[prayers[prayer].toLowerCase()].split(':');
