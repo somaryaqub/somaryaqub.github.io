@@ -124,12 +124,14 @@ try {
 
     html += '<tr><td>' + prayers[prayer] + '</td>';
 		html += '<td>'+ times[prayers[prayer].toLowerCase()]+ '</td></tr>';
+	  html += '<strong><i>!!!' + currPrayer + '!!!</i></strong>';
 	
   }
 
   html += '</table>';
   document.getElementById('prayer').innerHTML = '<strong><i>' + currPrayer + '</i></strong>';
   document.getElementById('table').innerHTML = html;
+
 
 </script>
 </body>
