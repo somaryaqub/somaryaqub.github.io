@@ -83,9 +83,6 @@
         		currPrayer = prayers[prayer];
         		nextPrayer = prayers[(prayer + 1) % 7];
     		}
-	  	if (currPrayer == 'Sunrise')  {
- 			html += '<strong>786</strong>' ; } 
-		else  { html += '<strong>Else' +currPrayer+ '</strong>';  }
 	  
     		html += '<tr><td>' + prayers[prayer] + '</td>';
 		html += '<td>'+ times[prayers[prayer].toLowerCase()]+ '</td></tr>';
@@ -94,23 +91,12 @@
 
 	html += '<p>Start';
 
-	document.getElementById('prayer').innerHTML = '<strong><i>' + currPrayer + '88</i></strong>';
 	document.getElementById('prayer').innerHTML = '<strong><i>' + currPrayer + '55</i></strong>';
   	document.getElementById('table').innerHTML = html;
 
-    	prayerTimeRaw = times[prayers[prayer].toLowerCase()].split(':');
-    	hour = parseInt(prayerTimeRaw[0]);
-    	mins = parseInt(prayerTimeRaw[1]);
-    	prayerTime = new Date();
-    	prayerTime.setHours(hour, mins, 0, 0);
-    	prayerDiff = Math.floor(((currDate - prayerTime)/1000)/60);
-    
-    	if ((prayerDiff >= 0) && (prayerDiff <= min)) {
-        	min = prayerDiff;
-        	currPrayer = prayers[prayer];
-        	nextPrayer = prayers[(prayer + 1) % 7];
-    	}
-	if (currPrayer == 'Sunrise')  {
+	html += ' Middle ';
+
+	if (currPrayer == 'Dhuhr')  {
  		html += '<strong>786 test</strong>' ; } else  { html += '<strong>Else test' +currPrayer+ '</strong>';  }
 	html += 'end</p>';
 	  
