@@ -15,7 +15,7 @@
   html,* { font-family: 'Merriweather'; box-sizing: border-box; }
 body { background-color: #fafafa; line-height:1.6;}
 .lead { font-size: 1.5rem; font-weight: 300; }
-.container { margin: 0px; max-width: 800px; color: grey; }
+.container { margin: 0px; max-width: 800px; color: #cccccc; }
 .my-date, .my-date2 { color: orange; font-size: 1.25rem; }
 </style>
 </head>
@@ -30,6 +30,8 @@ body { background-color: #fafafa; line-height:1.6;}
 <script>
 $('.my-date').hijriDate();
 $('.my-date2').hijriDate({gregorian: false, showWeekDay: false,
+
+
   showGregDate: false,
   separator: '&nbsp;|&nbsp;',
   weekDayLang: 'en',
