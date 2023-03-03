@@ -2,7 +2,6 @@
 <html>
 <head>
 <meta charset="utf-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <title>Today's Date In Hijri Example</title>
 <link href="https://www.jqueryscript.net/css/jquerysctipttop.css" rel="stylesheet" type="text/css">
@@ -10,73 +9,30 @@
 
 <style>
   	html,* { font-family: 'Merriweather'; box-sizing: border-box; }
-	body { background-color: #fafafa; line-height:1.6;}
+	body { margin: 0px; background-color: #fafafa; line-height:1.6;}
 	.lead { font-size: 1.5rem; font-weight: 300; }
-	.container { margin: 0px; max-width: 800px; color: #777777; }
+	.container { margin: 0px; max-width: 800px; color:#777777;}
 	.my-date, .my-date2 { color: orange; font-size: 1.25rem; align: center;}
 	.maghrib {background-color: red;}
-	.isha {background-color: purple;}
+	#isha {background-color: purple; color: purple;}
+	.Isha {background-color: green; color: red;}
+	.midnight{background-color: green; color: blue; font-size: 1.25rem; align: center;}
+	#fajr{background-color: green; color: blue; font-size: 1.25rem; align: center;}
+	.fajr{background-color: green; color: blue; font-size: 1.25rem; align: center;}
+
 </style>
 </head>
 
 <body>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<!-- jquery.prayer.times file -->
-<script src="jquery.prayer.times.min.js"></script>
-  <script>
-    $('.prayer-times').prayerTimes({
-  arabic: true,
-  method: 2,
-  school: 1,
-  city: 'Edmonton',
-  country: 'Canada',    
-  militaryTime: false,
-  imsak: false,
-  sunset: false,
-  midnight: false
-});
-  </script>
-	
-<div class="container"> 	
-<script type="text/javascript">
-	
-	var currDate = new Date(); // today
-	var times = prayTimes.getTimes(currDate, [53, -80], -5);
-	var prayers = ['Fajr', 'Sunrise', 'Dhuhr', 'Asr', 'Maghrib', 'Isha', 'Midnight'];
-	var currPrayer = prayers[0]
-  	var nextPrayer = prayers[1];
-  	var min = Number.POSITIVE_INFINITY;
-  	prayTimes.adjust( {fajr: 16, dhuhr: '5 min', asr: 'Hanafi', isha: 15} );
-	
-	var pry = ' ';
-	if (currPrayer == 'Maghrib')  {
- 		pry += 'maghrib' ; 
-	} else  if (currPrayer == 'Isha')  {
- 		pry += 'isha' ; 
-	} else  if (currPrayer == 'Midnight')  {
- 		pry += 'midnight' ; 
-	} else  if (currPrayer == 'Fajr')  {
- 		pry += 'fajr' ; 
-	} else  if (currPrayer == 'Sunrise')  {
- 		pry += 'sunrise' ; 
-	} else  if (currPrayer == 'Dhuhr')  {
- 		pry += 'Dhuhr' ; 
-	} else  if (currPrayer == 'Asr')  {
- 		pry += 'Asr' ; 	
-	} 
-	
-	document.getElementByClassName('container') .id +=  pry;
-	  
-  	</script>
-	
+<div class="container" id="prayy">
  <div class="my-date2" align="center">
 
 	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-	<script src="jquery.hijri.date.js"></script>
+	<script src="https://somaryaqub.github.io/jquery.hijri.date.js"></script>
 	<script>
 		$('.my-date').hijriDate();
-		$('.my-date2').hijriDate({gregorian: false, showWeekDay: false,
-  		showGregDate: false,
+		$('.my-date2').hijriDate({gregorian: true, showWeekDay: false,
+  		showGregDate: true,
   		separator: '&nbsp;|&nbsp;',
   		weekDayLang: 'en',
   		hijriLang: 'en',
@@ -86,15 +42,15 @@
 
 	</div>	  	  
 
-  <!-- jquery file -->
-
-  <div class="prayer-times"></div>
+    <div class="prayer-times"></div>
   
-<script type="text/javascript" src="../PrayTimes.js"></script>
+<script type="text/javascript" src="https://somaryaqub.github.io/PrayTimes.js"></script>
 <br>
 <p align="center" id="prayer"></p>
-	
-<div align="center" id="table"></div>
+
+
+<div align="center" id="taple"></div>
+
 <script type="text/javascript">
 	
 	var currDate = new Date(); // today
@@ -104,13 +60,13 @@
   	var nextPrayer = prayers[1];
   	var min = Number.POSITIVE_INFINITY;
   	prayTimes.adjust( {fajr: 16, dhuhr: '5 min', asr: 'Hanafi', isha: 15} );
-	
-	var html = '<table id="timetable">';
-	html += '<tr><th colspan="2">'+ currDate.toLocaleDateString()+ '</th></tr>';
-		
+
+	var htmlx = ' ';
+	htmlx += '<table id="timetable"><tr><th colspan="2">'+ currDate.toLocaleDateString()+ '</th></tr>';
+
   	for(var prayer in prayers)	{
     		prayerTimeRaw = times[prayers[prayer].toLowerCase()].split(':');
-    		hour = parseInt(prayerTimeRaw[0]);
+   		hour = parseInt(prayerTimeRaw[0]);
     		mins = parseInt(prayerTimeRaw[1]);
   		prayerTime = new Date();
     		prayerTime.setHours(hour, mins, 0, 0);
@@ -122,40 +78,42 @@
         		nextPrayer = prayers[(prayer + 1) % 7];
     		}
 	  
-    		html += '<tr><td>' + prayers[prayer] + '</td>';
-		html += '<td>'+ times[prayers[prayer].toLowerCase()]+ '</td></tr>';
+  		htmlx += '<tr><td>' + prayers[prayer] + '</td>';
+		htmlx += '<td>'+ times[prayers[prayer].toLowerCase()]+ '</td></tr>';
   	}
-	html += '</table>';
+	htmlx += '</table>';
 
-	html += '<p>';
+	htmlx += '<p>';
 
-	document.getElementById('prayer').innerHTML = '<strong><i>' + currPrayer + ' 54</i></strong>';
+//	document.getElementById('prayer').innerHTML = '<strong><i>55' + currPrayer + ' 54</i></strong>';
   	
 	
 	if (currPrayer == 'Maghrib')  {
- 		html += '<strong>sunset</strong>' ; 
+ 		htmlx += '<strong>sunset</strong>' ; 
 	} else  if (currPrayer == 'Isha')  {
- 		html += '<strong>Isha</strong>' ; 
-	} else  if (currPrayer == 'Maghrib')  {
- 		html += '<strong>786 Maghrib</strong>' ; 
+ 		htmlx += '<strong><i>eve</i></strong>' ; 
 	} else  if (currPrayer == 'Midnight')  {
- 		html += '<strong>Mid</strong>' ; 
+ 		htmlx += '<strong>Mid</strong>' ; 
+        document.getElementById('prayy').className = 'midnight';
 	} else  if (currPrayer == 'Fajr')  {
- 		html += '<strong>Fajr</strong>' ; 
+ 		htmlx += '<i>Fajr</i>' ; 
+        document.getElementById('prayy').className = 'fajr';
 	} else  if (currPrayer == 'Sunrise')  {
- 		html += '<strong>Sun</strong>' ; 
+ 		htmlx += '<strong>Sun</strong>' ; 
 	} else  if (currPrayer == 'Dhuhr')  {
- 		html += '<strong>Afternoon</strong>' ; 
+ 		htmlx += '<strong>Afternoon</strong>' ; 
 	} else  if (currPrayer == 'Asr')  {
- 		html += '<strong>late afternoon</strong>' ; 	
+ 		htmlx += '<strong>late afternoon</strong>' ; 	
 	}
-	html += '</p>';
-	
-	document.getElementById('table').innerHTML = html;
+	htmlx += '</p>';
+ 	
+ 	
+//	document.getElementById('demo2').innerHTML = '4' + currPrayer;
+	document.getElementById('taple').innerHTML = htmlx;
+//	document.getElementByID('taple').id = currPrayer;
 
-	
-
-	  
+		  
   	</script>
+    </div>
 </body>
 </html>
