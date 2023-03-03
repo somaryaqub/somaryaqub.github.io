@@ -30,23 +30,23 @@
   	var min = Number.POSITIVE_INFINITY;
   	prayTimes.adjust( {fajr: 16, dhuhr: '5 min', asr: 'Hanafi', isha: 15} );
 	
-	var html = '';
+	var html = '<div class="container ';
 	if (currPrayer == 'Maghrib')  {
- 		html += '<div class="container maghrib">' ; 
+ 		html += 'maghrib' ; 
 	} else  if (currPrayer == 'Isha')  {
- 		html += ''<div class="container isha">' ; 
+ 		html += 'isha' ; 
 	} else  if (currPrayer == 'Midnight')  {
- 		html += ''<div class="container midnight">' ; 
+ 		html += 'midnight' ; 
 	} else  if (currPrayer == 'Fajr')  {
- 		html += ''<div class="container fajr">' ; 
+ 		html += 'fajr' ; 
 	} else  if (currPrayer == 'Sunrise')  {
- 		html += ''<div class="container sunrise">' ; 
+ 		html += 'sunrise' ; 
 	} else  if (currPrayer == 'Dhuhr')  {
- 		html += ''<div class="container Dhuhr">' ; 
+ 		html += 'Dhuhr' ; 
 	} else  if (currPrayer == 'Asr')  {
- 		html += ''<div class="container Asr">' ; 	
+ 		html += 'Asr' ; 	
 	} 
-	
+	html+= '">';
 	document.getElementById('table').innerHTML = html;
 	  
   	</script>
