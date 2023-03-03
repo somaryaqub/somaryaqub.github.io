@@ -14,16 +14,41 @@
 	.lead { font-size: 1.5rem; font-weight: 300; }
 	.container { margin: 0px; max-width: 800px; color: #777777; }
 	.my-date, .my-date2 { color: orange; font-size: 1.25rem; align: center;  align: "center";}
-	html,* { font-family: 'Merriweather'; box-sizing: border-box; }
-	body { background-color: #fafafa; line-height:1.6;}
-	.lead { font-size: 1.5rem; font-weight: 300; }
-	.container { margin: 0px; max-width: 800px; color: #777777; }
-	.my-date, .my-date2 { color: orange; font-size: 1.25rem; align: center;  align: "center";}
 </style>
 </head>
 
 <body>
-  <div class="container">
+<script type="text/javascript">
+	
+	var currDate = new Date(); // today
+	var times = prayTimes.getTimes(currDate, [53, -80], -5);
+	var prayers = ['Fajr', 'Sunrise', 'Dhuhr', 'Asr', 'Maghrib', 'Isha', 'Midnight'];
+	var currPrayer = prayers[0]
+  	var nextPrayer = prayers[1];
+  	var min = Number.POSITIVE_INFINITY;
+  	prayTimes.adjust( {fajr: 16, dhuhr: '5 min', asr: 'Hanafi', isha: 15} );
+	
+	var html = '';
+	if (currPrayer == 'Maghrib')  {
+ 		html += '<div class="container maghrib">' ; 
+	} else  if (currPrayer == 'Isha')  {
+ 		html += ''<div class="container isha">' ; 
+	} else  if (currPrayer == 'Midnight')  {
+ 		html += ''<div class="container midnight">' ; 
+	} else  if (currPrayer == 'Fajr')  {
+ 		html += ''<div class="container fajr">' ; 
+	} else  if (currPrayer == 'Sunrise')  {
+ 		html += ''<div class="container sunrise">' ; 
+	} else  if (currPrayer == 'Dhuhr')  {
+ 		html += ''<div class="container Dhuhr">' ; 
+	} else  if (currPrayer == 'Asr')  {
+ 		html += ''<div class="container Asr">' ; 	
+	} 
+	
+	document.getElementById('table').innerHTML = html;
+	  
+  	</script>
+	
  <div class="my-date2" align="center">
 
 	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
