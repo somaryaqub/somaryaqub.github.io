@@ -101,8 +101,23 @@
 	document.getElementById('prayer').innerHTML = '<strong><i>' + currPrayer + '46</i></strong>';
   	
 	html += ' Middle ';
-	if (currPrayer == 'Dhuhr')  {
- 		html += '<strong>786 test</strong>' ; } else  { html += '<strong>Else test' +currPrayer+ '</strong>';  }
+	if (currPrayer == 'Maghrib')  {
+ 		html += '<strong>786 Maghrib</strong>' ; 
+	} else  if (currPrayer == 'Isha')  {
+ 		html += '<strong>Isha</strong>' ; 
+	} else  if (currPrayer == 'Maghrib')  {
+ 		html += '<strong>786 Maghrib</strong>' ; 
+	} else  if (currPrayer == 'Midnight')  {
+ 		html += '<strong>Mid</strong>' ; 
+	} else  if (currPrayer == 'Fajr')  {
+ 		html += '<strong>Fajr</strong>' ; 
+	} else  if (currPrayer == 'Sunrise')  {
+ 		html += '<strong>Sun</strong>' ; 
+	} else  if (currPrayer == 'Dhuhr')  {
+ 		html += '<strong>Afternoon</strong>' ; 
+	} else  if (currPrayer == 'Asr')  {
+ 		html += '<strong>late afternoon</strong>' ; 	
+	}
 	html += 'end</p>';
 	
 	document.getElementById('table').innerHTML = html;
