@@ -19,6 +19,7 @@
 	.midnight{background-color: green; color: blue; font-size: 1.25rem; align: center;}
 	#fajr{background-color: green; color: blue; font-size: 1.25rem; align: center;}
 	.fajr{background-color: green; color: blue; font-size: 1.25rem; align: center;}
+	.asr{background-color: green; color: blue; font-size: 1.25rem; align: center;}
 
 </style>
 </head>
@@ -103,7 +104,8 @@
 	} else  if (currPrayer == 'Dhuhr')  {
  		htmlx += '<strong>Afternoon</strong>' ; 
 	} else  if (currPrayer == 'Asr')  {
- 		htmlx += '<strong>late afternoon</strong>' ; 	
+ 		htmlx += '<strong>late afternoon</strong>' ;
+		document.getElementById('prayy').className = 'asr';
 	}
 	htmlx += '</p>';
  	
