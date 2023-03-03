@@ -96,11 +96,11 @@
   	}
 	html += '</table>';
 
-	html += '<p>Start';
+	html += '<p>';
 
-	document.getElementById('prayer').innerHTML = '<strong><i>' + currPrayer + '46</i></strong>';
+	document.getElementById('prayer').innerHTML = '<strong><i>' + currPrayer + ' 50</i></strong>';
   	
-	html += ' Middle ';
+	
 	if (currPrayer == 'Maghrib')  {
  		html += '<strong>786 Maghrib</strong>' ; 
 	} else  if (currPrayer == 'Isha')  {
@@ -118,7 +118,7 @@
 	} else  if (currPrayer == 'Asr')  {
  		html += '<strong>late afternoon</strong>' ; 	
 	}
-	html += 'end</p>';
+	html += '</p>';
 	
 	document.getElementById('table').innerHTML = html;
 
