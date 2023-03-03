@@ -20,6 +20,24 @@
 </head>
 
 <body>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<!-- jquery.prayer.times file -->
+<script src="jquery.prayer.times.min.js"></script>
+  <script>
+    $('.prayer-times').prayerTimes({
+  arabic: true,
+  method: 2,
+  school: 1,
+  city: 'Edmonton',
+  country: 'Canada',    
+  militaryTime: false,
+  imsak: false,
+  sunset: false,
+  midnight: false
+});
+  </script>
+	
+<div class="container"> 	
 <script type="text/javascript">
 	
 	var currDate = new Date(); // today
@@ -30,24 +48,24 @@
   	var min = Number.POSITIVE_INFINITY;
   	prayTimes.adjust( {fajr: 16, dhuhr: '5 min', asr: 'Hanafi', isha: 15} );
 	
-	var html = '<div class="container ';
+	var pry = ' ';
 	if (currPrayer == 'Maghrib')  {
- 		html += 'maghrib' ; 
+ 		pry += 'maghrib' ; 
 	} else  if (currPrayer == 'Isha')  {
- 		html += 'isha' ; 
+ 		pry += 'isha' ; 
 	} else  if (currPrayer == 'Midnight')  {
- 		html += 'midnight' ; 
+ 		pry += 'midnight' ; 
 	} else  if (currPrayer == 'Fajr')  {
- 		html += 'fajr' ; 
+ 		pry += 'fajr' ; 
 	} else  if (currPrayer == 'Sunrise')  {
- 		html += 'sunrise' ; 
+ 		pry += 'sunrise' ; 
 	} else  if (currPrayer == 'Dhuhr')  {
- 		html += 'Dhuhr' ; 
+ 		pry += 'Dhuhr' ; 
 	} else  if (currPrayer == 'Asr')  {
- 		html += 'Asr' ; 	
+ 		pry += 'Asr' ; 	
 	} 
-	html+= '">';
-	document.getElementById('table').innerHTML = html;
+	
+	document.getElementByClassName('container') .id +=  pry;
 	  
   	</script>
 	
@@ -69,27 +87,13 @@
 	</div>	  	  
 
   <!-- jquery file -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<!-- jquery.prayer.times file -->
-<script src="jquery.prayer.times.min.js"></script>
-  <script>
-    $('.prayer-times').prayerTimes({
-  arabic: true,
-  method: 2,
-  school: 1,
-  city: 'Edmonton',
-  country: 'Canada',    
-  militaryTime: false,
-  imsak: false,
-  sunset: false,
-  midnight: false
-});
-  </script>
+
   <div class="prayer-times"></div>
   
-   <script type="text/javascript" src="../PrayTimes.js"></script>
+<script type="text/javascript" src="../PrayTimes.js"></script>
 <br>
 <p align="center" id="prayer"></p>
+	
 <div align="center" id="table"></div>
 <script type="text/javascript">
 	
