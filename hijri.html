@@ -73,11 +73,11 @@
 //    		prayerTime.setHours(hour, mins, 0, 0);
 //    		prayerDiff = Math.floor(((currDate - prayerTime)/1000)/60);
     
-//    		if ((prayerDiff >= 0) && (prayerDiff <= min)) {
-//        		min = prayerDiff;
-//       		currPrayer = prayers[prayer];
-//        		nextPrayer = prayers[(prayer + 1) % 7];
-//    		}
+    		if ((prayerDiff >= 0) && (prayerDiff <= min)) {
+        		min = prayerDiff;
+       		currPrayer = prayers[prayer];
+        		nextPrayer = prayers[(prayer + 1) % 7];
+    		}
 	  
 //  		htmlx += '<tr><td>' + prayers[prayer] + '</td>';
 //		htmlx += '<td>'+ times[prayers[prayer].toLowerCase()]+ '</td></tr>';
