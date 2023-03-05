@@ -62,16 +62,16 @@
   	prayTimes.adjust( {fajr: 16, dhuhr: '5 min', asr: 'Hanafi', isha: 15} );
 
 	var htmlx = ' ';
-//	htmlx += '<table id="timetable"><tr><th colspan="2">'+ currDate.toLocaleDateString()+ '</th></tr>';
+	htmlx += '<table id="timetable"><tr><th colspan="2">'+ currDate.toLocaleDateString()+ '</th></tr>';
 
 //List prayer times
-//	for(var prayer in prayers)	{
-//    		prayerTimeRaw = times[prayers[prayer].toLowerCase()].split(':');
-//   		hour = parseInt(prayerTimeRaw[0]);
-//    		mins = parseInt(prayerTimeRaw[1]);
-//  		prayerTime = new Date();
-//    		prayerTime.setHours(hour, mins, 0, 0);
-//    		prayerDiff = Math.floor(((currDate - prayerTime)/1000)/60);
+	for(var prayer in prayers)	{
+    		prayerTimeRaw = times[prayers[prayer].toLowerCase()].split(':');
+   		hour = parseInt(prayerTimeRaw[0]);
+    		mins = parseInt(prayerTimeRaw[1]);
+  		prayerTime = new Date();
+    		prayerTime.setHours(hour, mins, 0, 0);
+    		prayerDiff = Math.floor(((currDate - prayerTime)/1000)/60);
     
     		if ((prayerDiff >= 0) && (prayerDiff <= min)) {
         		min = prayerDiff;
@@ -79,10 +79,10 @@
         		nextPrayer = prayers[(prayer + 1) % 7];
     		}
 	  
-//  		htmlx += '<tr><td>' + prayers[prayer] + '</td>';
-//		htmlx += '<td>'+ times[prayers[prayer].toLowerCase()]+ '</td></tr>';
-//  	}
-//	htmlx += '</table>';
+ 		htmlx += '<tr><td>' + prayers[prayer] + '</td>';
+		htmlx += '<td>'+ times[prayers[prayer].toLowerCase()]+ '</td></tr>';
+  	}
+	htmlx += '</table>';
 
 
 	document.getElementById('prayer').innerHTML = '<strong><i>55' + currPrayer + ' 54</i></strong>';
