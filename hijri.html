@@ -10,7 +10,7 @@
 <style>
   	html,* { font-family: 'Merriweather';}
 	body { margin: 0px;}
-	strong {opacity:.2; font-size: 1vw;}
+	strong {opacity:.1; font-size: .8vw;}
 	.container, #prayy { background-image: url("tree.png"); margin: 0px; max-width: 600px; width: 600px; height: 3840px; max-height: 3840px; min-height: 3840px; text-align: center;	 position:absolute;}
 	.hijridate { position:absolute; top: 20%; width:100%; color: white; font-size: 1vw; text-align: center;}
 	.Maghrib {background-color: #C94343;}
@@ -62,7 +62,7 @@
   	prayTimes.adjust( {fajr: 16, dhuhr: '5 min', asr: 'Hanafi', isha: 15} );
 
 	var htmlx = ' ';
-	htmlx += '<table id="timetable"><tr><th colspan="2">'+ currDate.toLocaleDateString()+ '</th></tr>';
+//	htmlx += '<table id="timetable"><tr><th colspan="2">'+ currDate.toLocaleDateString()+ '</th></tr>';
 
 //List prayer times
 	for(var prayer in prayers)	{
@@ -85,9 +85,9 @@
 	htmlx += '</table>';
 
 
-	document.getElementById('prayer').innerHTML = '<strong><i>' + currPrayer + '</i></strong>';
+	document.getElementById('prayer').innerHTML = '<strong>' + currPrayer + '</strong>';
   	
-	htmlx += '<p>';
+//	htmlx += '<p>';
 	
 	if (currPrayer == 'Maghrib')  {
 // 		htmlx += '<strong>sunset</strong>' ; 
@@ -111,7 +111,7 @@
 // 		htmlx += '<strong>late afternoon</strong>' ;
 		document.getElementById('prayy').className = 'asr';
 	}
-	htmlx += '</p>';
+//	htmlx += '</p>';
  	
  	
 //	document.getElementById('demo2').innerHTML = '4' + currPrayer;
