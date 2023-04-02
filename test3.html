@@ -1,43 +1,33 @@
 <!doctype html>
 <html>
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=600px, initial-scale=1, shrink-to-fit=no">
-<meta http-equiv="refresh" content="60">
-<title>Hüb Mihrab</title>
-<link href="https://www.jqueryscript.net/css/jquerysctipttop.css" rel="stylesheet" type="text/css">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Merriweather">
-<link rel="stylesheet" href="style.css">
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=600px, initial-scale=1, shrink-to-fit=no">
+	<meta http-equiv="refresh" content="60">
+	<title>Hüb Mihrab</title>
+	<link href="https://www.jqueryscript.net/css/jquerysctipttop.css" rel="stylesheet" type="text/css">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Merriweather">
+	<link rel="stylesheet" href="style.css">
 
-<style>
-</style>
+	<style>
+	</style>
 </head>
 
 <body>
 <div class="container" id="prayy">
- <div class="hijridate">
-	 
-	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-	<script src="https://somaryaqub.github.io/jquery.hijri.date.js"></script>
-	<script>
-		$('.hijridate').hijriDate({gregorian: true, showWeekDay: false,
-  		showGregDate: false,
-  		separator: '&nbsp;|&nbsp;',
-  		weekDayLang: 'en',
-  		hijriLang: 'en',
-  		gregLang: 'en',
-  		correction: +0});
-	</script>
-
+ 	<div class="hijridate">
+	 	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+		<script src="jquery.hijri.date.js"></script>
+		<script>
+			$('.hijridate').hijriDate({gregorian: true, showWeekDay: false, showGregDate: false, separator: '&nbsp;|&nbsp;', weekDayLang: 'en', hijriLang: 'en', gregLang: 'en', correction: +0});
+		</script>
 	</div>	  	  
 
     <div class="prayer-times"></div>
   
-<script type="text/javascript" src="https://somaryaqub.github.io/PrayTimes.js"></script>
+<script type="text/javascript" src="PrayTimes.js"></script>
 <br>
 <p align="center" id="prayer"></p>
-
-
 <div align="center" id="taple"></div>
 
 <script type="text/javascript">
@@ -74,33 +64,31 @@
 	htmlx += '</table>';
 
 
-	document.getElementById('prayer').innerHTML = '<b>﷽</b></br><strong>' + currPrayer + '</strong>';
-  	
-//	htmlx += '<p>';
+		if (currPrayer == 'Maghrib')  {
+			nextp = 'Isha';
+			document.getElementById('prayy').className = 'Maghrib';
+		} else  if (currPrayer == 'Isha')  {
+			nextp = 'Midnight';
+			document.getElementById('prayy').className = 'Isha';
+		} else  if (currPrayer == 'Midnight')  {
+			nextp = 'Fajr';
+        		document.getElementById('prayy').className = 'midnight';
+		} else  if (currPrayer == 'Fajr')  {
+			nextp = 'Sunrise';
+        		document.getElementById('prayy').className = 'fajr';
+		} else  if (currPrayer == 'Sunrise')  {
+			nextp = 'Dhuhr';
+			document.getElementById('prayy').className = 'Sunrise'; 
+		} else  if (currPrayer == 'Dhuhr')  {
+			nextp = 'Asr';
+			document.getElementById('prayy').className = 'Dhuhr'; 
+		} else  if (currPrayer == 'Asr')  {
+			nextp = 'Maghrib';
+			document.getElementById('prayy').className = 'asr';
+		}
 	
-	if (currPrayer == 'Maghrib')  {
-// 		htmlx += '<strong>﷽</br>sunset</strong>' ; 
-		document.getElementById('prayy').className = 'Maghrib';
-	} else  if (currPrayer == 'Isha')  {
-// 		htmlx += '<strong><i>eve</i></strong>' ; 
-		document.getElementById('prayy').className = 'Isha';
-	} else  if (currPrayer == 'Midnight')  {
- //		htmlx += '<strong>Mid</strong>' ; 
-        	document.getElementById('prayy').className = 'midnight';
-	} else  if (currPrayer == 'Fajr')  {
- //		htmlx += '<i>Fajr</i>' ; 
-        	document.getElementById('prayy').className = 'fajr';
-	} else  if (currPrayer == 'Sunrise')  {
-// 		htmlx += '<strong>Sun</strong>' ;
-		document.getElementById('prayy').className = 'Sunrise'; 
-	} else  if (currPrayer == 'Dhuhr')  {
-// 		htmlx += '<strong>Afternoon</strong>' ;
-		document.getElementById('prayy').className = 'Dhuhr'; 
-	} else  if (currPrayer == 'Asr')  {
-// 		htmlx += '<strong>late afternoon</strong>' ;
-		document.getElementById('prayy').className = 'asr';
-	}
-//	htmlx += '</p>';
+		document.getElementById('prayer').innerHTML += '<b>﷽</b></br><strong>' + currPrayer + '</strong>';
+		document.getElementById('prayer').innerHTML += '<div class="prayertimes">' + currPrayer + ' ' + times[currPrayer.toLowerCase()] + ' ' + nextp + ' ' + times[nextp.toLowerCase()] +  '</div>';	
  	
  	
 //	document.getElementById('demo2').innerHTML = '4' + currPrayer;
