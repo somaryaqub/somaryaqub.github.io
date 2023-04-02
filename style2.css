@@ -35,8 +35,8 @@ body {
 .hill:after {
   content: '';
   position: absolute;
-  height: 15vmin;
-  width: 50vmax;
+  height: 5vmin;
+  width: 10vmax;
   background: hsl(var(--hue), 100%, 2%);
   left: 0;
   bottom: 0;
