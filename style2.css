@@ -1,113 +1,388 @@
-* {
-  box-sizing: border-box;
+/*** Feel free to use this mixin on your site, however pleae be sure to give 
+credit for my work by linking back to www.tundratech.ca or this pen please. 
+
+Please excuse my current crappy website, it is years out of date.
+I have a massive portfolio and redesign I will begin March 31, 2014.
+I will also be availiable for hire after this date.
+
+This pen has been a desire of mine ever since I once saw full color aurora
+during the time when HALE-BOPP was visiting. Usually aurora is blue-green 
+due to heavy nitrogen in the atmosphere. Full coloraurora come from oxygen 
+and usually appear further south (but the south is less likely to see aurora).
+
+Questions? Comments? Suggestion for performance improvement?
+
+DJ Sumanik
+www.tundratech.ca
+dj@tundratech.ca
+
+***/
+
+
+///////////////////////////////
+// Performance SETTINGS
+///////////////////////////////
+
+// how far down the lights extend;
+$max-height: 350; 
+
+// minimum animation speed
+$speed:6000ms;
+
+// More strande = more realistic, but slower performnce. Defaults are optimized for 100
+$total-strands:100;
+
+// enable disable strands
+$sml-strands: true;
+$med-strands: true;
+$big-strands: true;
+
+// Offscreen overhead "glowy background"
+$light-field: true;
+
+// Enable/Disable Blur
+$blur:true;
+$blur-amount:1.1;
+
+// motion vector
+$motion: 100;
+
+
+///////////////////////////////
+// COLOR AND BACKGROUND SETTINGS
+///////////////////////////////
+
+// Enable full color lights, which are rare in real life.
+$spectrum: true;
+
+// ensure even distribution of color spectrum, otherwise random generation
+$uniform-spectrum: true;
+
+// RGB Colors used when spectrum is disabled
+
+$sml-r: 5;
+$sml-g: 37;
+
+$med-r: 5;
+$med-g: 67;
+
+$big-r: 5;
+$big-g: 0;
+
+$max-brightness:10;
+
+
+///////////////////////////////
+// BACKGROUND
+///////////////////////////////
+
+$mask: #000;
+$bg: $mask url('http://i1.ytimg.com/vi/T40NSkd7Olc/maxresdefault.jpg');
+
+
+///////////////////////////////
+// LIGHT FIELD SETTINGS
+///////////////////////////////
+
+// Opacity
+$lf-strength: 0.7;
+
+// light-field colors
+$lf-1: #18c499;
+$lf-2: #4fffe1;
+
+
+///////////////////////////////
+// STRAND SETTINGS
+///////////////////////////////
+
+// Ratio of strand sizes
+$num-sml-strands: round(0.5 * $total-strands);
+$num-med-strands: round(0.3 * $total-strands);
+$num-big-strands: round(0.2 * $total-strands);
+
+// Widths of strands, blur is calculated automatically based on size
+$sml-strand-width: 2;
+$med-strand-width: 15;
+$big-strand-width: 40;
+
+// Strand Opacity. Lower values generally yield more realistic results
+$sml-min-strength:0;
+$sml-max-strength:.2;
+
+$med-min-strength:.1;
+$med-max-strength:.2;
+
+$big-min-strength:0;
+$big-max-strength:.2;
+
+// Slightly randomize strand strength by this amount
+$strength-variation: 0.05;
+
+
+///////////////////////////////
+// MIXINS
+///////////////////////////////
+
+// The mixins used here are taken from my upcoming Grid / UI system, which is nearly complete.
+
+// Browser support: IE10+
+$webkit: true;
+$khtml: true;
+$moz: true;
+$ms: true;
+$o: true;
+
+@mixin vendorize($name, $argument)
+{ // Auto append vendor prefixes
+  
+  @if $webkit { -webkit-#{$name}: #{$argument}; }
+  @if $khtml  {  -khtml-#{$name}: #{$argument}; }
+  @if $moz    {    -moz-#{$name}: #{$argument}; }
+  @if $ms     {     -ms-#{$name}: #{$argument}; }
+  @if $o      {      -o-#{$name}: #{$argument}; }
+                        #{$name}: #{$argument};
 }
-:root {
-  --hue: 220;
+
+@mixin keyframes($name)
+{ // Auto append vendor prefixes for animations
+  
+  @if $webkit { @-webkit-keyframes #{$name} { @content; } }
+  @if $khtml  {  @-khtml-keyframes #{$name} { @content; } }
+  @if $moz    {    @-moz-keyframes #{$name} { @content; } }
+  @if $ms     {     @-ms-keyframes #{$name} { @content; } }
+  @if $o      {      @-o-keyframes #{$name} { @content; } }
+                        @keyframes #{$name} { @content; }
 }
+
+@mixin animation($animations...)
+  
+{ // Auto append vendor prefixes, accepts multiple list items:
+  @include vendorize(animation, $animations);
+}
+
+
+///////////////////////////////
+// BEGIN RUNTIME... CALCULATE AND GO!!!
+///////////////////////////////
+
+$movement: $motion * 1px;
+// Random spectrum for colors.
+$sml-degrees: random(360);
+$med-degrees: random(360);
+$big-degrees: random(360);
+
+// Uniform spectrum for colors.
+@if $uniform-spectrum {
+  $sml-degrees: round(360 / $num-sml-strands);
+  $med-degrees: round(360 / $num-med-strands);
+  $big-degrees: round(360 / $num-big-strands);
+}
+
 body {
-  background: hsl(var(--hue), 100%, 5%);
-  height: 100vh;
-  overflow: hidden;
+  background: $bg;
+  margin:0;
+  padding:0;
 }
-.star {
-  --hue: 55;
-  border-radius: 50%;
-  background: hsl(var(--hue), 100%, 50%);
-  box-shadow: 0 0 5px 1px hsl(var(--hue), 100%, 85%);
-  height: calc(var(--size, 2) * 1px);
-  position: absolute;
-  width: calc(var(--size, 2) * 1px);
-  left: calc(var(--x, 0) * 1vw);
-  opacity: 0.5;
-  top: calc(var(--y, 0) * 1vw);
-  -webkit-animation: flicker calc(var(--duration, 2) * 1s) calc(var(--delay, 10) * 1s) infinite steps(1);
-          animation: flicker calc(var(--duration, 2) * 1s) calc(var(--delay, 10) * 1s) infinite steps(1);
-}
-.hill {
-  background: hsl(var(--hue), 100%, 2%);
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  height: 25vmin;
-  width: 68vmin;
-  border-radius: 0 100% 0 0;
-}
-.hill:after {
-  content: '';
-  position: absolute;
-  height: 5vmin;
-  width: 10vmax;
-  background: hsl(var(--hue), 100%, 2%);
-  left: 0;
-  bottom: 0;
-  border-radius: 0 100% 0 0;
-}
-.moon {
-  height: 5vmin;
-  width: 5vmin;
-  position: absolute;
-  left: 0;
-  top: 0;
-  background: #c6b9b9;
-  border-radius: 50%;
-  box-shadow: 0 0 50px 10px #8c8c8c;
-  transform: translate(-50%, -50%);
-  filter: blur(10px);
-}
-.lights {
-  width: 200vmax;
-  height: 100vmax;
-  position: absolute;
-  left: 50%;
-  top: 0;
-  transform: translate(-20%, -55%) rotate(30deg);
-  display: flex;
-  filter: blur(75px);
-}
-.light {
-  flex: 1;
-  --color-one: hsla(var(--hue-1), 100%, 50%, var(--alpha-1));
-  --color-two: hsla(var(--hue-2), 100%, 50%, var(--alpha-2));
-  --color-three: hsla(var(--hue-3), 100%, 50%, var(--alpha-3));
-  --up: calc(var(--y, 10) * 2vmax);
-  --left: calc(var(--x, 2) * 2vmax);
-  background-image: linear-gradient(0deg, transparent, var(--color-one) 10%, transparent, var(--color-two) 40%, transparent, var(--color-three) 60%);
-  background-size: 100% 40vmax;
-  background-position: center bottom;
-  background-repeat: no-repeat;
-  transform: translate(var(--left), var(--up)) scale(1);
-  -webkit-animation: shift calc(var(--duration, 2) * 1s) calc(var(--delay, 0) * -1s) infinite ease;
-          animation: shift calc(var(--duration, 2) * 1s) calc(var(--delay, 0) * -1s) infinite ease;
-}
-@media (max-width: 768px) {
-  .light {
-    --up: calc(var(--y, 10) * 2vmax);
-    --left: calc(var(--x, 2) * 2vmax);
+
+.ray {
+  position:absolute;
+  top:0;
+  border-radius:20px;
+  z-index:0;
+  
+  // Star overlay to simulate sky perspective
+  &:nth-child(1) {
+    width:100%;
+    height:100%;
+    background: linear-gradient(to bottom, rgba($mask, 0.9) 7%, rgba($mask, 0) 25%, rgba($mask, 1)90%);
   }
+
+  @if $light-field {
+    // Offscreen glow "light-field"
+    &:nth-child(2) {
+
+      height: 20px;
+      width: 100%;
+      position: absolute;
+      margin: auto;
+      top:-20px;
+      left:0;
+      z-index:9999;
+      opacity: $lf-strength; 
+      @include vendorize(border-radius, 50%);
+      @include animation(light-field $speed * 7 ease-in-out infinite alternate);
+    }
+  }
+
+  @if $sml-strands {
+    // Smaller, brighter strands
+    @for $i from 3 through $num-sml-strands {
+      &:nth-child(#{$i}) {
+        left:random(100) * 1%;
+        height: random($max-height) + $movement;
+        margin-top: -$movement;
+        $width: random($sml-strand-width) + $sml-strand-width;
+        width: $width + px;
+
+        // Spectrum Toggle
+        @if $spectrum {
+          $degrees: $sml-degrees * $i;
+          background: adjust-hue(#ff0000, $degrees);
+        }
+        @else
+        {
+          $color: lighten( rgb($sml-r, $sml-g, random(255)), 30%);
+          background: $color;
+        }
+
+        // Blur Toggle
+        @if $blur { 
+          @include vendorize(filter, blur(random($width) + 4 * $blur-amount + $width + px)); 
+        }
+
+        @include animation(
+          sml-fade ease-in-out random(1000) + $speed infinite,
+          wiggle + random(3) ease-in-out random(1000) + $speed infinite
+        );
+      }
+    }
+  }
+
+  @if $med-strands {
+    // Medium, filler strands
+    
+    @for $i from $num-sml-strands + 1 through $num-sml-strands + $num-med-strands  {
+      &:nth-child(#{$i}) {
+        left:random(100) * 1%;
+        height: random($max-height) + $movement;
+        $width: random($med-strand-width) + $med-strand-width;
+        width: $width + px;
+
+        // Spectrum Toggle
+        @if $spectrum {
+          $degrees: $med-degrees * $i;
+          background: adjust-hue(#ff0000, $degrees);
+        }
+        @else {
+          $color: lighten( rgb($med-r, $med-g, random(255)), 30%);
+          background: $color;
+        }
+
+        // Blur Toggle
+        @if $blur { 
+          @include vendorize(filter, blur(random($width) + $blur-amount * .7 * $width + px)); 
+        }
+
+        @include animation(
+          med-fade ease-in-out random(1000) + $speed infinite,
+          wiggle + random(3) ease-in-out random(10000) + $speed infinite
+        );
+      }
+    }
+  }
+
+  // Larger, nebula-like strands
+  @if $big-strands {
+    @for $i from $num-sml-strands + $num-med-strands + 1  through $total-strands {
+      &:nth-child(#{$i}) {
+        left:random(100) * 1%;
+        height: random($max-height) + $movement;
+        $width: random($big-strand-width) + $big-strand-width;
+        width: $width + px;
+
+        // Spectrum Toggle
+        @if $spectrum {
+          $degrees: $big-degrees * $i;
+          background: adjust-hue(#ff0000, $degrees);
+        }
+        @else{
+          $color: lighten( rgb($big-r, $big-g, random(255)), 30%);
+          background: $color;
+        }
+        
+        // Blur Toggle
+        @if $blur { 
+          @include vendorize(filter, blur(random($width) + $blur-amount * .5 * $width + px)); 
+
+        }
+        @include animation(
+          // Fade Toggle
+          big-fade ease-in-out random(1000) + $speed infinite,
+          wiggle + random(3) ease-in-out random(10000) + $speed infinite
+        );
+      }
+    }
+  }
+  
+  // enable hardware on everything to improve performance
+  @include vendorize(transform, translate3d(0, 0, 0));
 }
-@-webkit-keyframes shift {
-  50% {
-    transform: translate(0, 0) scale(1);
-  }
-}
-@keyframes shift {
-  50% {
-    transform: translate(0, 0) scale(1);
-  }
-}
-@-webkit-keyframes flicker {
-  0%, 50%, 100% {
-    transform: scale(1);
-  }
-  25% {
-    transform: scale(0);
-  }
-}
-@keyframes flicker {
-  0%, 50%, 100% {
-    transform: scale(1);
-  }
-  25% {
-    transform: scale(0);
-  }
-}
+
+// Animation declarations
+@include keyframes(sml-fade) {
+  0%   { opacity: $sml-max-strength - $strength-variation; }
+  50%  { opacity: $sml-min-strength;                       }
+  100% { opacity: $sml-max-strength;                       }
+};
+@include keyframes(med-fade) {
+  0%   { opacity :$med-max-strength;                       }
+  50%  { opacity :$med-min-strength;                       }
+  100% { opacity :$med-max-strength - $strength-variation; }
+};
+
+@include keyframes(big-fade) {
+  0%   { opacity: $big-max-strength;                       }
+  50%  { opacity: $big-min-strength;                       }
+  100% { opacity: $big-max-strength - $strength-variation; }
+};
+
+
+$mx1: random($motion) *  1px;
+$mx2: random($motion) * -1px;
+$mx3: random($motion) *  1px;
+$mx4: random($motion) * -1px;
+
+$my1: random($motion) *  1px;
+$my2: random($motion) * -2px;
+$my3: random($motion) *  2px;
+$my4: random($motion) * -1px;
+
+@include keyframes(wiggle0) {
+  0%   { @include vendorize(transform, translate3d($mx1, -$movement, 0)); }
+  50%  { @include vendorize(transform, translate3d(-$my2, -$my2, 0)); -webkit-transform: scaleX(1.5); }
+  100% { @include vendorize(transform, translate3d($mx1, -$movement, 0)); }
+};
+
+@include keyframes(wiggle1) {
+  0%   { @include vendorize(transform, translate3d(-$mx2, -$movement, 0)); }
+  50%  { @include vendorize(transform, translate3d($my3,  $my3, 0)); -webkit-transform: scaleX(2); }
+  100% { @include vendorize(transform, translate3d(-$mx2, -$movement, 0)); }
+};
+
+@include keyframes(wiggle2) {
+  0%   { @include vendorize(transform, translate3d(-$mx3, -$movement, 0)); }
+  50%  { @include vendorize(transform, translate3d($my4,  $my4, 0)); -webkit-transform: scaleX(2.5); }
+  100% { @include vendorize(transform, translate3d(-$mx3, -$movement, my3, 0));}
+};
+
+@include keyframes(wiggle3) {
+  0%   { @include vendorize(transform, translate3d($mx4, -$movement, 0)); }
+  50%  { @include vendorize(transform, translate3d(-$my1, $my1, 0)); -webkit-transform: scaleX(3); }
+  100% { @include vendorize(transform, translate3d($mx4, -$movement, 0)); }
+};
+
+
+@include keyframes(light-field) {
+  from { @include vendorize(box-shadow, 0 0 (0.8 * $max-height + px) (0.3 * $max-height + px)  $lf-2); }
+    to { @include vendorize(box-shadow, 0 0 (0.6 * $max-height + px) (0.1 * $max-height + px)  $lf-2); }
+};
+
+
+
+
+
+
+
+
+
