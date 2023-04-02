@@ -4,7 +4,6 @@ html,* {
 	text-align: center;
     	align-items: center;
     	justify-content: center;
-    	background: black;
 }
 
 body { margin: 0px; background-color: #301A73;}
@@ -30,7 +29,7 @@ visibility: hidden;
 
 .sphere {
 position: absolute;
- top: 400px;
+ top: 800px;
  left: 150px;
     border-radius: 100%;
     width: 250px;
