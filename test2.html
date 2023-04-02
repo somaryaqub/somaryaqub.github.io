@@ -48,7 +48,7 @@
 
     <div class="prayer-times"></div>
   
-<script type="text/javascript" src="https://somaryaqub.github.io/PrayTimes.js"></script>
+<script type="text/javascript" src="PrayTimes.js"></script>
 <br>
 <p align="center" id="prayer"></p>
 
@@ -89,7 +89,7 @@
   	}
 	htmlx += '</table>';
 	document.getElementById('prayer').innerHTML += '<b>﷽</b></br><strong>' + currPrayer + '</strong>';
-	document.getElementById('prayer').innerHTML += '<div class="prayertimes">' + currPrayer + ' ' + times.sunrise + ' ' + prayers[prayer] + ' ' + nextPrayer + ' ' + prayers[(prayer + 1) % 7] + '</div>';
+	document.getElementById('prayer').innerHTML += '<div class="prayertimes">' + currPrayer + ' ' + times.sunrise + ' ' + times[prayers[prayer].toLowerCase()] + ' ' + nextPrayer + ' ' + prayers[(prayer + 1) % 7] + '</div>';
 
 //	document.getElementById('prayer').innerHTML = '<b>﷽</b></br><strong>' + currPrayer + '</strong>';
   	
