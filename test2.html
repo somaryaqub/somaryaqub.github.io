@@ -75,25 +75,25 @@
 	htmlx += '</table>';
 
 	if (currPrayer == 'Maghrib')  {
-		nextp == 'Isha';
+		nextp = 'Isha';
 		document.getElementById('prayy').className = 'Maghrib';
 	} else  if (currPrayer == 'Isha')  {
-		nextp == 'Midnight';
+		nextp = 'Midnight';
 		document.getElementById('prayy').className = 'Isha';
 	} else  if (currPrayer == 'Midnight')  {
-		nextp == 'Fajr';
+		nextp = 'Fajr';
         	document.getElementById('prayy').className = 'midnight';
 	} else  if (currPrayer == 'Fajr')  {
-		nextp == 'Sunrise';
+		nextp = 'Sunrise';
         	document.getElementById('prayy').className = 'fajr';
 	} else  if (currPrayer == 'Sunrise')  {
-		nextp == 'Dhuhr';
+		nextp = 'Dhuhr';
 		document.getElementById('prayy').className = 'Sunrise'; 
 	} else  if (currPrayer == 'Dhuhr')  {
-		nextp == 'Asr';
+		nextp = 'Asr';
 		document.getElementById('prayy').className = 'Dhuhr'; 
 	} else  if (currPrayer == 'Asr')  {
-		nextp == 'Maghrib';
+		nextp = 'Maghrib';
 		document.getElementById('prayy').className = 'asr';
 	}
 	
