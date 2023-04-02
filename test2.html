@@ -74,10 +74,31 @@
   	}
 	htmlx += '</table>';
 
-
+	if (currPrayer == 'Maghrib')  {
+		nextp = 'Isha';
+		document.getElementById('prayy').className = 'Maghrib';
+	} else  if (currPrayer == 'Isha')  {
+		nextp = 'Midnight';
+		document.getElementById('prayy').className = 'Isha';
+	} else  if (currPrayer == 'Midnight')  {
+		nextp = 'Fajr';
+        	document.getElementById('prayy').className = 'midnight';
+	} else  if (currPrayer == 'Fajr')  {
+		nextp = 'Sunrise';
+        	document.getElementById('prayy').className = 'fajr';
+	} else  if (currPrayer == 'Sunrise')  {
+		nextp = 'Dhuhr';
+		document.getElementById('prayy').className = 'Sunrise'; 
+	} else  if (currPrayer == 'Dhuhr')  {
+		nextp = 'Asr';
+		document.getElementById('prayy').className = 'Dhuhr'; 
+	} else  if (currPrayer == 'Asr')  {
+		nextp = 'Maghrib';
+		document.getElementById('prayy').className = 'asr';
+	}
 	
 	document.getElementById('prayer').innerHTML += '<b>﷽</b></br><strong>' + currPrayer + '</strong>';
-	document.getElementById('prayer').innerHTML += '<div class="prayertimes">' + currPrayer + ' ' + times[currPrayer.toLowerCase()] + ' ' + nextp + ' ' + times[nextp.toLowerCase()] +  '</div>';
+//	document.getElementById('prayer').innerHTML += '<div class="prayertimes">' + currPrayer + ' ' + times[currPrayer.toLowerCase()] + ' ' + nextp + ' ' + times[nextp.toLowerCase()] +  '</div>';
 
 //	document.getElementById('prayer').innerHTML = '<b>﷽</b></br><strong>' + currPrayer + '</strong>';
   	
