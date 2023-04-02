@@ -43,8 +43,8 @@ body {
   border-radius: 0 100% 0 0;
 }
 .moon {
-  height: 40vmin;
-  width: 40vmin;
+  height: 5vmin;
+  width: 5vmin;
   position: absolute;
   left: 0;
   top: 0;
