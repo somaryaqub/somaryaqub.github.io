@@ -74,35 +74,36 @@
   	}
 	htmlx += '</table>';
 
+	if (currPrayer == 'Maghrib')  {
+		nextp == 'Isha';
+		document.getElementById('prayy').className = 'Maghrib';
+	} else  if (currPrayer == 'Isha')  {
+		nextp == 'Midnight';
+		document.getElementById('prayy').className = 'Isha';
+	} else  if (currPrayer == 'Midnight')  {
+		nextp == 'Fajr';
+        	document.getElementById('prayy').className = 'midnight';
+	} else  if (currPrayer == 'Fajr')  {
+		nextp == 'Sunrise';
+        	document.getElementById('prayy').className = 'fajr';
+	} else  if (currPrayer == 'Sunrise')  {
+		nextp == 'Dhuhr';
+		document.getElementById('prayy').className = 'Sunrise'; 
+	} else  if (currPrayer == 'Dhuhr')  {
+		nextp == 'Asr';
+		document.getElementById('prayy').className = 'Dhuhr'; 
+	} else  if (currPrayer == 'Asr')  {
+		nextp == 'Maghrib';
+		document.getElementById('prayy').className = 'asr';
+	}
+	
 	document.getElementById('prayer').innerHTML += '<b>﷽</b></br><strong>' + currPrayer + '</strong>';
-	document.getElementById('prayer').innerHTML += '<div class="prayertimes">' + currPrayer + ' ' + times[currPrayer.toLowerCase()] + ' ' + currPrayer[+3] + ' ' +  '</div>';
+	document.getElementById('prayer').innerHTML += '<div class="prayertimes">' + currPrayer + ' ' + times[currPrayer.toLowerCase()] + ' ' + nextp + ' ' + times[nextp.toLowerCase()] +  '</div>';
 
 //	document.getElementById('prayer').innerHTML = '<b>﷽</b></br><strong>' + currPrayer + '</strong>';
   	
 //	htmlx += '<p>';
 	
-	if (currPrayer == 'Maghrib')  {
-// 		htmlx += '<strong>﷽</br>sunset</strong>' ; 
-		document.getElementById('prayy').className = 'Maghrib';
-	} else  if (currPrayer == 'Isha')  {
-// 		htmlx += '<strong><i>eve</i></strong>' ; 
-		document.getElementById('prayy').className = 'Isha';
-	} else  if (currPrayer == 'Midnight')  {
- //		htmlx += '<strong>Mid</strong>' ; 
-        	document.getElementById('prayy').className = 'midnight';
-	} else  if (currPrayer == 'Fajr')  {
- //		htmlx += '<i>Fajr</i>' ; 
-        	document.getElementById('prayy').className = 'fajr';
-	} else  if (currPrayer == 'Sunrise')  {
-// 		htmlx += '<strong>Sun</strong>' ;
-		document.getElementById('prayy').className = 'Sunrise'; 
-	} else  if (currPrayer == 'Dhuhr')  {
-// 		htmlx += '<strong>Afternoon</strong>' ;
-		document.getElementById('prayy').className = 'Dhuhr'; 
-	} else  if (currPrayer == 'Asr')  {
-// 		htmlx += '<strong>late afternoon</strong>' ;
-		document.getElementById('prayy').className = 'asr';
-	}
 //	htmlx += '</p>';
  	
  	
