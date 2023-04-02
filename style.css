@@ -23,7 +23,7 @@ body { margin: 0px; background-color: #301A73;}
 
 h1 {
     color: #F4F6F0;
-    margin-bottom: 0px;
+    margin: 0px;
 visibility: hidden;
 }
 
@@ -38,7 +38,7 @@ position: absolute;
     overflow: hidden;
     align-items: center;
     position: relative;
-    margin-bottom: 0px;
+    margin: 0px;
 }
 
 .hemisphere {
