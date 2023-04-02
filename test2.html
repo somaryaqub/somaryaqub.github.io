@@ -65,8 +65,6 @@
   	prayTimes.adjust( {fajr: 15, dhuhr: '5 min', asr: 'Hanafi', isha: 15} );
 
 	var htmlx = ' ';
-	document.getElementById('prayer').innerHTML = '<b>﷽</b></br><strong>' + currPrayer + '</strong>';
-	document.getElementById('prayer').innerHTML = '<div class="prayertimes">' + currPrayer + ' ' + times.sunrise + ' ' + times.currPrayer + ' ' + nextPrayer + ' ' + times.nextPrayer + '</div>';
 
 	htmlx += '<table id="timetable"><tr><th colspan="2">'+ currDate.toLocaleDateString()+ '</th></tr>';
 	
@@ -89,6 +87,8 @@
 		htmlx += '<td>'+ times[prayers[prayer].toLowerCase()]+ '</td></tr>';
   	}
 	htmlx += '</table>';
+	document.getElementById('prayer').innerHTML += '<b>﷽</b></br><strong>' + currPrayer + '</strong>';
+	document.getElementById('prayer').innerHTML += '<div class="prayertimes">' + currPrayer + ' ' + times.sunrise + ' ' + times.currPrayer + ' ' + nextPrayer + ' ' + times.nextPrayer + '</div>';
 
 //	document.getElementById('prayer').innerHTML = '<b>﷽</b></br><strong>' + currPrayer + '</strong>';
   	
