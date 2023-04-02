@@ -52,6 +52,10 @@
 
 	var htmlx = ' ';
 
+	document.getElementById('prayer').innerHTML += '<b>﷽</b></br><strong>' + currPrayer + '</strong>';
+	document.getElementById('prayer').innerHTML += '<div class="prayertimes">' + currPrayer + ' ' + times[currPrayer.toLowerCase()] + ' ' + prayers[(prayer + 1) % 7] + ' ' +  '</div>';
+
+	
 	htmlx += '<table id="timetable"><tr><th colspan="2">'+ currDate.toLocaleDateString()+ '</th></tr>';
 	
 //List prayer times
@@ -73,8 +77,6 @@
 		htmlx += '<td>'+ times[prayers[prayer].toLowerCase()]+ '</td></tr>';
   	}
 	htmlx += '</table>';
-	document.getElementById('prayer').innerHTML += '<b>﷽</b></br><strong>' + currPrayer + '</strong>';
-	document.getElementById('prayer').innerHTML += '<div class="prayertimes">' + currPrayer + ' ' + times[currPrayer.toLowerCase()] + ' ' + prayers[(prayer + 1) % 7] + ' ' +  '</div>';
 
 //	document.getElementById('prayer').innerHTML = '<b>﷽</b></br><strong>' + currPrayer + '</strong>';
   	
