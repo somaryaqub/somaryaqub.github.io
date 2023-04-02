@@ -10,21 +10,6 @@
 <link rel="stylesheet" href="style.css">
 
 <style>
-  	html,* { font-family: 'Merriweather';}
-	body { margin: 0px; background-color: #301A73;}
-	b {opacity:.6; font-size: 8vw;}
-	strong {opacity:.2; font-size: .3vw;}
-	.container, #prayy { background-image: url("tree.png"); font-stretch: 420%; margin: 0px; max-width: 600px; width: 600px; height: 3840px; max-height: 3840px; min-height: 3840px; text-align: center; position:absolute;}
-	.hijridate { position:absolute; top: 20%; width:100%; color: white; font-size: 1vw; text-align: center;}
-	.prayertimes { position:absolute; top: 22%; width:100%; color: black; font-size: .4vw; text-align: center;}
-	.Maghrib {background-color: #C94343;}
-	.Isha {background-color: #301A73; color: white;}
-	.midnight{background-color: #221F53; color: white;  align: center; height:100%;}
-	.fajr{background-color: #633463; color: white; align: center; height:100%;}
-	.Sunrise{background-color: #D6B981; color: white;  align: center; height:100%;}
-	.Dhuhr{background-color: #8BB7D9; color: white;  align: center;}
-	.asr{background-color: #C68C56; color: white;  align: center;}
-
 </style>
 </head>
 
@@ -33,7 +18,7 @@
  <div class="hijridate">
 	 
 	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-	<script src="https://somaryaqub.github.io/jquery.hijri.date.js"></script>
+	<script src="jquery.hijri.date.js"></script>
 	<script>
 		$('.hijridate').hijriDate({gregorian: true, showWeekDay: false,
   		showGregDate: false,
@@ -49,7 +34,7 @@
     <div class="prayer-times"></div>
   
 <script type="text/javascript" src="PrayTimes.js"></script>
-<br>
+</br>
 <p align="center" id="prayer"></p>
 
 
