@@ -44,7 +44,7 @@
   		prayTimes.adjust( {fajr: 16, dhuhr: '5 min', asr: 'Hanafi', isha: 15} );
 
 		var htmlx = ' ';
-		htmlx += '<table id="timetable"><tr><th colspan="2">'+ currDate.toLocaleDateString()+ '</th></tr>';
+//		htmlx += '<table id="timetable"><tr><th colspan="2">'+ currDate.toLocaleDateString()+ '</th></tr>';
 
 //List prayer times
 		for(var prayer in prayers)	{
@@ -60,10 +60,10 @@
        				currPrayer = prayers[prayer];
         			nextPrayer = prayers[(prayer + 1) % 7];
     			}
- 			htmlx += '<tr><td>' + prayers[prayer] + '</td>';
-			htmlx += '<td>'+ times[prayers[prayer].toLowerCase()]+ '</td></tr>';
+// 			htmlx += '<tr><td>' + prayers[prayer] + '</td>';
+//			htmlx += '<td>'+ times[prayers[prayer].toLowerCase()]+ '</td></tr>';
   		}
-		htmlx += '</table>';
+//		htmlx += '</table>';
 
 		if (currPrayer == 'Maghrib')  {
 			nextp = 'Isha';
