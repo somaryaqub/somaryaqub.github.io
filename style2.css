@@ -41,7 +41,7 @@ body {
   background: linear-gradient(to bottom, rgba(0, 0, 0, 0.9) 7%, rgba(0, 0, 0, 0) 25%, black 90%);
 }
 .ray:nth-child(2) {
-  height: 20px;
+  height: 7d20px;
   width: 100%;
   position: absolute;
   margin: auto;
@@ -1138,7 +1138,7 @@ body {
 }
 .ray:nth-child(60) {
   left: 49%;
-  height: 385px;
+  height: 1385px;
   width: 30px;
   background: red;
   -webkit-filter: blur(27.1px);
@@ -1156,7 +1156,7 @@ body {
 }
 .ray:nth-child(61) {
   left: 62%;
-  height: 284px;
+  height: 1284px;
   width: 17px;
   background: #ff3300;
   -webkit-filter: blur(23.09px);
@@ -1174,7 +1174,7 @@ body {
 }
 .ray:nth-child(62) {
   left: 93%;
-  height: 342px;
+  height: 1342px;
   width: 20px;
   background: #ff6600;
   -webkit-filter: blur(35.4px);
@@ -1192,7 +1192,7 @@ body {
 }
 .ray:nth-child(63) {
   left: 61%;
-  height: 210px;
+  height: 1210px;
   width: 30px;
   background: #ff9900;
   -webkit-filter: blur(39.1px);
@@ -1210,7 +1210,7 @@ body {
 }
 .ray:nth-child(64) {
   left: 44%;
-  height: 333px;
+  height: 1333px;
   width: 26px;
   background: #ffcc00;
   -webkit-filter: blur(26.02px);
@@ -1228,7 +1228,7 @@ body {
 }
 .ray:nth-child(65) {
   left: 35%;
-  height: 290px;
+  height: 1290px;
   width: 26px;
   background: yellow;
   -webkit-filter: blur(43.02px);
@@ -1246,7 +1246,7 @@ body {
 }
 .ray:nth-child(66) {
   left: 80%;
-  height: 153px;
+  height: 1153px;
   width: 21px;
   background: #ccff00;
   -webkit-filter: blur(22.17px);
@@ -1264,7 +1264,7 @@ body {
 }
 .ray:nth-child(67) {
   left: 38%;
-  height: 407px;
+  height: 1407px;
   width: 30px;
   background: #99ff00;
   -webkit-filter: blur(33.1px);
@@ -1282,7 +1282,7 @@ body {
 }
 .ray:nth-child(68) {
   left: 86%;
-  height: 128px;
+  height: 1128px;
   width: 22px;
   background: #66ff00;
   -webkit-filter: blur(19.94px);
@@ -1300,7 +1300,7 @@ body {
 }
 .ray:nth-child(69) {
   left: 35%;
-  height: 419px;
+  height: 1419px;
   width: 28px;
   background: #33ff00;
   -webkit-filter: blur(38.56px);
@@ -1318,7 +1318,7 @@ body {
 }
 .ray:nth-child(70) {
   left: 54%;
-  height: 299px;
+  height: 1299px;
   width: 22px;
   background: lime;
   -webkit-filter: blur(35.94px);
@@ -1336,7 +1336,7 @@ body {
 }
 .ray:nth-child(71) {
   left: 50%;
-  height: 137px;
+  height: 1137px;
   width: 27px;
   background: #00ff33;
   -webkit-filter: blur(25.79px);
@@ -1354,7 +1354,7 @@ body {
 }
 .ray:nth-child(72) {
   left: 21%;
-  height: 129px;
+  height: 1129px;
   width: 19px;
   background: #00ff66;
   -webkit-filter: blur(19.63px);
@@ -1372,7 +1372,7 @@ body {
 }
 .ray:nth-child(73) {
   left: 97%;
-  height: 239px;
+  height: 1239px;
   width: 20px;
   background: #00ff99;
   -webkit-filter: blur(16.4px);
@@ -1390,7 +1390,7 @@ body {
 }
 .ray:nth-child(74) {
   left: 71%;
-  height: 328px;
+  height: 1328px;
   width: 25px;
   background: #00ffcc;
   -webkit-filter: blur(23.25px);
@@ -1408,7 +1408,7 @@ body {
 }
 .ray:nth-child(75) {
   left: 98%;
-  height: 436px;
+  height: 1436px;
   width: 23px;
   background: aqua;
   -webkit-filter: blur(24.71px);
@@ -1426,7 +1426,7 @@ body {
 }
 .ray:nth-child(76) {
   left: 25%;
-  height: 163px;
+  height: 1163px;
   width: 30px;
   background: #00ccff;
   -webkit-filter: blur(28.1px);
@@ -1444,7 +1444,7 @@ body {
 }
 .ray:nth-child(77) {
   left: 16%;
-  height: 369px;
+  height: 1369px;
   width: 20px;
   background: #0099ff;
   -webkit-filter: blur(21.4px);
@@ -1462,7 +1462,7 @@ body {
 }
 .ray:nth-child(78) {
   left: 4%;
-  height: 315px;
+  height: 1315px;
   width: 16px;
   background: #0066ff;
   -webkit-filter: blur(20.32px);
@@ -1480,7 +1480,7 @@ body {
 }
 .ray:nth-child(79) {
   left: 44%;
-  height: 225px;
+  height: 1225px;
   width: 17px;
   background: #0033ff;
   -webkit-filter: blur(24.09px);
@@ -1498,7 +1498,7 @@ body {
 }
 .ray:nth-child(80) {
   left: 88%;
-  height: 200px;
+  height: 1200px;
   width: 22px;
   background: blue;
   -webkit-filter: blur(33.94px);
@@ -1516,7 +1516,7 @@ body {
 }
 .ray:nth-child(81) {
   left: 36%;
-  height: 345px;
+  height: 1345px;
   width: 59px;
   background: #ff4d00;
   -webkit-filter: blur(37.45px);
@@ -1534,7 +1534,7 @@ body {
 }
 .ray:nth-child(82) {
   left: 80%;
-  height: 116px;
+  height: 1116px;
   width: 42px;
   background: #ff9900;
   -webkit-filter: blur(46.1px);
@@ -1552,7 +1552,7 @@ body {
 }
 .ray:nth-child(83) {
   left: 66%;
-  height: 109px;
+  height: 1109px;
   width: 55px;
   background: #ffe600;
   -webkit-filter: blur(54.25px);
@@ -1570,7 +1570,7 @@ body {
 }
 .ray:nth-child(84) {
   left: 79%;
-  height: 446px;
+  height: 1446px;
   width: 47px;
   background: #ccff00;
   -webkit-filter: blur(52.85px);
@@ -1588,7 +1588,7 @@ body {
 }
 .ray:nth-child(85) {
   left: 65%;
-  height: 369px;
+  height: 1369px;
   width: 59px;
   background: #80ff00;
   -webkit-filter: blur(79.45px);
@@ -1606,7 +1606,7 @@ body {
 }
 .ray:nth-child(86) {
   left: 37%;
-  height: 199px;
+  height: 1199px;
   width: 79px;
   background: #33ff00;
   -webkit-filter: blur(54.45px);
@@ -1624,7 +1624,7 @@ body {
 }
 .ray:nth-child(87) {
   left: 100%;
-  height: 194px;
+  height: 1194px;
   width: 45px;
   background: #00ff1a;
   -webkit-filter: blur(36.75px);
@@ -1642,7 +1642,7 @@ body {
 }
 .ray:nth-child(88) {
   left: 19%;
-  height: 427px;
+  height: 1427px;
   width: 50px;
   background: #00ff66;
   -webkit-filter: blur(40.5px);
@@ -1660,7 +1660,7 @@ body {
 }
 .ray:nth-child(89) {
   left: 19%;
-  height: 340px;
+  height: 1340px;
   width: 59px;
   background: #00ffb3;
   -webkit-filter: blur(52.45px);
@@ -1678,7 +1678,7 @@ body {
 }
 .ray:nth-child(90) {
   left: 100%;
-  height: 435px;
+  height: 1435px;
   width: 65px;
   background: aqua;
   -webkit-filter: blur(79.75px);
@@ -1696,7 +1696,7 @@ body {
 }
 .ray:nth-child(91) {
   left: 14%;
-  height: 204px;
+  height: 1204px;
   width: 61px;
   background: #00b3ff;
   -webkit-filter: blur(39.55px);
@@ -1714,7 +1714,7 @@ body {
 }
 .ray:nth-child(92) {
   left: 57%;
-  height: 271px;
+  height: 1271px;
   width: 50px;
   background: #0066ff;
   -webkit-filter: blur(64.5px);
@@ -1732,7 +1732,7 @@ body {
 }
 .ray:nth-child(93) {
   left: 39%;
-  height: 174px;
+  height: 1174px;
   width: 69px;
   background: #001aff;
   -webkit-filter: blur(60.95px);
@@ -1750,7 +1750,7 @@ body {
 }
 .ray:nth-child(94) {
   left: 14%;
-  height: 440px;
+  height: 1440px;
   width: 60px;
   background: #3300ff;
   -webkit-filter: blur(54px);
