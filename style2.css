@@ -18,7 +18,7 @@ dj@tundratech.ca
 
 ***/
 body {
-  background: #000 url("http://i1.ytimg.com/vi/T40NSkd7Olc/maxresdefault.jpg");
+  background: url("http://i1.ytimg.com/vi/T40NSkd7Olc/maxresdefault.jpg");
   margin: 0;
   padding: 0;
 }
