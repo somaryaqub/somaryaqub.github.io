@@ -8,7 +8,7 @@ html,* {
 }
 
 body { margin: 0px; 
-background: rgb(16,30,35);
+background-color: rgb(16,30,35);
 background: linear-gradient(180deg, rgba(16,30,35,1) 0%, rgba(66,119,124,1) 100%);}
 	b {opacity:.6; font-size: 10px;}
 	strong {opacity:.2; font-size: 10px;}
