@@ -1,0 +1,201 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=600px, initial-scale=1, shrink-to-fit=no">
+	<meta http-equiv="refresh" content="600">
+	<title>Hüb Mihrab</title>
+	<link href="https://www.jqueryscript.net/css/jquerysctipttop.css" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Merriweather">
+	
+	<link rel="stylesheet" href="style.css">
+
+	<style>
+	
+html,* { 
+	font-family: 'Merriweather';    
+	text-align: center;
+    	align-items: center;
+    	justify-content: center;
+	
+}
+
+body { margin: 0px; 
+}
+	b {opacity:.6; font-size: 10px;}
+	strong {opacity:.2; font-size: 10px;}
+	.container, #prayy { background-image: url("eid.png"); margin: 0px; max-width: 525px; width: 525px; height: 3360px; max-height: 3360px; min-height: 3360px; text-align: center; position:absolute;}
+	.hijridate { position:absolute; bottom: 768px; width:100%; color: white; font-size: 50px; text-align: center;}
+	.prayertimes { position:absolute; bottom: 836px; width:100%; color: white; font-size: 20px; text-align: center;}
+	.Maghrib {background-color: transparent;}
+	.Isha {background-color: transparent; color: white;}
+	.midnight{background-color: transparent; color: white;  align: center; height:100%;}
+	.fajr{background-color: transparent; color: white; align: center; height:100%;}
+	.Sunrise{background-color: transparent; color: white;  align: center; height:100%;}
+	.Dhuhr{background-color: transparent; color: white;  align: center;}
+	.asr{background-color: transparent; color: white;  align: center;}
+
+
+h1 {
+    color: #F4F6F0;
+    margin: 0px;
+visibility: hidden;
+}
+
+.sphere {
+	opacity:.7;
+position: absolute;
+ top: 1600px;
+ left: 275px;
+    border-radius: 100%;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    overflow: hidden;
+    align-items: center;
+    position: relative;
+    margin: 0px;
+}
+
+.hemisphere {
+    width: 50%;
+    height: 100%;
+}
+
+.light {
+    background-color: #F4F6F0;
+}
+
+.dark {
+    background-color: #575851;
+}
+
+.divider,
+.divider:after {
+    top: 0;
+    left: 0;
+    width: 50px;
+    height: 50px;
+    position: absolute;
+    border-radius: 100%;
+    transform-style: preserve-3d;
+    backface-visibility: hidden;
+}
+
+.divider {
+    background-color: #575851;
+}
+
+.divider:after {
+    content: '';
+    background-color: #F4F6F0;
+    transform: rotateY(180deg);
+}
+
+#date-title, input {visibility: hidden;}
+
+	</style>
+</head>
+
+<body>
+	<div class="ray"></div><div class="ray"></div><div class="ray"></div><div class="ray"></div><div class="ray"></div><div class="ray"></div><div class="ray"></div><div class="ray"></div><div class="ray"></div><div class="ray"></div><div class="ray"></div><div class="ray"></div><div class="ray"></div><div class="ray"></div><div class="ray"></div><div class="ray"></div><div class="ray"></div><div class="ray"></div><div class="ray"></div><div class="ray"></div><div class="ray"></div><div class="ray"></div><div class="ray"></div><div class="ray"></div><div class="ray"></div><div class="ray"></div><div class="ray"></div><div class="ray"></div><div class="ray"></div><div class="ray"></div><div class="ray"></div><div class="ray"></div><div class="ray"></div><div class="ray"></div><div class="ray"></div><div class="ray"></div><div class="ray"></div><div class="ray"></div><div class="ray"></div><div class="ray"></div><div class="ray"></div><div class="ray"></div><div class="ray"></div><div class="ray"></div><div class="ray"></div><div class="ray"></div><div class="ray"></div><div class="ray"></div><div class="ray"></div><div class="ray"></div><div class="ray"></div><div class="ray"></div><div class="ray"></div><div class="ray"></div><div class="ray"></div><div class="ray"></div><div class="ray"></div><div class="ray"></div><div class="ray"></div><div class="ray"></div><div class="ray"></div><div class="ray"></div><div class="ray"></div><div class="ray"></div><div class="ray"></div><div class="ray"></div><div class="ray"></div><div class="ray"></div><div class="ray"></div><div class="ray"></div><div class="ray"></div><div class="ray"></div><div class="ray"></div><div class="ray"></div><div class="ray"></div><div class="ray"></div><div class="ray"></div><div class="ray"></div><div class="ray"></div><div class="ray"></div><div class="ray"></div><div class="ray"></div><div class="ray"></div><div class="ray"></div><div class="ray"></div><div class="ray"></div><div class="ray"></div><div class="ray"></div><div class="ray"></div><div class="ray"></div><div class="ray"></div><div class="ray"></div><div class="ray"></div><div class="ray"></div><div class="ray"></div><div class="ray"></div><div class="ray"></div><div class="ray"></div><div class="ray"></div><div class="ray"></div><div class="ray"></div><div class="ray"></div><div class="ray"></div><div class="ray"></div><div class="ray"></div><div class="ray"></div><div class="ray"></div><div class="ray"></div><div class="ray"></div><div class="ray"></div><div class="ray"></div><div class="ray"></div><div class="ray"></div><div class="ray"></div><div class="ray"></div><div class="ray"></div><div class="ray"></div><div class="ray"></div><div class="ray"></div><div class="ray"></div><div class="ray"></div><div class="ray"></div><div class="ray"></div><div class="ray"></div><div class="ray"></div><div class="ray"></div><div class="ray"></div><div class="ray"></div><div class="ray"></div><div class="ray"></div><div class="ray"></div><div class="ray"></div><div class="ray"></div><div class="ray"></div><div class="ray"></div><div class="ray"></div><div class="ray"></div><div class="ray"></div><div class="ray"></div><div class="ray"></div><div class="ray"></div><div class="ray"></div><div class="ray"></div><div class="ray"></div><div class="ray"></div><div class="ray"></div><div class="ray"></div><div class="ray"></div><div class="ray"></div><div class="ray"></div><div class="ray"></div><div class="ray"></div><div class="ray"></div><div class="ray"></div><div class="ray"></div><div class="ray"></div><div class="ray"></div><div class="ray"></div><div class="ray"></div><div class="ray"></div><div class="ray"></div><div class="ray"></div><div class="ray"></div><div class="ray"></div><div class="ray"></div><div class="ray"></div><div class="ray"></div><div class="ray"></div><div class="ray"></div><div class="ray"></div><div class="ray"></div><div class="ray"></div><div class="ray"></div><div class="ray"></div><div class="ray"></div><div class="ray"></div><div class="ray"></div><div class="ray"></div><div class="ray"></div><div class="ray"></div><div class="ray"></div><div class="ray"></div><div class="ray"></div><div class="ray"></div><div class="ray"></div><div class="ray"></div><div class="ray"></div><div class="ray"></div><div class="ray"></div><div class="ray"></div><div class="ray"></div><div class="ray"></div><div class="ray"></div><div class="ray"></div><div class="ray"></div><div class="ray"></div><div class="ray"></div><div class="ray"></div><div class="ray"></div><div class="ray"></div><div class="ray"></div>
+
+<div class="container" id="prayy">
+ 	<div class="hijridate">
+	 	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+		<script src="jquery.hijri.date.js"></script>
+		<script>
+			$('.hijridate').hijriDate({gregorian: true, showWeekDay: false, showGregDate: false, separator: '&nbsp;|&nbsp;', weekDayLang: 'en', hijriLang: 'en', gregLang: 'en', correction: +0});
+		</script>
+	</div>	  	  
+	<script type="text/javascript" src="PrayTimes.js"></script>
+
+	<div class="prayer-times"></div>
+	<br>
+	<p align="center" id="prayer"></p>
+	<div align="center" id="taple"></div>
+
+	<script type="text/javascript">
+	
+		var currDate = new Date(); // today
+		var times = prayTimes.getTimes(currDate, [53.6316, -113.3239]);
+		var prayers = ['Midnight', 'Fajr', 'Sunrise', 'Dhuhr', 'Asr', 'Maghrib', 'Isha'];
+		var currPrayer = prayers[0]
+  		var nextPrayer = prayers[1];
+  		var min = Number.POSITIVE_INFINITY;
+  		prayTimes.adjust( {fajr: 16, dhuhr: '5 min', asr: 'Hanafi', isha: 15} );
+
+		var htmlx = ' ';
+//		htmlx += '<table id="timetable"><tr><th colspan="2">'+ currDate.toLocaleDateString()+ '</th></tr>';
+
+//List prayer times
+		for(var prayer in prayers)	{
+    			prayerTimeRaw = times[prayers[prayer].toLowerCase()].split(':');
+   			hour = parseInt(prayerTimeRaw[0]);
+    			mins = parseInt(prayerTimeRaw[1]);
+  			prayerTime = new Date();
+    			prayerTime.setHours(hour, mins, 0, 0);
+    			prayerDiff = Math.floor(((currDate - prayerTime)/1000)/60);
+    
+    			if ((prayerDiff >= 0) && (prayerDiff <= min)) {
+        			min = prayerDiff;
+       				currPrayer = prayers[prayer];
+        			nextPrayer = prayers[(prayer + 1) % 7];
+    			}
+// 			htmlx += '<tr><td>' + prayers[prayer] + '</td>';
+//			htmlx += '<td>'+ times[prayers[prayer].toLowerCase()]+ '</td></tr>';
+  		}
+//		htmlx += '</table>';
+
+		if (currPrayer == 'Maghrib')  {
+			nextp = 'Isha';
+			document.getElementById('prayy').className = 'Maghrib';
+		} else  if (currPrayer == 'Isha')  {
+			nextp = 'Midnight';
+			document.getElementById('prayy').className = 'Isha';
+		} else  if (currPrayer == 'Midnight')  {
+			nextp = 'Fajr';
+        		document.getElementById('prayy').className = 'midnight';
+		} else  if (currPrayer == 'Fajr')  {
+			nextp = 'Sunrise';
+        		document.getElementById('prayy').className = 'fajr';
+		} else  if (currPrayer == 'Sunrise')  {
+			nextp = 'Dhuhr';
+			document.getElementById('prayy').className = 'Sunrise'; 
+		} else  if (currPrayer == 'Dhuhr')  {
+			nextp = 'Asr';
+			document.getElementById('prayy').className = 'Dhuhr'; 
+		} else  if (currPrayer == 'Asr')  {
+			nextp = 'Maghrib';
+			document.getElementById('prayy').className = 'asr';
+		}
+	
+//		document.getElementById('prayer').innerHTML += '<b>﷽</b></br><strong>' + currPrayer + '</strong>';
+		document.getElementById('prayer').innerHTML += '<div class="prayertimes">' + currPrayer + ' ' + times[currPrayer.toLowerCase()] + ' ✸ ' + nextp + ' ' + times[nextp.toLowerCase()] +  '</div>';	
+ 	
+	document.getElementById('taple').innerHTML = htmlx;
+		  
+  	</script>
+    </div>
+
+<h1 id="date-title">
+  <!-- Will show the selected date -->
+</h1>
+	
+<!-- The moon -->
+<div class="sphere">
+  <div class="light hemisphere"></div>
+  <div class="dark hemisphere"></div>
+  <div class="divider"></div>
+</div>
+
+	<!-- The date input -->
+<input type="date">
+
+<script type="text/javascript" src="moon.js"></script>
+ 
+	
+	
+</body>
+</html>
