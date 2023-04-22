@@ -28,6 +28,8 @@ body { margin: 0px;
 	.container, #prayy { background-image: url("eid.png"); margin: 0px; max-width: 525px; width: 525px; height: 3360px; max-height: 3360px; min-height: 3360px; text-align: center; position:absolute;}
 	.hijridate { position:absolute; top: 1300px; width:100%; color: white; font-size: 50px; text-align: center;}
 	.prayertimes { position:absolute; top: 1360px; width:100%; color: white; font-size: 20px; text-align: center;}
+	.prayertimes strong { color: white; font-size: 20px; opacity:1;  }
+
 	.Maghrib {background-color: transparent;}
 	.Isha {background-color: transparent; color: white;}
 	.midnight{background-color: transparent; color: white;  align: center; height:100%;}
@@ -172,7 +174,7 @@ position: absolute;
 	
 //		document.getElementById('prayer').innerHTML += '<b>﷽</b></br><strong>' + currPrayer + '</strong>';
 //		document.getElementById('prayer').innerHTML += '<div class="prayertimes">Now: ' + currPrayer + ' ' + times[currPrayer.toLowerCase()] + ' ✸ ' + nextp + ' ' + times[nextp.toLowerCase()] +  '</div>';	
-		document.getElementById('prayer').innerHTML += '<div class="prayertimes">Now: ' + currPrayer + ' ' + ' ✸ Next:' + nextp + ' ' + times[nextp.toLowerCase()] +  '</div>';	
+		document.getElementById('prayer').innerHTML += '<div class="prayertimes">Now: <strong>' + currPrayer + ' ' + '</strong> ✸ Next: <strong>' + nextp + ' ' + times[nextp.toLowerCase()] +  '</strong></div>';	
  	
 	document.getElementById('taple').innerHTML = htmlx;
 		  
