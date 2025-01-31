@@ -1,0 +1,121 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  /* Text Colors */
+  --text-light: #1a202c;
+  --text-dark: #ffffff;
+  
+  /* Prayer Time Colors */
+  --prayer-past: rgba(255, 255, 255, 0.8);
+  --prayer-current: rgba(255, 255, 255, 0.2);
+  --prayer-next: rgba(255, 255, 255, 1);
+  --prayer-future: rgba(255, 255, 255, 1);
+  
+  /* Warning Colors */
+  --warning-color: #dc2626;
+  
+  /* Background Images */
+  --bg-night: url('http://somaryaqub.github.io/MilkyLake.jpg');
+  --bg-fajr: url('https://source.unsplash.com/random/1920x1080/?dawn,sunrise');
+  --bg-morning: url('https://source.unsplash.com/random/1920x1080/?morning,sun');
+  --bg-dhuhr: url('https://source.unsplash.com/random/1920x1080/?noon,sun');
+  --bg-asr: url('https://source.unsplash.com/random/1920x1080/?afternoon');
+  --bg-maghrib: url('https://source.unsplash.com/random/1920x1080/?sunset');
+  --bg-isha: url('http://somaryaqub.github.io/MilkyLake.jpg');
+  
+  /* Background Gradients */
+  --gradient-night: linear-gradient(to bottom, #1a1c4b, #2d2a5d, #3b2a6f);
+  --gradient-fajr: linear-gradient(to bottom, #4a1d6f, #8b2a5d, #ff6b3d);
+  --gradient-morning: linear-gradient(to bottom, #ff6b3d, #ffd23f, #93c5fd);
+  --gradient-dhuhr: linear-gradient(to bottom, #93c5fd, #60a5fa, #93c5fd);
+  --gradient-asr: linear-gradient(to bottom, #93c5fd, #fef08a, #fb923c);
+  --gradient-maghrib: linear-gradient(to bottom, #fb923c, #ef4444, #4a1d6f);
+  --gradient-isha: linear-gradient(to bottom, #4a1d6f, #2d2a5d, #1a1c4b);
+}
+
+/* Enable/disable background images by adding/removing this class from body */
+.use-background-images .prayer-background {
+  background-image: var(--bg-current);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  transition: background-image 1s ease-in-out;
+}
+
+.prayer-background {
+  position: absolute;
+  inset: 0;
+  background: var(--gradient-current);
+  transition: background 10s;
+}
+
+.prayer-background::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: inherit;
+  backdrop-filter: blur(8px);
+}
+
+@keyframes flutter {
+  0% {
+    transform: translate(0, 0) rotate(0deg);
+    opacity: 1;
+  }
+  100% {
+    transform: translate(-100vw, 20px) rotate(-360deg);
+    opacity: 0.8;
+  }
+}
+
+@keyframes warning-fade {
+  0% {
+    opacity: 1;
+    transform: scale(1) rotate(0deg);
+  }
+  20% {
+    opacity: 0.9;
+    transform: scale(1.1) rotate(72deg);
+  }
+  40% {
+    opacity: 0.8;
+    transform: scale(1) rotate(144deg);
+  }
+  60% {
+    opacity: 0.6;
+    transform: scale(0.9) rotate(216deg);
+  }
+  80% {
+    opacity: 0.4;
+    transform: scale(0.8) rotate(288deg);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(0.7) rotate(360deg) translateY(50px);
+  }
+}
+
+.warning-sign {
+  display: inline-block;
+  transition: opacity 0.3s ease-in;
+}
+
+.warning-sign.fade-out {
+  animation: warning-fade 10s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+.flutter-text {
+  display: inline-block;
+  position: relative;
+}
+
+.flutter-text.animate > span {
+  display: inline-block;
+  position: absolute;
+  white-space: nowrap;
+  animation: flutter 4s ease-in-out forwards;
+  animation-delay: calc(var(--char-index) * 0.2s);
+  transform-origin: center;
+}
