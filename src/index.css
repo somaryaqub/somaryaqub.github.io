@@ -17,13 +17,13 @@
   --warning-color: #dc2626;
   
   /* Background Images */
-  --bg-night: url('http://somaryaqub.github.io/MilkyLake.jpg');
-  --bg-fajr: url('https://source.unsplash.com/random/1920x1080/?dawn,sunrise');
-  --bg-morning: url('https://source.unsplash.com/random/1920x1080/?morning,sun');
-  --bg-dhuhr: url('https://source.unsplash.com/random/1920x1080/?noon,sun');
-  --bg-asr: url('https://source.unsplash.com/random/1920x1080/?afternoon');
-  --bg-maghrib: url('https://source.unsplash.com/random/1920x1080/?sunset');
-  --bg-isha: url('http://somaryaqub.github.io/MilkyLake.jpg');
+  --bg-night: url('/dynamic/isha.png');
+  --bg-fajr: url('/dynamic/sunrise.png');
+  --bg-morning: url('/dynamic/sunrise.png');
+  --bg-dhuhr: url('/dynamic/duhur.png');
+  --bg-asr: url('/dynamic/asr.png');
+  --bg-maghrib: url('/dynamic/maghrib.png');
+  --bg-isha: url('/dynamic/isha1.png');
   
   /* Background Gradients */
   --gradient-night: linear-gradient(to bottom, #1a1c4b, #2d2a5d, #3b2a6f);
