@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Full Prayer-Time Sky Animation</title>
+<style>
+  html, body {
+    height: 100%;
+    margin: 0;
+  }
+
+  body {
+    font-family: sans-serif;
+    color: white;
+    text-align: center;
+    font-size: 2em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    /* Initial gradient (Fajr) */
+    background: linear-gradient(135deg, #0A2342, #4A5E72, #F2AEBB, #F9DDE0);
+    background-size: 400% 400%;
+    animation: gradientCycle 60s ease infinite, moveGradient 20s linear infinite;
+  }
+
+  /* Smooth gradient color shift */
+  @keyframes gradientCycle {
+    0%   { background: linear-gradient(135deg, #0A2342, #4A5E72, #F2AEBB, #F9DDE0); } /* Fajr */
+    14%  { background: linear-gradient(135deg, #8CCAE8, #A7D6EB, #F7C76A, #FFF9F0); } /* Duha */
+    28%  { background: linear-gradient(135deg, #B7E2FF, #4EA3E0, #FFE769, #FFFEEB); } /* Dhuhr */
+    42%  { background: linear-gradient(135deg, #6E8DAD, #E9A956, #FFDCA4, #F3E9DC); } /* Asr */
+    57%  { background: linear-gradient(135deg, #5B3F8A, #F47A47, #F2A2A7, #4B4B4B); } /* Maghrib */
+    71%  { background: linear-gradient(135deg, #2C3E78, #1C1A4A, #D8DDE6, #0D1021); } /* Isha */
+    85%  { background: linear-gradient(135deg, #2D4A68, #0A0F1C, #E7ECF2, #2A2A32); } /* Tahajjud */
+    100% { background: linear-gradient(135deg, #0A2342, #4
