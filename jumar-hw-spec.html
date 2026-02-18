@@ -1,0 +1,775 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Jūmār — Hardware Engineering Specification</title>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,300;0,400;0,600;1,300&family=EB+Garamond:ital,wght@0,400;0,500;1,400;1,500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #f7f4ee;
+  --ink: #1a1710;
+  --ink2: #3a3328;
+  --ink3: #6a5f4a;
+  --ember: #b5461a;
+  --gold: #8a6a2a;
+  --rule: rgba(26,23,16,0.12);
+  --rule2: rgba(26,23,16,0.06);
+  --highlight: rgba(181,70,26,0.06);
+  --tag-bg: rgba(138,106,42,0.1);
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  background: var(--bg);
+  color: var(--ink);
+  font-family: 'EB Garamond', serif;
+  font-size: 16px;
+  line-height: 1.7;
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 4rem 3rem;
+}
+
+@media print {
+  body { padding: 2rem; }
+  .no-print { display: none; }
+}
+
+/* Header */
+.doc-header {
+  border-bottom: 2px solid var(--ink);
+  padding-bottom: 2rem;
+  margin-bottom: 3rem;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 2rem;
+  align-items: end;
+}
+
+.doc-title {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.7rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--ink3);
+  margin-bottom: 0.5rem;
+}
+
+h1 {
+  font-size: 2.8rem;
+  font-weight: 500;
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+}
+
+h1 em { font-style: italic; color: var(--ember); }
+
+.doc-meta {
+  text-align: right;
+}
+
+.doc-meta p {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.65rem;
+  letter-spacing: 0.1em;
+  color: var(--ink3);
+  line-height: 2;
+}
+
+/* Table of contents */
+.toc {
+  background: rgba(26,23,16,0.03);
+  border: 1px solid var(--rule);
+  padding: 1.5rem 2rem;
+  margin-bottom: 3rem;
+}
+
+.toc-title {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.6rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--ink3);
+  margin-bottom: 1rem;
+}
+
+.toc ol {
+  list-style: none;
+  columns: 2;
+  gap: 1rem;
+}
+
+.toc ol li {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.7rem;
+  letter-spacing: 0.05em;
+  padding: 0.2rem 0;
+  color: var(--ink2);
+  display: flex;
+  gap: 0.5rem;
+}
+
+.toc ol li span { color: var(--ember); }
+
+/* Sections */
+section {
+  margin-bottom: 3.5rem;
+}
+
+.section-num {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.6rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--ember);
+  margin-bottom: 0.5rem;
+}
+
+h2 {
+  font-size: 1.6rem;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  border-bottom: 1px solid var(--rule);
+  padding-bottom: 0.5rem;
+  margin-bottom: 1.5rem;
+}
+
+h2 em { color: var(--ember); font-style: italic; }
+
+h3 {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.75rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin: 1.5rem 0 0.75rem;
+}
+
+p {
+  margin-bottom: 1rem;
+  color: var(--ink2);
+  font-size: 1rem;
+}
+
+/* Spec table */
+.spec-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1rem 0 1.5rem;
+  font-size: 0.9rem;
+}
+
+.spec-table th {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.6rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--ink3);
+  text-align: left;
+  padding: 0.5rem 1rem;
+  border-bottom: 1px solid var(--rule);
+  background: rgba(26,23,16,0.03);
+}
+
+.spec-table td {
+  padding: 0.65rem 1rem;
+  border-bottom: 1px solid var(--rule2);
+  vertical-align: top;
+  line-height: 1.5;
+}
+
+.spec-table tr:last-child td { border-bottom: none; }
+.spec-table tr:nth-child(even) { background: var(--rule2); }
+
+.spec-table td:first-child {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.72rem;
+  letter-spacing: 0.05em;
+  color: var(--ink);
+  white-space: nowrap;
+}
+
+.spec-table td:nth-child(2) {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.78rem;
+  color: var(--ember);
+  white-space: nowrap;
+}
+
+.spec-table td:last-child { color: var(--ink3); font-size: 0.9rem; }
+
+/* Callout boxes */
+.callout {
+  border-left: 3px solid var(--ember);
+  padding: 1rem 1.5rem;
+  background: var(--highlight);
+  margin: 1.5rem 0;
+}
+
+.callout-label {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.58rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--ember);
+  margin-bottom: 0.4rem;
+}
+
+.callout p { color: var(--ink2); margin: 0; }
+
+/* Warn box */
+.warn {
+  border-left: 3px solid #8a5a00;
+  padding: 1rem 1.5rem;
+  background: rgba(138,90,0,0.06);
+  margin: 1.5rem 0;
+}
+
+.warn-label {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.58rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: #8a5a00;
+  margin-bottom: 0.4rem;
+}
+
+.warn p { color: var(--ink2); margin: 0; }
+
+/* Component diagram */
+.component-diagram {
+  background: var(--ink);
+  color: #c8b890;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.65rem;
+  line-height: 1.5;
+  padding: 1.5rem;
+  margin: 1.5rem 0;
+  border-radius: 4px;
+  letter-spacing: 0.03em;
+  overflow-x: auto;
+  white-space: pre;
+}
+
+.component-diagram .hi { color: #e8891a; }
+.component-diagram .dim { color: #5a5040; }
+.component-diagram .label { color: #8cd4a8; }
+
+/* Tag */
+.tag {
+  display: inline-block;
+  background: var(--tag-bg);
+  border: 1px solid rgba(138,106,42,0.25);
+  border-radius: 3px;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.62rem;
+  letter-spacing: 0.08em;
+  padding: 0.15rem 0.5rem;
+  color: var(--gold);
+  margin-right: 0.3rem;
+  margin-bottom: 0.3rem;
+}
+
+.tag.critical { background: rgba(181,70,26,0.1); border-color: rgba(181,70,26,0.3); color: var(--ember); }
+
+/* BOM Table */
+.bom-table { font-size: 0.82rem; }
+.bom-table td:first-child { font-size: 0.68rem; }
+.bom-table td:nth-child(2) { font-size: 0.82rem; color: var(--ink); white-space: normal; }
+.bom-table td:nth-child(3) { color: var(--ember); white-space: nowrap; }
+
+/* State diagram */
+.state-box {
+  display: inline-block;
+  border: 1px solid var(--rule);
+  padding: 0.4rem 0.8rem;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.65rem;
+  letter-spacing: 0.08em;
+  background: white;
+  margin: 0.2rem;
+}
+
+.state-box.active { background: var(--highlight); border-color: var(--ember); color: var(--ember); }
+.state-box.danger { background: rgba(160,48,48,0.08); border-color: rgba(160,48,48,0.3); color: #a03030; }
+
+.state-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  align-items: center;
+  margin: 1rem 0;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.65rem;
+  color: var(--ink3);
+}
+
+/* Footer */
+.doc-footer {
+  margin-top: 4rem;
+  border-top: 1px solid var(--rule);
+  padding-top: 1.5rem;
+  display: flex;
+  justify-content: space-between;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.6rem;
+  letter-spacing: 0.1em;
+  color: var(--ink3);
+}
+
+/* Print button */
+.print-btn {
+  position: fixed;
+  top: 2rem;
+  right: 2rem;
+  background: var(--ember);
+  color: white;
+  border: none;
+  padding: 0.6rem 1.2rem;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.65rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: filter 0.15s;
+}
+
+.print-btn:hover { filter: brightness(1.1); }
+</style>
+</head>
+<body>
+
+<button class="print-btn no-print" onclick="window.print()">↓ Print / PDF</button>
+
+<!-- HEADER -->
+<div class="doc-header">
+  <div>
+    <p class="doc-title">Hardware Engineering Specification</p>
+    <h1><em>Jūmār</em> Precision<br>Aromatics Warmer</h1>
+  </div>
+  <div class="doc-meta">
+    <p>DOC REF: JMR-HW-001</p>
+    <p>VERSION: 0.2 DRAFT</p>
+    <p>STATUS: PRE-DVT</p>
+    <p>CLASSIFICATION: CONFIDENTIAL</p>
+  </div>
+</div>
+
+<!-- TOC -->
+<div class="toc">
+  <div class="toc-title">Contents</div>
+  <ol>
+    <li><span>1</span> System Architecture</li>
+    <li><span>2</span> Thermal System</li>
+    <li><span>3</span> Power & Battery</li>
+    <li><span>4</span> MCU & Firmware</li>
+    <li><span>5</span> Safety Architecture</li>
+    <li><span>6</span> Mechanical Design</li>
+    <li><span>7</span> Connectivity</li>
+    <li><span>8</span> Bill of Materials</li>
+    <li><span>9</span> Certification Path</li>
+    <li><span>10</span> Open Questions</li>
+  </ol>
+</div>
+
+<!-- 1. SYSTEM ARCHITECTURE -->
+<section>
+  <p class="section-num">Section 01</p>
+  <h2>System <em>Architecture</em></h2>
+
+  <p>Jūmār is a portable precision electric warmer designed to heat aromatic materials (wood chips, resins, bakhoor, incense) across a continuous range of 25°C–300°C. It operates on an internal battery, fits a standard automotive cup holder, and exposes control via a physical rotary encoder and a companion smartphone application over BLE/Matter.</p>
+
+  <div class="component-diagram"><span class="dim">┌─────────────────────────────────────────────────────────┐
+│                    JŪMĀR SYSTEM                         │
+├──────────────┬──────────────┬──────────────┬────────────┤
+│</span> <span class="hi">THERMAL ZONE</span> <span class="dim">│</span> <span class="hi"> POWER ZONE  </span> <span class="dim">│</span> <span class="hi"> CTRL ZONE  </span>  <span class="dim">│</span><span class="hi"> UX ZONE   </span> <span class="dim">│
+│</span>              <span class="dim">│</span>              <span class="dim">│</span>              <span class="dim">│</span>            <span class="dim">│
+│</span> <span class="label">PTC Element   </span><span class="dim">│</span><span class="label"> 4S2P Li-Ion  </span><span class="dim">│</span><span class="label"> ESP32-C6    </span>  <span class="dim">│</span><span class="label">Rotary Enc </span> <span class="dim">│
+│</span> <span class="label">Mica Tray     </span><span class="dim">│</span><span class="label"> BMS (DW01A)  </span><span class="dim">│</span><span class="label"> PID Loop    </span>  <span class="dim">│</span><span class="label">OLED Ring  </span> <span class="dim">│
+│</span> <span class="label">K-Type TC     </span><span class="dim">│</span><span class="label"> USB-C PD 20W </span><span class="dim">│</span><span class="label"> BLE + Wi-Fi </span>  <span class="dim">│</span><span class="label">Haptic     </span> <span class="dim">│
+│</span> <span class="label">Housing TC    </span><span class="dim">│</span><span class="label"> MOSFET Drive </span><span class="dim">│</span><span class="label"> Matter 1.2  </span>  <span class="dim">│</span><span class="label">LED Fuel   </span> <span class="dim">│
+│</span>              <span class="dim">│</span>              <span class="dim">│</span>              <span class="dim">│</span>            <span class="dim">│
+├──────────────┴──────────────┴──────────────┴────────────┤
+│</span>              <span class="label">SAFETY LAYER (always-on)</span>                   <span class="dim">│
+│</span>   <span class="label">Hall Lid · Tilt/IMU · Dual TC · BMS · Auto-off</span>      <span class="dim">│
+└─────────────────────────────────────────────────────────┘</span></div>
+
+  <table class="spec-table">
+    <thead>
+      <tr><th>Parameter</th><th>Value</th><th>Notes</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Temperature range</td><td>25–300°C</td><td>Ambient to coal-equivalent surface temp</td></tr>
+      <tr><td>Temperature control</td><td>±3°C accuracy</td><td>PID closed-loop, 10Hz control cycle</td></tr>
+      <tr><td>Heat-up time (to 200°C)</td><td>&lt;90 seconds</td><td>From cold start, ambient 22°C</td></tr>
+      <tr><td>Runtime at 150°C</td><td>~6 hours</td><td>Typical session use case</td></tr>
+      <tr><td>Runtime at 300°C</td><td>~1.5 hours</td><td>Max load draw ~18W sustained</td></tr>
+      <tr><td>Input charging</td><td>USB-C PD 20W</td><td>PPS preferred; BC1.2 fallback</td></tr>
+      <tr><td>Dimensions</td><td>Ø 72 × 160mm</td><td>Fits standard cup holder</td></tr>
+      <tr><td>Mass (target)</td><td>&lt;400g</td><td>Includes battery</td></tr>
+      <tr><td>Operating ambient</td><td>0–45°C</td><td>Cutoff above 45°C ambient</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<!-- 2. THERMAL -->
+<section>
+  <p class="section-num">Section 02</p>
+  <h2>Thermal <em>System</em></h2>
+
+  <h3>Heating Element — PTC Ceramic</h3>
+  <p>A Positive Temperature Coefficient (PTC) ceramic heating element is specified over nichrome or mica wire for several critical reasons: PTC elements self-limit current as temperature rises, providing inherent runaway protection; they maintain more stable surface temperatures at setpoint; and their resistance profile gives the control loop a soft landing near target temperatures.</p>
+
+  <table class="spec-table">
+    <thead><tr><th>Parameter</th><th>Value</th><th>Notes</th></tr></thead>
+    <tbody>
+      <tr><td>Element type</td><td>PTC Ceramic</td><td>BaTiO₃ doped composition</td></tr>
+      <tr><td>Rated voltage</td><td>12V DC</td><td>Buck-regulated from battery pack</td></tr>
+      <tr><td>Max wattage</td><td>25W</td><td>Cold-start inrush; steady-state ~18W at 300°C</td></tr>
+      <tr><td>Curie point</td><td>310°C</td><td>Provides hard natural limit above spec</td></tr>
+      <tr><td>Element size</td><td>Ø 50mm disc</td><td>Custom tooling required; MOQ ~2k</td></tr>
+      <tr><td>Surface uniformity</td><td>±8°C across disc</td><td>Acceptable for aromatic heating use case</td></tr>
+      <tr><td>Lead insulation</td><td>PTFE sleeving</td><td>Rated 260°C continuous</td></tr>
+    </tbody>
+  </table>
+
+  <h3>Mica Tray</h3>
+  <p>The aromatic material sits on a removable mica tray that rests directly on the PTC element surface. Mica is specified for its high-temperature electrical insulation (rated to 700°C), chemical inertness (will not off-gas or contaminate aroma), and thermal conductivity sufficient for even heat distribution. The tray is dishwasher safe and should be priced for consumable replacement.</p>
+
+  <table class="spec-table">
+    <thead><tr><th>Parameter</th><th>Value</th><th>Notes</th></tr></thead>
+    <tbody>
+      <tr><td>Material</td><td>Muscovite Mica</td><td>Natural or synthetic phlogopite acceptable</td></tr>
+      <tr><td>Tray thickness</td><td>1.5mm</td><td>Balance: thermal resistance vs fragility</td></tr>
+      <tr><td>Tray diameter</td><td>Ø 48mm</td><td>2mm clearance from element edge</td></tr>
+      <tr><td>Retention</td><td>3× silicone nibs</td><td>Press-fit, tool-free removal</td></tr>
+      <tr><td>Replacement cost (target)</td><td>&lt;$3 each</td><td>Encourage 3-pack consumable purchase</td></tr>
+    </tbody>
+  </table>
+
+  <h3>Temperature Sensing — Dual Thermocouple</h3>
+  <p>Two thermocouples are specified. TC-1 measures element/tray surface temperature and is the primary input to the PID controller. TC-2 measures the outer housing temperature and feeds the safety cutoff only — it is read-only by the safety MCU co-processor (not accessible to main firmware).</p>
+
+  <table class="spec-table">
+    <thead><tr><th>Sensor</th><th>Location</th><th>Type</th><th>Purpose</th></tr></thead>
+    <tbody>
+      <tr><td>TC-1 (primary)</td><td>Underside of mica tray</td><td>K-type, Ø 1mm</td><td>PID control loop input</td></tr>
+      <tr><td>TC-2 (safety)</td><td>Outer shell at midpoint</td><td>K-type, Ø 0.5mm</td><td>Housing overheat cutoff only</td></tr>
+    </tbody>
+  </table>
+
+  <div class="callout">
+    <p class="callout-label">Design Note — PID Tuning</p>
+    <p>The PTC element's self-limiting behaviour means the control system does not need aggressive integral action. Recommended initial PID parameters: Kp=2.5, Ki=0.08, Kd=0.4 — tune empirically during DVT with a range of aromatic loads (loaded vs empty tray changes thermal mass significantly).</p>
+  </div>
+
+  <h3>PWM Drive Strategy</h3>
+  <p>Element power is controlled by a low-side N-channel MOSFET (IRLB3034 or equivalent, rated 40V/195A) driven at 400Hz PWM from the MCU. 400Hz is chosen to be above the audible range while remaining low enough to avoid excessive switching losses at the MOSFET's gate capacitance. A flyback snubber is not required (resistive load) but a gate resistor of 22Ω is specified to limit inrush.</p>
+</section>
+
+<!-- 3. POWER -->
+<section>
+  <p class="section-num">Section 03</p>
+  <h2>Power & <em>Battery</em></h2>
+
+  <h3>Cell Configuration — 4S2P</h3>
+  <p>A 4S2P lithium-ion pack provides 14.4V nominal (16.8V full charge), supplying the 12V buck regulator with comfortable headroom throughout the discharge curve. Two cells in parallel (2P) doubles capacity without increasing voltage. Eight 18650 cells total.</p>
+
+  <table class="spec-table">
+    <thead><tr><th>Parameter</th><th>Value</th><th>Notes</th></tr></thead>
+    <tbody>
+      <tr><td>Cell specification</td><td>Samsung 30Q or equivalent</td><td>3000mAh, 15A continuous discharge</td></tr>
+      <tr><td>Configuration</td><td>4S2P (8× 18650)</td><td>14.4V nominal / 6000mAh</td></tr>
+      <tr><td>Pack capacity</td><td>~86Wh</td><td>After BMS overhead</td></tr>
+      <tr><td>Max continuous draw</td><td>20A</td><td>Each parallel pair: 15A×2</td></tr>
+      <tr><td>Actual max draw</td><td>~18W / 1.25A at 14.4V</td><td>Well within cell rating</td></tr>
+      <tr><td>Charging rate</td><td>1C (6A)</td><td>USB-C PD 20W: 20/14.4 = 1.39A per cell pair — acceptable</td></tr>
+      <tr><td>Full charge time</td><td>~1.5 hours</td><td>From 20% to 100%</td></tr>
+      <tr><td>Cycle life (target)</td><td>>500 cycles</td><td>To 80% capacity retention</td></tr>
+    </tbody>
+  </table>
+
+  <div class="warn">
+    <p class="warn-label">Battery Safety Note</p>
+    <p>Cells must be UL-listed or equivalent. The BMS must include cell-level balancing, over-temperature shutdown (60°C cell temp cutoff), and short-circuit protection reacting within 100μs. Do not use generic unbranded cells in production. Consider single-source agreement with Samsung SDI or Murata/Panasonic for supply chain reliability.</p>
+  </div>
+
+  <h3>Battery Management System (BMS)</h3>
+  <table class="spec-table">
+    <thead><tr><th>Function</th><th>Specification</th></tr></thead>
+    <tbody>
+      <tr><td>IC candidate</td><td>TI BQ77915 or BQ76952 (4S capable, I²C telemetry)</td></tr>
+      <tr><td>Overcharge protection</td><td>4.20V ± 25mV per cell</td></tr>
+      <tr><td>Over-discharge cutoff</td><td>2.80V per cell</td></tr>
+      <tr><td>Overcurrent protection</td><td>25A short-circuit response &lt;100μs</td></tr>
+      <tr><td>Balancing</td><td>Passive cell balancing, 50mA per cell</td></tr>
+      <tr><td>Temperature monitoring</td><td>NTC on each cell group; cutoff at 60°C</td></tr>
+      <tr><td>State-of-charge reporting</td><td>I²C to MCU; displayed as 5-segment LED bar</td></tr>
+      <tr><td>Pass-through charging</td><td>Required: device operates while charging</td></tr>
+    </tbody>
+  </table>
+
+  <h3>Power Regulation</h3>
+  <table class="spec-table">
+    <thead><tr><th>Rail</th><th>Voltage</th><th>Source</th><th>Loads</th></tr></thead>
+    <tbody>
+      <tr><td>VBAT</td><td>11.4–16.8V</td><td>Battery pack</td><td>Element MOSFET drive</td></tr>
+      <tr><td>12V_ELEM</td><td>12V regulated</td><td>Buck from VBAT (XL4016)</td><td>PTC element PWM</td></tr>
+      <tr><td>3.3V</td><td>3.3V</td><td>LDO from 5V</td><td>ESP32-C6, sensors, OLED</td></tr>
+      <tr><td>5V_USB</td><td>5V</td><td>USB-C VBUS / buck from VBAT</td><td>USB-C port, 5V LDO input</td></tr>
+      <tr><td>HAPTIC</td><td>3.3V</td><td>3.3V rail</td><td>ERM haptic motor via DRV2605</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<!-- 4. MCU -->
+<section>
+  <p class="section-num">Section 04</p>
+  <h2>MCU & <em>Firmware</em></h2>
+
+  <h3>Primary MCU — Espressif ESP32-C6</h3>
+  <p>The ESP32-C6 is selected for its native support of IEEE 802.15.4 (Thread), Wi-Fi 6, and Bluetooth 5.3 LE within a single SoC — eliminating the need for an external radio module for Matter implementation. The RISC-V single-core at 160MHz provides ample headroom for PID loop (10Hz), BLE stack, and Matter data model simultaneously.</p>
+
+  <table class="spec-table">
+    <thead><tr><th>Parameter</th><th>Detail</th></tr></thead>
+    <tbody>
+      <tr><td>Core</td><td>RISC-V 32-bit @ 160MHz</td></tr>
+      <tr><td>Flash</td><td>4MB internal; 16MB external SPI for OTA staging</td></tr>
+      <tr><td>RAM</td><td>512KB SRAM</td></tr>
+      <tr><td>Radios</td><td>Wi-Fi 6 (802.11ax), BLE 5.3, 802.15.4 (Thread)</td></tr>
+      <tr><td>ADC</td><td>12-bit SAR ADC; TC-1 via MAX31855 SPI (cold-junction compensated)</td></tr>
+      <tr><td>PWM</td><td>LEDC peripheral, 400Hz, 12-bit resolution</td></tr>
+      <tr><td>I²C</td><td>BMS telemetry, OLED display, IMU, haptic driver</td></tr>
+      <tr><td>GPIO interrupt</td><td>Hall-effect sensor (lid), rotary encoder (A/B/SW)</td></tr>
+    </tbody>
+  </table>
+
+  <h3>Safety Co-Processor</h3>
+  <p>A secondary MCU (STM32G0 series or equivalent, ~$0.80 BOM) runs independently on the 3.3V rail and monitors TC-2 (housing temperature) and the tilt/IMU sensor. It has a dedicated hardware path to cut the MOSFET gate low, bypassing the main MCU. This ensures safety cutoffs remain active even during a main MCU firmware fault, OTA update, or boot loop.</p>
+
+  <div class="callout">
+    <p class="callout-label">Firmware Architecture</p>
+    <p>Main MCU runs FreeRTOS with three priority tasks: (1) Safety Monitor — highest, reads TC-1, checks bounds, holds MOSFET enable line; (2) PID Controller — high, 10Hz closed loop; (3) Connectivity — normal, BLE GATT server + Matter data model. OTA updates pause the PID and Safety tasks and drop element power before applying flash.</p>
+  </div>
+
+  <h3>PID Controller Parameters</h3>
+  <table class="spec-table">
+    <thead><tr><th>Parameter</th><th>Initial Value</th><th>Tuning Notes</th></tr></thead>
+    <tbody>
+      <tr><td>Proportional gain (Kp)</td><td>2.5</td><td>Increase if sluggish response to setpoint changes</td></tr>
+      <tr><td>Integral gain (Ki)</td><td>0.08</td><td>Low — PTC self-limits, reducing need for integral correction</td></tr>
+      <tr><td>Derivative gain (Kd)</td><td>0.4</td><td>Dampen overshoot on cold start</td></tr>
+      <tr><td>Anti-windup limit</td><td>±30% duty</td><td>Clamp integral accumulator</td></tr>
+      <tr><td>Soft-start ramp</td><td>5°C/sec max</td><td>Limit inrush to &lt;15A during cold start</td></tr>
+      <tr><td>Control period</td><td>100ms</td><td>10Hz; thermocouple sampling at 5Hz (MAX31855 limit)</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<!-- 5. SAFETY -->
+<section>
+  <p class="section-num">Section 05</p>
+  <h2>Safety <em>Architecture</em></h2>
+
+  <p>Jūmār reaches temperatures capable of causing burns and igniting loose dry material. Safety is a layered system — no single point of failure should result in an unsafe state. The following hazard-mitigation layers are specified:</p>
+
+  <h3>Safety State Machine</h3>
+  <div class="state-grid">
+    <div class="state-box">IDLE</div>→
+    <div class="state-box active">ACTIVE</div>→
+    <div class="state-box">COOLING</div>→
+    <div class="state-box">IDLE</div>
+    <br style="width:100%">
+    <div class="state-box danger">FAULT</div>←
+    <div>any unsafe condition</div>
+  </div>
+
+  <table class="spec-table">
+    <thead><tr><th>Trigger</th><th>Action</th><th>Layer</th><th>Recovery</th></tr></thead>
+    <tbody>
+      <tr><td>Lid closed (Hall sensor)</td><td>Element PWM → 0%, enter IDLE</td><td>Main MCU + HW gate</td><td>Open lid to re-enable</td></tr>
+      <tr><td>Tilt &gt;30° for &gt;1s</td><td>Element cut, 3-beep alert, FAULT state</td><td>Co-processor</td><td>Manual reset via button hold</td></tr>
+      <tr><td>TC-1 exceeds setpoint +25°C</td><td>Element cut, enter FAULT</td><td>Main MCU Safety task</td><td>Power cycle</td></tr>
+      <tr><td>TC-2 (housing) &gt;65°C</td><td>Element cut, enter FAULT, BLE alert</td><td>Co-processor (HW)</td><td>Cool to &lt;45°C then manual reset</td></tr>
+      <tr><td>Battery cell &gt;60°C</td><td>BMS cuts pack output</td><td>BMS hardware</td><td>Cell cool-down required</td></tr>
+      <tr><td>Session timer expired</td><td>Graduated cool-down over 5min, IDLE</td><td>Main MCU</td><td>Automatic</td></tr>
+      <tr><td>No movement + no app contact 10min</td><td>Prompt via app; cut after 2min no response</td><td>Main MCU</td><td>App acknowledgement</td></tr>
+      <tr><td>MCU watchdog timeout</td><td>Hardware reset; co-processor cuts element</td><td>WDT + co-processor</td><td>Automatic reboot</td></tr>
+    </tbody>
+  </table>
+
+  <h3>Lid Interlock — Hall Effect Sensor</h3>
+  <p>A SS49E ratiometric Hall-effect sensor detects the presence of the lid magnet. The sensor output is connected to a hardware AND gate with the MOSFET enable line — even if firmware drives PWM high, the gate will not open without the Hall sensor confirming lid-open. This is a hardware-enforced interlock, not software-only. Lid closed = element physically cannot be powered.</p>
+
+  <h3>Tilt Cutoff — IMU</h3>
+  <p>A QMI8658 or ICM-42688 6-DOF IMU on the I²C bus serves the co-processor. Tilt cutoff triggers at 30° from vertical sustained for 1 second (to avoid false triggers from normal handling). Vehicle mode uses the accelerometer continuously to detect motion consistent with driving; in vehicle mode, a max temperature cap of 150°C is enforced at firmware level.</p>
+</section>
+
+<!-- 6. MECHANICAL -->
+<section>
+  <p class="section-num">Section 06</p>
+  <h2>Mechanical <em>Design</em></h2>
+
+  <h3>Form Factor</h3>
+  <table class="spec-table">
+    <thead><tr><th>Dimension</th><th>Value</th><th>Rationale</th></tr></thead>
+    <tbody>
+      <tr><td>Base OD (with ring)</td><td>Ø 72mm</td><td>Fits 95% of standard cup holders (target: ≥ 70mm opening)</td></tr>
+      <tr><td>Base OD (without ring)</td><td>Ø 64mm</td><td>Flat-foot mode on desk surfaces</td></tr>
+      <tr><td>Total height</td><td>155–165mm</td><td>Battery stack dominates; ergonomic hand height</td></tr>
+      <tr><td>Tray opening OD</td><td>Ø 52mm</td><td>Accepts standard bakhoor dish sizes</td></tr>
+      <tr><td>Lid height</td><td>18mm</td><td>Covers element + 5mm clearance above tray rim</td></tr>
+    </tbody>
+  </table>
+
+  <h3>Material Specification</h3>
+  <table class="spec-table">
+    <thead><tr><th>Part</th><th>Material</th><th>Finish</th><th>Rationale</th></tr></thead>
+    <tbody>
+      <tr><td>Main barrel</td><td>Anodised 6061 Aluminium</td><td>Hard anodise, matte black</td><td>Heat dissipation, premium feel, weight distribution</td></tr>
+      <tr><td>Heating chamber</td><td>Stainless 304</td><td>Brushed</td><td>Chemical resistance to aromatics, cleanability</td></tr>
+      <tr><td>Lid</td><td>Anodised Aluminium</td><td>Match barrel</td><td>Houses magnet, durable, thermal mass manageable</td></tr>
+      <tr><td>Base ring (grip)</td><td>TPU 95A</td><td>Matte black</td><td>Cup holder grip, vibration dampening, replaceable</td></tr>
+      <tr><td>Mica tray</td><td>Muscovite Mica</td><td>Natural</td><td>700°C rated, chemically inert, aromatic neutral</td></tr>
+      <tr><td>Control ring surround</td><td>POM / Delrin</td><td>Machined</td><td>Precise encoder feel, non-conducting, low friction</td></tr>
+      <tr><td>Thermal break (element→shell)</td><td>PEEK washers</td><td>Natural</td><td>Limits heat transfer from element to barrel exterior</td></tr>
+    </tbody>
+  </table>
+
+  <h3>Thermal Isolation Stack</h3>
+  <p>The heating element sits on a PEEK thermal break platform, preventing heat from traveling conductively to the battery pack below. A 20mm air gap between the element platform and the top of the battery enclosure provides additional convective separation. The barrel at the element zone will reach 40–55°C on the exterior surface at max temp — below ASTM burn threshold (48°C for brief contact) but a warning label is required.</p>
+
+  <div class="warn">
+    <p class="warn-label">Regulatory Requirement</p>
+    <p>Products with accessible surfaces exceeding 48°C require a burn-risk warning label per IEC 62368-1. The heating chamber exterior must be assessed during DVT thermal mapping. Consider a physical temperature warning moulded into the barrel above the heating zone.</p>
+  </div>
+</section>
+
+<!-- 7. CONNECTIVITY -->
+<section>
+  <p class="section-num">Section 07</p>
+  <h2><em>Connectivity</em></h2>
+
+  <h3>Matter Implementation</h3>
+  <p>Matter 1.2 is implemented over Wi-Fi (primary) and Thread (secondary, requires Thread border router). The device exposes a Thermostat cluster (target temperature, current temperature), an On/Off cluster (session start/stop), and a custom Jūmār cluster for profile management and session data. BLE is used exclusively for Matter commissioning (Matter BLE PAKE flow); once commissioned, BLE advertising stops to conserve battery.</p>
+
+  <table class="spec-table">
+    <thead><tr><th>Interface</th><th>Protocol</th><th>Purpose</th></tr></thead>
+    <tbody>
+      <tr><td>BLE 5.3</td><td>Matter commissioning + GATT fallback</td><td>Initial setup; direct control when Wi-Fi unavailable</td></tr>
+      <tr><td>Wi-Fi 6 (2.4GHz)</td><td>Matter over IP / TCP</td><td>Primary connected operation; OTA updates</td></tr>
+      <tr><td>802.15.4 / Thread</td><td>Matter over Thread</td><td>Low-power mesh option; requires border router</td></tr>
+      <tr><td>USB-C</td><td>USB 2.0 Full Speed</td><td>Charging + optional debug UART via CDC-ACM</td></tr>
+    </tbody>
+  </table>
+
+  <h3>Companion App — BLE GATT Services</h3>
+  <p>The companion app communicates over a proprietary GATT service (in addition to Matter) for profile management, session logs, and ramp programming. The BLE GATT service remains active (low-power advertising mode) whenever the device is not Wi-Fi connected.</p>
+
+  <table class="spec-table">
+    <thead><tr><th>GATT Service</th><th>UUID (truncated)</th><th>Characteristics</th></tr></thead>
+    <tbody>
+      <tr><td>Device Info</td><td>0x180A</td><td>Manufacturer, Model, FW Version, Serial</td></tr>
+      <tr><td>Jūmār Control</td><td>JMR-0001</td><td>Target Temp (RW), Current Temp (N), Session State (RW), Timer (RW)</td></tr>
+      <tr><td>Jūmār Profile</td><td>JMR-0002</td><td>Active Profile ID (RW), Profile Data (RW, chunked), Profile List (R)</td></tr>
+      <tr><td>Battery Status</td><td>0x180F</td><td>Battery Level (N), Charging State (N)</td></tr>
+      <tr><td>Safety Status</td><td>JMR-0003</td><td>Fault Code (N), Lid State (N), Tilt State (N)</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<!-- 8. BOM -->
+<section>
+  <p class="section-num">Section 08</p>
+  <h2>Bill of <em>Materials</em> (Key Components)</h2>
+  <p>Illustrative BOM for key active and semi-custom components. Commodity passives, connectors, and fasteners excluded.</p>
+
+  <table class="spec-table bom-table">
+    <thead><tr><th>Ref</th><th>Description</th><th>Part / Vendor</th><th>Est. Unit Cost</th><th>Notes</th></tr></thead>
+    <tbody>
+      <tr><td>U1</td><td>Main MCU</td><td>ESP32-C6-WROOM-1</td><td>$3.20</td><td>Module with antenna; simplifies RF certification</td></tr>
+      <tr><td>U2</td><td>Safety co-processor</td><td>STM32G030C8T6</td><td>$0.85</td><td>Runs independent of U1; HW MOSFET kill</td></tr>
+      <tr><td>U3</td><td>BMS IC</td><td>TI BQ76952</td><td>$2.40</td><td>4–7S capable; I²C telemetry; integrated balancing</td></tr>
+      <tr><td>U4</td><td>Thermocouple amp (TC-1)</td><td>MAX31855KASA+</td><td>$1.80</td><td>SPI; ±2°C accuracy; cold-junction compensation</td></tr>
+      <tr><td>U5</td><td>Haptic driver</td><td>TI DRV2605YZFR</td><td>$1.10</td><td>I²C; supports ERM and LRA motors</td></tr>
+      <tr><td>U6</td><td>USB-C PD controller</td><td>FUSB302</td><td>$0.90</td><td>PD negotiation; I²C; pairs with MCU PD stack</td></tr>
+      <tr><td>Q1</td><td>Main MOSFET (element drive)</td><td>IRLB3034PBF</td><td>$0.95</td><td>40V, 195A, low Rds(on); TO-220; heatsink required</td></tr>
+      <tr><td>IC1</td><td>Buck regulator (12V)</td><td>XL4016E1</td><td>$0.60</td><td>8A, 300kHz; efficient at partial load</td></tr>
+      <tr><td>IC2</td><td>IMU</td><td>QMI8658C</td><td>$0.80</td><td>6-DOF; I²C; low power; tilt detect</td></tr>
+      <tr><td>D1</td><td>Hall sensor (lid)</td><td>SS49E</td><td>$0.25</td><td>Ratiometric; analog output to co-processor ADC</td></tr>
+      <tr><td>SW1</td><td>Rotary encoder</td><td>ALPS EC11 series</td><td>$1.20</td><td>24 detents, integrated push switch; tactile click</td></tr>
+      <tr><td>DS1</td><td>OLED ring display</td><td>Custom annular OLED</td><td>~$4.50</td><td>Requires custom tooling; consider SPI seg-LCD alt for v1</td></tr>
+      <tr><td>B1–B8</td><td>Li-Ion cells</td><td>Samsung 30Q 18650</td><td>$3.50/cell</td><td>8× = $28; negotiate volume pricing</td></tr>
+      <tr><td>XT1</td><td>PTC ceramic element</td><td>Custom, BaTiO₃ Ø50mm</td><td>~$6.00</td><td>Custom tooling ~$8k; MOQ 2,000 units</td></tr>
+      <tr><td>M1</td><td>Haptic motor</td><td>Jinlong JL0825V2 ERM</td><td>$0.70</td><td>3V, 25mA; fits Ø8mm barrel cutout</td></tr>
+    </tbody>
+  </table>
+
+  <div class="callout">
+    <p class="callout-label">Target BOM Cost (Key Components)</p>
+    <p>Estimated key component cost at 1,000 unit volume: ~$62–$70 per unit. Target retail: $220–$280. Full assembled cost (including enclosure, PCB, assembly, testing) target: $95–$110 at 5k volume. The custom PTC element and annular OLED represent the two highest-risk BOM items requiring early supplier engagement.</p>
+  </div>
+</section>
+
+<!-- 9. CERTIFICATION -->
+<section>
+  <p class="section-num">Section 09</p>
+  <h2><em>Certification</em> Path</h2>
+
+  <table class="spec-table">
+    <thead><tr><th>Certification</th><th>Scope</th><th>Est. Cost</th><th>Timeline</th></tr></thead>
+    <tbody>
+      <tr><td>FCC Part 15B + 15C</td><td>US — unintentional radiator + BLE/Wi-Fi</td><td>$8–15k</td><td>8–12 weeks</td></tr>
+      <tr><td>IC (ISED)</td><td>Canada — radio certification</td><td>$3–5k</td><td>Parallel with FCC</td></tr>
+      <tr><td>CE (RED + LVD + RoHS)</td><td>EU — radio, safety, hazardous substances</td><td>$12–20k</td><td>10–16 weeks</td></tr>
+      <tr><td>UL 62368-1</td><td>US/Canada — audio/video/IT safety (battery/heating)</td><td>$15–25k</td><td>12–20 weeks</td></tr>
+      <tr><td>IEC 62368-1</td><td>International safety standard (harmonised with UL)</td><td>Bundled with UL</td><td>—</td></tr>
+      <tr><td>Matter Certification</td><td>CSA Matter device certification</td><td>$3–5k + membership</td><td>4–8 weeks post-FW freeze</td></tr>
+      <tr><td>UN 38.3</td><td>Li-Ion transport safety (required for shipping)</td><td>$2–4k</td><td>4–6 weeks</td></tr>
+      <tr><td>UKCA</td><td>UK market post-Brexit</td><td>$2–4k</td><td>Parallel with CE</td></tr>
+    </tbody>
+  </table>
+
+  <p>Total certification budget estimate: <strong>$50–80k</strong> for US + Canada + EU + UK + Matter. This is a significant pre-revenue cost and should be planned for in Series A or crowdfunding planning. Consider engaging a regulatory consultant (e.g., UL, Bureau Veritas, Intertek) at DVT stage.</p>
+</section>
+
+<!-- 10. OPEN QUESTIONS -->
+<section>
+  <p class="section-num">Section 10</p>
+  <h2>Open <em>Questions</em></h2>
+
+  <h3>Priority Decisions Required Before EVT</h3>
+  <p>The following items must be resolved before Engineering Validation Testing begins. They represent branch points with significant design consequences:</p>
+
+  <table class="spec-table">
+    <thead><tr><th>#</th><th>Question</th><th>Options</th><th>Impact</th></tr></thead>
+    <tbody>
+      <tr><td>OQ-01</td><td>OLED ring display vs segmented LCD for v1</td><td>(A) Custom annular OLED — premium, $4.50, 16-week tooling lead; (B) Seg-LCD arc — less elegant, $1.20, 6-week lead</td><td>High — affects ID, BOM cost, tooling schedule</td></tr>
+      <tr><td>OQ-02</td><td>Session max duration at 300°C</td><td>(A) No cap — 1.5hr at full heat; (B) 30min cap at >250°C then forced cool-down</td><td>Medium — battery sizing, user expectation</td></tr>
+      <tr><td>OQ-03</td><td>PTC element supplier</td><td>Need to engage 2–3 Chinese PTC manufacturers for custom Ø50mm BaTiO₃ quote. Tooling ~$8k, MOQ 2k.</td><td>Critical path — 20-week tooling lead</td></tr>
+      <tr><td>OQ-04</td><td>Lid tether / storage</td><td>(A) Separate lid — simple, risk of loss; (B) Captive lid on hinge — complex, +$4 BOM; (C) Lid clips to barrel side</td><td>Medium — ID and user experience</td></tr>
+      <tr><td>OQ-05</td><td>Matter Thread vs Wi-Fi only for MVP</td><td>(A) Both (ESP32-C6 supports both natively); (B) Wi-Fi only simplifies QA, defer Thread</td><td>Low — software scope</td></tr>
+      <tr><td>OQ-06</td><td>Housing warning label approach</td><td>(A) Adhesive label; (B) Laser-etched into anodise; (C) Moulded text on sleeve</td><td>Low — aesthetics + regulatory compliance</td></tr>
+    </tbody>
+  </table>
+
+  <h3>Key Supplier Contacts Required</h3>
+  <p>
+    <span class="tag critical">CRITICAL</span> PTC ceramic element — custom Ø50mm BaTiO₃, 12V, 25W. Contact: Shenzhen Shengda, Thinking Electronic, or direct quote via Alibaba verified suppliers. Request sample + thermal characterisation data.<br><br>
+    <span class="tag critical">CRITICAL</span> Annular OLED — custom ring display for control zone. Likely requires direct engagement with a panel house (Wisechip, Raystar, or Yunshan). Lead time 16–20 weeks for custom shape tooling.<br><br>
+    <span class="tag">IMPORTANT</span> Li-Ion cells — Samsung SDI or Murata/Panasonic. Minimum order for certification samples: 200 cells. Volume pricing negotiation at 10k+ unit projection.<br><br>
+    <span class="tag">STANDARD</span> Machined aluminium barrel — standard CNC in Shenzhen market. RFQ to 3 vendors with drawing package.
+  </p>
+</section>
+
+<div class="doc-footer">
+  <span>JŪMĀR · JMR-HW-001 · v0.2 DRAFT</span>
+  <span>CONFIDENTIAL — NOT FOR DISTRIBUTION</span>
+  <span>Pre-DVT · All specifications subject to change</span>
+</div>
+
+</body>
+</html>
