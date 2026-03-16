@@ -1,0 +1,857 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Unburdening Social Work — Upper Bound 2026</title>
+<link href="https://fonts.googleapis.com/css2?family=Alegreya:ital,wght@0,400;0,700;1,400&family=Alegreya+Sans:wght@300;400;500;700&display=swap" rel="stylesheet">
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  --green: #275D43;
+  --green-mid: #1e4a35;
+  --green-dark: #122d20;
+  --brown: #E09964;
+  --mist: #FAFAF2;
+  --kiswah: #353535;
+  --arabica: #DCD9B8;
+  --sun: #F7AF29;
+  --sand: #EECBAF;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Alegreya Sans', sans-serif;
+  background: var(--green-dark);
+  color: var(--mist);
+  overflow-x: hidden;
+}
+
+/* ── HERO ── */
+.hero {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: relative;
+  padding: 80px 6vw 100px;
+  overflow: hidden;
+}
+
+.hero-grid-bg {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(224,153,100,0.06) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(224,153,100,0.06) 1px, transparent 1px);
+  background-size: 60px 60px;
+  mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black 30%, transparent 100%);
+}
+
+.hero-orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(80px);
+  pointer-events: none;
+}
+.orb1 { width: 600px; height: 600px; background: rgba(39,93,67,0.6); top: -100px; right: -100px; }
+.orb2 { width: 400px; height: 400px; background: rgba(224,153,100,0.15); bottom: 0; left: -80px; }
+
+.conf-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(224,153,100,0.15);
+  border: 1px solid rgba(224,153,100,0.35);
+  border-radius: 2px;
+  padding: 6px 14px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--brown);
+  margin-bottom: 36px;
+  width: fit-content;
+  animation: fadeUp 0.6s ease both;
+}
+
+.conf-dot {
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: var(--brown);
+  animation: pulse 2s ease-in-out infinite;
+}
+
+@keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.3} }
+
+.hero-eyebrow {
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgba(250,250,242,0.4);
+  margin-bottom: 16px;
+  animation: fadeUp 0.7s ease both 0.1s;
+}
+
+.hero-title {
+  font-family: 'Alegreya', serif;
+  font-size: clamp(42px, 6vw, 84px);
+  font-weight: 700;
+  line-height: 1.05;
+  color: var(--mist);
+  max-width: 900px;
+  margin-bottom: 8px;
+  animation: fadeUp 0.8s ease both 0.15s;
+}
+
+.hero-title-accent {
+  color: var(--brown);
+  font-style: italic;
+}
+
+.hero-sub {
+  font-family: 'Alegreya', serif;
+  font-size: clamp(18px, 2.5vw, 26px);
+  font-style: italic;
+  color: rgba(250,250,242,0.55);
+  max-width: 680px;
+  margin-bottom: 52px;
+  line-height: 1.4;
+  animation: fadeUp 0.8s ease both 0.25s;
+}
+
+.hero-stats {
+  display: flex;
+  gap: 0;
+  flex-wrap: wrap;
+  margin-bottom: 52px;
+  animation: fadeUp 0.8s ease both 0.35s;
+}
+
+.stat {
+  padding: 20px 36px 20px 0;
+  margin-right: 36px;
+  border-right: 1px solid rgba(224,153,100,0.2);
+}
+.stat:last-child { border-right: none; margin-right: 0; }
+
+.stat-n {
+  font-family: 'Alegreya', serif;
+  font-size: 44px;
+  font-weight: 700;
+  color: var(--brown);
+  line-height: 1;
+}
+
+.stat-label {
+  font-size: 12px;
+  color: rgba(250,250,242,0.45);
+  margin-top: 4px;
+  line-height: 1.4;
+  max-width: 120px;
+}
+
+.hero-cta {
+  display: flex;
+  gap: 14px;
+  flex-wrap: wrap;
+  animation: fadeUp 0.8s ease both 0.45s;
+}
+
+.btn-primary {
+  background: var(--brown);
+  color: var(--green-dark);
+  padding: 14px 28px;
+  font-family: 'Alegreya Sans', sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  border: none;
+  border-radius: 2px;
+  cursor: pointer;
+  text-decoration: none;
+  transition: background 0.2s, transform 0.15s;
+  display: inline-block;
+}
+.btn-primary:hover { background: #d4894e; transform: translateY(-1px); }
+
+.btn-secondary {
+  background: transparent;
+  color: var(--mist);
+  padding: 14px 28px;
+  font-family: 'Alegreya Sans', sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  border: 1px solid rgba(250,250,242,0.2);
+  border-radius: 2px;
+  cursor: pointer;
+  text-decoration: none;
+  transition: border-color 0.2s, transform 0.15s;
+  display: inline-block;
+}
+.btn-secondary:hover { border-color: rgba(250,250,242,0.5); transform: translateY(-1px); }
+
+.scroll-hint {
+  position: absolute;
+  bottom: 36px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  opacity: 0.3;
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  animation: fadeUp 1s ease both 1s;
+}
+
+.scroll-line {
+  width: 1px;
+  height: 40px;
+  background: linear-gradient(var(--mist), transparent);
+  animation: scrollDown 1.5s ease-in-out infinite;
+}
+
+@keyframes scrollDown {
+  0% { transform: scaleY(0); transform-origin: top; }
+  50% { transform: scaleY(1); transform-origin: top; }
+  51% { transform: scaleY(1); transform-origin: bottom; }
+  100% { transform: scaleY(0); transform-origin: bottom; }
+}
+
+/* ── PROBLEM ── */
+.section {
+  padding: 100px 6vw;
+  position: relative;
+}
+
+.section-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.label {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--brown);
+  margin-bottom: 16px;
+}
+
+.section-title {
+  font-family: 'Alegreya', serif;
+  font-size: clamp(28px, 4vw, 48px);
+  font-weight: 700;
+  line-height: 1.15;
+  color: var(--mist);
+  margin-bottom: 24px;
+}
+
+.section-body {
+  font-size: 17px;
+  line-height: 1.75;
+  color: rgba(250,250,242,0.7);
+  max-width: 680px;
+}
+
+.section-body p { margin-bottom: 16px; }
+.section-body p:last-child { margin-bottom: 0; }
+
+/* ── TRANSFORM BELT ── */
+.belt {
+  background: var(--green);
+  padding: 80px 6vw;
+  position: relative;
+  overflow: hidden;
+}
+
+.belt::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(224,153,100,0.4), transparent);
+}
+
+.belt::after {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(224,153,100,0.4), transparent);
+}
+
+.belt-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: center;
+}
+
+.belt-quote {
+  font-family: 'Alegreya', serif;
+  font-size: clamp(22px, 3vw, 36px);
+  font-style: italic;
+  font-weight: 400;
+  line-height: 1.35;
+  color: var(--mist);
+  border-left: 3px solid var(--brown);
+  padding-left: 28px;
+}
+
+.belt-right { display: flex; flex-direction: column; gap: 20px; }
+
+.feature-item {
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+}
+
+.feature-dot {
+  width: 8px; height: 8px;
+  border-radius: 50%;
+  background: var(--brown);
+  flex-shrink: 0;
+  margin-top: 7px;
+}
+
+.feature-text {
+  font-size: 15px;
+  line-height: 1.6;
+  color: rgba(250,250,242,0.75);
+}
+
+.feature-text strong {
+  color: var(--mist);
+  font-weight: 700;
+  display: block;
+  margin-bottom: 2px;
+}
+
+/* ── FRAMEWORK ── */
+.framework-section {
+  background: #0e2419;
+  padding: 100px 6vw;
+}
+
+.framework-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1px;
+  background: rgba(224,153,100,0.1);
+  border: 1px solid rgba(224,153,100,0.1);
+  margin-top: 48px;
+}
+
+.framework-cell {
+  background: #0e2419;
+  padding: 28px 24px;
+  transition: background 0.2s;
+}
+.framework-cell:hover { background: #1a3528; }
+
+.cell-icon {
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+
+.cell-num {
+  font-family: 'Alegreya', serif;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  color: var(--brown);
+  opacity: 0.6;
+  margin-bottom: 4px;
+}
+
+.cell-title {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--mist);
+  margin-bottom: 4px;
+}
+
+.cell-q {
+  font-size: 12px;
+  color: rgba(250,250,242,0.4);
+  font-style: italic;
+  line-height: 1.4;
+}
+
+/* ── IMPACT ── */
+.impact-section {
+  padding: 100px 6vw;
+  background: var(--green-dark);
+}
+
+.impact-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2px;
+  margin-top: 48px;
+  background: rgba(224,153,100,0.1);
+}
+
+.impact-card {
+  background: var(--green-dark);
+  padding: 40px 28px;
+  text-align: center;
+  transition: background 0.2s;
+}
+.impact-card:hover { background: #1a3528; }
+
+.impact-n {
+  font-family: 'Alegreya', serif;
+  font-size: 56px;
+  font-weight: 700;
+  color: var(--brown);
+  line-height: 1;
+  margin-bottom: 8px;
+}
+
+.impact-label {
+  font-size: 13px;
+  color: rgba(250,250,242,0.5);
+  line-height: 1.5;
+}
+
+/* ── BIO ── */
+.bio-section {
+  background: var(--green);
+  padding: 100px 6vw;
+  position: relative;
+  overflow: hidden;
+}
+
+.bio-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 56px;
+  align-items: start;
+}
+
+.bio-avatar {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  background: var(--green-dark);
+  border: 2px solid rgba(224,153,100,0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Alegreya', serif;
+  font-size: 40px;
+  font-weight: 700;
+  color: var(--brown);
+  flex-shrink: 0;
+}
+
+.bio-name {
+  font-family: 'Alegreya', serif;
+  font-size: 32px;
+  font-weight: 700;
+  color: var(--mist);
+  margin-bottom: 4px;
+}
+
+.bio-role {
+  font-size: 13px;
+  color: var(--brown);
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  margin-bottom: 20px;
+}
+
+.bio-body {
+  font-size: 16px;
+  line-height: 1.75;
+  color: rgba(250,250,242,0.72);
+  max-width: 680px;
+}
+
+.bio-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 20px;
+}
+
+.bio-tag {
+  background: rgba(250,250,242,0.08);
+  border: 1px solid rgba(250,250,242,0.12);
+  color: rgba(250,250,242,0.6);
+  font-size: 11px;
+  padding: 4px 12px;
+  border-radius: 2px;
+  letter-spacing: 0.04em;
+}
+
+/* ── CLOSER ── */
+.closer {
+  background: var(--green-dark);
+  padding: 120px 6vw;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.closer-orb {
+  position: absolute;
+  width: 500px; height: 500px;
+  border-radius: 50%;
+  background: rgba(39,93,67,0.4);
+  filter: blur(80px);
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+}
+
+.closer-title {
+  font-family: 'Alegreya', serif;
+  font-size: clamp(32px, 5vw, 64px);
+  font-weight: 700;
+  color: var(--mist);
+  line-height: 1.1;
+  max-width: 800px;
+  margin: 0 auto 16px;
+  position: relative;
+}
+
+.closer-sub {
+  font-size: 16px;
+  color: rgba(250,250,242,0.45);
+  max-width: 480px;
+  margin: 0 auto 44px;
+  line-height: 1.65;
+  position: relative;
+}
+
+.closer-cta {
+  position: relative;
+  margin-bottom: 48px;
+}
+
+.closer-meta {
+  font-size: 12px;
+  color: rgba(250,250,242,0.25);
+  letter-spacing: 0.06em;
+  position: relative;
+}
+
+.closer-meta a {
+  color: rgba(224,153,100,0.6);
+  text-decoration: none;
+}
+.closer-meta a:hover { color: var(--brown); }
+
+/* ── FOOTER ── */
+footer {
+  background: #080f0c;
+  padding: 28px 6vw;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 12px;
+  color: rgba(250,250,242,0.2);
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+footer a { color: rgba(224,153,100,0.4); text-decoration: none; }
+footer a:hover { color: var(--brown); }
+
+/* ── ANIMATIONS ── */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ── RESPONSIVE ── */
+@media (max-width: 768px) {
+  .belt-inner { grid-template-columns: 1fr; gap: 48px; }
+  .framework-grid { grid-template-columns: 1fr 1fr; }
+  .impact-grid { grid-template-columns: 1fr 1fr; }
+  .bio-inner { grid-template-columns: 1fr; gap: 28px; }
+  .hero-stats { gap: 0; }
+  .stat { padding: 16px 24px 16px 0; margin-right: 24px; }
+}
+
+@media (max-width: 480px) {
+  .framework-grid { grid-template-columns: 1fr; }
+  .impact-grid { grid-template-columns: 1fr 1fr; }
+}
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-grid-bg"></div>
+  <div class="hero-orb orb1"></div>
+  <div class="hero-orb orb2"></div>
+
+  <div class="conf-tag">
+    <span class="conf-dot"></span>
+    Upper Bound 2026 · Edmonton · May 19–22
+  </div>
+
+  <div class="hero-eyebrow">Speaker Session</div>
+
+  <h1 class="hero-title">
+    Unburdening<br>
+    <span class="hero-title-accent">Social Work</span>
+  </h1>
+
+  <p class="hero-sub">Data Justice, UX, and AI's Greatest Untapped Opportunity</p>
+
+  <div class="hero-stats">
+    <div class="stat">
+      <div class="stat-n">$4.8B</div>
+      <div class="stat-label">North American market running on broken tools</div>
+    </div>
+    <div class="stat">
+      <div class="stat-n">80%</div>
+      <div class="stat-label">of frontline time lost to paperwork</div>
+    </div>
+    <div class="stat">
+      <div class="stat-n">30%</div>
+      <div class="stat-label">of staff time returned through Transform</div>
+    </div>
+    <div class="stat">
+      <div class="stat-n">40%</div>
+      <div class="stat-label">reduction in reporting burden</div>
+    </div>
+  </div>
+
+  <div class="hero-cta">
+    <a href="#abstract" class="btn-primary">Read the Pitch</a>
+    <a href="#speaker" class="btn-secondary">About the Speaker</a>
+  </div>
+
+  <div class="scroll-hint">
+    <div class="scroll-line"></div>
+  </div>
+</section>
+
+<!-- ABSTRACT -->
+<section class="section" id="abstract">
+  <div class="section-inner">
+    <div class="label reveal">The Pitch</div>
+    <h2 class="section-title reveal">Social services isn't AI's last frontier.<br>It's its most important one.</h2>
+    <div class="section-body reveal">
+      <p>While AI has transformed finance, healthcare, and logistics, frontline social workers are still spending 80% of their time on paperwork instead of people. That's not a resource problem. It's a design problem — and AI is about to make it catastrophically worse, or radically better.</p>
+      <p>The practical applications are immediate: automated referrals, multilingual omni-channel communication, forms that complete themselves, reporting that funders actually trust. But additive AI won't get us there. What's needed is a wholesale reimagining — one that puts data justice, UX, and game design at the foundation before a single model is trained.</p>
+      <p>This session makes the case, shows the live product, and hands the audience a framework they can use the next day.</p>
+    </div>
+  </div>
+</section>
+
+<!-- TRANSFORM BELT -->
+<div class="belt">
+  <div class="belt-inner">
+    <blockquote class="belt-quote reveal">
+      "Every question we ask is a doorway — to trust, to dignity, or to harm."
+      <br><br>
+      <span style="font-size:14px; font-style:normal; opacity:0.5; font-family:'Alegreya Sans',sans-serif;">— People-First Intake Charter, IslamicFamily</span>
+    </blockquote>
+
+    <div class="belt-right reveal">
+      <div class="feature-item">
+        <div class="feature-dot"></div>
+        <div class="feature-text">
+          <strong>Trauma-informed intake design</strong>
+          Consent-first flows that follow a person — not a program or a funder report.
+        </div>
+      </div>
+      <div class="feature-item">
+        <div class="feature-dot"></div>
+        <div class="feature-text">
+          <strong>Multilingual, omni-channel communication</strong>
+          Reach clients in their language — over SMS, WhatsApp, or voice — from one place.
+        </div>
+      </div>
+      <div class="feature-item">
+        <div class="feature-dot"></div>
+        <div class="feature-text">
+          <strong>AI-automated referrals & reporting</strong>
+          Turn the most time-consuming admin work into the fastest part of the job.
+        </div>
+      </div>
+      <div class="feature-item">
+        <div class="feature-dot"></div>
+        <div class="feature-text">
+          <strong>Built on Indigenous OCAP principles</strong>
+          Data sovereignty isn't a policy checkbox — it's the architecture.
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- FRAMEWORK -->
+<section class="framework-section" id="framework">
+  <div class="section-inner">
+    <div class="label reveal">The Framework</div>
+    <h2 class="section-title reveal">9 questions before every intake question</h2>
+    <p class="section-body reveal" style="max-width:560px;">The People-First Intake Charter gives practitioners a decision tool — not just a values statement. Every data point must pass nine filters before it enters a case file.</p>
+
+    <div class="framework-grid reveal">
+      <div class="framework-cell">
+        <div class="cell-num">01</div>
+        <div class="cell-title">Purpose</div>
+        <div class="cell-q">Who is this question actually for?</div>
+      </div>
+      <div class="framework-cell">
+        <div class="cell-num">02</div>
+        <div class="cell-title">Insight</div>
+        <div class="cell-q">What does this teach us — and them?</div>
+      </div>
+      <div class="framework-cell">
+        <div class="cell-num">03</div>
+        <div class="cell-title">Ownership</div>
+        <div class="cell-q">Can people move, edit, or delete this?</div>
+      </div>
+      <div class="framework-cell">
+        <div class="cell-num">04</div>
+        <div class="cell-title">Timing</div>
+        <div class="cell-q">Could this wait until trust is built?</div>
+      </div>
+      <div class="framework-cell">
+        <div class="cell-num">05</div>
+        <div class="cell-title">Experience</div>
+        <div class="cell-q">Cold form or human conversation?</div>
+      </div>
+      <div class="framework-cell">
+        <div class="cell-num">06</div>
+        <div class="cell-title">Cost</div>
+        <div class="cell-q">What does this take from the relationship?</div>
+      </div>
+      <div class="framework-cell">
+        <div class="cell-num">07</div>
+        <div class="cell-title">Risk</div>
+        <div class="cell-q">What if this were overheard? Breached?</div>
+      </div>
+      <div class="framework-cell">
+        <div class="cell-num">08</div>
+        <div class="cell-title">Redundancy</div>
+        <div class="cell-q">Do we already know this another way?</div>
+      </div>
+      <div class="framework-cell">
+        <div class="cell-num">09</div>
+        <div class="cell-title">Destination</div>
+        <div class="cell-q">Attached to a program — or a person?</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- IMPACT -->
+<section class="impact-section">
+  <div class="section-inner">
+    <div class="label reveal">In Production. Right Now.</div>
+    <h2 class="section-title reveal">Transform is live.<br>The results are real.</h2>
+
+    <div class="impact-grid reveal">
+      <div class="impact-card">
+        <div class="impact-n">30%</div>
+        <div class="impact-label">of staff time returned to direct service</div>
+      </div>
+      <div class="impact-card">
+        <div class="impact-n">40%</div>
+        <div class="impact-label">reduction in reporting burden</div>
+      </div>
+      <div class="impact-card">
+        <div class="impact-n">6+</div>
+        <div class="impact-label">agencies in production across Canada</div>
+      </div>
+      <div class="impact-card">
+        <div class="impact-n">80%</div>
+        <div class="impact-label">frontline worker satisfaction score</div>
+      </div>
+    </div>
+
+    <p class="section-body reveal" style="margin-top:36px; font-size:15px;">
+      Supported by the City of Edmonton, United Way, and Muttart Foundation. Co-designed with 200+ frontline workers. Built in partnership with Metalab (designers of Slack and Coinbase) and Twilio. A waitlist of agencies ready to scale.
+    </p>
+  </div>
+</section>
+
+<!-- BIO -->
+<section class="bio-section" id="speaker">
+  <div class="bio-inner">
+    <div class="bio-avatar reveal">OY</div>
+    <div class="reveal">
+      <div class="label">The Speaker</div>
+      <div class="bio-name">Omar Yaqub</div>
+      <div class="bio-role">Co-Founder, Flourishing Systems · Executive Director, IslamicFamily</div>
+      <p class="bio-body">Co-founder of Flourishing Systems — using design, data justice, and innovation to unlock the superpowers of frontline workers — and Executive Director of IslamicFamily, a multi-award winning social change organization disrupting systemic inequity through service, research, and beauty. Former Historian Co-Laureate for the City of Edmonton, past MBA instructor at the University of Alberta, and two-decade veteran of the for-benefit sector. Honorary doctorate, St. Stephen's College. Settler on Treaty 6.</p>
+      <div class="bio-tags">
+        <span class="bio-tag">Data Justice</span>
+        <span class="bio-tag">Social Innovation</span>
+        <span class="bio-tag">AI in Social Services</span>
+        <span class="bio-tag">Nonprofit Leadership</span>
+        <span class="bio-tag">Indigenous OCAP Principles</span>
+        <span class="bio-tag">Edmonton</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CLOSER -->
+<section class="closer">
+  <div class="closer-orb"></div>
+  <h2 class="closer-title reveal">Social services is not a charity case.<br>It's the opportunity.</h2>
+  <p class="closer-sub reveal">Edmonton built it first. Come see what's possible when AI finally meets the sector that needs it most.</p>
+  <div class="closer-cta reveal">
+    <a href="mailto:omar.yaqub@islamicfamily.ca" class="btn-primary">Get in Touch</a>
+  </div>
+  <div class="closer-meta reveal">
+    <a href="https://flourishing.systems" target="_blank">flourishing.systems</a>
+    &nbsp;·&nbsp;
+    <a href="https://share.islamicfamily.ca/datacharter" target="_blank">People-First Intake Charter</a>
+    &nbsp;·&nbsp;
+    <a href="https://linkedin.com/in/somaryaqub" target="_blank">@somaryaqub</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <span>Unburdening Social Work · Upper Bound 2026 · Edmonton, AB</span>
+  <span><a href="https://islamicfamily.ca" target="_blank">IslamicFamily</a> · <a href="https://flourishing.systems" target="_blank">Flourishing Systems</a></span>
+</footer>
+
+<script>
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach((entry, i) => {
+    if (entry.isIntersecting) {
+      setTimeout(() => entry.target.classList.add('visible'), i * 80);
+    }
+  });
+}, { threshold: 0.1 });
+
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>
