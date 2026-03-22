@@ -1,0 +1,1211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Building a Stronger EPS</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Alegreya:ital,wght@0,400;0,500;0,700;1,400;1,500&family=Alegreya+Sans:wght@300;400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --green: #275D43;
+    --green-light: #3a7a5a;
+    --green-pale: #e8f2ed;
+    --brown: #E09964;
+    --brown-pale: #faf3ea;
+    --mist: #FAFAF2;
+    --black: #353535;
+    --red: #BB2D37;
+    --sand: #DCD9B8;
+    --sun: #F7AF29;
+    --warm: #EECBAF;
+    --text: #353535;
+    --text-muted: #5a6b62;
+    --border: rgba(39,93,67,0.15);
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'Alegreya Sans', sans-serif;
+    background: var(--mist);
+    color: var(--text);
+    font-size: 17px;
+    line-height: 1.75;
+  }
+
+  /* ── HERO ── */
+  .hero {
+    background: var(--green);
+    color: white;
+    padding: 96px 40px 80px;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at 80% 50%, rgba(224,153,100,0.12) 0%, transparent 65%),
+                radial-gradient(ellipse at 10% 80%, rgba(255,255,255,0.04) 0%, transparent 50%);
+    pointer-events: none;
+  }
+  .hero-inner { max-width: 820px; margin: 0 auto; position: relative; z-index: 1; }
+  .hero-eyebrow {
+    font-family: 'Alegreya Sans', sans-serif;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--brown);
+    margin-bottom: 24px;
+  }
+  .hero h1 {
+    font-family: 'Alegreya', serif;
+    font-size: clamp(42px, 6vw, 72px);
+    font-weight: 700;
+    line-height: 1.05;
+    margin-bottom: 28px;
+    color: white;
+  }
+  .hero-lead {
+    font-size: 20px;
+    color: rgba(255,255,255,0.8);
+    max-width: 640px;
+    line-height: 1.65;
+    margin-bottom: 0;
+  }
+
+  /* ── MOBILE CHEVRON ── */
+  #scroll-chevron {
+    display: none;
+    position: fixed;
+    bottom: 28px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 100;
+    pointer-events: none;
+    transition: opacity 0.4s ease;
+  }
+  #scroll-chevron svg {
+    width: 28px;
+    height: 28px;
+    animation: chevron-pulse 1.8s ease-in-out infinite;
+  }
+  @keyframes chevron-pulse {
+    0%, 100% { opacity: 0.9; transform: translateY(0); }
+    50%       { opacity: 0.4; transform: translateY(6px); }
+  }
+  @media (max-width: 768px) {
+    #scroll-chevron { display: block; }
+  }
+  .hero-credits {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    align-items: center;
+  }
+  .credit-label {
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.5);
+    margin-right: 4px;
+  }
+  .credit-pill {
+    background: rgba(255,255,255,0.12);
+    border: 1px solid rgba(255,255,255,0.2);
+    border-radius: 100px;
+    padding: 5px 14px;
+    font-size: 13px;
+    color: rgba(255,255,255,0.9);
+    font-weight: 500;
+  }
+  .credit-pill.highlight {
+    background: var(--brown);
+    border-color: var(--brown);
+    color: white;
+  }
+
+  /* ── NAV DOTS ── */
+  .nav-strip {
+    background: var(--green);
+    border-top: 1px solid rgba(255,255,255,0.1);
+    padding: 0 40px;
+  }
+  .nav-strip-inner {
+    max-width: 820px;
+    margin: 0 auto;
+    display: flex;
+    gap: 0;
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+  .nav-strip-inner::-webkit-scrollbar { display: none; }
+  .nav-item {
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.5);
+    padding: 14px 20px 14px 0;
+    text-decoration: none;
+    white-space: nowrap;
+    transition: color 0.2s;
+  }
+  .nav-item:hover { color: var(--brown); }
+
+  /* ── MAIN CONTENT ── */
+  .content { max-width: 820px; margin: 0 auto; padding: 60px 40px 20px; }
+
+  /* ── SECTION INTRO ── */
+  .section-intro {
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 36px 40px;
+    margin-bottom: 48px;
+  }
+  .section-intro p {
+    color: var(--text-muted);
+    font-size: 16px;
+    line-height: 1.7;
+  }
+
+  /* ── RECOMMENDATION CARDS ── */
+  .rec-card {
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    overflow: hidden;
+    margin-bottom: 32px;
+    transition: box-shadow 0.2s;
+  }
+  .rec-card:hover { box-shadow: 0 4px 20px rgba(39,93,67,0.08); }
+  .rec-header {
+    display: flex;
+    align-items: flex-start;
+    gap: 20px;
+    padding: 28px 32px 24px;
+    border-bottom: 1px solid var(--border);
+  }
+  .rec-number {
+    flex-shrink: 0;
+    width: 44px;
+    height: 44px;
+    background: var(--green);
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Alegreya', serif;
+    font-size: 20px;
+    font-weight: 700;
+    margin-top: 2px;
+  }
+  .rec-title {
+    font-family: 'Alegreya', serif;
+    font-size: 22px;
+    font-weight: 700;
+    line-height: 1.3;
+    color: var(--green);
+  }
+  .rec-body { padding: 24px 32px 28px; }
+  .rec-body p {
+    font-size: 16px;
+    color: var(--text);
+    line-height: 1.75;
+    margin-bottom: 16px;
+  }
+  .rec-body p:last-child { margin-bottom: 0; }
+
+  /* ── SUB-ITEMS ── */
+  .sub-items { list-style: none; margin: 16px 0; }
+  .sub-items li {
+    display: flex;
+    gap: 12px;
+    font-size: 15px;
+    color: var(--text-muted);
+    padding: 8px 0;
+    border-bottom: 1px solid rgba(39,93,67,0.07);
+    line-height: 1.6;
+  }
+  .sub-items li:last-child { border-bottom: none; }
+  .sub-icon {
+    flex-shrink: 0;
+    width: 6px;
+    height: 6px;
+    background: var(--brown);
+    border-radius: 50%;
+    margin-top: 8px;
+  }
+
+  /* ── CITATIONS ── */
+  .cite-box {
+    background: var(--green-pale);
+    border-left: 3px solid var(--green);
+    border-radius: 0 8px 8px 0;
+    padding: 14px 18px;
+    margin: 16px 0;
+  }
+  .cite-box p {
+    font-size: 14px !important;
+    color: var(--green) !important;
+    margin: 0 !important;
+    line-height: 1.6 !important;
+  }
+  .cite-box a {
+    color: var(--green-light);
+    text-decoration: underline;
+    text-underline-offset: 2px;
+  }
+  .cite-label {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--green);
+    margin-bottom: 4px;
+    display: block;
+    opacity: 0.7;
+  }
+
+  /* ── CONTRIBUTORS SECTION ── */
+  .contributors-section {
+    margin: 60px 0 0;
+    padding: 0;
+  }
+  .section-heading {
+    font-family: 'Alegreya', serif;
+    font-size: 28px;
+    font-weight: 700;
+    color: var(--green);
+    margin-bottom: 8px;
+  }
+  .section-sub {
+    font-size: 15px;
+    color: var(--text-muted);
+    margin-bottom: 32px;
+  }
+  .contrib-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 16px;
+    margin-bottom: 32px;
+  }
+  .contrib-card {
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 22px;
+  }
+  .contrib-card.developer {
+    border-color: var(--green);
+    border-width: 2px;
+  }
+  .contrib-type {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    margin-bottom: 8px;
+  }
+  .contrib-card.developer .contrib-type {
+    color: var(--green);
+  }
+  .contrib-name {
+    font-family: 'Alegreya', serif;
+    font-size: 17px;
+    font-weight: 700;
+    color: var(--text);
+    line-height: 1.3;
+    margin-bottom: 6px;
+  }
+  .contrib-desc {
+    font-size: 13px;
+    color: var(--text-muted);
+    line-height: 1.55;
+  }
+  .contrib-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--green);
+    margin-bottom: 12px;
+  }
+  .contrib-card.developer .contrib-dot {
+    background: var(--green);
+    width: 24px;
+    border-radius: 4px;
+  }
+
+  /* ── TRACKER ── */
+  .tracker {
+    border-top: 1px solid var(--border);
+    background: var(--mist);
+  }
+  .tracker-inset {
+    background: #1a3d2b;
+    border-radius: 0 0 16px 16px;
+    overflow: hidden;
+    padding: 0;
+  }
+  .tracker-title {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.55);
+    padding: 11px 24px 12px;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+    display: block;
+    line-height: 1;
+    margin: 0;
+  }
+  .tracker-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-bottom: 16px;
+    padding: 12px 24px 0;
+    margin-top: 0;
+    margin-bottom: 12px;
+  }
+  .tracker-meta {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+  .tracker-date {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.35);
+  }
+  .tracker-status {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 3px 10px;
+    border-radius: 100px;
+    border: 1px solid;
+  }
+  .status-acknowledged { color: #6fc4f5; border-color: rgba(100,180,240,0.4); background: rgba(52,128,168,0.25); }
+  .status-inprogress   { color: #f7c96a; border-color: rgba(247,175,41,0.4); background: rgba(247,175,41,0.2); }
+  .status-pending      { color: #fff; border-color: #BB2D37; background: #BB2D37; font-weight: 700; animation: status-pulse 2.5s ease-in-out infinite; }
+  .status-complete     { color: #7dd4aa; border-color: rgba(39,93,67,0.6); background: rgba(39,93,67,0.3); }
+  @keyframes status-pulse {
+    0%, 100% { opacity: 1; box-shadow: 0 0 0 0 rgba(187,45,55,0.4); }
+    50%       { opacity: 0.85; box-shadow: 0 0 0 5px rgba(187,45,55,0); }
+  }
+  .tracker-response {
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 8px;
+    padding: 14px 18px;
+    margin: 0 24px 12px;
+  }
+  .tracker-response-label {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--brown);
+    margin-bottom: 6px;
+    display: block;
+  }
+  .tracker-response p {
+    font-size: 14px;
+    color: rgba(255,255,255,0.55);
+    line-height: 1.65;
+    margin: 0;
+  }
+  .tracker-notes {
+    font-size: 13px;
+    color: rgba(255,255,255,0.4);
+    font-style: italic;
+    line-height: 1.65;
+    margin: 4px 24px 16px;
+  }
+  .progress-bar-wrap {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 4px;
+    padding: 0 24px 24px;
+  }
+  .progress-label {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.35);
+    white-space: nowrap;
+  }
+  .progress-track {
+    flex: 1;
+    height: 6px;
+    background: rgba(255,255,255,0.1);
+    border-radius: 100px;
+    overflow: hidden;
+  }
+  .progress-fill {
+    height: 100%;
+    border-radius: 100px;
+    background: #7dd4aa;
+    transition: width 1s ease;
+  }
+  .progress-fill.amber { background: var(--sun); }
+  .progress-fill.grey  { background: rgba(255,255,255,0.2); }
+
+  /* ── SCROLL PROGRESS ── */
+  #scroll-progress {
+    position: fixed;
+    top: 0; left: 0;
+    width: 0%;
+    height: 3px;
+    background: var(--brown);
+    z-index: 1000;
+    transition: width 0.1s linear;
+  }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--black);
+    color: rgba(255,255,255,0.5);
+    font-size: 13px;
+    line-height: 1.7;
+  }
+  footer a { color: var(--brown); text-decoration: none; }
+
+  @media (max-width: 640px) {
+    .hero { padding: 72px 24px 64px; }
+    .hero h1 { font-size: 42px; }
+    .hero-lead { font-size: 17px; }
+    .content { padding: 40px 20px; }
+    .rec-header, .rec-body, .tracker { padding-left: 20px; padding-right: 20px; }
+    .section-intro { padding: 24px 20px; }
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(18px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to   { opacity: 1; }
+    }
+    .hero-inner { animation: fadeUp 0.7s ease both; }
+    .reveal {
+      opacity: 0;
+      transform: translateY(18px);
+      transition: opacity 0.55s ease, transform 0.55s ease;
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .reveal-fade {
+      opacity: 0;
+      transition: opacity 0.6s ease;
+    }
+    .reveal-fade.visible {
+      opacity: 1;
+    }
+  }
+  /* ── ENGAGEMENT WIDGET ── */
+  .eps-widget {
+    --wg: #275D43;
+    --wbr: #E09964;
+    --wcr: #FAFAF2;
+    --wblk: #353535;
+    --wred: #BB2D37;
+    --wtan: #DCD9B8;
+    --wink: #111a14;
+    font-family: 'Alegreya Sans', sans-serif;
+    background: var(--wink);
+    color: var(--wcr);
+    border-radius: 14px;
+    overflow: hidden;
+    border: 1px solid rgba(39,93,67,0.2);
+    box-shadow: 0 24px 80px rgba(0,0,0,0.35);
+  }
+  .w-head {
+    padding: 26px 30px 22px;
+    background: var(--wg);
+    position: relative;
+    overflow: hidden;
+  }
+  .w-head::after {
+    content: '';
+    position: absolute;
+    bottom: -40px; right: -40px;
+    width: 180px; height: 180px;
+    border: 30px solid rgba(250,250,242,0.06);
+    border-radius: 50%;
+    pointer-events: none;
+  }
+  .w-eyebrow {
+    font-size: 9px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: rgba(250,250,242,0.5);
+    font-weight: 700;
+    margin-bottom: 8px;
+  }
+  .w-title {
+    font-family: 'Alegreya', serif;
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--wcr);
+    line-height: 1.15;
+  }
+  .w-title em { color: var(--wbr); font-style: normal; }
+  .w-stats {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    border-bottom: 1px solid rgba(250,250,242,0.06);
+  }
+  .w-stat {
+    padding: 20px 14px 16px;
+    border-right: 1px solid rgba(250,250,242,0.06);
+    animation: wFadeUp 0.5s ease both;
+    opacity: 0;
+  }
+  .w-stat:last-child { border-right: none; }
+  .w-stat:nth-child(1) { animation-delay: 0.05s; }
+  .w-stat:nth-child(2) { animation-delay: 0.12s; }
+  .w-stat:nth-child(3) { animation-delay: 0.19s; }
+  .w-stat:nth-child(4) { animation-delay: 0.26s; }
+  .w-stat:nth-child(5) { animation-delay: 0.33s; }
+  .w-stat-n {
+    font-family: 'Alegreya', serif;
+    font-size: 38px;
+    font-weight: 700;
+    line-height: 1;
+    display: block;
+    margin-bottom: 6px;
+  }
+  .c-gold  { color: var(--wbr); }
+  .c-green { color: #6db890; }
+  .c-red   { color: #e07070; }
+  .c-tan   { color: var(--wtan); }
+  .w-stat-label {
+    font-size: 9.5px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: rgba(250,250,242,0.4);
+    line-height: 1.4;
+    display: block;
+  }
+  .w-stat-sub {
+    font-size: 10px;
+    color: rgba(250,250,242,0.2);
+    font-style: italic;
+    font-family: 'Alegreya', serif;
+    margin-top: 3px;
+    display: block;
+  }
+  .w-middle {
+    display: block;
+    border-bottom: 1px solid rgba(250,250,242,0.06);
+    animation: wFadeUp 0.5s 0.35s ease both;
+    opacity: 0;
+  }
+  .w-pyramid {
+    padding: 20px 28px;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+  .pyramid-label {
+    font-size: 9px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: rgba(250,250,242,0.25);
+    font-weight: 700;
+    margin-bottom: 12px;
+  }
+  .p-tier {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 7px 10px;
+    border-radius: 5px;
+    margin-bottom: 3px;
+    cursor: default;
+  }
+  .p-tier:hover { background: rgba(250,250,242,0.04); }
+  .p-bar-wrap { flex: 1; display: flex; align-items: center; gap: 8px; }
+  .p-bar { height: 6px; border-radius: 3px; flex-shrink: 0; transition: width 1s cubic-bezier(0.16,1,0.3,1); }
+  .p-tier-label { font-size: 11.5px; color: rgba(250,250,242,0.65); white-space: nowrap; min-width: 100px; }
+  .p-count { font-family: 'Alegreya', serif; font-size: 15px; font-weight: 700; min-width: 24px; text-align: right; }
+  .t-chief  .p-bar { background: var(--wbr); }
+  .t-epc    .p-bar { background: #6db890; }
+  .t-senior .p-bar { background: rgba(220,217,184,0.8); }
+  .t-officer .p-bar { background: rgba(250,250,242,0.25); }
+  .t-chief  .p-count { color: var(--wbr); }
+  .t-epc    .p-count { color: #6db890; }
+  .t-senior .p-count { color: var(--wtan); }
+  .t-officer .p-count { color: rgba(250,250,242,0.45); }
+  .p-divider { height: 1px; background: rgba(250,250,242,0.04); margin: 1px 0 3px; }
+  @keyframes wFadeUp {
+    from { opacity: 0; transform: translateY(10px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  @media (max-width: 540px) {
+    .w-stats { grid-template-columns: repeat(3, 1fr); }
+    .w-stat:nth-child(4), .w-stat:nth-child(5) { border-top: 1px solid rgba(250,250,242,0.06); }
+    .w-stat-n { font-size: 30px; }
+  }
+</style>
+</head>
+<body>
+
+<div id="scroll-progress"></div>
+
+<!-- HERO -->
+<header class="hero">
+
+  <!-- Badge icon (top-right, large) -->
+  <svg aria-hidden="true" style="position:absolute;top:20px;right:32px;width:150px;height:150px;opacity:0.08;pointer-events:none;" xmlns="http://www.w3.org/2000/svg" viewBox="-5.0 -10.0 110.0 110.0">
+    <path fill="white" d="m50 39.262c-9.2305 0-16.742 7.5117-16.742 16.742 0 9.2305 7.5117 16.742 16.742 16.742s16.742-7.5117 16.742-16.742c0-9.2305-7.5117-16.742-16.742-16.742zm8.5898 24.66-3.457 2.5117-5.1328-2.6992-5.1328 2.6992-3.457-2.5117 0.98047-5.7148-4.1523-4.0469 1.3203-4.0625 5.7383-0.83203 2.5664-5.1992h4.2734l2.5664 5.1992 5.7383 0.83203 1.3203 4.0625-4.1523 4.0469zm0 0-7.0469-10.309-1.543-3.1211-1.5391 3.1211-3.4453 0.5 2.4922 2.4297-0.58984 3.4297 3.082-1.6211 3.082 1.6211-0.58984-3.4297 2.4922-2.4297-3.4453-0.5zm-7.0469-10.309 31.066-3.2891-2.9414-11.988c-1.1367-4.6328 0.23047-9.5195 3.6016-12.891l-8.4922-10.863c-7.6445 2.8906-16.348 0.18359-22.59-5.207h-4.3672c-6.2031 5.3711-14.922 8.1055-22.594 5.207l-8.4922 10.863c3.3867 3.3203 4.7227 8.5039 3.6016 12.891l-2.9414 11.988c-3.5273 14.387 4.1367 29.164 17.938 34.562l14.672 5.7383 14.672-5.7383c13.797-5.3945 21.465-20.176 17.938-34.562zm-1.543-28.672c6.1484 0 12.09 1.7891 17.184 5.1797l-2.6367 3.9648c-4.3086-2.8672-9.3398-4.3828-14.547-4.3828s-10.238 1.5156-14.547 4.3828l-2.6367-3.9648c5.0938-3.3867 11.035-5.1797 17.184-5.1797zm0 52.566c-11.855 0-21.504-9.6445-21.504-21.504 0-11.855 9.6445-21.504 21.504-21.504 11.855 0 21.504 9.6445 21.504 21.504 0 11.855-9.6445 21.504-21.504 21.504z"/>
+  </svg>
+
+  <!-- Badge icon (bottom-left, small) -->
+  <svg aria-hidden="true" style="position:absolute;bottom:16px;left:28px;width:72px;height:72px;opacity:0.05;pointer-events:none;" xmlns="http://www.w3.org/2000/svg" viewBox="-5.0 -10.0 110.0 110.0">
+    <path fill="white" d="m50 39.262c-9.2305 0-16.742 7.5117-16.742 16.742 0 9.2305 7.5117 16.742 16.742 16.742s16.742-7.5117 16.742-16.742c0-9.2305-7.5117-16.742-16.742-16.742zm8.5898 24.66-3.457 2.5117-5.1328-2.6992-5.1328 2.6992-3.457-2.5117 0.98047-5.7148-4.1523-4.0469 1.3203-4.0625 5.7383-0.83203 2.5664-5.1992h4.2734l2.5664 5.1992 5.7383 0.83203 1.3203 4.0625-4.1523 4.0469zm0 0-7.0469-10.309-1.543-3.1211-1.5391 3.1211-3.4453 0.5 2.4922 2.4297-0.58984 3.4297 3.082-1.6211 3.082 1.6211-0.58984-3.4297 2.4922-2.4297-3.4453-0.5zm-7.0469-10.309 31.066-3.2891-2.9414-11.988c-1.1367-4.6328 0.23047-9.5195 3.6016-12.891l-8.4922-10.863c-7.6445 2.8906-16.348 0.18359-22.59-5.207h-4.3672c-6.2031 5.3711-14.922 8.1055-22.594 5.207l-8.4922 10.863c3.3867 3.3203 4.7227 8.5039 3.6016 12.891l-2.9414 11.988c-3.5273 14.387 4.1367 29.164 17.938 34.562l14.672 5.7383 14.672-5.7383c13.797-5.3945 21.465-20.176 17.938-34.562zm-1.543-28.672c6.1484 0 12.09 1.7891 17.184 5.1797l-2.6367 3.9648c-4.3086-2.8672-9.3398-4.3828-14.547-4.3828s-10.238 1.5156-14.547 4.3828l-2.6367-3.9648c5.0938-3.3867 11.035-5.1797 17.184-5.1797zm0 52.566c-11.855 0-21.504-9.6445-21.504-21.504 0-11.855 9.6445-21.504 21.504-21.504 11.855 0 21.504 9.6445 21.504 21.504 0 11.855-9.6445 21.504-21.504 21.504z"/>
+  </svg>
+
+  <div class="hero-inner">
+    <p class="hero-eyebrow">Community Recommendations · Edmonton Police Service</p>
+    <h1>Building a Stronger&nbsp;EPS</h1>
+    <p class="hero-lead editable-region">Six practical, precedented recommendations for a more responsive and community-rooted Edmonton Police Service — drawn from frontline experience, peer police services across Canada, and national research. Each is grounded in the belief that a stronger EPS is good for officers and community alike.</p>
+  </div>
+</header>
+
+<div id="scroll-chevron">
+  <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M6 9L12 15L18 9" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+  </svg>
+</div>
+
+
+
+<main class="content">
+
+
+  <!-- REC 1 -->
+  <article class="rec-card" id="rec1">
+    <div class="rec-header">
+      <div class="rec-number">1</div>
+      <h2 class="rec-title">Work with community partners to hire an Indigenous Elder in Residence, Muslim Chaplain &amp; Sikh Chaplain</h2>
+    </div>
+    <div class="rec-body">
+      <p>Edmonton is one of Canada's most diverse cities, and EPS has a genuine opportunity to reflect that diversity in how it serves and connects with communities. Indigenous peoples — Métis and First Nations — make up 5.5% of the city's population and are a foundational part of Edmonton's civic life. The 2021 Census places Muslims at 8.3% of the metro population — the city's single largest religious minority, with over 83,000 members across 62+ ethnic backgrounds. Sikhs represent 4.1%, supported by four gurdwaras and a strong tradition of community service.</p>
+
+      <p>Together these communities represent nearly one in five Edmontonians — and their populations are growing. An Indigenous Elder in Residence, a Muslim Chaplain, and a Sikh Chaplain would give EPS a meaningful, trusted presence with each of them — deepening relationships, supporting officers navigating culturally complex situations, and strengthening EPS's ability to serve the full city it protects.</p>
+
+      <div class="cite-box">
+        <span class="cite-label">Statistics Canada · 2021 Census · Edmonton CMA</span>
+        <p><strong>Indigenous peoples: 5.5%</strong> — including Métis (2.8%) and First Nations (2.5%). Edmonton already has one of the largest urban Indigenous populations in Canada. Statistics Canada projects Edmonton's Indigenous population will reach between 127,000 and 155,000 by 2041 — placing Edmonton second only to Winnipeg among Canadian cities. Alberta's Indigenous population is projected to grow from roughly 236,000 to between 429,000 and 526,000 by 2041, making it one of only three provinces projected to surpass 400,000 Indigenous residents.</p>
+        <p style="margin-top:10px;"><strong>Muslims: 8.3%</strong> of the Edmonton metro population (approx. 83,000 people) — the city's largest religious minority, representing 62+ ethnic backgrounds across 20+ mosques. Edmonton is historically significant as home to Canada's first mosque (Al-Rashid, 1938). Canada's Muslim population has more than doubled since 2001 and is projected to represent up to 6.6% of the national population by 2041.</p>
+        <p style="margin-top:10px;"><strong>Sikhs: 4.1%</strong> — Edmonton's second-largest religious minority, with four gurdwaras and a long tradition of langar (community feeding) and public service. The Sikh population nationally grew 70% between 2011 and 2021 — one of the fastest rates of any faith community in Canada — a trajectory projected to continue through the coming decade.</p>
+        <p style="margin-top:10px;"><a href="https://www12.statcan.gc.ca/census-recensement/2021/as-sa/fogs-spg/page.cfm?lang=E&topic=10&dguid=2021A00054811061" target="_blank">Statistics Canada — Edmonton Religious Profile, 2021 Census ↗</a>&nbsp;&nbsp;<a href="https://www150.statcan.gc.ca/n1/daily-quotidien/211006/dq211006a-eng.htm" target="_blank">Statistics Canada — Indigenous Population Projections to 2041 ↗</a></p>
+      </div>
+
+      <p>Police services in Toronto, Calgary, and other cities have made this investment and seen the results. These roles work best when they are fully integrated into EPS — present at briefings, available to support officers in the field, and connected to their communities through genuine, ongoing relationships.</p>
+
+      <div class="cite-box">
+        <span class="cite-label">Precedent — Toronto Police Service</span>
+        <p>The Toronto Police Service embedded Elder and Knowledge Keeper voices throughout the organization as co-developers of solutions. Chief Myron Demkiw credited Elders as essential to healing and strengthening relationships with First Nations, Inuit, and Métis communities.</p>
+        <p style="margin-top:8px;"><a href="https://www.tps.ca/media-centre/stories/honouring-indigenous-elders/" target="_blank">Toronto Police Service — Honouring Indigenous Elders ↗</a></p>
+      </div>
+
+      <div class="cite-box">
+        <span class="cite-label">Precedent — Elder Outreach with Homeless Communities</span>
+        <p>A joint initiative between Toronto Police (51 Division) and Indigenous community organizations paired officers with Cree Elder Andrew Wesley to strengthen relationships with homeless Indigenous residents. Officers described the program as transformative — deepening their confidence and effectiveness in community interactions.</p>
+        <p style="margin-top:8px;"><a href="https://www.cbc.ca/news/canada/toronto/walkabout-elder-outreach-1.4012191" target="_blank">CBC News — Aboriginal elders team up with officers ↗</a></p>
+      </div>
+
+      <ul class="sub-items">
+        <li><span class="sub-icon"></span><span>Support EPS's diverse officers and EDI efforts through ongoing education and peer dialogue</span></li>
+        <li><span class="sub-icon"></span><span>Develop culturally grounded wellness protocols to support EPS staff navigating complex calls</span></li>
+        <li><span class="sub-icon"></span><span>Expand EPS's reach and trust across communities that are eager for stronger relationships with their police service</span></li>
+      </ul>
+    </div>
+    <div class="tracker">
+      <div class="tracker-inset">
+        <span class="tracker-title">Progress &amp; Response</span>
+<div class="tracker-header">
+          <div class="tracker-meta">
+            <span class="tracker-date">Originally asked: Spring 2023</span>
+            <span class="tracker-date">·</span>
+            <span class="tracker-date">EPS response: December 2025</span>
+          </div>
+          <span class="tracker-status status-pending">Not Yet Actioned</span>
+        </div>
+        <div class="tracker-response">
+          <span class="tracker-response-label">EPS Response — December 2025</span>
+          <p>EPS referenced its existing complement of interfaith chaplains and informal relationships with an Imam and a multilingual Muslim woman who supports women specifically. These relationships are appreciated, and are distinct from the community-accountable, integrated roles requested.</p>
+        </div>
+        <p class="tracker-notes">Following a June 2023 meeting with Chief McFee, senior staff indicated they were close to bringing on a Muslim Chaplain. As of December 2025, this has not materialized. In October 2023, EPS senior leadership requested a high-level business case for these roles. It was provided. Despite several follow-ups, nothing has transpired. An Indigenous Elder in Residence — an embedded, day-to-day role accountable to the Indigenous community — was not addressed. A Sikh Chaplain was not addressed. These remain open asks.</p>
+        <div class="progress-bar-wrap">
+          <span class="progress-label">Progress</span>
+          <div class="progress-track"><div class="progress-fill grey" style="width:0%"></div></div>
+          <span class="tracker-date">0%</span>
+        </div>
+      </div>
+    </div>
+  </article>
+
+  <!-- REC 2 -->
+  <article class="rec-card" id="rec2">
+    <div class="rec-header">
+      <div class="rec-number">2</div>
+      <h2 class="rec-title">Report on community engagement outcomes and share demographic data on recruits and promotions</h2>
+    </div>
+    <div class="rec-body">
+      <p>EPS's leadership — sergeants, staff sergeants, and inspectors — are doing meaningful community work every day. And EPS has made genuine commitments to building a workforce that reflects Edmonton's communities. Structured reporting on both fronts would make that work visible, give those commitments measurable shape, and help leadership invest more strategically in what's delivering results.</p>
+
+      <ul class="sub-items">
+        <li><span class="sub-icon"></span><span>Give EPS leadership a clearer picture of how leadership is connecting with communities across the city</span></li>
+        <li><span class="sub-icon"></span><span>Help EPS align its recruitment and promotion strategy with its diversity goals — and celebrate real progress publicly</span></li>
+        <li><span class="sub-icon"></span><span>Provide a baseline for setting meaningful targets and measuring impact over time</span></li>
+        <li><span class="sub-icon"></span><span>Help EPS tell its own story more powerfully — with evidence of the real difference its officers are making</span></li>
+      </ul>
+
+      <div class="cite-box">
+        <span class="cite-label">National Precedent — Race-Based Data Collection</span>
+        <p>The Ontario Government in 2019 directed all police services to collect race-based data in use of force incidents. Peel Regional Police and the Ontario Human Rights Commission built on this through a historic Memorandum of Understanding — now a national model for data-driven policing. Over 30,000 hours of human rights-focused training followed directly from that data.</p>
+        <p style="margin-top:8px;"><a href="https://www.peelpolice.ca/en/who-we-are/human-rights-project.aspx" target="_blank">Peel Regional Police Human Rights Project ↗</a></p>
+      </div>
+    </div>
+    <div class="tracker">
+      <div class="tracker-inset">
+        <span class="tracker-title">Progress &amp; Response</span>
+<div class="tracker-header">
+          <div class="tracker-meta">
+            <span class="tracker-date">Originally asked: Spring 2023</span>
+            <span class="tracker-date">·</span>
+            <span class="tracker-date">EPS response: December 2025</span>
+          </div>
+          <span class="tracker-status status-pending">Not Yet Actioned</span>
+        </div>
+        <div class="tracker-response">
+          <span class="tracker-response-label">EPS Response — December 2025</span>
+          <p>EPS noted that demographic data on recruits is shared in the annual report, and that more formal community engagement initiatives are tracked through the Community Relations team. EPS acknowledged it does not currently have the ability to capture and report on community engagements by sergeants, staff sergeants, and inspectors more broadly.</p>
+        </div>
+        <p class="tracker-notes">Demographic reporting on recruits was already in place before this recommendation was made — EPS pointing to it as a response to our ask doesn't reflect progress. What we're looking for is improvement over time: are the numbers moving? Are promotions becoming more representative? Is leadership engagement being measured in any way? We're not asking for perfection — we're asking to see meaningful, year-over-year progress. That evidence has not been provided.</p>
+        <div class="progress-bar-wrap">
+          <span class="progress-label">Progress</span>
+          <div class="progress-track"><div class="progress-fill grey" style="width:0%"></div></div>
+          <span class="tracker-date">0%</span>
+        </div>
+      </div>
+    </div>
+  </article>
+
+  <!-- REC 3 -->
+  <article class="rec-card" id="rec3">
+    <div class="rec-header">
+      <div class="rec-number">3</div>
+      <h2 class="rec-title">Build a community impact assessment into senior leadership decisions</h2>
+    </div>
+    <div class="rec-body">
+      <p>EPS should build a community impact assessment into senior leadership decisions — travel, partnerships, and public affiliations. This isn't about adding bureaucracy; it's about giving leadership the foresight to anticipate how decisions will land across Edmonton's diverse communities, and the confidence to communicate them well. The institutions that get this right don't react — they lead.</p>
+
+      <ul class="sub-items">
+        <li><span class="sub-icon"></span><span>Develop clear internal communications protocols for sensitive community issues — giving officers and leadership a confident, consistent voice at every level of the organization</span></li>
+        <li><span class="sub-icon"></span><span>Establish a community communications advisory that includes racialized, Indigenous, and faith community voices — giving EPS early insight before sensitive decisions are made public</span></li>
+      </ul>
+
+      <div class="cite-box">
+        <span class="cite-label">Established Practice — UK College of Policing & Kent Police</span>
+        <p>Community Impact Assessments (CIAs) are formal policy in the United Kingdom, embedded in the College of Policing's official professional practice framework. Forces use CIAs to evaluate how decisions, incidents, and operations affect specific communities before and during deployment — scoring tensions across three dimensions: what communities are experiencing, what evidence exists, and what potential factors could escalate impact. Kent Police requires CIA sign-off by an Inspector and monthly Senior Leadership Team review. The College of Policing notes that CIAs "assist in demonstrating overall transparency, legitimacy and proportionality" in policing decisions.</p>
+        <p style="margin-top:8px;">
+          <a href="https://www.college.police.uk/app/public-order-public-safety/developing-policing-plan/community-engagement-impact-assessments-and-communication" target="_blank">College of Policing — Community Impact Assessments ↗</a>&nbsp;&nbsp;
+          <a href="https://www.kent.police.uk/foi-ai/kent-police/Policy/operational-partnerships/community-impact-assessments-policy-o36a/" target="_blank">Kent Police CIA Policy ↗</a>
+        </p>
+      </div>
+    </div>
+    <div class="tracker">
+      <div class="tracker-inset">
+        <span class="tracker-title">Progress &amp; Response</span>
+<div class="tracker-header">
+          <div class="tracker-meta">
+            <span class="tracker-date">Originally asked: March 2026</span>
+            <span class="tracker-date">·</span>
+            <span class="tracker-date">EPS response: Pending</span>
+          </div>
+          <span class="tracker-status status-pending">Not Yet Actioned</span>
+        </div>
+        <div class="tracker-response">
+          <span class="tracker-response-label">Background</span>
+          <p>This recommendation emerged directly from Chief Driechel's February 2026 trip to Israel, which was organized through the Major Cities Chiefs Association and approved by the Edmonton Police Commission. The decision — made without community consultation — led to a significant erosion of trust with Muslim, Palestinian, and other racialized communities in Edmonton, and demonstrated the need for a more deliberate assessment process before senior leadership travel, partnerships, and training engagements.</p>
+        </div>
+        <p class="tracker-notes">A community impact assessment framework would give EPS leadership the tools to anticipate how decisions will land before they are made — preventing avoidable harm to community relationships and protecting the institution's credibility. This ask has not yet been formally received or responded to by EPS.</p>
+        <div class="progress-bar-wrap">
+          <span class="progress-label">Progress</span>
+          <div class="progress-track"><div class="progress-fill grey" style="width:0%"></div></div>
+          <span class="tracker-date">0%</span>
+        </div>
+      </div>
+    </div>
+  </article>
+
+  <!-- REC 4 -->
+  <article class="rec-card" id="rec4">
+    <div class="rec-header">
+      <div class="rec-number">4</div>
+      <h2 class="rec-title">Invest in community-integrated responses to hate crimes and vicarious trauma</h2>
+    </div>
+    <div class="rec-body">
+      <p>Hate crimes don't just affect their immediate victims — they send a shockwave through entire communities. EPS has an opportunity to lead a more comprehensive, community-integrated response that multiplies its capacity and deepens its relationships with the communities most affected.</p>
+
+      <p>Community organizations already hold deep trust with Muslim, Indigenous, Black, Jewish, and other racialized communities. A co-response model would bring those relationships into partnership with EPS — extending the service's reach and ensuring that affected communities feel supported, heard, and protected.</p>
+
+      <ul class="sub-items">
+        <li><span class="sub-icon"></span><span>Partner with community organizations to co-develop response protocols for hate incidents — drawing on trusted relationships EPS can build with</span></li>
+        <li><span class="sub-icon"></span><span>Support community organizations to provide vicarious trauma care after high-profile incidents, extending EPS's capacity for community recovery</span></li>
+        <li><span class="sub-icon"></span><span>Establish direct leadership outreach to affected communities after hate crimes — demonstrating that EPS stands with them</span></li>
+        <li><span class="sub-icon"></span><span>Engage the <strong>Canadian Race Relations Foundation (CRRF)</strong> — a development partner on this document — to help EPS communicate about hate incidents in ways that reinforce trust and demonstrate genuine care for affected communities</span></li>
+      </ul>
+
+      <div class="cite-box">
+        <span class="cite-label">Model — Toronto Community Crisis Service</span>
+        <p>The Toronto Community Crisis Service, developed in partnership with Black, Indigenous, and other communities, demonstrated that trauma-informed community co-response builds lasting trust and improves outcomes. In its first year, an Indigenous-specific crisis line received 459 calls. Toronto City Council voted to expand the service city-wide after a successful pilot.</p>
+        <p style="margin-top:8px;"><a href="https://cmhato.org/news/creating-a-space-for-safety-and-support/" target="_blank">CMHA Toronto — Creating a space for safety and support ↗</a></p>
+      </div>
+    </div>
+    <div class="tracker">
+      <div class="tracker-inset">
+        <span class="tracker-title">Progress &amp; Response</span>
+<div class="tracker-header">
+          <div class="tracker-meta">
+            <span class="tracker-date">Originally asked: Spring 2023</span>
+            <span class="tracker-date">·</span>
+            <span class="tracker-date">EPS response: December 2025</span>
+          </div>
+          <span class="tracker-status status-pending">Not Yet Actioned</span>
+        </div>
+        <div class="tracker-response">
+          <span class="tracker-response-label">EPS Response — December 2025</span>
+          <p>EPS noted that the Crime and Trauma-Informed Support Services unit (formerly Victim Services) works collaboratively with the Hate Crimes unit and Community Relations internally, and with the City of Edmonton and community partners externally, to support communities through crime and victimization.</p>
+        </div>
+        <p class="tracker-notes">As frontline organizations responding directly to hate crimes in Edmonton's communities, we have not experienced an integrated approach, proactive outreach, or meaningful coordination from EPS. The internal collaboration EPS describes has not translated into a community-facing co-response model. The rebranding of Victim Services is noted — the ask is for what comes next.</p>
+        <div class="progress-bar-wrap">
+          <span class="progress-label">Progress</span>
+          <div class="progress-track"><div class="progress-fill grey" style="width:5%"></div></div>
+          <span class="tracker-date">5%</span>
+        </div>
+      </div>
+    </div>
+  </article>
+
+  <!-- REC 5 -->
+  <article class="rec-card" id="rec5">
+    <div class="rec-header">
+      <div class="rec-number">5</div>
+      <h2 class="rec-title">Co-develop a new community-anchored early intervention program for youth</h2>
+    </div>
+    <div class="rec-body">
+      <p>EPS has real expertise, training capacity, and a genuine desire to connect with Edmonton's youth. The opportunity is to pair that with the deep community roots that organizations working alongside schools already have — creating a model that is more than the sum of its parts.</p>
+
+      <p>A co-developed, community-anchored early intervention program would build on what works, extend EPS's reach, and create new career pathways within the service.</p>
+
+      <ul class="sub-items">
+        <li><span class="sub-icon"></span><span>Establish a meaningful, relationship-first EPS presence in Edmonton schools — where officers are known and trusted before they're ever needed</span></li>
+        <li><span class="sub-icon"></span><span>Strengthen coordination between EPS, Edmonton Public Schools, and community agencies — so every referral lands in the right hands</span></li>
+        <li><span class="sub-icon"></span><span>Pair EPS training with deep social service integration — giving officers the tools and connections to respond to the full picture</span></li>
+        <li><span class="sub-icon"></span><span>Invest in high-intensity preventative interventions for youth — reducing future demand on the justice system</span></li>
+        <li><span class="sub-icon"></span><span>Create a new career stream within EPS for community-embedded youth officers — attracting talent and deepening the service's connection to the next generation</span></li>
+      </ul>
+    </div>
+    <div class="tracker">
+      <div class="tracker-inset">
+        <span class="tracker-title">Progress &amp; Response</span>
+<div class="tracker-header">
+          <div class="tracker-meta">
+            <span class="tracker-date">Originally asked: Spring 2023</span>
+            <span class="tracker-date">·</span>
+            <span class="tracker-date">EPS response: December 2025</span>
+          </div>
+          <span class="tracker-status status-pending">Not Yet Actioned</span>
+        </div>
+        <div class="tracker-response">
+          <span class="tracker-response-label">EPS Response — December 2025</span>
+          <p>EPS noted the launch of a Youth Advisory Council in 2026 and an ongoing evaluation of its Young People Strategy (2021–2024). Neither directly addresses the ask for a co-developed, community-anchored early intervention program.</p>
+        </div>
+        <p class="tracker-notes">The School Resource Officer program has returned to schools with some positive changes — and that is acknowledged. However, the underlying concerns that led to its original dismissal have not been resolved: a failure to adequately support equity-deserving communities, and the absence of a more cost-effective, community-anchored alternative. A Youth Advisory Council is a consultative structure, not an intervention program. The ask remains open.</p>
+        <div class="progress-bar-wrap">
+          <span class="progress-label">Progress</span>
+          <div class="progress-track"><div class="progress-fill grey" style="width:5%"></div></div>
+          <span class="tracker-date">5%</span>
+        </div>
+      </div>
+    </div>
+  </article>
+
+  <!-- REC 6 -->
+  <article class="rec-card" id="rec6">
+    <div class="rec-header">
+      <div class="rec-number">6</div>
+      <h2 class="rec-title">Work with a third party to review use of force and training practices</h2>
+    </div>
+    <div class="rec-body">
+      <p>A third-party review of use of force policies and training is one of the most powerful investments a police service can make in itself. Peel Regional Police did exactly this — and the results speak for themselves.</p>
+
+      <div class="cite-box">
+        <span class="cite-label">National Model — Peel Regional Police &amp; OHRC</span>
+        <p>In 2020, Peel Regional Police partnered with the Ontario Human Rights Commission to undertake a landmark review of use of force policies and training. The results were transformative: a 15.62% overall decrease in use of force incidents, de-escalation used in 97.3% of all use of force situations by 2023, and over 30,000 hours of human rights-focused training completed. The partnership is now a national model for what proactive, community-confident policing looks like.</p>
+        <p style="margin-top:8px;"><a href="https://www.peelpolice.ca/en/who-we-are/human-rights-project.aspx" target="_blank">Peel Regional Police Human Rights Project ↗</a>&nbsp;&nbsp;<a href="https://www.ohrc.on.ca/en/ontario-human-rights-commission%E2%80%99s-work-peel-regional-police-and-peel-police-services-board" target="_blank">OHRC — Work with Peel Regional Police ↗</a></p>
+      </div>
+
+      <p>An independent review is a sign of institutional confidence, not vulnerability. It gives EPS the credibility to stand behind its practices, the data to demonstrate its professionalism, and a clear path to the kind of community trust that makes policing more effective. The EPS officers who participated in developing these recommendations are among its strongest advocates.</p>
+    </div>
+    <div class="tracker">
+      <div class="tracker-inset">
+        <span class="tracker-title">Progress &amp; Response</span>
+<div class="tracker-header">
+          <div class="tracker-meta">
+            <span class="tracker-date">Originally asked: Spring 2023</span>
+            <span class="tracker-date">·</span>
+            <span class="tracker-date">EPS response: December 2025</span>
+          </div>
+          <span class="tracker-status status-pending">Not Yet Actioned</span>
+        </div>
+        <div class="tracker-response">
+          <span class="tracker-response-label">EPS Response — December 2025</span>
+          <p>EPS outlined its existing oversight framework — internal review of every use-of-force incident, with external oversight through the Edmonton Police Commission, ASIRT, and the Crown Prosecutor's Office. No commitment to an independent, proactive third-party review of use of force policies and training was made.</p>
+        </div>
+        <p class="tracker-notes">The situation has not improved — it has worsened. The fatal shooting of Mathios Arkangelo, a 28-year-old member of Edmonton's South Sudanese community, on June 29, 2024 — with his hands raised — underscores exactly why this recommendation was made. Security footage raised serious questions about whether de-escalation was attempted. His family launched a lawsuit alleging the force used was "unnecessary, unreasonable and without lawful justification." ASIRT's investigation continues. The existing oversight mechanisms EPS cited are reactive. This recommendation calls for something different: a proactive, independent review of the policies and training that govern how force is used — before the next incident occurs.</p>
+        <div class="progress-bar-wrap">
+          <span class="progress-label">Progress</span>
+          <div class="progress-track"><div class="progress-fill grey" style="width:0%"></div></div>
+          <span class="tracker-date">0%</span>
+        </div>
+      </div>
+    </div>
+  </article>
+
+
+</main>
+
+
+<div style="max-width:820px; margin:0 auto; padding:0 40px 60px;">
+<div class="eps-widget">
+
+  <!-- HEADER -->
+  <div class="w-head">
+    <div class="w-eyebrow">Community Engagement Record · 2020–2026</div>
+    <div class="w-title">Three Years of Knocking —<br><em>One Person's Effort to Engage EPS</em></div>
+  </div>
+
+  <!-- STATS -->
+  <div class="w-stats">
+    <div class="w-stat">
+      <span class="w-stat-n c-gold">76</span>
+      <span class="w-stat-label">Emails<br>sent</span>
+      <span class="w-stat-sub">to EPS staff</span>
+    </div>
+    <div class="w-stat">
+      <span class="w-stat-n c-green">30+</span>
+      <span class="w-stat-label">Meetings<br>&amp; events</span>
+      <span class="w-stat-sub">calendar-confirmed</span>
+    </div>
+    <div class="w-stat">
+      <span class="w-stat-n c-red">5</span>
+      <span class="w-stat-label">Cancellations /<br>non-responses</span>
+      <span class="w-stat-sub">since Jun 2023</span>
+    </div>
+    <div class="w-stat">
+      <span class="w-stat-n c-tan">100+</span>
+      <span class="w-stat-label">Estimated<br>hours</span>
+      <span class="w-stat-sub">meetings, prep, emails</span>
+    </div>
+    <div class="w-stat">
+      <span class="w-stat-n c-red">0/6</span>
+      <span class="w-stat-label">Recommendations<br>adopted</span>
+      <span class="w-stat-sub">as of Mar 2026</span>
+    </div>
+  </div>
+
+  <!-- MIDDLE: PYRAMID -->
+  <div class="w-middle">
+    <div class="w-pyramid">
+      <div class="pyramid-label">Who was reached</div>
+
+      <div class="p-tier t-chief">
+        <div class="p-tier-label">Chief of Police</div>
+        <div class="p-bar-wrap">
+          <div class="p-bar" style="width:0%" data-w="6%"></div>
+        </div>
+        <div class="p-count">2</div>
+      </div>
+
+      <div class="p-divider"></div>
+
+      <div class="p-tier t-epc">
+        <div class="p-tier-label">EPC Commission Chairs</div>
+        <div class="p-bar-wrap">
+          <div class="p-bar" style="width:0%" data-w="11%"></div>
+        </div>
+        <div class="p-count">3</div>
+      </div>
+
+      <div class="p-divider"></div>
+
+      <div class="p-tier" style="opacity:0.7;">
+        <div class="p-tier-label" style="color:rgba(250,250,242,0.5);">EPC Commissioners</div>
+        <div class="p-bar-wrap">
+          <div class="p-bar" style="width:0%; background:#4a9e72;" data-w="30%"></div>
+        </div>
+        <div class="p-count" style="color:rgba(109,184,144,0.7);">11</div>
+      </div>
+
+      <div class="p-divider"></div>
+
+      <div class="p-tier t-senior">
+        <div class="p-tier-label">Senior Staff</div>
+        <div class="p-bar-wrap">
+          <div class="p-bar" style="width:0%" data-w="20%"></div>
+        </div>
+        <div class="p-count">11</div>
+      </div>
+
+      <div class="p-divider"></div>
+
+      <div class="p-tier t-officer">
+        <div class="p-tier-label">Officers + Community Relations Staff</div>
+        <div class="p-bar-wrap">
+          <div class="p-bar" style="width:0%" data-w="56%"></div>
+        </div>
+        <div class="p-count">31</div>
+      </div>
+
+      <div style="margin-top:10px; font-size:10px; color:rgba(250,250,242,0.2); font-style:italic; font-family:'Alegreya',serif;">
+        58 unique EPS/EPC contacts
+      </div>
+    </div>
+  </div>
+
+</div>
+</div>
+
+<footer id="contributors">
+  <div style="max-width:820px; margin:0 auto; padding:60px 40px; text-align:left;">
+
+    <p style="font-size:11px; font-weight:700; letter-spacing:0.14em; text-transform:uppercase; color:rgba(255,255,255,0.35); margin-bottom:40px;">About the Organizations Behind This Document</p>
+
+    <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); gap:36px 48px; margin-bottom:56px;">
+
+      <div>
+        <p style="font-size:11px; font-weight:700; letter-spacing:0.12em; text-transform:uppercase; color:var(--brown); margin-bottom:10px;">Lead Developer</p>
+        <p style="font-family:'Alegreya',serif; font-size:18px; font-weight:700; color:rgba(255,255,255,0.9); margin-bottom:10px;">Africa Centre</p>
+        <p style="font-size:14px; color:rgba(255,255,255,0.5); line-height:1.7;">The Africa Centre is an Edmonton-based organization dedicated to advancing the inclusion, belonging, and full civic participation of African and Caribbean communities across Alberta. Through policy advocacy, cultural programming, settlement services, and anti-racism work, the Centre has been a consistent voice for equity in Edmonton's public institutions — including its police service. The Africa Centre brings to this document both lived experience of racialized communities navigating law enforcement, and a sustained track record of constructive engagement with the City.</p>
+      </div>
+
+      <div>
+        <p style="font-size:11px; font-weight:700; letter-spacing:0.12em; text-transform:uppercase; color:var(--brown); margin-bottom:10px;">Lead Developer</p>
+        <p style="font-family:'Alegreya',serif; font-size:18px; font-weight:700; color:rgba(255,255,255,0.9); margin-bottom:10px;">Bent Arrow Traditional Healing Society</p>
+        <p style="font-size:14px; color:rgba(255,255,255,0.5); line-height:1.7;">Bent Arrow Traditional Healing Society is a Cree-founded, Indigenous-governed organization in Edmonton that has served urban Indigenous peoples since 1991. Rooted in traditional healing practices and the principle of self-determination, Bent Arrow delivers family support, youth programming, cultural reconnection, and community-based healing services. Their involvement in this document reflects decades of frontline experience navigating the intersection of Indigenous communities and policing — and a deep investment in a relationship with EPS that is grounded in respect, not performance.</p>
+      </div>
+
+      <div>
+        <p style="font-size:11px; font-weight:700; letter-spacing:0.12em; text-transform:uppercase; color:var(--brown); margin-bottom:10px;">Lead Developer</p>
+        <p style="font-family:'Alegreya',serif; font-size:18px; font-weight:700; color:rgba(255,255,255,0.9); margin-bottom:10px;">IslamicFamily</p>
+        <p style="font-size:14px; color:rgba(255,255,255,0.5); line-height:1.7;">The Islamic Family &amp; Social Services Association, has been Edmonton's leading Muslim social service organization since 1991. IslamicFamily delivers culturally appropriate mental health, family counselling, newcomer settlement, food security, and community development programs to tens of thousands of Albertans annually. As an organization with deep roots in Edmonton's Muslim community and long experience working alongside the justice system, IslamicFamily brings both programmatic expertise and a genuine commitment to stronger, more equitable policing.</p>
+      </div>
+
+    </div>
+
+    <div style="border-top:1px solid rgba(255,255,255,0.1); padding-top:40px; margin-bottom:0;">
+      <p style="font-size:11px; font-weight:700; letter-spacing:0.14em; text-transform:uppercase; color:rgba(255,255,255,0.35); margin-bottom:32px;">Development Partners &amp; Advisors</p>
+      <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:28px 48px;">
+
+        <div>
+          <p style="font-size:11px; font-weight:700; letter-spacing:0.12em; text-transform:uppercase; color:rgba(255,255,255,0.3); margin-bottom:8px;">National Advisory</p>
+          <p style="font-family:'Alegreya',serif; font-size:16px; font-weight:700; color:rgba(255,255,255,0.8); margin-bottom:8px;">Canadian Race Relations Foundation</p>
+          <p style="font-size:13px; color:rgba(255,255,255,0.45); line-height:1.65;">The CRRF is a federal Crown corporation and Canada's preeminent institution for advancing race relations and anti-racism policy. Established by the Government of Canada, the CRRF conducts research, develops national frameworks, and supports communities and institutions — including police services — in addressing discrimination and building intercultural understanding. Their involvement in this document lends national policy depth to the communications and governance recommendations.</p>
+        </div>
+
+        <div>
+          <p style="font-size:11px; font-weight:700; letter-spacing:0.12em; text-transform:uppercase; color:rgba(255,255,255,0.3); margin-bottom:8px;">Policing Excellence</p>
+          <p style="font-family:'Alegreya',serif; font-size:16px; font-weight:700; color:rgba(255,255,255,0.8); margin-bottom:8px;">Coalition for Canadian Police Excellence</p>
+          <p style="font-size:13px; color:rgba(255,255,255,0.45); line-height:1.65;">The Coalition for Canadian Police Excellence is a national network of policing professionals and researchers committed to advancing evidence-based, community-centred practice across Canadian police services. Their contribution to this process grounded the recommendations in what is operationally achievable — drawing on peer police service models, national data, and best practices from services that have successfully implemented community-integrated policing reforms.</p>
+        </div>
+
+        <div>
+          <p style="font-size:11px; font-weight:700; letter-spacing:0.12em; text-transform:uppercase; color:rgba(255,255,255,0.3); margin-bottom:8px;">Expert Advisor</p>
+          <p style="font-family:'Alegreya',serif; font-size:16px; font-weight:700; color:rgba(255,255,255,0.8); margin-bottom:8px;">Chief Roger Chaffin (Ret.)</p>
+          <p style="font-size:13px; color:rgba(255,255,255,0.45); line-height:1.65;">Roger Chaffin served as Chief of the Calgary Police Service, where he led significant organizational change including equity and inclusion reform, community engagement initiatives, and a substantive overhaul of use of force training. His experience operationalizing community-integrated policing from within a major urban service gave this document's recommendations their practical grounding — and his willingness to advise signals that these asks are not exceptional, but achievable.</p>
+        </div>
+
+        <div>
+          <p style="font-size:11px; font-weight:700; letter-spacing:0.12em; text-transform:uppercase; color:rgba(255,255,255,0.3); margin-bottom:8px;">Contributing Officers</p>
+          <p style="font-family:'Alegreya',serif; font-size:16px; font-weight:700; color:rgba(255,255,255,0.8); margin-bottom:8px;">EPS Officers</p>
+          <p style="font-size:13px; color:rgba(255,255,255,0.45); line-height:1.65;">A number of serving Edmonton Police Service officers participated in the consultations that shaped these recommendations. Their contributions reflect a genuine investment in a stronger service and a belief that community trust is not a threat to policing — it is the foundation on which effective policing rests. Their voices are embedded throughout this document.</p>
+        </div>
+
+      </div>
+    </div>
+
+    <div style="border-top:1px solid rgba(255,255,255,0.08); margin-top:48px; padding-top:24px; text-align:center;">
+      <p style="font-size:12px; color:rgba(255,255,255,0.25); line-height:1.7;">A collaborative document by the Africa Centre, Bent Arrow Traditional Healing Society &amp; IslamicFamily · Edmonton, Alberta</p>
+    </div>
+
+  </div>
+</footer>
+
+<script>
+(function(){
+  // Scroll progress bar
+  const bar = document.getElementById('scroll-progress');
+  if (bar) {
+    window.addEventListener('scroll', function() {
+      const scrolled = window.scrollY;
+      const total = document.documentElement.scrollHeight - window.innerHeight;
+      bar.style.width = (scrolled / total * 100).toFixed(1) + '%';
+    }, { passive: true });
+  }
+
+  // Mobile chevron fade
+  const chevron = document.getElementById('scroll-chevron');
+  if (chevron) {
+    window.addEventListener('scroll', function() {
+      chevron.style.opacity = window.scrollY > 60 ? '0' : '1';
+    }, { passive: true });
+  }
+
+  // Pyramid bars
+  setTimeout(() => {
+    document.querySelectorAll('.p-bar').forEach(bar => {
+      bar.style.width = bar.dataset.w;
+    });
+  }, 600);
+
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((e) => {
+      if (e.isIntersecting) {
+        setTimeout(() => e.target.classList.add('visible'), e.target.dataset.delay || 0);
+        observer.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.rec-card').forEach((el) => { el.classList.add('reveal'); observer.observe(el); });
+  document.querySelectorAll('.cite-box').forEach((el) => { el.classList.add('reveal-fade'); el.dataset.delay = 120; observer.observe(el); });
+  document.querySelectorAll('footer > div > div > div').forEach((el, i) => { el.classList.add('reveal'); el.dataset.delay = i * 80; observer.observe(el); });
+})();
+</script>
+</body>
+</html>
