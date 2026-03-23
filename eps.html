@@ -400,7 +400,7 @@
   .status-acknowledged { color: #6fc4f5; border-color: rgba(100,180,240,0.4); background: rgba(52,128,168,0.25); }
   .status-inprogress   { color: #f7c96a; border-color: rgba(247,175,41,0.4); background: rgba(247,175,41,0.2); }
   .status-pending      { color: #fff; border-color: #BB2D37; background: #BB2D37; font-weight: 700; animation: status-pulse 2.5s ease-in-out infinite; }
-  .status-complete     { color: #7dd4aa; border-color: rgba(39,93,67,0.6); background: rgba(39,93,67,0.3); }
+  .status-complete     { color: #7dd4aa; border-color: #275D43; background: rgba(39,93,67,0.3); }
   @keyframes status-pulse {
     0%, 100% { opacity: 1; box-shadow: 0 0 0 0 rgba(187,45,55,0.4); }
     50%       { opacity: 0.85; box-shadow: 0 0 0 5px rgba(187,45,55,0); }
@@ -529,10 +529,10 @@
     --wblk: #353535;
     --wred: #BB2D37;
     --wtan: #DCD9B8;
-    --wink: #111a14;
+    --wink: #ffffff;
     font-family: 'Alegreya Sans', sans-serif;
     background: var(--wink);
-    color: var(--wcr);
+    color: var(--wblk);
     border-radius: 14px;
     overflow: hidden;
     border: 1px solid rgba(39,93,67,0.2);
@@ -540,7 +540,7 @@
   }
   .w-head {
     padding: 26px 30px 22px;
-    background: var(--wg);
+    background: var(--wbr);
     position: relative;
     overflow: hidden;
   }
@@ -557,7 +557,7 @@
     font-size: 9px;
     letter-spacing: 3px;
     text-transform: uppercase;
-    color: rgba(250,250,242,0.5);
+    color: #353535;
     font-weight: 700;
     margin-bottom: 8px;
   }
@@ -565,18 +565,18 @@
     font-family: 'Alegreya', serif;
     font-size: 22px;
     font-weight: 700;
-    color: var(--wcr);
+    color: #ffffff;
     line-height: 1.15;
   }
-  .w-title em { color: var(--wbr); font-style: normal; }
+  .w-title em { color: #ffffff; font-style: normal; }
   .w-stats {
     display: grid;
     grid-template-columns: repeat(5, 1fr);
-    border-bottom: 1px solid rgba(250,250,242,0.06);
+    border-bottom: 1px solid rgba(53,53,53,0.1);
   }
   .w-stat {
     padding: 20px 14px 16px;
-    border-right: 1px solid rgba(250,250,242,0.06);
+    border-right: 1px solid rgba(53,53,53,0.1);
     animation: wFadeUp 0.5s ease both;
     opacity: 0;
   }
@@ -594,21 +594,21 @@
     display: block;
     margin-bottom: 6px;
   }
-  .c-gold  { color: var(--wbr); }
-  .c-green { color: #6db890; }
-  .c-red   { color: #e07070; }
-  .c-tan   { color: var(--wtan); }
+  .c-gold  { color: #275D43; }
+  .c-green { color: #275D43; }
+  .c-red   { color: #BB2D37; }
+  .c-tan   { color: #353535; }
   .w-stat-label {
     font-size: 9.5px;
     letter-spacing: 1.5px;
     text-transform: uppercase;
-    color: rgba(250,250,242,0.4);
+    color: #353535;
     line-height: 1.4;
     display: block;
   }
   .w-stat-sub {
     font-size: 10px;
-    color: rgba(250,250,242,0.2);
+    color: #353535;
     font-style: italic;
     font-family: 'Alegreya', serif;
     margin-top: 3px;
@@ -616,7 +616,7 @@
   }
   .w-middle {
     display: block;
-    border-bottom: 1px solid rgba(250,250,242,0.06);
+    border-bottom: 1px solid rgba(53,53,53,0.1);
     animation: wFadeUp 0.5s 0.35s ease both;
     opacity: 0;
   }
@@ -630,7 +630,7 @@
     font-size: 9px;
     letter-spacing: 2px;
     text-transform: uppercase;
-    color: rgba(250,250,242,0.25);
+    color: #353535;
     font-weight: 700;
     margin-bottom: 12px;
   }
@@ -643,20 +643,20 @@
     margin-bottom: 3px;
     cursor: default;
   }
-  .p-tier:hover { background: rgba(250,250,242,0.04); }
+  .p-tier:hover { background: rgba(53,53,53,0.08); }
   .p-bar-wrap { flex: 1; display: flex; align-items: center; gap: 8px; }
   .p-bar { height: 6px; border-radius: 3px; flex-shrink: 0; transition: width 1s cubic-bezier(0.16,1,0.3,1); }
-  .p-tier-label { font-size: 11.5px; color: rgba(250,250,242,0.65); white-space: nowrap; min-width: 100px; }
+  .p-tier-label { font-size: 11.5px; color: #353535; white-space: nowrap; min-width: 100px; }
   .p-count { font-family: 'Alegreya', serif; font-size: 15px; font-weight: 700; min-width: 24px; text-align: right; }
-  .t-chief  .p-bar { background: var(--wbr); }
-  .t-epc    .p-bar { background: #6db890; }
-  .t-senior .p-bar { background: rgba(220,217,184,0.8); }
-  .t-officer .p-bar { background: rgba(250,250,242,0.25); }
-  .t-chief  .p-count { color: var(--wbr); }
-  .t-epc    .p-count { color: #6db890; }
-  .t-senior .p-count { color: var(--wtan); }
-  .t-officer .p-count { color: rgba(250,250,242,0.45); }
-  .p-divider { height: 1px; background: rgba(250,250,242,0.04); margin: 1px 0 3px; }
+  .t-chief  .p-bar { background: #275D43; }
+  .t-epc    .p-bar { background: #275D43; }
+  .t-senior .p-bar { background: rgba(39,93,67,0.25); }
+  .t-officer .p-bar { background: rgba(53,53,53,0.15); }
+  .t-chief  .p-count { color: #275D43; }
+  .t-epc    .p-count { color: #275D43; }
+  .t-senior .p-count { color: #275D43; }
+  .t-officer .p-count { color: #353535; }
+  .p-divider { height: 1px; background: rgba(53,53,53,0.08); margin: 1px 0 3px; }
   @keyframes wFadeUp {
     from { opacity: 0; transform: translateY(10px); }
     to   { opacity: 1; transform: translateY(0); }
@@ -1039,61 +1039,33 @@
     </div>
   </div>
 
-  <!-- MIDDLE: PYRAMID -->
+  <!-- MIDDLE: WHO WAS REACHED -->
   <div class="w-middle">
-    <div class="w-pyramid">
-      <div class="pyramid-label">Who was reached</div>
-
-      <div class="p-tier t-chief">
-        <div class="p-tier-label">Chief of Police</div>
-        <div class="p-bar-wrap">
-          <div class="p-bar" style="width:0%" data-w="6%"></div>
-        </div>
-        <div class="p-count">2</div>
+    <div style="padding: 20px 24px;">
+      <div style="font-size: 9px; letter-spacing: 2px; text-transform: uppercase; color: rgba(53,53,53,0.4); font-weight: 700; margin-bottom: 12px;">
+        Who was reached — 58 unique contacts
       </div>
-
-      <div class="p-divider"></div>
-
-      <div class="p-tier t-epc">
-        <div class="p-tier-label">EPC Commission Chairs</div>
-        <div class="p-bar-wrap">
-          <div class="p-bar" style="width:0%" data-w="11%"></div>
+      <div style="display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 8px;">
+        <div style="padding: 12px 14px; border-left: 3px solid #E09964; background: rgba(39,93,67,0.05);">
+          <div style="font-family: 'Alegreya', serif; font-size: 28px; font-weight: 700; line-height: 1; margin-bottom: 5px; color: #E09964;">2</div>
+          <div style="font-size: 11px; color: #353535; line-height: 1.35;">Chiefs of Police</div>
         </div>
-        <div class="p-count">3</div>
-      </div>
-
-      <div class="p-divider"></div>
-
-      <div class="p-tier" style="opacity:0.7;">
-        <div class="p-tier-label" style="color:rgba(250,250,242,0.5);">EPC Commissioners</div>
-        <div class="p-bar-wrap">
-          <div class="p-bar" style="width:0%; background:#4a9e72;" data-w="30%"></div>
+        <div style="padding: 12px 14px; border-left: 3px solid #275D43; background: rgba(39,93,67,0.05);">
+          <div style="font-family: 'Alegreya', serif; font-size: 28px; font-weight: 700; line-height: 1; margin-bottom: 5px; color: #275D43;">3</div>
+          <div style="font-size: 11px; color: #353535; line-height: 1.35;">Commission Chairs</div>
         </div>
-        <div class="p-count" style="color:rgba(109,184,144,0.7);">11</div>
-      </div>
-
-      <div class="p-divider"></div>
-
-      <div class="p-tier t-senior">
-        <div class="p-tier-label">Senior Staff</div>
-        <div class="p-bar-wrap">
-          <div class="p-bar" style="width:0%" data-w="20%"></div>
+        <div style="padding: 12px 14px; border-left: 3px solid #275D43; background: rgba(39,93,67,0.05);">
+          <div style="font-family: 'Alegreya', serif; font-size: 28px; font-weight: 700; line-height: 1; margin-bottom: 5px; color: #275D43;">11</div>
+          <div style="font-size: 11px; color: #353535; line-height: 1.35;">EPC Commissioners</div>
         </div>
-        <div class="p-count">11</div>
-      </div>
-
-      <div class="p-divider"></div>
-
-      <div class="p-tier t-officer">
-        <div class="p-tier-label">Officers + Community Relations Staff</div>
-        <div class="p-bar-wrap">
-          <div class="p-bar" style="width:0%" data-w="56%"></div>
+        <div style="padding: 12px 14px; border-left: 3px solid rgba(53,53,53,0.2); background: rgba(39,93,67,0.05);">
+          <div style="font-family: 'Alegreya', serif; font-size: 28px; font-weight: 700; line-height: 1; margin-bottom: 5px; color: #353535;">11</div>
+          <div style="font-size: 11px; color: #353535; line-height: 1.35;">Senior Staff</div>
         </div>
-        <div class="p-count">31</div>
-      </div>
-
-      <div style="margin-top:10px; font-size:10px; color:rgba(250,250,242,0.2); font-style:italic; font-family:'Alegreya',serif;">
-        58 unique EPS/EPC contacts
+        <div style="padding: 12px 14px; border-left: 3px solid rgba(53,53,53,0.15); background: rgba(39,93,67,0.05); grid-column: span 4;">
+          <div style="font-family: 'Alegreya', serif; font-size: 28px; font-weight: 700; line-height: 1; margin-bottom: 5px; color: #353535;">31</div>
+          <div style="font-size: 11px; color: #353535; line-height: 1.35;">Officers + Community Relations Staff</div>
+        </div>
       </div>
     </div>
   </div>
