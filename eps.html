@@ -465,6 +465,14 @@
   .progress-fill.amber { background: var(--sun); }
   .progress-fill.grey  { background: rgba(255,255,255,0.2); }
 
+  @keyframes btn-pulse {
+    0%   { box-shadow: 0 4px 20px rgba(39,93,67,0.4); transform: scale(1); }
+    25%  { box-shadow: 0 0 0 12px rgba(39,93,67,0.15); transform: scale(1.18); }
+    50%  { box-shadow: 0 0 0 20px rgba(39,93,67,0); transform: scale(1); }
+    100% { box-shadow: 0 4px 20px rgba(39,93,67,0.4); transform: scale(1); }
+  }
+  .btn-pulse-anim { animation: btn-pulse 0.65s ease-out 3; }
+
   /* ── SCROLL PROGRESS ── */
   #scroll-progress {
     position: fixed;
@@ -1012,24 +1020,24 @@
   </div>
 
   <!-- STATS -->
-  <div class="w-stats">
+  <div class="w-stats" id="widget-stats">
     <div class="w-stat">
-      <span class="w-stat-n c-gold">76</span>
+      <span class="w-stat-n c-gold" data-count="76" data-suffix="">0</span>
       <span class="w-stat-label">Emails<br>sent</span>
       <span class="w-stat-sub">to EPS staff</span>
     </div>
     <div class="w-stat">
-      <span class="w-stat-n c-green">30+</span>
+      <span class="w-stat-n c-green" data-count="30" data-suffix="+">0</span>
       <span class="w-stat-label">Meetings<br>&amp; events</span>
       <span class="w-stat-sub">calendar-confirmed</span>
     </div>
     <div class="w-stat">
-      <span class="w-stat-n c-red">5</span>
+      <span class="w-stat-n c-red" data-count="5" data-suffix="">0</span>
       <span class="w-stat-label">Cancellations /<br>non-responses</span>
       <span class="w-stat-sub">since Jun 2023</span>
     </div>
     <div class="w-stat">
-      <span class="w-stat-n c-tan">100+</span>
+      <span class="w-stat-n c-tan" data-count="100" data-suffix="+">0</span>
       <span class="w-stat-label">Estimated<br>hours</span>
       <span class="w-stat-sub">meetings, prep, emails</span>
     </div>
@@ -1049,25 +1057,25 @@
       <div style="font-size: 9px; letter-spacing: 2px; text-transform: uppercase; color: rgba(53,53,53,0.4); font-weight: 700; margin-bottom: 12px;">
         Who was reached — 58 unique contacts
       </div>
-      <div style="display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 8px;">
+      <div style="display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 8px;" id="contact-grid">
         <div style="padding: 12px 14px; border-left: 3px solid #E09964; background: rgba(39,93,67,0.05);">
-          <div style="font-family: 'Alegreya', serif; font-size: 28px; font-weight: 700; line-height: 1; margin-bottom: 5px; color: #E09964;">2</div>
+          <div style="font-family: 'Alegreya', serif; font-size: 28px; font-weight: 700; line-height: 1; margin-bottom: 5px; color: #E09964;" data-count="2" data-suffix="">0</div>
           <div style="font-size: 11px; color: #353535; line-height: 1.35;">Chiefs of Police</div>
         </div>
         <div style="padding: 12px 14px; border-left: 3px solid #275D43; background: rgba(39,93,67,0.05);">
-          <div style="font-family: 'Alegreya', serif; font-size: 28px; font-weight: 700; line-height: 1; margin-bottom: 5px; color: #275D43;">3</div>
+          <div style="font-family: 'Alegreya', serif; font-size: 28px; font-weight: 700; line-height: 1; margin-bottom: 5px; color: #275D43;" data-count="3" data-suffix="">0</div>
           <div style="font-size: 11px; color: #353535; line-height: 1.35;">Commission Chairs</div>
         </div>
         <div style="padding: 12px 14px; border-left: 3px solid #275D43; background: rgba(39,93,67,0.05);">
-          <div style="font-family: 'Alegreya', serif; font-size: 28px; font-weight: 700; line-height: 1; margin-bottom: 5px; color: #275D43;">11</div>
+          <div style="font-family: 'Alegreya', serif; font-size: 28px; font-weight: 700; line-height: 1; margin-bottom: 5px; color: #275D43;" data-count="11" data-suffix="">0</div>
           <div style="font-size: 11px; color: #353535; line-height: 1.35;">EPC Commissioners</div>
         </div>
         <div style="padding: 12px 14px; border-left: 3px solid rgba(53,53,53,0.2); background: rgba(39,93,67,0.05);">
-          <div style="font-family: 'Alegreya', serif; font-size: 28px; font-weight: 700; line-height: 1; margin-bottom: 5px; color: #353535;">11</div>
+          <div style="font-family: 'Alegreya', serif; font-size: 28px; font-weight: 700; line-height: 1; margin-bottom: 5px; color: #353535;" data-count="11" data-suffix="">0</div>
           <div style="font-size: 11px; color: #353535; line-height: 1.35;">Senior Staff</div>
         </div>
         <div style="padding: 12px 14px; border-left: 3px solid rgba(53,53,53,0.15); background: rgba(39,93,67,0.05); grid-column: span 4;">
-          <div style="font-family: 'Alegreya', serif; font-size: 28px; font-weight: 700; line-height: 1; margin-bottom: 5px; color: #353535;">31</div>
+          <div style="font-family: 'Alegreya', serif; font-size: 28px; font-weight: 700; line-height: 1; margin-bottom: 5px; color: #353535;" data-count="31" data-suffix="">0</div>
           <div style="font-size: 11px; color: #353535; line-height: 1.35;">Officers + Community Relations Staff</div>
         </div>
       </div>
@@ -1144,6 +1152,40 @@
 
 <script>
 (function(){
+  // Pulse button when user reaches bottom
+  (function() {
+    const btn = document.getElementById('tally-btn');
+    if (!btn) return;
+    let pulsed = false;
+
+    function doPulse(count) {
+      if (count <= 0) return;
+      btn.style.transform = 'scale(1.22)';
+      btn.style.boxShadow = '0 0 0 12px rgba(39,93,67,0.18), 0 4px 20px rgba(39,93,67,0.4)';
+      setTimeout(function() {
+        btn.style.transform = 'scale(1)';
+        btn.style.boxShadow = '0 4px 20px rgba(39,93,67,0.4)';
+        setTimeout(function() { doPulse(count - 1); }, 280);
+      }, 260);
+    }
+
+    function checkBottom() {
+      if (pulsed) return;
+      const scrollTop = window.scrollY || document.documentElement.scrollTop || document.body.scrollTop || 0;
+      const viewH = window.innerHeight || document.documentElement.clientHeight;
+      const pageH = document.documentElement.scrollHeight;
+      if (scrollTop + viewH >= pageH - 300) {
+        pulsed = true;
+        btn.style.transition = 'transform 0.2s ease, box-shadow 0.2s ease';
+        doPulse(3);
+      }
+    }
+
+    window.addEventListener('scroll', checkBottom, { passive: true });
+    document.addEventListener('scroll', checkBottom, { passive: true });
+    setTimeout(checkBottom, 800);
+  })();
+
   // Scroll progress bar
   const bar = document.getElementById('scroll-progress');
   if (bar) {
@@ -1162,7 +1204,39 @@
     }, { passive: true });
   }
 
-  // Pyramid bars
+  // Count-up animation
+  (function() {
+    function countUp(el) {
+      const target = parseInt(el.dataset.count);
+      const suffix = el.dataset.suffix || '';
+      const duration = 1200;
+      const start = performance.now();
+      function tick(now) {
+        const elapsed = now - start;
+        const progress = Math.min(elapsed / duration, 1);
+        const eased = 1 - Math.pow(1 - progress, 3);
+        el.textContent = Math.round(eased * target) + (progress === 1 ? suffix : '');
+        if (progress < 1) requestAnimationFrame(tick);
+      }
+      requestAnimationFrame(tick);
+    }
+    function watchSection(id, delay) {
+      const el = document.getElementById(id);
+      if (!el) return;
+      let fired = false;
+      new IntersectionObserver((entries) => {
+        entries.forEach(e => {
+          if (e.isIntersecting && !fired) {
+            fired = true;
+            el.querySelectorAll('[data-count]').forEach((n, i) =>
+              setTimeout(() => countUp(n), delay + i * 100));
+          }
+        });
+      }, { threshold: 0.4 }).observe(el);
+    }
+    watchSection('widget-stats', 2500);
+    watchSection('contact-grid', 2500);
+  })();
   setTimeout(() => {
     document.querySelectorAll('.p-bar').forEach(bar => {
       bar.style.width = bar.dataset.w;
@@ -1219,7 +1293,7 @@
     entries.forEach(e => {
       if (e.isIntersecting && !started) {
         started = true;
-        setTimeout(runStep, 400);
+        setTimeout(runStep, 2500);
         observer.disconnect();
       }
     });
@@ -1241,18 +1315,18 @@
     width: 56px;
     height: 56px;
     border-radius: 50%;
-    background: #E09964;
+    background: #275D43;
     color: white;
     border: none;
     font-size: 24px;
     cursor: pointer;
-    box-shadow: 0 4px 20px rgba(224,153,100,0.4);
+    box-shadow: 0 4px 20px rgba(39,93,67,0.4);
     display: flex;
     align-items: center;
     justify-content: center;
     transition: transform 0.2s, box-shadow 0.2s;
   "
-  onmouseover="this.style.transform='translateY(-2px)';this.style.boxShadow='0 8px 28px rgba(224,153,100,0.5)'"
+  onmouseover="this.style.transform='translateY(-2px)';this.style.boxShadow='0 8px 28px rgba(39,93,67,0.5)'"
   onmouseout="this.style.transform='translateY(0)';this.style.boxShadow='0 4px 20px rgba(39,93,67,0.4)'"
   onclick="if(window.Tally){Tally.openPopup('jaLy6a',{emoji:{text:'✍🏽',animation:'wave'}})}else{window.open('https://tally.so/r/jaLy6a','_blank')}"
   aria-label="Sign the petition"
