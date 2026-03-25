@@ -667,6 +667,7 @@
     .w-stat-n { font-size: 30px; }
   }
 </style>
+<script async src="https://tally.so/widgets/embed.js"></script>
 </head>
 <body>
 
@@ -1227,5 +1228,35 @@
   observer.observe(target);
 })();
 </script>
+<button
+  id="tally-btn"
+  data-tally-open="jaLy6a"
+  data-tally-emoji-text="✍🏽"
+  data-tally-emoji-animation="wave"
+  style="
+    position: fixed;
+    bottom: 28px;
+    right: 28px;
+    z-index: 999;
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    background: #E09964;
+    color: white;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+    box-shadow: 0 4px 20px rgba(224,153,100,0.4);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.2s, box-shadow 0.2s;
+  "
+  onmouseover="this.style.transform='translateY(-2px)';this.style.boxShadow='0 8px 28px rgba(224,153,100,0.5)'"
+  onmouseout="this.style.transform='translateY(0)';this.style.boxShadow='0 4px 20px rgba(39,93,67,0.4)'"
+  onclick="if(window.Tally){Tally.openPopup('jaLy6a',{emoji:{text:'✍🏽',animation:'wave'}})}else{window.open('https://tally.so/r/jaLy6a','_blank')}"
+  aria-label="Sign the petition"
+>✍🏽</button>
+
 </body>
 </html>
