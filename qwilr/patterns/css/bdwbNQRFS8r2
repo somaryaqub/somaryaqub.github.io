@@ -1,0 +1,116 @@
+/*
+  To clarify, the section-text-background is the actual background that the text will be displayed against. It'll be the same as section-color unless it is transparent then it defers to the actual block background
+*/
+/*
+  WCAG AA compliance thresholds for contrast ratios.
+*/
+/*
+  Compare luma values of two colors to get contrast.
+*/
+/*
+  Makes sure that foreground-color and background-color are contrasting, otherwise return a dark or light color compared to the background-color.
+  Goldilocks story: https://www.youtube.com/watch?v=iR2M0QuLPZs
+  @background-color: The background color of the element.
+  @foreground-color: The preferred foreground color.
+  @fade: Fade the resulting color up to the given opacity while remaining accessible.
+  @wcagAaThreshold: The required contrast threshold to pass WCAG AA colour contrast. See https://developer.mozilla.org/en-US/docs/Web/Accessibility/Understanding_WCAG/Perceivable/Color_contrast
+
+  Note: do not use this function directly; prefer goldilocks-text-color or goldilocks-ui-color depending
+  on your foreground element use case.
+*/
+/*
+  Makes sure the foreground text color is correctly contrasting against background color, otherwise return
+  a dark or light color compared to the background.
+  @background-color: The background color of the element.
+  @foreground-color: The preferred foreground color.
+  @fade: Optional. Fade the resulting color up to the given opacity while remaining accessible.
+*/
+/*
+  Makes sure the foreground UI color is correctly contrasting against background color, otherwise return
+  a dark or light color compared to the background.
+  @background-color: The background color of the element.
+  @foreground-color: The preferred foreground color.
+  @fade: Optional. Fade the resulting color up to the given opacity while remaining accessible.
+*/
+/*
+  Fades a foreground color, ensuring it remains accessible against a background color. The fade
+  amount will be checked for compliance and then adjusted incrementally until accessible.
+  @background-color: The background color to ensure accessibility against.
+  @foreground-color: The color to fade.
+  @amount: The maximum fade value.
+*/
+/*
+  This is a util to tweak the signature slot colour based on the block's background colour and lighten
+  or darken slightly based on whether the background is light or dark. As it is not a true-goldilocks, we
+  cannot use the `.goldilocks-ui-color` util as we never want white or black to be an option.
+*/
+.project-block.project-block--id-5ece0365 .columns a:not(.link-styler):not(.kl-link),
+.project-block.project-block--id-5ece0365 .quote-header a:not(.link-styler):not(.kl-link),
+.project-block.project-block--id-5ece0365 .video-header a:not(.link-styler):not(.kl-link),
+.project-block.project-block--id-5ece0365 .content a:not(.link-styler):not(.kl-link),
+.project-block.project-block--id-5ece0365 .content-wrapper a:not(.link-styler):not(.kl-link) {
+  color: #ffffff;
+  border-bottom-color: #ffffff;
+  border-bottom-width: 1px;
+}
+.project-block.project-block--id-5ece0365 .columns a:not(.link-styler):not(.kl-link):hover,
+.project-block.project-block--id-5ece0365 .quote-header a:not(.link-styler):not(.kl-link):hover,
+.project-block.project-block--id-5ece0365 .video-header a:not(.link-styler):not(.kl-link):hover,
+.project-block.project-block--id-5ece0365 .content a:not(.link-styler):not(.kl-link):hover,
+.project-block.project-block--id-5ece0365 .content-wrapper a:not(.link-styler):not(.kl-link):hover {
+  border-bottom-width: 3px;
+}
+@media screen {
+  .project-block.project-block--id-5ece0365 .columns .project-block__block-element,
+  .project-block.project-block--id-5ece0365.project-block--viewed .columns .project-block__block-element,
+  .project-block.project-block--id-5ece0365 .quote-header .project-block__block-element,
+  .project-block.project-block--id-5ece0365.project-block--viewed .quote-header .project-block__block-element,
+  .project-block.project-block--id-5ece0365 .video-header .project-block__block-element,
+  .project-block.project-block--id-5ece0365.project-block--viewed .video-header .project-block__block-element,
+  .project-block.project-block--id-5ece0365 .content .project-block__block-element,
+  .project-block.project-block--id-5ece0365.project-block--viewed .content .project-block__block-element,
+  .project-block.project-block--id-5ece0365 .content-wrapper .project-block__block-element,
+  .project-block.project-block--id-5ece0365.project-block--viewed .content-wrapper .project-block__block-element {
+    -webkit-animation-name: none;
+    -moz-animation-name: none;
+    -o-animation-name: none;
+    animation-name: none;
+  }
+  .project-block.project-block--id-5ece0365 .project-block__widget-element,
+  .project-block.project-block--id-5ece0365.project-block--viewed .project-block__widget-element {
+    -webkit-animation-name: none;
+    -moz-animation-name: none;
+    -o-animation-name: none;
+    animation-name: none;
+  }
+}
+.project-block.project-block--id-5ece0365 .foldable-label .label-container {
+  border: 1px solid rgba(71, 83, 93, 0.1);
+}
+.project-block.project-block--id-5ece0365 .foldable-label .label-container icon,
+.project-block.project-block--id-5ece0365 .foldable-label .label-container .foldable-label__text {
+  color: #47535d;
+}
+.project-block.project-block--id-815e0531 hr {
+  border-color: rgba(129, 162, 178, 0.25);
+}
+.pdf-preview .project-block.project-block--id-815e0531 {
+  background: transparent;
+  padding: 0;
+}
+#print .pdf-preview .project-block.project-block--id-815e0531:not(.text-block),
+#print .print-virtual-page .project-block.project-block--id-815e0531:not(.text-block) {
+  background: #ffffff;
+}
+#print .project-block.project-block--id-815e0531:not(.text-block).with-agreement-view-print-mode {
+  background: white;
+}
+#print .side-by-side__col.side-by-side__col--one-quarter {
+  width: 25%;
+}
+#print .side-by-side__col.side-by-side__col--one-half {
+  width: 50%;
+}
+#print .side-by-side__col.side-by-side__col--three-quarter {
+  width: 75%;
+}
