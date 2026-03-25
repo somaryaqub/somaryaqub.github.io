@@ -1,0 +1,708 @@
+<html class="ng-scope" ng-app="qwilr" ng-csp="no-unsafe-eval" ng-init="initialData = {&quot;environment&quot;:&quot;production&quot;,&quot;publicApiBaseUrl&quot;:&quot;https://api.qwilr.com/web-api&quot;,&quot;clientUrl&quot;:&quot;https://app.qwilr.com&quot;,&quot;visitUrl&quot;:&quot;https://api.qwilr.com/web-api/count-visit/NcPq2t3ZTTy9&quot;,&quot;hostname&quot;:&quot;qwilr.com&quot;,&quot;secret&quot;:&quot;NcPq2t3ZTTy9&quot;,&quot;projectName&quot;:&quot;When Big Problems meet Old Wisdom&quot;,&quot;clerkPublishableKey&quot;:&quot;pk_live_Y2xlcmsucXdpbHIuY29tJA&quot;,&quot;authAppBaseUrl&quot;:&quot;https://identity.qwilr.com&quot;,&quot;springboardAppBaseUrl&quot;:&quot;https://springboard.qwilr.com&quot;,&quot;consumerDataServiceBaseUrl&quot;:&quot;https://consumer-data-service.qwilr.com&quot;,&quot;projectId&quot;:&quot;6657a5ca87a2b6f9420cc388&quot;,&quot;printMode&quot;:false,&quot;previewMode&quot;:false,&quot;isCollaboratorPage&quot;:false,&quot;isShowingNavbar&quot;:true,&quot;projectStatus&quot;:&quot;live&quot;,&quot;springboardSettings&quot;:{&quot;engagementMenuEnabled&quot;:true,&quot;contactPageOwnerEnabled&quot;:true},&quot;quoteSummary&quot;:{&quot;blocks&quot;:[],&quot;priceContext&quot;:{&quot;discounts&quot;:[],&quot;taxes&quot;:[],&quot;taxExemptions&quot;:[]},&quot;currencyFormat&quot;:{&quot;type&quot;:&quot;inherit&quot;},&quot;showTaxes&quot;:true,&quot;showTotalExcludingTax&quot;:true,&quot;showTotalDiscounts&quot;:true,&quot;showTotal&quot;:true},&quot;accountName&quot;:&quot;IslamicFamily&quot;,&quot;accountQuoteSettings&quot;:{&quot;labels&quot;:[],&quot;taxes&quot;:[{&quot;percent&quot;:10,&quot;name&quot;:&quot;GST&quot;,&quot;id&quot;:&quot;gst&quot;},{&quot;percent&quot;:20,&quot;name&quot;:&quot;VAT&quot;,&quot;id&quot;:&quot;vat&quot;},{&quot;percent&quot;:7.25,&quot;name&quot;:&quot;California State Sales Tax&quot;,&quot;id&quot;:&quot;ca-sales&quot;}],&quot;variables&quot;:[{&quot;ifUnder&quot;:{&quot;amount&quot;:0,&quot;unitName&quot;:&quot;Hour&quot;,&quot;unitThreshold&quot;:0,&quot;isActive&quot;:false},&quot;ifOver&quot;:{&quot;amount&quot;:0,&quot;unitName&quot;:&quot;Hour&quot;,&quot;unitThreshold&quot;:0,&quot;isActive&quot;:false},&quot;isDeleted&quot;:false,&quot;unitName&quot;:&quot;Unit&quot;,&quot;defaultAmount&quot;:0.03,&quot;name&quot;:&quot;Cost per call&quot;,&quot;id&quot;:&quot;LyiNQkVH1aQ&quot;},{&quot;ifUnder&quot;:{&quot;amount&quot;:0,&quot;unitName&quot;:&quot;Hour&quot;,&quot;unitThreshold&quot;:0,&quot;isActive&quot;:false},&quot;ifOver&quot;:{&quot;amount&quot;:0,&quot;unitName&quot;:&quot;Hour&quot;,&quot;unitThreshold&quot;:0,&quot;isActive&quot;:false},&quot;isDeleted&quot;:false,&quot;unitName&quot;:&quot;Unit&quot;,&quot;defaultAmount&quot;:125,&quot;name&quot;:&quot;Honorarium&quot;,&quot;id&quot;:&quot;50aBzWwkOqA&quot;}],&quot;discounts&quot;:[{&quot;id&quot;:&quot;82mnVpmb8Ds&quot;,&quot;name&quot;:&quot;Charitable Partner&quot;,&quot;type&quot;:&quot;percent&quot;,&quot;amount&quot;:9,&quot;isEnabled&quot;:false,&quot;isDeleted&quot;:false}]},&quot;disableInteractives&quot;:false,&quot;currency&quot;:&quot;AUD&quot;,&quot;userId&quot;:&quot;5d242f2bed847a080090e91f&quot;,&quot;userEmail&quot;:&quot;omary@islamicfamily.ca&quot;,&quot;userFirstName&quot;:&quot;Omar&quot;,&quot;userLastName&quot;:&quot;Yaqub&quot;,&quot;plan&quot;:&quot;Business&quot;,&quot;branding&quot;:&quot;minimal&quot;,&quot;evangelist&quot;:false,&quot;featureSet&quot;:[&quot;newEditor&quot;,&quot;newBrandSetup&quot;,&quot;pastingURLLinks&quot;,&quot;postAcceptExperience&quot;,&quot;consumerVirality&quot;,&quot;userManagementService&quot;,&quot;refreshedNavigationMenu&quot;,&quot;springboardAcceptedPages&quot;,&quot;springboardAcceptDiscovery&quot;,&quot;makeQwilrYourOwn&quot;,&quot;tailoredPages&quot;,&quot;newSidebarExploreSearch&quot;,&quot;replaceSideBySideWithLayout&quot;,&quot;updatePlanSeatsInStripe&quot;,&quot;allowBlockMigration&quot;,&quot;copyPasteStyles&quot;,&quot;onboardingSpecialistMeeting&quot;,&quot;fontFamilyOverrides&quot;,&quot;splashBackgroundPositioning&quot;,&quot;printStylingV2&quot;,&quot;printStylingV3&quot;,&quot;googleIconsForListMarkers&quot;,&quot;pipedriveAutomationsV2&quot;,&quot;qwilrPayRecurring&quot;,&quot;removeBlueprintForHubSpotAndSalesforce&quot;,&quot;emailTokenVerification&quot;,&quot;refreshedWidgetAdder&quot;,&quot;qwilrPayInvoices&quot;,&quot;exp::ONBOARDING_OVERLAY_B&quot;,&quot;allowTrialAccountSelfServeDelete&quot;,&quot;folderPermissions&quot;,&quot;snippets&quot;,&quot;iconWidget&quot;,&quot;activeUsers&quot;,&quot;integrations&quot;,&quot;security&quot;,&quot;advanced security&quot;,&quot;subdomain&quot;,&quot;basic analytics&quot;,&quot;full analytics&quot;,&quot;accounting integrations&quot;,&quot;slack integration&quot;,&quot;zapier integration&quot;,&quot;liveChatIntegrations&quot;,&quot;accept&quot;,&quot;esign&quot;,&quot;audit trail&quot;,&quot;crm-integrations&quot;,&quot;acceptCustomForms&quot;,&quot;analyticsIntegrations&quot;,&quot;hosted-webfonts&quot;,&quot;bluePrintApi&quot;,&quot;interactionRecordingIntegrations&quot;,&quot;payment integrations&quot;,&quot;quote&quot;,&quot;automations&quot;],&quot;enableSocialBadge&quot;:true,&quot;visitToken&quot;:&quot;kVyxscBvRPWL&quot;,&quot;segmentIoWriteKey&quot;:&quot;axAcuwMtSKoKU1hTocwrDxgF7YswLr0j&quot;,&quot;segmentIoPublicWriteKey&quot;:&quot;duH9aykmlpeNUBxugWt3Lfmb1guEdGrn&quot;,&quot;segmentSdkUrl&quot;:&quot;https://evs.cdp.qwilr.com/GXDTK99ZHz/9O7zrWKK0k.min.js&quot;,&quot;segmentSdkPublicUrl&quot;:&quot;https://evs.cdp.qwilr.com/GXDTK99ZHz/fRNTuNN2Xs.min.js&quot;,&quot;segmentCustomDomain&quot;:&quot;https://evs.cdp.qwilr.com&quot;,&quot;googleAnalyticsIntegrationEnabled&quot;:false,&quot;mixPanelIntegrationEnabled&quot;:false,&quot;heapAnalyticsIntegrationEnabled&quot;:false,&quot;isOwner&quot;:false,&quot;isTemplateDomain&quot;:false,&quot;isTemplate&quot;:false,&quot;payments&quot;:null,&quot;analyticsBlocksMap&quot;:{&quot;6657a5ca87a2b68ddf0cc38b&quot;:{&quot;name&quot;:&quot;When Big Problems meet Old Wisdom&quot;,&quot;type&quot;:&quot;Text&quot;},&quot;6657a5ca87a2b67f180cc38c&quot;:{&quot;name&quot;:&quot;Why might someone prefer living on the street over staying in a shelter? Is the way we punish hate crimes leading to more hate? Could  “therapeutic community” improve our mental health? Are nonprofits making things worse? What are the questions we don’t ask that are preventing us from solving society’s biggest problems? &quot;,&quot;type&quot;:&quot;Text&quot;},&quot;6657a5ca87a2b61f7f0cc38d&quot;:{&quot;name&quot;:&quot;Join Edmonton’s Historian Co-Laureates: Cheryl Whiskeyjack &amp; Omar Yaqub, as they explore how to respond to some of today's biggest problems: hate crimes, isolation, belonging, injustice &amp; health with  youth &amp; the wisdom traditions they represent.&quot;,&quot;type&quot;:&quot;Text&quot;},&quot;6657a5ca87a2b638a70cc38e&quot;:{&quot;name&quot;:&quot;Questions…&quot;,&quot;type&quot;:&quot;Text&quot;},&quot;6657a5ca87a2b6f9890cc38f&quot;:{&quot;name&quot;:&quot;Why might someone prefer living on the street over staying in a shelter?&quot;,&quot;type&quot;:&quot;Text&quot;},&quot;6657a5ca87a2b655fc0cc390&quot;:{&quot;name&quot;:&quot;The Team…&quot;,&quot;type&quot;:&quot;Text&quot;},&quot;6657a5ca87a2b607960cc391&quot;:{&quot;name&quot;:&quot;Our ensemble includes podcasters, journalists, writers, experience designers, social service workers, restorative justice experts, thought leaders &amp; sacred knowledge keepers. &quot;,&quot;type&quot;:&quot;Text&quot;},&quot;6657a5ca87a2b604c60cc392&quot;:{&quot;name&quot;:&quot;Text Block #8&quot;,&quot;type&quot;:&quot;Text&quot;},&quot;6657a5ca87a2b67aca0cc394&quot;:{&quot;name&quot;:&quot;Thank you!&quot;,&quot;type&quot;:&quot;Text&quot;}},&quot;navigationConfig&quot;:{&quot;widgets&quot;:{&quot;header&quot;:{&quot;fixed&quot;:true,&quot;showContact&quot;:true},&quot;sidebar&quot;:{&quot;showContact&quot;:true}},&quot;enabled&quot;:&quot;header&quot;,&quot;initialisedV2&quot;:false,&quot;v2&quot;:{&quot;layout&quot;:&quot;top&quot;,&quot;showContact&quot;:true,&quot;showDrawer&quot;:true,&quot;backgroundColor&quot;:{&quot;themeIndex&quot;:-1,&quot;abs&quot;:&quot;white&quot;},&quot;springboardMenuEnabled&quot;:true,&quot;showQuoteTotal&quot;:true,&quot;cta&quot;:{&quot;type&quot;:&quot;accept&quot;}},&quot;navItems&quot;:[{&quot;name&quot;:&quot;When Big Problems meet Old Wisdom&quot;,&quot;blockId&quot;:&quot;6657a5ca87a2b68ddf0cc38b&quot;},{&quot;name&quot;:&quot;The Challenge&quot;,&quot;blockId&quot;:&quot;6657a5ca87a2b67f180cc38c&quot;},{&quot;name&quot;:&quot;The Pitch&quot;,&quot;blockId&quot;:&quot;6657a5ca87a2b61f7f0cc38d&quot;},{&quot;name&quot;:&quot;Big Questions&quot;,&quot;blockId&quot;:&quot;6657a5ca87a2b638a70cc38e&quot;},{&quot;name&quot;:&quot;&quot;,&quot;blockId&quot;:&quot;6657a5ca87a2b655fc0cc390&quot;},{&quot;name&quot;:&quot;&quot;,&quot;blockId&quot;:&quot;6657a5ca87a2b67aca0cc394&quot;}],&quot;acceptButton&quot;:{&quot;enabled&quot;:false}},&quot;isPartner&quot;:false,&quot;hasAcceptEnabled&quot;:false}">
+ <head ng-non-bindable="">
+  <meta charset="utf-8"/>
+  <meta content="width=device-width,initial-scale=1" name="viewport"/>
+  <title>
+   When Big Problems meet Old Wisdom
+  </title>
+  <meta content="noindex" name="robots"/>
+  <meta content="nofollow" name="robots"/>
+  <meta content="noarchive" name="robots"/>
+  <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible"/>
+  <meta content="Made with Qwilr by the IslamicFamily team" name="description"/>
+  <meta content="When Big Problems meet Old Wisdom" property="og:title"/>
+  <meta content="Made with Qwilr by the IslamicFamily team" property="og:description"/>
+  <meta content="ifssa.qwilr.com" property="og:url"/>
+  <meta content="https://qwilr.imgix.net/afyhg6UtSe-y6BmGftcltwhKygQg7hSZWAQQ_A.jpeg?auto=format&amp;fit=max&amp;w=744" property="og:image"/>
+  <meta content="A preview image for When Big Problems meet Old Wisdom" property="og:image:alt"/>
+  <meta content="https://ifssa.qwilr.com/When-Big-Problems-meet-Old-Wisdom-NcPq2t3ZTTy9" property="og:site_name"/>
+  <meta content="website" property="og:type"/>
+  <meta content="summary_large_image" property="twitter:card"/>
+  <script async="" src="js/f12a4347e1080fb88155.js" status="loaded" type="text/javascript">
+  </script>
+  <script async="" data-global-segment-analytics-key="analytics" src="js/fRNTuNN2Xs.min.js" type="text/javascript">
+  </script>
+  <link href="/Assets/favicon.png" rel="icon" type="image/png"/>
+  <script nonce="">
+   performance.mark("indexHtmlHead")
+  </script>
+  <style id="qwilr-custom-fonts">
+   .project-block h1 {  font-family: 'Open Sans', sans-serif;  } .project-block h2 {  font-family: 'Open Sans', sans-serif;  } .project-block p {  font-family: 'Open Sans', sans-serif;  } .qwilr-font, .user-font .qwilr-font, .user-font .calibre { font-family: 'calibre-legacy', sans-serif !important; } :root { --_2fdphp0:'Open Sans', sans-serif;--_1fux1si0:'Open Sans', sans-serif;--_66iluk0:'Open Sans', sans-serif;--_1xcts2z0:'Libre Baskerville', serif } .project-block h5:not(.icon), .user-font, .project-block div:not(.icon) { font-family: 'Open Sans', sans-serif !important; } .project-block h6:not(.icon), .user-font, .project-block div:not(.icon) { font-family: 'Open Sans', sans-serif !important; } .project-block li:not(.icon), .user-font, .project-block div:not(.icon) { font-family: 'Open Sans', sans-serif !important; } .project-block table:not(.icon), .user-font, .project-block div:not(.icon) { font-family: 'Open Sans', sans-serif !important; } .project-block .quote-section:not(.icon), .user-font, .project-block div:not(.icon) { font-family: 'Open Sans', sans-serif !important; } .project-block .quote-total:not(.icon), .user-font, .project-block div:not(.icon) { font-family: 'Open Sans', sans-serif !important; } .project-block blockquote:not(.icon), .user-font, .project-block div:not(.icon) { font-family: 'Open Sans', sans-serif !important; }
+  </style>
+  <style id="qwilr-override-custom-styles">
+  </style>
+  <link href="css/PublicLoader-styles-c595182a58c8d8728d49.css" rel="stylesheet"/>
+  <link href="css/css" rel="stylesheet"/>
+  <link href="css/css2" rel="stylesheet"/>
+  <link href="css/css" rel="stylesheet"/>
+  <link href="css/css" rel="stylesheet"/>
+  <link href="css/PDFLoader-Public-styles-6de758d425195c588832.css" rel="stylesheet"/>
+  <link href="css/Public-styles-1ef2ae5f035d4a220ee7.css" rel="stylesheet"/>
+  <script nonce="">
+   performance.mark("indexHtmlHeadEnd")
+  </script>
+  <style type="text/css">
+   @charset "UTF-8";[ng\:cloak],[ng-cloak],[data-ng-cloak],[x-ng-cloak],.ng-cloak,.x-ng-cloak,.ng-hide:not(.ng-hide-animate){display:none !important;}ng\:form{display:block;}.ng-animate-shim{visibility:hidden;}.ng-anchor{position:absolute;}
+  </style>
+  <link href="css/vanilla-extract-FK4ROG35.css" rel="stylesheet"/>
+  <link href="css/css-bundle-WEQLU6UT.css" rel="stylesheet"/>
+  <script crossorigin="anonymous" integrity="sha384-kbRmCeIl7Uxr+vT9YhSAdguCdd4L5QPRj7jzQTanorUVVlw/Y5X9vtzVyOEHLfpH" src="js/bundle.min.js">
+  </script>
+  <script crossorigin="anonymous" integrity="sha384-kbRmCeIl7Uxr+vT9YhSAdguCdd4L5QPRj7jzQTanorUVVlw/Y5X9vtzVyOEHLfpH" src="js/bundle.min.js">
+  </script>
+ </head>
+ <body class="public-output display tokens_lightTheme__1bl7jj134 tokens_lightTheme__1bl7jj134 _1vepwkd2 _1vepwkd3 ng-scope" id="" ng-class="{            'badge-open': ui.badgeOpen(),          }" ng-controller="QwilrPublicController" style="--page-content-width: 1905px;">
+  <div class="_1vepwkd7" id="public-header-spacer">
+  </div>
+  <div>
+   <script nonce="">
+    performance.mark("indexHtmlBody");
+   </script>
+   <script nonce="">
+    window.sentryUrl = 'https://892baba303ca4960a57b3623f7f643fb@o11981.ingest.sentry.io/22510';
+			window.sessionStartTime = 1774417808;
+   </script>
+   <script nonce="">
+    window.qSessionTracking = {"visit":{"id":"ac5a5e79-f256-4147-8a07-35bca6c0fe7f","time":"2026-03-25T05:50:08.758Z","ip":"44.220.44.135","token":"kVyxscBvRPWL","identity":null,"username":null,"fullName":null,"viewUserId":null,"viewIdentityUnverified":true},"projectId":"6657a5ca87a2b6f9420cc388","projectName":"When Big Problems meet Old Wisdom","projectAccountId":"5d242f2bed847a080090e906","projectUserId":"5d242f2bed847a080090e91f","linkId":"NcPq2t3ZTTy9"};
+   </script>
+   <script nonce="">
+    window.qAnalyticsConfig = {"ingestionApiUrl":"https://ingest.qwilr.com/events","enableTimingsCapture":true};
+   </script>
+   <link href="css/NcPq2t3ZTTy9" rel="stylesheet"/>
+   <script nonce="">
+    window.telemetryMetadata = '{"owner_account_id":"5d242f2bed847a080090e906","owner_page_id":"6657a5ca87a2b6f9420cc388","owner_user_id":"5d242f2bed847a080090e91f"}';
+   </script>
+  </div>
+  <div class="_1vepwkd8">
+   <div class="qwilr-pages-app">
+    <div class="tokens_lightTheme__1bl7jj134">
+     <header class="_1wp9a441 _1wp9a442 _1wp9a445 _109adwo3" style="--_109adwo1:#47535D;--_109adwo2:rgb(119, 119, 119);--_109adwo0:#FFFFFF;--color-text__1bl7jj14:var(--_109adwo1);--color-surface__1bl7jj1g:var(--_109adwo0);--color-surfaceHover__1bl7jj1n:rgb(0 0 0 / 0.05);--color-surfaceActive__1bl7jj1o:rgb(0 0 0 / 0.04);--color-icon__1bl7jj1p:var(--_109adwo2);--color-border__1bl7jj110:rgb(0 0 0 / 0.1)">
+      <div class="_1wp9a447">
+       <div>
+        <div class="kl-tooltip-target">
+         <button aria-expanded="false" aria-label="Menu" class="Button_button__10m793n0 Buttons_buttonReset__yodxo10 Buttons_buttonDisabledWorkaround__yodxo11 Controls_controlFocusRing__a2bdyy2 Button_button_size_medium__10m793n3 Button_button_type_tertiary__10m793ne Button_button_state_idle__10m793n7 Button_button_width_normal__10m793n9 Button_button_isIconOnly_true__10m793nh Button_button_compound_4__10m793nm button button--tertiary button--medium button--normal-width button--id-button-TYvPsCbsxH button--light button--icon-only button--is-idle" id="button-TYvPsCbsxH" tabindex="0">
+          <div class="Button_content__10m793no Button_content_status_entered__10m793nq button__content button__content--entered">
+           <div class="IconButton_iconWrapper__elj0m0 IconButton_iconWrapper_status_entered__elj0m2">
+            <svg class="_1d66ltt1" height="24" viewbox="0 0 24 24" width="24">
+             <rect class="_1d66ltt2 _1d66ltt4" rx="1" x="2" y="17">
+             </rect>
+             <rect class="_1d66ltt5 _1d66ltt7 _1d66ltt9" rx="1" x="2" y="11">
+             </rect>
+             <rect class="_1d66ltt2" rx="1" x="2" y="11">
+             </rect>
+             <rect class="_1d66ltt5 _1d66ltt7 _1d66ltt8" rx="1" x="2" y="11">
+             </rect>
+             <rect class="_1d66ltt2 _1d66ltt4" rx="1" x="2" y="5">
+             </rect>
+            </svg>
+           </div>
+          </div>
+         </button>
+        </div>
+       </div>
+       <span class="kl-text _1wp9a44a kl-text--size-s kl-text--line-height-relaxed kl-text--strong Text_text__1clr0wg0 Text_text_size_s__1clr0wg3 Text_text_strong_true__1clr0wg7 Text_text_lineHeight_relaxed__1clr0wg9">
+        When Big Problems meet Old Wisdom
+       </span>
+      </div>
+      <div class="_1wp9a448">
+       <div class="_1wp9a44b _1wp9a44d">
+        <div class="tjbhi1 tjbhi2">
+         <div class="kl-tooltip-target">
+          <button aria-controls="popover-VFzcawvdYN" aria-expanded="false" class="Button_button__10m793n0 Buttons_buttonReset__yodxo10 Buttons_buttonDisabledWorkaround__yodxo11 Controls_controlFocusRing__a2bdyy2 Button_button_size_medium__10m793n3 Button_button_type_tertiary__10m793ne Button_button_state_idle__10m793n7 Button_button_width_normal__10m793n9 Button_button_compound_4__10m793nm button tjbhi3 button--tertiary button--medium button--normal-width button--id-button-GdtVudvHQn button--light button--is-idle" id="button-GdtVudvHQn" tabindex="0">
+           <div class="Button_content__10m793no Button_content_status_entered__10m793nq button__content button__content--entered">
+            <div class="tjbhi4">
+             <svg class="Icons_icon__xq82d85 Icons_icon_size_medium__xq82d87 Icons_icon_color_inherit__xq82d89 kl-icon kl-icon--medium" height="24" viewbox="0 0 24 24" width="24">
+              <path d="M5 5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v14a1 1 0 0 1-1.555.832L12 16.202l-5.445 3.63A1 1 0 0 1 5 19V5Zm12 0H7v12.131l4.445-2.963a1 1 0 0 1 1.11 0L17 17.13V5Z" fill-rule="evenodd">
+              </path>
+             </svg>
+             <span class="kl-text kl-text--size-s kl-text--line-height-relaxed kl-text--strong Text_text__1clr0wg0 Text_text_size_s__1clr0wg3 Text_text_strong_true__1clr0wg7 Text_text_lineHeight_relaxed__1clr0wg9">
+              Save
+             </span>
+            </div>
+           </div>
+          </button>
+         </div>
+         <div class="tjbhip _109adwo4 tokens_lightTheme__1bl7jj134">
+         </div>
+         <div class="tjbhip _109adwo4 tokens_lightTheme__1bl7jj134">
+         </div>
+         <button aria-controls="popover-HjMFplbQGC" aria-expanded="false" aria-label="Page options" class="Button_button__10m793n0 Buttons_buttonReset__yodxo10 Buttons_buttonDisabledWorkaround__yodxo11 Controls_controlFocusRing__a2bdyy2 Button_button_size_medium__10m793n3 Button_button_type_tertiary__10m793ne Button_button_state_idle__10m793n7 Button_button_width_normal__10m793n9 Button_button_isIconOnly_true__10m793nh Button_button_compound_4__10m793nm button button--tertiary button--medium button--normal-width button--id-button-kXiYienVlL button--light button--icon-only button--is-idle" id="button-kXiYienVlL">
+          <div class="Button_content__10m793no Button_content_status_entered__10m793nq button__content button__content--entered">
+           <div class="IconButton_iconWrapper__elj0m0 IconButton_iconWrapper_status_entered__elj0m2">
+            <svg class="Icons_icon__xq82d85 Icons_icon_size_medium__xq82d87 Icons_icon_color_inherit__xq82d89 kl-icon kl-icon--medium" height="24" viewbox="0 0 24 24" width="24">
+             <path clip-rule="evenodd" d="M12 8a2 2 0 100-4 2 2 0 000 4zm0 12a2 2 0 100-4 2 2 0 000 4zm2-8a2 2 0 11-4 0 2 2 0 014 0z" fill-rule="evenodd">
+             </path>
+            </svg>
+           </div>
+          </div>
+         </button>
+        </div>
+       </div>
+      </div>
+     </header>
+     <div class="uy8zeo5 _109adwo3 uy8zeo8 uy8zeoc uy8zeof" style="--_109adwo1:#47535D;--_109adwo2:rgb(119, 119, 119);--_109adwo0:#FFFFFF;--color-text__1bl7jj14:var(--_109adwo1);--color-surface__1bl7jj1g:var(--_109adwo0);--color-surfaceHover__1bl7jj1n:rgb(0 0 0 / 0.05);--color-surfaceActive__1bl7jj1o:rgb(0 0 0 / 0.04);--color-icon__1bl7jj1p:var(--_109adwo2);--color-border__1bl7jj110:rgb(0 0 0 / 0.1)">
+      <div class="uy8zeoh uy8zeoj uy8zeoo uy8zeok uy8zeoq uy8zeov" style="--uy8zeo0:2">
+       <div class="uy8zeoy">
+       </div>
+      </div>
+     </div>
+    </div>
+   </div>
+   <div class="_1vepwkd9">
+    <div class="page-content-wrapper">
+     <div class="rendered-content">
+      <section block-id="6657a5ca87a2b68ddf0cc38b" block-name="When Big Problems meet Old Wisdom" class="project-block text-block project-block--id-6657a5ca87a2b68ddf0cc38b project-block--id-5ece0365 project-block--id-815e0531 qwilr-standard project-block--using-block-styles project-block--background-image project-block--unfolded" data-animation="none" data-animation-speed="medium" data-qwilr-component="block" data-type="Text" ng-class="{'project-block--unfolded': !block0.isFolded}" style="--ij2xgd1:url(https://qwilr.imgix.net/Nw42tUjFPukStFPUyt3lvCaAiHBauipq7dgHnw.jpeg?auto=format);--ij2xgd2:rgba(36, 44, 57, 0.25);--ij2xgd3:multiply;--ij2xgd4:center;--ij2xgd8:transparent;--ij2xgd5:0px;--ij2xgd7:100vh;--ij2xgd9:90%;--ij2xgdb:90;--ij2xgda:1.15;--ij2xgdc:7.5%;--ij2xgdd:7.5%" tabindex="-1">
+       <div class="background-container background-container--is-public-page full-height">
+        <div class="background-image">
+        </div>
+        <div class="background-tint">
+        </div>
+        <div class="row container block-spacer">
+         <div class="large-8 columns large-centered ng-non-bindable block-content" mount-widgets="">
+          <div data-hydration-component="HydratableRootRenderTokensHost" data-hydration-data='{"tokens":[{"subType":"heading1","type":"block"},{"type":"inline","subType":"text","content":"When Big Problems meet Old Wisdom","style":{"bold":true}},{"subType":"heading2","type":"block"},{"type":"inline","subType":"text","content":"How different wisdom traditions address social problems"}],"allColors":[{"themeIndex":0,"value":"#688664"},{"themeIndex":1,"value":"#ce9f24"},{"themeIndex":2,"value":"#a86e8c"},{"themeIndex":3,"value":"#555559"},{"themeIndex":4,"value":"#969437"},{"value":"#E0E8EC","themeIndex":-5},{"value":"#81A2B2","themeIndex":-4},{"value":"#242C39","themeIndex":-3},{"value":"#F2F6F7","themeIndex":-2},{"value":"#FFFFFF","themeIndex":-1}],"blockStyles":{"isMigrated":true,"migratedAt":"2025-02-20T23:43:14.065Z","name":"","blockType":"Text","legacyBlockType":"Splash","blockHeight":"large","blockSpacing":"medium","isFactoryStyle":true,"css":"","h1":{"color":{"abs":"#FFFFFF","opacity":1,"themeIndex":-1},"size":{"abs":65,"themeRef":"medium"},"alignment":"center"},"h2":{"color":{"abs":"#FFFFFF","opacity":1,"themeIndex":-1},"size":{"abs":35,"themeRef":null},"alignment":"center"},"p":{"color":{"abs":"#FFFFFF","opacity":1,"themeIndex":-1},"size":{"abs":20,"themeRef":"medium"},"alignment":"center"},"blockQuote":{"color":{"abs":"#FFFFFF","opacity":1,"themeIndex":-1},"size":{"abs":27,"themeRef":"medium"},"barColor":{"abs":"rgba(41, 128, 185, 1)","opacity":1,"themeIndex":0},"displayQuoteIcon":false},"background":{"abs":"#FFFFFF","themeIndex":-1,"opacity":1,"tintColor":{"abs":"#242C39","opacity":0.25,"themeIndex":-3},"tintBlendMode":"blend","card":{"enabled":false,"color":{"themeIndex":-3,"abs":"rgba(36, 44, 57, 0.25)","opacity":0.25}},"type":"image","url":"https://d2cankni8sodj9.cloudfront.net/Nw42tUjFPukStFPUyt3lvCaAiHBauipq7dgHnw.jpeg"},"blockWidth":"large","hash":"9d4a8edbba23a224eeaafee0e4134622f02b7291","animation":{"animationOption":"none","animationType":"fade","direction":"down","speed":"medium"},"table":{"background":{"on":false,"color":{"abs":"#FFFFFF","opacity":1,"themeIndex":-1}},"header":{"on":false,"color":{"abs":"#FFFFFF","opacity":1,"themeIndex":-1}},"border":{"borderType":"all","color":{"abs":"rgba(129, 162, 178, 0.25)","opacity":0.25,"themeIndex":-4}}},"list":{"color":{"abs":"#FFFFFF","opacity":1,"themeIndex":-1},"marker":"circle","markerColor":{"abs":"#FFFFFF","opacity":1,"themeIndex":-1}},"link":{"color":{"abs":"#FFFFFF","opacity":1,"themeIndex":-1},"underline":{"on":true,"color":{"abs":"#FFFFFF","opacity":1,"themeIndex":-1}}},"button":{"color":{"abs":"rgba(104, 134, 100, 1)","opacity":1,"themeIndex":0},"roundness":4,"size":"medium","textColor":"dark"},"roiCalculator":{"highlightColor":{"abs":"rgba(104, 134, 100, 1)","opacity":1,"themeIndex":0},"textColor":"dark","background":{"color":{"abs":"#FFFFFF","opacity":1,"themeIndex":-1},"imageBlur":0},"tint":{"color":{"abs":"#242C39","opacity":1,"themeIndex":-3},"opacity":40}},"accordion":{"headerBackground":{"color":{"abs":"#FFFFFF","opacity":1,"themeIndex":-1},"on":true},"bodyBackground":{"on":false},"buttonAlignment":"left","buttonStyle":"arrow","buttonColor":{"abs":"rgba(104, 134, 100, 1)","opacity":1,"themeIndex":0},"tint":{"color":{"abs":"#242C39","opacity":1,"themeIndex":-3},"opacity":25},"cardStyle":"simple","imageHeight":"medium","expandButtonText":"Expand","closeButtonText":"Collapse"},"clonedFrom":"5d242f2bed847a080090e90a"},"printContext":{"isPrintMode":false},"imgixContext":{"disableImgix":false},"publicPageContext":{"publicPageUrl":"https://pages.qwilr.com/NcPq2t3ZTTy9"},"quoteContext":{"priceSummary":{"total":{},"dueToday":{"base":0,"discounts":[],"quoted":0,"taxes":[],"billable":0},"blocks":[]},"accountQuoteSettings":{"labels":[],"taxes":[{"percent":10,"name":"GST","id":"gst"},{"percent":20,"name":"VAT","id":"vat"},{"percent":7.25,"name":"California State Sales Tax","id":"ca-sales"}],"variables":[{"ifUnder":{"amount":0,"unitName":"Hour","unitThreshold":0,"isActive":false},"ifOver":{"amount":0,"unitName":"Hour","unitThreshold":0,"isActive":false},"isDeleted":false,"unitName":"Unit","defaultAmount":0.03,"name":"Cost per call","id":"LyiNQkVH1aQ"},{"ifUnder":{"amount":0,"unitName":"Hour","unitThreshold":0,"isActive":false},"ifOver":{"amount":0,"unitName":"Hour","unitThreshold":0,"isActive":false},"isDeleted":false,"unitName":"Unit","defaultAmount":125,"name":"Honorarium","id":"50aBzWwkOqA"}],"discounts":[{"id":"82mnVpmb8Ds","name":"Charitable Partner","type":"percent","amount":9,"isEnabled":false,"isDeleted":false}]},"quoteLabelSetId":null,"projectCurrency":{"currencyCode":"AUD","currencyFormat":{"showDecimals":true}},"paymentSettings":{"gatewayId":null,"discoverable":false,"enabled":false,"requireOnAccept":true,"partialPaymentConfig":{"amount":0,"enabled":false,"kind":"percentage"}},"quoteSummary":{"blocks":[],"priceContext":{"discounts":[],"taxes":[],"taxExemptions":[]},"currencyFormat":{"type":"inherit"},"showTaxes":true,"showTotalExcludingTax":true,"showTotalDiscounts":true,"showTotal":true}},"blockId":"6657a5ca87a2b68ddf0cc38b"}' data-hydration-host="true" data-hydration-host-id="811083b3-4fb5-4298-ade3-21f42a19b2db">
+           <h1 class="h1-widget__spacing-shim _2fdphpc project-block__block-element pencic0 _2fdphpb" style="--_2fdphp9:var(--_2fdphp0); --_2fdphpa:300; --_2fdphp2:#FFFFFF; --_2fdphp3:65; --_2fdphp1:center; --_2fdphp4:1.2; --_2fdphp5:0em; --_2fdphp6:none; --_2fdphp7:0.65em; --_2fdphp8:0.2em;">
+            <span style="font-weight:bold;">
+             When Big Problems meet Old Wisdom
+            </span>
+           </h1>
+           <h2 class="h2-widget__spacing-shim _1fux1sic project-block__block-element pencic0 _1fux1sib" style="--_1fux1si9:var(--_1fux1si0); --_1fux1sia:300; --_1fux1si2:#FFFFFF; --_1fux1si3:35; --_1fux1si1:center; --_1fux1si4:1.3; --_1fux1si5:0em; --_1fux1si6:none; --_1fux1si7:0.65em; --_1fux1si8:0.4em;">
+            How different wisdom traditions address social problems
+           </h2>
+          </div>
+         </div>
+        </div>
+       </div>
+      </section>
+      <section block-id="6657a5ca87a2b67f180cc38c" block-name="The Challenge" class="project-block text-block project-block--id-6657a5ca87a2b67f180cc38c project-block--id-69b08709 project-block--id-2cc02008 qwilr-standard project-block--using-block-styles project-block--background-color project-block--unfolded project-block--viewed" data-animation="section" data-animation-speed="slow" data-qwilr-component="block" data-type="Text" ng-class="{'project-block--unfolded': !block1.isFolded}" style="--ij2xgd0:rgb(104, 134, 100);--ij2xgd7:auto;--ij2xgd9:75%;--ij2xgdb:75;--ij2xgda:1.33;--ij2xgdc:10%;--ij2xgdd:10%" tabindex="-1">
+       <div class="background-container background-container--is-public-page">
+        <div class="background-image">
+        </div>
+        <div class="background-tint">
+        </div>
+        <div class="row container block-spacer">
+         <div class="large-8 columns large-centered ng-non-bindable block-content" mount-widgets="">
+          <div data-hydration-component="HydratableRootRenderTokensHost" data-hydration-data='{"tokens":[{"type":"block","subType":"heading2"},{"type":"inline","subType":"text","content":"Why might someone prefer living on the street over staying in a shelter? Is the way we punish hate crimes leading to more hate? Could  “therapeutic community” improve our mental health? Are nonprofits making things worse? "},{"type":"inline","subType":"text","content":"What are the questions we don’t ask that are preventing us from solving society’s biggest problems? ","style":{"bold":true}}],"allColors":[{"themeIndex":0,"value":"#688664"},{"themeIndex":1,"value":"#ce9f24"},{"themeIndex":2,"value":"#a86e8c"},{"themeIndex":3,"value":"#555559"},{"themeIndex":4,"value":"#969437"},{"value":"#E0E8EC","themeIndex":-5},{"value":"#81A2B2","themeIndex":-4},{"value":"#242C39","themeIndex":-3},{"value":"#F2F6F7","themeIndex":-2},{"value":"#FFFFFF","themeIndex":-1}],"blockStyles":{"isMigrated":true,"migratedAt":"2025-02-20T23:43:14.070Z","background":{"abs":"rgba(104, 134, 100, 1)","themeIndex":0,"opacity":1,"tintBlendMode":"normal","card":{"enabled":false,"color":{"opacity":0.25,"abs":"rgba(36, 44, 57, 0.25)","themeIndex":-3}},"type":"color","tintColor":{"abs":"rgba(36, 44, 57, 0.25)","opacity":0.25,"themeIndex":-3}},"name":"","blockType":"Text","legacyBlockType":"Text","hash":"e234d2b9f46a505fab5e33bd82927e500b5be4e4","clonedFrom":"5d242f2bed847a080090e908","isFactoryStyle":true,"css":"","blockSpacing":"large","blockWidth":"medium","blockHeight":"none","h1":{"color":{"abs":"#FFFFFF","opacity":1,"themeIndex":-1},"alignment":"left","size":{"abs":65,"themeRef":"medium"}},"h2":{"color":{"abs":"#FFFFFF","opacity":1,"themeIndex":-1},"alignment":"left","size":{"abs":34,"themeRef":null}},"p":{"color":{"abs":"#FFFFFF","opacity":1,"themeIndex":-1},"alignment":"left","size":{"abs":20,"themeRef":"medium"}},"animation":{"animationOption":"section","animationType":"fade","direction":"down","speed":"slow"},"blockQuote":{"color":{"abs":"#FFFFFF","opacity":1,"themeIndex":-1},"size":{"abs":20,"themeRef":null},"barColor":{"abs":"#FFFFFF","opacity":1,"themeIndex":-1},"displayQuoteIcon":false},"button":{"textColor":"light","roundness":4,"size":"medium","color":{"abs":"rgba(104, 134, 100, 1)","opacity":1,"themeIndex":0}},"accordion":{"headerBackground":{"color":{"abs":"#FFFFFF","opacity":1,"themeIndex":-1},"on":true},"bodyBackground":{"on":false},"buttonAlignment":"left","buttonColor":{"abs":"rgba(104, 134, 100, 1)","opacity":1,"themeIndex":0},"buttonStyle":"arrow","cardStyle":"simple","imageHeight":"medium","tint":{"color":{"abs":"#242C39","opacity":1,"themeIndex":-3},"opacity":25},"expandButtonText":"Expand","closeButtonText":"Collapse"},"link":{"color":{"abs":"#FFFFFF","opacity":1,"themeIndex":-1},"underline":{"color":{"abs":"#FFFFFF","opacity":1,"themeIndex":-1},"on":true}},"list":{"color":{"abs":"#FFFFFF","opacity":1,"themeIndex":-1},"marker":"circle","markerColor":{"abs":"#FFFFFF","opacity":1,"themeIndex":-1}},"roiCalculator":{"highlightColor":{"abs":"rgba(104, 134, 100, 1)","opacity":1,"themeIndex":0},"textColor":"dark","background":{"color":{"abs":"#FFFFFF","opacity":1,"themeIndex":-1},"imageBlur":0},"tint":{"color":{"abs":"#242C39","opacity":1,"themeIndex":-3},"opacity":40}},"table":{"background":{"on":false,"color":{"abs":"#FFFFFF","opacity":1,"themeIndex":-1}},"header":{"on":false,"color":{"abs":"#FFFFFF","opacity":1,"themeIndex":-1}},"border":{"borderType":"all","color":{"abs":"rgba(129, 162, 178, 0.25)","opacity":0.25,"themeIndex":-4}}}},"printContext":{"isPrintMode":false},"imgixContext":{"disableImgix":false},"publicPageContext":{"publicPageUrl":"https://pages.qwilr.com/NcPq2t3ZTTy9"},"quoteContext":{"priceSummary":{"total":{},"dueToday":{"base":0,"discounts":[],"quoted":0,"taxes":[],"billable":0},"blocks":[]},"accountQuoteSettings":{"labels":[],"taxes":[{"percent":10,"name":"GST","id":"gst"},{"percent":20,"name":"VAT","id":"vat"},{"percent":7.25,"name":"California State Sales Tax","id":"ca-sales"}],"variables":[{"ifUnder":{"amount":0,"unitName":"Hour","unitThreshold":0,"isActive":false},"ifOver":{"amount":0,"unitName":"Hour","unitThreshold":0,"isActive":false},"isDeleted":false,"unitName":"Unit","defaultAmount":0.03,"name":"Cost per call","id":"LyiNQkVH1aQ"},{"ifUnder":{"amount":0,"unitName":"Hour","unitThreshold":0,"isActive":false},"ifOver":{"amount":0,"unitName":"Hour","unitThreshold":0,"isActive":false},"isDeleted":false,"unitName":"Unit","defaultAmount":125,"name":"Honorarium","id":"50aBzWwkOqA"}],"discounts":[{"id":"82mnVpmb8Ds","name":"Charitable Partner","type":"percent","amount":9,"isEnabled":false,"isDeleted":false}]},"quoteLabelSetId":null,"projectCurrency":{"currencyCode":"AUD","currencyFormat":{"showDecimals":true}},"paymentSettings":{"gatewayId":null,"discoverable":false,"enabled":false,"requireOnAccept":true,"partialPaymentConfig":{"amount":0,"enabled":false,"kind":"percentage"}},"quoteSummary":{"blocks":[],"priceContext":{"discounts":[],"taxes":[],"taxExemptions":[]},"currencyFormat":{"type":"inherit"},"showTaxes":true,"showTotalExcludingTax":true,"showTotalDiscounts":true,"showTotal":true}},"blockId":"6657a5ca87a2b67f180cc38c"}' data-hydration-host="true" data-hydration-host-id="d68666b8-2653-4d5d-8f2c-54953c2503c1">
+           <h2 class="h2-widget__spacing-shim _1fux1sic project-block__block-element pencic0 _1fux1sib" style="--_1fux1si9: var(--_1fux1si0); --_1fux1sia: 300; --_1fux1si2: #FFFFFF; --_1fux1si3: 34; --_1fux1si1: left; --_1fux1si4: 1.3; --_1fux1si5: 0em; --_1fux1si6: none; --_1fux1si7: 0.65em; --_1fux1si8: 0.4em; animation-delay: 0s; animation-name: none;">
+            Why might someone prefer living on the street over staying in a shelter? Is the way we punish hate crimes leading to more hate? Could  “therapeutic community” improve our mental health? Are nonprofits making things worse?
+            <span style="font-weight:bold;">
+             What are the questions we don’t ask that are preventing us from solving society’s biggest problems?
+            </span>
+           </h2>
+          </div>
+         </div>
+        </div>
+       </div>
+      </section>
+      <section block-id="6657a5ca87a2b61f7f0cc38d" block-name="The Pitch" class="project-block text-block project-block--id-6657a5ca87a2b61f7f0cc38d project-block--id-05f7b140 project-block--id-815e0531 qwilr-standard project-block--using-block-styles project-block--background-color project-block--unfolded" data-animation="none" data-animation-speed="medium" data-qwilr-component="block" data-type="Text" ng-class="{'project-block--unfolded': !block2.isFolded}" style="--ij2xgd0:rgb(255, 255, 255);--ij2xgd7:auto;--ij2xgd9:75%;--ij2xgdb:75;--ij2xgda:1.33;--ij2xgdc:7.5%;--ij2xgdd:7.5%" tabindex="-1">
+       <div class="background-container background-container--is-public-page">
+        <div class="background-image">
+        </div>
+        <div class="background-tint">
+        </div>
+        <div class="row container block-spacer">
+         <div class="large-8 columns large-centered ng-non-bindable block-content" mount-widgets="">
+          <div data-hydration-component="HydratableRootRenderTokensHost" data-hydration-data="{&quot;tokens&quot;:[{&quot;subType&quot;:&quot;heading1&quot;,&quot;type&quot;:&quot;block&quot;},{&quot;type&quot;:&quot;inline&quot;,&quot;subType&quot;:&quot;text&quot;,&quot;content&quot;:&quot;Join Edmonton’s Historian Co-Laureates: Cheryl Whiskeyjack &amp; Omar Yaqub, as they explore how to respond to some of today's biggest problems: hate crimes, isolation, belonging, injustice &amp; health with  youth &amp; the wisdom traditions they represent.&quot;},{&quot;subType&quot;:&quot;heading2&quot;,&quot;type&quot;:&quot;block&quot;},{&quot;type&quot;:&quot;inline&quot;,&quot;subType&quot;:&quot;text&quot;,&quot;content&quot;:&quot;What we want to do…&quot;},{&quot;type&quot;:&quot;block&quot;,&quot;subType&quot;:&quot;listItem&quot;,&quot;level&quot;:1,&quot;listType&quot;:&quot;number&quot;,&quot;startCounter&quot;:1},{&quot;type&quot;:&quot;inline&quot;,&quot;subType&quot;:&quot;text&quot;,&quot;content&quot;:&quot;We want to discuss hot issues in ways that make people think, reflect on their preconceived notions about what different wisdom traditions have to offer &amp; their relevance to today’s social dilemmas. &quot;},{&quot;type&quot;:&quot;block&quot;,&quot;subType&quot;:&quot;listItem&quot;,&quot;level&quot;:1,&quot;listType&quot;:&quot;number&quot;},{&quot;type&quot;:&quot;inline&quot;,&quot;subType&quot;:&quot;text&quot;,&quot;content&quot;:&quot;We want to create formal mentorship opportunities for  youth interested in media. &quot;},{&quot;type&quot;:&quot;block&quot;,&quot;subType&quot;:&quot;listItem&quot;,&quot;level&quot;:1,&quot;listType&quot;:&quot;number&quot;},{&quot;type&quot;:&quot;inline&quot;,&quot;subType&quot;:&quot;text&quot;,&quot;content&quot;:&quot;We want to elevate and enrich our civics discourse.  &quot;},{&quot;subType&quot;:&quot;heading2&quot;,&quot;type&quot;:&quot;block&quot;},{&quot;type&quot;:&quot;inline&quot;,&quot;subType&quot;:&quot;text&quot;,&quot;content&quot;:&quot;Audience&quot;},{&quot;type&quot;:&quot;block&quot;,&quot;subType&quot;:&quot;listItem&quot;,&quot;level&quot;:1,&quot;listType&quot;:&quot;number&quot;,&quot;startCounter&quot;:1},{&quot;type&quot;:&quot;inline&quot;,&quot;subType&quot;:&quot;text&quot;,&quot;content&quot;:&quot;People who care about public policy - they listen to Templeton Funded podcasts&quot;},{&quot;type&quot;:&quot;block&quot;,&quot;subType&quot;:&quot;listItem&quot;,&quot;level&quot;:1,&quot;listType&quot;:&quot;number&quot;},{&quot;type&quot;:&quot;inline&quot;,&quot;subType&quot;:&quot;text&quot;,&quot;content&quot;:&quot;People from diverse faith communities - they listen to On Being with Kristina Tippit.&quot;},{&quot;type&quot;:&quot;block&quot;,&quot;subType&quot;:&quot;listItem&quot;,&quot;level&quot;:1,&quot;listType&quot;:&quot;number&quot;},{&quot;type&quot;:&quot;inline&quot;,&quot;subType&quot;:&quot;text&quot;,&quot;content&quot;:&quot;People curious about different worldviews and shifting perspectives - they listen to &quot;},{&quot;type&quot;:&quot;inline&quot;,&quot;subType&quot;:&quot;text&quot;,&quot;content&quot;:&quot;Twisted Histories&quot;,&quot;href&quot;:&quot;https://www.cbc.ca/listen/cbc-podcasts/906-telling-our-twisted-histories&quot;},{&quot;type&quot;:&quot;inline&quot;,&quot;subType&quot;:&quot;text&quot;,&quot;content&quot;:&quot; &amp; 99% Invisible. &quot;},{&quot;subType&quot;:&quot;heading2&quot;,&quot;type&quot;:&quot;block&quot;},{&quot;type&quot;:&quot;inline&quot;,&quot;subType&quot;:&quot;text&quot;,&quot;content&quot;:&quot;Format&quot;},{&quot;type&quot;:&quot;block&quot;,&quot;subType&quot;:&quot;listItem&quot;,&quot;level&quot;:1,&quot;listType&quot;:&quot;number&quot;,&quot;startCounter&quot;:1},{&quot;type&quot;:&quot;inline&quot;,&quot;subType&quot;:&quot;text&quot;,&quot;content&quot;:&quot;Live community driven sessions. &quot;},{&quot;type&quot;:&quot;block&quot;,&quot;subType&quot;:&quot;listItem&quot;,&quot;level&quot;:1,&quot;listType&quot;:&quot;number&quot;},{&quot;type&quot;:&quot;inline&quot;,&quot;subType&quot;:&quot;text&quot;,&quot;content&quot;:&quot;Narrative podcast.&quot;},{&quot;subType&quot;:&quot;heading2&quot;,&quot;type&quot;:&quot;block&quot;},{&quot;type&quot;:&quot;inline&quot;,&quot;subType&quot;:&quot;text&quot;,&quot;content&quot;:&quot;Why&quot;},{&quot;subType&quot;:&quot;paragraph&quot;,&quot;type&quot;:&quot;block&quot;},{&quot;type&quot;:&quot;inline&quot;,&quot;subType&quot;:&quot;text&quot;,&quot;content&quot;:&quot;As Historian Co-Laureates for the City of Edmonton and people who strive to serve the community through non-profits we wrestle with intense questions. How do we serve people with highly intense needs while questioning the underlying systems that lead to inequality? How might our traditions help us tackle the problems we see in a better way? How do we go about integrating and explaining different worldviews within colonial systems.   &quot;}],&quot;allColors&quot;:[{&quot;themeIndex&quot;:0,&quot;value&quot;:&quot;#688664&quot;},{&quot;themeIndex&quot;:1,&quot;value&quot;:&quot;#ce9f24&quot;},{&quot;themeIndex&quot;:2,&quot;value&quot;:&quot;#a86e8c&quot;},{&quot;themeIndex&quot;:3,&quot;value&quot;:&quot;#555559&quot;},{&quot;themeIndex&quot;:4,&quot;value&quot;:&quot;#969437&quot;},{&quot;value&quot;:&quot;#E0E8EC&quot;,&quot;themeIndex&quot;:-5},{&quot;value&quot;:&quot;#81A2B2&quot;,&quot;themeIndex&quot;:-4},{&quot;value&quot;:&quot;#242C39&quot;,&quot;themeIndex&quot;:-3},{&quot;value&quot;:&quot;#F2F6F7&quot;,&quot;themeIndex&quot;:-2},{&quot;value&quot;:&quot;#FFFFFF&quot;,&quot;themeIndex&quot;:-1}],&quot;blockStyles&quot;:{&quot;isMigrated&quot;:true,&quot;migratedAt&quot;:&quot;2025-02-20T23:43:14.074Z&quot;,&quot;background&quot;:{&quot;abs&quot;:&quot;#FFFFFF&quot;,&quot;themeIndex&quot;:-1,&quot;opacity&quot;:1,&quot;tintBlendMode&quot;:&quot;normal&quot;,&quot;card&quot;:{&quot;enabled&quot;:false,&quot;color&quot;:{&quot;opacity&quot;:0.25,&quot;abs&quot;:&quot;rgba(36, 44, 57, 0.25)&quot;,&quot;themeIndex&quot;:-3}},&quot;type&quot;:&quot;color&quot;,&quot;tintColor&quot;:{&quot;abs&quot;:&quot;rgba(36, 44, 57, 0.25)&quot;,&quot;opacity&quot;:0.25,&quot;themeIndex&quot;:-3}},&quot;name&quot;:&quot;&quot;,&quot;blockType&quot;:&quot;Text&quot;,&quot;legacyBlockType&quot;:&quot;Text&quot;,&quot;hash&quot;:&quot;14ce24e035aff1a748bd2883f644b6e13a5cde46&quot;,&quot;clonedFrom&quot;:&quot;5d242f2bed847a080090e908&quot;,&quot;isFactoryStyle&quot;:true,&quot;css&quot;:&quot;&quot;,&quot;blockSpacing&quot;:&quot;medium&quot;,&quot;blockWidth&quot;:&quot;medium&quot;,&quot;blockHeight&quot;:&quot;none&quot;,&quot;h1&quot;:{&quot;color&quot;:{&quot;abs&quot;:&quot;rgba(41, 128, 185, 1)&quot;,&quot;opacity&quot;:1,&quot;themeIndex&quot;:0},&quot;alignment&quot;:&quot;left&quot;,&quot;size&quot;:{&quot;abs&quot;:38,&quot;themeRef&quot;:null}},&quot;h2&quot;:{&quot;color&quot;:{&quot;abs&quot;:&quot;rgba(52, 73, 94, 1)&quot;,&quot;opacity&quot;:1,&quot;themeIndex&quot;:1},&quot;alignment&quot;:&quot;left&quot;,&quot;size&quot;:{&quot;abs&quot;:24,&quot;themeRef&quot;:null}},&quot;p&quot;:{&quot;color&quot;:{&quot;abs&quot;:&quot;#242C39&quot;,&quot;opacity&quot;:1,&quot;themeIndex&quot;:-3},&quot;alignment&quot;:&quot;left&quot;,&quot;size&quot;:{&quot;abs&quot;:20,&quot;themeRef&quot;:&quot;medium&quot;}},&quot;animation&quot;:{&quot;animationOption&quot;:&quot;none&quot;,&quot;animationType&quot;:&quot;fade&quot;,&quot;direction&quot;:&quot;down&quot;,&quot;speed&quot;:&quot;medium&quot;},&quot;blockQuote&quot;:{&quot;color&quot;:{&quot;abs&quot;:&quot;#242C39&quot;,&quot;opacity&quot;:1,&quot;themeIndex&quot;:-3},&quot;size&quot;:{&quot;abs&quot;:27,&quot;themeRef&quot;:&quot;medium&quot;},&quot;barColor&quot;:{&quot;abs&quot;:&quot;rgba(41, 128, 185, 1)&quot;,&quot;opacity&quot;:1,&quot;themeIndex&quot;:0},&quot;displayQuoteIcon&quot;:false},&quot;button&quot;:{&quot;textColor&quot;:&quot;light&quot;,&quot;roundness&quot;:4,&quot;size&quot;:&quot;medium&quot;,&quot;color&quot;:{&quot;abs&quot;:&quot;rgba(104, 134, 100, 1)&quot;,&quot;opacity&quot;:1,&quot;themeIndex&quot;:0}},&quot;accordion&quot;:{&quot;headerBackground&quot;:{&quot;color&quot;:{&quot;abs&quot;:&quot;#FFFFFF&quot;,&quot;opacity&quot;:1,&quot;themeIndex&quot;:-1},&quot;on&quot;:true},&quot;bodyBackground&quot;:{&quot;on&quot;:false},&quot;buttonAlignment&quot;:&quot;left&quot;,&quot;buttonColor&quot;:{&quot;abs&quot;:&quot;rgba(104, 134, 100, 1)&quot;,&quot;opacity&quot;:1,&quot;themeIndex&quot;:0},&quot;buttonStyle&quot;:&quot;arrow&quot;,&quot;cardStyle&quot;:&quot;simple&quot;,&quot;imageHeight&quot;:&quot;medium&quot;,&quot;tint&quot;:{&quot;color&quot;:{&quot;abs&quot;:&quot;#242C39&quot;,&quot;opacity&quot;:1,&quot;themeIndex&quot;:-3},&quot;opacity&quot;:25},&quot;expandButtonText&quot;:&quot;Expand&quot;,&quot;closeButtonText&quot;:&quot;Collapse&quot;},&quot;link&quot;:{&quot;color&quot;:{&quot;abs&quot;:&quot;#242C39&quot;,&quot;opacity&quot;:1,&quot;themeIndex&quot;:-3},&quot;underline&quot;:{&quot;color&quot;:{&quot;abs&quot;:&quot;#242C39&quot;,&quot;opacity&quot;:1,&quot;themeIndex&quot;:-3},&quot;on&quot;:true}},&quot;list&quot;:{&quot;color&quot;:{&quot;abs&quot;:&quot;#242C39&quot;,&quot;opacity&quot;:1,&quot;themeIndex&quot;:-3},&quot;marker&quot;:&quot;circle&quot;,&quot;markerColor&quot;:{&quot;abs&quot;:&quot;#242C39&quot;,&quot;opacity&quot;:1,&quot;themeIndex&quot;:-3}},&quot;roiCalculator&quot;:{&quot;highlightColor&quot;:{&quot;abs&quot;:&quot;rgba(104, 134, 100, 1)&quot;,&quot;opacity&quot;:1,&quot;themeIndex&quot;:0},&quot;textColor&quot;:&quot;dark&quot;,&quot;background&quot;:{&quot;color&quot;:{&quot;abs&quot;:&quot;#FFFFFF&quot;,&quot;opacity&quot;:1,&quot;themeIndex&quot;:-1},&quot;imageBlur&quot;:0},&quot;tint&quot;:{&quot;color&quot;:{&quot;abs&quot;:&quot;#242C39&quot;,&quot;opacity&quot;:1,&quot;themeIndex&quot;:-3},&quot;opacity&quot;:40}},&quot;table&quot;:{&quot;background&quot;:{&quot;on&quot;:false,&quot;color&quot;:{&quot;abs&quot;:&quot;#FFFFFF&quot;,&quot;opacity&quot;:1,&quot;themeIndex&quot;:-1}},&quot;header&quot;:{&quot;on&quot;:false,&quot;color&quot;:{&quot;abs&quot;:&quot;#FFFFFF&quot;,&quot;opacity&quot;:1,&quot;themeIndex&quot;:-1}},&quot;border&quot;:{&quot;borderType&quot;:&quot;all&quot;,&quot;color&quot;:{&quot;abs&quot;:&quot;rgba(129, 162, 178, 0.25)&quot;,&quot;opacity&quot;:0.25,&quot;themeIndex&quot;:-4}}}},&quot;printContext&quot;:{&quot;isPrintMode&quot;:false},&quot;imgixContext&quot;:{&quot;disableImgix&quot;:false},&quot;publicPageContext&quot;:{&quot;publicPageUrl&quot;:&quot;https://pages.qwilr.com/NcPq2t3ZTTy9&quot;},&quot;quoteContext&quot;:{&quot;priceSummary&quot;:{&quot;total&quot;:{},&quot;dueToday&quot;:{&quot;base&quot;:0,&quot;discounts&quot;:[],&quot;quoted&quot;:0,&quot;taxes&quot;:[],&quot;billable&quot;:0},&quot;blocks&quot;:[]},&quot;accountQuoteSettings&quot;:{&quot;labels&quot;:[],&quot;taxes&quot;:[{&quot;percent&quot;:10,&quot;name&quot;:&quot;GST&quot;,&quot;id&quot;:&quot;gst&quot;},{&quot;percent&quot;:20,&quot;name&quot;:&quot;VAT&quot;,&quot;id&quot;:&quot;vat&quot;},{&quot;percent&quot;:7.25,&quot;name&quot;:&quot;California State Sales Tax&quot;,&quot;id&quot;:&quot;ca-sales&quot;}],&quot;variables&quot;:[{&quot;ifUnder&quot;:{&quot;amount&quot;:0,&quot;unitName&quot;:&quot;Hour&quot;,&quot;unitThreshold&quot;:0,&quot;isActive&quot;:false},&quot;ifOver&quot;:{&quot;amount&quot;:0,&quot;unitName&quot;:&quot;Hour&quot;,&quot;unitThreshold&quot;:0,&quot;isActive&quot;:false},&quot;isDeleted&quot;:false,&quot;unitName&quot;:&quot;Unit&quot;,&quot;defaultAmount&quot;:0.03,&quot;name&quot;:&quot;Cost per call&quot;,&quot;id&quot;:&quot;LyiNQkVH1aQ&quot;},{&quot;ifUnder&quot;:{&quot;amount&quot;:0,&quot;unitName&quot;:&quot;Hour&quot;,&quot;unitThreshold&quot;:0,&quot;isActive&quot;:false},&quot;ifOver&quot;:{&quot;amount&quot;:0,&quot;unitName&quot;:&quot;Hour&quot;,&quot;unitThreshold&quot;:0,&quot;isActive&quot;:false},&quot;isDeleted&quot;:false,&quot;unitName&quot;:&quot;Unit&quot;,&quot;defaultAmount&quot;:125,&quot;name&quot;:&quot;Honorarium&quot;,&quot;id&quot;:&quot;50aBzWwkOqA&quot;}],&quot;discounts&quot;:[{&quot;id&quot;:&quot;82mnVpmb8Ds&quot;,&quot;name&quot;:&quot;Charitable Partner&quot;,&quot;type&quot;:&quot;percent&quot;,&quot;amount&quot;:9,&quot;isEnabled&quot;:false,&quot;isDeleted&quot;:false}]},&quot;quoteLabelSetId&quot;:null,&quot;projectCurrency&quot;:{&quot;currencyCode&quot;:&quot;AUD&quot;,&quot;currencyFormat&quot;:{&quot;showDecimals&quot;:true}},&quot;paymentSettings&quot;:{&quot;gatewayId&quot;:null,&quot;discoverable&quot;:false,&quot;enabled&quot;:false,&quot;requireOnAccept&quot;:true,&quot;partialPaymentConfig&quot;:{&quot;amount&quot;:0,&quot;enabled&quot;:false,&quot;kind&quot;:&quot;percentage&quot;}},&quot;quoteSummary&quot;:{&quot;blocks&quot;:[],&quot;priceContext&quot;:{&quot;discounts&quot;:[],&quot;taxes&quot;:[],&quot;taxExemptions&quot;:[]},&quot;currencyFormat&quot;:{&quot;type&quot;:&quot;inherit&quot;},&quot;showTaxes&quot;:true,&quot;showTotalExcludingTax&quot;:true,&quot;showTotalDiscounts&quot;:true,&quot;showTotal&quot;:true}},&quot;blockId&quot;:&quot;6657a5ca87a2b61f7f0cc38d&quot;}" data-hydration-host="true" data-hydration-host-id="6f6b44ee-85fe-4131-b4b5-e59abb4aa101">
+           <h1 class="h1-widget__spacing-shim _2fdphpc project-block__block-element pencic0 _2fdphpb" style="--_2fdphp9:var(--_2fdphp0); --_2fdphpa:300; --_2fdphp2:#688664; --_2fdphp3:38; --_2fdphp1:left; --_2fdphp4:1.2; --_2fdphp5:0em; --_2fdphp6:none; --_2fdphp7:0.65em; --_2fdphp8:0.2em;">
+            Join Edmonton’s Historian Co-Laureates: Cheryl Whiskeyjack &amp; Omar Yaqub, as they explore how to respond to some of today's biggest problems: hate crimes, isolation, belonging, injustice &amp; health with  youth &amp; the wisdom traditions they represent.
+           </h1>
+           <h2 class="h2-widget__spacing-shim _1fux1sic project-block__block-element pencic0 _1fux1sib" style="--_1fux1si9:var(--_1fux1si0); --_1fux1sia:300; --_1fux1si2:#ce9f24; --_1fux1si3:24; --_1fux1si1:left; --_1fux1si4:1.3; --_1fux1si5:0em; --_1fux1si6:none; --_1fux1si7:0.65em; --_1fux1si8:0.4em;">
+            What we want to do…
+           </h2>
+           <ol>
+            <li class="ordered xj1dpa8 xj1dpaa xj1dpah listitem-widget__spacing-shim project-block__block-element" style='--xj1dpa5:#242C39; --xj1dpa6:"\e5c8"; --xj1dpa0:#242C39; --xj1dpa4:20;'>
+             <span class="before">
+              1.
+             </span>
+             <span>
+              We want to discuss hot issues in ways that make people think, reflect on their preconceived notions about what different wisdom traditions have to offer &amp; their relevance to today’s social dilemmas.
+             </span>
+            </li>
+            <li class="ordered xj1dpa8 xj1dpaa xj1dpah listitem-widget__spacing-shim project-block__block-element" style='--xj1dpa5:#242C39; --xj1dpa6:"\e5c8"; --xj1dpa0:#242C39; --xj1dpa4:20;'>
+             <span class="before">
+              2.
+             </span>
+             <span>
+              We want to create formal mentorship opportunities for  youth interested in media.
+             </span>
+            </li>
+            <li class="ordered xj1dpa8 xj1dpaa xj1dpah listitem-widget__spacing-shim project-block__block-element" style='--xj1dpa5:#242C39; --xj1dpa6:"\e5c8"; --xj1dpa0:#242C39; --xj1dpa4:20;'>
+             <span class="before">
+              3.
+             </span>
+             <span>
+              We want to elevate and enrich our civics discourse.
+             </span>
+            </li>
+           </ol>
+           <h2 class="h2-widget__spacing-shim _1fux1sic project-block__block-element pencic0 _1fux1sib" style="--_1fux1si9:var(--_1fux1si0); --_1fux1sia:300; --_1fux1si2:#ce9f24; --_1fux1si3:24; --_1fux1si1:left; --_1fux1si4:1.3; --_1fux1si5:0em; --_1fux1si6:none; --_1fux1si7:0.65em; --_1fux1si8:0.4em;">
+            Audience
+           </h2>
+           <ol>
+            <li class="ordered xj1dpa8 xj1dpaa xj1dpah listitem-widget__spacing-shim project-block__block-element" style='--xj1dpa5:#242C39; --xj1dpa6:"\e5c8"; --xj1dpa0:#242C39; --xj1dpa4:20;'>
+             <span class="before">
+              1.
+             </span>
+             <span>
+              People who care about public policy - they listen to Templeton Funded podcasts
+             </span>
+            </li>
+            <li class="ordered xj1dpa8 xj1dpaa xj1dpah listitem-widget__spacing-shim project-block__block-element" style='--xj1dpa5:#242C39; --xj1dpa6:"\e5c8"; --xj1dpa0:#242C39; --xj1dpa4:20;'>
+             <span class="before">
+              2.
+             </span>
+             <span>
+              People from diverse faith communities - they listen to On Being with Kristina Tippit.
+             </span>
+            </li>
+            <li class="ordered xj1dpa8 xj1dpaa xj1dpah listitem-widget__spacing-shim project-block__block-element" style='--xj1dpa5:#242C39; --xj1dpa6:"\e5c8"; --xj1dpa0:#242C39; --xj1dpa4:20;'>
+             <span class="before">
+              3.
+             </span>
+             <span>
+              People curious about different worldviews and shifting perspectives - they listen to
+              <a href="https://www.cbc.ca/listen/cbc-podcasts/906-telling-our-twisted-histories" rel="noreferrer" target="_blank">
+               Twisted Histories
+              </a>
+              &amp; 99% Invisible.
+             </span>
+            </li>
+           </ol>
+           <h2 class="h2-widget__spacing-shim _1fux1sic project-block__block-element pencic0 _1fux1sib" style="--_1fux1si9:var(--_1fux1si0); --_1fux1sia:300; --_1fux1si2:#ce9f24; --_1fux1si3:24; --_1fux1si1:left; --_1fux1si4:1.3; --_1fux1si5:0em; --_1fux1si6:none; --_1fux1si7:0.65em; --_1fux1si8:0.4em;">
+            Format
+           </h2>
+           <ol>
+            <li class="ordered xj1dpa8 xj1dpaa xj1dpah listitem-widget__spacing-shim project-block__block-element" style='--xj1dpa5:#242C39; --xj1dpa6:"\e5c8"; --xj1dpa0:#242C39; --xj1dpa4:20;'>
+             <span class="before">
+              1.
+             </span>
+             <span>
+              Live community driven sessions.
+             </span>
+            </li>
+            <li class="ordered xj1dpa8 xj1dpaa xj1dpah listitem-widget__spacing-shim project-block__block-element" style='--xj1dpa5:#242C39; --xj1dpa6:"\e5c8"; --xj1dpa0:#242C39; --xj1dpa4:20;'>
+             <span class="before">
+              2.
+             </span>
+             <span>
+              Narrative podcast.
+             </span>
+            </li>
+           </ol>
+           <h2 class="h2-widget__spacing-shim _1fux1sic project-block__block-element pencic0 _1fux1sib" style="--_1fux1si9:var(--_1fux1si0); --_1fux1sia:300; --_1fux1si2:#ce9f24; --_1fux1si3:24; --_1fux1si1:left; --_1fux1si4:1.3; --_1fux1si5:0em; --_1fux1si6:none; --_1fux1si7:0.65em; --_1fux1si8:0.4em;">
+            Why
+           </h2>
+           <p class="p-widget__spacing-shim _66ilukc project-block__block-element pencic0 _66ilukb" style="--_66iluk9:var(--_66iluk0); --_66iluka:400; --_66iluk2:#242C39; --_66iluk3:20; --_66iluk1:left; --_66iluk4:1.5; --_66iluk5:0em; --_66iluk6:none; --_66iluk7:0em; --_66iluk8:1em;">
+            As Historian Co-Laureates for the City of Edmonton and people who strive to serve the community through non-profits we wrestle with intense questions. How do we serve people with highly intense needs while questioning the underlying systems that lead to inequality? How might our traditions help us tackle the problems we see in a better way? How do we go about integrating and explaining different worldviews within colonial systems.
+           </p>
+          </div>
+         </div>
+        </div>
+       </div>
+      </section>
+      <section block-id="6657a5ca87a2b638a70cc38e" block-name="Big Questions" class="project-block text-block project-block--id-6657a5ca87a2b638a70cc38e project-block--id-5ece0365 project-block--id-815e0531 qwilr-standard project-block--using-block-styles project-block--background-image project-block--unfolded" data-animation="none" data-animation-speed="medium" data-qwilr-component="block" data-type="Text" ng-class="{'project-block--unfolded': !block3.isFolded}" style="--ij2xgd1:url(https://qwilr.imgix.net/oLMYduwNOwVdu-hpagOhYPtkTd2arxVuWl5FPA.jpeg?auto=format);--ij2xgd2:rgba(36, 44, 57, 0.25);--ij2xgd3:multiply;--ij2xgd4:center;--ij2xgd8:transparent;--ij2xgd5:0px;--ij2xgd7:100vh;--ij2xgd9:90%;--ij2xgdb:90;--ij2xgda:1.15;--ij2xgdc:7.5%;--ij2xgdd:7.5%" tabindex="-1">
+       <div class="background-container background-container--is-public-page full-height">
+        <div class="background-image">
+        </div>
+        <div class="background-tint">
+        </div>
+        <div class="row container block-spacer">
+         <div class="large-8 columns large-centered ng-non-bindable block-content" mount-widgets="">
+          <div data-hydration-component="HydratableRootRenderTokensHost" data-hydration-data='{"tokens":[{"type":"block","subType":"heading1"},{"type":"inline","subType":"text","content":"Questions…","style":{"bold":true}}],"allColors":[{"themeIndex":0,"value":"#688664"},{"themeIndex":1,"value":"#ce9f24"},{"themeIndex":2,"value":"#a86e8c"},{"themeIndex":3,"value":"#555559"},{"themeIndex":4,"value":"#969437"},{"value":"#E0E8EC","themeIndex":-5},{"value":"#81A2B2","themeIndex":-4},{"value":"#242C39","themeIndex":-3},{"value":"#F2F6F7","themeIndex":-2},{"value":"#FFFFFF","themeIndex":-1}],"blockStyles":{"isMigrated":true,"migratedAt":"2025-02-20T23:43:14.076Z","name":"","blockType":"Text","legacyBlockType":"Splash","blockHeight":"large","blockSpacing":"medium","isFactoryStyle":true,"css":"","h1":{"color":{"abs":"#FFFFFF","opacity":1,"themeIndex":-1},"size":{"abs":65,"themeRef":"medium"},"alignment":"center"},"h2":{"color":{"abs":"#FFFFFF","opacity":1,"themeIndex":-1},"size":{"abs":40,"themeRef":"medium"},"alignment":"center"},"p":{"color":{"abs":"#FFFFFF","opacity":1,"themeIndex":-1},"size":{"abs":20,"themeRef":"medium"},"alignment":"center"},"blockQuote":{"color":{"abs":"#FFFFFF","opacity":1,"themeIndex":-1},"size":{"abs":27,"themeRef":"medium"},"barColor":{"abs":"rgba(41, 128, 185, 1)","opacity":1,"themeIndex":0},"displayQuoteIcon":false},"background":{"abs":"#FFFFFF","themeIndex":-1,"opacity":1,"tintColor":{"abs":"#242C39","opacity":0.25,"themeIndex":-3},"tintBlendMode":"blend","card":{"enabled":false,"color":{"themeIndex":-3,"abs":"rgba(36, 44, 57, 0.25)","opacity":0.25}},"type":"image","url":"https://d2cankni8sodj9.cloudfront.net/oLMYduwNOwVdu-hpagOhYPtkTd2arxVuWl5FPA.jpeg"},"blockWidth":"large","hash":"917505cad7c22f80ed8f6ca570eb69786354883e","animation":{"animationOption":"none","animationType":"fade","direction":"down","speed":"medium"},"table":{"background":{"on":false,"color":{"abs":"#FFFFFF","opacity":1,"themeIndex":-1}},"header":{"on":false,"color":{"abs":"#FFFFFF","opacity":1,"themeIndex":-1}},"border":{"borderType":"all","color":{"abs":"rgba(129, 162, 178, 0.25)","opacity":0.25,"themeIndex":-4}}},"list":{"color":{"abs":"#FFFFFF","opacity":1,"themeIndex":-1},"marker":"circle","markerColor":{"abs":"#FFFFFF","opacity":1,"themeIndex":-1}},"link":{"color":{"abs":"#FFFFFF","opacity":1,"themeIndex":-1},"underline":{"on":true,"color":{"abs":"#FFFFFF","opacity":1,"themeIndex":-1}}},"button":{"color":{"abs":"rgba(104, 134, 100, 1)","opacity":1,"themeIndex":0},"roundness":4,"size":"medium","textColor":"dark"},"roiCalculator":{"highlightColor":{"abs":"rgba(104, 134, 100, 1)","opacity":1,"themeIndex":0},"textColor":"dark","background":{"color":{"abs":"#FFFFFF","opacity":1,"themeIndex":-1},"imageBlur":0},"tint":{"color":{"abs":"#242C39","opacity":1,"themeIndex":-3},"opacity":40}},"accordion":{"headerBackground":{"color":{"abs":"#FFFFFF","opacity":1,"themeIndex":-1},"on":true},"bodyBackground":{"on":false},"buttonAlignment":"left","buttonStyle":"arrow","buttonColor":{"abs":"rgba(104, 134, 100, 1)","opacity":1,"themeIndex":0},"tint":{"color":{"abs":"#242C39","opacity":1,"themeIndex":-3},"opacity":25},"cardStyle":"simple","imageHeight":"medium","expandButtonText":"Expand","closeButtonText":"Collapse"},"clonedFrom":"5d242f2bed847a080090e90a"},"printContext":{"isPrintMode":false},"imgixContext":{"disableImgix":false},"publicPageContext":{"publicPageUrl":"https://pages.qwilr.com/NcPq2t3ZTTy9"},"quoteContext":{"priceSummary":{"total":{},"dueToday":{"base":0,"discounts":[],"quoted":0,"taxes":[],"billable":0},"blocks":[]},"accountQuoteSettings":{"labels":[],"taxes":[{"percent":10,"name":"GST","id":"gst"},{"percent":20,"name":"VAT","id":"vat"},{"percent":7.25,"name":"California State Sales Tax","id":"ca-sales"}],"variables":[{"ifUnder":{"amount":0,"unitName":"Hour","unitThreshold":0,"isActive":false},"ifOver":{"amount":0,"unitName":"Hour","unitThreshold":0,"isActive":false},"isDeleted":false,"unitName":"Unit","defaultAmount":0.03,"name":"Cost per call","id":"LyiNQkVH1aQ"},{"ifUnder":{"amount":0,"unitName":"Hour","unitThreshold":0,"isActive":false},"ifOver":{"amount":0,"unitName":"Hour","unitThreshold":0,"isActive":false},"isDeleted":false,"unitName":"Unit","defaultAmount":125,"name":"Honorarium","id":"50aBzWwkOqA"}],"discounts":[{"id":"82mnVpmb8Ds","name":"Charitable Partner","type":"percent","amount":9,"isEnabled":false,"isDeleted":false}]},"quoteLabelSetId":null,"projectCurrency":{"currencyCode":"AUD","currencyFormat":{"showDecimals":true}},"paymentSettings":{"gatewayId":null,"discoverable":false,"enabled":false,"requireOnAccept":true,"partialPaymentConfig":{"amount":0,"enabled":false,"kind":"percentage"}},"quoteSummary":{"blocks":[],"priceContext":{"discounts":[],"taxes":[],"taxExemptions":[]},"currencyFormat":{"type":"inherit"},"showTaxes":true,"showTotalExcludingTax":true,"showTotalDiscounts":true,"showTotal":true}},"blockId":"6657a5ca87a2b638a70cc38e"}' data-hydration-host="true" data-hydration-host-id="7425d5e0-d972-48d7-bc07-41b1f8a8e364">
+           <h1 class="h1-widget__spacing-shim _2fdphpc project-block__block-element pencic0 _2fdphpb" style="--_2fdphp9:var(--_2fdphp0); --_2fdphpa:300; --_2fdphp2:#FFFFFF; --_2fdphp3:65; --_2fdphp1:center; --_2fdphp4:1.2; --_2fdphp5:0em; --_2fdphp6:none; --_2fdphp7:0.65em; --_2fdphp8:0.2em;">
+            <span style="font-weight:bold;">
+             Questions…
+            </span>
+           </h1>
+          </div>
+         </div>
+        </div>
+       </div>
+      </section>
+      <section block-id="6657a5ca87a2b6f9890cc38f" block-name="Questions" class="project-block text-block project-block--id-6657a5ca87a2b6f9890cc38f project-block--id-05f7b140 project-block--id-815e0531 qwilr-standard project-block--using-block-styles project-block--background-color project-block--unfolded" data-animation="none" data-animation-speed="medium" data-qwilr-component="block" data-type="Text" ng-class="{'project-block--unfolded': !block4.isFolded}" style="--ij2xgd0:rgb(255, 255, 255);--ij2xgd7:auto;--ij2xgd9:75%;--ij2xgdb:75;--ij2xgda:1.33;--ij2xgdc:7.5%;--ij2xgdd:7.5%" tabindex="-1">
+       <div class="background-container background-container--is-public-page">
+        <div class="background-image">
+        </div>
+        <div class="background-tint">
+        </div>
+        <div class="row container block-spacer">
+         <div class="large-8 columns large-centered ng-non-bindable block-content" mount-widgets="">
+          <div data-hydration-component="HydratableRootRenderTokensHost" data-hydration-data='{"tokens":[{"subType":"heading2","type":"block"},{"type":"inline","subType":"text","content":"Why might someone prefer living on the street over staying in a shelter?","style":{"italic":true}},{"subType":"paragraph","type":"block"},{"type":"inline","subType":"text","content":"What makes a place home? Is home a roof or a community? What does our current approach to rapid housing miss? Why might people prefer living on the street to a shelter? What are ways of living that are common abroad but missing on our local landscape? What can we learn &amp; apply from all of these  questions as we try to build new (affordable) housing? "},{"subType":"heading2","type":"block"},{"type":"inline","subType":"text","content":"Could “therapeutic communities” be a prescription for mental health?","style":{"italic":true}},{"subType":"paragraph","type":"block"},{"type":"inline","subType":"text","content":"Does everyone need a therapist? We often approach mental health in diverse communities from a deficit/ taboo perspective. What if we tried to learn and build on what’s working? What are the natural assets and approaches to supporting mental health that we can learn from as we look for scalable approaches to addressing rampant anxiety and isolation. "},{"subType":"heading2","type":"block"},{"type":"inline","subType":"text","content":"Is the way we punish hate crimes leading to more hate? ","style":{"italic":true}},{"subType":"paragraph","type":"block"},{"type":"inline","subType":"text","content":"Our response to hate crimes is often to push the racialized communities who are over policed towards the justice system. Will that really make people safer or help them heal? Edmonton has seen a rash of hate crimes – there have been more than a dozen attacks on black muslim women in hijab this past year.  Often the perpetrators aren’t who we think; many of the attackers come with their own racialized trauma and difficulties. What might it look like to address a hate crime and healing from the justice traditions of the communities involved? "},{"subType":"paragraph","type":"block"},{"type":"inline","subType":"text","content":"The people most often impacted by safety concerns are often from underserved &amp; diverse communities. How do they feel about policing and what would make them feel safe? What types of investment are they looking for in their neighbourhood? "},{"subType":"heading2","type":"block"},{"type":"inline","subType":"text","content":"Are non-profits making things worse? ","style":{"italic":true}},{"subType":"paragraph","type":"block"},{"type":"inline","subType":"text","content":"Have non-profits actually made things better? Has the dogma of nonprofits changed the way we think about supporting one another? How long have social service agencies been around &amp; what existed before them? What can we apply today to make society better? How can blockchain take us back to Indigenous ways of governance, how can the Muslim institution of zakat disrupt poverty?"},{"subType":"heading2","type":"block"},{"type":"inline","subType":"text","content":"Can i be both colonized and a colonizer? ","style":{"italic":true}},{"subType":"paragraph","type":"block"},{"type":"inline","subType":"text","content":"What does it mean to be “Treaty people” for refugees and what are the lessons for all of us in examining our own place in Canada? How does this speak to the larger question of belonging and what Canadian identity is today? "},{"subType":"paragraph","type":"block"},{"type":"inline","subType":"text","content":""}],"allColors":[{"themeIndex":0,"value":"#688664"},{"themeIndex":1,"value":"#ce9f24"},{"themeIndex":2,"value":"#a86e8c"},{"themeIndex":3,"value":"#555559"},{"themeIndex":4,"value":"#969437"},{"value":"#E0E8EC","themeIndex":-5},{"value":"#81A2B2","themeIndex":-4},{"value":"#242C39","themeIndex":-3},{"value":"#F2F6F7","themeIndex":-2},{"value":"#FFFFFF","themeIndex":-1}],"blockStyles":{"isMigrated":true,"migratedAt":"2025-02-20T23:43:14.078Z","background":{"abs":"#FFFFFF","themeIndex":-1,"opacity":1,"tintBlendMode":"normal","card":{"enabled":false,"color":{"opacity":0.25,"abs":"rgba(36, 44, 57, 0.25)","themeIndex":-3}},"type":"color","tintColor":{"abs":"rgba(36, 44, 57, 0.25)","opacity":0.25,"themeIndex":-3}},"name":"","blockType":"Text","legacyBlockType":"Text","hash":"a8c22984e861b2a074e7a6100800fae847875a12","clonedFrom":"5d242f2bed847a080090e908","isFactoryStyle":true,"css":"","blockSpacing":"medium","blockWidth":"medium","blockHeight":"none","h1":{"color":{"abs":"rgba(41, 128, 185, 1)","opacity":1,"themeIndex":0},"alignment":"left","size":{"abs":65,"themeRef":"medium"}},"h2":{"color":{"abs":"rgba(52, 73, 94, 1)","opacity":1,"themeIndex":1},"alignment":"left","size":{"abs":40,"themeRef":"medium"}},"p":{"color":{"abs":"#242C39","opacity":1,"themeIndex":-3},"alignment":"left","size":{"abs":20,"themeRef":"medium"}},"animation":{"animationOption":"none","animationType":"fade","direction":"down","speed":"medium"},"blockQuote":{"color":{"abs":"#242C39","opacity":1,"themeIndex":-3},"size":{"abs":27,"themeRef":"medium"},"barColor":{"abs":"rgba(41, 128, 185, 1)","opacity":1,"themeIndex":0},"displayQuoteIcon":false},"button":{"textColor":"light","roundness":4,"size":"medium","color":{"abs":"rgba(104, 134, 100, 1)","opacity":1,"themeIndex":0}},"accordion":{"headerBackground":{"color":{"abs":"#FFFFFF","opacity":1,"themeIndex":-1},"on":true},"bodyBackground":{"on":false},"buttonAlignment":"left","buttonColor":{"abs":"rgba(104, 134, 100, 1)","opacity":1,"themeIndex":0},"buttonStyle":"arrow","cardStyle":"simple","imageHeight":"medium","tint":{"color":{"abs":"#242C39","opacity":1,"themeIndex":-3},"opacity":25},"expandButtonText":"Expand","closeButtonText":"Collapse"},"link":{"color":{"abs":"#242C39","opacity":1,"themeIndex":-3},"underline":{"color":{"abs":"#242C39","opacity":1,"themeIndex":-3},"on":true}},"list":{"color":{"abs":"#242C39","opacity":1,"themeIndex":-3},"marker":"circle","markerColor":{"abs":"#242C39","opacity":1,"themeIndex":-3}},"roiCalculator":{"highlightColor":{"abs":"rgba(104, 134, 100, 1)","opacity":1,"themeIndex":0},"textColor":"dark","background":{"color":{"abs":"#FFFFFF","opacity":1,"themeIndex":-1},"imageBlur":0},"tint":{"color":{"abs":"#242C39","opacity":1,"themeIndex":-3},"opacity":40}},"table":{"background":{"on":false,"color":{"abs":"#FFFFFF","opacity":1,"themeIndex":-1}},"header":{"on":false,"color":{"abs":"#FFFFFF","opacity":1,"themeIndex":-1}},"border":{"borderType":"all","color":{"abs":"rgba(129, 162, 178, 0.25)","opacity":0.25,"themeIndex":-4}}}},"printContext":{"isPrintMode":false},"imgixContext":{"disableImgix":false},"publicPageContext":{"publicPageUrl":"https://pages.qwilr.com/NcPq2t3ZTTy9"},"quoteContext":{"priceSummary":{"total":{},"dueToday":{"base":0,"discounts":[],"quoted":0,"taxes":[],"billable":0},"blocks":[]},"accountQuoteSettings":{"labels":[],"taxes":[{"percent":10,"name":"GST","id":"gst"},{"percent":20,"name":"VAT","id":"vat"},{"percent":7.25,"name":"California State Sales Tax","id":"ca-sales"}],"variables":[{"ifUnder":{"amount":0,"unitName":"Hour","unitThreshold":0,"isActive":false},"ifOver":{"amount":0,"unitName":"Hour","unitThreshold":0,"isActive":false},"isDeleted":false,"unitName":"Unit","defaultAmount":0.03,"name":"Cost per call","id":"LyiNQkVH1aQ"},{"ifUnder":{"amount":0,"unitName":"Hour","unitThreshold":0,"isActive":false},"ifOver":{"amount":0,"unitName":"Hour","unitThreshold":0,"isActive":false},"isDeleted":false,"unitName":"Unit","defaultAmount":125,"name":"Honorarium","id":"50aBzWwkOqA"}],"discounts":[{"id":"82mnVpmb8Ds","name":"Charitable Partner","type":"percent","amount":9,"isEnabled":false,"isDeleted":false}]},"quoteLabelSetId":null,"projectCurrency":{"currencyCode":"AUD","currencyFormat":{"showDecimals":true}},"paymentSettings":{"gatewayId":null,"discoverable":false,"enabled":false,"requireOnAccept":true,"partialPaymentConfig":{"amount":0,"enabled":false,"kind":"percentage"}},"quoteSummary":{"blocks":[],"priceContext":{"discounts":[],"taxes":[],"taxExemptions":[]},"currencyFormat":{"type":"inherit"},"showTaxes":true,"showTotalExcludingTax":true,"showTotalDiscounts":true,"showTotal":true}},"blockId":"6657a5ca87a2b6f9890cc38f"}' data-hydration-host="true" data-hydration-host-id="f63efa3d-8a14-4fa2-ade3-603fff47d692">
+           <h2 class="h2-widget__spacing-shim _1fux1sic project-block__block-element pencic0 _1fux1sib" style="--_1fux1si9:var(--_1fux1si0); --_1fux1sia:300; --_1fux1si2:#ce9f24; --_1fux1si3:40; --_1fux1si1:left; --_1fux1si4:1.3; --_1fux1si5:0em; --_1fux1si6:none; --_1fux1si7:0.65em; --_1fux1si8:0.4em;">
+            <span style="font-style:italic;">
+             Why might someone prefer living on the street over staying in a shelter?
+            </span>
+           </h2>
+           <p class="p-widget__spacing-shim _66ilukc project-block__block-element pencic0 _66ilukb" style="--_66iluk9:var(--_66iluk0); --_66iluka:400; --_66iluk2:#242C39; --_66iluk3:20; --_66iluk1:left; --_66iluk4:1.5; --_66iluk5:0em; --_66iluk6:none; --_66iluk7:0em; --_66iluk8:1em;">
+            What makes a place home? Is home a roof or a community? What does our current approach to rapid housing miss? Why might people prefer living on the street to a shelter? What are ways of living that are common abroad but missing on our local landscape? What can we learn &amp; apply from all of these  questions as we try to build new (affordable) housing?
+           </p>
+           <h2 class="h2-widget__spacing-shim _1fux1sic project-block__block-element pencic0 _1fux1sib" style="--_1fux1si9:var(--_1fux1si0); --_1fux1sia:300; --_1fux1si2:#ce9f24; --_1fux1si3:40; --_1fux1si1:left; --_1fux1si4:1.3; --_1fux1si5:0em; --_1fux1si6:none; --_1fux1si7:0.65em; --_1fux1si8:0.4em;">
+            <span style="font-style:italic;">
+             Could “therapeutic communities” be a prescription for mental health?
+            </span>
+           </h2>
+           <p class="p-widget__spacing-shim _66ilukc project-block__block-element pencic0 _66ilukb" style="--_66iluk9:var(--_66iluk0); --_66iluka:400; --_66iluk2:#242C39; --_66iluk3:20; --_66iluk1:left; --_66iluk4:1.5; --_66iluk5:0em; --_66iluk6:none; --_66iluk7:0em; --_66iluk8:1em;">
+            Does everyone need a therapist? We often approach mental health in diverse communities from a deficit/ taboo perspective. What if we tried to learn and build on what’s working? What are the natural assets and approaches to supporting mental health that we can learn from as we look for scalable approaches to addressing rampant anxiety and isolation.
+           </p>
+           <h2 class="h2-widget__spacing-shim _1fux1sic project-block__block-element pencic0 _1fux1sib" style="--_1fux1si9:var(--_1fux1si0); --_1fux1sia:300; --_1fux1si2:#ce9f24; --_1fux1si3:40; --_1fux1si1:left; --_1fux1si4:1.3; --_1fux1si5:0em; --_1fux1si6:none; --_1fux1si7:0.65em; --_1fux1si8:0.4em;">
+            <span style="font-style:italic;">
+             Is the way we punish hate crimes leading to more hate?
+            </span>
+           </h2>
+           <p class="p-widget__spacing-shim _66ilukc project-block__block-element pencic0 _66ilukb" style="--_66iluk9:var(--_66iluk0); --_66iluka:400; --_66iluk2:#242C39; --_66iluk3:20; --_66iluk1:left; --_66iluk4:1.5; --_66iluk5:0em; --_66iluk6:none; --_66iluk7:0em; --_66iluk8:1em;">
+            Our response to hate crimes is often to push the racialized communities who are over policed towards the justice system. Will that really make people safer or help them heal? Edmonton has seen a rash of hate crimes – there have been more than a dozen attacks on black muslim women in hijab this past year.  Often the perpetrators aren’t who we think; many of the attackers come with their own racialized trauma and difficulties. What might it look like to address a hate crime and healing from the justice traditions of the communities involved?
+           </p>
+           <p class="p-widget__spacing-shim _66ilukc project-block__block-element pencic0 _66ilukb" style="--_66iluk9:var(--_66iluk0); --_66iluka:400; --_66iluk2:#242C39; --_66iluk3:20; --_66iluk1:left; --_66iluk4:1.5; --_66iluk5:0em; --_66iluk6:none; --_66iluk7:0em; --_66iluk8:1em;">
+            The people most often impacted by safety concerns are often from underserved &amp; diverse communities. How do they feel about policing and what would make them feel safe? What types of investment are they looking for in their neighbourhood?
+           </p>
+           <h2 class="h2-widget__spacing-shim _1fux1sic project-block__block-element pencic0 _1fux1sib" style="--_1fux1si9:var(--_1fux1si0); --_1fux1sia:300; --_1fux1si2:#ce9f24; --_1fux1si3:40; --_1fux1si1:left; --_1fux1si4:1.3; --_1fux1si5:0em; --_1fux1si6:none; --_1fux1si7:0.65em; --_1fux1si8:0.4em;">
+            <span style="font-style:italic;">
+             Are non-profits making things worse?
+            </span>
+           </h2>
+           <p class="p-widget__spacing-shim _66ilukc project-block__block-element pencic0 _66ilukb" style="--_66iluk9:var(--_66iluk0); --_66iluka:400; --_66iluk2:#242C39; --_66iluk3:20; --_66iluk1:left; --_66iluk4:1.5; --_66iluk5:0em; --_66iluk6:none; --_66iluk7:0em; --_66iluk8:1em;">
+            Have non-profits actually made things better? Has the dogma of nonprofits changed the way we think about supporting one another? How long have social service agencies been around &amp; what existed before them? What can we apply today to make society better? How can blockchain take us back to Indigenous ways of governance, how can the Muslim institution of zakat disrupt poverty?
+           </p>
+           <h2 class="h2-widget__spacing-shim _1fux1sic project-block__block-element pencic0 _1fux1sib" style="--_1fux1si9:var(--_1fux1si0); --_1fux1sia:300; --_1fux1si2:#ce9f24; --_1fux1si3:40; --_1fux1si1:left; --_1fux1si4:1.3; --_1fux1si5:0em; --_1fux1si6:none; --_1fux1si7:0.65em; --_1fux1si8:0.4em;">
+            <span style="font-style:italic;">
+             Can i be both colonized and a colonizer?
+            </span>
+           </h2>
+           <p class="p-widget__spacing-shim _66ilukc project-block__block-element pencic0 _66ilukb" style="--_66iluk9:var(--_66iluk0); --_66iluka:400; --_66iluk2:#242C39; --_66iluk3:20; --_66iluk1:left; --_66iluk4:1.5; --_66iluk5:0em; --_66iluk6:none; --_66iluk7:0em; --_66iluk8:1em;">
+            What does it mean to be “Treaty people” for refugees and what are the lessons for all of us in examining our own place in Canada? How does this speak to the larger question of belonging and what Canadian identity is today?
+           </p>
+           <p class="p-widget__spacing-shim _66ilukc project-block__block-element pencic0 _66ilukb" style="--_66iluk9:var(--_66iluk0); --_66iluka:400; --_66iluk2:#242C39; --_66iluk3:20; --_66iluk1:left; --_66iluk4:1.5; --_66iluk5:0em; --_66iluk6:none; --_66iluk7:0em; --_66iluk8:1em;">
+            <br/>
+           </p>
+          </div>
+         </div>
+        </div>
+       </div>
+      </section>
+      <section block-id="6657a5ca87a2b655fc0cc390" block-name="The Team…" class="project-block text-block project-block--id-6657a5ca87a2b655fc0cc390 project-block--id-5ece0365 project-block--id-815e0531 qwilr-standard project-block--using-block-styles project-block--background-image project-block--unfolded" data-animation="none" data-animation-speed="medium" data-qwilr-component="block" data-type="Text" ng-class="{'project-block--unfolded': !block5.isFolded}" style="--ij2xgd1:url(https://qwilr.imgix.net/b8qXCEKS2utVAGCV78GWAAS49FDQRvyrkToO2Q.jpeg?auto=format);--ij2xgd2:rgba(36, 44, 57, 0.25);--ij2xgd3:multiply;--ij2xgd4:center;--ij2xgd8:transparent;--ij2xgd5:0px;--ij2xgd7:65vh;--ij2xgd9:75%;--ij2xgdb:75;--ij2xgda:1.33;--ij2xgdc:7.5%;--ij2xgdd:7.5%" tabindex="-1">
+       <div class="background-container background-container--is-public-page">
+        <div class="background-image">
+        </div>
+        <div class="background-tint">
+        </div>
+        <div class="row container block-spacer">
+         <div class="large-8 columns large-centered ng-non-bindable block-content" mount-widgets="">
+          <div data-hydration-component="HydratableRootRenderTokensHost" data-hydration-data='{"tokens":[{"type":"block","subType":"heading1"},{"type":"inline","subType":"text","content":"The Team…","style":{"bold":true}}],"allColors":[{"themeIndex":0,"value":"#688664"},{"themeIndex":1,"value":"#ce9f24"},{"themeIndex":2,"value":"#a86e8c"},{"themeIndex":3,"value":"#555559"},{"themeIndex":4,"value":"#969437"},{"value":"#E0E8EC","themeIndex":-5},{"value":"#81A2B2","themeIndex":-4},{"value":"#242C39","themeIndex":-3},{"value":"#F2F6F7","themeIndex":-2},{"value":"#FFFFFF","themeIndex":-1}],"blockStyles":{"isMigrated":true,"migratedAt":"2025-02-20T23:43:14.080Z","name":"","blockType":"Text","legacyBlockType":"Splash","blockHeight":"medium","blockSpacing":"medium","isFactoryStyle":true,"css":"","h1":{"color":{"abs":"#FFFFFF","opacity":1,"themeIndex":-1},"size":{"abs":65,"themeRef":"medium"},"alignment":"center"},"h2":{"color":{"abs":"#FFFFFF","opacity":1,"themeIndex":-1},"size":{"abs":40,"themeRef":"medium"},"alignment":"center"},"p":{"color":{"abs":"#FFFFFF","opacity":1,"themeIndex":-1},"size":{"abs":20,"themeRef":"medium"},"alignment":"center"},"blockQuote":{"color":{"abs":"#FFFFFF","opacity":1,"themeIndex":-1},"size":{"abs":27,"themeRef":"medium"},"barColor":{"abs":"rgba(41, 128, 185, 1)","opacity":1,"themeIndex":0},"displayQuoteIcon":false},"background":{"abs":"#FFFFFF","themeIndex":-1,"opacity":1,"tintColor":{"abs":"#242C39","opacity":0.25,"themeIndex":-3},"tintBlendMode":"blend","card":{"enabled":false,"color":{"themeIndex":-3,"abs":"rgba(36, 44, 57, 0.25)","opacity":0.25}},"type":"image","url":"https://d2cankni8sodj9.cloudfront.net/b8qXCEKS2utVAGCV78GWAAS49FDQRvyrkToO2Q.jpeg"},"blockWidth":"medium","hash":"b5cd12cae3900a3a92d11c6ae434002e3220d7d3","animation":{"animationOption":"none","animationType":"fade","direction":"down","speed":"medium"},"table":{"background":{"on":false,"color":{"abs":"#FFFFFF","opacity":1,"themeIndex":-1}},"header":{"on":false,"color":{"abs":"#FFFFFF","opacity":1,"themeIndex":-1}},"border":{"borderType":"all","color":{"abs":"rgba(129, 162, 178, 0.25)","opacity":0.25,"themeIndex":-4}}},"list":{"color":{"abs":"#FFFFFF","opacity":1,"themeIndex":-1},"marker":"circle","markerColor":{"abs":"#FFFFFF","opacity":1,"themeIndex":-1}},"link":{"color":{"abs":"#FFFFFF","opacity":1,"themeIndex":-1},"underline":{"on":true,"color":{"abs":"#FFFFFF","opacity":1,"themeIndex":-1}}},"button":{"color":{"abs":"rgba(104, 134, 100, 1)","opacity":1,"themeIndex":0},"roundness":4,"size":"medium","textColor":"dark"},"roiCalculator":{"highlightColor":{"abs":"rgba(104, 134, 100, 1)","opacity":1,"themeIndex":0},"textColor":"dark","background":{"color":{"abs":"#FFFFFF","opacity":1,"themeIndex":-1},"imageBlur":0},"tint":{"color":{"abs":"#242C39","opacity":1,"themeIndex":-3},"opacity":40}},"accordion":{"headerBackground":{"color":{"abs":"#FFFFFF","opacity":1,"themeIndex":-1},"on":true},"bodyBackground":{"on":false},"buttonAlignment":"left","buttonStyle":"arrow","buttonColor":{"abs":"rgba(104, 134, 100, 1)","opacity":1,"themeIndex":0},"tint":{"color":{"abs":"#242C39","opacity":1,"themeIndex":-3},"opacity":25},"cardStyle":"simple","imageHeight":"medium","expandButtonText":"Expand","closeButtonText":"Collapse"},"clonedFrom":"5d242f2bed847a080090e90a"},"printContext":{"isPrintMode":false},"imgixContext":{"disableImgix":false},"publicPageContext":{"publicPageUrl":"https://pages.qwilr.com/NcPq2t3ZTTy9"},"quoteContext":{"priceSummary":{"total":{},"dueToday":{"base":0,"discounts":[],"quoted":0,"taxes":[],"billable":0},"blocks":[]},"accountQuoteSettings":{"labels":[],"taxes":[{"percent":10,"name":"GST","id":"gst"},{"percent":20,"name":"VAT","id":"vat"},{"percent":7.25,"name":"California State Sales Tax","id":"ca-sales"}],"variables":[{"ifUnder":{"amount":0,"unitName":"Hour","unitThreshold":0,"isActive":false},"ifOver":{"amount":0,"unitName":"Hour","unitThreshold":0,"isActive":false},"isDeleted":false,"unitName":"Unit","defaultAmount":0.03,"name":"Cost per call","id":"LyiNQkVH1aQ"},{"ifUnder":{"amount":0,"unitName":"Hour","unitThreshold":0,"isActive":false},"ifOver":{"amount":0,"unitName":"Hour","unitThreshold":0,"isActive":false},"isDeleted":false,"unitName":"Unit","defaultAmount":125,"name":"Honorarium","id":"50aBzWwkOqA"}],"discounts":[{"id":"82mnVpmb8Ds","name":"Charitable Partner","type":"percent","amount":9,"isEnabled":false,"isDeleted":false}]},"quoteLabelSetId":null,"projectCurrency":{"currencyCode":"AUD","currencyFormat":{"showDecimals":true}},"paymentSettings":{"gatewayId":null,"discoverable":false,"enabled":false,"requireOnAccept":true,"partialPaymentConfig":{"amount":0,"enabled":false,"kind":"percentage"}},"quoteSummary":{"blocks":[],"priceContext":{"discounts":[],"taxes":[],"taxExemptions":[]},"currencyFormat":{"type":"inherit"},"showTaxes":true,"showTotalExcludingTax":true,"showTotalDiscounts":true,"showTotal":true}},"blockId":"6657a5ca87a2b655fc0cc390"}' data-hydration-host="true" data-hydration-host-id="ab75d90d-b8ec-444c-83f3-dd2694f9e092">
+           <h1 class="h1-widget__spacing-shim _2fdphpc project-block__block-element pencic0 _2fdphpb" style="--_2fdphp9:var(--_2fdphp0); --_2fdphpa:300; --_2fdphp2:#FFFFFF; --_2fdphp3:65; --_2fdphp1:center; --_2fdphp4:1.2; --_2fdphp5:0em; --_2fdphp6:none; --_2fdphp7:0.65em; --_2fdphp8:0.2em;">
+            <span style="font-weight:bold;">
+             The Team…
+            </span>
+           </h1>
+          </div>
+         </div>
+        </div>
+       </div>
+      </section>
+      <section block-id="6657a5ca87a2b607960cc391" block-name="Team" class="project-block text-block project-block--id-6657a5ca87a2b607960cc391 project-block--id-05f7b140 project-block--id-815e0531 qwilr-standard project-block--using-block-styles project-block--background-color project-block--unfolded" data-animation="none" data-animation-speed="medium" data-qwilr-component="block" data-type="Text" ng-class="{'project-block--unfolded': !block6.isFolded}" style="--ij2xgd0:rgb(255, 255, 255);--ij2xgd7:auto;--ij2xgd9:75%;--ij2xgdb:75;--ij2xgda:1.33;--ij2xgdc:7.5%;--ij2xgdd:7.5%" tabindex="-1">
+       <div class="background-container background-container--is-public-page">
+        <div class="background-image">
+        </div>
+        <div class="background-tint">
+        </div>
+        <div class="row container block-spacer">
+         <div class="large-8 columns large-centered ng-non-bindable block-content" mount-widgets="">
+          <div data-hydration-component="HydratableRootRenderTokensHost" data-hydration-data="{&quot;tokens&quot;:[{&quot;type&quot;:&quot;block&quot;,&quot;subType&quot;:&quot;heading2&quot;},{&quot;type&quot;:&quot;inline&quot;,&quot;subType&quot;:&quot;text&quot;,&quot;content&quot;:&quot;Our ensemble includes podcasters, journalists, writers, experience designers, social service workers, restorative justice experts, thought leaders &amp; sacred knowledge keepers. &quot;},{&quot;type&quot;:&quot;block&quot;,&quot;subType&quot;:&quot;heading2&quot;},{&quot;type&quot;:&quot;inline&quot;,&quot;subType&quot;:&quot;text&quot;,&quot;content&quot;:&quot;Cheryl Whiskeyjack – Host &amp; Narrator&quot;,&quot;style&quot;:{&quot;italic&quot;:true}},{&quot;type&quot;:&quot;block&quot;,&quot;subType&quot;:&quot;paragraph&quot;},{&quot;type&quot;:&quot;inline&quot;,&quot;subType&quot;:&quot;text&quot;,&quot;content&quot;:&quot;Cheryl is the Executive Director of the Bent Arrow Traditional Healing Society and has been with Bent Arrow just about since its inception over a quarter-century ago. Now she oversees a suite of 21 different programs and services. The organization's programming connects indigenous clients to the city around them, and helps them build skills and resilience that they can use in other parts of their lives.&quot;},{&quot;type&quot;:&quot;block&quot;,&quot;subType&quot;:&quot;paragraph&quot;},{&quot;type&quot;:&quot;inline&quot;,&quot;subType&quot;:&quot;text&quot;,&quot;content&quot;:&quot;Cheryl proudly serves as a board member of the Canadian Accreditation Council of Human Services, the Align Association of Community Services and was newly appointed to the Board of PolicyWise for Children &amp; Families. She has contributed to the work of EndPovertyEdmonton since its inception and currently acts as co-chair of the Stewardship Round Table. She also sits at the table for the National Advisory Council on Poverty. She acts as a mentor for the Edmonton Chamber of Voluntary Organizations Executive Director Mentorship program and represents Bent Arrow through CS, a collaborative partnership of five non-profits using innovative engagement in vulnerable neighbourhoods. Cheryl is proud of the strong partnerships she has maintained across sectors.&quot;},{&quot;type&quot;:&quot;block&quot;,&quot;subType&quot;:&quot;paragraph&quot;},{&quot;type&quot;:&quot;inline&quot;,&quot;subType&quot;:&quot;text&quot;,&quot;content&quot;:&quot;A graduate of the Child &amp; Youth Care Program at Grant MacEwan University in 1995 and was recognized with Distinguished Alumni Award in 2018. She was also recognized with an Honorary Doctorate of Laws by the University of Alberta in 2021. Cheryl was also recognized as a Paul Harris Fellow by Rotary Foundation in 2021.&quot;},{&quot;type&quot;:&quot;block&quot;,&quot;subType&quot;:&quot;heading2&quot;},{&quot;type&quot;:&quot;inline&quot;,&quot;subType&quot;:&quot;text&quot;,&quot;content&quot;:&quot;Omar Yaqub – Host &amp; Narrator&quot;,&quot;style&quot;:{&quot;italic&quot;:true}},{&quot;type&quot;:&quot;block&quot;,&quot;subType&quot;:&quot;paragraph&quot;},{&quot;type&quot;:&quot;inline&quot;,&quot;subType&quot;:&quot;text&quot;,&quot;content&quot;:&quot;Omar Yaqub DSL MBA BSc (@somaryaqub &quot;},{&quot;type&quot;:&quot;inline&quot;,&quot;subType&quot;:&quot;text&quot;,&quot;content&quot;:&quot;Twitter&quot;,&quot;href&quot;:&quot;https://twitter.com/somaryaqub&quot;},{&quot;type&quot;:&quot;inline&quot;,&quot;subType&quot;:&quot;text&quot;,&quot;content&quot;:&quot;, &quot;},{&quot;type&quot;:&quot;inline&quot;,&quot;subType&quot;:&quot;text&quot;,&quot;content&quot;:&quot;LinkedIn&quot;,&quot;href&quot;:&quot;https://www.linkedin.com/in/somaryaqub/&quot;},{&quot;type&quot;:&quot;inline&quot;,&quot;subType&quot;:&quot;text&quot;,&quot;content&quot;:&quot;), serves the team at IslamicFamily, a social change organization that is disrupting systemic inequity through research &amp; beauty. He is the Historian Co-Laureate for the City of Edmonton. He has two decades of experience in the for-benefit sector. During his time with&quot;},{&quot;type&quot;:&quot;inline&quot;,&quot;subType&quot;:&quot;text&quot;,&quot;content&quot;:&quot; IslamicFamily&quot;,&quot;href&quot;:&quot;http://islamicfamily.ca/&quot;},{&quot;type&quot;:&quot;inline&quot;,&quot;subType&quot;:&quot;text&quot;,&quot;content&quot;:&quot; the organization has become a multi-award winning Imagine Canada &amp; Great Places to Work accredited charity. Omar has been awarded a Doctor of Sacred Letters from St Stephen’s College, EMCN’s RISE award for Community Leadership, and the University of Alberta’s Co-op Mentorship Award. He is a settler on Treaty 6.&quot;},{&quot;type&quot;:&quot;block&quot;,&quot;subType&quot;:&quot;heading2&quot;},{&quot;type&quot;:&quot;inline&quot;,&quot;subType&quot;:&quot;text&quot;,&quot;content&quot;:&quot;Hussain Khan – Producer/Engineer &quot;,&quot;style&quot;:{&quot;italic&quot;:true}},{&quot;type&quot;:&quot;block&quot;,&quot;subType&quot;:&quot;paragraph&quot;},{&quot;type&quot;:&quot;inline&quot;,&quot;subType&quot;:&quot;text&quot;,&quot;content&quot;:&quot;Hussain Khan is a writer and audio storyteller. He was born in Pakistan, currently lives in Oakland, but is proud to call Edmonton his home. His sophomore projects have been awarded grants and mentorship from Telus StoryHive, and he is a HotDocs 2023 Podcast Development Lab Fellow. Hussain is pursuing his Masters of Journalism at UC Berkeley. You can read his reflections and updates on &quot;},{&quot;type&quot;:&quot;inline&quot;,&quot;subType&quot;:&quot;text&quot;,&quot;content&quot;:&quot;Substack&quot;,&quot;href&quot;:&quot;https://hmkhan.substack.com/&quot;},{&quot;type&quot;:&quot;inline&quot;,&quot;subType&quot;:&quot;text&quot;,&quot;content&quot;:&quot;. &quot;},{&quot;type&quot;:&quot;block&quot;,&quot;subType&quot;:&quot;heading2&quot;},{&quot;type&quot;:&quot;inline&quot;,&quot;subType&quot;:&quot;text&quot;,&quot;content&quot;:&quot;Kathryn 君妍 Lennon – Executive Producer &amp; Researcher&quot;,&quot;style&quot;:{&quot;italic&quot;:true}},{&quot;type&quot;:&quot;block&quot;,&quot;subType&quot;:&quot;paragraph&quot;},{&quot;type&quot;:&quot;inline&quot;,&quot;subType&quot;:&quot;text&quot;,&quot;content&quot;:&quot;Kathryn 君妍 Gwun-Yeen Lennon is a poet, editor and publisher. She writes to make sense of her connections to place, migration, identity, language, and food. She believes in the power of poetry, and the power of sharing our diverse voices, to help us create more equitable, just and beautiful communities. As a poet, she feels most useful when she is lending her voice to community. As poets, she believes we play a crucial role as gatherers of stories, perspectives, voices, experiences, but also – as gatherers of people, and of communities. She is passionate about building more inclusive, beautiful, and connected communities, through storytelling and placemaking, and has been creating at the intersections of community-building, poetry, and community-arts for over a decade.&quot;},{&quot;type&quot;:&quot;block&quot;,&quot;subType&quot;:&quot;paragraph&quot;},{&quot;type&quot;:&quot;inline&quot;,&quot;subType&quot;:&quot;text&quot;,&quot;content&quot;:&quot;She is also the co-creator, co-editor, and co-publisher, along with Kyla Pascal, of Hungry Zine. She sees it as a great honour and privilege to be trusted with other people’s words and art, and to hold space for people to converse, and share their voices, in the form of a literary publication.&quot;},{&quot;type&quot;:&quot;block&quot;,&quot;subType&quot;:&quot;paragraph&quot;},{&quot;type&quot;:&quot;inline&quot;,&quot;subType&quot;:&quot;text&quot;,&quot;content&quot;:&quot;She was born and raised, and resides in Edmonton/Amiskwacîwâskahikan, with mixed Hong-Kong Cantonese and Irish settler ancestry.&quot;}],&quot;allColors&quot;:[{&quot;themeIndex&quot;:0,&quot;value&quot;:&quot;#688664&quot;},{&quot;themeIndex&quot;:1,&quot;value&quot;:&quot;#ce9f24&quot;},{&quot;themeIndex&quot;:2,&quot;value&quot;:&quot;#a86e8c&quot;},{&quot;themeIndex&quot;:3,&quot;value&quot;:&quot;#555559&quot;},{&quot;themeIndex&quot;:4,&quot;value&quot;:&quot;#969437&quot;},{&quot;value&quot;:&quot;#E0E8EC&quot;,&quot;themeIndex&quot;:-5},{&quot;value&quot;:&quot;#81A2B2&quot;,&quot;themeIndex&quot;:-4},{&quot;value&quot;:&quot;#242C39&quot;,&quot;themeIndex&quot;:-3},{&quot;value&quot;:&quot;#F2F6F7&quot;,&quot;themeIndex&quot;:-2},{&quot;value&quot;:&quot;#FFFFFF&quot;,&quot;themeIndex&quot;:-1}],&quot;blockStyles&quot;:{&quot;isMigrated&quot;:true,&quot;migratedAt&quot;:&quot;2025-02-20T23:43:14.082Z&quot;,&quot;background&quot;:{&quot;abs&quot;:&quot;#FFFFFF&quot;,&quot;themeIndex&quot;:-1,&quot;opacity&quot;:1,&quot;tintBlendMode&quot;:&quot;normal&quot;,&quot;card&quot;:{&quot;enabled&quot;:false,&quot;color&quot;:{&quot;opacity&quot;:0.25,&quot;abs&quot;:&quot;rgba(36, 44, 57, 0.25)&quot;,&quot;themeIndex&quot;:-3}},&quot;type&quot;:&quot;color&quot;,&quot;tintColor&quot;:{&quot;abs&quot;:&quot;rgba(36, 44, 57, 0.25)&quot;,&quot;opacity&quot;:0.25,&quot;themeIndex&quot;:-3}},&quot;name&quot;:&quot;&quot;,&quot;blockType&quot;:&quot;Text&quot;,&quot;legacyBlockType&quot;:&quot;Text&quot;,&quot;hash&quot;:&quot;a8c22984e861b2a074e7a6100800fae847875a12&quot;,&quot;clonedFrom&quot;:&quot;5d242f2bed847a080090e908&quot;,&quot;isFactoryStyle&quot;:true,&quot;css&quot;:&quot;&quot;,&quot;blockSpacing&quot;:&quot;medium&quot;,&quot;blockWidth&quot;:&quot;medium&quot;,&quot;blockHeight&quot;:&quot;none&quot;,&quot;h1&quot;:{&quot;color&quot;:{&quot;abs&quot;:&quot;rgba(41, 128, 185, 1)&quot;,&quot;opacity&quot;:1,&quot;themeIndex&quot;:0},&quot;alignment&quot;:&quot;left&quot;,&quot;size&quot;:{&quot;abs&quot;:65,&quot;themeRef&quot;:&quot;medium&quot;}},&quot;h2&quot;:{&quot;color&quot;:{&quot;abs&quot;:&quot;rgba(52, 73, 94, 1)&quot;,&quot;opacity&quot;:1,&quot;themeIndex&quot;:1},&quot;alignment&quot;:&quot;left&quot;,&quot;size&quot;:{&quot;abs&quot;:40,&quot;themeRef&quot;:&quot;medium&quot;}},&quot;p&quot;:{&quot;color&quot;:{&quot;abs&quot;:&quot;#242C39&quot;,&quot;opacity&quot;:1,&quot;themeIndex&quot;:-3},&quot;alignment&quot;:&quot;left&quot;,&quot;size&quot;:{&quot;abs&quot;:20,&quot;themeRef&quot;:&quot;medium&quot;}},&quot;animation&quot;:{&quot;animationOption&quot;:&quot;none&quot;,&quot;animationType&quot;:&quot;fade&quot;,&quot;direction&quot;:&quot;down&quot;,&quot;speed&quot;:&quot;medium&quot;},&quot;blockQuote&quot;:{&quot;color&quot;:{&quot;abs&quot;:&quot;#242C39&quot;,&quot;opacity&quot;:1,&quot;themeIndex&quot;:-3},&quot;size&quot;:{&quot;abs&quot;:27,&quot;themeRef&quot;:&quot;medium&quot;},&quot;barColor&quot;:{&quot;abs&quot;:&quot;rgba(41, 128, 185, 1)&quot;,&quot;opacity&quot;:1,&quot;themeIndex&quot;:0},&quot;displayQuoteIcon&quot;:false},&quot;button&quot;:{&quot;textColor&quot;:&quot;light&quot;,&quot;roundness&quot;:4,&quot;size&quot;:&quot;medium&quot;,&quot;color&quot;:{&quot;abs&quot;:&quot;rgba(104, 134, 100, 1)&quot;,&quot;opacity&quot;:1,&quot;themeIndex&quot;:0}},&quot;accordion&quot;:{&quot;headerBackground&quot;:{&quot;color&quot;:{&quot;abs&quot;:&quot;#FFFFFF&quot;,&quot;opacity&quot;:1,&quot;themeIndex&quot;:-1},&quot;on&quot;:true},&quot;bodyBackground&quot;:{&quot;on&quot;:false},&quot;buttonAlignment&quot;:&quot;left&quot;,&quot;buttonColor&quot;:{&quot;abs&quot;:&quot;rgba(104, 134, 100, 1)&quot;,&quot;opacity&quot;:1,&quot;themeIndex&quot;:0},&quot;buttonStyle&quot;:&quot;arrow&quot;,&quot;cardStyle&quot;:&quot;simple&quot;,&quot;imageHeight&quot;:&quot;medium&quot;,&quot;tint&quot;:{&quot;color&quot;:{&quot;abs&quot;:&quot;#242C39&quot;,&quot;opacity&quot;:1,&quot;themeIndex&quot;:-3},&quot;opacity&quot;:25},&quot;expandButtonText&quot;:&quot;Expand&quot;,&quot;closeButtonText&quot;:&quot;Collapse&quot;},&quot;link&quot;:{&quot;color&quot;:{&quot;abs&quot;:&quot;#242C39&quot;,&quot;opacity&quot;:1,&quot;themeIndex&quot;:-3},&quot;underline&quot;:{&quot;color&quot;:{&quot;abs&quot;:&quot;#242C39&quot;,&quot;opacity&quot;:1,&quot;themeIndex&quot;:-3},&quot;on&quot;:true}},&quot;list&quot;:{&quot;color&quot;:{&quot;abs&quot;:&quot;#242C39&quot;,&quot;opacity&quot;:1,&quot;themeIndex&quot;:-3},&quot;marker&quot;:&quot;circle&quot;,&quot;markerColor&quot;:{&quot;abs&quot;:&quot;#242C39&quot;,&quot;opacity&quot;:1,&quot;themeIndex&quot;:-3}},&quot;roiCalculator&quot;:{&quot;highlightColor&quot;:{&quot;abs&quot;:&quot;rgba(104, 134, 100, 1)&quot;,&quot;opacity&quot;:1,&quot;themeIndex&quot;:0},&quot;textColor&quot;:&quot;dark&quot;,&quot;background&quot;:{&quot;color&quot;:{&quot;abs&quot;:&quot;#FFFFFF&quot;,&quot;opacity&quot;:1,&quot;themeIndex&quot;:-1},&quot;imageBlur&quot;:0},&quot;tint&quot;:{&quot;color&quot;:{&quot;abs&quot;:&quot;#242C39&quot;,&quot;opacity&quot;:1,&quot;themeIndex&quot;:-3},&quot;opacity&quot;:40}},&quot;table&quot;:{&quot;background&quot;:{&quot;on&quot;:false,&quot;color&quot;:{&quot;abs&quot;:&quot;#FFFFFF&quot;,&quot;opacity&quot;:1,&quot;themeIndex&quot;:-1}},&quot;header&quot;:{&quot;on&quot;:false,&quot;color&quot;:{&quot;abs&quot;:&quot;#FFFFFF&quot;,&quot;opacity&quot;:1,&quot;themeIndex&quot;:-1}},&quot;border&quot;:{&quot;borderType&quot;:&quot;all&quot;,&quot;color&quot;:{&quot;abs&quot;:&quot;rgba(129, 162, 178, 0.25)&quot;,&quot;opacity&quot;:0.25,&quot;themeIndex&quot;:-4}}}},&quot;printContext&quot;:{&quot;isPrintMode&quot;:false},&quot;imgixContext&quot;:{&quot;disableImgix&quot;:false},&quot;publicPageContext&quot;:{&quot;publicPageUrl&quot;:&quot;https://pages.qwilr.com/NcPq2t3ZTTy9&quot;},&quot;quoteContext&quot;:{&quot;priceSummary&quot;:{&quot;total&quot;:{},&quot;dueToday&quot;:{&quot;base&quot;:0,&quot;discounts&quot;:[],&quot;quoted&quot;:0,&quot;taxes&quot;:[],&quot;billable&quot;:0},&quot;blocks&quot;:[]},&quot;accountQuoteSettings&quot;:{&quot;labels&quot;:[],&quot;taxes&quot;:[{&quot;percent&quot;:10,&quot;name&quot;:&quot;GST&quot;,&quot;id&quot;:&quot;gst&quot;},{&quot;percent&quot;:20,&quot;name&quot;:&quot;VAT&quot;,&quot;id&quot;:&quot;vat&quot;},{&quot;percent&quot;:7.25,&quot;name&quot;:&quot;California State Sales Tax&quot;,&quot;id&quot;:&quot;ca-sales&quot;}],&quot;variables&quot;:[{&quot;ifUnder&quot;:{&quot;amount&quot;:0,&quot;unitName&quot;:&quot;Hour&quot;,&quot;unitThreshold&quot;:0,&quot;isActive&quot;:false},&quot;ifOver&quot;:{&quot;amount&quot;:0,&quot;unitName&quot;:&quot;Hour&quot;,&quot;unitThreshold&quot;:0,&quot;isActive&quot;:false},&quot;isDeleted&quot;:false,&quot;unitName&quot;:&quot;Unit&quot;,&quot;defaultAmount&quot;:0.03,&quot;name&quot;:&quot;Cost per call&quot;,&quot;id&quot;:&quot;LyiNQkVH1aQ&quot;},{&quot;ifUnder&quot;:{&quot;amount&quot;:0,&quot;unitName&quot;:&quot;Hour&quot;,&quot;unitThreshold&quot;:0,&quot;isActive&quot;:false},&quot;ifOver&quot;:{&quot;amount&quot;:0,&quot;unitName&quot;:&quot;Hour&quot;,&quot;unitThreshold&quot;:0,&quot;isActive&quot;:false},&quot;isDeleted&quot;:false,&quot;unitName&quot;:&quot;Unit&quot;,&quot;defaultAmount&quot;:125,&quot;name&quot;:&quot;Honorarium&quot;,&quot;id&quot;:&quot;50aBzWwkOqA&quot;}],&quot;discounts&quot;:[{&quot;id&quot;:&quot;82mnVpmb8Ds&quot;,&quot;name&quot;:&quot;Charitable Partner&quot;,&quot;type&quot;:&quot;percent&quot;,&quot;amount&quot;:9,&quot;isEnabled&quot;:false,&quot;isDeleted&quot;:false}]},&quot;quoteLabelSetId&quot;:null,&quot;projectCurrency&quot;:{&quot;currencyCode&quot;:&quot;AUD&quot;,&quot;currencyFormat&quot;:{&quot;showDecimals&quot;:true}},&quot;paymentSettings&quot;:{&quot;gatewayId&quot;:null,&quot;discoverable&quot;:false,&quot;enabled&quot;:false,&quot;requireOnAccept&quot;:true,&quot;partialPaymentConfig&quot;:{&quot;amount&quot;:0,&quot;enabled&quot;:false,&quot;kind&quot;:&quot;percentage&quot;}},&quot;quoteSummary&quot;:{&quot;blocks&quot;:[],&quot;priceContext&quot;:{&quot;discounts&quot;:[],&quot;taxes&quot;:[],&quot;taxExemptions&quot;:[]},&quot;currencyFormat&quot;:{&quot;type&quot;:&quot;inherit&quot;},&quot;showTaxes&quot;:true,&quot;showTotalExcludingTax&quot;:true,&quot;showTotalDiscounts&quot;:true,&quot;showTotal&quot;:true}},&quot;blockId&quot;:&quot;6657a5ca87a2b607960cc391&quot;}" data-hydration-host="true" data-hydration-host-id="96beb5f8-95e9-4949-ad72-cf97eecf910d">
+           <h2 class="h2-widget__spacing-shim _1fux1sic project-block__block-element pencic0 _1fux1sib" style="--_1fux1si9:var(--_1fux1si0); --_1fux1sia:300; --_1fux1si2:#ce9f24; --_1fux1si3:40; --_1fux1si1:left; --_1fux1si4:1.3; --_1fux1si5:0em; --_1fux1si6:none; --_1fux1si7:0.65em; --_1fux1si8:0.4em;">
+            Our ensemble includes podcasters, journalists, writers, experience designers, social service workers, restorative justice experts, thought leaders &amp; sacred knowledge keepers.
+           </h2>
+           <h2 class="h2-widget__spacing-shim _1fux1sic project-block__block-element pencic0 _1fux1sib" style="--_1fux1si9:var(--_1fux1si0); --_1fux1sia:300; --_1fux1si2:#ce9f24; --_1fux1si3:40; --_1fux1si1:left; --_1fux1si4:1.3; --_1fux1si5:0em; --_1fux1si6:none; --_1fux1si7:0.65em; --_1fux1si8:0.4em;">
+            <span style="font-style:italic;">
+             Cheryl Whiskeyjack – Host &amp; Narrator
+            </span>
+           </h2>
+           <p class="p-widget__spacing-shim _66ilukc project-block__block-element pencic0 _66ilukb" style="--_66iluk9:var(--_66iluk0); --_66iluka:400; --_66iluk2:#242C39; --_66iluk3:20; --_66iluk1:left; --_66iluk4:1.5; --_66iluk5:0em; --_66iluk6:none; --_66iluk7:0em; --_66iluk8:1em;">
+            Cheryl is the Executive Director of the Bent Arrow Traditional Healing Society and has been with Bent Arrow just about since its inception over a quarter-century ago. Now she oversees a suite of 21 different programs and services. The organization's programming connects indigenous clients to the city around them, and helps them build skills and resilience that they can use in other parts of their lives.
+           </p>
+           <p class="p-widget__spacing-shim _66ilukc project-block__block-element pencic0 _66ilukb" style="--_66iluk9:var(--_66iluk0); --_66iluka:400; --_66iluk2:#242C39; --_66iluk3:20; --_66iluk1:left; --_66iluk4:1.5; --_66iluk5:0em; --_66iluk6:none; --_66iluk7:0em; --_66iluk8:1em;">
+            Cheryl proudly serves as a board member of the Canadian Accreditation Council of Human Services, the Align Association of Community Services and was newly appointed to the Board of PolicyWise for Children &amp; Families. She has contributed to the work of EndPovertyEdmonton since its inception and currently acts as co-chair of the Stewardship Round Table. She also sits at the table for the National Advisory Council on Poverty. She acts as a mentor for the Edmonton Chamber of Voluntary Organizations Executive Director Mentorship program and represents Bent Arrow through CS, a collaborative partnership of five non-profits using innovative engagement in vulnerable neighbourhoods. Cheryl is proud of the strong partnerships she has maintained across sectors.
+           </p>
+           <p class="p-widget__spacing-shim _66ilukc project-block__block-element pencic0 _66ilukb" style="--_66iluk9:var(--_66iluk0); --_66iluka:400; --_66iluk2:#242C39; --_66iluk3:20; --_66iluk1:left; --_66iluk4:1.5; --_66iluk5:0em; --_66iluk6:none; --_66iluk7:0em; --_66iluk8:1em;">
+            A graduate of the Child &amp; Youth Care Program at Grant MacEwan University in 1995 and was recognized with Distinguished Alumni Award in 2018. She was also recognized with an Honorary Doctorate of Laws by the University of Alberta in 2021. Cheryl was also recognized as a Paul Harris Fellow by Rotary Foundation in 2021.
+           </p>
+           <h2 class="h2-widget__spacing-shim _1fux1sic project-block__block-element pencic0 _1fux1sib" style="--_1fux1si9:var(--_1fux1si0); --_1fux1sia:300; --_1fux1si2:#ce9f24; --_1fux1si3:40; --_1fux1si1:left; --_1fux1si4:1.3; --_1fux1si5:0em; --_1fux1si6:none; --_1fux1si7:0.65em; --_1fux1si8:0.4em;">
+            <span style="font-style:italic;">
+             Omar Yaqub – Host &amp; Narrator
+            </span>
+           </h2>
+           <p class="p-widget__spacing-shim _66ilukc project-block__block-element pencic0 _66ilukb" style="--_66iluk9:var(--_66iluk0); --_66iluka:400; --_66iluk2:#242C39; --_66iluk3:20; --_66iluk1:left; --_66iluk4:1.5; --_66iluk5:0em; --_66iluk6:none; --_66iluk7:0em; --_66iluk8:1em;">
+            Omar Yaqub DSL MBA BSc (@somaryaqub
+            <a href="https://twitter.com/somaryaqub" rel="noreferrer" target="_blank">
+             Twitter
+            </a>
+            ,
+            <a href="https://www.linkedin.com/in/somaryaqub/" rel="noreferrer" target="_blank">
+             LinkedIn
+            </a>
+            ), serves the team at IslamicFamily, a social change organization that is disrupting systemic inequity through research &amp; beauty. He is the Historian Co-Laureate for the City of Edmonton. He has two decades of experience in the for-benefit sector. During his time with
+            <a href="http://islamicfamily.ca/" rel="noreferrer" target="_blank">
+             IslamicFamily
+            </a>
+            the organization has become a multi-award winning Imagine Canada &amp; Great Places to Work accredited charity. Omar has been awarded a Doctor of Sacred Letters from St Stephen’s College, EMCN’s RISE award for Community Leadership, and the University of Alberta’s Co-op Mentorship Award. He is a settler on Treaty 6.
+           </p>
+           <h2 class="h2-widget__spacing-shim _1fux1sic project-block__block-element pencic0 _1fux1sib" style="--_1fux1si9:var(--_1fux1si0); --_1fux1sia:300; --_1fux1si2:#ce9f24; --_1fux1si3:40; --_1fux1si1:left; --_1fux1si4:1.3; --_1fux1si5:0em; --_1fux1si6:none; --_1fux1si7:0.65em; --_1fux1si8:0.4em;">
+            <span style="font-style:italic;">
+             Hussain Khan – Producer/Engineer
+            </span>
+           </h2>
+           <p class="p-widget__spacing-shim _66ilukc project-block__block-element pencic0 _66ilukb" style="--_66iluk9:var(--_66iluk0); --_66iluka:400; --_66iluk2:#242C39; --_66iluk3:20; --_66iluk1:left; --_66iluk4:1.5; --_66iluk5:0em; --_66iluk6:none; --_66iluk7:0em; --_66iluk8:1em;">
+            Hussain Khan is a writer and audio storyteller. He was born in Pakistan, currently lives in Oakland, but is proud to call Edmonton his home. His sophomore projects have been awarded grants and mentorship from Telus StoryHive, and he is a HotDocs 2023 Podcast Development Lab Fellow. Hussain is pursuing his Masters of Journalism at UC Berkeley. You can read his reflections and updates on
+            <a href="https://hmkhan.substack.com/" rel="noreferrer" target="_blank">
+             Substack
+            </a>
+            .
+           </p>
+           <h2 class="h2-widget__spacing-shim _1fux1sic project-block__block-element pencic0 _1fux1sib" style="--_1fux1si9:var(--_1fux1si0); --_1fux1sia:300; --_1fux1si2:#ce9f24; --_1fux1si3:40; --_1fux1si1:left; --_1fux1si4:1.3; --_1fux1si5:0em; --_1fux1si6:none; --_1fux1si7:0.65em; --_1fux1si8:0.4em;">
+            <span style="font-style:italic;">
+             Kathryn 君妍 Lennon – Executive Producer &amp; Researcher
+            </span>
+           </h2>
+           <p class="p-widget__spacing-shim _66ilukc project-block__block-element pencic0 _66ilukb" style="--_66iluk9:var(--_66iluk0); --_66iluka:400; --_66iluk2:#242C39; --_66iluk3:20; --_66iluk1:left; --_66iluk4:1.5; --_66iluk5:0em; --_66iluk6:none; --_66iluk7:0em; --_66iluk8:1em;">
+            Kathryn 君妍 Gwun-Yeen Lennon is a poet, editor and publisher. She writes to make sense of her connections to place, migration, identity, language, and food. She believes in the power of poetry, and the power of sharing our diverse voices, to help us create more equitable, just and beautiful communities. As a poet, she feels most useful when she is lending her voice to community. As poets, she believes we play a crucial role as gatherers of stories, perspectives, voices, experiences, but also – as gatherers of people, and of communities. She is passionate about building more inclusive, beautiful, and connected communities, through storytelling and placemaking, and has been creating at the intersections of community-building, poetry, and community-arts for over a decade.
+           </p>
+           <p class="p-widget__spacing-shim _66ilukc project-block__block-element pencic0 _66ilukb" style="--_66iluk9:var(--_66iluk0); --_66iluka:400; --_66iluk2:#242C39; --_66iluk3:20; --_66iluk1:left; --_66iluk4:1.5; --_66iluk5:0em; --_66iluk6:none; --_66iluk7:0em; --_66iluk8:1em;">
+            She is also the co-creator, co-editor, and co-publisher, along with Kyla Pascal, of Hungry Zine. She sees it as a great honour and privilege to be trusted with other people’s words and art, and to hold space for people to converse, and share their voices, in the form of a literary publication.
+           </p>
+           <p class="p-widget__spacing-shim _66ilukc project-block__block-element pencic0 _66ilukb" style="--_66iluk9:var(--_66iluk0); --_66iluka:400; --_66iluk2:#242C39; --_66iluk3:20; --_66iluk1:left; --_66iluk4:1.5; --_66iluk5:0em; --_66iluk6:none; --_66iluk7:0em; --_66iluk8:1em;">
+            She was born and raised, and resides in Edmonton/Amiskwacîwâskahikan, with mixed Hong-Kong Cantonese and Irish settler ancestry.
+           </p>
+          </div>
+         </div>
+        </div>
+       </div>
+      </section>
+      <section block-id="6657a5ca87a2b604c60cc392" block-name="Text #7" class="project-block text-block project-block--id-6657a5ca87a2b604c60cc392 project-block--id-5ece0365 project-block--id-815e0531 qwilr-standard project-block--using-block-styles project-block--background-image project-block--unfolded" data-animation="none" data-animation-speed="medium" data-qwilr-component="block" data-type="Text" ng-class="{'project-block--unfolded': !block7.isFolded}" style="--ij2xgd1:url(https://qwilr.imgix.net/p8D0ZIbzCvdC0eB9WEt2iEY0CkDJttKOD4ESSw.jpeg?auto=format);--ij2xgd2:rgba(36, 44, 57, 0.25);--ij2xgd3:multiply;--ij2xgd4:center;--ij2xgd8:transparent;--ij2xgd5:0px;--ij2xgd7:65vh;--ij2xgd9:75%;--ij2xgdb:75;--ij2xgda:1.33;--ij2xgdc:7.5%;--ij2xgdd:7.5%" tabindex="-1">
+       <div class="background-container background-container--is-public-page">
+        <div class="background-image">
+        </div>
+        <div class="background-tint">
+        </div>
+        <div class="row container block-spacer">
+         <div class="large-8 columns large-centered ng-non-bindable block-content" mount-widgets="">
+          <div data-hydration-component="HydratableRootRenderTokensHost" data-hydration-data='{"tokens":[{"type":"block","subType":"heading2"},{"type":"inline","subType":"text","content":""},{"type":"block","subType":"paragraph"},{"type":"inline","subType":"text","content":""}],"allColors":[{"themeIndex":0,"value":"#688664"},{"themeIndex":1,"value":"#ce9f24"},{"themeIndex":2,"value":"#a86e8c"},{"themeIndex":3,"value":"#555559"},{"themeIndex":4,"value":"#969437"},{"value":"#E0E8EC","themeIndex":-5},{"value":"#81A2B2","themeIndex":-4},{"value":"#242C39","themeIndex":-3},{"value":"#F2F6F7","themeIndex":-2},{"value":"#FFFFFF","themeIndex":-1}],"blockStyles":{"isMigrated":true,"migratedAt":"2025-02-20T23:43:14.084Z","name":"","blockType":"Text","legacyBlockType":"Splash","blockHeight":"medium","blockSpacing":"medium","isFactoryStyle":true,"css":"","h1":{"color":{"abs":"#FFFFFF","opacity":1,"themeIndex":-1},"size":{"abs":65,"themeRef":"medium"},"alignment":"center"},"h2":{"color":{"abs":"#FFFFFF","opacity":1,"themeIndex":-1},"size":{"abs":40,"themeRef":"medium"},"alignment":"center"},"p":{"color":{"abs":"#FFFFFF","opacity":1,"themeIndex":-1},"size":{"abs":20,"themeRef":"medium"},"alignment":"center"},"blockQuote":{"color":{"abs":"#FFFFFF","opacity":1,"themeIndex":-1},"size":{"abs":27,"themeRef":"medium"},"barColor":{"abs":"rgba(41, 128, 185, 1)","opacity":1,"themeIndex":0},"displayQuoteIcon":false},"background":{"abs":"#FFFFFF","themeIndex":-1,"opacity":1,"tintColor":{"abs":"#242C39","opacity":0.25,"themeIndex":-3},"tintBlendMode":"blend","card":{"enabled":false,"color":{"themeIndex":-3,"abs":"rgba(36, 44, 57, 0.25)","opacity":0.25}},"type":"image","url":"https://d2cankni8sodj9.cloudfront.net/p8D0ZIbzCvdC0eB9WEt2iEY0CkDJttKOD4ESSw.jpeg"},"blockWidth":"medium","hash":"0eb57dcf58ad82f64e39c6eff0f93badc2409a14","animation":{"animationOption":"none","animationType":"fade","direction":"down","speed":"medium"},"table":{"background":{"on":false,"color":{"abs":"#FFFFFF","opacity":1,"themeIndex":-1}},"header":{"on":false,"color":{"abs":"#FFFFFF","opacity":1,"themeIndex":-1}},"border":{"borderType":"all","color":{"abs":"rgba(129, 162, 178, 0.25)","opacity":0.25,"themeIndex":-4}}},"list":{"color":{"abs":"#FFFFFF","opacity":1,"themeIndex":-1},"marker":"circle","markerColor":{"abs":"#FFFFFF","opacity":1,"themeIndex":-1}},"link":{"color":{"abs":"#FFFFFF","opacity":1,"themeIndex":-1},"underline":{"on":true,"color":{"abs":"#FFFFFF","opacity":1,"themeIndex":-1}}},"button":{"color":{"abs":"rgba(104, 134, 100, 1)","opacity":1,"themeIndex":0},"roundness":4,"size":"medium","textColor":"dark"},"roiCalculator":{"highlightColor":{"abs":"rgba(104, 134, 100, 1)","opacity":1,"themeIndex":0},"textColor":"dark","background":{"color":{"abs":"#FFFFFF","opacity":1,"themeIndex":-1},"imageBlur":0},"tint":{"color":{"abs":"#242C39","opacity":1,"themeIndex":-3},"opacity":40}},"accordion":{"headerBackground":{"color":{"abs":"#FFFFFF","opacity":1,"themeIndex":-1},"on":true},"bodyBackground":{"on":false},"buttonAlignment":"left","buttonStyle":"arrow","buttonColor":{"abs":"rgba(104, 134, 100, 1)","opacity":1,"themeIndex":0},"tint":{"color":{"abs":"#242C39","opacity":1,"themeIndex":-3},"opacity":25},"cardStyle":"simple","imageHeight":"medium","expandButtonText":"Expand","closeButtonText":"Collapse"},"clonedFrom":"5d242f2bed847a080090e90a"},"printContext":{"isPrintMode":false},"imgixContext":{"disableImgix":false},"publicPageContext":{"publicPageUrl":"https://pages.qwilr.com/NcPq2t3ZTTy9"},"quoteContext":{"priceSummary":{"total":{},"dueToday":{"base":0,"discounts":[],"quoted":0,"taxes":[],"billable":0},"blocks":[]},"accountQuoteSettings":{"labels":[],"taxes":[{"percent":10,"name":"GST","id":"gst"},{"percent":20,"name":"VAT","id":"vat"},{"percent":7.25,"name":"California State Sales Tax","id":"ca-sales"}],"variables":[{"ifUnder":{"amount":0,"unitName":"Hour","unitThreshold":0,"isActive":false},"ifOver":{"amount":0,"unitName":"Hour","unitThreshold":0,"isActive":false},"isDeleted":false,"unitName":"Unit","defaultAmount":0.03,"name":"Cost per call","id":"LyiNQkVH1aQ"},{"ifUnder":{"amount":0,"unitName":"Hour","unitThreshold":0,"isActive":false},"ifOver":{"amount":0,"unitName":"Hour","unitThreshold":0,"isActive":false},"isDeleted":false,"unitName":"Unit","defaultAmount":125,"name":"Honorarium","id":"50aBzWwkOqA"}],"discounts":[{"id":"82mnVpmb8Ds","name":"Charitable Partner","type":"percent","amount":9,"isEnabled":false,"isDeleted":false}]},"quoteLabelSetId":null,"projectCurrency":{"currencyCode":"AUD","currencyFormat":{"showDecimals":true}},"paymentSettings":{"gatewayId":null,"discoverable":false,"enabled":false,"requireOnAccept":true,"partialPaymentConfig":{"amount":0,"enabled":false,"kind":"percentage"}},"quoteSummary":{"blocks":[],"priceContext":{"discounts":[],"taxes":[],"taxExemptions":[]},"currencyFormat":{"type":"inherit"},"showTaxes":true,"showTotalExcludingTax":true,"showTotalDiscounts":true,"showTotal":true}},"blockId":"6657a5ca87a2b604c60cc392"}' data-hydration-host="true" data-hydration-host-id="e3779c6b-1528-4102-92d4-1be20c7e6fcd">
+           <h2 class="h2-widget__spacing-shim _1fux1sic project-block__block-element pencic0 _1fux1sib" style="--_1fux1si9:var(--_1fux1si0); --_1fux1sia:300; --_1fux1si2:#FFFFFF; --_1fux1si3:40; --_1fux1si1:center; --_1fux1si4:1.3; --_1fux1si5:0em; --_1fux1si6:none; --_1fux1si7:0.65em; --_1fux1si8:0.4em;">
+            <br/>
+           </h2>
+           <p class="p-widget__spacing-shim _66ilukc project-block__block-element pencic0 _66ilukb" style="--_66iluk9:var(--_66iluk0); --_66iluka:400; --_66iluk2:#FFFFFF; --_66iluk3:20; --_66iluk1:center; --_66iluk4:1.5; --_66iluk5:0em; --_66iluk6:none; --_66iluk7:0em; --_66iluk8:1em;">
+            <br/>
+           </p>
+          </div>
+         </div>
+        </div>
+       </div>
+      </section>
+      <section block-id="6657a5ca87a2b67aca0cc394" block-name="Thank you!" class="project-block text-block project-block--id-6657a5ca87a2b67aca0cc394 project-block--id-05f7b140 project-block--id-2cc02008 qwilr-standard project-block--using-block-styles project-block--background-color project-block--unfolded" data-animation="none" data-animation-speed="medium" data-qwilr-component="block" data-type="Text" ng-class="{'project-block--unfolded': !block8.isFolded}" style="--ij2xgd0:rgb(104, 134, 100);--ij2xgd7:auto;--ij2xgd9:75%;--ij2xgdb:75;--ij2xgda:1.33;--ij2xgdc:7.5%;--ij2xgdd:7.5%" tabindex="-1">
+       <div class="background-container background-container--is-public-page">
+        <div class="background-image">
+        </div>
+        <div class="background-tint">
+        </div>
+        <div class="row container block-spacer">
+         <div class="large-8 columns large-centered ng-non-bindable block-content" mount-widgets="">
+          <div data-hydration-component="HydratableRootRenderTokensHost" data-hydration-data='{"tokens":[{"subType":"heading1","type":"block"},{"type":"inline","subType":"text","content":"Thank you!"},{"subType":"paragraph","type":"block"},{"type":"inline","subType":"text","content":"Cheryl Whiskeyjack "},{"type":"inline","subType":"text","content":"cwhiskeyjack@bentarrow.ca","href":"mailto:cwhiskeyjack@bentarrow.ca"},{"type":"inline","subType":"text","content":" &amp;"},{"type":"inline","subType":"lineBreak"},{"type":"inline","subType":"text","content":"Omar Yaqub "},{"type":"inline","subType":"text","content":"omary@islamicfamily.ca","href":"mailto:omary@islamicfamily.ca"},{"subType":"paragraph","type":"block"},{"type":"inline","subType":"text","content":""}],"allColors":[{"themeIndex":0,"value":"#688664"},{"themeIndex":1,"value":"#ce9f24"},{"themeIndex":2,"value":"#a86e8c"},{"themeIndex":3,"value":"#555559"},{"themeIndex":4,"value":"#969437"},{"value":"#E0E8EC","themeIndex":-5},{"value":"#81A2B2","themeIndex":-4},{"value":"#242C39","themeIndex":-3},{"value":"#F2F6F7","themeIndex":-2},{"value":"#FFFFFF","themeIndex":-1}],"blockStyles":{"isMigrated":true,"migratedAt":"2025-02-20T23:43:14.086Z","background":{"abs":"rgba(104, 134, 100, 1)","themeIndex":0,"opacity":1,"tintBlendMode":"normal","card":{"enabled":false,"color":{"opacity":0.25,"abs":"rgba(36, 44, 57, 0.25)","themeIndex":-3}},"type":"color","tintColor":{"abs":"rgba(36, 44, 57, 0.25)","opacity":0.25,"themeIndex":-3}},"name":"","blockType":"Text","legacyBlockType":"Text","hash":"dc632b0b54b166e78deb024ac4c87a28eb0d57ed","clonedFrom":"5d242f2bed847a080090e908","isFactoryStyle":true,"css":"","blockSpacing":"medium","blockWidth":"medium","blockHeight":"none","h1":{"color":{"abs":"#FFFFFF","opacity":1,"themeIndex":-1},"alignment":"center","size":{"abs":65,"themeRef":"medium"}},"h2":{"color":{"abs":"#FFFFFF","opacity":1,"themeIndex":-1},"alignment":"left","size":{"abs":40,"themeRef":"medium"}},"p":{"color":{"abs":"#FFFFFF","opacity":1,"themeIndex":-1},"alignment":"center","size":{"abs":20,"themeRef":"medium"}},"animation":{"animationOption":"none","animationType":"fade","direction":"down","speed":"medium"},"blockQuote":{"color":{"abs":"#FFFFFF","opacity":1,"themeIndex":-1},"size":{"abs":27,"themeRef":"medium"},"barColor":{"abs":"rgba(41, 128, 185, 1)","opacity":1,"themeIndex":0},"displayQuoteIcon":false},"button":{"textColor":"light","roundness":4,"size":"medium","color":{"abs":"rgba(104, 134, 100, 1)","opacity":1,"themeIndex":0}},"accordion":{"headerBackground":{"color":{"abs":"#FFFFFF","opacity":1,"themeIndex":-1},"on":true},"bodyBackground":{"on":false},"buttonAlignment":"left","buttonColor":{"abs":"rgba(104, 134, 100, 1)","opacity":1,"themeIndex":0},"buttonStyle":"arrow","cardStyle":"simple","imageHeight":"medium","tint":{"color":{"abs":"#242C39","opacity":1,"themeIndex":-3},"opacity":25},"expandButtonText":"Expand","closeButtonText":"Collapse"},"link":{"color":{"abs":"#242C39","opacity":1,"themeIndex":-3},"underline":{"color":{"abs":"#242C39","opacity":1,"themeIndex":-3},"on":true}},"list":{"color":{"abs":"#242C39","opacity":1,"themeIndex":-3},"marker":"circle","markerColor":{"abs":"#242C39","opacity":1,"themeIndex":-3}},"roiCalculator":{"highlightColor":{"abs":"rgba(104, 134, 100, 1)","opacity":1,"themeIndex":0},"textColor":"dark","background":{"color":{"abs":"#FFFFFF","opacity":1,"themeIndex":-1},"imageBlur":0},"tint":{"color":{"abs":"#242C39","opacity":1,"themeIndex":-3},"opacity":40}},"table":{"background":{"on":false,"color":{"abs":"#FFFFFF","opacity":1,"themeIndex":-1}},"header":{"on":false,"color":{"abs":"#FFFFFF","opacity":1,"themeIndex":-1}},"border":{"borderType":"all","color":{"abs":"rgba(129, 162, 178, 0.25)","opacity":0.25,"themeIndex":-4}}}},"printContext":{"isPrintMode":false},"imgixContext":{"disableImgix":false},"publicPageContext":{"publicPageUrl":"https://pages.qwilr.com/NcPq2t3ZTTy9"},"quoteContext":{"priceSummary":{"total":{},"dueToday":{"base":0,"discounts":[],"quoted":0,"taxes":[],"billable":0},"blocks":[]},"accountQuoteSettings":{"labels":[],"taxes":[{"percent":10,"name":"GST","id":"gst"},{"percent":20,"name":"VAT","id":"vat"},{"percent":7.25,"name":"California State Sales Tax","id":"ca-sales"}],"variables":[{"ifUnder":{"amount":0,"unitName":"Hour","unitThreshold":0,"isActive":false},"ifOver":{"amount":0,"unitName":"Hour","unitThreshold":0,"isActive":false},"isDeleted":false,"unitName":"Unit","defaultAmount":0.03,"name":"Cost per call","id":"LyiNQkVH1aQ"},{"ifUnder":{"amount":0,"unitName":"Hour","unitThreshold":0,"isActive":false},"ifOver":{"amount":0,"unitName":"Hour","unitThreshold":0,"isActive":false},"isDeleted":false,"unitName":"Unit","defaultAmount":125,"name":"Honorarium","id":"50aBzWwkOqA"}],"discounts":[{"id":"82mnVpmb8Ds","name":"Charitable Partner","type":"percent","amount":9,"isEnabled":false,"isDeleted":false}]},"quoteLabelSetId":null,"projectCurrency":{"currencyCode":"AUD","currencyFormat":{"showDecimals":true}},"paymentSettings":{"gatewayId":null,"discoverable":false,"enabled":false,"requireOnAccept":true,"partialPaymentConfig":{"amount":0,"enabled":false,"kind":"percentage"}},"quoteSummary":{"blocks":[],"priceContext":{"discounts":[],"taxes":[],"taxExemptions":[]},"currencyFormat":{"type":"inherit"},"showTaxes":true,"showTotalExcludingTax":true,"showTotalDiscounts":true,"showTotal":true}},"blockId":"6657a5ca87a2b67aca0cc394"}' data-hydration-host="true" data-hydration-host-id="7f6bfa90-1e88-4247-b28d-7860eba9fa71">
+           <h1 class="h1-widget__spacing-shim _2fdphpc project-block__block-element pencic0 _2fdphpb" style="--_2fdphp9:var(--_2fdphp0); --_2fdphpa:300; --_2fdphp2:#FFFFFF; --_2fdphp3:65; --_2fdphp1:center; --_2fdphp4:1.2; --_2fdphp5:0em; --_2fdphp6:none; --_2fdphp7:0.65em; --_2fdphp8:0.2em;">
+            Thank you!
+           </h1>
+           <p class="p-widget__spacing-shim _66ilukc project-block__block-element pencic0 _66ilukb" style="--_66iluk9:var(--_66iluk0); --_66iluka:400; --_66iluk2:#FFFFFF; --_66iluk3:20; --_66iluk1:center; --_66iluk4:1.5; --_66iluk5:0em; --_66iluk6:none; --_66iluk7:0em; --_66iluk8:1em;">
+            Cheryl Whiskeyjack
+            <a href="mailto:cwhiskeyjack@bentarrow.ca" rel="noreferrer" target="_blank">
+             cwhiskeyjack@bentarrow.ca
+            </a>
+            &amp;
+            <br/>
+            <span>
+             ​
+            </span>
+            Omar Yaqub
+            <a href="mailto:omary@islamicfamily.ca" rel="noreferrer" target="_blank">
+             omary@islamicfamily.ca
+            </a>
+           </p>
+           <p class="p-widget__spacing-shim _66ilukc project-block__block-element pencic0 _66ilukb" style="--_66iluk9:var(--_66iluk0); --_66iluka:400; --_66iluk2:#FFFFFF; --_66iluk3:20; --_66iluk1:center; --_66iluk4:1.5; --_66iluk5:0em; --_66iluk6:none; --_66iluk7:0em; --_66iluk8:1em;">
+            <br/>
+           </p>
+          </div>
+         </div>
+        </div>
+       </div>
+      </section>
+     </div>
+    </div>
+   </div>
+  </div>
+  <div>
+   <!-- ngInclude:  -->
+   <ng-include class="ng-app-container ng-scope" src="'app.ng.html'">
+    <div class="ng-scope ng-isolate-scope" ui="ui.overlay">
+     <!-- ngInclude:  -->
+     <ng-include class="ng-scope" ng-class="ui.className" src="templateUrl()">
+      <!-- ngIf: ui.visible -->
+     </ng-include>
+    </div>
+    <div class="ng-scope ng-isolate-scope" ui="ui.overlayStack">
+     <!-- ngInclude:  -->
+     <ng-include class="ng-scope" ng-class="ui.className" src="templateUrl()">
+      <!-- ngIf: ui.stack.length -->
+     </ng-include>
+    </div>
+    <div class="ng-scope ng-isolate-scope" ui="ui.badging">
+     <!-- ngInclude:  -->
+     <ng-include class="ng-scope" ng-class="ui.className" src="templateUrl()">
+      <!-- ngRepeat: badge in ui.badges -->
+      <div class="ng-scope ng-isolate-scope" ng-repeat="badge in ui.badges" ui="badge.ui">
+       <!-- ngInclude:  -->
+       <ng-include class="ng-scope" ng-class="ui.className" src="templateUrl()">
+        <div class="social-badge center-aligned ng-scope">
+         <!-- ngRepeat: item in ui.socialButtons -->
+         <div class="social-button ng-scope" ng-repeat="item in ui.socialButtons">
+          <a href="https://twitter.com/intent/tweet?text=When%20Big%20Problems%20meet%20Old%20Wisdom&amp;url=https%3A%2F%2Fifssa.qwilr.com%2FWhen-Big-Problems-meet-Old-Wisdom-NcPq2t3ZTTy9%3Futm_source%3Dqwilr%26utm_medium%3Dqwilr-social-sharing-buttons%26utm_campaign%3Dtwitter" ng-href="https://twitter.com/intent/tweet?text=When%20Big%20Problems%20meet%20Old%20Wisdom&amp;url=https%3A%2F%2Fifssa.qwilr.com%2FWhen-Big-Problems-meet-Old-Wisdom-NcPq2t3ZTTy9%3Futm_source%3Dqwilr%26utm_medium%3Dqwilr-social-sharing-buttons%26utm_campaign%3Dtwitter" target="_blank">
+           <!-- ngInclude:  -->
+           <ng-include class="share-icon ng-scope" src="item.icon" style="">
+            <svg class="ng-scope" height="32" viewbox="0 0 32 32" width="32" xmlns="http://www.w3.org/2000/svg">
+             <g fill="none" fill-rule="evenodd" id="Style-Guide" stroke="none" stroke-width="1">
+              <g id="Desktop-Copy-70" transform="translate(-30 -435)">
+               <g id="Group-6" transform="translate(20 420)">
+                <g id="Twitter" transform="translate(10 15)">
+                 <rect fill="#1da1f2" height="32" id="Rectangle-19-Copy-8" rx="2.286" width="32" x="0" y="0">
+                 </rect>
+                 <g fill="#fff" fill-rule="nonzero" id="Twitter_Logo_Blue-Copy-2" transform="translate(9.143 10.286)">
+                  <path d="M4.672 11.429c5.607 0 8.673-4.398 8.673-8.211 0-.125 0-.25-.009-.373a6 6 0 0 0 1.521-1.494 6.4 6.4 0 0 1-1.75.454A2.93 2.93 0 0 0 14.446.21a6.3 6.3 0 0 1-1.936.7c-.945-.95-2.446-1.183-3.662-.567s-1.845 1.928-1.533 3.2C4.866 3.425 2.582 2.329 1.034.527c-.809 1.318-.396 3.005.944 3.852a3.16 3.16 0 0 1-1.384-.362v.037c0 1.374 1.023 2.557 2.446 2.829a3.2 3.2 0 0 1-1.377.05c.4 1.175 1.544 1.98 2.848 2.003a6.34 6.34 0 0 1-3.785 1.238A7 7 0 0 1 0 10.132a9 9 0 0 0 4.672 1.294" id="Shape">
+                  </path>
+                 </g>
+                </g>
+               </g>
+              </g>
+             </g>
+            </svg>
+           </ng-include>
+          </a>
+         </div>
+         <!-- end ngRepeat: item in ui.socialButtons -->
+         <div class="social-button ng-scope" ng-repeat="item in ui.socialButtons">
+          <a href="https://www.linkedin.com/shareArticle?url=https%3A%2F%2Fifssa.qwilr.com%2FWhen-Big-Problems-meet-Old-Wisdom-NcPq2t3ZTTy9%3Futm_source%3Dqwilr%26utm_medium%3Dqwilr-social-sharing-buttons%26utm_campaign%3D&amp;title=When%20Big%20Problems%20meet%20Old%20Wisdomlinkedin" ng-href="https://www.linkedin.com/shareArticle?url=https%3A%2F%2Fifssa.qwilr.com%2FWhen-Big-Problems-meet-Old-Wisdom-NcPq2t3ZTTy9%3Futm_source%3Dqwilr%26utm_medium%3Dqwilr-social-sharing-buttons%26utm_campaign%3D&amp;title=When%20Big%20Problems%20meet%20Old%20Wisdomlinkedin" target="_blank">
+           <!-- ngInclude:  -->
+           <ng-include class="share-icon ng-scope" src="item.icon" style="">
+            <svg class="ng-scope" height="32" viewbox="0 0 32 32" width="32" xmlns="http://www.w3.org/2000/svg">
+             <g fill="none" fill-rule="evenodd" id="Style-Guide" stroke="none" stroke-width="1">
+              <g id="Desktop-Copy-70" transform="translate(-30 -475)">
+               <g id="Group-6" transform="translate(20 420)">
+                <g id="Linkedin" transform="translate(10 55)">
+                 <g fill="#0081ba" id="Group-35-Copy">
+                  <rect height="32" id="Rectangle-19-Copy-8" rx="2.286" width="32" x="0" y="0">
+                  </rect>
+                 </g>
+                 <g fill="#fff" fill-rule="nonzero" id="Group-12-Copy-3" transform="translate(8 9.143)">
+                  <path d="M15.619 14.476h-3.368V9.454c0-1.314-.527-2.212-1.685-2.212-.886 0-1.379.606-1.608 1.19-.086.209-.073.5-.073.793v5.251H5.55s.043-8.896 0-9.704h3.336v1.523c.197-.666 1.263-1.617 2.965-1.617 2.11 0 3.769 1.396 3.769 4.402zM2.175 3.558h-.022c-1.075 0-1.772-.742-1.772-1.683C.381.917 1.099.19 2.195.19s1.77.725 1.791 1.683c0 .94-.695 1.685-1.811 1.685M.765 4.772h2.97v9.704H.765z" id="LinkedIn">
+                  </path>
+                 </g>
+                </g>
+               </g>
+              </g>
+             </g>
+            </svg>
+           </ng-include>
+          </a>
+         </div>
+         <!-- end ngRepeat: item in ui.socialButtons -->
+         <div class="social-button ng-scope" ng-repeat="item in ui.socialButtons">
+          <a href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fifssa.qwilr.com%2FWhen-Big-Problems-meet-Old-Wisdom-NcPq2t3ZTTy9%3Futm_source%3Dqwilr%26utm_medium%3Dqwilr-social-sharing-buttons%26utm_campaign%3Dfacebook" ng-href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fifssa.qwilr.com%2FWhen-Big-Problems-meet-Old-Wisdom-NcPq2t3ZTTy9%3Futm_source%3Dqwilr%26utm_medium%3Dqwilr-social-sharing-buttons%26utm_campaign%3Dfacebook" target="_blank">
+           <!-- ngInclude:  -->
+           <ng-include class="share-icon ng-scope" src="item.icon" style="">
+            <svg class="ng-scope" height="32" viewbox="0 0 32 32" width="32" xmlns="http://www.w3.org/2000/svg">
+             <defs>
+              <path d="M0 .009h22.848v22.467H0z" id="path-1">
+              </path>
+             </defs>
+             <g fill="none" fill-rule="evenodd" id="Style-Guide" stroke="none" stroke-width="1">
+              <g id="Desktop-Copy-70" transform="translate(-30 -515)">
+               <g id="Group-6" transform="translate(20 420)">
+                <g id="Facebook" transform="translate(10 95)">
+                 <rect fill="#3c5a99" height="32" id="Rectangle-19-Copy-8" rx="2.286" width="32" x="0" y="0">
+                 </rect>
+                 <g id="Page-1-Copy-2" transform="translate(4.571 4.571)">
+                  <path d="M15.67 22.857V14.1h2.966l.444-3.413h-3.41v-2.18c0-.987.278-1.66 1.707-1.66l1.823-.002V3.792a25 25 0 0 0-2.657-.135c-2.628 0-4.427 1.59-4.427 4.512v2.517H9.143v3.413h2.973v8.758z" fill="#fff" id="Fill-4">
+                  </path>
+                 </g>
+                </g>
+               </g>
+              </g>
+             </g>
+            </svg>
+           </ng-include>
+          </a>
+         </div>
+         <!-- end ngRepeat: item in ui.socialButtons -->
+        </div>
+       </ng-include>
+      </div>
+      <!-- end ngRepeat: badge in ui.badges -->
+     </ng-include>
+    </div>
+    <div class="ng-scope ng-isolate-scope" ui="ui.templateBanner">
+     <!-- ngInclude:  -->
+     <ng-include class="ng-scope" ng-class="ui.className" src="templateUrl()">
+      <!-- ngIf: ui.isTemplateDomain -->
+     </ng-include>
+    </div>
+   </ng-include>
+   <script nonce="">
+    var _sk = 'duH9aykmlpeNUBxugWt3Lfmb1guEdGrn';
+  var _sd = 'https://evs.cdp.qwilr.com';
+      
+  var getSource = function(key) {
+    var _sUrl = 'https://evs.cdp.qwilr.com/GXDTK99ZHz/fRNTuNN2Xs.min.js';
+    if (!_sUrl) {
+      return "https://cdn.segment.com/analytics.js/v1/" + key + "/analytics.min.js";
+    } 
+    return _sUrl;
+  }
+  !function(){var i="analytics",analytics=window[i]=window[i]||[];if(!analytics.initialize)if(analytics.invoked)window.console&&console.error&&console.error("Segment snippet included twice.");else{analytics.invoked=!0;analytics.methods=["trackSubmit","trackClick","trackLink","trackForm","pageview","identify","reset","group","track","ready","alias","debug","page","screen","once","off","on","addSourceMiddleware","addIntegrationMiddleware","setAnonymousId","addDestinationMiddleware","register"];analytics.factory=function(e){return function(){if(window[i].initialized)return window[i][e].apply(window[i],arguments);var n=Array.prototype.slice.call(arguments);if(["track","screen","alias","group","page","identify"].indexOf(e)>-1){var c=document.querySelector("link[rel='canonical']");n.push({__t:"bpc",c:c&&c.getAttribute("href")||void 0,p:location.pathname,u:location.href,s:location.search,t:document.title,r:document.referrer})}n.unshift(e);analytics.push(n);return analytics}};for(var n=0;n<analytics.methods.length;n++){var key=analytics.methods[n];analytics[key]=analytics.factory(key)}analytics.load=function(key,n){var t=document.createElement("script");t.type="text/javascript";t.async=!0;t.setAttribute("data-global-segment-analytics-key",i);t.src=getSource(key);var r=document.getElementsByTagName("script")[0];r.parentNode.insertBefore(t,r);analytics._loadOptions=n};analytics._writeKey=_sk;analytics._cdn=_sd;analytics.SNIPPET_VERSION="5.2.1";
+  analytics.load(_sk, { obfuscate: true, storage: { stores: ['localStorage', 'memory'] } });
+  }}();
+   </script>
+   <script async="" nonce="" src="js/E-v1.js">
+   </script>
+   <script nonce="">
+    performance.mark("indexHtmlBodyEnd");
+   </script>
+   <script nonce="" src="js/Public-vendor-7dbef38a5cfd4273f961.js">
+   </script>
+   <script nonce="" src="js/Public-common-de5b692c909bad527a6d.js">
+   </script>
+   <script nonce="" src="js/Public-a6c1f06a6f0fca04d614.js">
+   </script>
+  </div>
+  <script nonce="">
+   ((i, s) => {
+    if (!window.history.state || !window.history.state.key) {
+      let l = Math.random().toString(32).slice(2);
+      window.history.replaceState({ key: l }, "");
+    }
+    try {
+      let u = JSON.parse(sessionStorage.getItem(i) || "{}")[s || window.history.state.key];
+      typeof u == "number" && window.scrollTo(0, u);
+    } catch (l) {
+      console.error(l), sessionStorage.removeItem(i);
+    }
+  })("positions", null)
+  </script>
+  <div class="qwilr-pages-app" id="pages-app-portal-roots">
+   <div class="tokens_lightTheme__1bl7jj134" id="popover-root-pages-app">
+   </div>
+   <div class="tokens_lightTheme__1bl7jj134" id="tooltip-root-pages-app">
+   </div>
+  </div>
+  <style class="wistia_injected_style" id="wistia_22_style" type="text/css">
+   @font-face {
+font-family: 'WistiaPlayerInterNumbersSemiBold';
+font-feature-settings: 'tnum' 1;
+src: url(data:application/x-font-woff;charset=utf-8;base64,d09GMk9UVE8AAAaMAAwAAAAACgAAAAZBAAMD1wAAAAAAAAAAAAAAAAAAAAAAAAAADYpwGhQbIBwqBmAAgTIBNgIkAzAEBgWDGgcgGykJEZWkARP8KHCbm2tEznyIN98tPTUk9Ig3oiVV3pbDIzXa+f/fZgXpALFTZhBoMVFC9cp036dXvRKVmVnsxe+D+1NDQI5lG7ikZWEINIElTeBIdnxlhauQ5GQtoLHA/wN0riVdSx5xgbxF3KTbgnjVQ4B9P7YqCx7FpEZK+6ilx0AoopUh4aExJEKmkU+0ncdr4iFfKhdSFD9y91LCRaxNbVqvi0dND3rxI7ndUDR7EiwT3bhiua9krFA0oepCy2hCjwmjnjDjKjNTDz2ZuHtN8820Wfw/l8u4w4yV/f8/6uscs5rmiN00LcP4hAofyZUSyS3WinX0RGFFtnGrjj36x6dlNa57+PLTlrUisH2n9orfgd+R34XfDd0NsWDXwfwhvKHpbs3UBni37dBlPvO4KYn/PgylilcgSdw6sjsSSxsRGfIJgqhi14bKZCHcQvjUh/+3HMotTYrGLVYCxyMFjEnYC98yTAp6atAKVxaZ9eu2NMji8WTj4w/Y34elD60PPwb5bEywLqAX/amwmUo6TBCy14N/TL44jb3sE5JdUIPXXI0RBSoGt3BUObn4agKGIxxQhlyQacbstK4fS2mZoBtFNQ1bd+4zND2vQu6anl7gWFOj8MV2DVMtU44xMhpwElrrjA7zO5IqWojd/v1Vso6cqp91zC2YrGhDOy07Iqyza2q9smDIwUYek0AWbCt/8x78QmrzayQ6xtpmqfCYsLfgU9HdeP3UqutZTTNd/9Q8k08XzXzIxSdvLPda8YaeeZnkxUwql0nDKyUYdaWZjGAy7UDLHpVqBVHTxSV0wBy21El9u/491ik2J3YkdiP2LPZL41RBeeNUWtp97Bbn0Ee1g9wr9qqV/X+4R9nlPX03743dylnaXZyNp8v58yLOsFYCbUnCVQzjN+5QhlmKccO7aMkueWJggROd4qnw2x5LydUcg/NRamE3XMlkGovpRWPKWEavP74P2O1RANM/3gIIPJj7TX+lqU2geQuaBx4B/7cWAOx0ucTiEHYJU9y5DBuUMYNIHeHZz9tn+Fw2G5EBTqUlHRfRi4eB5wNlJsRsv5k4b6HyFkhIC6BO4LzPbWhW7rbCcxubeKHOc6UaBKZBMMd4j8XuRUynOCCa4EMfF9grkI1NcTaSAVtk1nrIOwFfeEBlQw4f4phb6zHzBOm0ZZ0dBcaZRVdYIo5xYiyOMEWONwQHmjKGE//VuRBgul1QrpyxmMvF4vGj0xfuuQrNt4tVTsRhEnjY9AuKa1FVLSEneQWzFd5WbO7hasX08ONUOVQgwQuVqACFXkSoIoUgK1hJEkAgbkG5CjqBS5wrRFuY2IfVwhRnLsVyZTZpatveGR4yEbYqbE6J80nM4aa+LD7Oqmr8PdSJFUQVynmgN4lerGQV1+uLdYzdOFWHPW/iK2gIQayhizQ0NMwyvBEBlrDczRfmU40CTtAHqLQGnjQG8MYkxm1MwJuTqjHwVCu9iRJ1C8ojWGHxUYowH0c5X57zpXquvlw0wzHHGMTfufxiJ1psFJTzq6nGeDvHF4LgmHHWCUViZBaInRn+cswnBi460RBPRYg9TRUQ0CZUC5LAT0qLLu50FpdTeBhjGf7/h4dg9hE0uqsBx/saOcYRDIfnOhfzGFBHyizcJK3p2edUjWrC0rn1aGjXtfVUCHMAKKhlxV8eTEIcV2jCOdKiqahv/MisrfRQVnxPJoOU62mR6pu2ZllIzo8zOZqQB7kWJXW2/c0aihata5PcIVJKfFRgHAETmEQVTCELptGMGcyigTnMJ1voUVN6uCZS9pV2hrwl7FYMvBwtUSd7L7E5qP9t7BIPRF7EcmA9ct2nIPHrxgWajtDltbXuBLuaY6qRZGa5ZlX5anfR0lYXaHUzVSFjZa8rfdhZ8rKXFZg21LVL5LFjI5TlDIbwnFGHE2dypHs6Q50N015dpOgLONEUlOqoiQgIaeCsjMq9gITDKwRMieQgKUy9UQY1BTFYZU2KpE2SkILMIjW8IdFwIKmMaK8oClJVssAEtFnz5dQ1s+w6EZoNGtPGQfzx+aoE8ikiP8GCYOWtgB+HBdWDaxACAZInVq14dZI85RRDvZGIghyONw59KV/BBEQ02P1ER8hmNGiURT2hQP8WfAY=);
+}
+  </style>
+  <div id="clerk-components">
+  </div>
+ </body>
+</html>
