@@ -1,0 +1,724 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Your Voice. Your Plan.</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Alegreya+Sans:ital,wght@0,300;0,400;0,500;0,700;0,900;1,300;1,400;1,500&family=Alegreya:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+
+  :root {
+    --black: #0e0e0e;
+    --white: #f5f2eb;
+    --green: #275D43;
+    --green-light: #3a8a63;
+    --brown: #E09964;
+    --red: #BB2D37;
+    --mist: #FAFAF2;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--black);
+    color: var(--white);
+    font-family: 'Alegreya Sans', sans-serif;
+    font-weight: 300;
+    overflow-x: hidden;
+  }
+
+  #progress-bar {
+    position: fixed; top: 0; left: 0;
+    height: 3px; background: var(--brown);
+    width: 0%; z-index: 1000;
+    transition: width 0.25s ease;
+  }
+
+  #nav-dots {
+    position: fixed; right: 22px; top: 50%;
+    transform: translateY(-50%);
+    display: flex; flex-direction: column; gap: 10px; z-index: 999;
+  }
+  .dot {
+    width: 7px; height: 7px; border-radius: 50%;
+    background: rgba(245,242,235,0.2); cursor: pointer;
+    transition: all 0.3s;
+  }
+  .dot.active { background: var(--brown); transform: scale(1.5); }
+
+  .slide {
+    min-height: 100vh; display: flex; flex-direction: column;
+    justify-content: center; padding: 80px 10vw;
+    position: relative; overflow: hidden;
+  }
+
+  .slide-num {
+    font-size: 13px; letter-spacing: 0.3em;
+    color: rgba(245,242,235,0.3); margin-bottom: 44px;
+    text-transform: uppercase; font-weight: 400;
+  }
+
+  h1 {
+    font-family: 'Alegreya Sans', sans-serif; font-style: italic; font-weight: 900;
+    font-size: clamp(80px, 13vw, 172px); line-height: 0.88; letter-spacing: -0.02em;
+  }
+  h2 {
+    font-family: 'Alegreya Sans', sans-serif; font-style: italic; font-weight: 900;
+    font-size: clamp(52px, 8vw, 108px); line-height: 0.94; letter-spacing: -0.01em;
+  }
+  p, li { font-size: clamp(19px, 1.9vw, 26px); line-height: 1.65; font-weight: 300; }
+
+  .accent { color: var(--brown); }
+  .green-text { color: var(--green-light); }
+
+  /* SCROLL ANIMATIONS */
+  .sa       { opacity:0; transform:translateY(28px); transition: opacity .65s ease, transform .65s ease; }
+  .sa-left  { opacity:0; transform:translateX(-32px); transition: opacity .65s ease, transform .65s ease; }
+  .sa-right { opacity:0; transform:translateX(32px);  transition: opacity .65s ease, transform .65s ease; }
+  .sa-scale { opacity:0; transform:scale(0.94); transition: opacity .6s ease, transform .6s ease; }
+  .sa.v,.sa-left.v,.sa-right.v,.sa-scale.v { opacity:1; transform:none; }
+
+  .d1{transition-delay:.05s} .d2{transition-delay:.13s} .d3{transition-delay:.21s}
+  .d4{transition-delay:.29s} .d5{transition-delay:.37s} .d6{transition-delay:.45s}
+  .d7{transition-delay:.53s} .d8{transition-delay:.61s}
+
+  /* SLIDE 1 */
+  #s1 { background:var(--black); justify-content:flex-end; padding-bottom:10vh; }
+  #s1 .eyebrow {
+    font-size:12px; letter-spacing:.28em; text-transform:uppercase;
+    color:var(--green-light); margin-bottom:20px;
+    opacity:0; animation:fadeUp .7s .3s forwards;
+  }
+  #s1 h1 { opacity:0; animation:fadeUp .8s .5s forwards; }
+  #s1 h1 .l2 { color:var(--brown); display:block; }
+  .subtitle {
+    margin-top:28px; font-size:clamp(18px,1.7vw,24px);
+    color:rgba(245,242,235,.5); max-width:560px; line-height:1.6;
+    opacity:0; animation:fadeUp .7s .9s forwards;
+  }
+  .bg-word {
+    position:absolute; right:-1vw; top:40%;
+    transform:translateY(-50%) rotate(90deg);
+    font-family:'Alegreya Sans',sans-serif; font-style:italic; font-weight:900;
+    font-size:clamp(100px,18vw,220px);
+    color:rgba(245,242,235,.025); pointer-events:none; white-space:nowrap;
+  }
+
+  /* SLIDE 2 */
+  #s2 { background:var(--green); }
+  .q-line {
+    font-family:'Alegreya Sans',sans-serif; font-style:italic; font-weight:900;
+    font-size:clamp(42px,6.5vw,96px); line-height:1.02; letter-spacing:-0.01em;
+  }
+  .q-line.muted  { color:rgba(245,242,235,.3); }
+  .q-line.bright { color:var(--white); }
+  .q-line.pop    { color:var(--brown); }
+
+  /* SLIDE 3 */
+  #s3 { background:var(--black); }
+  .stakes-grid {
+    display:grid; grid-template-columns:1fr 1fr;
+    gap:2px; margin-top:36px; max-width:800px;
+  }
+  .stake-cell { padding:26px 30px; background:#161616; transition: background 0.8s ease, box-shadow 0.8s ease; }
+  .stake-cell.sc-rot { background: #161616; }
+  .stake-cell.sc-rot .sv { color: var(--white); transition: color 0.8s ease; }
+  .stake-cell.sc-rot .sl { color: rgba(245,242,235,.35); transition: color 0.8s ease; }
+  .stake-cell.sc-rot.active-stake { background: var(--brown); box-shadow: 0 0 0 1px rgba(224,153,100,0.3); }
+  .stake-cell.sc-rot.active-stake .sv { color: var(--black); }
+  .stake-cell.sc-rot.active-stake .sl { color: rgba(0,0,0,.5); }
+  .sl { font-size:10px; letter-spacing:.22em; text-transform:uppercase; color:rgba(245,242,235,.35); margin-bottom:8px; font-weight:500; }
+  .sv { font-family:'Alegreya Sans',sans-serif; font-style:italic; font-weight:700; font-size:clamp(21px,2.4vw,32px); color:var(--white); line-height:1.25; }
+
+  /* SLIDE 4 */
+  #s4 { background:#0a0a0a; }
+  .hard-topics { list-style:none; margin-top:32px; display:flex; flex-direction:column; gap:0; max-width:680px; }
+  .hard-topics li {
+    display:flex; align-items:flex-start; gap:18px;
+    padding:16px 0; border-bottom:1px solid rgba(245,242,235,.07);
+    transition:padding-left .2s; cursor:default;
+  }
+  .hard-topics li:hover { padding-left:8px; }
+  .hn { font-size:12px; letter-spacing:.2em; color:var(--brown); padding-top:3px; flex-shrink:0; font-weight:500; }
+  .ht { font-size:clamp(18px,1.9vw,26px); color:var(--white); line-height:1.45; }
+
+  /* SLIDE 4b */
+  #s4b { background:#111; }
+  .strategies {
+    margin-top:36px; display:grid;
+    grid-template-columns:1fr 1fr; gap:2px; max-width:820px;
+  }
+  .sc { background:#1a1a1a; padding:26px 28px; transition:background .2s; }
+  .sc:hover { background:#202020; }
+  .sc.feat { background:var(--green); }
+  .sc.feat:hover { background:#2f6e50; }
+
+  /* SUSPECT ITEMS */
+  .suspect-items { margin-top:40px; display:flex; flex-direction:column; gap:0; max-width:780px; }
+  .suspect-item {
+    display:flex; gap:24px; align-items:flex-start;
+    padding:24px 0; border-bottom:1px solid rgba(187,45,55,.15);
+    transition:padding-left .2s; cursor:default;
+  }
+  .suspect-item:hover { padding-left:8px; }
+  .si-icon { font-size:18px; color:var(--red); flex-shrink:0; padding-top:3px; opacity:0.7; }
+  .si-title {
+    font-family:'Alegreya Sans',sans-serif; font-style:italic; font-weight:700;
+    font-size:clamp(22px,2.6vw,36px); color:var(--white); margin-bottom:6px; line-height:1.1;
+    transition: color 0.4s ease;
+  }
+  .suspect-item.active-sus .si-title { color:var(--red); }
+  .si-desc { font-size:clamp(15px,1.4vw,19px); color:rgba(245,242,235,.5); line-height:1.55; max-width:620px; }
+  .sc-tag { font-size:10px; letter-spacing:.22em; text-transform:uppercase; color:var(--brown); margin-bottom:10px; font-weight:500; }
+  .sc.feat .sc-tag { color:rgba(245,242,235,.55); }
+  .sc-title { font-family:'Alegreya Sans',sans-serif; font-style:italic; font-weight:700; font-size:clamp(20px,2.1vw,28px); color:var(--white); margin-bottom:10px; line-height:1.2; }
+  .sc-desc { font-size:clamp(15px,1.4vw,19px); color:rgba(245,242,235,.6); line-height:1.55; }
+  .sc.feat .sc-desc { color:rgba(245,242,235,.8); }
+
+  /* SLIDE 4c */
+  #s4c { background:#0d0d0d; }
+  .process-steps { margin-top:40px; display:flex; flex-direction:column; gap:0; max-width:700px; position:relative; }
+  .process-steps::before {
+    content:''; position:absolute; left:22px; top:0; bottom:0;
+    width:1px; background:rgba(245,242,235,.07);
+  }
+  .process-step { display:flex; gap:24px; align-items:flex-start; padding:20px 0; }
+  .ps-num {
+    width:44px; height:44px; border-radius:50%;
+    background:var(--black); border:1px solid rgba(245,242,235,.12);
+    display:flex; align-items:center; justify-content:center;
+    flex-shrink:0; font-size:13px; font-weight:500;
+    color:var(--brown); z-index:1;
+    transition:background .2s, border-color .2s, color .2s;
+  }
+  .process-step:hover .ps-num { background:var(--brown); border-color:var(--brown); color:var(--black); }
+  .ps-title { font-family:'Alegreya Sans',sans-serif; font-style:italic; font-weight:700; font-size:clamp(19px,2vw,26px); color:var(--white); margin-bottom:4px; line-height:1.2; }
+  .ps-desc { font-size:clamp(15px,1.4vw,19px); color:rgba(245,242,235,.5); line-height:1.5; }
+
+  /* SLIDE 5 */
+  #s5 { background:var(--black); }
+  .fw-items { margin-top:40px; display:flex; flex-direction:column; gap:0; max-width:740px; }
+  .fw-item { display:flex; gap:24px; align-items:flex-start; padding:20px 0; border-bottom:1px solid rgba(245,242,235,.07); cursor:default; transition:padding-left .2s; }
+  .fw-item:hover { padding-left:8px; }
+  .fw-let { font-family:'Alegreya Sans',sans-serif; font-style:italic; font-weight:900; font-size:38px; color:var(--green-light); line-height:1; width:30px; flex-shrink:0; }
+  .fw-title { font-size:clamp(18px,1.9vw,24px); font-weight:500; color:var(--white); margin-bottom:3px; }
+  .fw-q { font-size:clamp(15px,1.4vw,19px); color:rgba(245,242,235,.4); font-style:italic; }
+
+  /* SLIDE 5b */
+  #s5b { background:#0a120e; }
+  .outline-grid { margin-top:36px; display:grid; grid-template-columns:1fr 1fr; gap:2px; max-width:820px; }
+  .os {
+    background:rgba(245,242,235,.03); border:1px solid rgba(245,242,235,.07);
+    padding:24px 26px; transition:background .2s;
+  }
+  .os:hover { background:rgba(245,242,235,.06); }
+  .os-let { font-family:'Alegreya Sans',sans-serif; font-style:italic; font-weight:900; font-size:48px; color:var(--green-light); line-height:1; margin-bottom:6px; }
+  .os-title { font-family:'Alegreya Sans',sans-serif; font-style:italic; font-weight:700; font-size:clamp(19px,1.9vw,25px); color:var(--white); margin-bottom:10px; }
+  .os-prompts { list-style:none; display:flex; flex-direction:column; gap:6px; }
+  .os-prompts li { font-size:clamp(14px,1.3vw,18px); color:rgba(245,242,235,.45); padding-left:14px; border-left:2px solid rgba(245,242,235,.1); line-height:1.4; }
+  .outline-note { margin-top:24px; font-size:13px; color:rgba(245,242,235,.35); font-style:italic; max-width:620px; }
+  .big-url {
+    display:block; margin-top:28px;
+    font-family:'Alegreya Sans',sans-serif; font-weight:700; font-style:italic;
+    font-size:clamp(22px,2.8vw,40px); color:var(--brown);
+    word-break:break-all; line-height:1.3;
+    text-decoration:none; letter-spacing:-0.01em;
+    transition:color .2s;
+  }
+  .big-url:hover { color:var(--white); }
+  .big-url .url-label {
+    display:block; font-family:'Alegreya Sans',sans-serif;
+    font-size:11px; letter-spacing:.25em; text-transform:uppercase;
+    color:rgba(245,242,235,.35); font-weight:500; font-style:normal;
+    margin-bottom:6px;
+  }
+
+  /* SLIDE 6 */
+  #s6 { background:var(--green); }
+  .channels-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(170px,1fr)); gap:2px; margin-top:36px; max-width:740px; }
+  .ch { background:rgba(0,0,0,.2); padding:22px 20px; transition:background .2s; }
+  .ch:hover { background:rgba(0,0,0,.38); }
+  .ch-name { font-family:'Alegreya Sans',sans-serif; font-style:italic; font-weight:900; font-size:30px; color:var(--brown); margin-bottom:6px; }
+  .ch-freq { font-size:11px; letter-spacing:.2em; text-transform:uppercase; color:rgba(245,242,235,.35); margin-bottom:8px; font-weight:500; }
+  .ch-purpose { font-size:clamp(15px,1.4vw,18px); color:rgba(245,242,235,.7); line-height:1.5; }
+
+  /* SLIDE 7 */
+  #s7 { background:var(--black); }
+  .spectrum-list { margin-top:44px; display:flex; flex-direction:column; gap:18px; max-width:680px; }
+  .spectrum-row { display:grid; grid-template-columns:130px 1fr 130px; align-items:center; gap:18px; }
+  .spec-l { text-align:right; font-size:14px; color:rgba(245,242,235,.45); }
+  .spec-r { text-align:left;  font-size:14px; color:rgba(245,242,235,.45); }
+  .spec-track { height:3px; background:rgba(245,242,235,.08); border-radius:2px; position:relative; }
+  .spec-dot {
+    width:13px; height:13px; border-radius:50%; background:var(--brown);
+    position:absolute; top:50%; transform:translate(-50%,-50%);
+    cursor:grab; transition:background .2s, transform .2s;
+    box-shadow:0 0 0 3px rgba(224,153,100,.2);
+  }
+  .spec-dot:hover { background:var(--white); transform:translate(-50%,-50%) scale(1.2); }
+
+  /* SLIDE 8 */
+  #s8 { background:#080808; }
+  .tweet-card { background:#181818; border:1px solid rgba(245,242,235,.09); padding:26px 30px; max-width:520px; margin-top:36px; }
+  .tweet-handle { font-size:14px; letter-spacing:.06em; color:var(--brown); margin-bottom:14px; font-weight:500; }
+  .tweet-text { font-family:'Alegreya Sans',sans-serif; font-style:italic; font-weight:400; font-size:clamp(18px,1.8vw,24px); line-height:1.55; color:var(--white); }
+  .tweet-stats { display:flex; gap:28px; margin-top:22px; padding-top:18px; border-top:1px solid rgba(245,242,235,.07); }
+  .ts-num { font-family:'Alegreya Sans',sans-serif; font-style:italic; font-weight:900; font-size:30px; color:var(--green-light); line-height:1; }
+  .ts-lbl { font-size:10px; letter-spacing:.18em; text-transform:uppercase; color:rgba(245,242,235,.3); margin-top:3px; font-weight:500; }
+  .case-note { margin-top:28px; max-width:500px; font-size:clamp(14px,1.3vw,18px); color:rgba(245,242,235,.55); line-height:1.6; }
+
+  /* SLIDE 9 */
+  #s9 { background:#060606; }
+  .transform-layout { margin-top:44px; display:grid; grid-template-columns:1fr auto 1fr; gap:28px; align-items:start; max-width:740px; }
+  .tc-title { font-size:10px; letter-spacing:.25em; text-transform:uppercase; margin-bottom:18px; padding-bottom:10px; border-bottom:1px solid rgba(245,242,235,.1); font-weight:500; }
+  .tc-a .tc-title { color:var(--red); }
+  .tc-p .tc-title { color:var(--green-light); }
+  .transform-col ul { list-style:none; display:flex; flex-direction:column; gap:12px; }
+  .transform-col ul li { font-size:clamp(16px,1.6vw,22px); color:rgba(245,242,235,.55); line-height:1.4; padding-left:12px; border-left:2px solid rgba(245,242,235,.08); }
+  .tc-p ul li { border-left-color:var(--green-light); color:var(--white); }
+  .t-arrow { font-size:28px; color:var(--brown); align-self:center; padding-top:36px; }
+
+  /* SLIDE 10 */
+  #s10 { background:var(--green); }
+  .plan-prompts { margin-top:44px; display:flex; flex-direction:column; gap:0; max-width:660px; }
+  .prompt-item { display:flex; gap:20px; align-items:flex-start; padding:18px 0; border-bottom:1px solid rgba(245,242,235,.15); }
+  .prompt-tag { font-size:11px; letter-spacing:.2em; text-transform:uppercase; color:var(--brown); padding-top:4px; flex-shrink:0; width:72px; font-weight:500; }
+  .prompt-q { font-family:'Alegreya Sans',sans-serif; font-style:italic; font-weight:500; font-size:clamp(18px,1.9vw,26px); color:var(--white); line-height:1.4; }
+
+  /* SLIDE 11 */
+  #s11 { background:var(--black); justify-content:flex-end; padding-bottom:10vh; }
+  .close-word { font-family:'Alegreya Sans',sans-serif; font-style:italic; font-weight:900; font-size:clamp(64px,11vw,148px); line-height:0.9; letter-spacing:-0.02em; }
+  .cw-dim { color:rgba(245,242,235,.15); }
+  .cw-mid { color:var(--white); }
+  .cw-hot { color:var(--brown); }
+  .close-handle { margin-top:32px; font-size:15px; letter-spacing:.18em; color:rgba(245,242,235,.35); font-weight:400; }
+  .close-handle span { color:var(--green-light); }
+
+  /* AI AGE SLIDE */
+  .ai-pillars { margin-top:40px; display:flex; flex-direction:column; gap:0; max-width:720px; }
+  .ai-pillar {
+    display:flex; gap:28px; align-items:flex-start;
+    padding:22px 0; border-bottom:1px solid rgba(245,242,235,.07);
+    transition: padding-left .2s; cursor:default;
+  }
+  .ai-pillar:hover { padding-left:8px; }
+  .ai-pillar-num {
+    font-family:'Alegreya Sans',sans-serif; font-style:italic; font-weight:900;
+    font-size:clamp(32px,3.5vw,52px); color:rgba(245,242,235,.1);
+    line-height:1; flex-shrink:0; width:56px;
+    transition: color .4s ease;
+  }
+  .ai-pillar:hover .ai-pillar-num { color: var(--green-light); }
+  .ai-pillar-title {
+    font-family:'Alegreya Sans',sans-serif; font-style:italic; font-weight:700;
+    font-size:clamp(19px,2.1vw,28px); color:var(--white);
+    margin-bottom:6px; line-height:1.2;
+  }
+  .ai-pillar-desc {
+    font-size:clamp(15px,1.4vw,19px); color:rgba(245,242,235,.45);
+    line-height:1.6; max-width:580px;
+  }
+
+  @keyframes fadeUp { from { opacity:0; transform:translateY(22px); } to { opacity:1; transform:translateY(0); } }
+
+  @media(max-width:680px){
+    .slide{padding:60px 6vw;}
+    .outline-grid,.strategies{grid-template-columns:1fr;}
+    .transform-layout{grid-template-columns:1fr;}
+    .t-arrow{display:none;}
+    .stakes-grid{grid-template-columns:1fr;}
+    .spectrum-row{grid-template-columns:80px 1fr 80px;gap:10px;}
+    #nav-dots{right:8px;}
+    #s7 > div { grid-template-columns: 1fr !important; }
+  }
+</style>
+</head>
+<body>
+
+<div id="progress-bar"></div>
+<div id="nav-dots" aria-hidden="true"></div>
+
+<!-- S1: TITLE -->
+<section class="slide" id="s1">
+  <div class="bg-word">Voice</div>
+  <div class="eyebrow">Civic Youth Fellowship · Omar Yaqub</div>
+  <h1>Your<br><span class="l2">Voice.</span><br>Your Plan.</h1>
+  <p class="subtitle">How to use social media with purpose — especially when it's complicated.</p>
+</section>
+
+<!-- S2: THE QUESTION -->
+<section class="slide" id="s2">
+  <div class="slide-num sa d1">02 — The Question</div>
+  <div class="q-line muted sa d2">Do you stay quiet</div>
+  <div class="q-line muted sa d3">when things matter most?</div>
+  <div class="q-line bright sa d4">Or do you post</div>
+  <div class="q-line pop sa d5">and regret it later?</div>
+  <p class="sa d6" style="margin-top:36px;color:rgba(245,242,235,.5);max-width:480px;">There's a third option. It starts before you open the app.</p>
+</section>
+
+<!-- S3: STAKES -->
+<section class="slide" id="s3">
+  <div class="slide-num sa">03 — The Stakes</div>
+  <h2 class="sa d1">Your voice has<br><span class="accent">weight.</span></h2>
+  <div class="stakes-grid sa-scale d2" id="stakes-grid">
+    <div class="stake-cell sc-rot" data-idx="0"><div class="sl">You affect</div><div class="sv">Your career &amp; reputation</div></div>
+    <div class="stake-cell sc-rot" data-idx="1"><div class="sl">You affect</div><div class="sv">People you work with</div></div>
+    <div class="stake-cell sc-rot" data-idx="2"><div class="sl">You affect</div><div class="sv">Elected officials &amp; decision makers</div></div>
+    <div class="stake-cell sc-rot" data-idx="3"><div class="sl">You affect</div><div class="sv">The communities you're part of</div></div>
+  </div>
+  <p class="sa d3" style="margin-top:28px;color:rgba(245,242,235,.35);font-size:14px;">People follow people, not logos. Tesla: 12M followers. Elon Musk: 66M.</p>
+</section>
+
+<!-- S4: REAL TALK — TOPICS -->
+<section class="slide" id="s4">
+  <div class="slide-num sa">04 — Real Talk</div>
+  <h2 class="sa d1">The hard<br><span class="accent">conversations.</span></h2>
+  <p class="sa d2" style="margin-top:16px;color:rgba(245,242,235,.5);max-width:620px;font-size:clamp(15px,1.4vw,19px);">Topics close to your heart that divide rooms. What does it cost to speak — and what does it cost to stay silent?</p>
+  <ul class="hard-topics">
+    <li class="sa d3"><span class="hn">01</span><span class="ht">Genocide in Gaza — when silence feels like complicity</span></li>
+    <li class="sa d4"><span class="hn">02</span><span class="ht">Bigotry, racism &amp; settler identity — when the topic is personal</span></li>
+    <li class="sa d5"><span class="hn">03</span><span class="ht">Equity &amp; justice work — advocacy vs. performance</span></li>
+    <li class="sa d6"><span class="hn">04</span><span class="ht">Your organization's politics vs. your personal convictions</span></li>
+  </ul>
+</section>
+
+<!-- S4b: STRATEGIES -->
+<section class="slide" id="s4b">
+  <div class="slide-num sa">05 — Strategies</div>
+  <h2 class="sa d1">You don't have to<br><span class="green-text">write to speak.</span></h2>
+  <p class="sa d2" style="margin-top:14px;color:rgba(245,242,235,.55);max-width:600px;font-size:clamp(15px,1.4vw,19px);">Original content is one path. But there's a whole menu — and some of the most impactful voices are curators, amplifiers, and learners in good standing.</p>
+  <div class="strategies">
+    <div class="sc feat sa-left d3">
+      <div class="sc-tag">★ High Impact</div>
+      <div class="sc-title">Invest, Investigate &amp; Repost</div>
+      <div class="sc-desc">Follow organizations and people close to issues important to those around you. Read deeply. Then amplify the best of what you find. You don't need the original thought — you need good judgment.</div>
+    </div>
+    <div class="sc sa-right d3">
+      <div class="sc-tag">Strategy</div>
+      <div class="sc-title">Ask Questions</div>
+      <div class="sc-desc">Post a genuine question rather than a take. Invites dialogue, signals curiosity, and rarely backfires. "What are the best resources on X?" builds community.</div>
+    </div>
+    <div class="sc sa-left d4">
+      <div class="sc-tag">Strategy</div>
+      <div class="sc-title">Signal Solidarity</div>
+      <div class="sc-desc">A like, a reshare, a comment of support. Sometimes the most important thing is showing up for someone else's voice rather than centering your own.</div>
+    </div>
+    <div class="sc sa-right d4">
+      <div class="sc-tag">Strategy</div>
+      <div class="sc-title">Groundhog Day</div>
+      <div class="sc-desc">You don't have to be on all the time. Get activated by a moment — a season, a news cycle, an anniversary — create a focused burst of effort, then go quiet. Intensity beats constant noise.</div>
+    </div>
+    <div class="sc sa-left d5">
+      <div class="sc-tag">Strategy</div>
+      <div class="sc-title">Original Takes</div>
+      <div class="sc-desc">When you have something uniquely yours to say — from lived experience, expertise, or your specific vantage point — say it. Don't waste that position.</div>
+    </div>
+  </div>
+</section>
+
+<!-- S4d: BE SUSPICIOUS OF -->
+<section class="slide" id="s4d" style="background:#0d0808;">
+  <div class="slide-num sa" style="color:rgba(187,45,55,.5);">06 — Watch Out</div>
+  <h2 class="sa d1" style="color:var(--white);">Be suspicious<br><span style="color:var(--red);">of these.</span></h2>
+  <p class="sa d2" style="margin-top:14px;color:rgba(245,242,235,.5);max-width:580px;font-size:clamp(15px,1.4vw,19px);">Not every active voice is an effective one. Some patterns feel productive but aren't moving anything.</p>
+  <div class="suspect-items">
+    <div class="suspect-item sa d3" id="si-0">
+      <div class="si-icon">⚠</div>
+      <div>
+        <div class="si-title">Preaching to the Choir</div>
+        <div class="si-desc">If your followers already agree with everything you say, you're not persuading anyone — you're performing. The goal is to move people, not just please them.</div>
+      </div>
+    </div>
+    <div class="suspect-item sa d4" id="si-1">
+      <div class="si-icon">⚠</div>
+      <div>
+        <div class="si-title">Catering to the Algorithm</div>
+        <div class="si-desc">Optimizing for engagement metrics — likes, reach, shares — often rewards heat over light. Viral isn't the same as impactful. Don't let the platform decide what you say.</div>
+      </div>
+    </div>
+    <div class="suspect-item sa d5" id="si-2">
+      <div class="si-icon">⚠</div>
+      <div>
+        <div class="si-title">Cultivating Someone Else's Audience</div>
+        <div class="si-desc">If the people following you aren't the people you actually need to reach, you're building in the wrong direction. Your audience is defined by your plan — not by who shows up.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- S5b: PLAN OUTLINE -->
+<section class="slide" id="s5b">
+  <div class="slide-num sa">08 — The Outline</div>
+  <h2 class="sa d1">What it looks like<br><span class="accent">on paper.</span></h2>
+  <div class="outline-grid">
+    <div class="os sa d2">
+      <div class="os-let">A</div>
+      <div class="os-title">Intention + Impact</div>
+      <ul class="os-prompts">
+        <li>Why am I on social media?</li>
+        <li>How does this serve my mission?</li>
+        <li>What does success look like?</li>
+      </ul>
+    </div>
+    <div class="os sa d2">
+      <div class="os-let">B</div>
+      <div class="os-title">Audience Segments</div>
+      <ul class="os-prompts">
+        <li>Who specifically am I speaking to?</li>
+        <li>Collaborators / supporters / future talent?</li>
+        <li>Decision makers / community / peers?</li>
+      </ul>
+    </div>
+    <div class="os sa d3">
+      <div class="os-let">C</div>
+      <div class="os-title">Focus Areas (this quarter)</div>
+      <ul class="os-prompts">
+        <li>3–4 subject areas I'm willing to own</li>
+        <li>Aligned with strategy, not just interest</li>
+        <li>Revisit every 90 days</li>
+      </ul>
+    </div>
+    <div class="os sa d3">
+      <div class="os-let">D</div>
+      <div class="os-title">Channels</div>
+      <ul class="os-prompts">
+        <li>Platform / frequency / purpose</li>
+        <li>Don't cross-post the same content everywhere</li>
+        <li>Pick one to commit to first</li>
+      </ul>
+    </div>
+    <div class="os sa d4">
+      <div class="os-let">E</div>
+      <div class="os-title">Tone + Attributes</div>
+      <ul class="os-prompts">
+        <li>Urgent ↔ Reflective</li>
+        <li>Congenial ↔ Confrontational</li>
+        <li>Specialist ↔ Generalist</li>
+      </ul>
+    </div>
+    <div class="os sa d4">
+      <div class="os-let">F–G</div>
+      <div class="os-title">Topics + Inspiration</div>
+      <ul class="os-prompts">
+        <li>5–10 specific topics I want to write about</li>
+        <li>3 voices I admire and why</li>
+        <li>What can I say that only I can say?</li>
+      </ul>
+    </div>
+  </div>
+  <p class="outline-note sa d5">It's a work in progress. Sharing and getting feedback is part of it.</p>
+  <a class="big-url sa d5" href="https://share.islamicfamily.ca/pvp" target="_blank" rel="noopener">
+    <span class="url-label">Template — Personal Voice Plan</span>
+    share.islamicfamily.ca/pvp
+  </a>
+</section>
+
+<!-- S6: CHANNELS -->
+<section class="slide" id="s6">
+  <div class="slide-num sa" style="color:rgba(245,242,235,.4)">09 — Channels</div>
+  <h2 class="sa d1">Not all platforms<br>are equal.</h2>
+  <p class="sa d2" style="margin-top:14px;color:rgba(245,242,235,.65);font-size:clamp(15px,1.4vw,19px);">Cross-posting the same content everywhere makes nobody happy.</p>
+  <div class="channels-grid">
+    <div class="ch sa d2"><div class="ch-name">X / Twitter</div><div class="ch-freq">2× / week</div><div class="ch-purpose">Political discourse, debate, real-time reactions</div></div>
+    <div class="ch sa d3"><div class="ch-name">LinkedIn</div><div class="ch-freq">2× / month</div><div class="ch-purpose">Professional narrative, promoting your work</div></div>
+    <div class="ch sa d4"><div class="ch-name">Instagram</div><div class="ch-freq">When it matters</div><div class="ch-purpose">Personal connection, celebrating community</div></div>
+    <div class="ch sa d5"><div class="ch-name">Deep Dive</div><div class="ch-freq">Quarterly</div><div class="ch-purpose">Blog / newsletter / podcast — your long game</div></div>
+  </div>
+</section>
+
+<!-- S9: THE SHIFT -->
+<section class="slide" id="s9">
+  <div class="slide-num sa">12 — The Shift</div>
+  <h2 class="sa d1">From overwhelm<br><span class="accent">to on purpose.</span></h2>
+  <div class="transform-layout">
+    <div class="transform-col tc-a sa-left d2">
+      <div class="tc-title">The spiral</div>
+      <ul>
+        <li>Should I post this?</li>
+        <li>What will my boss think?</li>
+        <li>What if I get it wrong?</li>
+        <li>Is this my place to speak?</li>
+        <li>What if I say nothing?</li>
+      </ul>
+    </div>
+    <div class="t-arrow sa d3">→</div>
+    <div class="transform-col tc-p sa-right d2">
+      <div class="tc-title">The plan</div>
+      <ul>
+        <li>What's my intention?</li>
+        <li>Who am I trying to reach?</li>
+        <li>Which channel fits?</li>
+        <li>What tone serves this moment?</li>
+        <li>Post. Learn. Iterate.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- S10: NOW YOU -->
+<section class="slide" id="s10">
+  <div class="slide-num sa" style="color:rgba(245,242,235,.4)">13 — Now You</div>
+  <h2 class="sa d1">Start here.<br>Five minutes.</h2>
+  <div class="plan-prompts">
+    <div class="prompt-item sa d2"><div class="prompt-tag">WHY</div><div class="prompt-q">What do I actually want my voice to do in the world?</div></div>
+    <div class="prompt-item sa d3"><div class="prompt-tag">WHO</div><div class="prompt-q">Who needs to hear me — not everyone, but who specifically?</div></div>
+    <div class="prompt-item sa d4"><div class="prompt-tag">WHAT</div><div class="prompt-q">What subject am I uniquely positioned to speak about?</div></div>
+    <div class="prompt-item sa d5"><div class="prompt-tag">WHERE</div><div class="prompt-q">Which one platform will I commit to this quarter?</div></div>
+    <div class="prompt-item sa d6"><div class="prompt-tag">HOW</div><div class="prompt-q">What tone reflects who I actually am — not who I think I should be?</div></div>
+  </div>
+</section>
+
+<!-- S11: CLOSE -->
+<section class="slide" id="s11-ai" style="background:#0e1410; justify-content:center;">
+  <div class="slide-num sa" style="color:rgba(245,242,235,.25);">11 — Content in the AI Age</div>
+  <h2 class="sa d1" style="max-width:680px;">When everything looks<br><span style="color:var(--brown);">credible, nothing is.</span></h2>
+  <p class="sa d2" style="margin-top:18px;color:rgba(245,242,235,.5);max-width:580px;font-size:clamp(15px,1.5vw,20px);line-height:1.65;">Polished, professional, highly engaging AI content is now abundant. The challenge isn't access to information — it's the capacity to evaluate it.</p>
+
+  <div class="ai-pillars">
+    <div class="ai-pillar sa d3">
+      <div class="ai-pillar-num">01</div>
+      <div class="ai-pillar-body">
+        <div class="ai-pillar-title">Slow down before you share.</div>
+        <div class="ai-pillar-desc">Polished ≠ true. Engaging ≠ accurate. The most dangerous content doesn't look wrong — it looks exactly like the things you trust. Pause before you amplify.</div>
+      </div>
+    </div>
+    <div class="ai-pillar sa d4">
+      <div class="ai-pillar-num">02</div>
+      <div class="ai-pillar-body">
+        <div class="ai-pillar-title">Return to people, not feeds.</div>
+        <div class="ai-pillar-desc">The antidote to AI content abundance isn't more content — it's human connection. Genuine care, direct relationships, being present with the people you're actually trying to serve. Algorithms can't replicate that.</div>
+      </div>
+    </div>
+    <div class="ai-pillar sa d5">
+      <div class="ai-pillar-num">03</div>
+      <div class="ai-pillar-body">
+        <div class="ai-pillar-title">Cultivate spaces for contemplation.</div>
+        <div class="ai-pillar-desc">Not every moment needs a take. Your plan should include silence — time to read slowly, sit with complexity, and let understanding develop before your voice does.</div>
+      </div>
+    </div>
+  </div>
+
+  <p class="sa d6" style="margin-top:44px;font-family:'Alegreya Sans',sans-serif;font-style:italic;font-weight:700;font-size:clamp(17px,1.8vw,24px);color:rgba(245,242,235,.35);max-width:560px;line-height:1.4;">A voice plan in the AI age is as much about what you consume and when you stay silent as what you post.</p>
+</section>
+
+<!-- S12: CLOSE -->
+<section class="slide" id="s11">
+  <div class="close-word sa d1">
+    <div class="cw-dim">Don't just</div>
+    <div class="cw-mid">add to</div>
+    <div class="cw-hot">the noise.</div>
+  </div>
+  <div class="close-handle sa d2">Civic Youth Fellowship YEG · <span>@somaryaqub</span></div>
+  <a class="big-url sa d3" href="https://share.islamicfamily.ca/pvp" target="_blank" rel="noopener">
+    <span class="url-label">Template — Personal Voice Plan</span>
+    share.islamicfamily.ca/pvp
+  </a>
+  <a class="big-url sa d4" href="https://share.islamicfamily.ca/pvplan" target="_blank" rel="noopener">
+    <span class="url-label">Original Article</span>
+    share.islamicfamily.ca/pvplan
+  </a>
+</section>
+
+<script>
+  const slides = Array.from(document.querySelectorAll('.slide'));
+  const bar = document.getElementById('progress-bar');
+  const navWrap = document.getElementById('nav-dots');
+
+  // Build nav dots
+  slides.forEach((_, i) => {
+    const d = document.createElement('div');
+    d.className = 'dot' + (i === 0 ? ' active' : '');
+    d.onclick = () => slides[i].scrollIntoView({ behavior: 'smooth' });
+    navWrap.appendChild(d);
+  });
+  const dots = navWrap.querySelectorAll('.dot');
+
+  function onScroll() {
+    const scrollTop = window.scrollY;
+    const docH = document.documentElement.scrollHeight - window.innerHeight;
+    bar.style.width = (scrollTop / docH * 100) + '%';
+    const mid = window.innerHeight * 0.5;
+    slides.forEach((s, i) => {
+      const r = s.getBoundingClientRect();
+      if (r.top <= mid && r.bottom >= mid) {
+        dots.forEach(d => d.classList.remove('active'));
+        if (dots[i]) dots[i].classList.add('active');
+      }
+    });
+  }
+
+  // Scroll-reveal
+  const saEls = document.querySelectorAll('.sa, .sa-left, .sa-right, .sa-scale');
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('v'); });
+  }, { threshold: 0.1 });
+  saEls.forEach(el => io.observe(el));
+
+  window.addEventListener('scroll', onScroll, { passive: true });
+
+  // Keyboard navigation — spacebar / arrow keys
+  let currentSlide = 0;
+  function goToSlide(i) {
+    i = Math.max(0, Math.min(slides.length - 1, i));
+    currentSlide = i;
+    slides[i].scrollIntoView({ behavior: 'smooth' });
+  }
+  window.addEventListener('keydown', e => {
+    if (e.key === ' ' || e.key === 'ArrowDown' || e.key === 'ArrowRight') {
+      e.preventDefault();
+      goToSlide(currentSlide + 1);
+    } else if (e.key === 'ArrowUp' || e.key === 'ArrowLeft') {
+      e.preventDefault();
+      goToSlide(currentSlide - 1);
+    }
+  });
+  // Keep currentSlide in sync with scroll position
+  window.addEventListener('scroll', () => {
+    const mid = window.innerHeight * 0.5;
+    slides.forEach((s, i) => {
+      const r = s.getBoundingClientRect();
+      if (r.top <= mid && r.bottom >= mid) currentSlide = i;
+    });
+  }, { passive: true });
+
+  // Rotating highlight on stakes grid
+  const stakeCells = document.querySelectorAll('.sc-rot');
+  let stakeIdx = 0;
+  function rotateStake() {
+    stakeCells.forEach(c => c.classList.remove('active-stake'));
+    stakeCells[stakeIdx].classList.add('active-stake');
+    stakeIdx = (stakeIdx + 1) % stakeCells.length;
+  }
+  rotateStake();
+  setInterval(rotateStake, 2200);
+
+  // Cycling highlight on suspect items
+  const susItems = document.querySelectorAll('.suspect-item');
+  let susIdx = 0;
+  function rotateSuspect() {
+    susItems.forEach(s => s.classList.remove('active-sus'));
+    susItems[susIdx].classList.add('active-sus');
+    susIdx = (susIdx + 1) % susItems.length;
+  }
+  rotateSuspect();
+  setInterval(rotateSuspect, 2600);
+
+  // Draggable spectrum dots
+  document.querySelectorAll('.spec-dot').forEach(dot => {
+    let drag = false;
+    const move = x => {
+      const r = dot.parentElement.getBoundingClientRect();
+      let pct = (x - r.left) / r.width * 100;
+      dot.style.left = Math.max(4, Math.min(96, pct)) + '%';
+    };
+    dot.addEventListener('mousedown', e => { drag = true; e.preventDefault(); });
+    document.addEventListener('mousemove', e => { if (drag) move(e.clientX); });
+    document.addEventListener('mouseup', () => { drag = false; });
+    dot.addEventListener('touchstart', () => { drag = true; }, { passive: true });
+    document.addEventListener('touchmove', e => { if (drag) move(e.touches[0].clientX); }, { passive: true });
+    document.addEventListener('touchend', () => { drag = false; });
+  });
+</script>
+</body>
+</html>
