@@ -61,7 +61,8 @@ strong{color:var(--text);font-weight:700}
 ul{margin:8px 0 13px 0;padding-left:0;list-style:none}
 ul li{color:var(--text-mid);padding:4px 0 4px 18px;position:relative;font-size:14.5px;line-height:1.6}
 ul li::before{content:'—';position:absolute;left:0;color:var(--brown);font-weight:700}
-.strand ul li::before,.team-grid ul li::before,[style*="list-style:none"]::before{content:none}
+.strand ul li::before{content:'✸';color:var(--brown);font-size:11px;top:5px}
+.team-grid ul li::before,[style*="list-style:none"]::before{content:none}
 
 /* CALLOUT */
 .callout{border-left:3px solid var(--brown);background:var(--brown-light);border-radius:0 8px 8px 0;padding:15px 18px;margin:18px 0}
@@ -151,6 +152,27 @@ ul li::before{content:'—';position:absolute;left:0;color:var(--brown);font-wei
 .ask-desc{font-size:12px;color:var(--text-muted);margin-top:4px;line-height:1.5}
 .ask-card.primary .ask-desc{color:rgba(255,255,255,0.7)}
 
+/* TOC MENU */
+.toc-btn{background:none;border:none;cursor:pointer;padding:6px;display:flex;flex-direction:column;gap:5px;justify-content:center;align-items:center;border-radius:6px;transition:background 0.15s}
+.toc-btn:hover{background:rgba(255,255,255,0.12)}
+.toc-btn span{display:block;width:20px;height:2px;background:rgba(255,255,255,0.85);border-radius:2px;transition:transform 0.25s, opacity 0.25s}
+.toc-btn.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+.toc-btn.open span:nth-child(2){opacity:0}
+.toc-btn.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+.toc-drawer{position:fixed;top:0;right:-280px;width:272px;height:100vh;background:var(--white);z-index:1000;box-shadow:-4px 0 24px rgba(0,0,0,0.12);transition:right 0.3s cubic-bezier(0.4,0,0.2,1);display:flex;flex-direction:column;overflow:hidden}
+.toc-drawer.open{right:0}
+.toc-drawer-header{background:var(--green);padding:18px 20px;display:flex;align-items:center;justify-content:space-between;flex-shrink:0}
+.toc-drawer-title{font-size:11px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:rgba(255,255,255,0.85)}
+.toc-close{background:none;border:none;cursor:pointer;color:rgba(255,255,255,0.7);font-size:20px;line-height:1;padding:2px 4px;border-radius:4px}
+.toc-close:hover{color:white;background:rgba(255,255,255,0.12)}
+.toc-list{padding:16px 0;overflow-y:auto;flex:1}
+.toc-item{display:block;padding:10px 20px;text-decoration:none;color:var(--text-mid);font-size:13.5px;line-height:1.4;border-left:3px solid transparent;transition:all 0.15s;cursor:pointer}
+.toc-item:hover{color:var(--green);background:var(--green-light);border-left-color:var(--brown)}
+.toc-item.active{color:var(--green);background:var(--green-light);border-left-color:var(--green);font-weight:600}
+.toc-item-label{font-size:10px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--brown);display:block;margin-bottom:2px}
+.toc-overlay{position:fixed;inset:0;background:rgba(0,0,0,0.3);z-index:999;opacity:0;pointer-events:none;transition:opacity 0.3s}
+.toc-overlay.open{opacity:1;pointer-events:all}
+
 /* FOOTER */
 .footer{background:var(--green);padding:24px 32px;display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap}
 .footer-left{color:rgba(255,255,255,0.9);font-size:13px;line-height:1.7}
@@ -168,8 +190,37 @@ ul li::before{content:'—';position:absolute;left:0;color:var(--brown);font-wei
     <img src="https://prod-files-secure.s3.us-west-2.amazonaws.com/a0ff1b5b-7f0b-4f5c-8950-900ae6f4e89a/28538a70-1d35-404b-94c3-7093521a32cb/Horizontal_-_Full_Colour.png" alt="IslamicFamily"
       onerror="this.outerHTML='<span style=\'font-family:Alegreya Sans,sans-serif;color:white;font-size:18px;font-weight:700\'>IslamicFamily</span>'">
   </div>
-  <span class="header-tag">Partnership Proposal — Confidential</span>
+  <div style="display:flex;align-items:center;gap:12px">
+    <span class="header-tag">Partnership Proposal — Confidential</span>
+    <button class="toc-btn" id="tocBtn" aria-label="Table of contents">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
 </header>
+
+<!-- TOC Overlay -->
+<div class="toc-overlay" id="tocOverlay"></div>
+
+<!-- TOC Drawer -->
+<div class="toc-drawer" id="tocDrawer">
+  <div class="toc-drawer-header">
+    <span class="toc-drawer-title">Contents</span>
+    <button class="toc-close" id="tocClose">✕</button>
+  </div>
+  <nav class="toc-list">
+    <a class="toc-item" data-target="sec-problem"><span class="toc-item-label">01</span>The Problem</a>
+    <a class="toc-item" data-target="sec-policy"><span class="toc-item-label">02</span>Policy Context</a>
+    <a class="toc-item" data-target="sec-challenge"><span class="toc-item-label">03</span>The Challenge</a>
+    <a class="toc-item" data-target="sec-fcrp"><span class="toc-item-label">04</span>Federal Precedent</a>
+    <a class="toc-item" data-target="sec-opportunity"><span class="toc-item-label">05</span>The Opportunity</a>
+    <a class="toc-item" data-target="sec-outcomes"><span class="toc-item-label">06</span>Outcomes and Impact</a>
+    <a class="toc-item" data-target="sec-team"><span class="toc-item-label">07</span>The Team</a>
+    <a class="toc-item" data-target="sec-publications"><span class="toc-item-label">08</span>Publications</a>
+    <a class="toc-item" data-target="sec-capacity"><span class="toc-item-label">09</span>Capacity to Scale</a>
+    <a class="toc-item" data-target="sec-budget"><span class="toc-item-label">10</span>Budget</a>
+    <a class="toc-item" data-target="sec-ask"><span class="toc-item-label">11</span>The Ask</a>
+  </nav>
+</div>
 
 <!-- Hero -->
 <div class="hero">
@@ -189,7 +240,7 @@ ul li::before{content:'—';position:absolute;left:0;color:var(--brown);font-wei
 <main>
 
   <!-- THE PROBLEM -->
-  <div class="section">
+  <div class="section" id="sec-problem">
     <div class="section-label">The Problem</div>
     <h2>A growing population, a widening gap</h2>
     <p>Canada's Muslim population has more than doubled in 20 years, rising from 2.0% of the general population in 2001 to 4.9% in 2021. That growth has not been matched by investment in culturally appropriate supports within the justice system.</p>
@@ -216,7 +267,7 @@ ul li::before{content:'—';position:absolute;left:0;color:var(--brown);font-wei
   </div>
 
   <!-- POLICY HOOKS -->
-  <div class="section">
+  <div class="section" id="sec-policy">
     <div class="section-label">Policy Context</div>
     <h2>Why CSC needs to move on this now</h2>
 
@@ -245,7 +296,7 @@ ul li::before{content:'—';position:absolute;left:0;color:var(--brown);font-wei
   </div>
 
   <!-- SERVICE DELIVERY CHALLENGE -->
-  <div class="section">
+  <div class="section" id="sec-challenge">
     <div class="section-label">The Challenge</div>
     <h2>Why this cannot be solved at the municipal level</h2>
 
@@ -265,7 +316,7 @@ ul li::before{content:'—';position:absolute;left:0;color:var(--brown);font-wei
   </div>
 
   <!-- FCRP / D-FCRP -->
-  <div class="section">
+  <div class="section" id="sec-fcrp">
     <div class="section-label">Federal Precedent</div>
     <h2>The FCRP and D-FCRP: what has been proven, and what remains unbuilt</h2>
 
@@ -303,7 +354,7 @@ ul li::before{content:'—';position:absolute;left:0;color:var(--brown);font-wei
   </div>
 
   <!-- THE OPPORTUNITY -->
-  <div class="section">
+  <div class="section" id="sec-opportunity">
     <div class="section-label">The Opportunity</div>
     <h2>An integrated national model: three strands</h2>
     <p>IslamicFamily's proposed framework integrates service delivery, research, and policy into a single coordinated model — designed from the outset to be nationally portable and institutionally durable.</p>
@@ -347,7 +398,7 @@ ul li::before{content:'—';position:absolute;left:0;color:var(--brown);font-wei
   </div>
 
   <!-- OUTCOMES AND IMPACT -->
-  <div class="section">
+  <div class="section" id="sec-outcomes">
     <div class="section-label">Outcomes and Impact</div>
     <h2>What success looks like — and what the evidence says</h2>
 
@@ -377,7 +428,7 @@ ul li::before{content:'—';position:absolute;left:0;color:var(--brown);font-wei
   </div>
 
   <!-- THE TEAM -->
-  <div class="section">
+  <div class="section" id="sec-team">
     <div class="section-label">The Team</div>
     <h2>Who is delivering this</h2>
 
@@ -415,8 +466,41 @@ ul li::before{content:'—';position:absolute;left:0;color:var(--brown);font-wei
     </div>
   </div>
 
+  <!-- PUBLICATIONS -->
+  <div class="section" id="sec-publications">
+    <div class="section-label">Publications</div>
+    <h2>Research from the field</h2>
+    <p>IslamicFamily and its research partners bring a body of peer-reviewed scholarship directly relevant to the work proposed here — grounding the program in evidence and positioning the team to produce nationally significant findings.</p>
+
+    <div style="display:flex;flex-direction:column;gap:11px;margin-top:16px">
+
+      <div style="border:1px solid var(--border);border-radius:var(--radius);padding:18px 20px;background:var(--white);border-left:4px solid var(--brown)">
+        <div style="font-size:10px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--text-muted);margin-bottom:8px">Journal of Pastoral Care &amp; Counseling &nbsp;·&nbsp; 2021, Vol. 75(3) 199–206</div>
+        <div style="font-size:15px;font-weight:700;color:var(--green);margin-bottom:5px;font-family:'Alegreya',serif">The Impact of Privatization on Minority Faith Prison Chaplains in Canada</div>
+        <div style="font-size:13px;color:var(--text-muted);margin-bottom:12px">Adar Abdulkadir &amp; Ibrahim J. Long &nbsp;·&nbsp; <em>for IslamicFamily</em></div>
+        <div style="font-size:13.5px;color:var(--text-mid);line-height:1.6;margin-bottom:14px">Examines how the privatization of prison chaplaincy in Canada has disproportionately disadvantaged minority faith chaplains — including Muslim chaplains — reducing access, continuity, and institutional influence. A foundational text for understanding the structural conditions this program is designed to address.</div>
+        <a href="https://doi.org/10.1177/15423050211032124" target="_blank" style="display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:700;color:var(--green);text-decoration:none;letter-spacing:0.05em;text-transform:uppercase;border:1px solid var(--border);padding:5px 12px;border-radius:100px;background:var(--green-light)">
+          <svg viewBox="0 0 16 16" width="12" height="12" fill="currentColor"><path d="M6.5 1h-4A1.5 1.5 0 001 2.5v11A1.5 1.5 0 002.5 15h11A1.5 1.5 0 0015 13.5v-4a.5.5 0 00-1 0v4a.5.5 0 01-.5.5h-11a.5.5 0 01-.5-.5v-11a.5.5 0 01.5-.5h4a.5.5 0 000-1zm4 0h4v4a.5.5 0 001 0V.5a.5.5 0 00-.5-.5h-5a.5.5 0 000 1zm-1.354 9.854a.5.5 0 00.708-.708L4.707 5H8.5a.5.5 0 000-1H3.5a.5.5 0 00-.5.5v5a.5.5 0 001 0V5.707l5.646 5.147z"/></svg>
+          DOI: 10.1177/15423050211032124
+        </a>
+      </div>
+
+      <div style="border:1px solid var(--border);border-radius:var(--radius);padding:18px 20px;background:var(--white);border-left:4px solid var(--brown)">
+        <div style="font-size:10px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--text-muted);margin-bottom:8px">Routledge Handbook on Prisons and Jails, 8th ed. &nbsp;·&nbsp; 2024</div>
+        <div style="font-size:15px;font-weight:700;color:var(--green);margin-bottom:5px;font-family:'Alegreya',serif">Islam, Islamophobia, and the Carceral Experience</div>
+        <div style="font-size:13px;color:var(--text-muted);margin-bottom:12px">Amin Asfari, James Gacek &amp; Amny Shuraydi</div>
+        <div style="font-size:13.5px;color:var(--text-mid);line-height:1.6;margin-bottom:14px">A comprehensive examination of how Islamophobia operates within North American correctional institutions — its effects on incarcerated Muslims, chaplaincy access, and post-release reintegration. Establishes the scholarly foundation for the research strand in this proposal.</div>
+        <a href="https://www.taylorfrancis.com/chapters/edit/10.4324/9781003374893-29/islam-islamophobia-carceral-experience-amin-asfari-james-gacek-amny-shuraydi" target="_blank" style="display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:700;color:var(--green);text-decoration:none;letter-spacing:0.05em;text-transform:uppercase;border:1px solid var(--border);padding:5px 12px;border-radius:100px;background:var(--green-light)">
+          <svg viewBox="0 0 16 16" width="12" height="12" fill="currentColor"><path d="M6.5 1h-4A1.5 1.5 0 001 2.5v11A1.5 1.5 0 002.5 15h11A1.5 1.5 0 0015 13.5v-4a.5.5 0 00-1 0v4a.5.5 0 01-.5.5h-11a.5.5 0 01-.5-.5v-11a.5.5 0 01.5-.5h4a.5.5 0 000-1zm4 0h4v4a.5.5 0 001 0V.5a.5.5 0 00-.5-.5h-5a.5.5 0 000 1zm-1.354 9.854a.5.5 0 00.708-.708L4.707 5H8.5a.5.5 0 000-1H3.5a.5.5 0 00-.5.5v5a.5.5 0 001 0V5.707l5.646 5.147z"/></svg>
+          View Chapter
+        </a>
+      </div>
+
+    </div>
+  </div>
+
   <!-- CAPACITY TO SCALE -->
-  <div class="section">
+  <div class="section" id="sec-capacity">
     <div class="section-label">Capacity to Scale</div>
     <h2>Why IslamicFamily can deliver this</h2>
     <p>This proposal does not ask CSC to fund an experiment. IslamicFamily's corrections programming is an extension of existing organizational infrastructure — not a parallel build.</p>
@@ -433,8 +517,41 @@ ul li::before{content:'—';position:absolute;left:0;color:var(--brown);font-wei
     <p>The hub model is the structural solution to the Fragmentation Trap: by aggregating demand across a provincial and national catchment, IslamicFamily builds what no city-level program can sustain — dedicated specialists, shared infrastructure, and integrated programming that spreads costs over a large enough base to remain viable.</p>
   </div>
 
+  <!-- TEAM PUBLICATIONS -->
+  <div class="section" id="sec-publications">
+    <div class="section-label">Team Publications</div>
+    <h2>Research from the field</h2>
+    <p>IslamicFamily and its research partners bring a body of peer-reviewed scholarship directly relevant to the work proposed here — grounding the program in evidence and positioning the team to produce nationally significant findings.</p>
+
+    <div style="display:flex;flex-direction:column;gap:11px;margin-top:16px">
+
+      <div style="border:1px solid var(--border);border-radius:var(--radius);padding:18px 20px;background:var(--white);border-left:4px solid var(--brown)">
+        <div style="font-size:10px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--text-muted);margin-bottom:8px">Journal of Pastoral Care &amp; Counseling &nbsp;·&nbsp; 2021, Vol. 75(3) 199–206</div>
+        <div style="font-size:15px;font-weight:700;color:var(--green);margin-bottom:5px;font-family:'Alegreya',serif">The Impact of Privatization on Minority Faith Prison Chaplains in Canada</div>
+        <div style="font-size:13px;color:var(--text-muted);margin-bottom:12px">Adar Abdulkadir &amp; Ibrahim J. Long &nbsp;·&nbsp; <em>for IslamicFamily</em></div>
+        <div style="font-size:13.5px;color:var(--text-mid);line-height:1.6;margin-bottom:14px">Examines how the privatization of prison chaplaincy in Canada has disproportionately disadvantaged minority faith chaplains — including Muslim chaplains — reducing access, continuity, and institutional influence. A foundational text for understanding the structural conditions this program is designed to address.</div>
+        <a href="https://doi.org/10.1177/15423050211032124" target="_blank" style="display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:700;color:var(--green);text-decoration:none;letter-spacing:0.05em;text-transform:uppercase;border:1px solid var(--border);padding:5px 12px;border-radius:100px;background:var(--green-light)">
+          <svg viewBox="0 0 16 16" width="12" height="12" fill="currentColor"><path d="M6.5 1h-4A1.5 1.5 0 001 2.5v11A1.5 1.5 0 002.5 15h11A1.5 1.5 0 0015 13.5v-4a.5.5 0 00-1 0v4a.5.5 0 01-.5.5h-11a.5.5 0 01-.5-.5v-11a.5.5 0 01.5-.5h4a.5.5 0 000-1zm4 0h4v4a.5.5 0 001 0V.5a.5.5 0 00-.5-.5h-5a.5.5 0 000 1zm-1.354 9.854a.5.5 0 00.708-.708L4.707 5H8.5a.5.5 0 000-1H3.5a.5.5 0 00-.5.5v5a.5.5 0 001 0V5.707l5.646 5.147z"/></svg>
+          DOI: 10.1177/15423050211032124
+        </a>
+      </div>
+
+      <div style="border:1px solid var(--border);border-radius:var(--radius);padding:18px 20px;background:var(--white);border-left:4px solid var(--brown)">
+        <div style="font-size:10px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--text-muted);margin-bottom:8px">Routledge Handbook on Prisons and Jails, 8th ed. &nbsp;·&nbsp; 2024</div>
+        <div style="font-size:15px;font-weight:700;color:var(--green);margin-bottom:5px;font-family:'Alegreya',serif">Islam, Islamophobia, and the Carceral Experience</div>
+        <div style="font-size:13px;color:var(--text-muted);margin-bottom:12px">Amin Asfari, James Gacek &amp; Amny Shuraydi</div>
+        <div style="font-size:13.5px;color:var(--text-mid);line-height:1.6;margin-bottom:14px">A comprehensive examination of how Islamophobia operates within North American correctional institutions — its effects on incarcerated Muslims, chaplaincy access, and post-release reintegration. Establishes the scholarly foundation for the research strand in this proposal.</div>
+        <a href="https://www.taylorfrancis.com/chapters/edit/10.4324/9781003374893-29/islam-islamophobia-carceral-experience-amin-asfari-james-gacek-amny-shuraydi" target="_blank" style="display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:700;color:var(--green);text-decoration:none;letter-spacing:0.05em;text-transform:uppercase;border:1px solid var(--border);padding:5px 12px;border-radius:100px;background:var(--green-light)">
+          <svg viewBox="0 0 16 16" width="12" height="12" fill="currentColor"><path d="M6.5 1h-4A1.5 1.5 0 001 2.5v11A1.5 1.5 0 002.5 15h11A1.5 1.5 0 0015 13.5v-4a.5.5 0 00-1 0v4a.5.5 0 01-.5.5h-11a.5.5 0 01-.5-.5v-11a.5.5 0 01.5-.5h4a.5.5 0 000-1zm4 0h4v4a.5.5 0 001 0V.5a.5.5 0 00-.5-.5h-5a.5.5 0 000 1zm-1.354 9.854a.5.5 0 00.708-.708L4.707 5H8.5a.5.5 0 000-1H3.5a.5.5 0 00-.5.5v5a.5.5 0 001 0V5.707l5.646 5.147z"/></svg>
+          View Chapter
+        </a>
+      </div>
+
+    </div>
+  </div>
+
   <!-- FIVE-YEAR BUDGET -->
-  <div class="section">
+  <div class="section" id="sec-budget">
     <div class="section-label">Budget</div>
     <h2>Five-year cost summary</h2>
 
@@ -493,7 +610,7 @@ ul li::before{content:'—';position:absolute;left:0;color:var(--brown);font-wei
   </div>
 
   <!-- THE ASK -->
-  <div class="section">
+  <div class="section" id="sec-ask">
     <div class="section-label">The Ask</div>
     <h2>Four things we need from CSC</h2>
 
@@ -636,6 +753,45 @@ ul li::before{content:'—';position:absolute;left:0;color:var(--brown);font-wei
     }
   },{threshold:1.0});
   obs.observe(canvas);
+})();
+
+// TOC MENU
+(function(){
+  const btn=document.getElementById('tocBtn');
+  const drawer=document.getElementById('tocDrawer');
+  const overlay=document.getElementById('tocOverlay');
+  const closeBtn=document.getElementById('tocClose');
+  const items=document.querySelectorAll('.toc-item');
+
+  function open(){drawer.classList.add('open');overlay.classList.add('open');btn.classList.add('open')}
+  function close(){drawer.classList.remove('open');overlay.classList.remove('open');btn.classList.remove('open')}
+
+  btn.addEventListener('click',()=>drawer.classList.contains('open')?close():open());
+  overlay.addEventListener('click',close);
+  closeBtn.addEventListener('click',close);
+
+  items.forEach(item=>{
+    item.addEventListener('click',()=>{
+      const target=document.getElementById(item.dataset.target);
+      if(target){
+        close();
+        setTimeout(()=>target.scrollIntoView({behavior:'smooth',block:'start'}),300);
+      }
+    });
+  });
+
+  // Active state on scroll
+  const sections=Array.from(document.querySelectorAll('.section[id]'));
+  const observer=new IntersectionObserver(entries=>{
+    entries.forEach(e=>{
+      if(e.isIntersecting){
+        items.forEach(i=>i.classList.remove('active'));
+        const active=document.querySelector(`.toc-item[data-target="${e.target.id}"]`);
+        if(active)active.classList.add('active');
+      }
+    });
+  },{threshold:0.3});
+  sections.forEach(s=>observer.observe(s));
 })();
 </script>
 </body>

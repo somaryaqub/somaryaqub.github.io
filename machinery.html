@@ -1,0 +1,684 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Machinery of Inaction: How EPS Outlasts Accountability</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Source+Serif+4:ital,opsz,wght@0,8..60,300;0,8..60,400;0,8..60,600;1,8..60,300;1,8..60,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --green: #275D43;
+    --brown: #E09964;
+    --cream: #FAFAF2;
+    --black: #353535;
+    --red: #BB2D37;
+    --sand: #DCD9B8;
+    --sun: #F7AF29;
+    --warm: #EECBAF;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background-color: var(--cream);
+    color: var(--black);
+    font-family: 'Source Serif 4', Georgia, serif;
+    font-size: 18px;
+    line-height: 1.75;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* HEADER */
+  header {
+    background-color: var(--green);
+    color: var(--cream);
+    padding: 80px 40px 64px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  header::before {
+    content: '';
+    position: absolute;
+    top: -60px; right: -60px;
+    width: 340px; height: 340px;
+    background: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' stroke='rgba(250,250,242,0.08)' stroke-width='1'%3E%3Cpolygon points='100,10 116,40 148,40 124,60 132,92 100,74 68,92 76,60 52,40 84,40'/%3E%3Cpolygon points='100,20 113,45 140,45 119,63 127,90 100,76 73,90 81,63 60,45 87,45'/%3E%3Ccircle cx='100' cy='100' r='80'/%3E%3Ccircle cx='100' cy='100' r='60'/%3E%3Ccircle cx='100' cy='100' r='40'/%3E%3Cline x1='100' y1='10' x2='100' y2='190'/%3E%3Cline x1='10' y1='100' x2='190' y2='100'/%3E%3Cline x1='29' y1='29' x2='171' y2='171'/%3E%3Cline x1='171' y1='29' x2='29' y2='171'/%3E%3C/g%3E%3C/svg%3E") center/contain no-repeat;
+    opacity: 1;
+    pointer-events: none;
+  }
+
+  header::after {
+    content: '';
+    position: absolute;
+    bottom: -80px; left: -80px;
+    width: 260px; height: 260px;
+    background: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' stroke='rgba(250,250,242,0.05)' stroke-width='1'%3E%3Cpolygon points='100,10 116,40 148,40 124,60 132,92 100,74 68,92 76,60 52,40 84,40'/%3E%3Ccircle cx='100' cy='100' r='80'/%3E%3Ccircle cx='100' cy='100' r='50'/%3E%3C/g%3E%3C/svg%3E") center/contain no-repeat;
+    pointer-events: none;
+  }
+
+  .header-inner {
+    max-width: 760px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
+  }
+
+  .eyebrow {
+    font-family: 'Source Serif 4', serif;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--brown);
+    margin-bottom: 24px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .eyebrow::after {
+    content: '';
+    display: inline-block;
+    width: 40px;
+    height: 1px;
+    background: var(--brown);
+    opacity: 0.6;
+  }
+
+  h1 {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: clamp(2rem, 5vw, 3.2rem);
+    font-weight: 900;
+    line-height: 1.1;
+    color: var(--cream);
+    margin-bottom: 28px;
+    max-width: 680px;
+  }
+
+  h1 em {
+    font-style: italic;
+    color: var(--brown);
+  }
+
+  .deck {
+    font-size: 1.05rem;
+    font-weight: 300;
+    color: rgba(250,250,242,0.78);
+    max-width: 580px;
+    line-height: 1.65;
+    font-style: italic;
+  }
+
+  /* ARTICLE BODY */
+  article {
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 64px 40px 80px;
+  }
+
+  .section {
+    margin-bottom: 56px;
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeUp 0.6s ease forwards;
+  }
+
+  .section:nth-child(1) { animation-delay: 0.1s; }
+  .section:nth-child(2) { animation-delay: 0.2s; }
+  .section:nth-child(3) { animation-delay: 0.3s; }
+  .section:nth-child(4) { animation-delay: 0.4s; }
+  .section:nth-child(5) { animation-delay: 0.5s; }
+  .section:nth-child(6) { animation-delay: 0.6s; }
+
+  @keyframes fadeUp {
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .section-label {
+    font-family: 'Source Serif 4', serif;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--green);
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .section-label::before {
+    content: '';
+    display: inline-block;
+    width: 24px;
+    height: 2px;
+    background: var(--green);
+  }
+
+  p {
+    margin-bottom: 1.4em;
+    color: var(--black);
+    font-weight: 300;
+  }
+
+  p:last-child { margin-bottom: 0; }
+
+  strong {
+    font-weight: 600;
+    color: var(--black);
+  }
+
+  /* PULL QUOTE */
+  .pull-quote {
+    padding: 4px 0;
+    margin: 40px 0 40px 0;
+    font-family: 'Alegreya Sans', sans-serif;
+    font-size: 1.25rem;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 1.5;
+    color: var(--green);
+    position: relative;
+    text-indent: -0.45em;
+  }
+
+  .pull-quote::before {
+    content: '\201C';
+    font-family: 'Alegreya Sans', sans-serif;
+    font-weight: 700;
+    margin-right: 0.02em;
+  }
+
+  .pull-quote::after {
+    content: '\201D';
+    font-family: 'Alegreya Sans', sans-serif;
+    font-weight: 700;
+    margin-left: 0.02em;
+  }
+
+  /* DIVIDER */
+  .divider {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin: 48px 0;
+    opacity: 0.35;
+  }
+
+  .divider::before, .divider::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--black);
+  }
+
+  .divider-star {
+    font-size: 18px;
+    line-height: 1;
+    color: var(--black);
+    font-style: normal;
+  }
+
+  /* CALL TO ACTION */
+  .cta-block {
+    background: var(--green);
+    color: var(--cream);
+    padding: 52px 48px;
+    margin-top: 64px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .cta-block::after {
+    content: '';
+    position: absolute;
+    top: -40px; right: -40px;
+    width: 200px; height: 200px;
+    background: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' stroke='rgba(250,250,242,0.07)' stroke-width='1.5'%3E%3Cpolygon points='100,10 116,40 148,40 124,60 132,92 100,74 68,92 76,60 52,40 84,40'/%3E%3Ccircle cx='100' cy='100' r='75'/%3E%3C/g%3E%3C/svg%3E") center/contain no-repeat;
+    pointer-events: none;
+  }
+
+  .cta-block h2 {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: clamp(1.4rem, 3vw, 1.9rem);
+    font-weight: 700;
+    color: var(--cream);
+    margin-bottom: 20px;
+    line-height: 1.25;
+    position: relative;
+    z-index: 1;
+  }
+
+  .cta-block p {
+    color: rgba(250,250,242,0.82);
+    font-weight: 300;
+    position: relative;
+    z-index: 1;
+    margin-bottom: 1.2em;
+  }
+
+  .cta-demands {
+    margin: 28px 0;
+    position: relative;
+    z-index: 1;
+  }
+
+  .cta-demands li {
+    list-style: none;
+    padding: 14px 0;
+    border-bottom: 1px solid rgba(250,250,242,0.15);
+    color: rgba(250,250,242,0.88);
+    font-weight: 300;
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    font-size: 0.95rem;
+  }
+
+  .cta-demands li::before {
+    content: '→';
+    color: var(--brown);
+    font-weight: 600;
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+
+  .cta-demands li:first-child { border-top: 1px solid rgba(250,250,242,0.15); }
+
+  .cta-close {
+    font-style: italic;
+    color: rgba(250,250,242,0.65) !important;
+    font-size: 0.95rem;
+    margin-top: 28px !important;
+    position: relative;
+    z-index: 1;
+  }
+
+  /* FOOTER */
+  footer {
+    text-align: center;
+    padding: 40px;
+    font-size: 0.78rem;
+    color: rgba(53,53,53,0.4);
+    letter-spacing: 0.05em;
+    border-top: 1px solid var(--sand);
+  }
+
+  /* RESPONSIVE */
+  @media (max-width: 600px) {
+    header { padding: 56px 24px 48px; }
+    article { padding: 48px 24px 64px; }
+    .cta-block { padding: 40px 28px; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="header-inner">
+    <div class="eyebrow">Community Accountability</div>
+    <h1>The Machinery of Inaction.<br><em>How EPS Outlasts Accountability.</em></h1>
+    <p class="deck">On the pattern of disengagement from Edmonton Police Service that masquerades as community partnership — and why it persists.</p>
+  </div>
+</header>
+
+<article>
+
+  <div class="section">
+    <div class="section-label">The Context</div>
+    <p>Edmonton Police Service has no shortage of community engagement processes. Roundtables, advisory committees, listening sessions, consultations — the infrastructure of dialogue is well-developed. And yet, year after year, the same communities return with the same unresolved concerns, met with the same responses, cycling through the same motions. This is not a coincidence.</p>
+    <p>What follows is an attempt to name, plainly and precisely, the pattern that community organizations — particularly those representing racialized, newcomer, and marginalized Edmontonians — have encountered in their relationship with the Edmonton Police Service (EPS). It is written not to assign bad faith to individuals, but to describe a structural dynamic that produces predictable outcomes regardless of who holds any particular role. Naming it is the first condition for changing it.</p>
+  </div>
+
+  <div class="divider">
+    <span class="divider-star">✸</span>
+  </div>
+
+  <div class="section">
+    <div class="section-label">The Pattern</div>
+    <p>What community organizations continue to encounter with EPS is not a series of isolated missteps — it is a recognizable and repeating pattern. Legitimate questions are received as threats. Documented concerns are reframed as niche or exceptional. Systemic problems are acknowledged only long enough for the news cycle to pass. When community partners press for accountability, they are not engaged — they are replaced, their seats filled with new faces while the substance of their concerns goes unaddressed.</p>
+    <p>EPS's energy flows not toward solving problems but toward protecting existing arrangements. This is not a failure of communication. It is a governance failure — and communities have become skilled at recognizing the difference between a table they are genuinely invited to and one they are seated at to provide the appearance of consultation.</p>
+  </div>
+
+  <div class="pull-quote">
+    Communities have become skilled at recognizing the difference between a table they are genuinely invited to and one they are seated at to provide the appearance of consultation.
+  </div>
+
+  <div class="section">
+    <div class="section-label">The Structure of Meetings</div>
+    <p>Nowhere is this dynamic more visible than in the structure of commission and community council meetings. These meetings are routinely organized around the Force reporting to the community — updates on initiatives, announcements of programs, summaries of activity. The community is positioned as audience, not interlocutor.</p>
+    <p>This is a fundamental inversion of what accountability requires. Meetings between a police service and the communities it serves should be structured around two things: hearing what community members have to say, and following up on what has previously been asked for. When neither of those functions is built into the architecture of the meeting, the meeting itself becomes a mechanism for the appearance of engagement rather than its substance.</p>
+    <p>Commission members and community council representatives have direct authority over how these meetings are designed. Reforming that design — prioritizing community voice, tracking outstanding commitments, and requiring substantive responses — is one of the most concrete steps available to those who hold oversight responsibility.</p>
+  </div>
+
+  <div class="divider">
+    <span class="divider-star">✸</span>
+  </div>
+
+  <div class="section">
+    <div class="section-label">The Cost</div>
+    <p>The cost of this pattern is not abstract. Volunteer advocates and grassroots organizers — who show up on evenings and weekends, who give what they cannot afford to give — find themselves in an unwinnable contest against an institution with inexhaustible time, salaried staff, and no structural pressure to resolve anything. Eventually, they burn out. They step back, and collectively we as a community lose people invested in making things better.</p>
+    <p>Attrition is not an accident. It is the strategy. The status quo at EPS depends on communities being isolated, under-resourced, and willing to give up.</p>
+  </div>
+
+  <div class="divider">
+    <span class="divider-star">✸</span>
+  </div>
+
+  <div class="section">
+    <div class="section-label">Why It Persists</div>
+    <p>When issues do reach public attention, EPS immediately reframes them as community-specific — particular to one group, one incident, one moment. The media cycle runs its course. Attention moves on.</p>
+    <p>And then, inevitably, another community surfaces the same concern. But now it falls to a new set of leaders — again on volunteered time, again without institutional support — to step into the fray and attempt constructive engagement with an EPS leadership that is fully compensated, tactically experienced, and carefully calibrated to perform the theatre of engagement without taking steps that would constitute actual accountability or change.</p>
+    <p>EPS does not need to take action or even apologize. It only needs to outlast the media cycle. And it does — because the asymmetry is structural, not incidental.</p>
+  </div>
+
+  <div class="pull-quote">
+    EPS does not need to take action or even apologize. It only needs to outlast the media cycle.
+  </div>
+
+  <div class="section">
+    <div class="section-label">What Was Forgotten</div>
+    <p>EPS exists to adapt. Not to endure. Not to defend. To serve changing communities with changing needs. When its primary energy shifts from that mission toward self-preservation, it has already failed the people it was built to protect.</p>
+    <p>The question is no longer whether that failure is happening. The question is who is willing to name it — and what those with the authority to act are prepared to do.</p>
+  </div>
+
+  <div class="divider">
+    <span class="divider-star">✸</span>
+  </div>
+
+  <div class="section">
+    <div class="section-label">The Cycle, Visualized</div>
+    <p>The pattern is self-reinforcing. Each element makes the next one easier to sustain.</p>
+    <div id="diagram-container" style="margin: 28px 0;"></div>
+  </div>
+
+  <div class="cta-block">
+    <h2>What We Are Asking For</h2>
+    <p>This is directed at those with the authority and responsibility to break this cycle: the Edmonton Police Commission, the Justice Minister and secondarily to City Council, and community leaders.</p>
+    <ul class="cta-demands">
+      <li>Treat unimplemented community recommendations as open governance failures — not closed files — until meaningfully resolved.</li>
+      <li>Require time-bound, independently verified follow-through on commitments made in engagement processes, with public reporting on outcomes.</li>
+      <li>Resource community organizations so that engagement with EPS is not a contest of endurance.</li>
+      <li>Refuse the reframing of systemic concerns as community-specific incidents. Pattern recognition is a governance responsibility.</li>
+      <li>Hold EPS accountable not for the quality of its process, but for the substance of its outcomes.</li>
+    </ul>
+    <p>Trust is not rebuilt through better communications or refreshed advisory committees. It is rebuilt through follow-through — the slow, unglamorous work of doing what was promised.</p>
+    <p class="cta-close">Edmonton's communities have done their part. They have shown up, documented, engaged, and returned — often at significant personal cost. The next move belongs to those in positions of authority. History will record whether they made it.</p>
+  </div>
+
+</article>
+
+<footer>
+  Made with ❤️ in Edmonton (Treaty 6)
+</footer>
+
+<link href="https://fonts.googleapis.com/css2?family=Alegreya+Sans:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400&display=swap" rel="stylesheet">
+<style>
+  #diagram-container {
+    background: #16221d;
+    border-radius: 12px;
+    padding: 8px 0 24px;
+    margin: 32px 0;
+  }
+  .cycle-title {
+    font-family: 'Alegreya Sans', sans-serif;
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+    color: rgba(220,217,184,0.4);
+    text-align: center;
+    padding: 18px 0 4px;
+  }
+  /* Animation: nodes + arrows start invisible */
+  .cycle-node {
+    opacity: 0;
+    transform-origin: center center;
+    transform: scale(0.88);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+  }
+  .cycle-arrow {
+    opacity: 0;
+    transition: opacity 0.35s ease;
+  }
+  /* Medallion always visible — no animation class needed */
+  .cycle-medallion {
+    opacity: 1;
+  }
+</style>
+<script>
+(function() {
+
+  var AF = "'Alegreya Sans',sans-serif";
+
+  /* ── palette ──────────────────────────────────────────────────── */
+  var G    = '#275D43';
+  var GL   = '#4a9a6e';
+  var SAND = '#DCD9B8';
+  var REDL = '#3d1518';
+  var REDS = '#9a2830';
+  var REDTXT = '#ffb8bc';
+  var AMBL = '#3a2610';
+  var AMBS = '#9a6030';
+  var AMB  = '#f0b070';
+  var SURFL= '#162e20';
+  var NFILL= '#1e3028';
+  var NSTK = 'rgba(220,217,184,0.25)';
+  var NTXT = '#e8e6d4';
+  var NSUB = '#b0b0a0';
+
+  /*
+    6 nodes at 60° spacing on an ellipse.
+    Clockwise from top (-90°): -90, -30, 30, 90, 150, 210
+    cx=390, cy=365, rx=252, ry=258
+    Node: NW=196, NH=78
+    Last arrow (Forget → Surface) carries "reset" label.
+  */
+  var cx = 390, cy = 365;
+  var rx = 252, ry = 258;
+  var NW = 196, NH = 84;
+
+  var angles = [-90,-30,30,90,150,210].map(function(d){return d*Math.PI/180;});
+  var centres = angles.map(function(a){
+    return [cx + rx*Math.cos(a), cy + ry*Math.sin(a)];
+  });
+
+  var nodes = [
+    { label:'Surface',
+      sub:'Community raises concerns,\nasking for accountability & change',
+      fill:SURFL, stroke:GL, lc:'#a8e8c0', slc:'#80c8a0' },
+    { label:'Deflect',
+      sub:'Questions treated as threats;\nengagement met with defensiveness',
+      fill:NFILL, stroke:NSTK, lc:NTXT, slc:NSUB },
+    { label:'Proclaim',
+      sub:'Commitment to "engage" announced;\nprocess without substance',
+      fill:NFILL, stroke:NSTK, lc:NTXT, slc:NSUB },
+    { label:'Exhaust',
+      sub:'Media cycle runs out; leaders return\ndefeated & disengaged',
+      fill:REDL, stroke:REDS, lc:REDTXT, slc:'#e89090' },
+    { label:'Replace',
+      sub:'Mild voices courted to fill roles;\ntire and are replaced by others',
+      fill:AMBL, stroke:AMBS, lc:AMB, slc:'#c89050' },
+    { label:'Forget',
+      sub:'Earlier commitments quietly\nabandoned',
+      fill:NFILL, stroke:NSTK, lc:NTXT, slc:NSUB },
+  ];
+
+  /* ── arrow trimming ──────────────────────────────────────────── */
+  function edgePoint(from, to, hw, hh, gap) {
+    var dx = to[0]-from[0], dy = to[1]-from[1];
+    if (!dx && !dy) return from.slice();
+    var tx = (hw+gap)/Math.abs(dx), ty = (hh+gap)/Math.abs(dy);
+    var t = Math.min(tx, ty);
+    return [from[0]+dx*t, from[1]+dy*t];
+  }
+
+  function arrowPath(i, j) {
+    var a = centres[i], b = centres[j];
+    var mx = (a[0]+b[0])/2, my = (a[1]+b[1])/2;
+    /* Convex: push control point AWAY from centre */
+    var dx = mx-cx, dy = my-cy;
+    var len = Math.sqrt(dx*dx+dy*dy)||1;
+    var pull = 52;
+    var px = mx + dx/len*pull, py = my + dy/len*pull;
+    var s = edgePoint(a, [px,py], NW/2, NH/2, 7);
+    var e = edgePoint(b, [px,py], NW/2, NH/2, 7);
+    return { d: 'M'+s[0].toFixed(1)+' '+s[1].toFixed(1)+
+                ' Q'+px.toFixed(1)+' '+py.toFixed(1)+
+                ' '+e[0].toFixed(1)+' '+e[1].toFixed(1),
+             mid: [px, py] };
+  }
+
+  /* ── build SVG ───────────────────────────────────────────────── */
+  var VW = 780, H = 730;
+  var L = [];
+  L.push('<svg id="cycle-svg" width="100%" viewBox="0 0 '+VW+' '+H+'" xmlns="http://www.w3.org/2000/svg" style="display:block;">');
+
+  L.push('<defs>');
+  L.push('<marker id="da" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse">');
+  L.push('<path d="M2 2L8 5L2 8" fill="none" stroke="context-stroke" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>');
+  L.push('</marker>');
+  L.push('<radialGradient id="cg" cx="50%" cy="50%" r="50%">');
+  L.push('<stop offset="0%" stop-color="'+G+'" stop-opacity="0.45"/>');
+  L.push('<stop offset="100%" stop-color="'+G+'" stop-opacity="0"/>');
+  L.push('</radialGradient>');
+  L.push('</defs>');
+
+  L.push('<ellipse cx="390" cy="365" rx="240" ry="240" fill="url(#cg)"/>');
+  L.push('<ellipse cx="390" cy="365" rx="252" ry="258" fill="none" stroke="rgba(220,217,184,0.07)" stroke-width="1" stroke-dasharray="3 8"/>');
+
+  /* arrows */
+  var N = nodes.length;
+  for (var i=0; i<N; i++) {
+    var j = (i+1)%N;
+    var isRed  = (i===2); /* Proclaim → Exhaust */
+    var isLast = (i===N-1); /* Forget → Surface: carries reset label */
+    var col = isRed ? 'rgba(200,60,70,0.85)' : 'rgba(220,217,184,0.65)';
+    var delay = (0.15 + i*0.1).toFixed(2);
+    var ap = arrowPath(i, j);
+    L.push('<path class="cycle-arrow" data-delay="'+delay+'" d="'+ap.d+'" fill="none" stroke="'+col+'" stroke-width="1.6" marker-end="url(#da)"/>');
+
+    /* "reset" label on last arrow */
+    if (isLast) {
+      /* place label at control-point, offset slightly outward */
+      var lx = ap.mid[0], ly = ap.mid[1];
+      /* nudge away from centre */
+      var ndx = lx-cx, ndy = ly-cy, nl = Math.sqrt(ndx*ndx+ndy*ndy)||1;
+      lx = (lx + ndx/nl*18).toFixed(1);
+      ly = (ly + ndy/nl*18).toFixed(1);
+      L.push('<text class="cycle-arrow" data-delay="'+(parseFloat(delay)+0.05).toFixed(2)+'"'+
+        ' font-family="'+AF+'" font-size="13" font-weight="500" font-style="italic"'+
+        ' fill="rgba(220,217,184,0.55)" x="'+lx+'" y="'+ly+'" text-anchor="middle" dominant-baseline="central">reset</text>');
+    }
+  }
+
+  /* nodes */
+  nodes.forEach(function(n, i) {
+    var c = centres[i];
+    var x = (c[0]-NW/2).toFixed(1), y = (c[1]-NH/2).toFixed(1);
+    var subs = n.sub.split('\n');
+    var two = subs.length > 1;
+    var delay = (i * 0.1).toFixed(2);
+
+    L.push('<g class="cycle-node" data-delay="'+delay+'">');
+    L.push('<rect x="'+x+'" y="'+y+'" width="'+NW+'" height="'+NH+'" rx="8"'+
+      ' fill="'+n.fill+'" stroke="'+n.stroke+'" stroke-width="0.9"/>');
+
+    var ly = two ? (c[1]-13).toFixed(1) : c[1].toFixed(1);
+    L.push('<text font-family="'+AF+'" font-size="16.5" font-weight="700"'+
+      ' fill="'+n.lc+'" x="'+c[0].toFixed(1)+'" y="'+ly+'" text-anchor="middle" dominant-baseline="central">'+
+      n.label+'</text>');
+
+    var s1y = (parseFloat(ly)+21).toFixed(1);
+    L.push('<text font-family="'+AF+'" font-size="14" font-weight="400"'+
+      ' fill="'+n.slc+'" x="'+c[0].toFixed(1)+'" y="'+s1y+'" text-anchor="middle" dominant-baseline="central">'+
+      subs[0]+'</text>');
+
+    if (two) {
+      var s2y = (parseFloat(s1y)+16).toFixed(1);
+      L.push('<text font-family="'+AF+'" font-size="14" font-weight="400"'+
+        ' fill="'+n.slc+'" x="'+c[0].toFixed(1)+'" y="'+s2y+'" text-anchor="middle" dominant-baseline="central">'+
+        subs[1]+'</text>');
+    }
+    L.push('</g>');
+  });
+
+  /* centre medallion */
+  L.push('<g class="cycle-medallion">');
+  L.push('<ellipse cx="390" cy="365" rx="80" ry="58" fill="'+G+'"/>');
+  L.push('<ellipse cx="390" cy="365" rx="80" ry="58" fill="none" stroke="rgba(220,217,184,0.45)" stroke-width="1.3"/>');
+  L.push('<text font-family="'+AF+'" font-size="15" font-weight="700"'+
+    ' letter-spacing="0.1em" fill="'+SAND+'" x="390" y="349" text-anchor="middle" dominant-baseline="central">THEATRE OF</text>');
+  L.push('<text font-family="'+AF+'" font-size="15" font-weight="700"'+
+    ' letter-spacing="0.1em" fill="'+SAND+'" x="390" y="367" text-anchor="middle" dominant-baseline="central">ENGAGEMENT</text>');
+  L.push('<text font-family="'+AF+'" font-size="11" font-weight="300" font-style="italic"'+
+    ' fill="rgba(220,217,184,0.6)" x="390" y="385" text-anchor="middle" dominant-baseline="central">a repeating pattern</text>');
+  L.push('</g>');
+
+  L.push('</svg>');
+
+  /* ── inject into DOM ─────────────────────────────────────────── */
+  var container = document.getElementById('diagram-container');
+  if (!container) return;
+
+  var title = document.createElement('div');
+  title.className = 'cycle-title';
+  title.textContent = 'The cycle — visualized';
+  container.appendChild(title);
+
+  var wrapper = document.createElement('div');
+  wrapper.innerHTML = L.join('\n');
+  container.appendChild(wrapper);
+
+  /* ── sequential scroll animation ────────────────────────────── */
+  /*
+    Strategy:
+    - Medallion is always visible (no animation class).
+    - On scroll: wait until the diagram container is FULLY in view
+      (threshold: 1.0), then reveal elements one-by-one in cycle order:
+      node[0], arrow[0], node[1], arrow[1], ... node[5], arrow[5]
+    - Each step fires 160ms after the previous.
+    - Nodes fade+scale in; arrows fade in.
+  */
+  var svg = document.getElementById('cycle-svg');
+  if (!svg) return;
+
+  /* Build ordered sequence: [node0, arrow0, node1, arrow1, ...] */
+  var nodeEls  = Array.prototype.slice.call(svg.querySelectorAll('.cycle-node'));
+  var arrowEls = Array.prototype.slice.call(svg.querySelectorAll('.cycle-arrow'));
+  var sequence = [];
+  for (var k = 0; k < nodeEls.length; k++) {
+    sequence.push(nodeEls[k]);
+    if (arrowEls[k]) sequence.push(arrowEls[k]);
+  }
+
+  function revealSequence() {
+    sequence.forEach(function(el, idx) {
+      setTimeout(function() {
+        el.style.opacity = '1';
+        el.style.transform = 'scale(1)';
+      }, idx * 160);
+    });
+  }
+
+  /* Trigger when diagram is fully in view */
+  if ('IntersectionObserver' in window) {
+    var obs = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry) {
+        if (entry.isIntersecting) {
+          revealSequence();
+          obs.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 1.0 });
+    obs.observe(container);
+  } else {
+    revealSequence();
+  }
+
+})();
+</script>
+</body>
+</html>
