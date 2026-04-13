@@ -1,0 +1,945 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Foster Care Training Curriculum — IslamicFamily</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Alegreya:ital,wght@0,400;0,500;0,700;1,400;1,500&family=Alegreya+Sans:wght@300;400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --green:#275D43;--green-mid:#3d8a65;--green-light:#e8f1ed;
+    --brown:#C07A3E;--brown-light:#fdf3ea;--cream:#FAFAF4;--black:#1e2b25;
+    --serif:'Alegreya',Georgia,serif;--sans:'Alegreya Sans',system-ui,sans-serif;
+    --track-pre:#7C3D8A;--track-pre-bg:#f3edf5;
+    --track-muslim:#275D43;--track-muslim-bg:#e8f1ed;
+    --track-nonmuslim:#4A5E8A;--track-nonmuslim-bg:#eaecf5;
+    --track-mosque:#7A4A1E;--track-mosque-bg:#f5ece3;
+    --track-cs:#1E5A6B;--track-cs-bg:#e3f0f4;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{font-family:var(--sans);background:var(--cream);color:var(--black);line-height:1.65;font-size:16px}
+  nav{position:sticky;top:0;z-index:100;background:var(--green)}
+  .nav-inner{max-width:1100px;margin:0 auto;display:flex;align-items:stretch}
+  .nav-logo{font-family:var(--serif);font-size:15px;font-weight:700;padding:.7rem 1.25rem .7rem 1rem;border-right:1px solid rgba(255,255,255,.15);white-space:nowrap;color:white;text-decoration:none;flex-shrink:0}
+  .nav-logo span{opacity:.6;font-weight:400;font-size:11px;display:block;margin-top:1px}
+  .nav-tracks{display:flex;align-items:stretch;overflow-x:auto;scrollbar-width:none;flex:1}
+  .nav-tracks::-webkit-scrollbar{display:none}
+  .nav-track{display:flex;align-items:center;gap:6px;padding:0 .85rem;font-size:11.5px;font-weight:500;color:rgba(255,255,255,.65);text-decoration:none;border-bottom:2px solid transparent;transition:all .15s;white-space:nowrap}
+  .nav-track:hover{color:white;background:rgba(255,255,255,.08)}
+  .track-dot{width:7px;height:7px;border-radius:50%;flex-shrink:0}
+  .hero{background:var(--green);color:white;padding:3.5rem 1.5rem 2.5rem}
+  .hero-inner{max-width:1100px;margin:0 auto}
+  .hero-eyebrow{font-size:11px;font-weight:700;letter-spacing:.15em;text-transform:uppercase;opacity:.6;margin-bottom:.9rem}
+  .hero-title{font-family:var(--serif);font-size:clamp(26px,3.5vw,42px);font-weight:700;line-height:1.15;margin-bottom:.9rem;max-width:680px}
+  .hero-sub{font-size:15px;opacity:.78;max-width:600px;margin-bottom:2rem;line-height:1.7}
+  .hero-stats{display:flex;gap:2rem;flex-wrap:wrap;padding-top:1.75rem;border-top:1px solid rgba(255,255,255,.15)}
+  .hero-stat-num{font-family:var(--serif);font-size:30px;font-weight:700;line-height:1}
+  .hero-stat-label{font-size:11px;opacity:.62;margin-top:3px;max-width:110px;line-height:1.4}
+  .track-nav-section{background:white;border-bottom:1px solid #e0ddd6;padding:1.75rem 1.5rem}
+  .track-nav-inner{max-width:1100px;margin:0 auto}
+  .section-label{font-size:10.5px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#999;margin-bottom:.9rem}
+  .tracks-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(185px,1fr));gap:.75rem}
+  .track-card{border-radius:10px;padding:1.1rem;cursor:pointer;text-decoration:none;display:block;border:1.5px solid transparent;transition:all .15s}
+  .track-card:hover{transform:translateY(-1px)}
+  .track-card-num{font-family:var(--serif);font-size:12px;font-weight:500;opacity:.6;margin-bottom:.3rem}
+  .track-card-title{font-family:var(--serif);font-size:15px;font-weight:700;line-height:1.25;margin-bottom:.3rem}
+  .track-card-audience{font-size:11.5px;opacity:.7;line-height:1.4}
+  .track-card-meta{display:flex;gap:6px;margin-top:.65rem;flex-wrap:wrap}
+  .pill{font-size:10.5px;font-weight:500;padding:2px 7px;border-radius:20px}
+  .t-pre{background:var(--track-pre-bg);color:var(--track-pre);border-color:rgba(124,61,138,.15)}
+  .t-pre .track-card-title{color:var(--track-pre)}
+  .t-pre .pill{background:rgba(124,61,138,.1);color:var(--track-pre)}
+  .t-muslim{background:var(--track-muslim-bg);color:var(--track-muslim);border-color:rgba(39,93,67,.15)}
+  .t-muslim .track-card-title{color:var(--track-muslim)}
+  .t-muslim .pill{background:rgba(39,93,67,.12);color:var(--track-muslim)}
+  .t-nonmuslim{background:var(--track-nonmuslim-bg);color:var(--track-nonmuslim);border-color:rgba(74,94,138,.15)}
+  .t-nonmuslim .track-card-title{color:var(--track-nonmuslim)}
+  .t-nonmuslim .pill{background:rgba(74,94,138,.12);color:var(--track-nonmuslim)}
+  .t-mosque{background:var(--track-mosque-bg);color:var(--track-mosque);border-color:rgba(122,74,30,.15)}
+  .t-mosque .track-card-title{color:var(--track-mosque)}
+  .t-mosque .pill{background:rgba(122,74,30,.12);color:var(--track-mosque)}
+  .t-cs{background:var(--track-cs-bg);color:var(--track-cs);border-color:rgba(30,90,107,.15)}
+  .t-cs .track-card-title{color:var(--track-cs)}
+  .t-cs .pill{background:rgba(30,90,107,.12);color:var(--track-cs)}
+  .content{max-width:1100px;margin:0 auto;padding:0 1.5rem 4rem}
+  .track-section{margin-top:3rem;scroll-margin-top:58px}
+  .track-header{display:flex;align-items:flex-start;gap:1.1rem;padding:1.5rem;border-radius:12px;margin-bottom:1.5rem}
+  .track-icon{width:48px;height:48px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:var(--serif);font-size:18px;font-weight:700;flex-shrink:0;color:white;margin-top:2px}
+  .track-tag{font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;opacity:.65;margin-bottom:.3rem}
+  .track-title{font-family:var(--serif);font-size:clamp(18px,2.2vw,24px);font-weight:700;line-height:1.2;margin-bottom:.35rem}
+  .track-desc{font-size:14px;line-height:1.65;opacity:.83;max-width:660px}
+  .track-pills{display:flex;gap:6px;margin-top:.65rem;flex-wrap:wrap}
+  .th-pre{background:var(--track-pre-bg);color:var(--track-pre)}
+  .th-pre .track-icon{background:var(--track-pre)}
+  .th-muslim{background:var(--track-muslim-bg);color:var(--track-muslim)}
+  .th-muslim .track-icon{background:var(--track-muslim)}
+  .th-nonmuslim{background:var(--track-nonmuslim-bg);color:var(--track-nonmuslim)}
+  .th-nonmuslim .track-icon{background:var(--track-nonmuslim)}
+  .th-mosque{background:var(--track-mosque-bg);color:var(--track-mosque)}
+  .th-mosque .track-icon{background:var(--track-mosque)}
+  .th-cs{background:var(--track-cs-bg);color:var(--track-cs)}
+  .th-cs .track-icon{background:var(--track-cs)}
+  .modules-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(285px,1fr));gap:1rem}
+  .module-card{background:white;border:1px solid #e8e5de;border-radius:10px;overflow:hidden;transition:box-shadow .15s}
+  .module-card:hover{box-shadow:0 2px 12px rgba(0,0,0,.07)}
+  .module-top{padding:.9rem 1rem .7rem;border-bottom:1px solid #f0ede6}
+  .module-num-row{display:flex;align-items:center;justify-content:space-between;margin-bottom:.4rem}
+  .module-num-badge{font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:2px 7px;border-radius:20px}
+  .module-duration{font-size:11px;color:#888}
+  .module-title{font-family:var(--serif);font-size:15px;font-weight:700;line-height:1.3;margin-bottom:.2rem}
+  .module-format{font-size:11px;color:#888;font-style:italic}
+  .module-body{padding:.65rem 1rem .9rem}
+  .module-topics{list-style:none;padding:0}
+  .module-topics li{font-size:13px;padding:3px 0 3px 13px;position:relative;line-height:1.5;color:#3a3a3a;border-bottom:.5px solid #f5f2eb}
+  .module-topics li:last-child{border-bottom:none}
+  .module-topics li::before{content:'';position:absolute;left:0;top:9px;width:5px;height:5px;border-radius:50%;background:#ccc}
+  .tm .module-topics li::before{background:var(--track-muslim)}
+  .tpre .module-topics li::before{background:var(--track-pre)}
+  .tnm .module-topics li::before{background:var(--track-nonmuslim)}
+  .tmo .module-topics li::before{background:var(--track-mosque)}
+  .tcs .module-topics li::before{background:var(--track-cs)}
+  .mb-pre{background:var(--track-pre-bg);color:var(--track-pre)}
+  .mb-muslim{background:var(--track-muslim-bg);color:var(--track-muslim)}
+  .mb-nonmuslim{background:var(--track-nonmuslim-bg);color:var(--track-nonmuslim)}
+  .mb-mosque{background:var(--track-mosque-bg);color:var(--track-mosque)}
+  .mb-cs{background:var(--track-cs-bg);color:var(--track-cs)}
+  .insight{border-left:3px solid;padding:.7rem 1rem;border-radius:0 8px 8px 0;margin:1.25rem 0 0;font-size:13.5px;line-height:1.65}
+  .insight-label{font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;margin-bottom:4px}
+  .i-pre{background:var(--track-pre-bg);border-color:var(--track-pre);color:var(--track-pre)}
+  .i-pre p{color:var(--black);font-style:italic}
+  .i-muslim{background:var(--track-muslim-bg);border-color:var(--track-muslim);color:var(--track-muslim)}
+  .i-muslim p{color:var(--black);font-style:italic}
+  .i-nonmuslim{background:var(--track-nonmuslim-bg);border-color:var(--track-nonmuslim);color:var(--track-nonmuslim)}
+  .i-nonmuslim p{color:var(--black);font-style:italic}
+  .i-mosque{background:var(--track-mosque-bg);border-color:var(--track-mosque);color:var(--track-mosque)}
+  .i-mosque p{color:var(--black);font-style:italic}
+  .i-cs{background:var(--track-cs-bg);border-color:var(--track-cs);color:var(--track-cs)}
+  .i-cs p{color:var(--black);font-style:italic}
+  .track-divider{height:1px;background:linear-gradient(to right,#d9d5cc,transparent);margin:3rem 0 0}
+  /* pre-track specific */
+  .social-intro{background:var(--track-pre-bg);border:1.5px solid rgba(124,61,138,.15);border-radius:12px;padding:1.5rem;margin-bottom:1.5rem}
+  .social-intro p{font-size:14px;line-height:1.7;color:#4a3050}
+  .social-intro p+p{margin-top:.5rem}
+  .social-intro strong{color:var(--track-pre)}
+  .cta-ladder{display:grid;grid-template-columns:repeat(auto-fit,minmax(185px,1fr));gap:.75rem;margin-bottom:1.75rem}
+  .cta-step{background:white;border:1.5px solid rgba(124,61,138,.2);border-radius:10px;padding:1rem}
+  .cta-step-num{width:26px;height:26px;border-radius:50%;background:var(--track-pre);color:white;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;font-family:var(--serif);margin-bottom:.5rem}
+  .cta-step-title{font-family:var(--serif);font-size:15px;font-weight:700;color:var(--track-pre);margin-bottom:.3rem;line-height:1.2}
+  .cta-step-desc{font-size:12.5px;color:#555;line-height:1.55;margin-bottom:.5rem}
+  .cta-step-ask{font-size:11.5px;font-weight:700;color:var(--track-pre)}
+  .pillars-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(290px,1fr));gap:1rem;margin-bottom:1.5rem}
+  .pillar-card{background:white;border:1px solid #e8e5de;border-radius:10px;overflow:hidden}
+  .pillar-top{padding:1rem;border-bottom:1px solid #f0ede6;display:flex;align-items:flex-start;gap:10px}
+  .pillar-icon{width:34px;height:34px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:15px;flex-shrink:0;background:var(--track-pre-bg)}
+  .pillar-title{font-family:var(--serif);font-size:15px;font-weight:700;color:var(--track-pre);line-height:1.25}
+  .pillar-sub{font-size:11px;color:#888;margin-top:2px}
+  .pillar-body{padding:.75rem 1rem 1rem}
+  .pillar-body p{font-size:13px;color:#3a3a3a;line-height:1.6;margin-bottom:.5rem}
+  .pillar-body p:last-child{margin-bottom:0}
+  .pillar-body strong{color:var(--track-pre);font-weight:600}
+  .pillar-myths{font-size:12.5px;color:#3a3a3a;line-height:1.7;padding-left:1.1rem;margin:.4rem 0}
+  .example-posts{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:.65rem;margin-top:.75rem}
+  .post-card{background:#f9f7fc;border:1px solid rgba(124,61,138,.12);border-radius:8px;padding:.7rem}
+  .post-format{font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--track-pre);margin-bottom:.35rem}
+  .post-hook{font-family:var(--serif);font-size:14px;font-weight:700;line-height:1.3;color:var(--black);margin-bottom:.35rem}
+  .post-body{font-size:12px;color:#555;line-height:1.55;margin-bottom:.45rem}
+  .post-cta{font-size:11px;font-weight:700;color:var(--track-pre);padding:2px 8px;background:var(--track-pre-bg);border-radius:20px;display:inline-block}
+  .post-channels{display:flex;gap:4px;margin-top:5px;flex-wrap:wrap}
+  .ch-tag{font-size:10px;padding:1px 6px;border-radius:10px;background:rgba(124,61,138,.08);color:var(--track-pre)}
+  .prod-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(235px,1fr));gap:.75rem;margin-top:.75rem}
+  .prod-card{background:white;border:1px solid #e8e5de;border-radius:8px;padding:.9rem}
+  .prod-card-title{font-size:11.5px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--track-pre);margin-bottom:.5rem}
+  .prod-list{list-style:none;padding:0}
+  .prod-list li{font-size:12.5px;color:#3a3a3a;line-height:1.5;padding:2px 0 2px 12px;position:relative;border-bottom:.5px solid #f5f2eb}
+  .prod-list li:last-child{border-bottom:none}
+  .prod-list li::before{content:'';position:absolute;left:0;top:8px;width:5px;height:5px;border-radius:50%;background:rgba(124,61,138,.35)}
+  .prod-list li strong{font-weight:600;color:var(--track-pre)}
+  .programs-section{margin-top:3rem;background:white;border:1px solid #e8e5de;border-radius:12px;padding:1.5rem;scroll-margin-top:58px}
+  .programs-title{font-family:var(--serif);font-size:19px;font-weight:700;margin-bottom:1rem}
+  .programs-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(248px,1fr));gap:.5rem}
+  .prog-item{display:flex;gap:8px;padding:.45rem 0;border-bottom:.5px solid #f0ede6;align-items:flex-start}
+  .prog-flag{font-size:14px;flex-shrink:0;margin-top:2px}
+  .prog-name{font-size:13px;font-weight:500;line-height:1.3}
+  .prog-desc{font-size:11.5px;color:#777;margin-top:1px}
+  footer{background:var(--green);color:white;padding:2rem 1.5rem;margin-top:3rem}
+  .footer-inner{max-width:1100px;margin:0 auto;display:flex;gap:2rem;flex-wrap:wrap;justify-content:space-between;align-items:flex-start}
+  .footer-org{font-family:var(--serif);font-size:18px;font-weight:700}
+  .footer-sub{font-size:12px;opacity:.6;margin-top:3px}
+  .footer-note{font-size:12px;opacity:.7;max-width:480px;line-height:1.65}
+  .footer-note strong{opacity:1;font-weight:500}
+  @media(max-width:600px){
+    .hero{padding:2.5rem 1rem 2rem}
+    .content{padding:0 1rem 3rem}
+    .modules-grid,.pillars-grid,.cta-ladder{grid-template-columns:1fr}
+    .track-header{padding:1.1rem}
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <a href="#top" class="nav-logo">IslamicFamily<span>Foster Care Curriculum</span></a>
+    <div class="nav-tracks">
+      <a href="#track-pre" class="nav-track"><span class="track-dot" style="background:#b47fc2"></span>Pre-Track · Social</a>
+      <a href="#track-muslim" class="nav-track"><span class="track-dot" style="background:#6dbf96"></span>Track A · Muslim Caregivers</a>
+      <a href="#track-nonmuslim" class="nav-track"><span class="track-dot" style="background:#8fa6d4"></span>Track B · Non-Muslim Caregivers</a>
+      <a href="#track-mosque" class="nav-track"><span class="track-dot" style="background:#c9935e"></span>Track C · Mosques</a>
+      <a href="#track-cs" class="nav-track"><span class="track-dot" style="background:#5fa8be"></span>Track D · Children's Services</a>
+      <a href="#programs" class="nav-track"><span class="track-dot" style="background:rgba(255,255,255,.3)"></span>Programs</a>
+    </div>
+  </div>
+</nav>
+
+<section class="hero" id="top">
+  <div class="hero-inner">
+    <div class="hero-eyebrow">IslamicFamily · Alberta · Curriculum Framework</div>
+    <h1 class="hero-title">Foster Care Training Curriculum for Muslim Communities</h1>
+    <p class="hero-sub">A five-stream framework — from broad social awareness to specialist professional development — synthesizing best practices from Canada, the United States, and the United Kingdom.</p>
+    <div class="hero-stats">
+      <div><div class="hero-stat-num">Pre+4</div><div class="hero-stat-label">Training streams</div></div>
+      <div><div class="hero-stat-num">29</div><div class="hero-stat-label">Modules across all tracks</div></div>
+      <div><div class="hero-stat-num">5</div><div class="hero-stat-label">Social content pillars</div></div>
+      <div><div class="hero-stat-num">~30h</div><div class="hero-stat-label">Total training content</div></div>
+      <div><div class="hero-stat-num">4,500+</div><div class="hero-stat-label">Muslim children in care in England &amp; Wales alone</div></div>
+    </div>
+  </div>
+</section>
+
+<section class="track-nav-section">
+  <div class="track-nav-inner">
+    <div class="section-label">All streams at a glance</div>
+    <div class="tracks-grid">
+      <a href="#track-pre" class="track-card t-pre">
+        <div class="track-card-num">Pre-Track</div>
+        <div class="track-card-title">Social Awareness &amp; Myth Busting</div>
+        <div class="track-card-audience">Broad Muslim community — no prior interest required</div>
+        <div class="track-card-meta"><span class="pill">5 pillars</span><span class="pill">Reels · FB · WA · TikTok</span><span class="pill">Always-on</span></div>
+      </a>
+      <a href="#track-muslim" class="track-card t-muslim">
+        <div class="track-card-num">Track A</div>
+        <div class="track-card-title">Muslim Foster Caregivers</div>
+        <div class="track-card-audience">Prospective and current Muslim foster, kinship, and adoptive caregivers</div>
+        <div class="track-card-meta"><span class="pill">8 modules</span><span class="pill">~12 hours</span><span class="pill">Foundation</span></div>
+      </a>
+      <a href="#track-nonmuslim" class="track-card t-nonmuslim">
+        <div class="track-card-num">Track B</div>
+        <div class="track-card-title">Non-Muslim Caregivers of Muslim Children</div>
+        <div class="track-card-audience">Licensed carers of any faith currently placed with Muslim youth</div>
+        <div class="track-card-meta"><span class="pill">6 modules</span><span class="pill">~7 hours</span><span class="pill">Faith literacy</span></div>
+      </a>
+      <a href="#track-mosque" class="track-card t-mosque">
+        <div class="track-card-num">Track C</div>
+        <div class="track-card-title">Mosque as Care-Friendly Community</div>
+        <div class="track-card-audience">Imams, mosque boards, and youth workers</div>
+        <div class="track-card-meta"><span class="pill">5 modules</span><span class="pill">~6 hours</span><span class="pill">Institutional</span></div>
+      </a>
+      <a href="#track-cs" class="track-card t-cs">
+        <div class="track-card-num">Track D</div>
+        <div class="track-card-title">Children's Services Staff</div>
+        <div class="track-card-audience">Caseworkers, intake staff, supervisors, and assessors</div>
+        <div class="track-card-meta"><span class="pill">6 modules</span><span class="pill">~7 hours</span><span class="pill">Professional development</span></div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<div class="content">
+
+<!-- PRE-TRACK -->
+<div class="track-section" id="track-pre">
+  <div class="track-header th-pre">
+    <div class="track-icon">★</div>
+    <div class="track-header-text">
+      <div class="track-tag">Pre-Track · Always-On Social Strategy</div>
+      <div class="track-title">Community Awareness &amp; Myth Busting</div>
+      <div class="track-desc">Not a training track — the awareness layer that comes before any training conversation happens. Short, visual, emotionally honest content for people who have never considered fostering and may have active objections. Local faces. Islamic framing. Low ask. Highly shareable. The goal is not sign-ups — it's making foster care feel familiar, possible, and Islamic.</div>
+      <div class="track-pills">
+        <span class="pill mb-pre">Instagram Reels</span><span class="pill mb-pre">Facebook</span><span class="pill mb-pre">WhatsApp-forwardable</span><span class="pill mb-pre">TikTok</span><span class="pill mb-pre">5 content pillars</span><span class="pill mb-pre">Always-on cadence</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="social-intro">
+    <p><strong>Strategic intent:</strong> Track A asks people to commit time, open their home, and engage with a government system they may distrust. This pre-track does none of that. It meets people while they're scrolling, in a WhatsApp group, or in the mosque foyer — and plants a seed. It normalises the conversation, dismantles the three or four beliefs that stop most Muslim families from ever engaging, and introduces a ladder of small, achievable actions.</p>
+    <p><strong>Production principle:</strong> Every piece of content should feel like it came from Edmonton's Muslim community, not from a charity. Real faces, recognisable spaces, vernacular language. No stock photography. No guilt as the lead. No statistics as the opening line.</p>
+  </div>
+
+  <div class="section-label" style="margin-bottom:.6rem;">The ask — a ladder of entry points</div>
+  <p style="font-size:13.5px;color:#555;margin-bottom:.75rem;max-width:680px;line-height:1.65;">Each piece of content ends with exactly one ask, calibrated to where someone is. Not everyone will become a caregiver — and that's fine. The ladder captures everyone.</p>
+
+  <div class="cta-ladder">
+    <div class="cta-step">
+      <div class="cta-step-num">1</div>
+      <div class="cta-step-title">Be Caregiver-Friendly</div>
+      <div class="cta-step-desc">Tell your mosque, your family, your community: we support this. No commitment. Just stop making it feel taboo.</div>
+      <div class="cta-step-ask">→ Share this post · Talk about it at the dinner table</div>
+    </div>
+    <div class="cta-step">
+      <div class="cta-step-num">2</div>
+      <div class="cta-step-title">Create a Caregiver-Friendly Space</div>
+      <div class="cta-step-desc">For mosques, Islamic schools, businesses. Display materials. Host an info night. Make it known you welcome foster families.</div>
+      <div class="cta-step-ask">→ Request an IslamicFamily info kit</div>
+    </div>
+    <div class="cta-step">
+      <div class="cta-step-num">3</div>
+      <div class="cta-step-title">Become a Respite Provider</div>
+      <div class="cta-step-desc">Take a foster child for a weekend every few months. Give a full-time family a break. Lower commitment, still life-changing.</div>
+      <div class="cta-step-ask">→ Attend a free info session</div>
+    </div>
+    <div class="cta-step">
+      <div class="cta-step-num">4</div>
+      <div class="cta-step-title">Become a Foster Caregiver</div>
+      <div class="cta-step-desc">Open your home full-time. The biggest ask — and the most supported. IslamicFamily and AFKA walk beside you every step.</div>
+      <div class="cta-step-ask">→ Start the conversation</div>
+    </div>
+    <div class="cta-step">
+      <div class="cta-step-num">★</div>
+      <div class="cta-step-title">Be Like Halimah</div>
+      <div class="cta-step-desc">The campaign apex — full caregiving with Islamic pride and identity at the centre. The highest ask, the highest honour.</div>
+      <div class="cta-step-ask">→ Register for Track A training</div>
+    </div>
+  </div>
+
+  <div class="section-label" style="margin-bottom:.6rem;">Five content pillars</div>
+  <div class="pillars-grid">
+
+    <div class="pillar-card">
+      <div class="pillar-top">
+        <div class="pillar-icon">🌙</div>
+        <div><div class="pillar-title">Pillar 1 — "Be Like Halimah"</div><div class="pillar-sub">Aspirational · Islamic identity · Campaign anchor</div></div>
+      </div>
+      <div class="pillar-body">
+        <p><strong>Frame:</strong> Halimah As-Sa'diyya fostered the Prophet Muhammad ﷺ. She wasn't related to him. She chose him. This is one of the most honoured acts in Islamic history — and it was foster care. This pillar celebrates that lineage and invites people into it.</p>
+        <p><strong>Tone:</strong> Pride, not guilt. Aspiration, not obligation. "You could be part of a tradition that stretches back 1,400 years."</p>
+        <p><strong>Content types:</strong> Short biography reels of Halimah's story. "Did you know the Prophet ﷺ was fostered?" hook posts. Local Edmonton caregiver profiles anchored to this frame. Eid and Ramadan campaign versions. One of five pillars — used at campaign peaks, not as daily content.</p>
+        <div class="example-posts">
+          <div class="post-card">
+            <div class="post-format">Reel · 30 sec</div>
+            <div class="post-hook">"She wasn't his mother. She chose him."</div>
+            <div class="post-body">Halimah As-Sa'diyya took in a child who wasn't hers. The child was Muhammad ﷺ. Foster care isn't new to us — it's in our DNA.</div>
+            <div class="post-cta">Be Like Halimah →</div>
+            <div class="post-channels"><span class="ch-tag">Reels</span><span class="ch-tag">TikTok</span></div>
+          </div>
+          <div class="post-card">
+            <div class="post-format">Static · WhatsApp card</div>
+            <div class="post-hook">"The best house among Muslims is one where an orphan is well treated."</div>
+            <div class="post-body">— Prophet Muhammad ﷺ. There are children in Edmonton tonight who need that house. Could it be yours?</div>
+            <div class="post-cta">Learn more →</div>
+            <div class="post-channels"><span class="ch-tag">WhatsApp</span><span class="ch-tag">FB</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="pillar-card">
+      <div class="pillar-top">
+        <div class="pillar-icon">💬</div>
+        <div><div class="pillar-title">Pillar 2 — Myth Busting</div><div class="pillar-sub">Objection handling · Direct · One myth per post</div></div>
+      </div>
+      <div class="pillar-body">
+        <p><strong>Frame:</strong> Lead with the myth as the hook — the exact words people say — then give the real answer from a Muslim voice: an imam, a scholar, a foster parent. Short. Never preachy. The person giving the answer should look and sound like someone from the community, not a spokesperson.</p>
+        <p><strong>Myths to cover (one per post):</strong></p>
+        <ul class="pillar-myths">
+          <li>"Fostering is haram / against Islam"</li>
+          <li>"You can't foster if you already have kids"</li>
+          <li>"The government will take over your home"</li>
+          <li>"This is a Western thing — not for us"</li>
+          <li>"We're immigrants — they'll judge how we parent"</li>
+          <li>"Once they come, you can never say goodbye"</li>
+          <li>"I can't afford it"</li>
+          <li>"You have to be married"</li>
+          <li>"They'll try to change how we raise children"</li>
+        </ul>
+        <div class="example-posts">
+          <div class="post-card">
+            <div class="post-format">Reel · Talking head · 45 sec</div>
+            <div class="post-hook">"I heard fostering is haram."</div>
+            <div class="post-body">Sheikh [local imam], Edmonton: "Kafala — caring for a child who needs you — is not just permitted in Islam. It is among the most rewarded acts you can do."</div>
+            <div class="post-cta">Watch the full answer →</div>
+            <div class="post-channels"><span class="ch-tag">Reels</span><span class="ch-tag">TikTok</span><span class="ch-tag">FB</span></div>
+          </div>
+          <div class="post-card">
+            <div class="post-format">Carousel · 5 slides</div>
+            <div class="post-hook">"We already have kids. We can't foster."</div>
+            <div class="post-body">Slide 2: "Having children doesn't disqualify you — in fact, it can strengthen your application." Told by an Edmonton family of four who fosters.</div>
+            <div class="post-cta">Swipe for the truth →</div>
+            <div class="post-channels"><span class="ch-tag">Instagram</span><span class="ch-tag">FB</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="pillar-card">
+      <div class="pillar-top">
+        <div class="pillar-icon">👨‍👩‍👧</div>
+        <div><div class="pillar-title">Pillar 3 — Real Families, Local Faces</div><div class="pillar-sub">Testimony · Community recognition · Alberta-specific</div></div>
+      </div>
+      <div class="pillar-body">
+        <p><strong>Frame:</strong> Short, intimate profiles of real Edmonton/Alberta Muslim foster families. Not polished testimonials — honest, slightly imperfect, recognisable. The family at an Eid dinner with their foster child. The dad picking up both kids from school. Their words, in their kitchen.</p>
+        <p><strong>Diversity requirement:</strong> Systematically represent the breadth of Edmonton's Muslim community — South Asian, East African, Arab, convert, refugee-background, single parent, older caregiver, young couple. Every viewer should be able to see themselves.</p>
+        <p><strong>Format options:</strong> 60–90 sec documentary-style Reel. Day-in-the-life TikTok. Written profile + photo for Facebook. WhatsApp-shareable quote card from the family.</p>
+        <div class="example-posts">
+          <div class="post-card">
+            <div class="post-format">Reel · 90 sec · Local family</div>
+            <div class="post-hook">"We had three kids. We thought we were done."</div>
+            <div class="post-body">Fadumo and Ahmed, Edmonton. Somali-Canadian. Two years into fostering. "The day he left, we cried. And we signed up for the next placement the week after."</div>
+            <div class="post-cta">Hear their story →</div>
+            <div class="post-channels"><span class="ch-tag">Reels</span><span class="ch-tag">TikTok</span></div>
+          </div>
+          <div class="post-card">
+            <div class="post-format">WhatsApp card · Static</div>
+            <div class="post-hook">"I'm a single mum. I foster too."</div>
+            <div class="post-body">Nadia, Edmonton: "Nobody told me single parents could do this. I'm telling you now."</div>
+            <div class="post-cta">Ask IslamicFamily →</div>
+            <div class="post-channels"><span class="ch-tag">WhatsApp</span><span class="ch-tag">FB</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="pillar-card">
+      <div class="pillar-top">
+        <div class="pillar-icon">✋</div>
+        <div><div class="pillar-title">Pillar 4 — The Simple Next Step</div><div class="pillar-sub">Low-friction entry · CTA-led · Action framing</div></div>
+      </div>
+      <div class="pillar-body">
+        <p><strong>Frame:</strong> Not everyone is ready to foster — and this pillar makes that explicit before offering something everyone can do right now. The ask escalates across the CTA ladder. Content is designed to move people from "interesting" to "I did something small."</p>
+        <p><strong>Key message:</strong> There are five ways to show up for a child in care. Pick one. You don't have to start with the hardest one.</p>
+        <div class="example-posts">
+          <div class="post-card">
+            <div class="post-format">Carousel · "Pick your level"</div>
+            <div class="post-hook">"You don't have to foster to make a difference."</div>
+            <div class="post-body">Slide 1: Share this. · Slide 2: Welcome a caregiver family at the masjid. · Slide 3: Offer respite (a weekend). · Slide 4: Open your home. · Slide 5: Be Like Halimah.</div>
+            <div class="post-cta">Start where you are →</div>
+            <div class="post-channels"><span class="ch-tag">Instagram</span><span class="ch-tag">FB</span></div>
+          </div>
+          <div class="post-card">
+            <div class="post-format">TikTok · 20 sec</div>
+            <div class="post-hook">"The easiest thing you can do for a child in care today."</div>
+            <div class="post-body">Share this video. That's it. Let one more Muslim family know this is possible. Sometimes that's the thing that starts everything.</div>
+            <div class="post-cta">Share it →</div>
+            <div class="post-channels"><span class="ch-tag">TikTok</span><span class="ch-tag">Reels</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="pillar-card">
+      <div class="pillar-top">
+        <div class="pillar-icon">📊</div>
+        <div><div class="pillar-title">Pillar 5 — Did You Know</div><div class="pillar-sub">Data as opportunity · Reframe from guilt to urgency</div></div>
+      </div>
+      <div class="pillar-body">
+        <p><strong>Frame:</strong> Data and scale — but framed as opportunity, not shame. Never lead with "Muslim children are suffering." Lead with "there is a gap, and you can fill it." The community is the solution. Pair every stat with a clear, achievable action. Localise wherever possible — Alberta numbers land harder than national ones.</p>
+        <div class="example-posts">
+          <div class="post-card">
+            <div class="post-format">Static · Bold type card</div>
+            <div class="post-hook">"In Alberta, there are more Muslim children in care than Muslim foster homes."</div>
+            <div class="post-body">That gap exists because most Muslim families don't know they can close it. Now you know.</div>
+            <div class="post-cta">Find out how →</div>
+            <div class="post-channels"><span class="ch-tag">FB</span><span class="ch-tag">WhatsApp</span></div>
+          </div>
+          <div class="post-card">
+            <div class="post-format">Reel · Animated text · 15 sec</div>
+            <div class="post-hook">"Religious accommodation is the first thing Muslim children ask for when they enter care."</div>
+            <div class="post-body">Not a toy. Not clothes. Their deen. A Muslim home means they don't have to ask.</div>
+            <div class="post-cta">Be that home →</div>
+            <div class="post-channels"><span class="ch-tag">Reels</span><span class="ch-tag">TikTok</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="section-label" style="margin:.25rem 0 .6rem;">Production and distribution guide</div>
+  <div class="prod-grid">
+    <div class="prod-card">
+      <div class="prod-card-title">Visual identity</div>
+      <ul class="prod-list">
+        <li>Real people, real Edmonton locations — no stock photography</li>
+        <li>IslamicFamily palette: Nabawi Green, Pinecone Brown, New Moon Mist</li>
+        <li>Alegreya for display; Alegreya Sans for captions and body</li>
+        <li>Subtitles on all video (WhatsApp silent autoplay)</li>
+        <li>Square and vertical formats produced for every asset</li>
+        <li>Arabic text used sparingly for impact — not decoration</li>
+      </ul>
+    </div>
+    <div class="prod-card">
+      <div class="prod-card-title">Channel adaptations</div>
+      <ul class="prod-list">
+        <li><strong>Reels / TikTok:</strong> Hook in first 2 seconds; no logo until end card</li>
+        <li><strong>Facebook:</strong> Longer caption, link in post, community sharing encouraged</li>
+        <li><strong>WhatsApp:</strong> Self-contained image or short video; must make sense forwarded cold with no context</li>
+        <li><strong>Mosque screens:</strong> Static landscape, 15-sec loops, no audio required</li>
+      </ul>
+    </div>
+    <div class="prod-card">
+      <div class="prod-card-title">Cadence and planning</div>
+      <ul class="prod-list">
+        <li>3–4 posts per week, rotating across all 5 pillars</li>
+        <li>Campaign bursts: Ramadan, Foster Care Month, back-to-school</li>
+        <li>Local family story: minimum 1 per month, diversity tracked</li>
+        <li>Myth-busting series: one myth per week until all 9 are covered, then recycle</li>
+        <li>Content audited quarterly for tone, diversity, and CTA effectiveness</li>
+      </ul>
+    </div>
+    <div class="prod-card">
+      <div class="prod-card-title">Community co-production</div>
+      <ul class="prod-list">
+        <li>Recruit a small cohort of community content ambassadors — current Muslim carers</li>
+        <li>Provide simple filming guidelines so families can contribute their own Reels</li>
+        <li>Partner with local Muslim photographers and videographers</li>
+        <li>Imam and scholar endorsements recorded in advance for myth-busting series</li>
+        <li>Youth volunteers for TikTok-native content creation</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="insight i-pre" style="margin-top:1.25rem;">
+    <div class="insight-label">Strategic note — "Be Like Halimah" as a pillar, not a brand</div>
+    <p>Halimah As-Sa'diyya is universally recognised across Sunni, Shia, and Sufi traditions and across every ethnic Muslim background represented in Edmonton. Using her as a campaign pillar is not a religious argument — it's a cultural identity claim: this has always been ours. The pillar should not dominate the content mix (roughly one-in-five posts) but should serve as the emotional apex of the campaign — the moment someone goes from "interested" to "I want to be part of this." It works best at campaign peaks (Ramadan, Eid, launch moments) rather than as a weekly default.</p>
+  </div>
+</div>
+
+<div class="track-divider"></div>
+
+<!-- TRACK A -->
+<div class="track-section" id="track-muslim">
+  <div class="track-header th-muslim">
+    <div class="track-icon">A</div>
+    <div class="track-header-text">
+      <div class="track-tag">Track A · Foundation</div>
+      <div class="track-title">Muslim Foster Caregivers</div>
+      <div class="track-desc">The core recruitment and preparation curriculum. Assumes the social pre-track has done its awareness work — participants here have expressed interest and are ready for depth. Leads with Islamic framing, navigates fiqh dimensions, and includes a dedicated new module on how trauma and Islamic faith intersect in the lives of children who have experienced harm — replacing the generic "faith and culture in the home" content that belongs in Track B.</div>
+      <div class="track-pills"><span class="pill mb-muslim">8 modules</span><span class="pill mb-muslim">~12 hours</span><span class="pill mb-muslim">Imam + social worker co-facilitation</span><span class="pill mb-muslim">Mosque-based delivery</span></div>
+    </div>
+  </div>
+  <div class="modules-grid">
+    <div class="module-card tm">
+      <div class="module-top"><div class="module-num-row"><span class="module-num-badge mb-muslim">A1</span><span class="module-duration">90 min · Scholar-led</span></div>
+      <div class="module-title">The Islamic Mandate — Caring for Children in Need</div><div class="module-format">Khutba-style opening, Q&amp;A panel</div></div>
+      <div class="module-body"><ul class="module-topics">
+        <li>Qur'anic injunctions on orphans and vulnerable children</li>
+        <li>Hadith on the kafil's rank in Paradise — primary textual sources</li>
+        <li>Halimah As-Sa'diyya and the precedents of the pious predecessors</li>
+        <li>Kafala defined: guardianship without severing lineage (nasab)</li>
+        <li>Kafala vs. Western adoption — key legal and theological distinctions</li>
+        <li>Historical Islamic state responsibility for abandoned children (laqit)</li>
+      </ul></div>
+    </div>
+    <div class="module-card tm">
+      <div class="module-top"><div class="module-num-row"><span class="module-num-badge mb-muslim">A2</span><span class="module-duration">60 min · Social worker</span></div>
+      <div class="module-title">How the Foster Care System Works in Alberta</div><div class="module-format">Presentation + intake walkthrough</div></div>
+      <div class="module-body"><ul class="module-topics">
+        <li>How children enter care in Alberta: abuse, neglect, refugee status</li>
+        <li>Temporary care vs. adoption — critical distinctions</li>
+        <li>Domestic vs. refugee/unaccompanied minor placements</li>
+        <li>Role of CFS, AFKA, private agencies — who does what</li>
+        <li>Placement types: emergency, short-term, long-term, kinship, respite</li>
+        <li>Application timeline (3–6 months), home study, background checks</li>
+        <li>Caregiver allowances, financial supports, and therapy stipends</li>
+      </ul></div>
+    </div>
+    <div class="module-card tm">
+      <div class="module-top"><div class="module-num-row"><span class="module-num-badge mb-muslim">A3</span><span class="module-duration">90 min · Panel + discussion</span></div>
+      <div class="module-title">Addressing Community Barriers and Misconceptions</div><div class="module-format">Peer testimonials, small group discussion</div></div>
+      <div class="module-body"><ul class="module-topics">
+        <li>Reframing the "un-Islamic" objection with direct scholarly response</li>
+        <li>Fear of CFS: "taking sides against other Muslims" — addressed honestly</li>
+        <li>Acknowledging abuse and neglect can occur in Muslim families — with compassion, not shame</li>
+        <li>Immigrant families: fear of home investigations and government contact</li>
+        <li>Anti-Muslim bias in assessment — preparation and recourse options</li>
+        <li>Community pressure, family opinions, and how to navigate them</li>
+        <li>Fear of attachment and the grief of reunification — named directly</li>
+        <li>Single parents and unmarried individuals — eligibility confirmed</li>
+      </ul></div>
+    </div>
+    <div class="module-card tm">
+      <div class="module-top"><div class="module-num-row"><span class="module-num-badge mb-muslim">A4</span><span class="module-duration">90 min · Scholar + social worker</span></div>
+      <div class="module-title">Fiqh in Practice — Navigating Islamic Law and Foster Care</div><div class="module-format">Co-facilitated seminar with case scenarios</div></div>
+      <div class="module-body"><ul class="module-topics">
+        <li>Mahramiyyah explained: when and how it applies in a foster home</li>
+        <li>Practical implications when a foster child reaches puberty</li>
+        <li>Rida'a (milk kinship) for infants — scholarly positions reviewed</li>
+        <li>Khalwa (seclusion) rules and practical household management</li>
+        <li>Preserving the child's family name and nasab throughout placement</li>
+        <li>Inheritance differences between foster and biological children</li>
+        <li>Gender preferences in placement — how agencies accommodate this</li>
+        <li>Contemporary scholar guidance on Western foster care contexts</li>
+      </ul></div>
+    </div>
+    <div class="module-card tm" style="border:1.5px solid rgba(39,93,67,.3);">
+      <div class="module-top" style="background:#f4faf7;"><div class="module-num-row"><span class="module-num-badge mb-muslim">A5 · New</span><span class="module-duration">90 min · Mental health + scholar</span></div>
+      <div class="module-title">Islam, Childhood Trauma, and Spiritual Injury</div><div class="module-format">Replaces generic "faith and culture in the home" — that content moves to Track B</div></div>
+      <div class="module-body"><ul class="module-topics">
+        <li>How trauma changes a child's relationship to their own faith</li>
+        <li>When religion was present during the abuse — spiritual injury defined</li>
+        <li>Children who associate Islamic practice (prayer, recitation, figures of authority) with fear or coercion</li>
+        <li>Children who cling to faith as a survival mechanism — honouring this without pressure</li>
+        <li>Meeting children where they are spiritually — not where the caregiver expects</li>
+        <li>The difference between a child who has drifted from practice vs. one who has been harmed through it</li>
+        <li>Islamic mental health frameworks — what contemporary Muslim scholars and clinicians say about trauma</li>
+        <li>How to create a home where faith is offered, never imposed</li>
+        <li>When to involve an Islamic counsellor alongside secular therapeutic supports</li>
+      </ul></div>
+    </div>
+    <div class="module-card tm">
+      <div class="module-top"><div class="module-num-row"><span class="module-num-badge mb-muslim">A6</span><span class="module-duration">90 min · Mental health practitioner</span></div>
+      <div class="module-title">Trauma, Child Development, and Therapeutic Parenting</div><div class="module-format">Workshop with skill-building exercises</div></div>
+      <div class="module-body"><ul class="module-topics">
+        <li>Why children enter care and what they carry with them</li>
+        <li>Developmental stages and trauma's effects on behaviour</li>
+        <li>Distinguishing developmental responses from "behavioural problems"</li>
+        <li>Attachment theory and why the placement environment matters</li>
+        <li>War, displacement, and resettlement trauma (refugee children)</li>
+        <li>Secondary trauma and compassion fatigue for caregivers</li>
+        <li>The grief of reunification — preparing emotionally and spiritually</li>
+        <li>Therapy stipends and peer support as caregiver retention tools</li>
+      </ul></div>
+    </div>
+    <div class="module-card tm">
+      <div class="module-top"><div class="module-num-row"><span class="module-num-badge mb-muslim">A7</span><span class="module-duration">60 min · Caseworker + advocate</span></div>
+      <div class="module-title">Navigating the System as a Muslim Family</div><div class="module-format">Role-play and Q&amp;A</div></div>
+      <div class="module-body"><ul class="module-topics">
+        <li>Demystifying the home study and assessment process</li>
+        <li>How to disclose Islamic practices accurately and confidently</li>
+        <li>Responding to potentially discriminatory or leading questions</li>
+        <li>Your rights as an applicant; how to escalate concerns</li>
+        <li>Communicating religious and cultural needs to caseworkers</li>
+        <li>Working with Muslim-specific agencies vs. mainstream agencies</li>
+        <li>AFKA as provincial partner and warm referral pathway</li>
+      </ul></div>
+    </div>
+    <div class="module-card tm">
+      <div class="module-top"><div class="module-num-row"><span class="module-num-badge mb-muslim">A8</span><span class="module-duration">45 min · Community organizer</span></div>
+      <div class="module-title">Community as Infrastructure</div><div class="module-format">Action planning workshop</div></div>
+      <div class="module-body"><ul class="module-topics">
+        <li>Connecting new caregivers with experienced Muslim foster families</li>
+        <li>Relief and respite care — giving full-time caregivers a break</li>
+        <li>Mosque-based and virtual peer support group models</li>
+        <li>Volunteer faith connector roles for Muslim children in non-Muslim homes</li>
+        <li>Community events that include and celebrate foster children</li>
+        <li>IslamicFamily as ongoing bridge organisation and support resource</li>
+      </ul></div>
+    </div>
+  </div>
+  <div class="insight i-muslim">
+    <div class="insight-label">Design note — why Module A5 replaces "faith and culture in the home"</div>
+    <p>Teaching a Muslim caregiver how to set up a prayer space or provide halal food is condescending — and it misses the actual training need entirely. The real challenge for Muslim caregivers is far more specific: a child arrives whose relationship to Islam has been shaped by trauma, spiritual abuse, or profound disruption. The caregiver shares the faith — but the child may fear it, cling to it in distorted ways, or be spiritually adrift. That requires a completely different kind of preparation than a refresher on Islamic household practice. The "faith and culture in the home" content moves to Track B, where it genuinely serves non-Muslim carers who are encountering these practices for the first time.</p>
+  </div>
+</div>
+
+<div class="track-divider"></div>
+
+<!-- TRACK B -->
+<div class="track-section" id="track-nonmuslim">
+  <div class="track-header th-nonmuslim">
+    <div class="track-icon">B</div>
+    <div class="track-header-text">
+      <div class="track-tag">Track B · Faith Literacy</div>
+      <div class="track-title">Non-Muslim Caregivers of Muslim Children</div>
+      <div class="track-desc">For licensed foster parents of any faith currently caring for or matched with a Muslim child or youth. Includes the faith, culture, and identity module relocated from Track A — where it now does its real work — plus a condensed version of the spiritual trauma module relevant to any carer.</div>
+      <div class="track-pills"><span class="pill mb-nonmuslim">6 modules</span><span class="pill mb-nonmuslim">~7 hours</span><span class="pill mb-nonmuslim">Practical and applied</span></div>
+    </div>
+  </div>
+  <div class="modules-grid">
+    <div class="module-card tnm">
+      <div class="module-top"><div class="module-num-row"><span class="module-num-badge mb-nonmuslim">B1</span><span class="module-duration">60 min · Islam 101</span></div>
+      <div class="module-title">Understanding Islam — Faith, Practice, and Diversity</div><div class="module-format">Presentation + myth-busting activity</div></div>
+      <div class="module-body"><ul class="module-topics">
+        <li>The Five Pillars and what they mean for daily home life</li>
+        <li>Prayer (salah): times, direction, ritual purity (wudu), space</li>
+        <li>Fasting in Ramadan — what to expect with a fasting child or teen</li>
+        <li>Internal diversity: Sunni, Shia, Sufi; ethnic and cultural variation</li>
+        <li>Common misconceptions that affect placement outcomes</li>
+        <li>"Islam is a lifestyle, not just a religion" — practical implications for the home</li>
+      </ul></div>
+    </div>
+    <div class="module-card tnm">
+      <div class="module-top"><div class="module-num-row"><span class="module-num-badge mb-nonmuslim">B2</span><span class="module-duration">90 min · Practical workshop</span></div>
+      <div class="module-title">Daily Life Accommodations — What Every Carer Can Do</div><div class="module-format">Hands-on demonstration and role-play</div></div>
+      <div class="module-body"><ul class="module-topics">
+        <li>Halal food: what it means, how to source it, everyday meal planning</li>
+        <li>Preparing suhoor and iftar during Ramadan</li>
+        <li>Creating a prayer space: quiet, clean, oriented toward qibla</li>
+        <li>Friday (Jumu'ah) attendance — transportation and scheduling</li>
+        <li>Hijab: supporting a child's existing practice; never removing it</li>
+        <li>Modesty norms — clothing, privacy, bathroom routines</li>
+        <li>Eid celebrations: how to mark them meaningfully in a non-Muslim home</li>
+      </ul></div>
+    </div>
+    <div class="module-card tnm" style="border:1.5px solid rgba(74,94,138,.3);">
+      <div class="module-top" style="background:#f0f2f9;"><div class="module-num-row"><span class="module-num-badge mb-nonmuslim">B3 · Moved from Track A</span><span class="module-duration">75 min</span></div>
+      <div class="module-title">Faith, Culture, and Identity in the Foster Home</div><div class="module-format">Case studies + care-leaver testimony</div></div>
+      <div class="module-body"><ul class="module-topics">
+        <li>Why religious and cultural identity is essential for child wellbeing — evidence base</li>
+        <li>The long-term effects of identity disconnection in care</li>
+        <li>Care-leaver voices: what Muslim children say they needed and didn't get</li>
+        <li>A child's faith may look very different from a "typical" Muslim household — normalising this</li>
+        <li>Connecting children to Muslim peers, mosque youth groups, and community</li>
+        <li>Volunteer faith connector programmes — how to access and use them</li>
+        <li>Balancing your own beliefs respectfully with the child's faith practice</li>
+        <li>Language: what to say and what to avoid — common erasure phrases</li>
+      </ul></div>
+    </div>
+    <div class="module-card tnm">
+      <div class="module-top"><div class="module-num-row"><span class="module-num-badge mb-nonmuslim">B4</span><span class="module-duration">60 min · Trauma-informed</span></div>
+      <div class="module-title">Refugee and Newcomer Muslim Children</div><div class="module-format">Case scenarios, guest speaker</div></div>
+      <div class="module-body"><ul class="module-topics">
+        <li>What unaccompanied minors and refugee youth have typically experienced</li>
+        <li>War, displacement, and resettlement trauma — signs to watch for</li>
+        <li>Language barriers: translation tools, community supports, dual-language strategies</li>
+        <li>Acculturation stress and role-reversal dynamics in newcomer families</li>
+        <li>Afghan, Syrian, Somali contexts — key cultural distinctions</li>
+        <li>Navigating citizenship issues for refugee youth in care</li>
+      </ul></div>
+    </div>
+    <div class="module-card tnm">
+      <div class="module-top"><div class="module-num-row"><span class="module-num-badge mb-nonmuslim">B5</span><span class="module-duration">60 min · Applied</span></div>
+      <div class="module-title">Islam, Childhood Trauma, and What It Means for Your Home</div><div class="module-format">Condensed version of Track A Module 5 — non-Muslim carer lens</div></div>
+      <div class="module-body"><ul class="module-topics">
+        <li>When religion was present during abuse — what this means practically</li>
+        <li>Children who associate Islamic practice with fear — how to respond without reinforcing it</li>
+        <li>Children who cling to faith as their only anchor — how to support without overstepping</li>
+        <li>Creating a home where faith is safe, available, and never imposed</li>
+        <li>Working with Muslim faith connectors and Islamic counsellors</li>
+        <li>Knowing when to ask for help — referrals to culturally competent support</li>
+      </ul></div>
+    </div>
+    <div class="module-card tnm">
+      <div class="module-top"><div class="module-num-row"><span class="module-num-badge mb-nonmuslim">B6</span><span class="module-duration">30 min · Resources</span></div>
+      <div class="module-title">Support Networks and Where to Get Help</div><div class="module-format">Resource mapping and referral guide</div></div>
+      <div class="module-body"><ul class="module-topics">
+        <li>IslamicFamily as a support and referral hub for non-Muslim carers</li>
+        <li>Local mosques as welcoming community resources for foster children</li>
+        <li>Volunteer faith connector matching programmes</li>
+        <li>When to request a Muslim-specific placement or agency review</li>
+        <li>Online Muslim foster carer support communities</li>
+      </ul></div>
+    </div>
+  </div>
+  <div class="insight i-nonmuslim">
+    <div class="insight-label">Research finding — UK (BuzzFeed investigation + Fostering Network report, 2019)</div>
+    <p>In England and Wales, 90% of Muslim children being adopted are placed with non-Muslim families. Research documents that identity disconnection in childhood frequently surfaces as identity crisis in young adulthood. Religious accommodation — halal food and prayer space — is among the first requests Muslim children make when entering care, costs almost nothing to provide, and makes an outsized difference to placement stability and long-term outcomes.</p>
+  </div>
+</div>
+
+<div class="track-divider"></div>
+
+<!-- TRACK C -->
+<div class="track-section" id="track-mosque">
+  <div class="track-header th-mosque">
+    <div class="track-icon">C</div>
+    <div class="track-header-text">
+      <div class="track-tag">Track C · Institutional Capacity</div>
+      <div class="track-title">Mosque as a Care-Friendly Community</div>
+      <div class="track-desc">For imams, mosque boards, and youth workers who want their masjid to become a place where foster families feel known and supported, and where Muslim children in care can find belonging and identity regardless of their placement. Builds the mosque as an active node in the foster care support network.</div>
+      <div class="track-pills"><span class="pill mb-mosque">5 modules</span><span class="pill mb-mosque">~6 hours</span><span class="pill mb-mosque">Leadership-focused</span></div>
+    </div>
+  </div>
+  <div class="modules-grid">
+    <div class="module-card tmo">
+      <div class="module-top"><div class="module-num-row"><span class="module-num-badge mb-mosque">C1</span><span class="module-duration">60 min · Leadership orientation</span></div>
+      <div class="module-title">Why the Mosque Must Engage</div><div class="module-format">Presentation for mosque leadership</div></div>
+      <div class="module-body"><ul class="module-topics">
+        <li>Scale of need: Muslim children in care across Alberta and Canada</li>
+        <li>What happens when Muslim children are placed in non-Muslim homes</li>
+        <li>The role Islamic tradition assigns to community in the care of children</li>
+        <li>Why mosques uniquely outperform mainstream recruitment channels</li>
+        <li>Overview of the foster care system — what imams and boards need to know</li>
+        <li>Case study: Halifax imam's mosque-based recruitment model (CBC, 2018)</li>
+      </ul></div>
+    </div>
+    <div class="module-card tmo">
+      <div class="module-top"><div class="module-num-row"><span class="module-num-badge mb-mosque">C2</span><span class="module-duration">60 min · Practical planning</span></div>
+      <div class="module-title">Mosque Outreach and Recruitment Support</div><div class="module-format">Workshop: designing mosque-based recruitment</div></div>
+      <div class="module-body"><ul class="module-topics">
+        <li>Hosting foster care information evenings at the masjid</li>
+        <li>Incorporating foster care awareness into khutbahs and programming</li>
+        <li>Displaying materials and maintaining a visible posture of welcome</li>
+        <li>Partnering with IslamicFamily and AFKA for referral pipelines</li>
+        <li>Using Ramadan, Eid, and community events as recruitment touchpoints</li>
+        <li>Confidentiality norms: supporting families without exposing them</li>
+      </ul></div>
+    </div>
+    <div class="module-card tmo">
+      <div class="module-top"><div class="module-num-row"><span class="module-num-badge mb-mosque">C3</span><span class="module-duration">90 min · Pastoral care</span></div>
+      <div class="module-title">Supporting Foster Families Pastorally and Practically</div><div class="module-format">Skill-building for imams and youth workers</div></div>
+      <div class="module-body"><ul class="module-topics">
+        <li>What foster families most need from their masjid community</li>
+        <li>Compassion fatigue and secondary trauma — how to recognise and respond</li>
+        <li>Supporting families through the grief of reunification</li>
+        <li>Avoiding stigma: how community members should and shouldn't engage</li>
+        <li>Confidentiality: protecting families from gossip and unsolicited advice</li>
+        <li>Creating a designated point person or small foster care support team</li>
+        <li>Launching a mosque-based peer support circle</li>
+      </ul></div>
+    </div>
+    <div class="module-card tmo">
+      <div class="module-top"><div class="module-num-row"><span class="module-num-badge mb-mosque">C4</span><span class="module-duration">60 min · Youth work</span></div>
+      <div class="module-title">Welcoming Children in Care into Mosque Life</div><div class="module-format">Youth worker workshop</div></div>
+      <div class="module-body"><ul class="module-topics">
+        <li>Understanding the experience of children in care — what they may be carrying</li>
+        <li>Trauma-informed welcoming practices for youth programmes and Maktab</li>
+        <li>Language: what to say and avoid around origins and family structure</li>
+        <li>Integrating foster and kinship children into youth events naturally</li>
+        <li>Eid gift programmes and Ramadan inclusion initiatives</li>
+        <li>Muslim children in non-Muslim homes — mosque as their anchor community</li>
+        <li>Volunteer faith connector roles — mosque youth as mentors</li>
+      </ul></div>
+    </div>
+    <div class="module-card tmo">
+      <div class="module-top"><div class="module-num-row"><span class="module-num-badge mb-mosque">C5</span><span class="module-duration">30 min · Action planning</span></div>
+      <div class="module-title">Becoming a Care-Friendly Mosque — Next Steps</div><div class="module-format">Planning session with IslamicFamily</div></div>
+      <div class="module-body"><ul class="module-topics">
+        <li>Self-assessment: where is the mosque now, and what is the goal?</li>
+        <li>Formal partnership with IslamicFamily as a referral and support partner</li>
+        <li>Appointing a mosque foster care champion or liaison</li>
+        <li>Developing a simple policy on supporting families in care</li>
+        <li>Annual Ramadan and Eid inclusion commitments</li>
+      </ul></div>
+    </div>
+  </div>
+  <div class="insight i-mosque">
+    <div class="insight-label">Program model — Halifax, Nova Scotia (CBC News, 2018)</div>
+    <p>After Nova Scotia's Department of Community Services reached out to the imam of Ummah Mosque in Halifax, mosque-based recruitment began producing results that government outreach alone had not achieved. Mosques consistently outperform mainstream channels when the imam is informed, willing, and supported with talking points and follow-up infrastructure.</p>
+  </div>
+</div>
+
+<div class="track-divider"></div>
+
+<!-- TRACK D -->
+<div class="track-section" id="track-cs">
+  <div class="track-header th-cs">
+    <div class="track-icon">D</div>
+    <div class="track-header-text">
+      <div class="track-tag">Track D · Professional Development</div>
+      <div class="track-title">Children's Services Staff — Faith, Identity &amp; Diverse Communities</div>
+      <div class="track-desc">For caseworkers, intake staff, supervisors, and assessment workers in public Children's Services (Alberta CFS) and private foster care agencies. Builds cultural and faith competency for equitable assessments, identity-informed placement decisions, and culturally responsive ongoing support.</div>
+      <div class="track-pills"><span class="pill mb-cs">6 modules</span><span class="pill mb-cs">~7 hours</span><span class="pill mb-cs">Professional development</span><span class="pill mb-cs">Continuing education eligible</span></div>
+    </div>
+  </div>
+  <div class="modules-grid">
+    <div class="module-card tcs">
+      <div class="module-top"><div class="module-num-row"><span class="module-num-badge mb-cs">D1</span><span class="module-duration">60 min · Foundation</span></div>
+      <div class="module-title">Islam, Muslims, and the Alberta Landscape</div><div class="module-format">Presentation with Q&amp;A</div></div>
+      <div class="module-body"><ul class="module-topics">
+        <li>Who are Alberta's Muslims? Demographics, origins, languages, internal diversity</li>
+        <li>The Five Pillars and their daily life implications for clients and carers</li>
+        <li>Key concepts every worker should know: halal, haram, mahram, kafala, nasab</li>
+        <li>Internal diversity: Sunni, Shia, Sufi, secular, convert communities</li>
+        <li>Common worker misconceptions that affect intake and assessment</li>
+        <li>How Islamophobia operates systemically in child welfare contexts</li>
+      </ul></div>
+    </div>
+    <div class="module-card tcs">
+      <div class="module-top"><div class="module-num-row"><span class="module-num-badge mb-cs">D2</span><span class="module-duration">90 min · Assessment practice</span></div>
+      <div class="module-title">Equitable Assessment of Muslim Foster Care Applicants</div><div class="module-format">Case vignettes, role-play, supervisor debrief</div></div>
+      <div class="module-body"><ul class="module-topics">
+        <li>How current assessment questions may read as discriminatory to Muslim applicants</li>
+        <li>Assessing Islamic practices without pathologising them (prayer, fasting, modesty)</li>
+        <li>Understanding immigrant families' fear of home investigation</li>
+        <li>Anti-bias practices in home study and home visits</li>
+        <li>Documenting Islamic practice accurately and neutrally in assessments</li>
+        <li>When to involve a Muslim cultural navigator or community liaison</li>
+      </ul></div>
+    </div>
+    <div class="module-card tcs">
+      <div class="module-top"><div class="module-num-row"><span class="module-num-badge mb-cs">D3</span><span class="module-duration">60 min · Placement decisions</span></div>
+      <div class="module-title">Faith and Identity in Placement Matching</div><div class="module-format">Decision-making framework workshop</div></div>
+      <div class="module-body"><ul class="module-topics">
+        <li>Alberta legislation on religious and cultural identity in placement decisions</li>
+        <li>Why religious matching matters: evidence on outcomes</li>
+        <li>When cultural matching is not possible — minimum standards for all placements</li>
+        <li>Faith accommodation as legal and ethical requirement, not a preference</li>
+        <li>How to record and communicate faith needs in placement plans</li>
+        <li>Connecting Muslim children in non-Muslim homes with faith support networks</li>
+      </ul></div>
+    </div>
+    <div class="module-card tcs">
+      <div class="module-top"><div class="module-num-row"><span class="module-num-badge mb-cs">D4</span><span class="module-duration">60 min · Applied practice</span></div>
+      <div class="module-title">Supporting Muslim Children in Care — Practical Casework</div><div class="module-format">Casework scenarios and resource mapping</div></div>
+      <div class="module-body"><ul class="module-topics">
+        <li>Ensuring halal food in placement — what to include in care plans</li>
+        <li>Facilitating mosque attendance and Jumu'ah as a care plan element</li>
+        <li>Ramadan and Eid: mandatory accommodations for Muslim children in care</li>
+        <li>Hijab: policy and practice — respecting and protecting the child's choice</li>
+        <li>Recognising spiritual injury and religious trauma — referral pathways</li>
+        <li>Responding to radicalisation concerns proportionately and fairly</li>
+      </ul></div>
+    </div>
+    <div class="module-card tcs">
+      <div class="module-top"><div class="module-num-row"><span class="module-num-badge mb-cs">D5</span><span class="module-duration">60 min · Refugee context</span></div>
+      <div class="module-title">Working with Muslim Refugee and Newcomer Families</div><div class="module-format">Presentation + panel with community representatives</div></div>
+      <div class="module-body"><ul class="module-topics">
+        <li>Kafala: the Islamic guardianship concept and its relevance for refugee families</li>
+        <li>Unaccompanied minor refugees — cultural and faith context</li>
+        <li>Interpreting behaviour through a refugee trauma lens, not a risk lens</li>
+        <li>Legal status: refugee youth aging out of care without citizenship</li>
+        <li>Working effectively with interpreters from Muslim communities</li>
+        <li>Afghan, Syrian, Somali contexts — key cultural distinctions</li>
+      </ul></div>
+    </div>
+    <div class="module-card tcs">
+      <div class="module-top"><div class="module-num-row"><span class="module-num-badge mb-cs">D6</span><span class="module-duration">30 min · Systems</span></div>
+      <div class="module-title">Building Systemic Partnerships with Muslim Community Organisations</div><div class="module-format">Partnership mapping session</div></div>
+      <div class="module-body"><ul class="module-topics">
+        <li>IslamicFamily: referral pathways, intake support, community navigation</li>
+        <li>AFKA: provincial caregiver network and specialised foster recruitment</li>
+        <li>Mosques as community partners — building trust, not just transactions</li>
+        <li>Muslim mental health and social work professionals — building a referral list</li>
+        <li>Co-designing culturally responsive policies with community advisory input</li>
+      </ul></div>
+    </div>
+  </div>
+  <div class="insight i-cs">
+    <div class="insight-label">Research finding — UK Muslim Fostering Project (Fostering Network, 2019)</div>
+    <p>The Fostering Network's national study found Muslim applicants frequently experience discrimination from the point of first contact with fostering services. At the same time, many workers lack basic knowledge of Islamic practice, leading to care plans that fail to accommodate halal diet, prayer, or Eid. Both failures are preventable. The report's primary recommendation was mandatory faith literacy training for all fostering service staff involved in assessment and placement.</p>
+  </div>
+</div>
+
+<!-- PROGRAMS -->
+<div class="programs-section" id="programs">
+  <div class="programs-title">Key programs informing this curriculum</div>
+  <div class="section-label" style="margin-bottom:.75rem;">Canada · United States · United Kingdom</div>
+  <div class="programs-grid">
+    <div>
+      <div class="prog-item"><div class="prog-flag">🇨🇦</div><div><div class="prog-name">Sakeenah Foster Care (ON)</div><div class="prog-desc">First licensed Muslim foster agency in North America, 2022</div></div></div>
+      <div class="prog-item"><div class="prog-flag">🇨🇦</div><div><div class="prog-name">FosterLink / Mercy Mission Canada (ON)</div><div class="prog-desc">Mosque-based recruitment; warm referral to Maple Star</div></div></div>
+      <div class="prog-item"><div class="prog-flag">🇨🇦</div><div><div class="prog-name">ICNA Relief Canada</div><div class="prog-desc">National; counselling and training integration</div></div></div>
+      <div class="prog-item"><div class="prog-flag">🇨🇦</div><div><div class="prog-name">Tarbiyyah Horizons (ON)</div><div class="prog-desc">Trauma-informed Muslim youth foster care</div></div></div>
+      <div class="prog-item"><div class="prog-flag">🇨🇦</div><div><div class="prog-name">MCASS / Muslim Children's Aid (ON)</div><div class="prog-desc">CAS partnership and community education</div></div></div>
+      <div class="prog-item"><div class="prog-flag">🇨🇦</div><div><div class="prog-name">Ummah Mosque &amp; Community Centre (NS)</div><div class="prog-desc">Imam-led recruitment; NS Dept. of Community Services partnership</div></div></div>
+    </div>
+    <div>
+      <div class="prog-item"><div class="prog-flag">🇺🇸</div><div><div class="prog-name">Muslim Foster Care Association (MI)</div><div class="prog-desc">Mosque orientations, Eid/Ramadan packages, national database</div></div></div>
+      <div class="prog-item"><div class="prog-flag">🇺🇸</div><div><div class="prog-name">Muslim Family Services (Detroit)</div><div class="prog-desc">Mental health services + foster parent certification</div></div></div>
+      <div class="prog-item"><div class="prog-flag">🇺🇸</div><div><div class="prog-name">Starr Commonwealth / Bethany Christian Services</div><div class="prog-desc">Afghan refugee unaccompanied minor placement</div></div></div>
+      <div class="prog-item"><div class="prog-flag">🇺🇸</div><div><div class="prog-name">Muslim Community Center for Human Services (TX)</div><div class="prog-desc">Community education on CPS and Muslim families</div></div></div>
+    </div>
+    <div>
+      <div class="prog-item"><div class="prog-flag">🇬🇧</div><div><div class="prog-name">Foster Care Link</div><div class="prog-desc">Only dedicated Muslim fostering agency in UK; Ofsted Outstanding 2004–2023</div></div></div>
+      <div class="prog-item"><div class="prog-flag">🇬🇧</div><div><div class="prog-name">My Foster Family / Muslim Fostering Project</div><div class="prog-desc">BAME recruitment specialist; faith literacy training</div></div></div>
+      <div class="prog-item"><div class="prog-flag">🇬🇧</div><div><div class="prog-name">PA Adoption &amp; Fostering (Penny Appeal)</div><div class="prog-desc">Scholar-produced Islamic guidance; anti-discriminatory training</div></div></div>
+      <div class="prog-item"><div class="prog-flag">🇬🇧</div><div><div class="prog-name">The Fostering Network</div><div class="prog-desc">Muslim Fostering Project national report, 2019</div></div></div>
+      <div class="prog-item"><div class="prog-flag">🇬🇧</div><div><div class="prog-name">Muslim Foster Network / My Family Group</div><div class="prog-desc">National awareness and placement matching</div></div></div>
+      <div class="prog-item"><div class="prog-flag">🇬🇧</div><div><div class="prog-name">TACT Fostering / Five Rivers / Active Care Solutions</div><div class="prog-desc">Culturally specialised placement agencies</div></div></div>
+    </div>
+  </div>
+</div>
+
+</div><!-- /content -->
+
+<footer>
+  <div class="footer-inner">
+    <div><div class="footer-org">IslamicFamily</div><div class="footer-sub">Edmonton, Alberta · Foster Care Curriculum Framework</div></div>
+    <div class="footer-note"><strong>Research basis:</strong> Synthesizes program documentation, recruitment materials, peer-reviewed literature, and national reports including the Fostering Network's 2019 Muslim Fostering Project. Modules should be co-developed with local CFS, AFKA, Muslim scholars, and foster parents with lived experience. This is a planning framework, not a final training product.</div>
+  </div>
+</footer>
+
+</body>
+</html>

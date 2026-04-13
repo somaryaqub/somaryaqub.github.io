@@ -1,0 +1,614 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Muslim Representation Across Five Domains</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Alegreya+Sans:ital,wght@0,400;0,500;0,700;1,400&family=Alegreya:ital,wght@0,700;1,700&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --green:   #275D43;
+    --green-lt:#4a9478;
+    --brown:   #E09964;
+    --brown-dk:#8a5a28;
+    --red:     #BB2D37;
+    --black:   #353535;
+    --mist:    #FAFAF2;
+    --arabica: #DCD9B8;
+    --sand:    #EECBAF;
+    --track:   #EEEEE6;
+    --muted:   #7a7a6a;
+    --border:  #e2e2d8;
+  }
+
+  html, body {
+    height: 100%;
+    background: var(--mist);
+    color: var(--black);
+    font-family: 'Alegreya Sans', sans-serif;
+  }
+
+  body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    padding: 3rem 2.5rem 2rem;
+  }
+
+  /* ── Header ── */
+  .page-header {
+    margin-bottom: 2.5rem;
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 2rem;
+  }
+  .page-title {
+    font-family: 'Alegreya', serif;
+    font-size: 28px;
+    font-weight: 700;
+    color: var(--black);
+    line-height: 1.2;
+  }
+  .page-sub {
+    font-size: 13px;
+    color: var(--muted);
+    margin-top: 5px;
+    max-width: 520px;
+    line-height: 1.55;
+  }
+  .spacebar-hint {
+    font-size: 11px;
+    color: var(--muted);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    white-space: nowrap;
+    padding-bottom: 4px;
+  }
+  .key {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid var(--border);
+    background: #fff;
+    border-radius: 5px;
+    padding: 2px 10px;
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--black);
+    box-shadow: 0 2px 0 var(--border);
+    letter-spacing: 0.04em;
+  }
+
+  /* ── Card grid ── */
+  .card {
+    background: #fff;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 1.25rem 1.4rem;
+    font-family: 'Alegreya Sans', sans-serif;
+  }
+  .card-title {
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--black);
+    margin-bottom: 2px;
+  }
+  .card-sub {
+    font-size: 11px;
+    color: var(--muted);
+    margin-bottom: 1.25rem;
+  }
+
+  /* ── Domain rows ── */
+  .domain-row { margin-bottom: 1rem; }
+  .domain-row:last-of-type { margin-bottom: 0; }
+  .row-top {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 6px;
+  }
+  .icon-wrap {
+    width: 26px;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .row-label { font-size: 11px; font-weight: 700; flex: 1; }
+
+  /* ── Bar pair ── */
+  .bar-pair { display: flex; flex-direction: column; gap: 4px; }
+  .bar-line { display: flex; align-items: center; gap: 8px; }
+  .bar-who {
+    font-size: 10px;
+    color: var(--muted);
+    width: 68px;
+    flex-shrink: 0;
+    text-align: right;
+  }
+  .bar-track {
+    flex: 1;
+    height: 18px;
+    background: var(--track);
+    border-radius: 3px;
+    overflow: hidden;
+    position: relative;
+  }
+  .bar-fill {
+    height: 100%;
+    border-radius: 3px;
+    width: 0;
+    transition: width 1.1s cubic-bezier(.25,.8,.25,1);
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+  .bar-pct {
+    font-size: 11px;
+    font-weight: 700;
+    width: 36px;
+    flex-shrink: 0;
+    min-height: 1em;
+  }
+  .stacked-pct {
+    display: flex;
+    align-items: center;
+    gap: 3px;
+    width: 36px;
+    flex-shrink: 0;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .stacked-pct-val { font-size: 10px; font-weight: 700; line-height: 1.1; white-space: nowrap; }
+  .stacked-pct-label { font-size: 9px; color: var(--muted); line-height: 1; }
+
+  /* ── Divider ── */
+  .divider { height: 1px; background: #f0efe8; margin: .9rem 0; }
+
+  /* ── Subsection notes ── */
+  .subsection {
+    margin-top: 8px;
+    padding: 7px 10px;
+    background: #fdf5f5;
+    border-left: 2px solid var(--red);
+    border-radius: 0 4px 4px 0;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .subsection.brown { background: #faf3ec; border-left-color: var(--brown); }
+  .subsection-icon { width: 16px; flex-shrink: 0; }
+  .subsection-text { font-size: 10px; color: #5a5a5a; line-height: 1.45; }
+  .subsection-text strong { color: var(--red); }
+  .subsection-text strong.brown { color: var(--brown-dk); }
+
+  /* ── Projection banner ── */
+  .projection {
+    margin-top: .9rem;
+    padding: 10px 14px;
+    background: var(--green);
+    border-radius: 8px;
+    font-size: 13px;
+    color: rgba(255,255,255,.85);
+    line-height: 1.6;
+    text-align: center;
+  }
+  .projection strong { color: #fff; }
+
+  /* ── Progress indicator ── */
+  .progress-dots {
+    display: flex;
+    justify-content: center;
+    gap: 6px;
+    margin-top: 1.5rem;
+  }
+  .dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: var(--arabica);
+    transition: background 0.3s, transform 0.3s;
+  }
+  .dot.active {
+    background: var(--green);
+    transform: scale(1.25);
+  }
+  .dot.done { background: var(--green-lt); }
+
+  /* ── Reveal counter ── */
+  .reveal-counter {
+    font-size: 11px;
+    color: var(--muted);
+    text-align: center;
+    margin-top: 0.6rem;
+    letter-spacing: 0.03em;
+    min-height: 1.2em;
+  }
+  .reveal-counter.done { color: var(--green); font-weight: 700; }
+
+  /* ── Subsection reveal ── */
+  .subsection { opacity: 0; transition: opacity 0.5s ease; pointer-events: none; }
+  .subsection.visible { opacity: 1; pointer-events: auto; }
+  .reveal-num {
+    opacity: 0;
+    background: #c8c8be;
+    color: transparent;
+    border-radius: 2px;
+    transition: opacity 0.5s ease, background 0.5s ease, color 0.5s ease;
+    user-select: none;
+  }
+  .reveal-num.shown { opacity: 1; background: transparent; color: inherit; user-select: auto; }
+  .reveal-num.inv {
+    opacity: 0;
+    background: rgba(255,255,255,0.18);
+    color: transparent;
+    border-radius: 2px;
+    transition: opacity 0.5s ease, background 0.5s ease, color 0.5s ease;
+    user-select: none;
+  }
+  .reveal-num.inv.shown { opacity: 1; background: transparent; color: inherit; user-select: auto; }
+
+  /* ── Flash animation on spacebar press ── */
+  @keyframes barFlash {
+    0%   { opacity: 1; }
+    30%  { opacity: 0.5; }
+    100% { opacity: 1; }
+  }
+  .bar-fill.just-revealed { animation: barFlash 0.4s ease; }
+</style>
+</head>
+<body>
+
+<div class="page-header">
+  <div>
+    <div class="page-title">Muslim representation across five domains</div>
+    <div class="page-sub">Muslim Canadians in median age, post-secondary attainment, poverty, housing &amp; justice.</div>
+  </div>
+  <div class="spacebar-hint">
+    <span class="key">space</span> to reveal each stat
+  </div>
+</div>
+
+<div class="card">
+  <div class="card-title">Muslim representation across five domains</div>
+  <div class="card-sub">Muslim Canadians in median age, post-secondary attainment, poverty, housing &amp; justice.</div>
+
+  <!-- MEDIAN AGE -->
+  <div class="domain-row" id="row-age">
+    <div class="row-top">
+      <div class="icon-wrap">
+        <svg width="24" height="24" viewBox="0 0 20 20" fill="none">
+          <circle cx="10" cy="7" r="4" fill="#275D43" opacity=".25" stroke="#275D43" stroke-width="1.5"/>
+          <path d="M3 17c0-3.314 3.134-6 7-6s7 2.686 7 6" stroke="#275D43" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+        </svg>
+      </div>
+      <span class="row-label" style="color:#275D43;">Median age</span>
+    </div>
+    <div class="bar-pair">
+      <div class="bar-line">
+        <div class="bar-who">Muslim Cdn.</div>
+        <div class="bar-track"><div class="bar-fill" id="b-age-m" style="background:#275D43;"></div></div>
+        <div class="bar-pct" style="color:#275D43;"><span id="p-age-m"></span></div>
+      </div>
+      <div class="bar-line">
+        <div class="bar-who">All Canadians</div>
+        <div class="bar-track"><div class="bar-fill" id="b-age-g" style="background:#b4b2a9;"></div></div>
+        <div class="bar-pct" style="color:#888780;"><span id="p-age-g"></span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- POST-SECONDARY -->
+  <div class="domain-row" id="row-edu">
+    <div class="row-top">
+      <div class="icon-wrap">
+        <svg width="24" height="24" viewBox="0 0 20 20" fill="none">
+          <polygon points="10,3 1,8 10,13 19,8" fill="#275D43"/>
+          <polygon points="4,10.5 4,15 10,17.5 16,15 16,10.5 10,13" fill="#275D43" opacity=".6"/>
+        </svg>
+      </div>
+      <span class="row-label" style="color:#275D43;">Post-secondary degree</span>
+    </div>
+    <div class="bar-pair">
+      <div class="bar-line">
+        <div class="bar-who">Muslim Cdn.</div>
+        <div class="bar-track"><div class="bar-fill" id="b-edu-m" style="background:#275D43;"></div></div>
+        <div class="bar-pct" style="color:#275D43;" id="p-edu-m"></div>
+      </div>
+      <div class="bar-line">
+        <div class="bar-who">Gen. population</div>
+        <div class="bar-track"><div class="bar-fill" id="b-edu-g" style="background:#b4b2a9;"></div></div>
+        <div class="bar-pct" style="color:#888780;" id="p-edu-g"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- LOW INCOME FAMILY -->
+  <div class="domain-row" id="row-inc">
+    <div class="row-top">
+      <div class="icon-wrap">
+        <svg width="24" height="24" viewBox="0 0 20 20" fill="none">
+          <rect x="2" y="6" width="16" height="11" rx="1.5" fill="#BB2D37" opacity=".15" stroke="#BB2D37" stroke-width="1.5"/>
+          <path d="M2 9h16" stroke="#BB2D37" stroke-width="1.2"/>
+          <circle cx="14.5" cy="12.5" r="1.5" fill="#BB2D37" opacity=".7"/>
+          <path d="M5 6V5a3 3 0 0 1 6 0v1" stroke="#BB2D37" stroke-width="1.3" fill="none" stroke-linecap="round"/>
+        </svg>
+      </div>
+      <span class="row-label" style="color:#BB2D37;">Low-income family</span>
+    </div>
+    <div class="bar-pair">
+      <div class="bar-line">
+        <div class="bar-who">Muslim Cdn.</div>
+        <div class="bar-track"><div class="bar-fill" id="b-inc-m" style="background:#BB2D37;"></div></div>
+        <div class="bar-pct" style="color:#BB2D37;" id="p-inc-m"></div>
+      </div>
+      <div class="bar-line">
+        <div class="bar-who">Gen. population</div>
+        <div class="bar-track"><div class="bar-fill" id="b-inc-g" style="background:#b4b2a9;"></div></div>
+        <div class="bar-pct" style="color:#888780;" id="p-inc-g"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- HOUSING -->
+  <div class="domain-row" id="row-hou">
+    <div class="row-top">
+      <div class="icon-wrap">
+        <svg width="24" height="24" viewBox="0 0 20 20" fill="none">
+          <rect x="2" y="8" width="16" height="10" rx="1" fill="#E09964" opacity=".2" stroke="#E09964" stroke-width="1.5"/>
+          <rect x="5" y="11" width="3" height="3" rx=".5" fill="#E09964"/>
+          <rect x="12" y="11" width="3" height="3" rx=".5" fill="#E09964"/>
+          <rect x="8.5" y="12" width="3" height="6" rx=".5" fill="#E09964"/>
+          <polyline points="1,9 10,2 19,9" stroke="#E09964" stroke-width="1.5" fill="none" stroke-linejoin="round"/>
+        </svg>
+      </div>
+      <span class="row-label" style="color:#8a5a28;">Affordable housing residents</span>
+    </div>
+    <div class="bar-pair">
+      <div class="bar-line">
+        <div class="bar-who">Muslim share</div>
+        <div class="bar-track"><div class="bar-fill" id="b-hou-m" style="background:#E09964;"></div></div>
+        <div class="bar-pct" style="color:#8a5a28;" id="p-hou-m"></div>
+      </div>
+      <div class="bar-line">
+        <div class="bar-who">Pop. share</div>
+        <div class="bar-track"><div class="bar-fill" id="b-hou-g" style="background:#b4b2a9;"></div></div>
+        <div class="bar-pct" style="color:#888780;" id="p-hou-g"></div>
+      </div>
+    </div>
+    <div class="subsection brown" id="sub-hou">
+      <svg class="subsection-icon" viewBox="0 0 16 16" fill="none">
+        <circle cx="8" cy="5" r="3" stroke="#E09964" stroke-width="1.2"/>
+        <path d="M2 14c0-3.314 2.686-5 6-5s6 1.686 6 5" stroke="#E09964" stroke-width="1.2" fill="none" stroke-linecap="round"/>
+      </svg>
+      <div class="subsection-text">Black Muslim Edmontonians are <strong class="brown"><span class="reveal-num" id="num-hou">16× more likely</span></strong> to live in subsidized housing than the general population.</div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- FEDERAL PRISON -->
+  <div class="domain-row" id="row-pri">
+    <div class="row-top">
+      <div class="icon-wrap">
+        <svg width="24" height="24" viewBox="0 0 20 20" fill="none">
+          <rect x="3" y="2" width="14" height="16" rx="1" fill="#BB2D37" opacity=".15" stroke="#BB2D37" stroke-width="1.5"/>
+          <line x1="3" y1="6" x2="17" y2="6" stroke="#BB2D37" stroke-width="1"/>
+          <line x1="3" y1="10" x2="17" y2="10" stroke="#BB2D37" stroke-width="1"/>
+          <line x1="3" y1="14" x2="17" y2="14" stroke="#BB2D37" stroke-width="1"/>
+          <rect x="8" y="14" width="4" height="4" rx=".5" fill="#BB2D37"/>
+        </svg>
+      </div>
+      <span class="row-label" style="color:#BB2D37;">Federal prison population</span>
+    </div>
+    <div class="bar-pair">
+      <div class="bar-line">
+        <div class="bar-who">Muslim share</div>
+        <div class="bar-track">
+          <div class="bar-fill" id="b-pri-obs" style="background:#BB2D37;z-index:1;"></div>
+          <div class="bar-fill" id="b-pri-off" style="background:#E09964;z-index:2;"></div>
+        </div>
+        <div class="stacked-pct">
+          <div class="stacked-pct-val" style="color:#BB2D37;" id="p-pri-obs"></div>
+          <div class="stacked-pct-label" id="l-pri-obs"></div>
+          <div class="stacked-pct-val" style="color:#8a5a28;" id="p-pri-off"></div>
+          <div class="stacked-pct-label" id="l-pri-off"></div>
+        </div>
+      </div>
+      <div class="bar-line">
+        <div class="bar-who">Pop. share</div>
+        <div class="bar-track"><div class="bar-fill" id="b-pri-g" style="background:#b4b2a9;"></div></div>
+        <div class="bar-pct" style="color:#888780;" id="p-pri-g"></div>
+      </div>
+    </div>
+    <div class="subsection" id="sub-pri">
+      <svg class="subsection-icon" viewBox="0 0 16 16" fill="none">
+        <path d="M8 2l1.5 4h4l-3.2 2.4 1.2 4L8 10l-3.5 2.4 1.2-4L2.5 6h4z" stroke="#BB2D37" stroke-width="1.2" fill="none" stroke-linejoin="round"/>
+      </svg>
+      <div class="subsection-text">Only <strong><span class="reveal-num" id="num-pri">14%</span> of racialized youth</strong> feel the justice system is fair.</div>
+    </div>
+  </div>
+
+  <div class="projection">Muslim population in Canada is expected to <strong><span class="reveal-num inv" id="num-proj-a">double</span></strong> by <strong><span class="reveal-num inv" id="num-proj-b">2040</span></strong>.</div>
+</div>
+
+<!-- Progress -->
+<div class="progress-dots" id="dots"></div>
+<div class="reveal-counter" id="counter">Press <strong>space</strong> to begin</div>
+
+<script>
+// Each step: bars reveal, or a subsection fades in
+const STEPS = [
+  // 0 – age Muslim
+  { fills:[{id:'b-age-m',val:30,max:60}], pcts:[{id:'p-age-m',val:30,max:60,isAge:true}] },
+  // 1 – age general
+  { fills:[{id:'b-age-g',val:41,max:60}], pcts:[{id:'p-age-g',val:41,max:60,isAge:true}] },
+  // 2 – edu Muslim
+  { fills:[{id:'b-edu-m',val:60,max:100}], pcts:[{id:'p-edu-m',val:60,max:100}] },
+  // 3 – edu general
+  { fills:[{id:'b-edu-g',val:28,max:100}], pcts:[{id:'p-edu-g',val:28,max:100}] },
+  // 4 – income Muslim
+  { fills:[{id:'b-inc-m',val:25,max:100}], pcts:[{id:'p-inc-m',val:25,max:100}] },
+  // 5 – income general
+  { fills:[{id:'b-inc-g',val:8,max:100}], pcts:[{id:'p-inc-g',val:8,max:100}] },
+  // 6 – housing Muslim
+  { fills:[{id:'b-hou-m',val:11,max:20}], pcts:[{id:'p-hou-m',val:11,max:20}], showSub:'sub-hou' },
+  // 7 – housing general
+  { fills:[{id:'b-hou-g',val:4.9,max:20}], pcts:[{id:'p-hou-g',val:4.9,max:20}] },
+  // 8 – housing callout: 16×
+  { num: 'num-hou' },
+  // 9 – prison observed + official
+  { fills:[{id:'b-pri-obs',val:11,max:20},{id:'b-pri-off',val:9,max:20}],
+    pcts:[{id:'p-pri-obs',val:11,max:20,label:'observed',labelId:'l-pri-obs'},
+          {id:'p-pri-off',val:9,max:20,label:'official',labelId:'l-pri-off'}], showSub:'sub-pri' },
+  // 10 – prison pop share
+  { fills:[{id:'b-pri-g',val:4.9,max:20}], pcts:[{id:'p-pri-g',val:4.9,max:20}] },
+  // 11 – justice callout: 14%
+  { num: 'num-pri' },
+  // 12 – projection: double by 2040
+  { num: 'num-proj-a', numB: 'num-proj-b' }
+];
+
+let current = 0;
+
+// Build dots
+const dotsEl = document.getElementById('dots');
+STEPS.forEach((_, i) => {
+  const d = document.createElement('div');
+  d.className = 'dot';
+  d.id = 'dot-' + i;
+  dotsEl.appendChild(d);
+});
+
+function fmt(val, isAge) {
+  if (isAge) return Math.round(val) + ' yrs';
+  return (val % 1 === 0 ? val : val.toFixed(1)) + '%';
+}
+
+function animateCount(el, target, isAge, duration) {
+  const start = performance.now();
+  function tick(now) {
+    const t = Math.min((now - start) / duration, 1);
+    const ease = t < 0.5 ? 2 * t * t : -1 + (4 - 2 * t) * t;
+    const cur = (target) * ease;
+    el.textContent = fmt(cur, isAge);
+    if (t < 1) requestAnimationFrame(tick);
+    else el.textContent = fmt(target, isAge);
+  }
+  requestAnimationFrame(tick);
+}
+
+function revealStep(idx) {
+  const step = STEPS[idx];
+
+  // subsection-only step
+  if (step.subsection) {
+    const el = document.getElementById(step.subsection);
+    if (el) el.classList.add('visible');
+  }
+
+  // show subsection alongside a bar reveal
+  if (step.showSub) {
+    const el = document.getElementById(step.showSub);
+    if (el) el.classList.add('visible');
+  }
+
+  // reveal a hidden number span
+  if (step.num) {
+    const el = document.getElementById(step.num);
+    if (el) el.classList.add('shown');
+  }
+  if (step.numB) {
+    const el = document.getElementById(step.numB);
+    if (el) el.classList.add('shown');
+  }
+
+  if (step.fills) {
+    step.fills.forEach(f => {
+      const el = document.getElementById(f.id);
+      if (!el) return;
+      el.style.width = (f.val / f.max * 100) + '%';
+      el.classList.remove('just-revealed');
+      void el.offsetWidth;
+      el.classList.add('just-revealed');
+    });
+  }
+
+  if (step.pcts) {
+    step.pcts.forEach(p => {
+      const el = document.getElementById(p.id);
+      if (!el) return;
+      animateCount(el, p.val, p.isAge, 900);
+      if (p.labelId) {
+        const lEl = document.getElementById(p.labelId);
+        if (lEl) lEl.textContent = p.label;
+      }
+    });
+  }
+
+  // update dots
+  for (let i = 0; i < STEPS.length; i++) {
+    const d = document.getElementById('dot-' + i);
+    if (i < idx) d.className = 'dot done';
+    else if (i === idx) d.className = 'dot active';
+    else d.className = 'dot';
+  }
+
+  // update counter
+  const counter = document.getElementById('counter');
+  if (idx === STEPS.length - 1) {
+    counter.textContent = 'All stats revealed';
+    counter.className = 'reveal-counter done';
+  } else {
+    counter.innerHTML = `<strong>${idx + 1}</strong> of ${STEPS.length} revealed — press <strong>space</strong> to continue`;
+    counter.className = 'reveal-counter';
+  }
+}
+
+function advance() {
+  if (current >= STEPS.length) return;
+  revealStep(current);
+  current++;
+}
+
+function resetAll() {
+  document.querySelectorAll('.bar-fill').forEach(el => { el.style.width = '0'; });
+  document.querySelectorAll('.bar-pct, .stacked-pct-val').forEach(el => { el.textContent = ''; });
+  document.querySelectorAll('.stacked-pct-label').forEach(el => { el.textContent = ''; });
+  document.querySelectorAll('.subsection').forEach(el => el.classList.remove('visible'));
+  document.querySelectorAll('.reveal-num').forEach(el => el.classList.remove('shown'));
+  current = 0;
+  for (let i = 0; i < STEPS.length; i++) document.getElementById('dot-'+i).className='dot';
+  const counter = document.getElementById('counter');
+  counter.innerHTML = 'Press <strong>space</strong> to begin';
+  counter.className = 'reveal-counter';
+}
+
+// Keyboard
+document.addEventListener('keydown', e => {
+  if (e.code === 'Space') { e.preventDefault(); advance(); }
+  if (e.code === 'ArrowRight') { e.preventDefault(); advance(); }
+  if ((e.code === 'ArrowLeft' || e.code === 'Backspace') && current > 0) {
+    e.preventDefault();
+    resetAll();
+  }
+});
+
+// Click anywhere on card also advances
+document.querySelector('.card').addEventListener('click', advance);
+</script>
+</body>
+</html>
