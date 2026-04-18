@@ -173,28 +173,29 @@
   /* PULL QUOTE */
   .pull-quote {
     padding: 4px 0;
-    margin: 40px 0 40px 0;
+    margin: 40px 0;
     font-family: 'Alegreya Sans', sans-serif;
-    font-size: 1.25rem;
+    font-size: 1.625rem;
     font-style: normal;
     font-weight: 700;
     line-height: 1.5;
     color: var(--green);
     position: relative;
-    text-indent: -0.45em;
+    padding-left: 0;
   }
 
-  .pull-quote::before {
-    content: '\201C';
-    font-family: 'Alegreya Sans', sans-serif;
+  .pull-quote .pq-open {
+    position: absolute;
+    left: -0.5em;
+    top: 0;
     font-weight: 700;
-    margin-right: 0.02em;
+    font-family: 'Alegreya Sans', sans-serif;
+    aria-hidden: true;
   }
 
-  .pull-quote::after {
-    content: '\201D';
-    font-family: 'Alegreya Sans', sans-serif;
+  .pull-quote .pq-close {
     font-weight: 700;
+    font-family: 'Alegreya Sans', sans-serif;
     margin-left: 0.02em;
   }
 
@@ -297,13 +298,23 @@
   }
 
   /* FOOTER */
+  @keyframes heartbeat {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.22); }
+  }
+
   footer {
     text-align: center;
     padding: 40px;
     font-size: 0.78rem;
-    color: rgba(53,53,53,0.4);
+    color: var(--black);
     letter-spacing: 0.05em;
     border-top: 1px solid var(--sand);
+  }
+
+  footer .heart {
+    display: inline-block;
+    animation: heartbeat 2.4s ease-in-out infinite;
   }
 
   /* RESPONSIVE */
@@ -329,7 +340,7 @@
   <div class="section">
     <div class="section-label">The Context</div>
     <p>Edmonton Police Service has no shortage of community engagement processes. Roundtables, advisory committees, listening sessions, consultations — the infrastructure of dialogue is well-developed. And yet, year after year, the same communities return with the same unresolved concerns, met with the same responses, cycling through the same motions. This is not a coincidence.</p>
-    <p>What follows is an attempt to name, plainly and precisely, the pattern that community organizations — particularly those representing racialized, newcomer, and marginalized Edmontonians — have encountered in their relationship with the Edmonton Police Service (EPS). It is written not to assign bad faith to individuals, but to describe a structural dynamic that produces predictable outcomes regardless of who holds any particular role. Naming it is the first condition for changing it.</p>
+    <p>What follows is an attempt to name, plainly and precisely, the pattern that community organizations — particularly those representing indigenous, racialized, newcomer, and marginalized Edmontonians — have encountered in their relationship with the Edmonton Police Service (EPS). It is written not to assign bad faith to individuals, but to describe a structural dynamic that produces predictable outcomes regardless of who holds any particular role. Naming it is the first condition for changing it.</p>
   </div>
 
   <div class="divider">
@@ -342,9 +353,7 @@
     <p>EPS's energy flows not toward solving problems but toward protecting existing arrangements. This is not a failure of communication. It is a governance failure — and communities have become skilled at recognizing the difference between a table they are genuinely invited to and one they are seated at to provide the appearance of consultation.</p>
   </div>
 
-  <div class="pull-quote">
-    Communities have become skilled at recognizing the difference between a table they are genuinely invited to and one they are seated at to provide the appearance of consultation.
-  </div>
+  <div class="pull-quote"><span class="pq-open">&ldquo;</span>Communities have become skilled at recognizing the difference between a table they are genuinely invited to and one they are seated at to provide the appearance of consultation.<span class="pq-close">&rdquo;</span></div>
 
   <div class="section">
     <div class="section-label">The Structure of Meetings</div>
@@ -359,7 +368,7 @@
 
   <div class="section">
     <div class="section-label">The Cost</div>
-    <p>The cost of this pattern is not abstract. Volunteer advocates and grassroots organizers — who show up on evenings and weekends, who give what they cannot afford to give — find themselves in an unwinnable contest against an institution with inexhaustible time, salaried staff, and no structural pressure to resolve anything. Eventually, they burn out. They step back, and collectively we as a community lose people invested in making things better.</p>
+    <p>The cost of this pattern is not abstract. Volunteer advocates and grassroots organizers — who show up on evenings and weekends, who give what they cannot afford to give — find themselves in an unwinnable contest against an institution with inexhaustible time, salaried staff, and no structural pressure to resolve anything. Eventually, community leaders burn out. If they persist without outcomes they lose legitimacy with their communities. If they give up at least they have a community to return to, so they step back, and collectively we lose people invested in making things better.</p>
     <p>Attrition is not an accident. It is the strategy. The status quo at EPS depends on communities being isolated, under-resourced, and willing to give up.</p>
   </div>
 
@@ -374,9 +383,7 @@
     <p>EPS does not need to take action or even apologize. It only needs to outlast the media cycle. And it does — because the asymmetry is structural, not incidental.</p>
   </div>
 
-  <div class="pull-quote">
-    EPS does not need to take action or even apologize. It only needs to outlast the media cycle.
-  </div>
+  <div class="pull-quote"><span class="pq-open">&ldquo;</span>EPS does not need to take action or even apologize. It only needs to outlast the media cycle.<span class="pq-close">&rdquo;</span></div>
 
   <div class="section">
     <div class="section-label">What Was Forgotten</div>
@@ -411,10 +418,10 @@
 </article>
 
 <footer>
-  Made with ❤️ in Edmonton (Treaty 6)
+  Made with <span class="heart">❤️</span> in Edmonton (Treaty 6)
 </footer>
 
-<link href="https://fonts.googleapis.com/css2?family=Alegreya+Sans:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Alegreya+Sans:ital,wght@0,100;0,300;0,400;0,500;0,700;1,300;1,400&display=swap" rel="stylesheet">
 <style>
   #diagram-container {
     background: #16221d;
