@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Advancing Data Mobility within Social Services — IslamicFamily</title>
+<link href="https://fonts.googleapis.com/css2?family=Alegreya:ital,wght@0,400;0,700;1,400&family=Alegreya+Sans:wght@300;400;500;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --green:#275D43;--green-dark:#1e4a35;--green-light:#eaf2ed;--green-mid:#3a7a5a;
+  --brown:#E09964;--brown-light:#fdf4ec;--bg:#FAFAF2;
+  --black:#353535;--arabica:#DCD9B8;--white:#ffffff;
+  --text:#353535;--text-mid:#4a4a45;--text-muted:#888880;
+  --border:rgba(39,93,67,0.13);--radius:10px;
+}
+body{font-family:'Alegreya Sans',system-ui,sans-serif;background:var(--bg);color:var(--text);font-size:15px;line-height:1.75}
+
+/* HEADER */
+.header{background:var(--green);padding:20px 32px}
+.header-inner{max-width:780px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap}
+.header-logo{font-family:'Alegreya Sans',sans-serif;color:white;font-size:18px;font-weight:700}
+.header-tag{background:rgba(255,255,255,0.12);border:1px solid rgba(255,255,255,0.25);color:rgba(255,255,255,0.9);font-size:10px;font-weight:500;letter-spacing:0.12em;text-transform:uppercase;padding:5px 13px;border-radius:100px;white-space:nowrap}
+
+/* HERO */
+.hero{background:var(--green);padding:52px 32px 56px;position:relative;overflow:hidden}
+.hero-inner{max-width:780px;margin:0 auto}
+.hero::before{content:'';position:absolute;top:-80px;right:-80px;width:400px;height:400px;border-radius:50%;background:rgba(255,255,255,0.03);pointer-events:none}
+.hero::after{content:'';position:absolute;bottom:0;left:0;right:0;height:4px;background:linear-gradient(to right,#E09964,#F7AF29,#EECBAF)}
+.hero-meta{display:flex;flex-wrap:wrap;gap:6px 28px;margin-bottom:28px}
+.hero-meta-item{display:flex;gap:7px;align-items:baseline}
+.hero-meta-label{font-size:10px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:rgba(255,255,255,0.5);white-space:nowrap}
+.hero-meta-value{font-size:13px;color:rgba(255,255,255,0.85)}
+.hero h1{font-family:'Alegreya',serif;font-size:clamp(26px,4vw,40px);font-weight:700;color:#fff;line-height:1.18;margin-bottom:10px;max-width:720px}
+.hero-subtitle{font-size:16px;color:rgba(255,255,255,0.65);margin-bottom:28px;max-width:600px;font-style:italic;font-family:'Alegreya',serif}
+.hero-rec-label{font-size:10px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:var(--brown);margin-bottom:10px}
+.hero-rec{background:rgba(255,255,255,0.1);border-left:3px solid var(--brown);border-radius:0 8px 8px 0;padding:16px 20px;max-width:700px}
+.hero-rec p{font-size:15px;line-height:1.65;color:rgba(255,255,255,0.92);font-weight:400}
+
+/* PAGE LAYOUT */
+.page{display:grid;grid-template-columns:1fr;min-height:100vh}
+@media(max-width:768px){.page{grid-template-columns:1fr}}
+
+/* MAIN */
+main{padding:40px 36px 80px;min-width:0;max-width:780px;margin:0 auto}
+@media(max-width:768px){main{padding:28px 20px 56px}}
+
+/* SIDEBAR */
+aside{padding:36px 22px;background:var(--white);display:flex;flex-direction:column;gap:32px;position:sticky;top:0;height:100vh;overflow-y:auto}
+@media(max-width:768px){aside{position:static;height:auto;padding:24px 20px;border-top:1px solid var(--border);display:grid;grid-template-columns:1fr 1fr;gap:20px}}
+@media(max-width:480px){aside{grid-template-columns:1fr}}
+
+/* SECTION */
+.section{margin-bottom:44px}
+.section-label{font-size:10px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:var(--brown);margin-bottom:8px;display:flex;align-items:center;gap:10px}
+.section-label::after{content:'';flex:1;height:1px;background:var(--arabica)}
+h2{font-family:'Alegreya',serif;font-size:25px;font-weight:700;line-height:1.22;color:var(--green);margin-bottom:14px}
+h3{font-size:11px;font-weight:700;color:var(--text);margin:22px 0 8px;letter-spacing:0.07em;text-transform:uppercase}
+p{color:var(--text-mid);margin-bottom:13px}
+p:last-child{margin-bottom:0}
+strong{color:var(--text);font-weight:700}
+ul{margin:8px 0 13px 0;padding-left:0;list-style:none}
+ul li{color:var(--text-mid);padding:4px 0 4px 18px;position:relative;font-size:14.5px;line-height:1.6}
+ul li::before{content:'—';position:absolute;left:0;color:var(--brown);font-weight:700}
+.strand ul li::before{content:'✸';color:var(--brown);font-size:11px;top:5px}
+
+/* CALLOUT */
+.callout{border-left:3px solid var(--brown);background:var(--brown-light);border-radius:0 8px 8px 0;padding:15px 18px;margin:18px 0}
+.callout p{font-size:14.5px;font-weight:500;color:var(--green);margin:0;line-height:1.6}
+.callout-green{border-left-color:var(--green);background:var(--green-light)}
+.callout-green p{color:var(--green-dark)}
+
+/* STRAND CARDS */
+.strand{border:1px solid var(--border);border-radius:var(--radius);padding:20px 22px;margin-bottom:13px;background:var(--white);border-left:4px solid var(--green);position:relative}
+.strand-num{font-size:10px;font-weight:700;color:var(--brown);letter-spacing:0.12em;text-transform:uppercase;margin-bottom:5px}
+.strand h3{margin:0 0 10px;font-size:13.5px;color:var(--green);letter-spacing:0;text-transform:none;font-weight:700}
+.strand p,.strand ul{font-size:13.5px;margin:0}
+.strand ul{margin-top:6px}
+.strand ul li{font-size:13px}
+
+/* PRINCIPLE MAPPING TABLE */
+.map-grid{display:flex;flex-direction:column;gap:10px;margin:16px 0}
+.map-row{display:grid;grid-template-columns:42px 1fr 1fr;gap:0;border:1px solid var(--border);border-radius:8px;overflow:hidden;background:var(--white)}
+@media(max-width:600px){.map-row{grid-template-columns:1fr;}.map-num{display:none}}
+.map-num{background:var(--green);display:flex;align-items:center;justify-content:center;color:white;font-family:'Alegreya',serif;font-size:18px;font-weight:700}
+.map-principle{padding:14px 16px;border-right:1px solid var(--border)}
+@media(max-width:600px){.map-principle{border-right:none;border-bottom:1px solid var(--border)}}
+.map-principle-title{font-size:13px;font-weight:700;color:var(--text);margin-bottom:4px}
+.map-principle-desc{font-size:12.5px;color:var(--text-muted);line-height:1.5;margin:0}
+.map-hook{padding:14px 16px;background:var(--green-light)}
+.map-hook p{font-size:12.5px;color:var(--text-mid);line-height:1.5;margin:0}
+.map-hook strong{color:var(--green);font-size:11px;letter-spacing:0.05em;text-transform:uppercase;display:block;margin-bottom:3px}
+
+/* RECOMMENDATION CARDS */
+.rec-cards{display:flex;flex-direction:column;gap:10px;margin:16px 0}
+.rec-card{display:grid;grid-template-columns:42px 1fr;gap:0;border:1px solid var(--border);border-radius:8px;overflow:hidden;background:var(--white)}
+.rec-num{background:var(--green);display:flex;align-items:center;justify-content:center;color:white;font-family:'Alegreya',serif;font-size:18px;font-weight:700}
+.rec-body{padding:14px 18px}
+.rec-title{font-size:14px;font-weight:700;color:var(--green);margin-bottom:5px;line-height:1.3}
+.rec-desc{font-size:13px;color:var(--text-mid);line-height:1.6;margin:0}
+
+/* COST CASE / QUOTE BLOCK */
+.quote-block{background:var(--green);border-radius:var(--radius);padding:24px 26px;margin:22px 0;color:white}
+.quote-block-label{font-size:10px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--brown);margin-bottom:10px}
+.quote-block p{color:rgba(255,255,255,0.88);font-size:15px;line-height:1.65;margin-bottom:8px;font-family:'Alegreya',serif;font-style:italic}
+.quote-block p:last-child{margin-bottom:0}
+.quote-block strong{color:white}
+
+/* HOOK LIST */
+.hook-list{margin:12px 0}
+.hook{display:flex;gap:12px;padding:11px 0;border-bottom:1px solid var(--border)}
+.hook:last-child{border-bottom:none}
+.hook-icon{width:28px;height:28px;border-radius:6px;background:var(--green-light);display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:2px}
+.hook-icon svg{width:14px;height:14px;fill:var(--green)}
+.hook-text{font-size:13.5px;color:var(--text-mid);line-height:1.55}
+.hook-text strong{color:var(--text)}
+
+/* OUTCOME STATS */
+.outcome-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;margin:16px 0}
+@media(max-width:520px){.outcome-grid{grid-template-columns:1fr 1fr}}
+.outcome-card{background:var(--white);border:1px solid var(--border);border-radius:8px;padding:14px;text-align:center}
+.outcome-num{font-family:'Alegreya',serif;font-size:26px;font-weight:700;color:var(--green);line-height:1;margin-bottom:4px}
+.outcome-lbl{font-size:11px;color:var(--text-muted);line-height:1.4}
+
+/* SIDEBAR WIDGETS */
+.sw-label{font-size:10px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--green);margin-bottom:10px;padding-bottom:7px;border-bottom:2px solid var(--arabica)}
+.stat-pill{background:var(--green-light);border-radius:8px;padding:12px 14px;margin-bottom:7px}
+.stat-num{font-family:'Alegreya',serif;font-size:28px;font-weight:700;color:var(--green);line-height:1;margin-bottom:3px}
+.stat-lbl{font-size:11.5px;color:var(--text-muted);line-height:1.4}
+.sw-link{display:block;font-size:12.5px;color:var(--green);text-decoration:none;padding:6px 0;border-bottom:1px solid var(--border)}
+.sw-link:last-child{border-bottom:none}
+.sw-link:hover{color:var(--brown)}
+
+/* TOC MENU */
+.toc-btn{background:none;border:none;cursor:pointer;padding:6px;display:flex;flex-direction:column;gap:5px;justify-content:center;align-items:center;border-radius:6px;transition:background 0.15s}
+.toc-btn:hover{background:rgba(255,255,255,0.12)}
+.toc-btn span{display:block;width:20px;height:2px;background:rgba(255,255,255,0.85);border-radius:2px;transition:transform 0.25s, opacity 0.25s}
+.toc-btn.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+.toc-btn.open span:nth-child(2){opacity:0}
+.toc-btn.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+.toc-drawer{position:fixed;top:0;right:-280px;width:272px;height:100vh;background:var(--white);z-index:1000;box-shadow:-4px 0 24px rgba(0,0,0,0.12);transition:right 0.3s cubic-bezier(0.4,0,0.2,1);display:flex;flex-direction:column;overflow:hidden}
+.toc-drawer.open{right:0}
+.toc-drawer-header{background:var(--green);padding:18px 20px;display:flex;align-items:center;justify-content:space-between;flex-shrink:0}
+.toc-drawer-title{font-size:11px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:rgba(255,255,255,0.85)}
+.toc-close{background:none;border:none;cursor:pointer;color:rgba(255,255,255,0.7);font-size:20px;line-height:1;padding:2px 4px;border-radius:4px}
+.toc-close:hover{color:white;background:rgba(255,255,255,0.12)}
+.toc-list{padding:16px 0;overflow-y:auto;flex:1}
+.toc-item{display:block;padding:10px 20px;text-decoration:none;color:var(--text-mid);font-size:13.5px;line-height:1.4;border-left:3px solid transparent;transition:all 0.15s;cursor:pointer}
+.toc-item:hover{color:var(--green);background:var(--green-light);border-left-color:var(--brown)}
+.toc-item.active{color:var(--green);background:var(--green-light);border-left-color:var(--green);font-weight:600}
+.toc-item-label{font-size:10px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--brown);display:block;margin-bottom:2px}
+.toc-overlay{position:fixed;inset:0;background:rgba(0,0,0,0.3);z-index:999;opacity:0;pointer-events:none;transition:opacity 0.3s}
+.toc-overlay.open{opacity:1;pointer-events:all}
+
+/* FOOTER */
+.footer{background:var(--green);padding:24px 32px}
+.footer-inner{max-width:780px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap}
+.footer-left{color:rgba(255,255,255,0.9);font-size:13px;line-height:1.7}
+.footer-left strong{color:white}
+.footer-right{text-align:right}
+.footer-right a{color:rgba(255,255,255,0.65);font-size:12px;text-decoration:none;display:block}
+.footer-right span{color:rgba(255,255,255,0.35);font-size:11px}
+</style>
+</head>
+<body>
+
+<!-- Header -->
+<header class="header">
+  <div class="header-inner">
+  <div class="header-logo"></div>
+  <div style="display:flex;align-items:center;gap:12px">
+    <span class="header-tag">Policy Briefing — April 2026</span>
+    <button class="toc-btn" id="tocBtn" aria-label="Table of contents">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+  </div>
+</header>
+
+<!-- TOC Overlay -->
+<div class="toc-overlay" id="tocOverlay"></div>
+
+<!-- TOC Drawer -->
+<div class="toc-drawer" id="tocDrawer">
+  <div class="toc-drawer-header">
+    <span class="toc-drawer-title">Contents</span>
+    <button class="toc-close" id="tocClose">✕</button>
+  </div>
+  <nav class="toc-list">
+    <a class="toc-item" data-target="sec-summary"><span class="toc-item-label">01</span>Executive Summary</a>
+    <a class="toc-item" data-target="sec-problem"><span class="toc-item-label">02</span>The Problem</a>
+    <a class="toc-item" data-target="sec-charter"><span class="toc-item-label">03</span>Charter × POPA Alignment</a>
+    <a class="toc-item" data-target="sec-recs"><span class="toc-item-label">04</span>Recommendations</a>
+    <a class="toc-item" data-target="sec-throughline"><span class="toc-item-label">05</span>The Through-Line</a>
+    <a class="toc-item" data-target="sec-about"><span class="toc-item-label">06</span>About</a>
+    <a class="toc-item" data-target="sec-nextsteps"><span class="toc-item-label">07</span>Next Steps</a>
+  </nav>
+</div>
+
+<!-- Hero -->
+<div class="hero">
+  <div class="hero-inner">
+  <h1>POPA & the Right Albertans Should Have to Move Their Data</h1>
+  <div class="hero-subtitle">Advancing Data Mobility within Social Services</div>
+  <div class="hero-meta" style="margin-bottom:24px">
+    <div class="hero-meta-item"><span class="hero-meta-label">To</span><span class="hero-meta-value">Hilary Faulkner, ADM & Chief Privacy Officer · Meredith Giel, ED Privacy, Policy & Governance · Dustin Olsen, Legislative Assistant</span></div>
+    <div class="hero-meta-item"><span class="hero-meta-label">From</span><span class="hero-meta-value">Omar Yaqub ICD.D DSL (Hon) MBA BSc</span></div>
+    <div class="hero-meta-item"><span class="hero-meta-label">Date</span><span class="hero-meta-value">April 2026</span></div>
+  </div>
+  <div class="hero-rec-label">Policy Recommendation</div>
+  <div class="hero-rec">
+    <p>Albertans should have the right to move their data (between government-funded agencies). POPA's "common or integrated program" provisions create the legal foundation — extending them to funded nonprofit service partners would unlock data mobility across Alberta's social safety net without new legislation.</p>
+  </div>
+  </div>
+</div>
+
+<!-- Page Layout -->
+<div class="page">
+  <main>
+
+    <!-- EXECUTIVE SUMMARY -->
+    <div class="section" id="sec-summary">
+      <div class="section-label">Executive Summary</div>
+      <h2>POPA builds the walls. Data portability builds the doors.</h2>
+
+      <p>Alberta's <strong>Protection of Privacy Act (POPA)</strong>, which came into force June 11, 2025, represents Canada's most ambitious modernization of public sector privacy law. It introduces "common or integrated programs," data matching provisions, mandatory privacy management programs, and the strongest penalties for privacy violations in the country.</p>
+
+      <p>The <strong>People-First Intake Charter</strong>, developed by IslamicFamily from five years of frontline practice and grounded in Indigenous OCAP data sovereignty principles, offers a practical framework for bringing POPA's potential to life in the social services sector — where the gap between policy intent and implementation reality is widest.</p>
+
+      <p>This briefing maps the charter's four guiding principles to specific POPA provisions, identifies where regulatory clarification or extension could unlock data mobility for vulnerable Albertans, and offers six concrete recommendations.</p>
+    </div>
+
+    <!-- THE PROBLEM -->
+    <div class="section" id="sec-problem">
+      <div class="section-label">The Problem</div>
+      <h2>We don't have a data problem — we have a data collection problem</h2>
+
+      <p>People in need are worn down by having to retell their stories again and again. Frontline workers are exhausted by the burden of extracting data instead of offering care. Funders are frustrated by reporting that asks for more money and highlights problems but offers little insight.</p>
+
+      <p>A family accessing settlement services, food security, housing, and employment programs — often funded by the same provincial ministry — must retell their story at every door. Each agency collects the same data independently.</p>
+
+      <div class="callout">
+        <p><strong style="font-family:'Alegreya',serif;font-size:26px;color:var(--green);line-height:1.1">Only 20%</strong><br>of frontline worker time is spent in human interaction — the rest is consumed by data entry, admin & reporting</p>
+      </div>
+
+      <h3>Root causes</h3>
+      <ul>
+        <li><strong>Siloed thinking.</strong> We organize around programs, not people. When someone comes to a food bank, we check if they qualify for a hamper instead of asking about their goals and how we can help them navigate support systems</li>
+        <li><strong>Combative design.</strong> Silos breed defensive intake practices. Instead of acting as guides, staff are forced into bouncer roles — focused only on eligibility. Intake becomes cold, intrusive, and one-sided</li>
+        <li><strong>Data traps.</strong> Forcing data that doesn't reflect real life leads to failure. Making phone numbers mandatory for people who may not have one leads to fake or outdated entries. Systems should meet people where they are</li>
+      </ul>
+
+      <div class="callout">
+        <p>People fall through the cracks not for lack of need, but because they can't navigate the system. Data mobility is a bridge between means testing and universal benefits that actually saves taxpayers money.</p>
+      </div>
+    </div>
+
+    <!-- CHARTER × POPA ALIGNMENT -->
+    <div class="section" id="sec-charter">
+      <div class="section-label">Charter × POPA</div>
+      <h2>Four principles, four opportunities</h2>
+
+      <p>The People-First Intake Charter offers four guiding principles. Each maps directly to POPA provisions that enable progress — and reveals a clear opportunity for the province:</p>
+
+      <div class="map-grid">
+        <div class="map-row">
+          <div class="map-num">1</div>
+          <div class="map-principle">
+            <div class="map-principle-title">Data belongs to people</div>
+            <p class="map-principle-desc">Data isn't owned by organizations — it belongs to the people who share it. We should treat it like something precious on loan.</p>
+          </div>
+          <div class="map-hook">
+            <p><strong>POPA enables</strong> Prohibits sale of personal information. Gives individuals right to access and correct their data.</p>
+            <p style="margin-top:8px;background:var(--brown-light);border-radius:6px;padding:8px 12px;border-left:3px solid var(--brown)"><strong style="color:var(--brown);font-size:10px;letter-spacing:0.08em;text-transform:uppercase;display:block;margin-bottom:2px">Opportunity</strong> <span style="color:var(--green-dark)">Establish a portability right — let individuals direct their data to another provider, not just view it.</span></p>
+          </div>
+        </div>
+
+        <div class="map-row">
+          <div class="map-num">2</div>
+          <div class="map-principle">
+            <div class="map-principle-title">People should be able to move (& delete) their data</div>
+            <p class="map-principle-desc">Reducing trauma and frustration requires us to make referrals easy, with data organized in consistent, adaptable standards.</p>
+          </div>
+          <div class="map-hook">
+            <p><strong>POPA enables</strong> "Common or integrated program" provisions allow indirect collection and inter-agency disclosure.</p>
+            <p style="margin-top:8px;background:var(--brown-light);border-radius:6px;padding:8px 12px;border-left:3px solid var(--brown)"><strong style="color:var(--brown);font-size:10px;letter-spacing:0.08em;text-transform:uppercase;display:block;margin-bottom:2px">Opportunity</strong> <span style="color:var(--green-dark)">Extend this to funded nonprofits — where most social services are actually delivered.</span></p>
+          </div>
+        </div>
+
+        <div class="map-row">
+          <div class="map-num">3</div>
+          <div class="map-principle">
+            <div class="map-principle-title">Ask Just Enough</div>
+            <p class="map-principle-desc">Respect for humans and genuine relationships requires asking the minimum needed in the moment and letting time reveal the rest.</p>
+          </div>
+          <div class="map-hook">
+            <p><strong>POPA enables</strong> Requires collection "relates directly to and is necessary" for an operating program.</p>
+            <p style="margin-top:8px;background:var(--brown-light);border-radius:6px;padding:8px 12px;border-left:3px solid var(--brown)"><strong style="color:var(--brown);font-size:10px;letter-spacing:0.08em;text-transform:uppercase;display:block;margin-bottom:2px">Opportunity</strong> <span style="color:var(--green-dark)">Provide guidance on progressive disclosure and timing — intake shouldn't default to collecting everything upfront.</span></p>
+          </div>
+        </div>
+
+        <div class="map-row">
+          <div class="map-num">4</div>
+          <div class="map-principle">
+            <div class="map-principle-title">Questions Should Be Beneficial</div>
+            <p class="map-principle-desc">What we ask should be of benefit to those being asked and the ones asking. Instead of demanding proof, open new avenues of support.</p>
+          </div>
+          <div class="map-hook">
+            <p><strong>POPA enables</strong> Requires collection notices that explain purpose and legal authority.</p>
+            <p style="margin-top:8px;background:var(--brown-light);border-radius:6px;padding:8px 12px;border-left:3px solid var(--brown)"><strong style="color:var(--brown);font-size:10px;letter-spacing:0.08em;text-transform:uppercase;display:block;margin-bottom:2px">Opportunity</strong> <span style="color:var(--green-dark)">Make consent conversational and integrated into intake — not a compliance form, but a trust-building moment.</span></p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- RECOMMENDATIONS -->
+    <div class="section" id="sec-recs">
+      <div class="section-label">Recommendations</div>
+      <h2>Six actions to unlock data mobility</h2>
+
+      <p>Each operates within or directly extends POPA's existing framework:</p>
+
+      <div class="rec-cards">
+        <div class="rec-card">
+          <div class="rec-num">1</div>
+          <div class="rec-body">
+            <div class="rec-title">Extend "common or integrated program" to funded service partners</div>
+            <p class="rec-desc">POPA's definition covers public body-to-public body collaboration. Alberta's social safety net runs on contracted nonprofits. Amend the regulation to recognize government-funded agencies as participants in common programs, with corresponding privacy obligations. This one change unlocks data mobility across the actual service delivery network — without new legislation.</p>
+          </div>
+        </div>
+
+        <div class="rec-card">
+          <div class="rec-num">2</div>
+          <div class="rec-body">
+            <div class="rec-title">Establish a client-directed data portability right</div>
+            <p class="rec-desc">POPA gives individuals the right to access and correct their data. It doesn't yet give them the right to direct it to another provider. Introduce a portability provision allowing individuals to authorize transfer of intake and assessment data between funded agencies. The model exists in GDPR Article 20 and Quebec Law 25.</p>
+          </div>
+        </div>
+
+        <div class="rec-card">
+          <div class="rec-num">3</div>
+          <div class="rec-body">
+            <div class="rec-title">Invest in sector-wide data literacy</div>
+            <p class="rec-desc">Privacy Management Programs are required by June 2026. Extend this investment to funded service partners with sector-wide training on data rights, consent, and responsible use. Without shared language at the frontline, even good policy dies at implementation.</p>
+          </div>
+        </div>
+
+        <div class="rec-card">
+          <div class="rec-num">4</div>
+          <div class="rec-body">
+            <div class="rec-title">Mandate consent-integrated intake</div>
+            <p class="rec-desc">POPA regulation should specify that consent be woven into the intake experience — clear, conversational, and revocable. This aligns with POPA's privacy by design approach and the charter's principle that questions should be beneficial. Consent becomes a trust-building moment, not a compliance burden.</p>
+          </div>
+        </div>
+
+        <div class="rec-card">
+          <div class="rec-num">5</div>
+          <div class="rec-body">
+            <div class="rec-title">Fund standardized assessment frameworks</div>
+            <p class="rec-desc">A 2 out of 5 in housing security should mean the same thing in Edmonton as in Red Deer. Without common assessment standards, portable data is portable noise. Fund development of standardized tools across housing, food security, mental health, and employment — giving Alberta comparable, longitudinal data for the first time.</p>
+          </div>
+        </div>
+
+        <div class="rec-card">
+          <div class="rec-num">6</div>
+          <div class="rec-body">
+            <div class="rec-title">Embed Indigenous data sovereignty</div>
+            <p class="rec-desc">POPA's data matching provisions need explicit alignment with OCAP principles (Ownership, Control, Access, Possession). Require that data governance frameworks for common programs involving Indigenous communities be developed in partnership with those communities. This isn't just ethics — it's what makes data trustworthy enough for people to share it.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- THE THROUGH-LINE -->
+    <div class="section" id="sec-throughline">
+      <div class="section-label">The Through-Line</div>
+      <h2>From gatekeeping to guiding</h2>
+
+      <p>Every recommendation connects to a single design principle from the charter: <strong>data should be structured around people, not programs.</strong> POPA already signals this intent with its "common or integrated program" language, its privacy-by-design approach, and its prohibition on selling personal information.</p>
+
+      <div class="callout-green callout">
+        <p>What's needed now is the next step: extending these principles to the funded nonprofit sector where services are actually delivered, and giving Albertans the right to carry their own data across the system meant to serve them.</p>
+      </div>
+
+      <p>Data mobility helps us stop gatekeeping and start guiding. It ensures that vulnerable people don't have to prove they're worthy of help at every turn — they just get helped. That's a better deal for everyone: the clients, caseworkers, funders, and the province.</p>
+
+      <p><strong>Programs come and go. People persist. Our data systems should reflect that.</strong></p>
+    </div>
+
+    <!-- ABOUT -->
+    <div class="section" id="sec-about">
+      <div class="section-label">About</div>
+      <h2>IslamicFamily & the People-First Intake Charter</h2>
+
+      <p><strong>IslamicFamily</strong> is an Imagine Canada-accredited charity with a 40-year history in Alberta, located on Amiskwaciwâskahikan, Treaty 6 territory. We have built practical data sovereignty solutions across the sector, including data sharing agreements between police services and domestic violence organizations that improve safety outcomes.</p>
+
+      <p>The People-First Intake Charter demonstrates that data mobility is already possible in practice.</p>
+
+      <p><strong>Transform</strong> — our trauma-informed case management platform — is a people-first intake, case notes, reporting, and communication tool designed from the ground up by a social service agency for frontline workers and the clients they serve, grounded in data justice.</p>
+
+      <p>We welcome the opportunity to discuss how a data portability framework could be piloted within Alberta's social services sector.</p>
+    </div>
+
+    <!-- NEXT STEPS -->
+    <div class="section" id="sec-nextsteps">
+      <div class="section-label">Next Steps</div>
+      <h2>How we'd like to support the ministry</h2>
+
+      <div class="rec-cards">
+        <div class="rec-card">
+          <div class="rec-num">1</div>
+          <div class="rec-body">
+            <div class="rec-title">Host sessions on data mobility for the sector</div>
+            <p class="rec-desc">Convene frontline agencies, funders, and government stakeholders to build shared understanding of what data mobility means in practice — and what it requires.</p>
+          </div>
+        </div>
+
+        <div class="rec-card">
+          <div class="rec-num">2</div>
+          <div class="rec-body">
+            <div class="rec-title">Suggest meaningful data standards</div>
+            <p class="rec-desc">Propose standardized assessment frameworks across key domains — housing, food security, mental health, employment — so portable data is comparable and actionable across the province.</p>
+          </div>
+        </div>
+
+        <div class="rec-card">
+          <div class="rec-num">3</div>
+          <div class="rec-body">
+            <div class="rec-title">Demo what's possible when data mobility works between partners</div>
+            <p class="rec-desc">Show a live example of data sharing in action — including our existing agreements between police services and domestic violence organizations that improve safety outcomes.</p>
+          </div>
+        </div>
+
+        <div class="rec-card">
+          <div class="rec-num">4</div>
+          <div class="rec-body">
+            <div class="rec-title">Develop data literacy and infrastructure for the sector</div>
+            <p class="rec-desc">Partner on sector-wide training aligned with POPA's Privacy Management Program requirements — building the shared language and technical capacity that makes data mobility real at the frontline.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </main>
+</div>
+
+<!-- Footer -->
+<footer class="footer">
+  <div class="footer-inner">
+  <div class="footer-left">
+    <span style="color:rgba(255,255,255,0.9)">Omar Yaqub, OmarY@islamicfamily.ca +1.780.695.7477</span><br>
+    <span style="color:rgba(255,255,255,0.6)">IslamicFamily, 2-786 10545 108st, Edmonton, Ab T5H 2Z8</span>
+  </div>
+  </div>
+</footer>
+
+<script>
+// TOC MENU
+(function(){
+  const btn=document.getElementById('tocBtn');
+  const drawer=document.getElementById('tocDrawer');
+  const overlay=document.getElementById('tocOverlay');
+  const closeBtn=document.getElementById('tocClose');
+  const items=document.querySelectorAll('.toc-item');
+
+  function open(){drawer.classList.add('open');overlay.classList.add('open');btn.classList.add('open')}
+  function close(){drawer.classList.remove('open');overlay.classList.remove('open');btn.classList.remove('open')}
+
+  btn.addEventListener('click',()=>drawer.classList.contains('open')?close():open());
+  overlay.addEventListener('click',close);
+  closeBtn.addEventListener('click',close);
+
+  items.forEach(item=>{
+    item.addEventListener('click',()=>{
+      const target=document.getElementById(item.dataset.target);
+      if(target){
+        close();
+        setTimeout(()=>target.scrollIntoView({behavior:'smooth',block:'start'}),300);
+      }
+    });
+  });
+
+  // Active state on scroll
+  const sections=Array.from(document.querySelectorAll('.section[id]'));
+  const observer=new IntersectionObserver(entries=>{
+    entries.forEach(e=>{
+      if(e.isIntersecting){
+        items.forEach(i=>i.classList.remove('active'));
+        const active=Array.from(items).find(i=>i.dataset.target===e.target.id);
+        if(active) active.classList.add('active');
+      }
+    });
+  },{rootMargin:'-20% 0px -60% 0px'});
+  sections.forEach(s=>observer.observe(s));
+})();
+</script>
+
+</body>
+</html>
