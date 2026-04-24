@@ -502,6 +502,65 @@ function PieChart({ pct, color, size = 120, trackColor = "rgba(255,255,255,0.12)
   );
 }
 
+// Inline animation embed with click-to-fullscreen
+function AnimationEmbed({ src }) {
+  const [full, setFull] = useState(false);
+  useEffect(() => {
+    if (!full) return;
+    const onKey = (e) => { if (e.key === "Escape") setFull(false); };
+    document.addEventListener("keydown", onKey);
+    return () => document.removeEventListener("keydown", onKey);
+  }, [full]);
+  return (
+    <>
+      <div
+        onClick={() => setFull(true)}
+        style={{ margin: "16px 0 0", position: "relative", width: "100%", paddingBottom: "50%", overflow: "hidden", cursor: "pointer" }}
+      >
+        <iframe
+          src={src}
+          title="Client journey animation"
+          style={{
+            position: "absolute", top: 0, left: 0, width: "100%", height: "100%",
+            border: "none", display: "block", background: "transparent",
+            pointerEvents: "none",
+          }}
+          scrolling="no"
+          loading="lazy"
+        />
+      </div>
+      {full && (
+        <div
+          onClick={() => setFull(false)}
+          style={{
+            position: "fixed", inset: 0, zIndex: 2000, background: "rgba(0,0,0,0.95)",
+            display: "flex", alignItems: "center", justifyContent: "center",
+            cursor: "pointer", animation: "lbIn 0.3s ease forwards",
+          }}
+        >
+          <div onClick={(e) => e.stopPropagation()} style={{ width: "94vw", height: "88vh", position: "relative", animation: "lbScale 0.3s ease forwards" }}>
+            <iframe
+              src={src}
+              title="Client journey animation — fullscreen"
+              style={{ width: "100%", height: "100%", border: "none", borderRadius: 6, background: "transparent" }}
+              scrolling="no"
+            />
+            <button
+              onClick={() => setFull(false)}
+              style={{
+                position: "absolute", top: 12, right: 12, width: 36, height: 36,
+                borderRadius: "50%", border: "none", background: "rgba(255,255,255,0.15)",
+                color: "#fff", fontSize: 18, cursor: "pointer", display: "flex",
+                alignItems: "center", justifyContent: "center", lineHeight: 1,
+              }}
+            >✕</button>
+          </div>
+        </div>
+      )}
+    </>
+  );
+}
+
 // ═══════════════════════════════════════════════════════
 //  ARTICLE
 // ═══════════════════════════════════════════════════════
@@ -642,18 +701,11 @@ function Article() {
 
               <Quote>Reporting should give us <strong>real insight</strong> into what's happening – not just justify money spent.</Quote>
 
-              {/* Status quo workflow — interactive animation */}
+              {/* Status quo workflow — seamless embedded animation, click for fullscreen */}
               <Reveal>
-                <div style={{ margin: "16px -24px 0", borderRadius: 6, overflow: "hidden", position: "relative" }}>
-                  <iframe
-                    src="journey-animation.html"
-                    title="Today's workflow for navigating care — clients bounce between case workers, retelling their stories at every stop."
-                    style={{ width: "100%", height: 420, border: "none", borderRadius: 6, display: "block" }}
-                    loading="lazy"
-                  />
-                </div>
-                <figcaption style={{ fontFamily: FONTS.sans, fontSize: 13, color: textColor, opacity: 0.6, marginTop: 10, lineHeight: 1.5, fontStyle: "italic", paddingLeft: 0 }}>
-                  Today's workflow for navigating care — clients bounce between case workers, retelling their stories at every stop.
+                <AnimationEmbed src="journey-animation.html" />
+                <figcaption style={{ fontFamily: FONTS.sans, fontSize: 13, color: textColor, opacity: 0.6, marginTop: 10, lineHeight: 1.5, fontStyle: "italic" }}>
+                  Today's workflow for navigating care — clients bounce between case workers, retelling their stories at every stop. <span style={{ opacity: 0.5 }}>Click to expand.</span>
                 </figcaption>
               </Reveal>
             </section>
