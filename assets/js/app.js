@@ -94,28 +94,47 @@ const App = (() => {
         : "";
 
     document.getElementById("main").innerHTML = `
-      <section class="home-hero">
-        <h1 class="site-tagline">Writing on systems, community, & trying to make things work.</h1>
-      </section>
+      <div class="home-layout">
 
-      <div class="controls">
-        <div class="tag-filters">
-          <span class="filter-label">Filter by tag:</span>
-          <button class="tag-pill ${!activeTag ? "active" : ""}" data-tag="">All</button>
-          ${tagHTML}
-        </div>
-        <div class="sort-controls">
-          <label class="filter-label" for="sort-select">Sort:</label>
-          <select id="sort-select">
-            <option value="desc" ${sortOrder === "desc" ? "selected" : ""}>Newest first</option>
-            <option value="asc" ${sortOrder === "asc" ? "selected" : ""}>Oldest first</option>
-          </select>
-        </div>
-      </div>
+        <div class="home-main">
+          <div class="controls">
+            <div class="sort-controls">
+              <label class="filter-label" for="sort-select">Sort:</label>
+              <select id="sort-select">
+                <option value="desc" ${sortOrder === "desc" ? "selected" : ""}>Newest first</option>
+                <option value="asc" ${sortOrder === "asc" ? "selected" : ""}>Oldest first</option>
+              </select>
+            </div>
+            ${activeTag ? `<div class="active-filter">Showing: <strong>${activeTag}</strong> <button id="clear-tag">✕ clear</button></div>` : ""}
+          </div>
 
-      <div class="posts-grid">
-        ${noPostsMsg}
-        ${postsHTML}
+          <div class="posts-grid">
+            ${noPostsMsg}
+            ${postsHTML}
+          </div>
+        </div>
+
+        <aside class="home-sidebar">
+          <div class="sidebar-dict">
+            <div class="dict-headword">
+              <span class="dict-term">servanting</span>
+              <span class="dict-pos">v., pres. part.</span>
+            </div>
+            <div class="dict-body">
+              <p class="dict-def">The active, ongoing pursuit of refining service. <em>Servanting</em> is not a posture assumed for effect, but a discipline practiced in the texture of daily decisions: in how one listens, who one makes space for, and what one is willing to set aside.</p>
+              <p class="dict-def">Distinct from <em>serving</em> (which describes a task) or <em>servant leadership</em> (which describes a philosophy), <em>servanting</em> names the lived act itself — the continuous, intentional choosing of others' flourishing as the animating logic of leadership. It is, at its root, a form of worship: the belief that how we treat those in our care is itself an act of accountability to something greater than ourselves.</p>
+            </div>
+          </div>
+
+          <div class="sidebar-tags">
+            <div class="sidebar-heading">Browse by tag</div>
+            <div class="sidebar-tag-list">
+              <button class="tag-pill ${!activeTag ? "active" : ""}" data-tag="">All</button>
+              ${tagHTML}
+            </div>
+          </div>
+        </aside>
+
       </div>
     `;
 
@@ -145,6 +164,84 @@ const App = (() => {
       activeTag = null;
       renderHome();
     });
+  }
+
+  // ── Article Footer: Related Posts + Subscribe ──
+
+  function buildArticleFooter(meta) {
+    // Gather related posts: share at least one tag, exclude current, newest first, max 3
+    const related = POSTS
+      .filter((p) => p.slug !== meta.slug && p.tags.some((t) => meta.tags.includes(t)))
+      .sort((a, b) => new Date(b.date) - new Date(a.date))
+      .slice(0, 3);
+
+    // Group related by which shared tag surfaces them (use first matching tag)
+    const relatedHTML = related.length
+      ? related.map((p) => {
+          const sharedTags = p.tags.filter((t) => meta.tags.includes(t));
+          const tagBadges = sharedTags
+            .map((t) => `<span class="post-tag">${t}</span>`)
+            .join("");
+          return `
+            <a class="related-card" href="#/post/${p.slug}">
+              <div class="related-card-tags">${tagBadges}</div>
+              <div class="related-card-title">${p.title}</div>
+              <div class="related-card-date">${formatDate(p.date)}</div>
+            </a>`;
+        }).join("")
+      : `<p class="related-empty">No related posts yet.</p>`;
+
+    // Tag links for "More on…" section
+    const tagLinks = meta.tags
+      .map((t) => `<button class="tag-pill" data-tag="${t}">All posts tagged "${t}"</button>`)
+      .join("");
+
+    return `
+      <aside class="article-footer">
+
+        <section class="article-footer-related">
+          <h3 class="article-footer-heading">Related reading</h3>
+          <div class="related-grid">
+            ${relatedHTML}
+          </div>
+          <div class="related-tag-links">
+            ${tagLinks}
+          </div>
+        </section>
+
+        <section class="article-footer-subscribe">
+          <div class="subscribe-block">
+            <div class="subscribe-block-text">
+              <h3 class="article-footer-heading">Stay in the loop</h3>
+              <p>New posts on systems, community, and what actually works — direct to your inbox. No noise.</p>
+            </div>
+            <div class="subscribe-block-form">
+              <!--
+                MAILERLITE: replace the <form> below with your
+                <div class="ml-embedded" data-form="XXXXXXXX"></div>
+                snippet from MailerLite → Forms → Embedded
+              -->
+              <form
+                class="subscribe-form"
+                action="MAILERLITE_FORM_ACTION"
+                method="post"
+                target="_blank"
+              >
+                <input
+                  type="email"
+                  name="fields[email]"
+                  placeholder="your@email.com"
+                  required
+                  autocomplete="email"
+                />
+                <button type="submit">Subscribe</button>
+              </form>
+              <p class="subscribe-note">No spam. Unsubscribe any time.</p>
+            </div>
+          </div>
+        </section>
+
+      </aside>`;
   }
 
   // ── Render: Single Post ───────────────────────
@@ -186,15 +283,25 @@ const App = (() => {
               ${html}
             </div>
           </article>
+          ${buildArticleFooter(meta)}
           <div class="post-nav">
             <a class="back-link" href="#/">← All posts</a>
           </div>
         </div>
       `;
 
+      // Tag badges in header → filter home
       document.querySelectorAll(".post-tag.clickable").forEach((badge) => {
         badge.addEventListener("click", () => {
           activeTag = badge.dataset.tag;
+          navigate("/");
+        });
+      });
+
+      // "All posts tagged X" buttons in article footer
+      document.querySelectorAll(".article-footer .tag-pill").forEach((btn) => {
+        btn.addEventListener("click", () => {
+          activeTag = btn.dataset.tag;
           navigate("/");
         });
       });
