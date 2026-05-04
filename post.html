@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Loading… — Omar Yaqub</title>
+  <meta name="description" content="">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Alegreya:ital,wght@0,400;0,700;0,800;1,400;1,700&family=Alegreya+Sans:ital,wght@0,400;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="header-inner">
+    <a href="index.html" class="site-title">Omar Yaqub<span>.</span></a>
+    <nav class="header-nav">
+      <a href="index.html">← All writing</a>
+      <a href="#subscribe-post" class="btn-subscribe">Subscribe</a>
+    </nav>
+  </div>
+</header>
+
+<article>
+  <div class="post-page" id="postContainer">
+    <div class="loading">Loading article…</div>
+  </div>
+</article>
+
+<section class="post-subscribe-banner" id="subscribe-post">
+  <div class="subscribe-box">
+    <p><strong>Enjoyed this?</strong> Get new essays in your inbox — no noise, just the writing.</p>
+    <form class="subscribe-box-form" id="bannerSubscribeForm">
+      <input type="email" placeholder="your@email.com" required>
+      <button type="submit">Subscribe →</button>
+    </form>
+  </div>
+</section>
+
+<div class="post-nav" id="postNav">
+  <a href="index.html">← All articles</a>
+  <span></span>
+</div>
+
+<footer class="site-footer">
+  <p>© 2026 Omar Yaqub · <a href="https://linkedin.com/in/somaryaqub">LinkedIn</a> · Built on GitHub Pages</p>
+</footer>
+
+<script>
+const formatDate = iso => {
+  const [y, m, d] = iso.split('-');
+  return new Date(y, m - 1, d).toLocaleDateString('en-CA', {
+    year: 'numeric', month: 'long', day: 'numeric'
+  });
+};
+
+async function loadPost() {
+  const params = new URLSearchParams(window.location.search);
+  const id = params.get('id');
+
+  if (!id) {
+    document.getElementById('postContainer').innerHTML =
+      '<p class="no-results">No article specified.</p>';
+    return;
+  }
+
+  // Load posts index
+  const posts = await fetch('posts.json').then(r => r.json());
+  const post = posts.find(p => p.id === id);
+
+  if (!post) {
+    document.getElementById('postContainer').innerHTML =
+      '<p class="no-results">Article not found.</p>';
+    return;
+  }
+
+  // Update page title & meta
+  document.title = `${post.title} — Omar Yaqub`;
+  document.querySelector('meta[name="description"]').content = post.excerpt || '';
+
+  // Load article body HTML
+  const body = await fetch(post.file).then(r => r.text()).catch(() => '<p>Article content could not be loaded.</p>');
+
+  // Render
+  document.getElementById('postContainer').innerHTML = `
+    <header class="post-header">
+      <div class="post-header-meta">
+        <span class="post-date">${formatDate(post.date)}</span>
+        ${(post.tags || []).map(t => `
+          <a class="post-tag" href="index.html?tag=${encodeURIComponent(t)}">${t}</a>
+        `).join('')}
+      </div>
+      <h1>${post.title}</h1>
+      ${post.subtitle ? `<p class="post-header-subtitle">${post.subtitle}</p>` : ''}
+    </header>
+    <div class="post-body">${body}</div>
+  `;
+
+  // Prev / next navigation
+  const idx = posts.findIndex(p => p.id === id);
+  const nav = document.getElementById('postNav');
+  const newer = posts[idx - 1];
+  const older = posts[idx + 1];
+  nav.innerHTML = `
+    <span>${older ? `<a href="post.html?id=${older.id}">← ${older.title}</a>` : ''}</span>
+    <span>${newer ? `<a href="post.html?id=${newer.id}">${newer.title} →</a>` : '<a href="index.html">All articles →</a>'}</span>
+  `;
+}
+
+// Tag links on post page: return to index with tag filter
+// (handled by index.html reading ?tag= on load — see below)
+
+// Subscribe banners
+document.getElementById('bannerSubscribeForm').addEventListener('submit', e => {
+  e.preventDefault();
+  const email = e.target.querySelector('input[type="email"]').value;
+  alert(`Thanks! "${email}" will be added once MailerLite is connected.\nSee README.md for setup.`);
+});
+
+loadPost();
+</script>
+
+</body>
+</html>

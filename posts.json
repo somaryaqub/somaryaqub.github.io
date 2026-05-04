@@ -1,0 +1,26 @@
+[
+  {
+    "id": "sample-post-1",
+    "title": "Why Community Organizations Need Better Data Practices",
+    "date": "2025-10-15",
+    "tags": ["data", "community", "social-services"],
+    "excerpt": "Most nonprofits collect data because funders ask for it — not because it helps the people they serve. That asymmetry has real consequences.",
+    "file": "posts/sample-post-1.html"
+  },
+  {
+    "id": "sample-post-2",
+    "title": "The Case for Federated Infrastructure in Muslim Social Services",
+    "date": "2025-09-02",
+    "tags": ["governance", "federated-model", "strategy"],
+    "excerpt": "What would it look like if Muslim service organizations in Canada shared infrastructure without sacrificing independence? A look at the model we've been building.",
+    "file": "posts/sample-post-2.html"
+  },
+  {
+    "id": "sample-post-3",
+    "title": "Funding in the Dark: What Grantmakers Don't See",
+    "date": "2025-08-18",
+    "tags": ["data", "funding", "advocacy"],
+    "excerpt": "Grant applications ask for outcomes data, but the systems that would generate that data are often underfunded. Here's what that cycle costs communities.",
+    "file": "posts/sample-post-3.html"
+  }
+]

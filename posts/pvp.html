@@ -1,0 +1,1082 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Personal Voice Plan · IslamicFamily</title>
+<link href="https://fonts.googleapis.com/css2?family=Alegreya:ital,wght@0,400;0,700;1,400;1,700&family=Alegreya+Sans:wght@300;400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --nabawi:#275D43;--nabawi-dk:#1d4432;--nabawi-lt:#edf4ef;
+  --pinecone:#E09964;--pinecone-lt:#fdf4ec;
+  --mist:#FAFAF2;--kiswah:#353535;--arabica:#DCD9B8;
+  --sun:#F7AF29;--sand:#EECBAF;--yaqoot:#BB2D37;
+  --radius:10px;--shadow:0 2px 16px rgba(39,93,67,.08);
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:'Alegreya Sans',sans-serif;background:var(--mist);color:var(--kiswah);min-height:100vh;}
+
+/* PROGRESS */
+.prog-rail{position:fixed;top:0;left:0;right:0;height:4px;background:var(--arabica);z-index:100;}
+.prog-fill{height:100%;background:linear-gradient(90deg,var(--nabawi),var(--pinecone));transition:width .5s cubic-bezier(.4,0,.2,1);}
+
+/* HERO */
+.hero{background:var(--nabawi);padding:56px 24px 52px;text-align:center;position:relative;overflow:hidden;}
+.hero::before{content:'';position:absolute;inset:0;background-image:repeating-linear-gradient(45deg,rgba(255,255,255,.025) 0,rgba(255,255,255,.025) 1px,transparent 1px,transparent 30px),repeating-linear-gradient(-45deg,rgba(255,255,255,.025) 0,rgba(255,255,255,.025) 1px,transparent 1px,transparent 30px);}
+.hero::after{content:'';position:absolute;bottom:-1px;left:0;right:0;height:44px;background:var(--mist);clip-path:ellipse(56% 100% at 50% 100%);}
+
+
+.hero-eye{font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--pinecone);margin-bottom:10px;position:relative;z-index:1;}
+.hero-h1{font-family:'Alegreya',serif;font-size:clamp(2rem,6vw,3.8rem);font-weight:700;color:var(--mist);line-height:1.08;position:relative;z-index:1;}
+.hero-h1 em{font-style:italic;color:var(--sun);}
+.hero-p{font-size:15px;color:rgba(250,250,242,.7);margin-top:14px;line-height:1.65;max-width:480px;margin-left:auto;margin-right:auto;position:relative;z-index:1;}
+
+/* STEP NAV */
+.step-nav{display:flex;justify-content:center;gap:6px;padding:26px 24px 4px;}
+.pip{height:6px;width:22px;border-radius:3px;background:var(--arabica);cursor:pointer;transition:all .3s;}
+.pip.active{background:var(--nabawi);width:34px;}
+.pip.done{background:var(--pinecone);}
+
+/* CONTAINER */
+.wrap{max-width:720px;margin:0 auto;padding:8px 20px 100px;}
+.step{display:none;animation:up .35s ease;}
+.step.active{display:block;}
+@keyframes up{from{opacity:0;transform:translateY(14px);}to{opacity:1;transform:translateY(0);}}
+
+/* STEP HEADER */
+.step-hd{margin-bottom:26px;padding-top:28px;}
+.step-no{font-size:11px;font-weight:500;letter-spacing:.18em;text-transform:uppercase;color:var(--pinecone);}
+.step-h2{font-family:'Alegreya',serif;font-size:clamp(1.65rem,4.5vw,2.5rem);font-weight:700;color:var(--nabawi);line-height:1.12;margin:7px 0 9px;}
+.step-sub{font-size:14px;color:#6e7e74;line-height:1.65;}
+
+/* CARD */
+.card{background:#fff;border:1px solid #e5ede8;border-radius:var(--radius);padding:24px;margin-bottom:15px;box-shadow:var(--shadow);transition:border-color .2s;}
+.card:focus-within{border-color:var(--nabawi);}
+.callout{background:#f0f7f3;border-left:3px solid var(--nabawi);border-radius:6px;padding:12px 16px;margin-bottom:16px;font-style:italic;font-family:'Alegreya',serif;font-size:15px;color:#3a5e4a;line-height:1.6;}
+.lbl{font-size:12px;font-weight:700;color:var(--kiswah);text-transform:uppercase;letter-spacing:.09em;margin-bottom:6px;display:block;}
+.hint{font-size:13px;color:#8d9d94;margin-bottom:10px;font-style:italic;line-height:1.55;}
+
+/* LIMIT BADGE */
+.limit-badge{display:inline-flex;align-items:center;gap:5px;background:var(--mist);border:1px solid var(--arabica);border-radius:100px;padding:3px 10px;font-size:12px;font-weight:500;color:#6e7e74;margin-bottom:12px;transition:all .2s;}
+.limit-badge.warn{background:#fff8e6;border-color:var(--sun);color:#8a6a10;}
+.limit-badge.full{background:#fef2f0;border-color:#e8a090;color:var(--yaqoot);font-weight:700;}
+.limit-dot{width:7px;height:7px;border-radius:50%;background:var(--arabica);transition:background .2s;}
+.limit-badge.warn .limit-dot{background:var(--sun);}
+.limit-badge.full .limit-dot{background:var(--yaqoot);}
+
+/* INPUTS */
+textarea,input[type="text"],input[type="email"]{width:100%;background:var(--mist);border:1px solid #dde8e1;border-radius:6px;padding:10px 13px;font-family:'Alegreya Sans',sans-serif;font-size:14px;color:var(--kiswah);resize:vertical;transition:border-color .2s,background .2s;outline:none;}
+textarea:focus,input:focus{border-color:var(--nabawi);background:#fff;}
+textarea{min-height:88px;}
+
+/* TAGS */
+.tags{display:flex;flex-wrap:wrap;gap:7px;margin-top:4px;}
+.tag{padding:6px 13px;border-radius:100px;font-size:13px;border:1px solid #d4e2d9;cursor:pointer;transition:all .18s;background:var(--mist);user-select:none;color:#4a6558;}
+.tag:hover:not(.disabled){border-color:var(--nabawi);color:var(--nabawi);background:var(--nabawi-lt);}
+.tag.sel{background:var(--nabawi);color:#fff;border-color:var(--nabawi);}
+.tag.disabled{opacity:.35;cursor:not-allowed;}
+
+/* CHANNEL TABLE */
+.ch-head{display:grid;grid-template-columns:140px 1fr 1fr 1fr;gap:8px;margin-bottom:8px;}
+.ch-lbl{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:#8d9d94;}
+.ch-row{display:grid;grid-template-columns:140px 1fr 1fr 1fr;gap:8px;align-items:center;margin-bottom:7px;}
+.ch-name{font-size:13px;font-weight:500;color:var(--kiswah);display:flex;align-items:center;gap:7px;}
+.ch-row input[type="text"]{font-size:13px;padding:8px 10px;}
+.ch-row select{background:var(--mist);border:1px solid #dde8e1;border-radius:6px;padding:8px 10px;font-family:'Alegreya Sans',sans-serif;font-size:13px;color:var(--kiswah);outline:none;cursor:pointer;transition:border-color .2s;}
+.ch-row select:focus{border-color:var(--nabawi);}
+
+/* SLIDERS */
+.sl-block{padding:13px 0;border-bottom:1px solid #edf3ee;}
+.sl-block:last-child{border-bottom:none;padding-bottom:0;}
+.sl-row{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:8px;}
+.sl-l,.sl-r{font-family:'Alegreya',serif;font-weight:700;font-size:15px;color:var(--nabawi);}
+.sl-hint{font-size:11px;color:#9aaa9f;text-align:center;flex:1;margin:0 10px;font-style:italic;}
+input[type="range"]{-webkit-appearance:none;width:100%;height:4px;outline:none;cursor:pointer;background:linear-gradient(90deg,var(--nabawi) 0%,var(--arabica) 100%);border-radius:2px;}
+input[type="range"]::-webkit-slider-thumb{-webkit-appearance:none;width:20px;height:20px;border-radius:50%;background:var(--pinecone);border:3px solid #fff;box-shadow:0 2px 8px rgba(39,93,67,.2);transition:transform .15s;}
+input[type="range"]::-webkit-slider-thumb:hover{transform:scale(1.2);}
+
+/* BUTTONS */
+.btns{display:flex;gap:10px;margin-top:30px;flex-wrap:wrap;}
+.btn{padding:12px 24px;border-radius:6px;font-family:'Alegreya Sans',sans-serif;font-size:14px;font-weight:700;cursor:pointer;border:none;transition:all .2s;letter-spacing:.04em;}
+.btn-g{background:var(--nabawi);color:#fff;flex:1;min-width:130px;}
+.btn-g:hover{background:var(--nabawi-dk);}
+.btn-o{background:var(--pinecone);color:#fff;flex:1;min-width:130px;}
+.btn-o:hover{background:#c8834a;}
+.btn-s{background:transparent;border:1.5px solid #d4e2d9;color:#6e7e74;}
+.btn-s:hover{border-color:var(--nabawi);color:var(--nabawi);}
+
+/* QUARTER CHIPS */
+.q-row{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:4px;}
+.q-chip{padding:5px 12px;border-radius:100px;font-size:13px;font-weight:500;border:1px solid #d4e2d9;cursor:pointer;background:var(--mist);color:#4a6558;transition:all .18s;user-select:none;}
+.q-chip.sel{background:var(--nabawi);color:#fff;border-color:var(--nabawi);}
+.voice-entries{display:flex;flex-direction:column;gap:10px;margin-bottom:12px;}
+.voice-row{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;align-items:start;}
+.voice-row input{font-size:13px;padding:8px 10px;}
+.voice-col-lbl{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:#8d9d94;margin-bottom:5px;}
+.add-voice-btn{display:flex;align-items:center;gap:6px;background:none;border:1.5px dashed #d4e2d9;border-radius:8px;padding:10px 14px;font-family:"Alegreya Sans",sans-serif;font-size:13px;color:#6e7e74;cursor:pointer;width:100%;transition:all .2s;}
+.add-voice-btn:hover{border-color:var(--nabawi);color:var(--nabawi);}
+.voice-limit{font-size:12px;color:#8d9d94;font-style:italic;margin-top:4px;}
+.probe-card{background:var(--nabawi-lt);border-color:#c4ddd0;}
+.probe-q{font-family:"Alegreya",serif;font-style:italic;font-size:15px;color:var(--nabawi);margin-bottom:10px;line-height:1.5;}
+.refl-q{font-family:'Alegreya',serif;font-style:italic;font-size:15px;color:var(--nabawi);
+  padding:10px 14px;background:var(--nabawi-lt);border-radius:6px;
+  border-left:3px solid var(--nabawi);margin-bottom:10px;line-height:1.5;}
+.intent-synthesis-card{background:var(--nabawi);color:var(--mist);border-color:var(--nabawi);}
+.synthesis-label{font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--pinecone);margin-bottom:10px;font-weight:700;}
+.synthesis-issues,.synthesis-community{font-family:'Alegreya',serif;font-style:italic;font-size:15px;line-height:1.6;opacity:.85;margin-bottom:6px;}
+.synthesis-community{opacity:.65;font-size:13px;}
+.intent-starter{font-family:'Alegreya',serif;font-size:1.1rem;font-style:italic;color:var(--nabawi);font-weight:700;margin-bottom:8px;}
+.intent-synthesis-card{background:var(--nabawi);color:var(--mist);border-color:var(--nabawi);}
+.synthesis-label{font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--pinecone);margin-bottom:10px;font-weight:700;}
+.synthesis-issues,.synthesis-community{font-family:'Alegreya',serif;font-style:italic;font-size:15px;line-height:1.6;opacity:.85;margin-bottom:6px;}
+.synthesis-community{opacity:.65;font-size:13px;}
+.intent-starter{font-family:'Alegreya',serif;font-size:1.1rem;font-style:italic;color:var(--nabawi);font-weight:700;margin-bottom:8px;}
+
+/* ═══════════════════════════════════════════
+   PLAN PREVIEW  — full redesign
+═══════════════════════════════════════════ */
+.plan-wrap{
+  background:#fff;
+  border:1px solid #e5ede8;
+  border-radius:14px;
+  overflow:hidden;
+  margin-bottom:18px;
+  box-shadow:var(--shadow);
+}
+
+/* Dark masthead */
+.plan-masthead{
+  background:var(--nabawi);
+  padding:36px 40px 32px;
+  position:relative;
+  overflow:hidden;
+}
+.plan-masthead::before{
+  content:'';position:absolute;inset:0;
+  background-image:repeating-linear-gradient(60deg,rgba(255,255,255,.018) 0,rgba(255,255,255,.018) 1px,transparent 0,transparent 44px),repeating-linear-gradient(-60deg,rgba(255,255,255,.018) 0,rgba(255,255,255,.018) 1px,transparent 0,transparent 44px);
+}
+.plan-masthead::after{
+  content:'';position:absolute;top:-80px;right:-80px;width:260px;height:260px;
+  border-radius:50%;pointer-events:none;
+  background:radial-gradient(circle,rgba(224,153,100,.2) 0%,transparent 65%);
+}
+.plan-eyebrow{font-size:10px;letter-spacing:.24em;text-transform:uppercase;color:var(--pinecone);margin-bottom:10px;position:relative;z-index:1;}
+.plan-name{font-family:'Alegreya',serif;font-size:clamp(2rem,5vw,3rem);font-weight:700;color:#fff;line-height:1.05;position:relative;z-index:1;}
+.plan-role{font-size:14px;color:rgba(255,255,255,.55);margin-top:4px;position:relative;z-index:1;}
+.plan-quarter-badge{
+  display:inline-block;margin-top:12px;padding:4px 12px;
+  background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.2);
+  border-radius:100px;font-size:12px;font-weight:600;letter-spacing:.06em;
+  color:var(--sand);position:relative;z-index:1;
+}
+
+/* Section layout */
+.plan-body{padding:0 40px 36px;}
+.plan-section{padding:28px 0;border-bottom:1px solid #eef3ef;}
+.plan-section:last-child{border-bottom:none;}
+.plan-sec-label{
+  font-family:'Alegreya Sans',sans-serif;
+  font-size:10px;font-weight:700;letter-spacing:.22em;text-transform:uppercase;
+  color:var(--pinecone);margin-bottom:14px;
+}
+
+/* Intention */
+.plan-intention-text{
+  font-family:'Alegreya',serif;font-size:1.25rem;
+  line-height:1.7;color:var(--kiswah);
+  font-style:italic;
+}
+
+/* Tag chips in plan */
+.plan-chips{display:flex;flex-wrap:wrap;gap:7px;}
+.plan-chip{
+  padding:6px 14px;border-radius:100px;font-size:13px;font-weight:500;
+  background:var(--nabawi-lt);color:var(--nabawi);
+  border:1px solid #c4ddd0;
+}
+.plan-chip.pine{background:var(--pinecone-lt);color:#7a4e1a;border-color:#e8c49a;}
+
+/* Channel rows in plan */
+.plan-channels{display:flex;flex-direction:column;gap:10px;}
+.plan-channel-row{
+  display:flex;align-items:center;gap:14px;
+  padding:12px 16px;background:var(--mist);
+  border-radius:8px;border:1px solid #e8ede8;
+}
+.plan-ch-icon{font-size:18px;flex-shrink:0;}
+.plan-ch-name{font-weight:700;font-size:14px;color:var(--kiswah);min-width:100px;}
+.plan-ch-freq{font-size:12px;font-weight:500;color:var(--pinecone);background:var(--pinecone-lt);padding:3px 9px;border-radius:100px;border:1px solid #e8c49a;flex-shrink:0;}
+.plan-ch-purpose{font-size:13px;color:#6e7e74;font-style:italic;}
+
+/* Sliders in plan — real interactive sliders, read-only styled */
+.plan-sliders{display:flex;flex-direction:column;gap:16px;}
+.plan-sl-row{display:grid;grid-template-columns:120px 1fr 120px;gap:12px;align-items:center;}
+.plan-sl-left{font-family:'Alegreya',serif;font-weight:700;font-size:14px;color:var(--nabawi);text-align:right;}
+.plan-sl-right{font-family:'Alegreya',serif;font-weight:700;font-size:14px;color:var(--nabawi);}
+.plan-sl-track{position:relative;height:6px;background:#e8eee9;border-radius:3px;}
+.plan-sl-fill{position:absolute;left:0;top:0;height:100%;border-radius:3px;background:linear-gradient(90deg,var(--nabawi),var(--pinecone));}
+.plan-sl-thumb{
+  position:absolute;top:50%;transform:translate(-50%,-50%);
+  width:18px;height:18px;border-radius:50%;
+  background:var(--pinecone);border:3px solid #fff;
+  box-shadow:0 1px 6px rgba(39,93,67,.25);
+}
+
+/* Text blocks in plan */
+.plan-topics-text,.plan-inspo-text{
+  font-size:14px;line-height:1.75;color:var(--kiswah);
+  white-space:pre-line;
+}
+.plan-topics-text .topic-line{
+  display:flex;gap:10px;margin-bottom:6px;
+}
+.plan-topic-num{
+  font-family:'Alegreya',serif;font-weight:700;font-size:16px;
+  color:var(--pinecone);flex-shrink:0;min-width:22px;
+}
+
+/* ─── EXPORT ─── */
+.exp-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:9px;}
+.exp-btn{padding:14px 10px;border-radius:8px;border:1.5px solid #d4e2d9;background:#fff;cursor:pointer;text-align:center;transition:all .2s;font-family:'Alegreya Sans',sans-serif;}
+.exp-btn:hover{border-color:var(--nabawi);background:var(--nabawi-lt);}
+.exp-ic{font-size:22px;margin-bottom:5px;}
+.exp-lbl{font-size:13px;font-weight:700;color:var(--kiswah);display:block;}
+.exp-sub{font-size:11px;color:#8d9d94;margin-top:1px;}
+
+/* TOAST */
+.toast{position:fixed;bottom:22px;right:18px;background:var(--nabawi);color:#fff;padding:10px 17px;border-radius:7px;font-size:13px;transform:translateY(80px);opacity:0;transition:all .3s;z-index:200;}
+.toast.on{transform:translateY(0);opacity:1;}
+
+@media(max-width:620px){
+  .ch-head,.ch-row{grid-template-columns:1fr 1fr;}.ch-name{display:none;}
+  .plan-body{padding:0 22px 28px;}.plan-masthead{padding:28px 22px 24px;}
+  .plan-sl-row{grid-template-columns:80px 1fr 80px;gap:8px;}
+  .plan-sl-left,.plan-sl-right{font-size:12px;}
+}
+</style>
+</head>
+<body>
+
+<div class="prog-rail"><div class="prog-fill" id="pf" style="width:14%"></div></div>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-eye">IslamicFamily · Communications</div>
+  <h1 class="hero-h1">Personal Voice<br><em>Plan</em></h1>
+  <p class="hero-p">Intentionality over influence. A guided tool to help organizational leaders show up on social media with purpose — not just presence.</p>
+</div>
+
+<div class="step-nav" id="sNav"></div>
+<div class="wrap">
+
+<!-- ══ STEP 0: VOICES ══ -->
+<div class="step active" id="s0">
+  <div class="step-hd">
+    <div class="step-no">Step 1 of 10</div>
+    <h2 class="step-h2">Whose voice do you<br>really appreciate?</h2>
+    <p class="step-sub">Before we talk about your voice, let's talk about the voices that move you. List your top 3–5 — their name, handle, and where you follow them.</p>
+  </div>
+  <div class="card">
+    <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;margin-bottom:6px;">
+      <div class="voice-col-lbl">Name</div>
+      <div class="voice-col-lbl">Handle</div>
+      <div class="voice-col-lbl">Channel</div>
+    </div>
+    <div class="voice-entries" id="voice-entries">
+      <div class="voice-row">
+        <input type="text" placeholder="e.g. Omar Yaqub">
+        <input type="text" placeholder="@somaryaqub">
+        <input type="text" placeholder="LinkedIn">
+      </div>
+      <div class="voice-row">
+        <input type="text" placeholder="e.g. Offendum">
+        <input type="text" placeholder="@offendum">
+        <input type="text" placeholder="Instagram">
+      </div>
+      <div class="voice-row">
+        <input type="text" placeholder="">
+        <input type="text" placeholder="">
+        <input type="text" placeholder="">
+      </div>
+    </div>
+    <button class="add-voice-btn" id="add-voice-btn" onclick="addVoiceRow()">
+      <span>+</span> Add another voice
+    </button>
+    <div class="voice-limit" id="voice-limit-msg"></div>
+  </div>
+  <div class="card probe-card">
+    <div class="probe-q">What specifically draws you to these voices?</div>
+    <p class="hint" style="margin-bottom:10px">Is it their tone? The topics they cover? How often they post? The way they make you feel?</p>
+    <textarea id="inp-voice-what" rows="3" placeholder="e.g. I love how @offendum mixes personal vulnerability with his creative work — it doesn't feel like performance. I admire how Omar writes about non-profit work without making it dry or institutional…"></textarea>
+  </div>
+  <div class="card probe-card">
+    <div class="probe-q">Is there anything you've seen someone do online that you want to consciously avoid?</div>
+    <p class="hint" style="margin-bottom:10px">Sometimes knowing what you don't want is the clearest mirror.</p>
+    <textarea id="inp-voice-avoid" rows="3" placeholder="e.g. Performative outrage. Leaders who only share wins and never the struggle. Posting for engagement rather than meaning…"></textarea>
+  </div>
+  <div class="card probe-card">
+    <div class="probe-q">What do you like — and dislike — about how different people show up on social media?</div>
+    <p class="hint" style="margin-bottom:10px">Think about leaders, creators, or peers you follow. What works? What makes you cringe?</p>
+    <textarea id="inp-tone-refl" rows="3" placeholder="e.g. I admire people who post with conviction but don&#39;t perform outrage. I dislike when leaders only share wins and never the struggle…"></textarea>
+  </div>
+  <div class="btns">
+    <button class="btn btn-g" onclick="go(1)">Continue →</button>
+  </div>
+</div>
+
+<!-- ══ STEP 1 ══ -->
+<div class="step" id="s1">
+  <div class="step-hd">
+    <div class="step-no">Step 2 of 10</div>
+    <h2 class="step-h2">Who are you,<br>right now?</h2>
+    <p class="step-sub">Let's start with the basics — just for this season. Nothing here is permanent.</p>
+  </div>
+  <div class="card">
+    <label class="lbl" for="inp-name">Your name or handle</label>
+    <input type="text" id="inp-name" placeholder="e.g. M Ali Altaf">
+  </div>
+  <div class="card">
+    <label class="lbl" for="inp-role">Your role &amp; organization</label>
+    <p class="hint">What is your position and the lens you speak from?</p>
+    <input type="text" id="inp-role" value="Future Executive Director, IslamicFamily">
+  </div>
+  <div class="btns"><button class="btn btn-g" onclick="go(2)">Continue →</button></div>
+</div>
+
+<!-- ══ STEP 1b: ISSUES ══ -->
+<div class="step" id="s1b">
+  <div class="step-hd">
+    <div class="step-no">Step 3 of 10</div>
+    <h2 class="step-h2">What matters<br>to you right now?</h2>
+    <p class="step-sub">Just for this season. You don't need a manifesto — just a starting point. What's on your mind?</p>
+  </div>
+  <div class="callout">Before I post, share or like something I try to bring it back to our mission and our values.</div>
+  <div class="card">
+    <label class="lbl" for="inp-issues">Issues that feel urgent or important to you</label>
+    <p class="hint">In your sector, your community, or the world — what's keeping you up at night, or getting you out of bed in the morning?</p>
+    <textarea id="inp-issues" rows="4" placeholder="e.g. The gap between how non-profits talk about clients and how clients actually experience services. The way newcomer families are welcomed — or aren't — into Edmonton. Mental health support that actually reflects Islamic values…"></textarea>
+  </div>
+  <div class="btns">
+    <button class="btn btn-s" onclick="go(1)">← Back</button>
+    <button class="btn btn-g" onclick="go('1c')">Continue →</button>
+  </div>
+</div>
+
+<!-- ══ STEP 1c: COMMUNITY ══ -->
+<div class="step" id="s1c">
+  <div class="step-hd">
+    <div class="step-no">Step 4 of 10</div>
+    <h2 class="step-h2">Who do you feel<br>connected to represent?</h2>
+    <p class="step-sub">This is often the most honest anchor for your voice — you may not have a polished mission statement, but you know whose story you're carrying.</p>
+  </div>
+  <div class="card">
+    <label class="lbl" for="inp-community">Communities you feel connected to</label>
+    <p class="hint">Who are you showing up for, even when you don't say it out loud? Who would feel seen if they heard your voice?</p>
+    <textarea id="inp-community" rows="4" placeholder="e.g. Muslim families navigating life in Edmonton. Young professionals who feel like they have to choose between their faith and their career. Newcomers trying to find belonging in a system that wasn't built for them…"></textarea>
+  </div>
+  <div class="btns">
+    <button class="btn btn-s" onclick="go('1b')">← Back</button>
+    <button class="btn btn-g" onclick="go('1d')">Continue →</button>
+  </div>
+</div>
+
+<!-- ══ STEP 1d: INTENTION SYNTHESIS ══ -->
+<div class="step" id="s1d">
+  <div class="step-hd">
+    <div class="step-no">Step 5 of 10</div>
+    <h2 class="step-h2">Your intention<br>this season</h2>
+    <p class="step-sub">Based on what you've shared — here's a space to put it into your own words. One honest sentence is enough.</p>
+  </div>
+  <div class="card intent-synthesis-card">
+    <div class="synthesis-preview" id="synthesis-hint">
+      <div class="synthesis-label">You mentioned…</div>
+      <div class="synthesis-issues" id="synth-issues"></div>
+      <div class="synthesis-community" id="synth-community"></div>
+    </div>
+  </div>
+  <div class="card">
+    <label class="lbl" for="inp-intent">Your intention + impact <span style="font-weight:400;text-transform:none;letter-spacing:0;font-size:11px;color:#8d9d94">— in your own words</span></label>
+    <p class="hint">What do you want your voice to accomplish this season? There's no wrong answer here.</p>
+    <div class="intent-starter">I want to use my voice to…</div>
+    <textarea id="inp-intent" rows="4" placeholder="…help people see that non-profit work can be done differently. To make Muslim families in Edmonton feel like someone in leadership is speaking their language. To ask the questions I wish someone had asked when I was starting out…"></textarea>
+  </div>
+  <div class="btns">
+    <button class="btn btn-s" onclick="go('1c')">← Back</button>
+    <button class="btn btn-g" onclick="go(2)">Continue →</button>
+  </div>
+</div>
+
+<!-- ══ STEP 2 ══ -->
+<div class="step" id="s2">
+  <div class="step-hd">
+    <div class="step-no">Step 6 of 10</div>
+    <h2 class="step-h2">Who are you<br>speaking to?</h2>
+    <p class="step-sub">Social media can feel like shouting in Times Square while also speaking to a panel of experts — simultaneously. Don't try to speak to everyone. Zero in on your audience.</p>
+  </div>
+  <div class="card">
+    <label class="lbl">Audience segments</label>
+    <p class="hint">Knowing who you're speaking to makes it easier to figure out what to say. Choose up to <strong>5 key segments</strong>.</p>
+    <div id="aud-badge" class="limit-badge"><span class="limit-dot"></span><span id="aud-count">0 of 5 selected</span></div>
+    <div class="tags" id="tg-aud">
+      <span class="tag" onclick="togL(this,'tg-aud','aud-badge','aud-count',5)">Non-profit leadership</span>
+      <span class="tag" onclick="togL(this,'tg-aud','aud-badge','aud-count',5)">Funders &amp; foundations</span>
+      <span class="tag" onclick="togL(this,'tg-aud','aud-badge','aud-count',5)">Government &amp; ministers</span>
+      <span class="tag" onclick="togL(this,'tg-aud','aud-badge','aud-count',5)">Philanthropic technologists</span>
+      <span class="tag" onclick="togL(this,'tg-aud','aud-badge','aud-count',5)">Effective altruists</span>
+      <span class="tag" onclick="togL(this,'tg-aud','aud-badge','aud-count',5)">Community members</span>
+      <span class="tag" onclick="togL(this,'tg-aud','aud-badge','aud-count',5)">Sector peers &amp; collaborators</span>
+      <span class="tag" onclick="togL(this,'tg-aud','aud-badge','aud-count',5)">Future talent</span>
+      <span class="tag" onclick="togL(this,'tg-aud','aud-badge','aud-count',5)">Volunteers &amp; supporters</span>
+      <span class="tag" onclick="togL(this,'tg-aud','aud-badge','aud-count',5)">Faith communities</span>
+      <span class="tag" onclick="togL(this,'tg-aud','aud-badge','aud-count',5)">Newcomers &amp; immigrants</span>
+      <span class="tag" onclick="togL(this,'tg-aud','aud-badge','aud-count',5)">Youth &amp; young adults</span>
+      <span class="tag" onclick="togL(this,'tg-aud','aud-badge','aud-count',5)">Media &amp; journalists</span>
+      <span class="tag" onclick="togL(this,'tg-aud','aud-badge','aud-count',5)">Researchers &amp; academics</span>
+      <span class="tag" onclick="togL(this,'tg-aud','aud-badge','aud-count',5)">Decision makers</span>
+    </div>
+    <div style="margin-top:13px;display:flex;gap:8px">
+      <input type="text" id="ci-aud" placeholder="Add your own…" style="flex:1">
+      <button class="btn btn-s" style="white-space:nowrap" onclick="addL('tg-aud','ci-aud','aud-badge','aud-count',5)">+ Add</button>
+    </div>
+  </div>
+  <div class="btns">
+    <button class="btn btn-s" onclick="go(1)">← Back</button>
+    <button class="btn btn-g" onclick="go(3)">Continue →</button>
+  </div>
+</div>
+
+<!-- ══ STEP 3 ══ -->
+<div class="step" id="s3">
+  <div class="step-hd">
+    <div class="step-no">Step 7 of 10</div>
+    <h2 class="step-h2">What will you<br>talk about?</h2>
+    <p class="step-sub">Focus areas are the high-level subjects you feel compelled to opine about. They can shift season to season — but should always align with your strategy.</p>
+  </div>
+  <div class="card">
+    <label class="lbl">This season's focus areas</label>
+    <p class="hint">Choose <strong>3–4 focus areas</strong> for right now. What are you uniquely positioned to discuss?</p>
+    <div id="foc-badge" class="limit-badge"><span class="limit-dot"></span><span id="foc-count">0 of 4 selected</span></div>
+    <div class="tags" id="tg-foc">
+      <span class="tag" onclick="togL(this,'tg-foc','foc-badge','foc-count',4)">Non-profit innovation</span>
+      <span class="tag" onclick="togL(this,'tg-foc','foc-badge','foc-count',4)">Entrepreneurship</span>
+      <span class="tag" onclick="togL(this,'tg-foc','foc-badge','foc-count',4)">Client-focused care</span>
+      <span class="tag" onclick="togL(this,'tg-foc','foc-badge','foc-count',4)">Kaizen DEI</span>
+      <span class="tag" onclick="togL(this,'tg-foc','foc-badge','foc-count',4)">Reconciliation &amp; settler identity</span>
+      <span class="tag" onclick="togL(this,'tg-foc','foc-badge','foc-count',4)">Refugee &amp; newcomer support</span>
+      <span class="tag" onclick="togL(this,'tg-foc','foc-badge','foc-count',4)">Islamic values &amp; identity</span>
+      <span class="tag" onclick="togL(this,'tg-foc','foc-badge','foc-count',4)">Holistic identity</span>
+      <span class="tag" onclick="togL(this,'tg-foc','foc-badge','foc-count',4)">Leadership development</span>
+      <span class="tag" onclick="togL(this,'tg-foc','foc-badge','foc-count',4)">Mental health &amp; wellbeing</span>
+      <span class="tag" onclick="togL(this,'tg-foc','foc-badge','foc-count',4)">Tech in social services</span>
+      <span class="tag" onclick="togL(this,'tg-foc','foc-badge','foc-count',4)">Community building</span>
+      <span class="tag" onclick="togL(this,'tg-foc','foc-badge','foc-count',4)">Policy advocacy</span>
+      <span class="tag" onclick="togL(this,'tg-foc','foc-badge','foc-count',4)">Storytelling &amp; narrative</span>
+      <span class="tag" onclick="togL(this,'tg-foc','foc-badge','foc-count',4)">Questioning the status quo</span>
+      <span class="tag" onclick="togL(this,'tg-foc','foc-badge','foc-count',4)">Inclusive community spaces</span>
+    </div>
+    <div style="margin-top:13px;display:flex;gap:8px">
+      <input type="text" id="ci-foc" placeholder="Add your own…" style="flex:1">
+      <button class="btn btn-s" style="white-space:nowrap" onclick="addL('tg-foc','ci-foc','foc-badge','foc-count',4)">+ Add</button>
+    </div>
+    <div style="margin-top:16px">
+      <label class="lbl" style="margin-bottom:8px">Which season is this plan for?</label>
+      <div class="q-row" id="qchips">
+        <span class="q-chip" onclick="selQ(this)">Q1</span>
+        <span class="q-chip" onclick="selQ(this)">Q2</span>
+        <span class="q-chip" onclick="selQ(this)">Q3</span>
+        <span class="q-chip" onclick="selQ(this)">Q4</span>
+      </div>
+    </div>
+  </div>
+  <div class="btns">
+    <button class="btn btn-s" onclick="go(2)">← Back</button>
+    <button class="btn btn-g" onclick="go(4)">Continue →</button>
+  </div>
+</div>
+
+<!-- ══ STEP 4 ══ -->
+<div class="step" id="s4">
+  <div class="step-hd">
+    <div class="step-no">Step 8 of 10</div>
+    <h2 class="step-h2">Where will you<br>show up?</h2>
+    <p class="step-sub">Twitter, LinkedIn, Instagram each have their own cadence and style. Cross-posting the same content everywhere makes nobody happy. Map out what each channel is <em>for you</em>.</p>
+  </div>
+  <div class="card">
+    <div class="ch-head">
+      <span class="ch-lbl">Platform</span>
+      <span class="ch-lbl">Handle</span>
+      <span class="ch-lbl">Frequency</span>
+      <span class="ch-lbl">Purpose on this channel</span>
+    </div>
+    <div id="ch-grid">
+      <div class="ch-row"><div class="ch-name"><span>𝕏</span> Twitter / X</div><input type="text" placeholder="@handle"><select><option value="">Not active</option><option>Daily</option><option>3x / week</option><option selected>2x / week</option><option>Weekly</option><option>Monthly</option></select><input type="text" placeholder="e.g. Political discourse"></div>
+      <div class="ch-row"><div class="ch-name"><span>📸</span> Instagram</div><input type="text" placeholder="@handle"><select><option value="">Not active</option><option>Daily</option><option>3x / week</option><option>2x / week</option><option>Weekly</option><option>Monthly</option></select><input type="text" placeholder="e.g. Celebrating team"></div>
+      <div class="ch-row"><div class="ch-name"><span>💼</span> LinkedIn</div><input type="text" placeholder="@handle"><select><option value="">Not active</option><option>Daily</option><option>3x / week</option><option>2x / week</option><option>Weekly</option><option selected>2x / month</option></select><input type="text" placeholder="e.g. Professional connection"></div>
+      <div class="ch-row"><div class="ch-name"><span>📘</span> Facebook</div><input type="text" placeholder="@handle"><select><option value="" selected>Not active</option><option>Daily</option><option>3x / week</option><option>2x / week</option><option>Weekly</option><option>Monthly</option></select><input type="text" placeholder="Purpose…"></div>
+      <div class="ch-row"><div class="ch-name"><span>✍️</span> Blog / Medium</div><input type="text" placeholder="URL"><select><option value="">Not active</option><option>Weekly</option><option>Monthly</option><option selected>Quarterly</option></select><input type="text" placeholder="e.g. Deep dives"></div>
+      <div class="ch-row"><div class="ch-name"><span>🎙️</span> Podcast</div><input type="text" placeholder="Show name"><select><option value="">Not active</option><option>Weekly</option><option>Monthly</option><option selected>Quarterly</option></select><input type="text" placeholder="e.g. Entrepreneurial voice"></div>
+      <div class="ch-row"><div class="ch-name"><span>🎥</span> TikTok / Reels</div><input type="text" placeholder="@handle"><select><option value="" selected>Not active</option><option>Daily</option><option>3x / week</option><option>2x / week</option><option>Weekly</option></select><input type="text" placeholder="Purpose…"></div>
+    </div>
+  </div>
+  <div class="btns">
+    <button class="btn btn-s" onclick="go(3)">← Back</button>
+    <button class="btn btn-g" onclick="go(5)">Continue →</button>
+  </div>
+</div>
+
+<!-- ══ STEP 5 ══ -->
+<div class="step" id="s5">
+  <div class="step-hd">
+    <div class="step-no">Step 9 of 10</div>
+    <h2 class="step-h2">Tonality &amp;<br>attributes</h2>
+    <p class="step-sub">Before getting dressed you ask: what kind of day am I expecting? On social media we make the same decisions. Identifying your tone helps you be more selective, consistent, and clear.</p>
+  </div>
+  <div class="card"><div id="sliders"></div></div>
+  <div class="btns">
+    <button class="btn btn-s" onclick="go(4)">← Back</button>
+    <button class="btn btn-g" onclick="go(6)">Continue →</button>
+  </div>
+</div>
+
+<!-- ══ STEP 6 ══ -->
+<div class="step" id="s6">
+  <div class="step-hd">
+    <div class="step-no">Step 10 of 10</div>
+    <h2 class="step-h2">Topics &amp;<br>inspiration</h2>
+    <p class="step-sub">Identifying who you admire — and why — helps you refine your own voice and set goals. What story do you feel strongly compelled to tell — and have you told it yet?</p>
+  </div>
+  <div class="card">
+    <label class="lbl" for="inp-topics">Potential topics</label>
+    <div class="refl-q">What are you uniquely positioned to discuss — the stories and perspectives only you can bring?</div>
+    <p class="hint">List specific topics you want to write about this season.</p>
+    <textarea id="inp-topics" rows="5" placeholder="1. How strategic priority X connects to our current moment…&#10;2. Reconciliation and settler identity at IslamicFamily&#10;3. What refugee support taught me about trust and belonging…&#10;4. A case for client-focused care in the non-profit sector…"></textarea>
+  </div>
+  <input type="hidden" id="inp-inspo" value="">
+  <div class="btns">
+    <button class="btn btn-s" onclick="go(5)">← Back</button>
+    <button class="btn btn-g" onclick="go(7)">See my plan →</button>
+  </div>
+</div>
+
+<!-- ══ STEP 7: THE PLAN ══ -->
+<div class="step" id="s7">
+  <div class="step-hd">
+    <div class="step-no">Step 10 of 10</div>
+    <h2 class="step-h2">Your Personal<br>Voice Plan</h2>
+    <p class="step-sub">A work in progress — return to this when you're wondering what to say, and why. Vulnerability required. Mistakes will be made. That's the point.</p>
+  </div>
+
+  <!-- THE PLAN CARD -->
+  <div class="plan-wrap" id="planCard">
+
+    <!-- MASTHEAD -->
+    <div class="plan-masthead">
+      <div class="plan-eyebrow">Personal Voice Plan · IslamicFamily</div>
+      <div class="plan-name" id="pl-name">Your Name</div>
+      <div class="plan-role" id="pl-role"></div>
+      <div id="pl-quarter-wrap" style="display:none">
+        <span class="plan-quarter-badge" id="pl-quarter"></span>
+      </div>
+    </div>
+
+    <div class="plan-body">
+
+      <!-- VOICES -->
+      <div class="plan-section" id="pl-voices-section" style="display:none">
+        <div class="plan-sec-label">Voices I Appreciate</div>
+        <div id="pl-voices-content"></div>
+      </div>
+
+      <!-- INTENTION -->
+      <div class="plan-section">
+        <div class="plan-sec-label">Intention + Impact</div>
+        <div class="plan-intention-text" id="pl-intent" style="font-style:normal">Your intention will appear here.</div>
+      </div>
+
+      <!-- AUDIENCE -->
+      <div class="plan-section" id="pl-aud-section">
+        <div class="plan-sec-label">Audience — 5 Key Segments</div>
+        <div class="plan-chips" id="pl-aud"></div>
+      </div>
+
+      <!-- FOCUS -->
+      <div class="plan-section" id="pl-foc-section">
+        <div class="plan-sec-label" id="pl-foc-label">Focus Areas</div>
+        <div class="plan-chips" id="pl-foc"></div>
+      </div>
+
+      <!-- CHANNELS -->
+      <div class="plan-section" id="pl-chan-section" style="display:none">
+        <div class="plan-sec-label">Channels</div>
+        <div class="plan-channels" id="pl-chan"></div>
+      </div>
+
+      <!-- TONALITY -->
+      <div class="plan-section">
+        <div class="plan-sec-label">Tonality + Attributes</div>
+        <div class="plan-sliders" id="pl-sliders"></div>
+      </div>
+
+      <!-- TONE REFLECTION -->
+      <div class="plan-section" id="pl-tone-refl-section" style="display:none">
+        <div class="plan-sec-label">What I Like &amp; Dislike on Social Media</div>
+        <div id="pl-tone-refl" style="font-size:14px;line-height:1.75;color:var(--kiswah);font-style:italic;"></div>
+      </div>
+
+      <!-- TOPICS -->
+      <div class="plan-section" id="pl-topics-section" style="display:none">
+        <div class="plan-sec-label">Potential Topics</div>
+        <div class="plan-topics-text" id="pl-topics"></div>
+      </div>
+
+      <!-- INSPIRATION -->
+      <div class="plan-section" id="pl-inspo-section" style="display:none">
+        <div class="plan-sec-label">Inspiration</div>
+        <div id="pl-inspo" style="font-size:14px;line-height:1.75;color:var(--kiswah);white-space:pre-line;font-style:italic;"></div>
+      </div>
+
+    </div><!-- /plan-body -->
+  </div><!-- /plan-wrap -->
+
+  <!-- EXPORT -->
+  <div class="card">
+    <span class="lbl" style="display:block;margin-bottom:13px">Save or share your plan</span>
+    <div class="exp-grid">
+      <button class="exp-btn" onclick="dlPDF()">
+        <div class="exp-ic">📄</div>
+        <span class="exp-lbl">Download</span>
+        <div class="exp-sub">Open &amp; print to PDF</div>
+      </button>
+      <button class="exp-btn" onclick="copyTxt()">
+        <div class="exp-ic">📋</div>
+        <span class="exp-lbl">Copy as text</span>
+        <div class="exp-sub">Paste anywhere</div>
+      </button>
+      <button class="exp-btn" onclick="shareLI()">
+        <div class="exp-ic">💼</div>
+        <span class="exp-lbl">Share intent</span>
+        <div class="exp-sub">Post to LinkedIn</div>
+      </button>
+    </div>
+  </div>
+
+  <div class="btns">
+    <button class="btn btn-s" onclick="go(6)">← Edit</button>
+    <button class="btn btn-s" id="restart-confirm" onclick="restart()">Start over</button>
+  </div>
+</div>
+
+</div><!-- /wrap -->
+<div class="toast" id="toast"></div>
+
+<script>
+const SL=[
+  {l:"Urgent",     r:"Reflective",     h:"Quick to post vs. thoughtful deliberation", k:"urgency"},
+  {l:"Fun",        r:"Serious",        h:"Playful & spontaneous vs. formal, crafted",  k:"fun"},
+  {l:"Personal",   r:"Organizational", h:"Share personal life vs. focus on work",       k:"personal"},
+  {l:"Interests",  r:"Efforts",        h:"Share topics/news vs. your own work",         k:"interests"},
+  {l:"Congenial",  r:"Confrontational",h:"Build bridges or agitate for change",         k:"congenial"},
+  {l:"Quantity",   r:"Quality",        h:"Post frequently vs. selectively",             k:"quantity"},
+  {l:"Conventional",r:"Novel",         h:"Familiar ideas vs. socializing new ones",     k:"conventional"},
+  {l:"External",   r:"Internal",       h:"For people who know you or don't",            k:"external"},
+  {l:"Specialist", r:"Generalist",     h:"Deep SME vs. broad commentary",              k:"specialist"},
+];
+const sv={};
+let qSel='';
+
+/* ── BUILD SLIDERS (input step) ── */
+function buildSl(){
+  const el=document.getElementById('sliders');
+  SL.forEach(s=>{
+    sv[s.k]=50;
+    el.innerHTML+=`
+      <div class="sl-block">
+        <div class="sl-row">
+          <span class="sl-l">${s.l}</span>
+          <span class="sl-hint">${s.h}</span>
+          <span class="sl-r">${s.r}</span>
+        </div>
+        <input type="range" min="0" max="100" value="50"
+          oninput="sv['${s.k}']=parseInt(this.value)">
+      </div>`;
+  });
+}
+
+/* ── NAV DOTS ── */
+function buildNav(){
+  const nav=document.getElementById('sNav');
+  const labels=['0','1','1b','1c','1d','2','3','4','5','6','7'];
+  for(let i=0;i<10;i++) nav.innerHTML+=`<div class="pip" id="p${i+1}" onclick="go('${labels[i]}')"></div>`;
+}
+
+const STEPS=['0','1','1b','1c','1d','2','3','4','5','6','7'];
+function go(n){
+  const key=String(n);
+  document.querySelectorAll('.step').forEach(s=>s.classList.remove('active'));
+  document.getElementById('s'+key).classList.add('active');
+  const idx=STEPS.indexOf(key);
+  // update pip dots (map to 9 pips)
+  for(let i=0;i<9;i++){
+    const p=document.getElementById('p'+(i+1));
+    if(!p)continue;
+    p.classList.remove('active','done');
+    if(i<idx)p.classList.add('done');
+    if(i===idx)p.classList.add('active');
+  }
+  document.getElementById('pf').style.width=((idx+1)/10*100)+'%';
+  window.scrollTo({top:0,behavior:'smooth'});
+  // populate synthesis card when arriving at 1d
+  if(key==='1d'){
+    const issues=document.getElementById('inp-issues').value.trim();
+    const community=document.getElementById('inp-community').value.trim();
+    document.getElementById('synth-issues').textContent=issues?'\u201C'+issues+'\u201D':'';
+    document.getElementById('synth-community').textContent=community?'Connected to: '+community:'';
+    document.getElementById('synthesis-hint').style.display=(issues||community)?'block':'none';
+  }
+  if(key==='7')buildPlan();
+}
+
+/* ── TAG SELECTION WITH LIMITS ── */
+function togL(el,gid,bid,cid,max){
+  const grp=document.getElementById(gid);
+  const n=grp.querySelectorAll('.tag.sel').length;
+  if(!el.classList.contains('sel')&&n>=max){
+    const b=document.getElementById(bid);
+    b.classList.add('full');
+    setTimeout(()=>b.classList.remove('full'),1200);
+    return;
+  }
+  el.classList.toggle('sel');
+  updBadge(gid,bid,cid,max);
+  updDis(gid,max);
+}
+function updBadge(gid,bid,cid,max){
+  const n=document.getElementById(gid).querySelectorAll('.tag.sel').length;
+  const b=document.getElementById(bid);
+  b.classList.remove('warn','full');
+  document.getElementById(cid).textContent=n+' of '+max+' selected';
+  if(n===max)b.classList.add('full');
+  else if(n>=max-1)b.classList.add('warn');
+}
+function updDis(gid,max){
+  const grp=document.getElementById(gid);
+  const n=grp.querySelectorAll('.tag.sel').length;
+  grp.querySelectorAll('.tag').forEach(t=>{
+    if(!t.classList.contains('sel')&&n>=max)t.classList.add('disabled');
+    else t.classList.remove('disabled');
+  });
+}
+function addL(gid,iid,bid,cid,max){
+  const inp=document.getElementById(iid);
+  const v=inp.value.trim();if(!v)return;
+  const grp=document.getElementById(gid);
+  const n=grp.querySelectorAll('.tag.sel').length;
+  const t=document.createElement('span');
+  t.className='tag'+(n<max?' sel':'');
+  t.textContent=v;
+  t.onclick=()=>togL(t,gid,bid,cid,max);
+  grp.appendChild(t);inp.value='';
+  updBadge(gid,bid,cid,max);updDis(gid,max);
+}
+function selQ(el){
+  document.querySelectorAll('#qchips .q-chip').forEach(c=>c.classList.remove('sel'));
+  el.classList.add('sel');qSel=el.textContent;
+}
+
+/* ── HELPERS ── */
+function selTags(gid){
+  return[...document.querySelectorAll('#'+gid+' .tag.sel')].map(t=>t.textContent);
+}
+function getCh(){
+  const names=['Twitter/X','Instagram','LinkedIn','Facebook','Blog/Medium','Podcast','TikTok/Reels'];
+  const icons=['𝕏','📸','💼','📘','✍️','🎙️','🎥'];
+  return[...document.querySelectorAll('.ch-row')].map((r,i)=>{
+    const sel=r.querySelector('select');
+    const inputs=r.querySelectorAll('input[type="text"]');
+    const purpose=inputs[1]?inputs[1].value.trim():'';
+    return sel&&sel.value?{n:names[i],ic:icons[i],f:sel.value,p:purpose}:null;
+  }).filter(Boolean);
+}
+
+/* ── BUILD THE PLAN CARD ── */
+function buildPlan(){
+  const name=document.getElementById('inp-name').value||'Your Name';
+  const role=document.getElementById('inp-role').value;
+  const intent=document.getElementById('inp-intent').value;
+  const aud=selTags('tg-aud');
+  const foc=selTags('tg-foc');
+  const ch=getCh();
+  const topics=document.getElementById('inp-topics').value.trim();
+  const inspo=document.getElementById('inp-inspo').value.trim();
+
+  /* masthead */
+  document.getElementById('pl-name').textContent=name;
+  document.getElementById('pl-role').textContent=role;
+  if(qSel){
+    document.getElementById('pl-quarter-wrap').style.display='block';
+    document.getElementById('pl-quarter').textContent=qSel;
+  }
+
+  /* intention */
+  document.getElementById('pl-intent').textContent=intent||'—';
+
+  /* audience */
+  document.getElementById('pl-aud').innerHTML=
+    aud.length
+      ? aud.map(a=>`<span class="plan-chip">${a}</span>`).join('')
+      : '<span style="opacity:.4;font-size:13px">None selected</span>';
+
+  /* focus */
+  const qLbl=qSel?` — ${qSel}`:'';
+  document.getElementById('pl-foc-label').textContent=`Focus Areas${qLbl}`;
+  document.getElementById('pl-foc').innerHTML=
+    foc.length
+      ? foc.map(f=>`<span class="plan-chip pine">${f}</span>`).join('')
+      : '<span style="opacity:.4;font-size:13px">None selected</span>';
+
+  /* channels */
+  const chanSec=document.getElementById('pl-chan-section');
+  if(ch.length){
+    chanSec.style.display='block';
+    document.getElementById('pl-chan').innerHTML=ch.map(c=>`
+      <div class="plan-channel-row">
+        <span class="plan-ch-icon">${c.ic}</span>
+        <span class="plan-ch-name">${c.n}</span>
+        <span class="plan-ch-freq">${c.f}</span>
+        ${c.p?`<span class="plan-ch-purpose">${c.p}</span>`:''}
+      </div>`).join('');
+  } else {
+    chanSec.style.display='none';
+  }
+
+  /* sliders — rendered as visual track + thumb */
+  document.getElementById('pl-sliders').innerHTML=SL.map(s=>{
+    const v=sv[s.k]||50;
+    return `
+      <div class="plan-sl-row">
+        <div class="plan-sl-left">${s.l}</div>
+        <div class="plan-sl-track">
+          <div class="plan-sl-fill" style="width:${v}%"></div>
+          <div class="plan-sl-thumb" style="left:${v}%"></div>
+        </div>
+        <div class="plan-sl-right">${s.r}</div>
+      </div>`;
+  }).join('');
+
+  /* voices */
+  const voices=getVoices();
+  const voiceWhat=document.getElementById('inp-voice-what').value.trim();
+  const voiceAvoid=document.getElementById('inp-voice-avoid').value.trim();
+  const voiceSec=document.getElementById('pl-voices-section');
+  if(voices.length||voiceWhat||voiceAvoid){
+    voiceSec.style.display='block';
+    let vHtml='';
+    if(voices.length){
+      vHtml+='<div style="display:flex;flex-wrap:wrap;gap:7px;margin-bottom:12px">'+
+        voices.map(v=>'<span class="plan-chip" style="font-size:12px">'+esc2(v.name||v.handle)+(v.channel?' · '+esc2(v.channel):'')+'</span>').join('')+'</div>';
+    }
+    if(voiceWhat) vHtml+='<div style="margin-bottom:8px"><span style="font-size:10px;letter-spacing:.15em;text-transform:uppercase;color:var(--pinecone);font-weight:700">What draws me to them</span><div style="margin-top:4px;font-size:14px;line-height:1.7">'+esc2(voiceWhat)+'</div></div>';
+    if(voiceAvoid) vHtml+='<div><span style="font-size:10px;letter-spacing:.15em;text-transform:uppercase;color:var(--pinecone);font-weight:700">What I want to avoid</span><div style="margin-top:4px;font-size:14px;line-height:1.7;font-style:italic">'+esc2(voiceAvoid)+'</div></div>';
+    document.getElementById('pl-voices-content').innerHTML=vHtml;
+  } else {
+    voiceSec.style.display='none';
+  }
+
+  /* tone reflection */
+  const toneRefl=document.getElementById('inp-tone-refl').value.trim();
+  const toneReflSec=document.getElementById('pl-tone-refl-section');
+  if(toneRefl){toneReflSec.style.display='block';document.getElementById('pl-tone-refl').textContent=toneRefl;}
+  else toneReflSec.style.display='none';
+
+  /* topics */
+  const topSec=document.getElementById('pl-topics-section');
+  if(topics){
+    topSec.style.display='block';
+    document.getElementById('pl-topics').textContent=topics;
+  } else {
+    topSec.style.display='none';
+  }
+
+  /* inspiration */
+  const inSec=document.getElementById('pl-inspo-section');
+  if(inspo){
+    inSec.style.display='block';
+    document.getElementById('pl-inspo').textContent=inspo;
+  } else {
+    inSec.style.display='none';
+  }
+}
+
+/* ── EXPORTS ── */
+function planTxt(){
+  const name=document.getElementById('inp-name').value||'Your Name';
+  const role=document.getElementById('inp-role').value;
+  const q=qSel?' — '+qSel:'';
+  return`PERSONAL VOICE PLAN — IslamicFamily
+${name}${role?' · '+role:''}${q}
+${'─'.repeat(44)}
+
+VOICES I APPRECIATE
+${getVoices().map(v=>v.name+(v.handle?' ('+v.handle+')':'')+(v.channel?' — '+v.channel:'')).join('\n')}
+
+WHAT DRAWS ME TO THEM
+${document.getElementById('inp-voice-what').value}
+
+WHAT I WANT TO AVOID
+${document.getElementById('inp-voice-avoid').value}
+
+ISSUES THAT MATTER THIS SEASON
+${document.getElementById('inp-issues').value}
+
+COMMUNITIES I FEEL CONNECTED TO REPRESENT
+${document.getElementById('inp-community').value}
+
+INTENTION + IMPACT
+I want to use my voice to… ${document.getElementById('inp-intent').value}
+
+AUDIENCE SEGMENTS (5 key)
+${selTags('tg-aud').join(' · ')}
+
+FOCUS AREAS${qSel?' ('+qSel+')':''}
+${selTags('tg-foc').join(' · ')}
+
+CHANNELS
+${getCh().map(c=>`${c.n}: ${c.f}${c.p?' — '+c.p:''}`).join('\n')}
+
+TONE + VOICE
+${SL.map(s=>{const v=sv[s.k]||50;return v<35?s.l:v>65?s.r:`${s.l}/${s.r}`;}).join(' · ')}
+
+WHAT I LIKE & DISLIKE ON SOCIAL MEDIA
+${document.getElementById('inp-tone-refl').value}
+
+POTENTIAL TOPICS
+${document.getElementById('inp-topics').value}
+
+INSPIRATION
+${document.getElementById('inp-inspo').value}
+`;
+}
+
+function copyTxt(){
+  navigator.clipboard.writeText(planTxt()).then(()=>toast('Copied to clipboard ✓'));
+}
+
+function dlPDF(){
+  const name=document.getElementById('inp-name').value||'Personal Voice Plan';
+  const role=document.getElementById('inp-role').value;
+  const q=qSel?' \u2014 '+qSel:'';
+
+  const html='<!DOCTYPE html><html><head><meta charset="UTF-8">'+
+  '<style>'+
+  '@import url(\"https://fonts.googleapis.com/css2?family=Alegreya:ital,wght@0,400;0,700;1,400&family=Alegreya+Sans:wght@400;700&display=swap\");'+
+  'body{font-family:Alegreya Sans,sans-serif;padding:52px;max-width:700px;margin:auto;color:#353535;line-height:1.65;}'+
+  'h1{font-family:Alegreya,serif;font-size:2.4rem;color:#275D43;margin-bottom:2px;line-height:1.1;}'+
+  '.meta{color:#8d9d94;font-size:14px;margin-bottom:26px;}'+
+  'h2{font-size:10px;text-transform:uppercase;letter-spacing:.2em;color:#E09964;font-weight:700;margin-top:26px;margin-bottom:7px;}'+
+  'p,li{font-size:14px;line-height:1.7;}ul{padding-left:18px;}'+
+  '.intent{font-family:Alegreya,serif;font-size:1.1rem;font-style:italic;line-height:1.65;}'+
+  'hr{border:none;border-top:1px solid #DCD9B8;margin:6px 0 18px;}'+
+  '.chips{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:4px;}'+
+  '.chip{padding:4px 12px;border-radius:100px;font-size:13px;background:#edf4ef;border:1px solid #c4ddd0;color:#275D43;}'+
+  '.chip.pine{background:#fdf4ec;border-color:#e8c49a;color:#7a4e1a;}'+
+  '.sl-row{display:flex;align-items:center;gap:12px;margin-bottom:8px;}'+
+  '.sl-lab{font-family:Alegreya,serif;font-weight:700;font-size:13px;color:#275D43;width:110px;}'+
+  '.sl-lab.r{text-align:left;}'+
+  '.sl-track{flex:1;height:5px;background:#e8eee9;border-radius:3px;position:relative;}'+
+  '.sl-fill{position:absolute;left:0;top:0;height:100%;border-radius:3px;background:linear-gradient(90deg,#275D43,#E09964);}'+
+  '.sl-dot{position:absolute;top:50%;transform:translate(-50%,-50%);width:12px;height:12px;border-radius:50%;background:#E09964;border:2px solid #fff;}'+
+  '.ch-row{display:flex;align-items:center;gap:10px;padding:8px 12px;background:#FAFAF2;border-radius:6px;margin-bottom:6px;border:1px solid #e8ede8;}'+
+  '.ch-freq{font-size:12px;font-weight:600;color:#E09964;background:#fdf4ec;padding:2px 8px;border-radius:100px;white-space:nowrap;}'+
+  '.ch-purp{font-size:12px;color:#6e7e74;font-style:italic;}'+
+  '.foot{margin-top:44px;font-size:11px;color:#bbb;border-top:1px solid #DCD9B8;padding-top:12px;}'+
+  '</style></head><body>'+
+  '<h1>'+name+'</h1>'+
+  '<div class="meta">'+role+q+'</div><hr>'+
+  (getVoices().length?'<h2>Voices I Appreciate</h2><ul>'+getVoices().map(v=>'<li><strong>'+esc(v.name||v.handle)+'</strong>'+(v.handle&&v.name?' ('+esc(v.handle)+')':'')+(v.channel?' &mdash; '+esc(v.channel):'')+'</li>').join('')+'</ul>':'')+
+  (document.getElementById('inp-voice-what').value?'<h2>What Draws Me to These Voices</h2><p style="white-space:pre-wrap">'+esc(document.getElementById('inp-voice-what').value)+'</p>':'')+
+  (document.getElementById('inp-voice-avoid').value?'<h2>What I Want to Avoid</h2><p style="white-space:pre-wrap;font-style:italic">'+esc(document.getElementById('inp-voice-avoid').value)+'</p>':'')+
+  (document.getElementById('inp-issues').value?'<h2>Issues This Season</h2><p style="white-space:pre-wrap">'+esc(document.getElementById('inp-issues').value)+'</p>':'')+
+  (document.getElementById('inp-community').value?'<h2>Communities I Feel Connected to Represent</h2><p style="white-space:pre-wrap">'+esc(document.getElementById('inp-community').value)+'</p>':'')+
+  (document.getElementById('inp-intent').value?'<h2>Intention + Impact</h2><p class="intent">I want to use my voice to… '+esc(document.getElementById('inp-intent').value)+'</p>':'')+
+  '<h2>Audience Segments &#8212; 5 Key</h2>'+
+  '<div class="chips">'+selTags('tg-aud').map(a=>'<span class="chip">'+esc(a)+'</span>').join('')+'</div>'+
+  '<h2>Focus Areas'+(qSel?' ('+qSel+')':'')+'</h2>'+
+  '<div class="chips">'+selTags('tg-foc').map(f=>'<span class="chip pine">'+esc(f)+'</span>').join('')+'</div>'+
+  '<h2>Channels</h2>'+
+  getCh().map(c=>'<div class="ch-row"><strong style="min-width:110px;font-size:13px">'+esc(c.n)+'</strong><span class="ch-freq">'+esc(c.f)+'</span>'+(c.p?'<span class="ch-purp">'+esc(c.p)+'</span>':'')+'</div>').join('')+
+  '<h2>Tonality + Attributes</h2>'+
+  SL.map(s=>{const v=sv[s.k]||50;return'<div class="sl-row"><span class="sl-lab">'+s.l+'</span><div class="sl-track"><div class="sl-fill" style="width:'+v+'%"></div><div class="sl-dot" style="left:'+v+'%"></div></div><span class="sl-lab r">'+s.r+'</span></div>';}).join('')+
+  (document.getElementById('inp-tone-refl').value?'<h2>What I Like &amp; Dislike on Social Media</h2><p style="font-style:italic;white-space:pre-wrap">'+esc(document.getElementById('inp-tone-refl').value)+'</p>':'')+
+  (document.getElementById('inp-topics').value?'<h2>Potential Topics</h2><p style="white-space:pre-wrap">'+esc(document.getElementById('inp-topics').value)+'</p>':'')+
+  (document.getElementById('inp-inspo').value?'<h2>Inspiration</h2><p style="white-space:pre-wrap;font-style:italic">'+esc(document.getElementById('inp-inspo').value)+'</p>':'')+
+  '<div class="foot">IslamicFamily &#183; islamicfamily.ca &#183; Personal Voice Plan</div>'+
+  '</body></html>';
+
+  const blob=new Blob([html],{type:'text/html'});
+  const url=URL.createObjectURL(blob);
+  const a=document.createElement('a');
+  a.href=url;
+  a.download=(name.replace(/[^a-z0-9]/gi,'-').toLowerCase()||'personal-voice-plan')+'.html';
+  document.body.appendChild(a);
+  a.click();
+  setTimeout(()=>{URL.revokeObjectURL(url);a.remove();},1000);
+  toast('Downloaded \u2014 open the file and print to PDF \u2193');
+}
+
+function addVoiceRow(){
+  const entries=document.getElementById('voice-entries');
+  const rows=entries.querySelectorAll('.voice-row');
+  if(rows.length>=5){
+    document.getElementById('voice-limit-msg').textContent='Maximum 5 voices reached.';
+    document.getElementById('add-voice-btn').style.display='none';
+    return;
+  }
+  const row=document.createElement('div');
+  row.className='voice-row';
+  row.innerHTML='<input type="text" placeholder=""><input type="text" placeholder=""><input type="text" placeholder="">';
+  entries.appendChild(row);
+  if(entries.querySelectorAll('.voice-row').length>=5){
+    document.getElementById('add-voice-btn').style.display='none';
+    document.getElementById('voice-limit-msg').textContent='Maximum 5 voices reached.';
+  }
+}
+
+function getVoices(){
+  return[...document.querySelectorAll('#voice-entries .voice-row')].map(r=>{
+    const inputs=r.querySelectorAll('input');
+    const name=inputs[0].value.trim();
+    const handle=inputs[1].value.trim();
+    const channel=inputs[2].value.trim();
+    return(name||handle||channel)?{name,handle,channel}:null;
+  }).filter(Boolean);
+}
+
+function esc2(s){return(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
+function esc(s){
+  return(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+}
+
+function shareLI(){
+  const intent=document.getElementById('inp-intent').value;
+  const foc=selTags('tg-foc').slice(0,3).join(', ');
+  const q=qSel?' for '+qSel:'';
+  const txt=encodeURIComponent('Just completed my Personal Voice Plan'+q+'.\n\nIntention: '+intent+'\n\nFocus: '+foc+'\n\nShowing up with purpose — not just presence. #IslamicFamily');
+  window.open('https://www.linkedin.com/sharing/share-offsite/?text='+txt,'_blank');
+}
+
+function restart(){
+  const btn=document.getElementById('restart-confirm');
+  if(btn.dataset.armed==='1'){location.reload();}
+  else{btn.dataset.armed='1';btn.textContent='Tap again to confirm';setTimeout(()=>{btn.dataset.armed='0';btn.textContent='Start over';},3000);}
+}
+function toast(msg){
+  const t=document.getElementById('toast');
+  t.textContent=msg;t.classList.add('on');
+  setTimeout(()=>t.classList.remove('on'),2800);
+}
+
+buildSl();buildNav();
+document.getElementById('p1').classList.add('active');
+</script>
+</body>
+</html>

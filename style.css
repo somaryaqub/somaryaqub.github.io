@@ -1,80 +1,153 @@
-
-html,* { 
-	font-family: 'Merriweather';    
-	text-align: center;
-    	align-items: center;
-    	justify-content: center;
+/* ─── Brand Tokens ───────────────────────────────────────── */
+:root {
+  --green:   #275D43;
+  --green-light: #3a7a5a;
+  --red:     #BB2D37;
+  --brown:   #E09964;
+  --black:   #353535;
+  --cream:   #FAFAF2;
+  --cream-dark: #F0EFE6;
+  --muted:   #8a8a7a;
+  --border:  #ddddd0;
+  --font-serif: 'Alegreya', Georgia, serif;
+  --font-sans:  'Alegreya Sans', 'Georgia', sans-serif;
+  --max-w: 680px;
+  --max-w-wide: 1100px;
 }
 
-body { margin: 0px; background-color: #301A73;}
-	b {opacity:.6; font-size: 10px;}
-	strong {opacity:.2; font-size: 10px;}
-	.container, #prayy { background-image: url("tree.png"); margin: 0px; max-width: 600px; width: 600px; height: 3840px; max-height: 3840px; min-height: 3840px; text-align: center; position:absolute;}
-	.hijridate { position:absolute; top: 768px; width:100%; color: white; font-size: 50px; text-align: center;}
-	.prayertimes { position:absolute; top: 836px; width:100%; color: white; font-size: 15px; text-align: center;}
-	.Maghrib {background-color: #C94343;}
-	.Isha {background-color: #301A73; color: white;}
-	.midnight{background-color: #221F53; color: white;  align: center; height:100%;}
-	.fajr{background-color: #633463; color: white; align: center; height:100%;}
-	.Sunrise{background-color: #D6B981; color: white;  align: center; height:100%;}
-	.Dhuhr{background-color: #8BB7D9; color: white;  align: center;}
-	.asr{background-color: #C68C56; color: white;  align: center;}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
 
-
-h1 {
-    color: #F4F6F0;
-    margin: 0px;
-visibility: hidden;
+body {
+  background: var(--cream);
+  color: var(--black);
+  font-family: var(--font-sans);
+  font-size: 18px;
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
 }
 
-.sphere {
-	opacity:.7;
-position: absolute;
- top: 870px;
- left: 275px;
-    border-radius: 100%;
-    width: 50px;
-    height: 50px;
-    display: flex;
-    overflow: hidden;
-    align-items: center;
-    position: relative;
-    margin: 0px;
+h1, h2, h3, h4 {
+  font-family: var(--font-serif);
+  font-weight: 700;
+  line-height: 1.25;
+  color: var(--black);
 }
 
-.hemisphere {
-    width: 50%;
-    height: 100%;
-}
+a { color: var(--green); text-decoration: none; transition: color 0.15s; }
+a:hover { color: var(--green-light); }
 
-.light {
-    background-color: #F4F6F0;
+/* Header */
+.site-header {
+  border-bottom: 2px solid var(--green);
+  background: var(--cream);
+  position: sticky;
+  top: 0;
+  z-index: 100;
 }
-
-.dark {
-    background-color: #575851;
+.header-inner {
+  max-width: var(--max-w-wide);
+  margin: 0 auto;
+  padding: 0 2rem;
+  height: 64px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
+.site-title { font-family: var(--font-serif); font-size: 1.3rem; font-weight: 800; color: var(--green); letter-spacing: -0.02em; }
+.site-title span { color: var(--red); }
+.header-nav { display: flex; gap: 1.5rem; align-items: center; }
+.header-nav a { font-family: var(--font-sans); font-size: 0.9rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; color: var(--black); }
+.header-nav a:hover { color: var(--green); }
+.btn-subscribe { background: var(--green); color: var(--cream) !important; padding: 0.45rem 1.1rem; border-radius: 3px; font-size: 0.85rem !important; transition: background 0.15s !important; }
+.btn-subscribe:hover { background: var(--green-light) !important; }
 
-.divider,
-.divider:after {
-    top: 0;
-    left: 0;
-    width: 50px;
-    height: 50px;
-    position: absolute;
-    border-radius: 100%;
-    transform-style: preserve-3d;
-    backface-visibility: hidden;
+/* Hero */
+.hero { max-width: var(--max-w-wide); margin: 0 auto; padding: 4rem 2rem 3rem; border-bottom: 1px solid var(--border); }
+.hero-eyebrow { font-family: var(--font-sans); font-size: 0.8rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--red); margin-bottom: 0.75rem; }
+.hero h1 { font-size: clamp(2rem, 4vw, 3rem); color: var(--green); max-width: 600px; margin-bottom: 1rem; }
+.hero p { font-size: 1.1rem; color: var(--muted); max-width: 520px; font-family: var(--font-sans); }
+
+/* Layout */
+.main-layout { max-width: var(--max-w-wide); margin: 0 auto; padding: 3rem 2rem; display: grid; grid-template-columns: 1fr 280px; gap: 4rem; align-items: start; }
+@media (max-width: 800px) { .main-layout { grid-template-columns: 1fr; gap: 2.5rem; } .sidebar { order: -1; } }
+
+/* Filter bar */
+.filter-bar { display: flex; align-items: center; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 2.5rem; }
+.filter-label { font-size: 0.78rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); margin-right: 0.25rem; }
+.tag-btn { display: inline-block; padding: 0.3rem 0.75rem; border-radius: 2px; border: 1.5px solid var(--border); font-family: var(--font-sans); font-size: 0.78rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.06em; cursor: pointer; background: transparent; color: var(--muted); transition: all 0.15s; }
+.tag-btn:hover, .tag-btn.active { border-color: var(--green); background: var(--green); color: var(--cream); }
+.sort-select { margin-left: auto; font-family: var(--font-sans); font-size: 0.82rem; font-weight: 600; border: 1.5px solid var(--border); border-radius: 2px; padding: 0.3rem 1.8rem 0.3rem 0.65rem; background: var(--cream) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath d='M0 0l5 6 5-6z' fill='%23888'/%3E%3C/svg%3E") no-repeat right 0.6rem center; color: var(--black); cursor: pointer; appearance: none; }
+
+/* Post cards */
+.post-list { display: flex; flex-direction: column; }
+.post-card { padding: 2rem 0; border-bottom: 1px solid var(--border); }
+.post-card.hidden { display: none; }
+.post-card-meta { display: flex; align-items: center; gap: 0.75rem; margin-bottom: 0.6rem; flex-wrap: wrap; }
+.post-date { font-size: 0.8rem; color: var(--muted); font-family: var(--font-sans); }
+.post-tag { display: inline-block; padding: 0.15rem 0.55rem; border-radius: 2px; background: var(--cream-dark); font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.07em; color: var(--green); border: 1px solid var(--border); cursor: pointer; transition: all 0.12s; }
+.post-tag:hover { background: var(--green); color: var(--cream); border-color: var(--green); }
+.post-card h2 { font-size: 1.4rem; margin-bottom: 0.3rem; letter-spacing: -0.02em; }
+.post-card h2 a { color: var(--black); }
+.post-card h2 a:hover { color: var(--green); }
+.post-subtitle { font-size: 0.95rem; color: var(--muted); margin-bottom: 0.75rem; font-family: var(--font-serif); font-style: italic; }
+.post-excerpt { font-size: 0.95rem; color: #555; line-height: 1.65; }
+.read-more { font-size: 0.82rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--green); display: inline-block; margin-top: 0.75rem; border-bottom: 1.5px solid transparent; transition: border-color 0.15s; }
+.read-more:hover { border-color: var(--green); }
+.no-results { padding: 3rem 0; color: var(--muted); font-style: italic; font-family: var(--font-serif); font-size: 1.1rem; }
+
+/* Sidebar */
+.sidebar { position: sticky; top: 84px; display: flex; flex-direction: column; gap: 2rem; }
+.sidebar-widget { background: var(--cream-dark); border: 1px solid var(--border); border-radius: 3px; padding: 1.5rem; }
+.sidebar-widget h3 { font-family: var(--font-sans); font-size: 0.75rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.12em; color: var(--muted); margin-bottom: 1rem; }
+.subscribe-intro { font-size: 0.9rem; color: var(--black); margin-bottom: 1rem; line-height: 1.5; font-family: var(--font-serif); }
+.subscribe-form input[type="email"] { width: 100%; padding: 0.6rem 0.8rem; border: 1.5px solid var(--border); border-radius: 2px; font-family: var(--font-sans); font-size: 0.88rem; background: var(--cream); color: var(--black); margin-bottom: 0.6rem; transition: border-color 0.15s; }
+.subscribe-form input[type="email"]:focus { outline: none; border-color: var(--green); }
+.subscribe-form button { width: 100%; padding: 0.65rem; background: var(--green); color: var(--cream); border: none; border-radius: 2px; font-family: var(--font-sans); font-size: 0.85rem; font-weight: 700; letter-spacing: 0.05em; cursor: pointer; transition: background 0.15s; }
+.subscribe-form button:hover { background: var(--green-light); }
+.subscribe-note { font-size: 0.72rem; color: var(--muted); margin-top: 0.6rem; text-align: center; }
+.all-tags-list a { display: flex; justify-content: space-between; align-items: center; padding: 0.45rem 0; border-bottom: 1px solid var(--border); font-size: 0.88rem; color: var(--black); font-family: var(--font-sans); }
+.all-tags-list a:last-child { border-bottom: none; }
+.all-tags-list a:hover { color: var(--green); }
+.tag-count { font-size: 0.75rem; color: var(--muted); background: var(--border); border-radius: 10px; padding: 0.1rem 0.5rem; }
+
+/* Post page */
+.post-page { max-width: var(--max-w); margin: 0 auto; padding: 3rem 2rem 5rem; }
+.post-header { margin-bottom: 2.5rem; padding-bottom: 2rem; border-bottom: 2px solid var(--green); }
+.post-header-meta { display: flex; align-items: center; gap: 0.75rem; flex-wrap: wrap; margin-bottom: 1rem; }
+.post-header h1 { font-size: clamp(1.8rem, 3.5vw, 2.6rem); color: var(--green); margin-bottom: 0.5rem; }
+.post-header-subtitle { font-family: var(--font-serif); font-style: italic; font-size: 1.15rem; color: var(--muted); }
+.post-body { font-family: var(--font-serif); font-size: 1.1rem; line-height: 1.85; color: var(--black); }
+.post-body h2 { font-size: 1.4rem; color: var(--green); margin: 2.5rem 0 0.75rem; padding-top: 0.5rem; border-top: 1px solid var(--border); }
+.post-body h3 { font-size: 1.15rem; margin: 2rem 0 0.5rem; }
+.post-body p { margin-bottom: 1.4rem; }
+.post-body ul, .post-body ol { padding-left: 1.5rem; margin-bottom: 1.4rem; }
+.post-body li { margin-bottom: 0.4rem; }
+.post-body blockquote { border-left: 3px solid var(--green); padding: 0.5rem 1.25rem; margin: 1.5rem 0; font-style: italic; color: var(--muted); }
+.post-body strong { color: var(--black); font-weight: 700; }
+.post-body a { color: var(--green); border-bottom: 1px solid var(--border); }
+.post-body a:hover { border-color: var(--green); }
+.post-nav { max-width: var(--max-w); margin: 0 auto; padding: 1.5rem 2rem 3rem; display: flex; justify-content: space-between; border-top: 1px solid var(--border); }
+.post-nav a { font-size: 0.85rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--green); }
+
+/* Subscribe banner */
+.post-subscribe-banner { max-width: var(--max-w); margin: 0 auto 3rem; padding: 0 2rem; }
+.subscribe-box { background: var(--green); color: var(--cream); padding: 2rem; border-radius: 3px; display: flex; gap: 1.5rem; align-items: center; flex-wrap: wrap; }
+.subscribe-box p { font-family: var(--font-serif); font-size: 1rem; flex: 1; min-width: 200px; }
+.subscribe-box strong { color: var(--brown); }
+.subscribe-box-form { display: flex; gap: 0.5rem; flex-wrap: wrap; }
+.subscribe-box-form input[type="email"] { padding: 0.55rem 0.9rem; border: none; border-radius: 2px; font-family: var(--font-sans); font-size: 0.9rem; width: 220px; }
+.subscribe-box-form button { padding: 0.55rem 1.1rem; background: var(--red); color: white; border: none; border-radius: 2px; font-family: var(--font-sans); font-size: 0.85rem; font-weight: 700; cursor: pointer; transition: opacity 0.15s; }
+.subscribe-box-form button:hover { opacity: 0.88; }
+
+/* Footer */
+.site-footer { border-top: 2px solid var(--green); background: var(--cream-dark); padding: 2.5rem 2rem; text-align: center; font-size: 0.85rem; color: var(--muted); font-family: var(--font-sans); }
+.site-footer a { color: var(--green); }
+.loading { text-align: center; padding: 4rem; color: var(--muted); font-family: var(--font-serif); font-style: italic; }
+
+@media (max-width: 600px) {
+  .header-nav .btn-subscribe { display: none; }
+  .subscribe-box { flex-direction: column; gap: 1rem; }
+  .subscribe-box-form input { width: 100%; }
+  .post-nav { flex-direction: column; gap: 1rem; }
 }
-
-.divider {
-    background-color: #575851;
-}
-
-.divider:after {
-    content: '';
-    background-color: #F4F6F0;
-    transform: rotateY(180deg);
-}
-
-#date-title, input {visibility: hidden;}

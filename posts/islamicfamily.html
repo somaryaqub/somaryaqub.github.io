@@ -1,0 +1,1393 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>IslamicFamily — Vision, Mission & Values</title>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --g:  #0F6E56;
+    --gl: #E1F5EE;
+    --gd: #085041;
+    --gm: #1D9E75;
+    --border: #e4e4e4;
+    --text: #111;
+    --muted: #666;
+    --faint: #aaa;
+  }
+
+  body {
+    font-family: system-ui, -apple-system, sans-serif;
+    background: #fff;
+    color: var(--text);
+    min-height: 100vh;
+  }
+
+  /* ── Header ── */
+  .header {
+    padding: 2rem 2rem 0;
+    border-bottom: 1px solid var(--border);
+  }
+  .header-top {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 1rem;
+    flex-wrap: wrap;
+    margin-bottom: 1.25rem;
+  }
+  .wordmark {
+    font-family: Georgia, serif;
+    font-size: 24px;
+    font-weight: 500;
+    letter-spacing: -0.01em;
+    line-height: 1;
+  }
+  .wordmark span { color: var(--g); }
+  .tagline {
+    font-size: 11px;
+    color: var(--faint);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-top: 5px;
+  }
+  .nav {
+    display: flex;
+    gap: 4px;
+    flex-wrap: wrap;
+    margin-bottom: 1rem;
+  }
+  .nav-btn {
+    background: transparent;
+    border: 1px solid var(--border);
+    border-radius: 100px;
+    padding: 7px 14px;
+    font-size: 12px;
+    color: var(--muted);
+    cursor: pointer;
+    font-family: inherit;
+    transition: all 0.15s;
+    position: relative;
+  }
+  .nav-btn:hover { background: #f5f5f5; color: var(--text); }
+  .nav-btn.active { background: var(--g); border-color: var(--g); color: #fff; }
+  .nav-dot {
+    display: inline-block;
+    width: 5px; height: 5px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.6);
+    margin-left: 5px;
+    vertical-align: middle;
+  }
+  .progress-bar {
+    height: 2px;
+    background: #f0f0f0;
+    border-radius: 99px;
+    margin: 0 0 0;
+  }
+  .progress-fill {
+    height: 100%;
+    background: var(--g);
+    border-radius: 99px;
+    transition: width 0.35s ease;
+  }
+
+  /* ── Sections ── */
+  .section { display: none; }
+  .section.active { display: block; }
+
+  .hero {
+    padding: 2.5rem 2rem 2rem;
+    border-bottom: 1px solid var(--border);
+  }
+  .eyebrow {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--g);
+    margin-bottom: 1rem;
+  }
+  .hero-title {
+    font-family: Georgia, serif;
+    font-size: 34px;
+    font-weight: 400;
+    line-height: 1.1;
+    margin-bottom: 1rem;
+    letter-spacing: -0.02em;
+  }
+  .hero-sub {
+    font-size: 14px;
+    color: var(--muted);
+    max-width: 520px;
+    line-height: 1.7;
+  }
+
+  /* ── Option cards ── */
+  .cards-area { padding: 2rem 2rem 1rem; }
+  .cards-hint {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--faint);
+    margin-bottom: 1.25rem;
+  }
+
+  .option-card {
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 1.5rem;
+    margin-bottom: 0.875rem;
+    cursor: pointer;
+    transition: all 0.2s;
+    position: relative;
+    background: #fff;
+  }
+  .option-card:hover { border-color: #bbb; background: #fafafa; }
+  .option-card.voted {
+    border-color: var(--g);
+    background: #f0faf6;
+  }
+  .option-card.voted::before {
+    content: '';
+    position: absolute;
+    left: 0; top: 0; bottom: 0;
+    width: 3px;
+    background: var(--g);
+    border-radius: 12px 0 0 12px;
+  }
+  .option-card.recommended-card {
+    border-color: var(--gm);
+    background: #f7fdf9;
+  }
+  .option-card.recommended-card:hover { border-color: var(--g); }
+  .option-card.recommended-card.voted { background: #f0faf6; border-color: var(--g); }
+
+  .card-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 8px;
+    margin-bottom: 8px;
+  }
+  .card-num {
+    font-size: 11px;
+    color: #999;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+  .voted-badge {
+    font-size: 11px;
+    background: var(--g);
+    color: #fff;
+    padding: 2px 10px;
+    border-radius: 100px;
+    flex-shrink: 0;
+    display: none;
+  }
+  .option-card.voted .voted-badge { display: inline-block; }
+
+  .card-text {
+    font-family: Georgia, serif;
+    font-size: 18px;
+    line-height: 1.45;
+    color: var(--text);
+    margin-bottom: 0.75rem;
+  }
+  .recommended-card .card-text { font-size: 19px; }
+
+  .card-note { font-size: 13px; color: var(--muted); line-height: 1.6; }
+
+  .card-tag {
+    display: inline-block;
+    font-size: 11px;
+    padding: 3px 10px;
+    border-radius: 100px;
+    background: var(--gl);
+    color: var(--gd);
+    margin-top: 0.75rem;
+  }
+  .card-tag.rec { background: var(--g); color: #fff; }
+
+  /* Recommended banner */
+  .rec-banner {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--g);
+    background: var(--gl);
+    padding: 6px 12px;
+    border-radius: 6px;
+    margin-bottom: 10px;
+    display: inline-block;
+  }
+
+  /* ── Custom option ── */
+  .custom-area {
+    border: 1px dashed var(--border);
+    border-radius: 12px;
+    padding: 1.25rem 1.5rem;
+    margin-bottom: 0.875rem;
+  }
+  .custom-label {
+    font-size: 12px;
+    color: var(--muted);
+    margin-bottom: 0.5rem;
+  }
+  .custom-input {
+    width: 100%;
+    font-size: 14px;
+    font-family: Georgia, serif;
+    color: var(--text);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 10px 12px;
+    resize: vertical;
+    outline: none;
+    line-height: 1.5;
+    transition: border-color 0.15s;
+  }
+  .custom-input:focus { border-color: var(--gm); }
+
+  /* ── MQ panels ── */
+  .mq-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    padding: 1.5rem 2rem;
+  }
+  .mq-panel {
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 1.5rem;
+    cursor: pointer;
+    transition: all 0.2s;
+    position: relative;
+  }
+  .mq-panel:hover { background: #fafafa; }
+  .mq-panel.voted { border-color: var(--g); background: #f0faf6; }
+  .mq-panel.voted::before {
+    content: '';
+    position: absolute;
+    left: 0; top: 0; bottom: 0;
+    width: 3px;
+    background: var(--g);
+    border-radius: 12px 0 0 12px;
+  }
+  .mq-panel.tweaked-panel { border-color: var(--gm); background: #f7fdf9; }
+  .mq-panel.tweaked-panel.voted { border-color: var(--g); background: #f0faf6; }
+  .mq-panel-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 1rem;
+  }
+  .mq-panel-label { font-size: 11px; text-transform: uppercase; letter-spacing: 0.1em; color: var(--faint); }
+  .tweaked-panel .mq-panel-label { color: var(--g); }
+  .mq-question {
+    font-family: Georgia, serif;
+    font-size: 17px;
+    font-weight: 500;
+    line-height: 1.35;
+    font-style: italic;
+    color: var(--text);
+    margin-bottom: 1.25rem;
+  }
+  .mq-bullets { list-style: none; border-top: 1px solid var(--border); padding-top: 1rem; }
+  .mq-bullets li {
+    font-size: 13px;
+    color: var(--muted);
+    line-height: 1.65;
+    padding: 0.35rem 0 0.35rem 1rem;
+    border-left: 2px solid var(--border);
+    margin-bottom: 0.5rem;
+  }
+  .tweaked-panel .mq-bullets li { border-left-color: var(--gm); }
+  .mq-change-note {
+    font-size: 12px;
+    color: var(--g);
+    margin-top: 1rem;
+    padding: 8px 12px;
+    background: var(--gl);
+    border-radius: 8px;
+    line-height: 1.5;
+  }
+
+  /* ── Values ── */
+  .value-card {
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 1.25rem 1.5rem;
+    margin-bottom: 10px;
+    transition: all 0.2s;
+  }
+  .value-card.tagged-primary { border-color: var(--g); background: #f0faf6; }
+  .value-card.tagged-secondary { border-color: var(--gm); background: #f7fdf9; }
+  .value-card-inner {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 1rem;
+  }
+  .value-body { flex: 1; }
+  .value-title-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 6px;
+  }
+  .value-icon { font-size: 18px; }
+  .value-title { font-family: Georgia, serif; font-size: 17px; font-weight: 500; color: var(--text); }
+  .value-desc { font-size: 13px; color: var(--muted); line-height: 1.6; }
+  .value-root { font-size: 11px; color: var(--g); margin-top: 6px; text-transform: uppercase; letter-spacing: 0.04em; }
+  .value-btns { display: flex; flex-direction: column; gap: 6px; flex-shrink: 0; }
+  .tag-btn {
+    font-family: inherit;
+    font-size: 11px;
+    padding: 5px 12px;
+    border-radius: 100px;
+    border: 1px solid #ccc;
+    background: transparent;
+    color: var(--muted);
+    cursor: pointer;
+    transition: all 0.15s;
+    white-space: nowrap;
+  }
+  .tag-btn.active-primary { background: var(--g); border-color: var(--g); color: #fff; }
+  .tag-btn.active-secondary { background: var(--gl); border-color: var(--gm); color: var(--gd); }
+
+  .value-summary { padding: 0 2rem 1rem; }
+  .value-summary-label { font-size: 11px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--faint); margin-bottom: 8px; }
+  .chips { display: flex; flex-wrap: wrap; gap: 6px; }
+  .chip-primary { font-size: 12px; padding: 4px 12px; border-radius: 100px; background: var(--g); color: #fff; }
+  .chip-secondary { font-size: 12px; padding: 4px 12px; border-radius: 100px; background: var(--gl); color: var(--gd); }
+
+  /* ── Reflection ── */
+  .reflection-box {
+    margin: 1rem 2rem 0;
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    overflow: hidden;
+  }
+  .reflection-header {
+    background: #fafafa;
+    padding: 0.875rem 1.5rem;
+    border-bottom: 1px solid var(--border);
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--faint);
+  }
+  .reflection-body { padding: 1.25rem 1.5rem; }
+  .reflection-prompt {
+    font-size: 13px;
+    color: #444;
+    line-height: 1.6;
+    margin-bottom: 0.5rem;
+    font-style: italic;
+  }
+  .reflection-textarea {
+    width: 100%;
+    font-size: 13px;
+    color: var(--text);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 10px 12px;
+    font-family: inherit;
+    resize: vertical;
+    outline: none;
+    line-height: 1.6;
+    transition: border-color 0.15s;
+    margin-bottom: 1.25rem;
+  }
+  .reflection-textarea:last-child { margin-bottom: 0; }
+  .reflection-textarea:focus { border-color: var(--gm); }
+
+  /* ── Together ── */
+  .synthesis-block {
+    margin: 1.5rem 2rem 1rem;
+    background: #fafafa;
+    border-radius: 12px;
+    padding: 1.5rem;
+    border: 1px solid var(--border);
+  }
+  .synthesis-label {
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    color: var(--g);
+    margin-bottom: 1.25rem;
+  }
+  .synthesis-row {
+    display: grid;
+    grid-template-columns: 90px 1fr;
+    gap: 1rem;
+    align-items: start;
+    padding: 0.75rem 0;
+    border-top: 1px solid var(--border);
+  }
+  .synthesis-row:first-of-type { border-top: none; padding-top: 0; }
+  .synthesis-key { font-size: 11px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--g); padding-top: 2px; }
+  .synthesis-val { font-family: Georgia, serif; font-size: 15px; line-height: 1.55; color: var(--text); }
+
+  .reading-note {
+    margin: 0 2rem 1.5rem;
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    overflow: hidden;
+  }
+  .reading-note-header {
+    background: var(--g);
+    padding: 1rem 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .reading-note-title { font-size: 11px; text-transform: uppercase; letter-spacing: 0.1em; color: rgba(255,255,255,0.7); }
+  .reading-note-badge { font-size: 11px; background: rgba(255,255,255,0.2); color: #fff; padding: 3px 10px; border-radius: 100px; }
+  .reading-note-body { padding: 1.5rem; font-size: 13px; color: var(--muted); line-height: 1.7; }
+
+  /* ── Submit ── */
+  .submit-block {
+    margin: 1.5rem 2rem 2.5rem;
+    border: 1px solid var(--g);
+    border-radius: 12px;
+    padding: 1.5rem;
+    background: var(--gl);
+  }
+  .submit-title { font-size: 15px; font-weight: 500; color: var(--gd); margin-bottom: 0.5rem; }
+  .submit-desc { font-size: 13px; color: #555; line-height: 1.65; margin-bottom: 1.25rem; }
+  .submit-row { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+  .submit-input {
+    font-size: 13px;
+    padding: 8px 12px;
+    border: 1px solid #bde0d4;
+    border-radius: 8px;
+    font-family: inherit;
+    outline: none;
+    width: 210px;
+    background: #fff;
+  }
+  .submit-btn {
+    font-family: inherit;
+    font-size: 13px;
+    padding: 9px 20px;
+    border-radius: 100px;
+    border: none;
+    background: var(--g);
+    color: #fff;
+    cursor: pointer;
+    transition: all 0.15s;
+  }
+  .submit-btn:hover { background: var(--gd); }
+  .submit-confirm { margin-top: 0.75rem; font-size: 12px; color: var(--g); display: none; }
+
+  /* ── Next button ── */
+  .next-row {
+    padding: 1.5rem 2rem 2.5rem;
+    display: flex;
+    justify-content: flex-end;
+  }
+  .next-btn {
+    font-family: inherit;
+    font-size: 13px;
+    padding: 9px 20px;
+    border-radius: 100px;
+    border: none;
+    background: var(--g);
+    color: #fff;
+    cursor: pointer;
+    transition: all 0.15s;
+  }
+  .next-btn:hover { background: var(--gd); }
+
+  /* ── Misc ── */
+  .section-note {
+    padding: 1rem 2rem 0;
+  }
+  .section-note p {
+    font-size: 13px;
+    color: var(--muted);
+    line-height: 1.7;
+    border-left: 2px solid var(--gm);
+    padding-left: 1rem;
+  }
+  .legend {
+    padding: 1rem 2rem 0.5rem;
+    display: flex;
+    gap: 16px;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+  .legend-item { display: flex; align-items: center; gap: 6px; }
+  .legend-chip { font-size: 11px; padding: 3px 10px; border-radius: 100px; }
+
+  /* ── Guardrails section ── */
+  .guardrail-card {
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 1.25rem 1.5rem;
+    margin-bottom: 10px;
+    transition: background 0.2s;
+  }
+  .guardrail-card:hover { background: #fafafa; }
+  .guardrail-num {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--g);
+    margin-bottom: 5px;
+  }
+  .guardrail-title {
+    font-family: Georgia, serif;
+    font-size: 18px;
+    font-weight: 500;
+    color: var(--text);
+    margin-bottom: 6px;
+  }
+  .guardrail-desc {
+    font-size: 13px;
+    color: var(--muted);
+    line-height: 1.65;
+  }
+
+  /* ── Flag panel ── */
+  .flag-panel {
+    margin-top: 1rem;
+    border-top: 1px solid var(--border);
+    padding-top: 0.75rem;
+  }
+  .flag-panel-toggle {
+    font-size: 12px;
+    color: var(--faint);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    user-select: none;
+    transition: color 0.15s;
+  }
+  .flag-panel-toggle:hover { color: #c0392b; }
+  .flag-panel-icon { font-size: 13px; }
+  .flag-panel-caret {
+    margin-left: auto;
+    font-size: 15px;
+    transition: transform 0.2s;
+    line-height: 1;
+  }
+  .flag-panel-body { padding-top: 0.75rem; }
+  .flag-panel-hint {
+    font-size: 12px;
+    color: var(--muted);
+    margin-bottom: 8px;
+    font-style: italic;
+  }
+  .flag-chips-row { display: flex; flex-wrap: wrap; gap: 6px; }
+  .flag-chip-btn {
+    font-family: inherit;
+    font-size: 11px;
+    padding: 4px 11px;
+    border-radius: 100px;
+    border: 1px solid #ddd;
+    background: transparent;
+    color: var(--muted);
+    cursor: pointer;
+    transition: all 0.15s;
+  }
+  .flag-chip-btn:hover { border-color: #c0392b; color: #c0392b; }
+  .flag-chip-btn.flag-active { background: #fdf2f2; border-color: #c0392b; color: #c0392b; }
+  .flag-summary {
+    margin-top: 8px;
+    font-size: 12px;
+    color: #c0392b;
+    line-height: 1.6;
+  }
+  .flag-summary-label { font-weight: 500; }
+  .flag-chip {
+    display: inline-block;
+    background: #fdf2f2;
+    border: 1px solid #f5c6c6;
+    color: #c0392b;
+    font-size: 11px;
+    padding: 2px 8px;
+    border-radius: 100px;
+    margin-left: 4px;
+  }
+
+  @media (max-width: 560px) {
+    .mq-grid { grid-template-columns: 1fr; }
+    .hero-title { font-size: 26px; }
+    .nav-btn { padding: 6px 11px; font-size: 11px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ── Header ── -->
+<div class="header">
+  <div class="header-top">
+    <div>
+      <div class="wordmark">Islamic<span>Family</span></div>
+      <div class="tagline">Strategic identity &middot; Draft for discussion</div>
+    </div>
+    <nav class="nav" id="nav"></nav>
+  </div>
+  <div class="progress-bar"><div class="progress-fill" id="progress"></div></div>
+</div>
+
+<!-- ── GUARDRAILS ── -->
+<div class="section active" id="section-guardrails">
+  <div class="hero">
+    <div class="eyebrow">Before you vote</div>
+    <div class="hero-title">The guardrails</div>
+    <div class="hero-sub">These are the constraints any good vision, mission, or values statement must respect. Keep them in mind as you review each option — and use the flag tool on any card that you think falls short of one.</div>
+  </div>
+
+  <div class="cards-area">
+    <div class="guardrail-card">
+      <div class="guardrail-num">Guardrail 1</div>
+      <div class="guardrail-title">Accessible to all</div>
+      <div class="guardrail-desc">The language must not exclude anyone seeking services — Muslim or not, newcomer or fifth-generation Canadian. Insider framing or community-only phrasing closes doors before they can be opened.</div>
+    </div>
+    <div class="guardrail-card">
+      <div class="guardrail-num">Guardrail 2</div>
+      <div class="guardrail-title">Anchored in tradition</div>
+      <div class="guardrail-desc">We are grounded in Islamic values — rahma, karama, adl, amanah. The language should reflect that rootedness without requiring it as a condition of access or belonging.</div>
+    </div>
+    <div class="guardrail-card">
+      <div class="guardrail-num">Guardrail 3</div>
+      <div class="guardrail-title">Breadth of community</div>
+      <div class="guardrail-desc">Our community spans an enormous range of need and background: from pre-arrival refugees navigating displacement to fifth-generation Canadians struggling with identity and mental health. The language must hold that full spectrum without collapsing it.</div>
+    </div>
+    <div class="guardrail-card">
+      <div class="guardrail-num">Guardrail 4</div>
+      <div class="guardrail-title">Legible to outsiders</div>
+      <div class="guardrail-desc">Funders, government partners, and referring agencies need to understand who we are without a translator. Avoid insider language, religious terminology without context, or framing that only makes sense from inside the community.</div>
+    </div>
+    <div class="guardrail-card">
+      <div class="guardrail-num">Guardrail 5</div>
+      <div class="guardrail-title">Honest about scope</div>
+      <div class="guardrail-desc">We should not overclaim. The mission shouldn't promise what IslamicFamily alone cannot deliver. Aspirational language is essential — but overreach is a governance and credibility risk with funders and partners.</div>
+    </div>
+    <div class="guardrail-card">
+      <div class="guardrail-num">Guardrail 6</div>
+      <div class="guardrail-title">Durable, not dated</div>
+      <div class="guardrail-desc">The language should hold up in ten years. Avoid references to current events, specific programs, or demographic trends that may shift. A good mission statement outlasts the strategic cycle that produced it.</div>
+    </div>
+    <div class="guardrail-card">
+      <div class="guardrail-num">Guardrail 7</div>
+      <div class="guardrail-title">Distinctive, not generic</div>
+      <div class="guardrail-desc">"Compassionate whole-person care" could describe dozens of organizations. The language should actually sound like IslamicFamily — specific enough that it could not easily belong to anyone else.</div>
+    </div>
+  </div>
+
+  <div class="next-row"><button class="next-btn" onclick="goTo('vision')">Start reviewing options →</button></div>
+</div>
+
+<!-- ── VISION ── -->
+<div class="section active" id="section-vision">
+  <div class="hero">
+    <div class="eyebrow">Our vision</div>
+    <div class="hero-title">Where are we<br>trying to go?</div>
+    <div class="hero-sub">A vision describes the future we are building toward — not what we do, but what the world looks like when we have done it well.</div>
+  </div>
+  <div class="cards-area">
+    <div class="cards-hint">Three options — click a card to vote</div>
+
+    <div class="option-card" data-section="vision" data-opt="A" onclick="vote(this)">
+      <div class="card-header">
+        <div class="card-num">Option A — Outcome-anchored</div>
+        <span class="voted-badge">✓ Your vote</span>
+      </div>
+      <div class="card-text">"A Canada where our community needs no safety net — because it has built the leaders, the wealth, and the belonging that makes one unnecessary."</div>
+      <div class="card-note">Centers the end state: a community so strong it no longer needs crisis support. Bold, specific, measurable over time.</div>
+      <span class="card-tag">Aspirational · Long horizon</span>
+      <script>document.write(buildFlagPanel('vision','A'))</script>
+    </div>
+
+    <div class="option-card" data-section="vision" data-opt="B" onclick="vote(this)">
+      <div class="card-header">
+        <div class="card-num">Option B — Movement framing</div>
+        <span class="voted-badge">✓ Your vote</span>
+      </div>
+      <div class="card-text">"A thriving community in Canada — fewer people in crisis, more people in leadership, and an organization that measures its success by how little it is needed."</div>
+      <div class="card-note">Holds the paradox: success means becoming less necessary. Concrete and communicable to diverse stakeholders.</div>
+      <span class="card-tag">Accessible · Funder-friendly</span>
+      <script>document.write(buildFlagPanel('vision','B'))</script>
+    </div>
+
+    <div class="option-card recommended-card" data-section="vision" data-opt="C" onclick="vote(this)">
+      <div class="rec-banner">★ Recommended</div>
+      <div class="card-header">
+        <div class="card-num">Option C — Bold and specific</div>
+        <span class="voted-badge">✓ Your vote</span>
+      </div>
+      <div class="card-text">"To be the first call in crisis and the last organization standing — until injustice is a memory, and our community leads visibly in every corner of Canadian life."</div>
+      <div class="card-note">Holds the full tension of urgency now and obsolescence as the goal. Most memorable for board and donor audiences.</div>
+      <span class="card-tag rec">Recommended</span>
+      <script>document.write(buildFlagPanel('vision','C'))</script>
+    </div>
+
+    <div class="custom-area">
+      <div class="custom-label">Something different? Write your own vision statement:</div>
+      <textarea class="custom-input" id="custom-vision" rows="3" placeholder="Type your own version here..."></textarea>
+    </div>
+  </div>
+
+  <div class="reflection-box">
+    <div class="reflection-header">Your reflection</div>
+    <div class="reflection-body">
+      <div class="reflection-prompt">Which option best captures where you believe IslamicFamily is headed?</div>
+      <textarea class="reflection-textarea" id="ref-vision-0" rows="3" placeholder="Type your thoughts here..."></textarea>
+      <div class="reflection-prompt">What feels missing or overstated in these options?</div>
+      <textarea class="reflection-textarea" id="ref-vision-1" rows="3" placeholder="Type your thoughts here..."></textarea>
+    </div>
+  </div>
+
+  <div class="next-row"><button class="next-btn" onclick="goTo('mq')">Next section →</button></div>
+</div>
+
+<!-- ── MISSION QUESTION ── -->
+<div class="section" id="section-mq">
+  <div class="hero">
+    <div class="eyebrow">The mission question</div>
+    <div class="hero-title">The question that<br>guides everything</div>
+    <div class="hero-sub">The animating inquiry the whole organization is oriented around. It invites rather than declares.</div>
+  </div>
+
+  <div class="mq-grid">
+    <div class="mq-panel" data-section="mq" data-opt="Previous" onclick="vote(this)">
+      <div class="mq-panel-header">
+        <div class="mq-panel-label">Previous version</div>
+        <span class="voted-badge">✓ Your vote</span>
+      </div>
+      <div class="mq-question">"How can we support the whole person to flourish in our community?"</div>
+      <ul class="mq-bullets">
+        <li><strong>The whole person</strong> includes mental, emotional, physical, familial, social, economic &amp; spiritual well-being.</li>
+        <li><strong>Flourishing</strong> means reaching one's highest potential — individually and collectively.</li>
+        <li><strong>Our community</strong> refers to the many geographical, cultural &amp; faith networks that make up our identity.</li>
+      </ul>
+      <script>document.write(buildFlagPanel('mq','Previous'))</script>
+    </div>
+
+    <div class="mq-panel tweaked-panel" data-section="mq" data-opt="Tweaked" onclick="vote(this)">
+      <div class="rec-banner">★ Recommended</div>
+      <div class="mq-panel-header">
+        <div class="mq-panel-label">Tweaked version</div>
+        <span class="voted-badge">✓ Your vote</span>
+      </div>
+      <div class="mq-question">"How can we support the whole person to flourish in our community?"</div>
+      <ul class="mq-bullets">
+        <li><strong>The whole person</strong> includes mental, emotional, physical, familial, social, economic &amp; spiritual well-being.</li>
+        <li><strong>Flourishing</strong> means stability, strength, leadership &amp; contribution — on the person's own terms.</li>
+        <li><strong>Our community</strong> includes the many geographical, cultural &amp; faith networks that are our identity — and all who seek care rooted in our tradition.</li>
+      </ul>
+      <div class="mq-change-note">The question is unchanged. Bullets now reflect the board's directional language and open belonging to all who seek care rooted in this tradition.</div>
+      <script>document.write(buildFlagPanel('mq','Tweaked'))</script>
+    </div>
+  </div>
+
+  <div style="padding: 0 2rem 0.5rem;">
+    <div class="custom-area">
+      <div class="custom-label">Something different? Suggest your own explanatory bullets:</div>
+      <textarea class="custom-input" id="custom-mq" rows="3" placeholder="Type your own version here..."></textarea>
+    </div>
+  </div>
+
+  <div class="reflection-box">
+    <div class="reflection-header">Your reflection</div>
+    <div class="reflection-body">
+      <div class="reflection-prompt">Do the explanatory bullets match how you understand the mission question?</div>
+      <textarea class="reflection-textarea" id="ref-mq-0" rows="3" placeholder="Type your thoughts here..."></textarea>
+      <div class="reflection-prompt">Is there a dimension of flourishing or community that isn't captured here?</div>
+      <textarea class="reflection-textarea" id="ref-mq-1" rows="3" placeholder="Type your thoughts here..."></textarea>
+    </div>
+  </div>
+
+  <div class="next-row"><button class="next-btn" onclick="goTo('mission')">Next section →</button></div>
+</div>
+
+<!-- ── MISSION STATEMENT ── -->
+<div class="section" id="section-mission">
+  <div class="hero">
+    <div class="eyebrow">Mission statement</div>
+    <div class="hero-title">Why we exist and<br>what we do</div>
+    <div class="hero-sub">Names who we serve, how, and in what spirit. Lives in annual reports, grant applications, and staff onboarding.</div>
+  </div>
+  <div class="cards-area">
+    <div class="cards-hint">Four options — click a card to vote</div>
+
+    <div class="option-card" data-section="mission" data-opt="A" onclick="vote(this)">
+      <div class="card-header">
+        <div class="card-num">Current statement</div>
+        <span class="voted-badge">✓ Your vote</span>
+      </div>
+      <div class="card-text">"Supporting the whole person flourish in the community. Our mission is to uplift our community through culturally sensitive and compassionate care, ensuring every individual has access to safe spaces, support, and opportunities for holistic growth."</div>
+      <div class="card-note">The starting point. Warm and broad, but grammatically rough and "culturally sensitive" reads as a descriptor, not a differentiator.</div>
+      <span class="card-tag">Baseline</span>
+      <script>document.write(buildFlagPanel('mission','A'))</script>
+    </div>
+
+    <div class="option-card" data-section="mission" data-opt="B" onclick="vote(this)">
+      <div class="card-header">
+        <div class="card-num">Option B — Cleaner, broader</div>
+        <span class="voted-badge">✓ Your vote</span>
+      </div>
+      <div class="card-text">"IslamicFamily helps people flourish — providing whole-person care, grounded in the values of our tradition, for anyone in our community who needs it."</div>
+      <div class="card-note">Drops the jargon, opens access, and lets the org name carry the Islamic identity.</div>
+      <span class="card-tag">Accessible · Inclusive</span>
+      <script>document.write(buildFlagPanel('mission','B'))</script>
+    </div>
+
+    <div class="option-card recommended-card" data-section="mission" data-opt="C" onclick="vote(this)">
+      <div class="rec-banner">★ Recommended</div>
+      <div class="card-header">
+        <div class="card-num">Option C — Full spectrum, named tradition</div>
+        <span class="voted-badge">✓ Your vote</span>
+      </div>
+      <div class="card-text">"From crisis support to community leadership, IslamicFamily offers whole-person care — grounded in a tradition of rahma (compassion), dignity, and belonging — for anyone who needs it."</div>
+      <div class="card-note">Captures the arc the board named. Rahma honours the Islamic grounding without excluding others.</div>
+      <span class="card-tag rec">Recommended</span>
+      <script>document.write(buildFlagPanel('mission','C'))</script>
+    </div>
+
+    <div class="option-card" data-section="mission" data-opt="D" onclick="vote(this)">
+      <div class="card-header">
+        <div class="card-num">Option D — Shortest, most memorable</div>
+        <span class="voted-badge">✓ Your vote</span>
+      </div>
+      <div class="card-text">"Whole-person care, rooted in Islamic values — from first crisis to lasting contribution."</div>
+      <div class="card-note">One breath. Best for printed materials and grant headers.</div>
+      <span class="card-tag">Punchy · Print-ready</span>
+      <script>document.write(buildFlagPanel('mission','D'))</script>
+    </div>
+
+    <div class="custom-area">
+      <div class="custom-label">Something different? Write your own mission statement:</div>
+      <textarea class="custom-input" id="custom-mission" rows="3" placeholder="Type your own version here..."></textarea>
+    </div>
+  </div>
+
+  <div class="reflection-box">
+    <div class="reflection-header">Your reflection</div>
+    <div class="reflection-body">
+      <div class="reflection-prompt">Which option would you be proud to put in front of a funder or newcomer?</div>
+      <textarea class="reflection-textarea" id="ref-mission-0" rows="3" placeholder="Type your thoughts here..."></textarea>
+      <div class="reflection-prompt">What language resonates? What doesn't sit right?</div>
+      <textarea class="reflection-textarea" id="ref-mission-1" rows="3" placeholder="Type your thoughts here..."></textarea>
+    </div>
+  </div>
+
+  <div class="next-row"><button class="next-btn" onclick="goTo('values')">Next section →</button></div>
+</div>
+
+<!-- ── VALUES ── -->
+<div class="section" id="section-values">
+  <div class="hero">
+    <div class="eyebrow">Our values</div>
+    <div class="hero-title">How we show up<br>in everything we do</div>
+    <div class="hero-sub">Tag each value as Primary (core to our identity) or Secondary (important, but supporting). Tag as many as you like.</div>
+  </div>
+
+  <div class="section-note">
+    <p>Rooted in Islamic principles — five values from your existing document. Tag each to indicate how central it is to the organization's identity.</p>
+  </div>
+
+  <div class="legend">
+    <div class="legend-item">
+      <span class="legend-chip" style="background:var(--g);color:#fff;">Primary</span>
+      <span style="font-size:12px;color:var(--muted);">Core to our identity</span>
+    </div>
+    <div class="legend-item">
+      <span class="legend-chip" style="background:var(--gl);color:var(--gd);">Secondary</span>
+      <span style="font-size:12px;color:var(--muted);">Important, supporting</span>
+    </div>
+  </div>
+
+  <div style="padding: 0.75rem 2rem 0.5rem;">
+    <div class="value-card" id="vc-responsive">
+      <div class="value-card-inner">
+        <div class="value-body">
+          <div class="value-title-row"><span class="value-icon">🤲</span><div class="value-title">Responsive</div></div>
+          <div class="value-desc">We are compassionatley responsive to the immediate needs of clients and the emerging needs of community.</div>
+          <div class="value-root">Rahma · mercy</div>
+        </div>
+        <div class="value-btns">
+          <button class="tag-btn" onclick="tagValue('responsive','primary',this)">Primary</button>
+          <button class="tag-btn" onclick="tagValue('responsive','secondary',this)">Secondary</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="value-card" id="vc-nonjudgmental">
+      <div class="value-card-inner">
+        <div class="value-body">
+          <div class="value-title-row"><span class="value-icon">⚖️</span><div class="value-title">Nonjudgmental</div></div>
+          <div class="value-desc">Every person carries inherent worth. We do not rank, shame, or sort. We approach with open hands and a level gaze.</div>
+          <div class="value-root">Karama · dignity</div>
+        </div>
+        <div class="value-btns">
+          <button class="tag-btn" onclick="tagValue('nonjudgmental','primary',this)">Primary</button>
+          <button class="tag-btn" onclick="tagValue('nonjudgmental','secondary',this)">Secondary</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="value-card" id="vc-peoplecentered">
+      <div class="value-card-inner">
+        <div class="value-body">
+          <div class="value-title-row"><span class="value-icon">👤</span><div class="value-title">People-centered</div></div>
+          <div class="value-desc">Processes and systems exist to serve people — not the other way around. We design around the lived experience of those we serve.</div>
+          <div class="value-root">Khidma · service</div>
+        </div>
+        <div class="value-btns">
+          <button class="tag-btn" onclick="tagValue('peoplecentered','primary',this)">Primary</button>
+          <button class="tag-btn" onclick="tagValue('peoplecentered','secondary',this)">Secondary</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="value-card" id="vc-responsible">
+      <div class="value-card-inner">
+        <div class="value-body">
+          <div class="value-title-row"><span class="value-icon">🔲</span><div class="value-title">Responsible</div></div>
+          <div class="value-desc">We honour the resources entrusted to us. We work to uphold justice in work and in systems.&nbsp;</div>
+          <div class="value-root">Adl · justice</div>
+        </div>
+        <div class="value-btns">
+          <button class="tag-btn" onclick="tagValue('responsible','primary',this)">Primary</button>
+          <button class="tag-btn" onclick="tagValue('responsible','secondary',this)">Secondary</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="value-card" id="vc-accountable">
+      <div class="value-card-inner">
+        <div class="value-body">
+          <div class="value-title-row"><span class="value-icon">✅</span><div class="value-title">Accountable &amp; transparent</div></div>
+          <div class="value-desc">We say what we'll do, do what we say, and tell the truth when we fall short. Trust is built by being findable when something goes wrong.</div>
+          <div class="value-root">Amanah · trustworthiness</div>
+        </div>
+        <div class="value-btns">
+          <button class="tag-btn" onclick="tagValue('accountable','primary',this)">Primary</button>
+          <button class="tag-btn" onclick="tagValue('accountable','secondary',this)">Secondary</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="value-summary" id="value-summary" style="display:none;">
+    <div class="value-summary-label">Your ranking so far</div>
+    <div class="chips" id="value-chips"></div>
+  </div>
+
+  <div style="padding: 0 2rem 0.5rem; margin-top: 0.5rem;">
+    <div class="custom-area">
+      <div class="custom-label">Missing a value? Suggest one:</div>
+      <textarea class="custom-input" id="custom-values" rows="2" placeholder="e.g. 'Spiritually grounded — we are rooted in tawakkul...'"></textarea>
+    </div>
+  </div>
+
+  <div class="reflection-box">
+    <div class="reflection-header">Your reflection</div>
+    <div class="reflection-body">
+      <div class="reflection-prompt">Why did you tag values as primary vs secondary?</div>
+      <textarea class="reflection-textarea" id="ref-values-0" rows="3" placeholder="Type your thoughts here..."></textarea>
+      <div class="reflection-prompt">Is there a value that feels missing from this list?</div>
+      <textarea class="reflection-textarea" id="ref-values-1" rows="3" placeholder="Type your thoughts here..."></textarea>
+    </div>
+  </div>
+
+  <div class="next-row"><button class="next-btn" onclick="goTo('together')">See the full picture →</button></div>
+</div>
+
+<!-- ── TOGETHER ── -->
+<div class="section" id="section-together">
+  <div class="hero">
+    <div class="eyebrow">The full picture</div>
+    <div class="hero-title">Vision, mission and<br>values together</div>
+    <div class="hero-sub">The question animates, the vision orients, the mission operates, and the values define character throughout.</div>
+  </div>
+
+  <div class="synthesis-block" id="synthesis-block">
+    <div class="synthesis-label">IslamicFamily's Future…</div>
+    <div id="synthesis-rows"></div>
+  </div>
+
+  <div class="reading-note">
+    <div class="reading-note-header">
+      <span class="reading-note-title">How they work together</span>
+      <span class="reading-note-badge">Reading note</span>
+    </div>
+    <div class="reading-note-body">The mission question is the animating inquiry — it lives at the top of every strategic conversation and keeps the organization honest. The vision names the world it is building toward. The mission statement describes how IslamicFamily moves people along the arc from first crisis to lasting contribution. And the values are the method — woven through every interaction. Together these answer the questions every board member, funder, and staff hire will eventually ask: what are we here for, where are we going, how are we getting there, and what kind of organization are we while we do it.</div>
+  </div>
+
+  <div class="reflection-box">
+    <div class="reflection-header">Your reflection</div>
+    <div class="reflection-body">
+      <div class="reflection-prompt">How do these elements work together as a whole?</div>
+      <textarea class="reflection-textarea" id="ref-together-0" rows="3" placeholder="Type your thoughts here..."></textarea>
+      <div class="reflection-prompt">What would you change before bringing this to a board vote?</div>
+      <textarea class="reflection-textarea" id="ref-together-1" rows="3" placeholder="Type your thoughts here..."></textarea>
+    </div>
+  </div>
+
+  <div class="submit-block">
+    <div class="submit-title">Submit your feedback</div>
+    <div class="submit-desc">Your votes, value rankings, and reflections will be compiled and sent to <strong>Omary@islamicfamily.ca</strong>. This opens your email client with everything pre-filled — easy to forward and tabulate.</div>
+    <div class="submit-row">
+      <input class="submit-input" id="responder-name" placeholder="Your name (optional)" />
+      <button class="submit-btn" onclick="sendEmail()">Send feedback →</button>
+    </div>
+    <div class="submit-confirm" id="submit-confirm">Your email client should have opened with the full summary. If not, check your browser's pop-up settings.</div>
+  </div>
+</div>
+
+<script>
+  // ── State ──────────────────────────────────────────────────────────
+  const TABS = ["guardrails","vision","mq","mission","values","together"];
+  const TAB_LABELS = { guardrails:"Guardrails", vision:"Vision", mq:"Mission question", mission:"Mission statement", values:"Values", together:"Together" };
+  const myVotes = {};
+  const valueTags = {};
+
+  const VALUE_TITLES = {
+    responsive: "Responsive & compassionate",
+    nonjudgmental: "Nonjudgmental & dignified",
+    peoplecentered: "People-centered",
+    responsible: "Responsible & just",
+    accountable: "Accountable & transparent",
+  };
+
+  // ── Nav ────────────────────────────────────────────────────────────
+  const nav = document.getElementById("nav");
+  TABS.forEach(t => {
+    const btn = document.createElement("button");
+    btn.className = "nav-btn";
+    btn.id = "nav-" + t;
+    btn.textContent = TAB_LABELS[t];
+    btn.onclick = () => goTo(t);
+    nav.appendChild(btn);
+  });
+
+  let currentTab = "guardrails";
+  goTo("guardrails");
+
+  function goTo(tab) {
+    document.querySelectorAll(".section").forEach(s => s.classList.remove("active"));
+    document.querySelectorAll(".nav-btn").forEach(b => b.classList.remove("active"));
+    document.getElementById("section-" + tab).classList.add("active");
+    document.getElementById("nav-" + tab).classList.add("active");
+    currentTab = tab;
+    const idx = TABS.indexOf(tab);
+    document.getElementById("progress").style.width = ((idx + 1) / TABS.length * 100) + "%";
+    window.scrollTo({ top: 0, behavior: "smooth" });
+    if (myVotes[tab]) {
+      const btn = document.getElementById("nav-" + tab);
+      if (!btn.querySelector(".nav-dot")) {
+        const dot = document.createElement("span");
+        dot.className = "nav-dot";
+        btn.appendChild(dot);
+      }
+    }
+    if (tab === "together") renderTogether();
+  }
+
+  const GUARDRAILS = [
+    { id:"g1", short:"Accessible to all",       full:"The language must not exclude anyone seeking services — Muslim or not, newcomer or fifth-generation Canadian. Insider framing or community-only phrasing closes doors." },
+    { id:"g2", short:"Anchored in tradition",    full:"We are grounded in Islamic values — rahma, karama, adl, amanah. The language should reflect that rootedness without requiring it as a condition of access." },
+    { id:"g3", short:"Breadth of community",     full:"Our community spans an enormous range of need and background: from pre-arrival refugees navigating displacement to fifth-generation Canadians struggling with identity and mental health. The language must hold that full spectrum." },
+    { id:"g4", short:"Legible to outsiders",     full:"Funders, government partners, and referring agencies need to understand who we are without a translator. Avoid insider language, acronyms, or framing that only makes sense from inside the community." },
+    { id:"g5", short:"Honest about scope",       full:"We should not overclaim. The mission shouldn't promise what IslamicFamily alone cannot deliver. Aspirational is good; misleading is a governance risk." },
+    { id:"g6", short:"Durable, not dated",       full:"The language should hold up in ten years. Avoid references to current events, specific programs, or demographic trends that may shift. The statement should outlast a strategic cycle." },
+    { id:"g7", short:"Distinctive, not generic", full:"'Compassionate whole-person care' could describe dozens of organizations. The language should actually sound like IslamicFamily — specific enough that it could not belong to anyone else." },
+  ];
+
+  // flags: { "vision-A": ["g1","g3"], "mission-C": ["g5"], ... }
+  const flags = {};
+
+  function flagKey(section, opt) { return section + "-" + opt; }
+
+  function toggleFlag(section, opt, gid, el) {
+    const k = flagKey(section, opt);
+    if (!flags[k]) flags[k] = [];
+    const idx = flags[k].indexOf(gid);
+    if (idx === -1) {
+      flags[k].push(gid);
+      el.classList.add("flag-active");
+    } else {
+      flags[k].splice(idx, 1);
+      el.classList.remove("flag-active");
+    }
+    // update summary line on card
+    updateFlagSummary(section, opt);
+  }
+
+  function updateFlagSummary(section, opt) {
+    const k = flagKey(section, opt);
+    const el = document.getElementById("flag-summary-" + k);
+    if (!el) return;
+    const raised = (flags[k] || []);
+    if (raised.length === 0) {
+      el.style.display = "none";
+      el.innerHTML = "";
+    } else {
+      const labels = raised.map(gid => {
+        const g = GUARDRAILS.find(x => x.id === gid);
+        return g ? `<span class="flag-chip">${g.short}</span>` : "";
+      }).join("");
+      el.innerHTML = `<span class="flag-summary-label">⚑ Concerns flagged:</span> ${labels}`;
+      el.style.display = "block";
+    }
+  }
+
+  function buildFlagPanel(section, opt) {
+    const k = flagKey(section, opt);
+    return `
+      <div class="flag-panel" id="flagpanel-${k}">
+        <div class="flag-panel-toggle" onclick="toggleFlagPanel('${k}')">
+          <span class="flag-panel-icon">⚑</span> Flag a guardrail concern
+          <span class="flag-panel-caret" id="caret-${k}">›</span>
+        </div>
+        <div class="flag-panel-body" id="flagbody-${k}" style="display:none;">
+          <div class="flag-panel-hint">Which guardrail does this option risk violating?</div>
+          <div class="flag-chips-row">
+            ${GUARDRAILS.map(g => `
+              <button class="flag-chip-btn" id="flagbtn-${k}-${g.id}"
+                onclick="toggleFlag('${section}','${opt}','${g.id}',this)">
+                ${g.short}
+              </button>`).join("")}
+          </div>
+        </div>
+      </div>
+      <div class="flag-summary" id="flag-summary-${k}" style="display:none;"></div>`;
+  }
+
+  function toggleFlagPanel(k) {
+    const body = document.getElementById("flagbody-" + k);
+    const caret = document.getElementById("caret-" + k);
+    const open = body.style.display !== "none";
+    body.style.display = open ? "none" : "block";
+    caret.style.transform = open ? "" : "rotate(90deg)";
+  }
+  const OPTION_TEXT = {
+    vision: {
+      A: '"A Canada where our community needs no safety net — because it has built the leaders, the wealth, and the belonging that makes one unnecessary."',
+      B: '"A thriving Muslim community in Canada — fewer people in crisis, more people in leadership, and an organization that measures its success by how little it is needed."',
+      C: '"To be the first call in crisis and the last organization standing — until poverty in the Muslim community is a memory, and our community leads visibly in every corner of Canadian life."',
+    },
+    mq: {
+      Previous: '"How can we support the whole person to flourish in our community?" — with the original explanatory bullets.',
+      Tweaked:  '"How can we support the whole person to flourish in our community?" — holding the arc from crisis to contribution, and belonging for all who seek care rooted in our tradition.',
+    },
+    mission: {
+      A: '"Supporting the whole person flourish in the community. Our mission is to uplift our community through culturally sensitive and compassionate care, ensuring every individual has access to safe spaces, support, and opportunities for holistic growth."',
+      B: '"IslamicFamily helps people flourish — providing whole-person care, grounded in the values of our tradition, for anyone in our community who needs it."',
+      C: '"From crisis support to community leadership, IslamicFamily offers whole-person care — grounded in a tradition of rahma (compassion), dignity, and belonging — for anyone who needs it."',
+      D: '"Whole-person care, rooted in Islamic values — from first crisis to lasting contribution."',
+    },
+  };
+
+  const OPTION_LABELS = {
+    vision:  { A:"Option A", B:"Option B", C:"Option C (Recommended)" },
+    mq:      { Previous:"Previous version", Tweaked:"Tweaked version (Recommended)" },
+    mission: { A:"Current statement", B:"Option B", C:"Option C (Recommended)", D:"Option D" },
+  };
+
+  function renderTogether() {
+    const container = document.getElementById("synthesis-rows");
+    const rows = [];
+
+    // Vision
+    const vVote = myVotes.vision;
+    const vCustom = (document.getElementById("custom-vision") || {}).value || "";
+    const vText = vCustom
+      ? `<em style="color:#555;font-size:13px;">Custom submission:</em><br>${vCustom}`
+      : vVote
+        ? `<span style="font-size:11px;color:var(--g);text-transform:uppercase;letter-spacing:0.06em;">${OPTION_LABELS.vision[vVote]}</span><br>${OPTION_TEXT.vision[vVote]}`
+        : `<span style="color:#bbb;font-style:italic;">No vote cast yet</span>`;
+    rows.push(["Vision", vText]);
+
+    // Mission question
+    const mVote = myVotes.mq;
+    const mCustom = (document.getElementById("custom-mq") || {}).value || "";
+    const mText = mCustom
+      ? `<em style="color:#555;font-size:13px;">Custom submission:</em><br>${mCustom}`
+      : mVote
+        ? `<span style="font-size:11px;color:var(--g);text-transform:uppercase;letter-spacing:0.06em;">${OPTION_LABELS.mq[mVote]}</span><br>${OPTION_TEXT.mq[mVote]}`
+        : `<span style="color:#bbb;font-style:italic;">No vote cast yet</span>`;
+    rows.push(["Question", mText]);
+
+    // Mission statement
+    const msVote = myVotes.mission;
+    const msCustom = (document.getElementById("custom-mission") || {}).value || "";
+    const msText = msCustom
+      ? `<em style="color:#555;font-size:13px;">Custom submission:</em><br>${msCustom}`
+      : msVote
+        ? `<span style="font-size:11px;color:var(--g);text-transform:uppercase;letter-spacing:0.06em;">${OPTION_LABELS.mission[msVote]}</span><br>${OPTION_TEXT.mission[msVote]}`
+        : `<span style="color:#bbb;font-style:italic;">No vote cast yet</span>`;
+    rows.push(["Mission", msText]);
+
+    // Values
+    const primary = Object.keys(valueTags).filter(k => valueTags[k] === "primary").map(k => VALUE_TITLES[k]);
+    const secondary = Object.keys(valueTags).filter(k => valueTags[k] === "secondary").map(k => VALUE_TITLES[k]);
+    const customVal = (document.getElementById("custom-values") || {}).value || "";
+    let valText = "";
+    if (primary.length === 0 && secondary.length === 0 && !customVal) {
+      valText = `<span style="color:#bbb;font-style:italic;">No values tagged yet</span>`;
+    } else {
+      if (primary.length) valText += `<span style="font-size:11px;color:var(--g);text-transform:uppercase;letter-spacing:0.06em;">Primary</span><br>${primary.join(" · ")}<br><br>`;
+      if (secondary.length) valText += `<span style="font-size:11px;color:var(--gm);text-transform:uppercase;letter-spacing:0.06em;">Secondary</span><br>${secondary.join(" · ")}<br><br>`;
+      if (customVal) valText += `<span style="font-size:11px;color:#888;text-transform:uppercase;letter-spacing:0.06em;">Suggested addition</span><br>${customVal}`;
+      valText = valText.replace(/<br><br>$/, "");
+    }
+    rows.push(["Values", valText]);
+
+    container.innerHTML = rows.map(([key, val], i) => `
+      <div class="synthesis-row" style="${i===0?'border-top:none;padding-top:0':''}">
+        <div class="synthesis-key">${key}</div>
+        <div class="synthesis-val">${val}</div>
+      </div>`).join("");
+  }
+
+  // ── Voting ─────────────────────────────────────────────────────────
+  function vote(card) {
+    const section = card.dataset.section;
+    const opt = card.dataset.opt;
+    // deselect previous in this section
+    document.querySelectorAll(`[data-section="${section}"]`).forEach(c => c.classList.remove("voted"));
+    card.classList.add("voted");
+    myVotes[section] = opt;
+    // add dot to nav
+    const navBtn = document.getElementById("nav-" + section);
+    if (navBtn && !navBtn.querySelector(".nav-dot")) {
+      const dot = document.createElement("span");
+      dot.className = "nav-dot";
+      navBtn.appendChild(dot);
+    }
+  }
+
+  // ── Value tagging ──────────────────────────────────────────────────
+  function tagValue(key, tag, btn) {
+    const card = document.getElementById("vc-" + key);
+    const btns = card.querySelectorAll(".tag-btn");
+    const cur = valueTags[key];
+
+    if (cur === tag) {
+      // toggle off
+      valueTags[key] = null;
+      card.classList.remove("tagged-primary","tagged-secondary");
+      btns.forEach(b => b.classList.remove("active-primary","active-secondary"));
+    } else {
+      valueTags[key] = tag;
+      card.classList.remove("tagged-primary","tagged-secondary");
+      card.classList.add("tagged-" + tag);
+      btns.forEach(b => b.classList.remove("active-primary","active-secondary"));
+      btn.classList.add("active-" + tag);
+    }
+    renderValueSummary();
+  }
+
+  function renderValueSummary() {
+    const summary = document.getElementById("value-summary");
+    const chips = document.getElementById("value-chips");
+    const primary = Object.keys(valueTags).filter(k => valueTags[k] === "primary");
+    const secondary = Object.keys(valueTags).filter(k => valueTags[k] === "secondary");
+    if (primary.length === 0 && secondary.length === 0) {
+      summary.style.display = "none";
+      return;
+    }
+    summary.style.display = "block";
+    chips.innerHTML =
+      primary.map(k => `<span class="chip-primary">${VALUE_TITLES[k]}</span>`).join("") +
+      secondary.map(k => `<span class="chip-secondary">${VALUE_TITLES[k]}</span>`).join("");
+  }
+
+  // ── Email ──────────────────────────────────────────────────────────
+  function val(id) { return (document.getElementById(id)||{}).value || ""; }
+
+  function sendEmail() {
+    const name = val("responder-name") || "Anonymous";
+    const date = new Date().toLocaleDateString("en-CA");
+
+    const VOTE_LABELS = {
+      vision:  { A:"Option A", B:"Option B", C:"Option C (Recommended)" },
+      mq:      { Previous:"Previous version", Tweaked:"Tweaked version (Recommended)" },
+      mission: { A:"Current statement", B:"Option B", C:"Option C (Recommended)", D:"Option D" },
+    };
+
+    const voteLines = Object.entries(VOTE_LABELS).map(([s, labels]) => {
+      const v = myVotes[s];
+      const custom = val("custom-" + s);
+      // collect flags for all options in this section
+      const allOpts = Object.keys(labels);
+      const flagLines = allOpts
+        .filter(opt => (flags[flagKey(s, opt)] || []).length > 0)
+        .map(opt => {
+          const raised = flags[flagKey(s, opt)].map(gid => {
+            const g = GUARDRAILS.find(x => x.id === gid);
+            return g ? g.short : gid;
+          }).join(", ");
+          return `    [${labels[opt]}] flagged: ${raised}`;
+        }).join("\n");
+      let line = `${TAB_LABELS[s]}\n  Vote: ${v ? labels[v] : "No vote cast"}`;
+      if (custom) line += `\n  Custom submission: ${custom}`;
+      if (flagLines) line += `\n  Guardrail concerns:\n${flagLines}`;
+      return line;
+    }).join("\n\n");
+
+    const primary = Object.keys(valueTags).filter(k => valueTags[k]==="primary").map(k => VALUE_TITLES[k]).join(", ") || "None";
+    const secondary = Object.keys(valueTags).filter(k => valueTags[k]==="secondary").map(k => VALUE_TITLES[k]).join(", ") || "None";
+    const customValues = val("custom-values");
+
+    const sections = [
+      ["Vision",           [val("ref-vision-0"),   val("ref-vision-1")]],
+      ["Mission question", [val("ref-mq-0"),        val("ref-mq-1")]],
+      ["Mission statement",[val("ref-mission-0"),   val("ref-mission-1")]],
+      ["Values",           [val("ref-values-0"),    val("ref-values-1")]],
+      ["Together",         [val("ref-together-0"),  val("ref-together-1")]],
+    ];
+
+    const PROMPTS = {
+      "Vision":           ["Which option best captures where you believe IslamicFamily is headed?", "What feels missing or overstated?"],
+      "Mission question": ["Do the explanatory bullets match how you understand the mission question?", "Is there a dimension of flourishing or community not captured here?"],
+      "Mission statement":["Which option would you be proud to put in front of a funder or newcomer?", "What language resonates? What doesn't sit right?"],
+      "Values":           ["Why did you tag values as primary vs secondary?", "Is there a value missing from this list?"],
+      "Together":         ["How do these elements work together as a whole?", "What would you change before a board vote?"],
+    };
+
+    const refLines = sections.map(([name, answers]) => {
+      const prompts = PROMPTS[name];
+      return name + "\n" + prompts.map((p,i) => `  Q: ${p}\n  A: ${answers[i]||"(no response)"}`).join("\n");
+    }).join("\n\n");
+
+    const divider = "=".repeat(48);
+
+    const body =
+`IslamicFamily Strategic Identity — Feedback
+Submitted by: ${name}
+Date: ${date}
+
+${divider}
+VOTES
+${divider}
+${voteLines}
+
+${divider}
+VALUES RANKING
+${divider}
+Primary (core to identity): ${primary}
+Secondary (important, supporting): ${secondary}${customValues ? "\nSuggested addition: " + customValues : ""}
+
+${divider}
+REFLECTIONS
+${divider}
+${refLines}`;
+
+    const subject = `IF Strategic Identity Feedback — ${name} — ${date}`;
+    window.open("mailto:Omary@islamicfamily.ca?subject=" + encodeURIComponent(subject) + "&body=" + encodeURIComponent(body), "_blank");
+    document.getElementById("submit-confirm").style.display = "block";
+  }
+</script>
+</body>
+</html>
