@@ -1,10 +1,6 @@
 /**
  * article-footer.js
- * Drop this script at the bottom of any article page.
- * It reads CURRENT_SLUG and CURRENT_TAGS from the page,
- * then self-renders a minimal footer with related posts + subscribe.
- *
- * Usage: paste near the closing </body> tag:
+ * Drop these lines just before </body> in any article:
  *
  *   <script>
  *     const CURRENT_SLUG = "your-post-slug";
@@ -15,40 +11,37 @@
  */
 
 (function () {
-  // ── Find related posts ────────────────────────
-  const related = (typeof POSTS !== "undefined" ? POSTS : [])
-    .filter(
-      (p) =>
-        p.slug !== CURRENT_SLUG &&
-        p.tags.some((t) => CURRENT_TAGS.includes(t))
-    )
+  const allPosts = typeof POSTS !== "undefined" ? POSTS : [];
+
+  // Related by tag first; fall back to 3 most recent if none found
+  let related = allPosts
+    .filter((p) => p.slug !== CURRENT_SLUG && p.tags.some((t) => CURRENT_TAGS.includes(t)))
     .sort((a, b) => new Date(b.date) - new Date(a.date))
     .slice(0, 3);
 
+  if (!related.length) {
+    related = allPosts
+      .filter((p) => p.slug !== CURRENT_SLUG)
+      .sort((a, b) => new Date(b.date) - new Date(a.date))
+      .slice(0, 3);
+  }
+
   function formatDate(iso) {
     return new Date(iso + "T00:00:00").toLocaleDateString("en-CA", {
-      year: "numeric",
-      month: "long",
-      day: "numeric",
+      year: "numeric", month: "long", day: "numeric",
     });
   }
 
-  // ── Build HTML ────────────────────────────────
-  const relatedHTML = related.length
-    ? related
-        .map(
-          (p) => `
-        <a class="af-card" href="${p.slug}.html">
-          <span class="af-card-title">${p.title}</span>
-          <span class="af-card-date">${formatDate(p.date)}</span>
-        </a>`
-        )
-        .join("")
-    : "";
+  const cardsHTML = related.map((p) => `
+    <a class="af-card" href="${p.slug}.html">
+      <div class="af-card-meta">${formatDate(p.date)}</div>
+      <div class="af-card-title">${p.title}</div>
+      <div class="af-card-excerpt">${p.excerpt || ""}</div>
+      <div class="af-card-read">Read →</div>
+    </a>`).join("");
 
-  const tagLinks = CURRENT_TAGS.map(
-    (t) =>
-      `<a class="af-tag" href="../index.html#tag:${encodeURIComponent(t)}">All posts tagged "${t}"</a>`
+  const tagLinks = CURRENT_TAGS.map((t) =>
+    `<a class="af-tag" href="../index.html">All posts tagged "${t}"</a>`
   ).join("");
 
   const footer = document.createElement("footer");
@@ -57,69 +50,95 @@
     <style>
       .af-footer {
         margin-top: 4rem;
-        padding-top: 2rem;
         border-top: 2px solid #275D43;
+        padding-top: 2.5rem;
+        padding-bottom: 3rem;
         font-family: 'Alegreya Sans', system-ui, sans-serif;
-        font-size: .9rem;
         color: #2a2a2a;
+        box-sizing: border-box;
       }
-      .af-section { margin-bottom: 2rem; }
+      .af-inner {
+        max-width: 740px;
+        margin: 0 auto;
+        padding: 0 1.5rem;
+        box-sizing: border-box;
+      }
       .af-heading {
         font-size: .7rem;
         font-weight: 700;
         text-transform: uppercase;
         letter-spacing: .1em;
         color: #275D43;
-        margin-bottom: .85rem;
+        margin-bottom: 1.1rem;
       }
-      .af-cards { display: flex; flex-direction: column; gap: .6rem; }
+      .af-cards {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1rem;
+        margin-bottom: 1rem;
+      }
       .af-card {
         display: flex;
-        justify-content: space-between;
-        align-items: baseline;
-        gap: 1rem;
-        padding: .65rem .85rem;
+        flex-direction: column;
+        gap: .35rem;
+        padding: 1rem 1.1rem;
         border: 1px solid #dde5e0;
-        border-radius: 7px;
+        border-radius: 8px;
         background: #fff;
         text-decoration: none;
         color: inherit;
-        transition: border-color .15s;
+        transition: border-color .15s, box-shadow .15s, transform .15s;
       }
-      .af-card:hover { border-color: #275D43; text-decoration: none; }
-      .af-card-title { font-weight: 500; color: #2a2a2a; }
-      .af-card-date { font-size: .75rem; color: #6b6b6b; white-space: nowrap; }
-      .af-tags { display: flex; flex-wrap: wrap; gap: .4rem; margin-top: .75rem; }
+      .af-card:hover {
+        border-color: #275D43;
+        box-shadow: 0 3px 12px rgba(39,93,67,.09);
+        transform: translateY(-2px);
+        text-decoration: none;
+      }
+      .af-card-meta { font-size: .72rem; color: #6b6b6b; font-weight: 500; }
+      .af-card-title {
+        font-family: 'Alegreya', Georgia, serif;
+        font-size: 1rem;
+        font-weight: 700;
+        color: #2a2a2a;
+        line-height: 1.3;
+      }
+      .af-card-excerpt { font-size: .8rem; color: #6b6b6b; line-height: 1.55; flex: 1; }
+      .af-card-read { font-size: .78rem; font-weight: 600; color: #275D43; margin-top: .25rem; }
+      .af-tags { display: flex; flex-wrap: wrap; gap: .4rem; margin-bottom: 2rem; }
       .af-tag {
-        font-size: .75rem;
-        padding: .2rem .6rem;
+        font-size: .72rem;
+        padding: .2rem .65rem;
         border-radius: 999px;
         border: 1.5px solid #275D43;
         color: #275D43;
         text-decoration: none;
+        transition: background .15s, color .15s;
       }
       .af-tag:hover { background: #275D43; color: #fff; text-decoration: none; }
       .af-subscribe {
         background: #e8f0ec;
         border-radius: 8px;
-        padding: 1.25rem 1.5rem;
+        padding: 1.35rem 1.5rem 1.25rem;
+        margin-bottom: 1.75rem;
       }
-      .af-subscribe p { margin: 0 0 .85rem; color: #6b6b6b; font-size: .875rem; }
+      .af-subscribe p { margin: 0 0 .85rem; color: #6b6b6b; font-size: .875rem; line-height: 1.5; }
       .af-form { display: flex; gap: .5rem; flex-wrap: wrap; }
       .af-form input[type="email"] {
         flex: 1;
         min-width: 200px;
         padding: .55rem .8rem;
         border-radius: 6px;
-        border: 1.5px solid #dde5e0;
+        border: 1.5px solid #c8d8ce;
         background: #fff;
         font-family: inherit;
         font-size: .875rem;
         outline: none;
+        box-sizing: border-box;
       }
       .af-form input[type="email"]:focus { border-color: #275D43; }
       .af-form button {
-        padding: .55rem 1rem;
+        padding: .55rem 1.1rem;
         border-radius: 6px;
         border: none;
         background: #275D43;
@@ -128,28 +147,25 @@
         font-size: .875rem;
         font-weight: 600;
         cursor: pointer;
+        white-space: nowrap;
+        transition: background .15s;
       }
       .af-form button:hover { background: #1a3f2e; }
       .af-note { font-size: .72rem; color: #6b6b6b; margin-top: .5rem; }
-      .af-home { display: inline-block; margin-top: 1.5rem; font-size: .85rem; font-weight: 500; color: #275D43; }
+      .af-home { display: inline-block; font-size: .85rem; font-weight: 500; color: #275D43; text-decoration: none; }
       .af-home:hover { text-decoration: underline; }
-      @media (max-width: 540px) {
-        .af-card { flex-direction: column; gap: .2rem; }
-        .af-card-date { font-size: .72rem; }
-      }
+      @media (max-width: 640px) { .af-cards { grid-template-columns: 1fr; } }
+      @media (max-width: 400px) { .af-inner { padding: 0 1rem; } }
     </style>
 
-    ${related.length ? `
-    <div class="af-section">
-      <div class="af-heading">Related reading</div>
-      <div class="af-cards">${relatedHTML}</div>
-      <div class="af-tags">${tagLinks}</div>
-    </div>` : `
-    <div class="af-section">
-      <div class="af-tags">${tagLinks}</div>
-    </div>`}
+    <div class="af-inner">
 
-    <div class="af-section">
+      ${related.length ? `
+        <div class="af-heading">Related reading</div>
+        <div class="af-cards">${cardsHTML}</div>
+        <div class="af-tags">${tagLinks}</div>
+      ` : `<div class="af-tags">${tagLinks}</div>`}
+
       <div class="af-subscribe">
         <div class="af-heading">Stay in the loop</div>
         <p>New posts, occasional notes. No noise.</p>
@@ -163,9 +179,10 @@
         </form>
         <p class="af-note">No spam. Unsubscribe any time.</p>
       </div>
-    </div>
 
-    <a class="af-home" href="../index.html">← All posts</a>
+      <a class="af-home" href="../index.html">← All posts</a>
+
+    </div>
   `;
 
   document.body.appendChild(footer);
