@@ -432,3 +432,14 @@ a:hover { text-decoration: underline; }
   .controls { flex-direction: column; }
   .post-card-inner { padding: 1.25rem; }
 }
+
+/* ---- OY ----*/
+.test {
+color: blue;}
+
+.small-caps {
+  font-family: 'Alegreya SC', sans-serif;
+  font-weight: normal;
+  font-variant: small-caps; /* standard CSS property */
+  font-feature-settings: "smcp"; /* low-level OpenType control */  
+}
