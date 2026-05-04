@@ -62,4 +62,13 @@ const POSTS = [
     tags: ["communication", "social media", "leadership"],
     featured: false,
   },
+  {
+    slug: "muslimdata",
+    title: "Muslim Community Data",
+    date: "2026-02-04",
+    excerpt: "Statistics that tell a story of interst, gaps, & disparity. Together they show us the urgent need for IslamicFamily to serve & grow.",
+    tags: ["communication", "social media", "leadership"],
+    featured: false,
+  },
+
 ];
