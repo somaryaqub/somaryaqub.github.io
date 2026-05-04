@@ -3,7 +3,7 @@
    - Loads posts from posts.json
    - Renders post cards on index.html
    - Renders article content on post.html
-   - Handles tag filtering and date sorting
+   - Handles tag filtering and date sorting 
    ============================================================ */
 
 const isPostPage = document.body.classList.contains('post-page');

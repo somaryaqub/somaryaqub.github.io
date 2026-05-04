@@ -95,7 +95,7 @@ const App = (() => {
 
     document.getElementById("main").innerHTML = `
       <section class="home-hero">
-        <h1 class="site-tagline">Writing on systems, community, and what actually works.</h1>
+        <h1 class="site-tagline">Writing on systems, community, & trying to make things work.</h1>
       </section>
 
       <div class="controls">
