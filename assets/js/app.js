@@ -77,13 +77,11 @@ const App = (() => {
               <time>${formatDate(p.date)}</time>
               ${p.featured ? '<span class="featured-badge">Featured</span>' : ""}
             </div>
-            <h2 class="post-title"><a href="#/post/${p.slug}">${p.title}</a></h2>
+            <h2 class="post-title"><a href="posts/${p.slug}.html">${p.title}</a></h2>
             <p class="post-excerpt">${p.excerpt}</p>
             <div class="post-footer">
               <div class="post-tags">${tagBadges}</div>
-            <a class="read-more" href="#/post/${p.slug}">Read →</a>
-
-
+              <a class="read-more" href="posts/${p.slug}.html">Read →</a>
             </div>
           </div>
         </article>`;
