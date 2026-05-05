@@ -27,7 +27,7 @@
 html { scroll-behavior: smooth; }
 
 body {
-  background: var(--mist);
+  background: var(--white);
   color: var(--ink);
   font-family: var(--font-sans);
   font-size: 1.0625rem;
@@ -41,13 +41,12 @@ a:hover { text-decoration: underline; }
 /* ─── HEADER ─── */
 
 .site-header {
-  background: var(--green);
-  color: #fff;
+  background: var(--white);
+  color: var(--green);
   padding: 0 var(--side-pad);
   position: sticky;
   top: 0;
   z-index: 100;
-  box-shadow: 0 2px 12px rgba(39,93,67,.18);
 }
 
 .header-inner {
@@ -64,7 +63,8 @@ a:hover { text-decoration: underline; }
   font-family: var(--font-serif);
   font-size: 1.3rem;
   font-weight: 700;
-  color: #fff;
+  font-style: oblique;
+  color: var(--green);
 }
 
 .site-name a { color: inherit; }
@@ -73,7 +73,7 @@ a:hover { text-decoration: underline; }
 .header-nav { display: flex; align-items: center; gap: 1.5rem; }
 
 .header-nav a {
-  color: rgba(255,255,255,.85);
+  color: var(--green);
   font-size: .9rem;
   font-weight: 500;
   letter-spacing: .02em;
@@ -119,17 +119,12 @@ a:hover { text-decoration: underline; }
 
 .sidebar-dict {
   background: var(--white);
-  border: 1px solid var(--border);
-  border-top: 3px solid var(--green);
-  border-radius: 0 0 10px 10px;
-  padding: 1.4rem 1.4rem 1.25rem;
+  
 }
 
 .dict-headword {
   display: flex;
   align-items: baseline;
-  gap: .6rem;
-  margin-bottom: .85rem;
 }
 
 .dict-term {
@@ -150,9 +145,7 @@ a:hover { text-decoration: underline; }
 }
 
 .dict-body {
-  border-left: 2px solid var(--green-light);
-  padding-left: .85rem;
-  display: flex;
+   display: flex;
   flex-direction: column;
   gap: .6rem;
 }
@@ -274,19 +267,15 @@ a:hover { text-decoration: underline; }
 
 .post-card {
   background: var(--white);
-  border: 1px solid var(--border);
-  border-radius: 10px;
-  transition: box-shadow .18s, transform .18s;
 }
 
 .post-card:hover {
-  box-shadow: 0 4px 20px rgba(39,93,67,.1);
   transform: translateY(-2px);
 }
 
-.post-card.featured { border-left: 4px solid var(--green); }
+.post-card.featured { border-left: 2px solid var(--green); }
 
-.post-card-inner { padding: 1.5rem 1.75rem; }
+.post-card-inner { padding: .5rem 1rem; }
 
 .post-meta { display: flex; align-items: center; gap: .75rem; margin-bottom: .5rem; }
 
