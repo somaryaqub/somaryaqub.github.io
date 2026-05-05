@@ -163,6 +163,7 @@
         padding: 1.5rem 0 1.25rem;
         border-top: 1px solid #dde5e0;
         margin-top: .5rem;
+        text-align: left;
       }
       .af-bio-name {
         font-family: 'Alegreya', Georgia, serif;
@@ -228,18 +229,18 @@
 
       <div class="af-bio">
         <div class="af-bio-name">
-          Omar Yaqub <span class="af-sc">icd.d &thinsp;dsl(hon) &thinsp;mba &thinsp;bsc</span>
+          Omar Yaqub <span class="af-sc">icd.d &nbsp; dsl(hon) &nbsp; mba &nbsp; bsc</span>
         </div>
         <p class="af-bio-desc">
-          Servant of Servants for <a href="https://islamicfamily.ca" target="_blank">IslamicFamily</a>,
-          founder of <a href="https://flourishing.systems" target="_blank">Flourishing Systems</a>,
-          a former Co-Historian Laureate for the City of Edmonton &amp; MBA instructor at the University of Alberta.
-          <a href="https://linkedin.com/in/somaryaqub" target="_blank">LinkedIn</a>.
+          Servant of Servants for <a href="https://islamicfamily.ca/" target="_blank"><strong>IslamicFamily</strong></a>,
+          founder of <a href="https://flourishing.systems/" target="_blank"><strong>Flourishing Systems</strong></a>,
+          a former Co-Historian Laureate for the City of Edmonton &amp; past MBA instructor at the University of Alberta.
+          <a href="https://linkedin.com/in/somaryaqub" target="_blank"><strong>LinkedIn</strong></a>.
         </p>
-        <p class="af-bio-disclaimer">Opinions are my own &amp; do not speak for any organization.</p>
+        <p class="af-bio-disclaimer">Opinions are my own &amp; do <em>not</em> speak for any organization.</p>
         <p class="af-colophon">
-          <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" style="color:inherit;">CC with Attribution</a>
-          2026 Omar Yaqub on <em>amiskwaciwâskahikan</em> (Edmonton).
+          <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" style="color:inherit;text-decoration:underline;">CC with Attribution</a>
+          2026 ✸ Made with ❤️ on amiskwaciwâskahikan (Edmonton).
         </p>
       </div>
 
