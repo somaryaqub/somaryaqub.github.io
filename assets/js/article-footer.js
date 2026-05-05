@@ -262,11 +262,7 @@
         <div class="af-subscribe">
           <div class="af-heading">Stay in the loop</div>
           <p class="af-subscribe-label">New posts, occasional notes. No noise.</p>
-          <!--
-            MAILERLITE: replace the form below with your
-            <div class="ml-embedded" data-form="XXXXXXXX"></div> snippet
-          -->
-          <form class="af-form" action="MAILERLITE_FORM_ACTION" method="post" target="_blank">
+          <form class="af-form" action="https://assets.mailerlite.com/jsonp/714092/forms/WfrvP4/subscribe" method="post" target="_blank">
             <input type="email" name="fields[email]" placeholder="your@email.com" required autocomplete="email" />
             <button type="submit">Subscribe</button>
           </form>
@@ -285,4 +281,13 @@
   `;
 
   document.body.appendChild(footer);
+
+  // MailerLite Universal (idempotent — safe to load more than once)
+  if (!window.ml) {
+    (function(w,d,e,u,f,l,n){w[f]=w[f]||function(){(w[f].q=w[f].q||[])
+    .push(arguments);},l=d.createElement(e),l.async=1,l.src=u,
+    n=d.getElementsByTagName(e)[0],n.parentNode.insertBefore(l,n);})
+    (window,document,'script','https://assets.mailerlite.com/js/universal.js','ml');
+    ml('account', '714092');
+  }
 })();
