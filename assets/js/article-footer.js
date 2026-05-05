@@ -154,6 +154,50 @@
       .af-note { font-size: .72rem; color: #6b6b6b; margin-top: .5rem; }
       .af-home { display: inline-block; font-size: .85rem; font-weight: 500; color: #275D43; text-decoration: none; }
       .af-home:hover { text-decoration: underline; }
+
+      /* ── Bio / colophon ── */
+      .af-bio {
+        display: flex;
+        flex-direction: column;
+        gap: .4rem;
+        padding: 1.5rem 0 1.25rem;
+        border-top: 1px solid #dde5e0;
+        margin-top: .5rem;
+      }
+      .af-bio-name {
+        font-family: 'Alegreya', Georgia, serif;
+        font-size: 1rem;
+        font-weight: 700;
+        color: #2a2a2a;
+      }
+      .af-bio-name .af-sc {
+        font-variant: small-caps;
+        font-feature-settings: "smcp";
+        font-size: .95em;
+        letter-spacing: .03em;
+        color: #6b6b6b;
+        font-weight: 400;
+      }
+      .af-bio-desc {
+        font-size: .85rem;
+        color: #6b6b6b;
+        line-height: 1.65;
+      }
+      .af-bio-desc a { color: #275D43; text-decoration: underline; }
+      .af-bio-desc a:hover { color: #1a3f2e; }
+      .af-bio-disclaimer {
+        font-size: .75rem;
+        color: #9b9b9b;
+        font-style: italic;
+      }
+      .af-colophon {
+        font-size: .72rem;
+        color: #b0b0b0;
+        padding-top: .85rem;
+        border-top: 1px solid #eee;
+        margin-top: .25rem;
+      }
+
       @media (max-width: 640px) { .af-cards { grid-template-columns: 1fr; } }
       @media (max-width: 400px) { .af-inner { padding: 0 1rem; } }
     </style>
@@ -181,6 +225,23 @@
       </div>
 
       <a class="af-home" href="../index.html">← All posts</a>
+
+      <div class="af-bio">
+        <div class="af-bio-name">
+          Omar Yaqub <span class="af-sc">icd.d &thinsp;dsl(hon) &thinsp;mba &thinsp;bsc</span>
+        </div>
+        <p class="af-bio-desc">
+          Servant of Servants for <a href="https://islamicfamily.ca" target="_blank">IslamicFamily</a>,
+          founder of <a href="https://flourishing.systems" target="_blank">Flourishing Systems</a>,
+          a former Co-Historian Laureate for the City of Edmonton &amp; MBA instructor at the University of Alberta.
+          <a href="https://linkedin.com/in/somaryaqub" target="_blank">LinkedIn</a>.
+        </p>
+        <p class="af-bio-disclaimer">Opinions are my own &amp; do not speak for any organization.</p>
+        <p class="af-colophon">
+          <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" style="color:inherit;">CC with Attribution</a>
+          2026 Omar Yaqub on <em>amiskwaciwâskahikan</em> (Edmonton).
+        </p>
+      </div>
 
     </div>
   `;

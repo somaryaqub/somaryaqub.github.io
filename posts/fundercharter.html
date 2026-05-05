@@ -31,7 +31,7 @@
     "description": "How evaluation lost its way, and what comes next. A funder's companion to the People-First Intake Charter."
   },
   "hero": {
-    "eyebrow": "A funder's companion to the People-First Intake Charter.",
+    "eyebrow": "A funder's companion to <a href=\"peoplecharter.html\" style=\"color:inherit;text-decoration:underline;text-underline-offset:3px;\">the People-First Intake Charter</a>.",
     "title_before_emphasis": "Funding in the",
     "title_emphasis": "Dark",
     "subtitle": "Helping funders see their role in data justice."
@@ -281,7 +281,7 @@
     },
     {
       "text": "The People-First Intake Charter",
-      "url": "https://share.islamicfamily.ca/datacharter"
+      "url": "peoplecharter.html"
     }
   ],
   "footer": {
@@ -290,7 +290,7 @@
     "territory": "Treaty 6 Territory",
     "email": "omary@islamicfamily.ca",
     "charter_label": "People-First Intake Charter",
-    "charter_url": "https://share.islamicfamily.ca/datacharter"
+    "charter_url": "peoplecharter.html"
   }
 }
 
@@ -1105,7 +1105,7 @@ function Article() {
           <div style={hs(0.3)}>
             <div style={{ fontFamily:FONTS.sans, fontSize:13, letterSpacing:"0.2em",
               textTransform:"uppercase", color:B.accent, marginBottom:24, opacity:0.8 }}>
-              {C.hero.eyebrow}
+              <span dangerouslySetInnerHTML={{__html: C.hero.eyebrow}} />
             </div>
           </div>
           <div style={hs(0.5)}>
