@@ -219,7 +219,22 @@
 
   document.body.appendChild(footer);
 
-  // Load MailerLite universal script for scroll-to-bottom popup
+  // Load MailerLite and trigger popup each time user scrolls near the bottom
+  function initMailerLitePopup() {
+    let popupShown = false;
+    window.addEventListener('scroll', function () {
+      if (popupShown) return;
+      const scrolled = window.scrollY + window.innerHeight;
+      const total = document.documentElement.scrollHeight;
+      if (scrolled >= total - 200) {
+        popupShown = true;
+        if (window.ml) ml('show', 'WfrvP4', { force: true });
+        // Reset after a delay so it can show again on next scroll-to-bottom
+        setTimeout(function () { popupShown = false; }, 30000);
+      }
+    });
+  }
+
   if (!window.ml) {
     (function(w,d,e,u,f,l,n){w[f]=w[f]||function(){(w[f].q=w[f].q||[])
     .push(arguments);},l=d.createElement(e),l.async=1,l.src=u,
@@ -227,4 +242,5 @@
     (window,document,'script','https://assets.mailerlite.com/js/universal.js','ml');
     ml('account', '714092');
   }
+  initMailerLitePopup();
 })();

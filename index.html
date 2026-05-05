@@ -11,7 +11,7 @@
   <meta property="og:description" content="Writing on systems, community, & trying to make things work." />
   <link rel="stylesheet" href="assets/css/style.css" />
 
- <!-- MailerLite Universal -->
+  <!-- MailerLite Universal — triggers popup on scroll to bottom -->
   <script>
     (function(w,d,e,u,f,l,n){w[f]=w[f]||function(){(w[f].q=w[f].q||[])
     .push(arguments);},l=d.createElement(e),l.async=1,l.src=u,
@@ -19,8 +19,6 @@
     (window,document,'script','https://assets.mailerlite.com/js/universal.js','ml');
     ml('account', '714092');
   </script>
-  <!-- End MailerLite Universal -->
- 
 
 
 </head>
@@ -56,11 +54,22 @@
  
     </div>
   </footer>
- 
   <script src="assets/js/posts.js"></script>
   <script src="assets/js/app.js"></script>
   <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
- 
+  <script>
+    // Trigger MailerLite popup when user scrolls near the bottom
+    let popupShown = false;
+    window.addEventListener('scroll', function () {
+      if (popupShown) return;
+      const scrolled = window.scrollY + window.innerHeight;
+      const total = document.documentElement.scrollHeight;
+      if (scrolled >= total - 200) {
+        popupShown = true;
+        if (window.ml) ml('show', 'WfrvP4', { force: true });
+      }
+    });
+  </script>
 </body>
 </html>
  
