@@ -13,7 +13,6 @@
 (function () {
   const allPosts = typeof POSTS !== "undefined" ? POSTS : [];
 
-  // Related by tag first; fall back to 3 most recent if none found
   let related = allPosts
     .filter((p) => p.slug !== CURRENT_SLUG && p.tags.some((t) => CURRENT_TAGS.includes(t)))
     .sort((a, b) => new Date(b.date) - new Date(a.date))
@@ -28,7 +27,7 @@
 
   function formatDate(iso) {
     return new Date(iso + "T00:00:00").toLocaleDateString("en-CA", {
-      year: "numeric", month: "long", day: "numeric",
+      year: "numeric", month: "short", day: "numeric",
     });
   }
 
@@ -50,11 +49,10 @@
     <style>
       .af-footer {
         margin-top: 4rem;
-        border-top: 2px solid #275D43;
-        padding-top: 2.5rem;
-        padding-bottom: 3rem;
+        background: #275D43;
+        padding: 2rem 0 0;
         font-family: 'Alegreya Sans', system-ui, sans-serif;
-        color: #2a2a2a;
+        color: rgba(255,255,255,0.85);
         box-sizing: border-box;
       }
       .af-inner {
@@ -64,186 +62,225 @@
         box-sizing: border-box;
       }
       .af-heading {
-        font-size: .7rem;
+        font-size: .65rem;
         font-weight: 700;
         text-transform: uppercase;
-        letter-spacing: .1em;
-        color: #275D43;
-        margin-bottom: 1.1rem;
+        letter-spacing: .12em;
+        color: rgba(255,255,255,0.5);
+        margin-bottom: .75rem;
       }
+
+      /* ── Nav + tags row ── */
+      .af-nav-row {
+        display: flex;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: .5rem;
+        margin-bottom: 1.25rem;
+      }
+      .af-home {
+        font-size: .78rem;
+        font-weight: 600;
+        color: #fff;
+        text-decoration: none;
+        white-space: nowrap;
+        padding: .2rem .65rem;
+        border-radius: 999px;
+        border: 1.5px solid rgba(255,255,255,0.5);
+        transition: border-color .15s, background .15s;
+      }
+      .af-home:hover { border-color: #fff; background: rgba(255,255,255,0.1); text-decoration: none; }
+      .af-sep {
+        width: 1px;
+        height: 1rem;
+        background: rgba(255,255,255,0.25);
+        flex-shrink: 0;
+      }
+      .af-tag {
+        font-size: .7rem;
+        padding: .15rem .55rem;
+        border-radius: 999px;
+        border: 1px solid rgba(255,255,255,0.3);
+        color: rgba(255,255,255,0.75);
+        text-decoration: none;
+        transition: border-color .15s, color .15s, background .15s;
+      }
+      .af-tag:hover { border-color: #fff; color: #fff; background: rgba(255,255,255,0.1); text-decoration: none; }
+
+      /* ── Related cards ── */
       .af-cards {
         display: grid;
         grid-template-columns: repeat(3, 1fr);
-        gap: 1rem;
-        margin-bottom: 1rem;
+        gap: .75rem;
+        margin-bottom: 1.5rem;
       }
       .af-card {
         display: flex;
         flex-direction: column;
-        gap: .35rem;
-        padding: 1rem 1.1rem;
-        border: 1px solid #dde5e0;
-        border-radius: 8px;
-        background: #fff;
+        gap: .3rem;
+        padding: .85rem 1rem;
+        border: 1px solid rgba(255,255,255,0.15);
+        border-radius: 7px;
+        background: rgba(255,255,255,0.07);
         text-decoration: none;
         color: inherit;
-        transition: border-color .15s, box-shadow .15s, transform .15s;
+        transition: background .15s, border-color .15s;
       }
-      .af-card:hover {
-        border-color: #275D43;
-        box-shadow: 0 3px 12px rgba(39,93,67,.09);
-        transform: translateY(-2px);
-        text-decoration: none;
-      }
-      .af-card-meta { font-size: .72rem; color: #6b6b6b; font-weight: 500; }
+      .af-card:hover { background: rgba(255,255,255,0.13); border-color: rgba(255,255,255,0.35); text-decoration: none; }
+      .af-card-meta { font-size: .68rem; color: rgba(255,255,255,0.5); font-weight: 500; }
       .af-card-title {
         font-family: 'Alegreya', Georgia, serif;
-        font-size: 1rem;
+        font-size: .95rem;
         font-weight: 700;
-        color: #2a2a2a;
+        color: #fff;
         line-height: 1.3;
       }
-      .af-card-excerpt { font-size: .8rem; color: #6b6b6b; line-height: 1.55; flex: 1; }
-      .af-card-read { font-size: .78rem; font-weight: 600; color: #275D43; margin-top: .25rem; }
-      .af-tags { display: flex; flex-wrap: wrap; gap: .4rem; margin-bottom: 2rem; }
-      .af-tag {
-        font-size: .72rem;
-        padding: .2rem .65rem;
-        border-radius: 999px;
-        border: 1.5px solid #275D43;
-        color: #275D43;
-        text-decoration: none;
-        transition: background .15s, color .15s;
+      .af-card-excerpt { font-size: .76rem; color: rgba(255,255,255,0.6); line-height: 1.5; flex: 1; }
+      .af-card-read { font-size: .72rem; font-weight: 600; color: #E09964; margin-top: .2rem; }
+
+      /* ── Two-column bottom ── */
+      .af-bottom {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 2rem;
+        padding: 1.5rem 0;
+        border-top: 1px solid rgba(255,255,255,0.15);
+        margin-top: .25rem;
+        align-items: start;
       }
-      .af-tag:hover { background: #275D43; color: #fff; text-decoration: none; }
-      .af-subscribe {
-        background: #e8f0ec;
-        border-radius: 8px;
-        padding: 1.35rem 1.5rem 1.25rem;
-        margin-bottom: 1.75rem;
+
+      /* Left: bio */
+      .af-bio-name {
+        font-family: 'Alegreya', Georgia, serif;
+        font-size: .95rem;
+        font-weight: 700;
+        color: #fff;
+        margin-bottom: .35rem;
       }
-      .af-subscribe p { margin: 0 0 .85rem; color: #6b6b6b; font-size: .875rem; line-height: 1.5; }
-      .af-form { display: flex; gap: .5rem; flex-wrap: wrap; }
+      .af-sc {
+        font-variant: small-caps;
+        font-feature-settings: "smcp";
+        font-size: .88em;
+        letter-spacing: .04em;
+        color: rgba(255,255,255,0.55);
+        font-weight: 400;
+      }
+      .af-bio-desc {
+        font-size: .8rem;
+        color: rgba(255,255,255,0.7);
+        line-height: 1.6;
+        margin-bottom: .35rem;
+      }
+      .af-bio-desc a { color: #E09964; text-decoration: none; font-weight: 600; }
+      .af-bio-desc a:hover { text-decoration: underline; }
+      .af-bio-disclaimer { font-size: .72rem; color: rgba(255,255,255,0.45); font-style: italic; }
+
+      /* Right: subscribe */
+      .af-subscribe-label { font-size: .75rem; color: rgba(255,255,255,0.7); margin-bottom: .6rem; line-height: 1.5; }
+      .af-form { display: flex; gap: .4rem; flex-wrap: wrap; }
       .af-form input[type="email"] {
         flex: 1;
-        min-width: 200px;
-        padding: .55rem .8rem;
+        min-width: 160px;
+        padding: .5rem .75rem;
         border-radius: 6px;
-        border: 1.5px solid #c8d8ce;
-        background: #fff;
+        border: 1px solid rgba(255,255,255,0.25);
+        background: rgba(255,255,255,0.1);
+        color: #fff;
         font-family: inherit;
-        font-size: .875rem;
+        font-size: .825rem;
         outline: none;
         box-sizing: border-box;
       }
-      .af-form input[type="email"]:focus { border-color: #275D43; }
+      .af-form input[type="email"]::placeholder { color: rgba(255,255,255,0.4); }
+      .af-form input[type="email"]:focus { border-color: rgba(255,255,255,0.6); }
       .af-form button {
-        padding: .55rem 1.1rem;
+        padding: .5rem .95rem;
         border-radius: 6px;
         border: none;
-        background: #275D43;
+        background: #E09964;
         color: #fff;
         font-family: inherit;
-        font-size: .875rem;
-        font-weight: 600;
+        font-size: .825rem;
+        font-weight: 700;
         cursor: pointer;
         white-space: nowrap;
         transition: background .15s;
       }
-      .af-form button:hover { background: #1a3f2e; }
-      .af-note { font-size: .72rem; color: #6b6b6b; margin-top: .5rem; }
-      .af-home { display: inline-block; font-size: .85rem; font-weight: 500; color: #275D43; text-decoration: none; }
-      .af-home:hover { text-decoration: underline; }
+      .af-form button:hover { background: #c8844e; }
+      .af-note { font-size: .68rem; color: rgba(255,255,255,0.35); margin-top: .4rem; }
 
-      /* ── Bio / colophon ── */
-      .af-bio {
-        display: flex;
-        flex-direction: column;
-        gap: .4rem;
-        padding: 1.5rem 0 1.25rem;
-        border-top: 1px solid #dde5e0;
-        margin-top: .5rem;
-        text-align: left;
-      }
-      .af-bio-name {
-        font-family: 'Alegreya', Georgia, serif;
-        font-size: 1rem;
-        font-weight: 700;
-        color: #2a2a2a;
-      }
-      .af-bio-name .af-sc {
-        font-variant: small-caps;
-        font-feature-settings: "smcp";
-        font-size: .95em;
-        letter-spacing: .03em;
-        color: #6b6b6b;
-        font-weight: 400;
-      }
-      .af-bio-desc {
-        font-size: .85rem;
-        color: #6b6b6b;
-        line-height: 1.65;
-      }
-      .af-bio-desc a { color: #275D43; text-decoration: underline; }
-      .af-bio-desc a:hover { color: #1a3f2e; }
-      .af-bio-disclaimer {
-        font-size: .75rem;
-        color: #9b9b9b;
-        font-style: italic;
-      }
+      /* ── Colophon ── */
       .af-colophon {
-        font-size: .72rem;
-        color: #b0b0b0;
-        padding-top: .85rem;
-        border-top: 1px solid #eee;
-        margin-top: .25rem;
+        font-size: .68rem;
+        color: rgba(255,255,255,0.3);
+        text-align: center;
+        padding: .75rem 1.5rem;
+        border-top: 1px solid rgba(255,255,255,0.1);
+        margin-top: 0;
       }
+      .af-colophon a { color: rgba(255,255,255,0.4); text-decoration: underline; }
+      .af-colophon a:hover { color: rgba(255,255,255,0.7); }
 
-      @media (max-width: 640px) { .af-cards { grid-template-columns: 1fr; } }
+      @media (max-width: 580px) {
+        .af-cards { grid-template-columns: 1fr; }
+        .af-bottom { grid-template-columns: 1fr; gap: 1.25rem; }
+      }
       @media (max-width: 400px) { .af-inner { padding: 0 1rem; } }
     </style>
 
     <div class="af-inner">
 
+      <!-- Nav + tags inline -->
+      <div class="af-nav-row">
+        <a class="af-home" href="https://somaryaqub.github.io/index.html">← All posts</a>
+        <div class="af-sep"></div>
+        ${tagLinks}
+      </div>
+
+      <!-- Related cards -->
       ${related.length ? `
         <div class="af-heading">Related reading</div>
         <div class="af-cards">${cardsHTML}</div>
-        <div class="af-tags">${tagLinks}</div>
-      ` : `<div class="af-tags">${tagLinks}</div>`}
+      ` : ""}
 
-      <div class="af-subscribe">
-        <div class="af-heading">Stay in the loop</div>
-        <p>New posts, occasional notes. No noise.</p>
-        <!--
-          MAILERLITE: replace the form below with your
-          <div class="ml-embedded" data-form="XXXXXXXX"></div> snippet
-        -->
-        <form class="af-form" action="MAILERLITE_FORM_ACTION" method="post" target="_blank">
-          <input type="email" name="fields[email]" placeholder="your@email.com" required autocomplete="email" />
-          <button type="submit">Subscribe</button>
-        </form>
-        <p class="af-note">No spam. Unsubscribe any time.</p>
-      </div>
+      <!-- Two-column bottom -->
+      <div class="af-bottom">
 
-      <a class="af-home" href="../index.html">← All posts</a>
-
-      <div class="af-bio">
-        <div class="af-bio-name">
-          Omar Yaqub <span class="af-sc">icd.d &nbsp; dsl(hon) &nbsp; mba &nbsp; bsc</span>
+        <div class="af-bio">
+          <div class="af-bio-name">
+            Omar Yaqub <span class="af-sc">icd.d &nbsp;dsl(hon) &nbsp;mba &nbsp;bsc</span>
+          </div>
+          <p class="af-bio-desc">
+            Servant of Servants for <a href="https://islamicfamily.ca/" target="_blank">IslamicFamily</a>,
+            founder of <a href="https://flourishing.systems/" target="_blank">Flourishing Systems</a>,
+            a former Co-Historian Laureate for the City of Edmonton &amp; past MBA instructor at the University of Alberta.
+            <a href="https://linkedin.com/in/somaryaqub" target="_blank">LinkedIn</a>.
+          </p>
+          <p class="af-bio-disclaimer">Opinions are my own &amp; do <em>not</em> speak for any organization.</p>
         </div>
-        <p class="af-bio-desc">
-          Servant of Servants for <a href="https://islamicfamily.ca/" target="_blank"><strong>IslamicFamily</strong></a>,
-          founder of <a href="https://flourishing.systems/" target="_blank"><strong>Flourishing Systems</strong></a>,
-          a former Co-Historian Laureate for the City of Edmonton &amp; past MBA instructor at the University of Alberta.
-          <a href="https://linkedin.com/in/somaryaqub" target="_blank"><strong>LinkedIn</strong></a>.
-        </p>
-        <p class="af-bio-disclaimer">Opinions are my own &amp; do <em>not</em> speak for any organization.</p>
-        <p class="af-colophon">
-          <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" style="color:inherit;text-decoration:underline;">CC with Attribution</a>
-          2026 ✸ Made with ❤️ on amiskwaciwâskahikan (Edmonton).
-        </p>
+
+        <div class="af-subscribe">
+          <div class="af-heading">Stay in the loop</div>
+          <p class="af-subscribe-label">New posts, occasional notes. No noise.</p>
+          <!--
+            MAILERLITE: replace the form below with your
+            <div class="ml-embedded" data-form="XXXXXXXX"></div> snippet
+          -->
+          <form class="af-form" action="MAILERLITE_FORM_ACTION" method="post" target="_blank">
+            <input type="email" name="fields[email]" placeholder="your@email.com" required autocomplete="email" />
+            <button type="submit">Subscribe</button>
+          </form>
+          <p class="af-note">No spam. Unsubscribe any time.</p>
+        </div>
+
       </div>
 
+    </div>
+
+    <!-- Colophon full-width -->
+    <div class="af-colophon">
+      <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank">CC with Attribution</a>
+      2026 ✸ Made with ❤️ on amiskwaciwâskahikan (Edmonton).
     </div>
   `;
 
