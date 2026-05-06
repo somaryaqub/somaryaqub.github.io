@@ -47,7 +47,7 @@ a:hover { text-decoration: underline; }
   position: sticky;
   top: 0;
   z-index: 100;
-  opacity: .786;
+  background: (250, 250, 242, .5);
 }
 
 .header-inner {
@@ -64,7 +64,7 @@ a:hover { text-decoration: underline; }
   font-family: var(--font-serif);
   font-size: 1.3rem;
   font-weight: 700;
-  color: #fff;
+  color: var(--green);
 }
 
 .site-name a { color: inherit; }
@@ -124,9 +124,7 @@ a:hover { text-decoration: underline; }
 .dict-headword {
   display: flex;
   align-items: baseline;
-  gap: .6rem;
-  margin-bottom: .85rem;
-}
+ }
 
 .dict-term {
   font-family: var(--font-serif);
@@ -162,7 +160,7 @@ a:hover { text-decoration: underline; }
 /* ─── SIDEBAR: TAGS ─── */
 
 .sidebar-tags {
-  background: var(--white);
+  background: var(--mist);
   border: 1px solid var(--border);
   border-radius: 10px;
   padding: 1.1rem 1.4rem 1.25rem;
