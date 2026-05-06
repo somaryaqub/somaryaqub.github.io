@@ -493,6 +493,48 @@ a:hover { text-decoration: underline; }
 /* MailerLite embed sits on green — override its background */
 .footer-subscribe .ml-embedded { --ml-bg: transparent; }
 
+/* ─── FOOTER FORM ─── */
+
+.footer-form {
+  display: flex;
+  gap: .5rem;
+  flex-wrap: wrap;
+  margin-bottom: .4rem;
+}
+
+.footer-form input[type="email"] {
+  flex: 1;
+  min-width: 180px;
+  padding: .55rem .85rem;
+  border-radius: 6px;
+  border: 1.5px solid rgba(255,255,255,.25);
+  background: rgba(255,255,255,.1);
+  color: #fff;
+  font-family: var(--font-sans);
+  font-size: .875rem;
+  outline: none;
+}
+
+.footer-form input[type="email"]::placeholder { color: rgba(255,255,255,.4); }
+.footer-form input[type="email"]:focus { border-color: rgba(255,255,255,.6); }
+
+.footer-form button {
+  padding: .55rem 1.1rem;
+  border-radius: 6px;
+  border: none;
+  background: #E09964;
+  color: #fff;
+  font-family: var(--font-sans);
+  font-size: .875rem;
+  font-weight: 700;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background .15s;
+}
+
+.footer-form button:hover { background: #c8844e; }
+.footer-form-note { font-size: .72rem; color: rgba(255,255,255,.4); }
+
 .footer-credits {
   font-size: .72rem;
   color: rgba(255,255,255,.45);

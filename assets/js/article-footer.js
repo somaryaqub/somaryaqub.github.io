@@ -167,6 +167,44 @@
       .af-bio-desc a:hover { text-decoration: underline; }
       .af-bio-disclaimer { font-size: .72rem; color: rgba(255,255,255,0.4); font-style: italic; }
 
+      /* ── Subscribe ── */
+      .af-subscribe {
+        padding: 1.25rem 0 1.5rem;
+        border-top: 1px solid rgba(255,255,255,0.15);
+      }
+      .af-subscribe-label { font-size: .8rem; color: rgba(255,255,255,0.75); margin-bottom: .75rem; line-height: 1.5; }
+      .af-form { display: flex; gap: .5rem; flex-wrap: wrap; }
+      .af-form input[type="email"] {
+        flex: 1;
+        min-width: 180px;
+        padding: .55rem .8rem;
+        border-radius: 6px;
+        border: 1.5px solid rgba(255,255,255,0.25);
+        background: rgba(255,255,255,0.1);
+        color: #fff;
+        font-family: inherit;
+        font-size: .875rem;
+        outline: none;
+        box-sizing: border-box;
+      }
+      .af-form input[type="email"]::placeholder { color: rgba(255,255,255,0.4); }
+      .af-form input[type="email"]:focus { border-color: rgba(255,255,255,0.6); }
+      .af-form button {
+        padding: .55rem 1.1rem;
+        border-radius: 6px;
+        border: none;
+        background: #E09964;
+        color: #fff;
+        font-family: inherit;
+        font-size: .875rem;
+        font-weight: 700;
+        cursor: pointer;
+        white-space: nowrap;
+        transition: background .15s;
+      }
+      .af-form button:hover { background: #c8844e; }
+      .af-note { font-size: .72rem; color: rgba(255,255,255,0.4); margin-top: .5rem; }
+
       /* ── Colophon ── */
       .af-colophon {
         font-size: .68rem;
@@ -209,6 +247,16 @@
         <p class="af-bio-disclaimer">Opinions are my own &amp; do <em>not</em> speak for any organization.</p>
       </div>
 
+      <div class="af-subscribe">
+        <div class="af-heading">Stay in the loop</div>
+        <p class="af-subscribe-label">New posts, occasional notes. No noise.</p>
+        <form class="af-form" id="af-subscribe-form">
+          <input type="email" placeholder="your@email.com" required autocomplete="email" />
+          <button type="submit">Subscribe</button>
+        </form>
+        <p class="af-note" id="af-subscribe-note">No spam. Unsubscribe any time.</p>
+      </div>
+
     </div>
 
     <div class="af-colophon">
@@ -218,6 +266,28 @@
   `;
 
   document.body.appendChild(footer);
+
+  // Subscribe form handler
+  document.getElementById('af-subscribe-form').addEventListener('submit', async function(e) {
+    e.preventDefault();
+    const email = this.querySelector('input[type=email]').value;
+    const note = document.getElementById('af-subscribe-note');
+    const btn = this.querySelector('button');
+    btn.disabled = true; btn.textContent = 'Sending…';
+    try {
+      await fetch('https://assets.mailerlite.com/jsonp/714092/forms/WfrvP4/subscribe', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ fields: { email } })
+      });
+      this.innerHTML = '';
+      note.textContent = '✓ You\'re in. Thanks!';
+      note.style.color = '#fff';
+    } catch {
+      btn.disabled = false; btn.textContent = 'Subscribe';
+      note.textContent = 'Something went wrong — please try again.';
+    }
+  });
 
   if (!window.ml) {
     (function(w,d,e,u,f,l,n){w[f]=w[f]||function(){(w[f].q=w[f].q||[])

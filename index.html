@@ -55,7 +55,11 @@
         <div class="footer-subscribe">
           <div class="footer-subscribe-heading">Stay in the loop</div>
           <p>New posts, occasional notes. No noise.</p>
-          <div class="ml-embedded" data-form="WfrvP4"></div>
+          <form class="footer-form" id="footer-subscribe-form">
+            <input type="email" placeholder="your@email.com" required autocomplete="email" />
+            <button type="submit">Subscribe</button>
+          </form>
+          <p class="footer-form-note" id="footer-form-note">No spam. Unsubscribe any time.</p>
         </div>
 
       </div>
@@ -72,7 +76,29 @@
   <script src="assets/js/app.js"></script>
   <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
   <script>
-    // Show MailerLite popup after 1 minute on page
+    // Footer subscribe form
+    document.getElementById('footer-subscribe-form').addEventListener('submit', async function(e) {
+      e.preventDefault();
+      const email = this.querySelector('input[type=email]').value;
+      const note = document.getElementById('footer-form-note');
+      const btn = this.querySelector('button');
+      btn.disabled = true; btn.textContent = 'Sending…';
+      try {
+        const res = await fetch('https://assets.mailerlite.com/jsonp/714092/forms/WfrvP4/subscribe', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ fields: { email } })
+        });
+        this.innerHTML = '';
+        note.textContent = '✓ You\'re in. Thanks!';
+        note.style.color = '#fff';
+      } catch {
+        btn.disabled = false; btn.textContent = 'Subscribe';
+        note.textContent = 'Something went wrong — please try again.';
+      }
+    });
+
+    // Show popup after 1 minute
     setTimeout(function () {
       if (window.ml) ml('show', 'WfrvP4', { force: true });
     }, 60000);
