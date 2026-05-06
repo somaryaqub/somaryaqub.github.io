@@ -41,13 +41,13 @@ a:hover { text-decoration: underline; }
 /* ─── HEADER ─── */
 
 .site-header {
-  background: var(--green);
-  color: #fff;
+  background: var(--mist);
+  color: var(--green);
   padding: 0 var(--side-pad);
   position: sticky;
   top: 0;
   z-index: 100;
-  box-shadow: 0 2px 12px rgba(39,93,67,.18);
+  opacity: .786;
 }
 
 .header-inner {
@@ -73,7 +73,7 @@ a:hover { text-decoration: underline; }
 .header-nav { display: flex; align-items: center; gap: 1.5rem; }
 
 .header-nav a {
-  color: rgba(255,255,255,.85);
+  color: var(--green);
   font-size: .9rem;
   font-weight: 500;
   letter-spacing: .02em;
@@ -118,11 +118,7 @@ a:hover { text-decoration: underline; }
 /* ─── SIDEBAR: DICTIONARY ENTRY ─── */
 
 .sidebar-dict {
-  background: var(--white);
-  border: 1px solid var(--border);
-  border-top: 3px solid var(--green);
-  border-radius: 0 0 10px 10px;
-  padding: 1.4rem 1.4rem 1.25rem;
+  background: var(--mist);
 }
 
 .dict-headword {
@@ -150,8 +146,6 @@ a:hover { text-decoration: underline; }
 }
 
 .dict-body {
-  border-left: 2px solid var(--green-light);
-  padding-left: .85rem;
   display: flex;
   flex-direction: column;
   gap: .6rem;
@@ -273,10 +267,7 @@ a:hover { text-decoration: underline; }
 .posts-grid { display: flex; flex-direction: column; gap: 1.5rem; }
 
 .post-card {
-  background: var(--white);
-  border: 1px solid var(--border);
-  border-radius: 10px;
-  transition: box-shadow .18s, transform .18s;
+  background: var(--mist);
 }
 
 .post-card:hover {
@@ -284,7 +275,7 @@ a:hover { text-decoration: underline; }
   transform: translateY(-2px);
 }
 
-.post-card.featured { border-left: 4px solid var(--green); }
+.post-card.featured { border-left: 2px solid var(--green); }
 
 .post-card-inner { padding: 1.5rem 1.75rem; }
 
