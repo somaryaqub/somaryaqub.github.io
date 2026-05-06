@@ -37,17 +37,27 @@
   <footer class="site-footer">
     <div class="footer-inner">
 
-      <div class="footer-about">
-        <div class="footer-name">
-          Omar Yaqub <span class="footer-sc">icd.d &nbsp;dsl(hon) &nbsp;mba &nbsp;bsc</span>
+      <div class="footer-cols">
+
+        <div class="footer-about">
+          <div class="footer-name">
+            Omar Yaqub <span class="footer-sc">icd.d &nbsp;dsl(hon) &nbsp;mba &nbsp;bsc</span>
+          </div>
+          <p>
+            Servant of Servants for <a href="https://islamicfamily.ca/" target="_blank">IslamicFamily</a>,
+            founder of <a href="https://flourishing.systems/" target="_blank">Flourishing Systems</a>,
+            a former Co-Historian Laureate for the City of Edmonton &amp; past MBA instructor at the University of Alberta.
+            <a href="https://linkedin.com/in/somaryaqub" target="_blank">LinkedIn</a>.
+          </p>
+          <p class="footer-disclaimer">Opinions are my own &amp; do <em>not</em> speak for any organization.</p>
         </div>
-        <p>
-          Servant of Servants for <a href="https://islamicfamily.ca/" target="_blank">IslamicFamily</a>,
-          founder of <a href="https://flourishing.systems/" target="_blank">Flourishing Systems</a>,
-          a former Co-Historian Laureate for the City of Edmonton &amp; past MBA instructor at the University of Alberta.
-          <a href="https://linkedin.com/in/somaryaqub" target="_blank">LinkedIn</a>.
-        </p>
-        <p class="footer-disclaimer">Opinions are my own &amp; do <em>not</em> speak for any organization.</p>
+
+        <div class="footer-subscribe">
+          <div class="footer-subscribe-heading">Stay in the loop</div>
+          <p>New posts, occasional notes. No noise.</p>
+          <div class="ml-embedded" data-form="WfrvP4"></div>
+        </div>
+
       </div>
 
       <div class="footer-credits">
@@ -62,17 +72,10 @@
   <script src="assets/js/app.js"></script>
   <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
   <script>
-    // Trigger MailerLite popup when user scrolls near the bottom
-    let popupShown = false;
-    window.addEventListener('scroll', function () {
-      if (popupShown) return;
-      const scrolled = window.scrollY + window.innerHeight;
-      const total = document.documentElement.scrollHeight;
-      if (scrolled >= total - 300) {
-        popupShown = true;
-        if (window.ml) ml('show', 'WfrvP4', { force: true });
-      }
-    });
+    // Show MailerLite popup after 1 minute on page
+    setTimeout(function () {
+      if (window.ml) ml('show', 'WfrvP4', { force: true });
+    }, 60000);
   </script>
 
 </body>

@@ -430,8 +430,8 @@ a:hover { text-decoration: underline; }
 
 .site-footer {
   background: var(--green-dark);
-  color: rgba(255,255,255,.75);
-  padding: 1.75rem var(--side-pad);
+  color: #fff;
+  padding: 2rem var(--side-pad) 0;
   margin-top: 4rem;
   text-align: left;
 }
@@ -441,7 +441,15 @@ a:hover { text-decoration: underline; }
   margin: 0 auto;
   display: flex;
   flex-direction: column;
-  gap: .5rem;
+  gap: 1.25rem;
+}
+
+.footer-cols {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;
+  align-items: start;
+  padding-bottom: 1.25rem;
 }
 
 .footer-about .footer-name {
@@ -449,7 +457,7 @@ a:hover { text-decoration: underline; }
   font-size: 1rem;
   font-weight: 700;
   color: #fff;
-  margin-bottom: .3rem;
+  margin-bottom: .4rem;
 }
 
 .footer-sc {
@@ -457,23 +465,47 @@ a:hover { text-decoration: underline; }
   font-feature-settings: "smcp";
   font-size: .88em;
   letter-spacing: .04em;
-  color: rgba(255,255,255,.5);
+  color: rgba(255,255,255,.65);
   font-weight: 400;
 }
 
-.footer-about p { font-size: .8rem; line-height: 1.6; margin-bottom: .2rem; }
+.footer-about p { font-size: .85rem; line-height: 1.65; color: #fff; margin-bottom: .3rem; }
 .footer-about a { color: var(--brown); text-decoration: underline; }
-.footer-disclaimer { font-size: .72rem !important; color: rgba(255,255,255,.4) !important; font-style: italic; }
+.footer-about a:hover { color: #fff; }
+.footer-disclaimer { font-size: .75rem !important; color: rgba(255,255,255,.65) !important; font-style: italic; }
+
+.footer-subscribe-heading {
+  font-size: .7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: .1em;
+  color: var(--brown);
+  margin-bottom: .5rem;
+}
+
+.footer-subscribe > p {
+  font-size: .85rem;
+  color: #fff;
+  margin-bottom: .75rem;
+  line-height: 1.5;
+}
+
+/* MailerLite embed sits on green — override its background */
+.footer-subscribe .ml-embedded { --ml-bg: transparent; }
 
 .footer-credits {
   font-size: .72rem;
-  color: rgba(255,255,255,.3);
-  padding-top: .75rem;
-  border-top: 1px solid rgba(255,255,255,.1);
+  color: rgba(255,255,255,.45);
+  padding: .75rem 0;
+  border-top: 1px solid rgba(255,255,255,.15);
 }
 
-.footer-credits a { color: rgba(255,255,255,.4); text-decoration: underline; }
-.footer-credits a:hover { color: rgba(255,255,255,.7); }
+.footer-credits a { color: rgba(255,255,255,.55); text-decoration: underline; }
+.footer-credits a:hover { color: #fff; }
+
+@media (max-width: 680px) {
+  .footer-cols { grid-template-columns: 1fr; gap: 1.5rem; }
+}
 
 /* ─── ARTICLE FOOTER ─── */
 
