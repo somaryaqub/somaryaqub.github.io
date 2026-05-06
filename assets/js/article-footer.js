@@ -137,11 +137,17 @@
       .af-card-excerpt { font-size: .76rem; color: rgba(255,255,255,0.6); line-height: 1.5; flex: 1; }
       .af-card-read { font-size: .72rem; font-weight: 600; color: #E09964; margin-top: .2rem; }
 
-      /* ── Bio ── */
-      .af-bio {
+      /* ── Two-column bottom ── */
+      .af-bottom {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 3rem;
+        align-items: start;
         padding: 1.25rem 0 1.5rem;
         border-top: 1px solid rgba(255,255,255,0.15);
       }
+
+      /* ── Bio ── */
       .af-bio-name {
         font-family: 'Alegreya', Georgia, serif;
         font-size: .95rem;
@@ -154,29 +160,26 @@
         font-feature-settings: "smcp";
         font-size: .88em;
         letter-spacing: .04em;
-        color: rgba(255,255,255,0.55);
+        color: rgba(255,255,255,0.65);
         font-weight: 400;
       }
       .af-bio-desc {
-        font-size: .8rem;
-        color: rgba(255,255,255,0.7);
-        line-height: 1.6;
+        font-size: .85rem;
+        color: #fff;
+        line-height: 1.65;
         margin-bottom: .3rem;
+        text-align: left;
       }
-      .af-bio-desc a { color: #E09964; text-decoration: none; font-weight: 600; }
-      .af-bio-desc a:hover { text-decoration: underline; }
-      .af-bio-disclaimer { font-size: .72rem; color: rgba(255,255,255,0.4); font-style: italic; }
+      .af-bio-desc a { color: #E09964; text-decoration: underline; font-weight: 600; }
+      .af-bio-desc a:hover { color: #fff; }
+      .af-bio-disclaimer { font-size: .75rem; color: rgba(255,255,255,0.65); font-style: italic; }
 
       /* ── Subscribe ── */
-      .af-subscribe {
-        padding: 1.25rem 0 1.5rem;
-        border-top: 1px solid rgba(255,255,255,0.15);
-      }
-      .af-subscribe-label { font-size: .8rem; color: rgba(255,255,255,0.75); margin-bottom: .75rem; line-height: 1.5; }
+      .af-subscribe-label { font-size: .85rem; color: #fff; margin-bottom: .75rem; line-height: 1.5; }
       .af-form { display: flex; gap: .5rem; flex-wrap: wrap; }
       .af-form input[type="email"] {
         flex: 1;
-        min-width: 180px;
+        min-width: 160px;
         padding: .55rem .8rem;
         border-radius: 6px;
         border: 1.5px solid rgba(255,255,255,0.25);
@@ -203,12 +206,12 @@
         transition: background .15s;
       }
       .af-form button:hover { background: #c8844e; }
-      .af-note { font-size: .72rem; color: rgba(255,255,255,0.4); margin-top: .5rem; }
+      .af-note { font-size: .72rem; color: rgba(255,255,255,0.45); margin-top: .5rem; }
 
       /* ── Colophon ── */
       .af-colophon {
-        font-size: .68rem;
-        color: rgba(255,255,255,0.3);
+        font-size: .8rem;
+        color: rgba(255,255,255,0.786);
         text-align: center;
         padding: .75rem 1.5rem;
         border-top: 1px solid rgba(255,255,255,0.1);
@@ -217,7 +220,10 @@
       .af-colophon a { color: rgba(255,255,255,0.4); text-decoration: underline; }
       .af-colophon a:hover { color: rgba(255,255,255,0.7); }
 
-      @media (max-width: 580px) { .af-cards { grid-template-columns: 1fr; } }
+      @media (max-width: 580px) {
+        .af-cards { grid-template-columns: 1fr; }
+        .af-bottom { grid-template-columns: 1fr; gap: 1.5rem; }
+      }
       @media (max-width: 400px) { .af-inner { padding: 0 1rem; } }
     </style>
 
@@ -234,27 +240,31 @@
         <div class="af-cards">${cardsHTML}</div>
       ` : ""}
 
-      <div class="af-bio">
-        <div class="af-bio-name">
-          Omar Yaqub <span class="af-sc">icd.d &nbsp;dsl(hon) &nbsp;mba &nbsp;bsc</span>
-        </div>
-        <p class="af-bio-desc">
-          Servant of Servants for <a href="https://islamicfamily.ca/" target="_blank">IslamicFamily</a>,
-          founder of <a href="https://flourishing.systems/" target="_blank">Flourishing Systems</a>,
-          a former Co-Historian Laureate for the City of Edmonton &amp; past MBA instructor at the University of Alberta.
-          <a href="https://linkedin.com/in/somaryaqub" target="_blank">LinkedIn</a>.
-        </p>
-        <p class="af-bio-disclaimer">Opinions are my own &amp; do <em>not</em> speak for any organization.</p>
-      </div>
+      <div class="af-bottom">
 
-      <div class="af-subscribe">
-        <div class="af-heading">Stay in the loop</div>
-        <p class="af-subscribe-label">New posts, occasional notes. No noise.</p>
-        <form class="af-form" id="af-subscribe-form">
-          <input type="email" placeholder="your@email.com" required autocomplete="email" />
-          <button type="submit">Subscribe</button>
-        </form>
-        <p class="af-note" id="af-subscribe-note">No spam. Unsubscribe any time.</p>
+        <div class="af-bio">
+          <div class="af-bio-name">
+            Omar Yaqub <span class="af-sc">icd.d &nbsp;dsl(hon) &nbsp;mba &nbsp;bsc</span>
+          </div>
+          <p class="af-bio-desc">
+            Servant of Servants for <a href="https://islamicfamily.ca/" target="_blank">IslamicFamily</a>,
+            founder of <a href="https://flourishing.systems/" target="_blank">Flourishing Systems</a>,
+            a former Co-Historian Laureate for the City of Edmonton &amp; past MBA instructor at the University of Alberta.
+            <a href="https://linkedin.com/in/somaryaqub" target="_blank">LinkedIn</a>.
+          </p>
+          <p class="af-bio-disclaimer">Opinions are my own &amp; do <em>not</em> speak for any organization.</p>
+        </div>
+
+        <div class="af-subscribe">
+          <div class="af-heading">Stay in the loop</div>
+          <p class="af-subscribe-label">New posts, occasional notes. No noise.</p>
+          <form class="af-form" action="https://assets.mailerlite.com/subscriptions/WfrvP4/subscribe" method="POST" target="_blank">
+            <input type="email" name="fields[email]" placeholder="your@email.com" required autocomplete="email" />
+            <button type="submit">Subscribe</button>
+          </form>
+          <p class="af-note">No spam. Unsubscribe any time.</p>
+        </div>
+
       </div>
 
     </div>
@@ -266,28 +276,6 @@
   `;
 
   document.body.appendChild(footer);
-
-  // Subscribe form handler
-  document.getElementById('af-subscribe-form').addEventListener('submit', async function(e) {
-    e.preventDefault();
-    const email = this.querySelector('input[type=email]').value;
-    const note = document.getElementById('af-subscribe-note');
-    const btn = this.querySelector('button');
-    btn.disabled = true; btn.textContent = 'Sending…';
-    try {
-      await fetch('https://assets.mailerlite.com/jsonp/714092/forms/WfrvP4/subscribe', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ fields: { email } })
-      });
-      this.innerHTML = '';
-      note.textContent = '✓ You\'re in. Thanks!';
-      note.style.color = '#fff';
-    } catch {
-      btn.disabled = false; btn.textContent = 'Subscribe';
-      note.textContent = 'Something went wrong — please try again.';
-    }
-  });
 
   if (!window.ml) {
     (function(w,d,e,u,f,l,n){w[f]=w[f]||function(){(w[f].q=w[f].q||[])
