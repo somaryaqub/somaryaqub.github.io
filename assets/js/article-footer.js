@@ -168,50 +168,75 @@
         color: #fff;
         line-height: 1.65;
         margin-bottom: .3rem;
-        text-align: left;
       }
       .af-bio-desc a { color: #E09964; text-decoration: underline; font-weight: 600; }
       .af-bio-desc a:hover { color: #fff; }
       .af-bio-disclaimer { font-size: .75rem; color: rgba(255,255,255,0.65); font-style: italic; }
 
-      /* ── Subscribe ── */
-      .af-subscribe-label { font-size: .85rem; color: #fff; margin-bottom: .75rem; line-height: 1.5; }
-      .af-form { display: flex; gap: .5rem; flex-wrap: wrap; }
-      .af-form input[type="email"] {
-        flex: 1;
-        min-width: 160px;
-        padding: .55rem .8rem;
-        border-radius: 6px;
-        border: 1.5px solid rgba(255,255,255,0.25);
-        background: rgba(255,255,255,0.1);
-        color: #fff;
-        font-family: inherit;
-        font-size: .875rem;
-        outline: none;
-        box-sizing: border-box;
+      /* ── Subscribe: ml-embedded overrides for green bg ── */
+      .af-subscribe-label { font-size: .85rem; color: #fff; margin-bottom: .5rem; line-height: 1.5; }
+
+      .af-subscribe .ml-embedded { margin-top: .25rem; }
+
+      .af-subscribe .ml-embedded *,
+      .af-subscribe .ml-embedded *::before,
+      .af-subscribe .ml-embedded *::after { box-sizing: border-box !important; font-family: 'Alegreya Sans', system-ui, sans-serif !important; }
+
+      /* Wipe container chrome */
+      .af-subscribe .ml-embedded .ml-form-embedWrapper,
+      .af-subscribe .ml-embedded .ml-form-embedBody,
+      .af-subscribe .ml-embedded .ml-form-align-center { background: transparent !important; border: none !important; box-shadow: none !important; padding: 0 !important; margin: 0 !important; border-radius: 0 !important; }
+
+      /* Hide ML's own heading/subheading */
+      .af-subscribe .ml-embedded .ml-form-embedContent,
+      .af-subscribe .ml-embedded .ml-form-embedContent h4,
+      .af-subscribe .ml-embedded .ml-form-embedContent p { display: none !important; }
+
+      /* Row layout for input + button */
+      .af-subscribe .ml-embedded .ml-form-formContent { display: flex !important; gap: .5rem !important; flex-wrap: wrap !important; padding: 0 !important; }
+      .af-subscribe .ml-embedded .ml-field-group { flex: 1 !important; min-width: 160px !important; margin: 0 !important; }
+
+      /* Input */
+      .af-subscribe .ml-embedded input[type="email"] {
+        width: 100% !important; padding: .55rem .8rem !important;
+        border-radius: 6px !important; border: 1.5px solid rgba(255,255,255,.3) !important;
+        background: rgba(255,255,255,.1) !important; color: #fff !important;
+        font-size: .875rem !important; line-height: 1.4 !important;
+        box-shadow: none !important; height: auto !important; outline: none !important;
       }
-      .af-form input[type="email"]::placeholder { color: rgba(255,255,255,0.4); }
-      .af-form input[type="email"]:focus { border-color: rgba(255,255,255,0.6); }
-      .af-form button {
-        padding: .55rem 1.1rem;
-        border-radius: 6px;
-        border: none;
-        background: #E09964;
-        color: #fff;
-        font-family: inherit;
-        font-size: .875rem;
-        font-weight: 700;
-        cursor: pointer;
-        white-space: nowrap;
-        transition: background .15s;
+      .af-subscribe .ml-embedded input[type="email"]::placeholder { color: rgba(255,255,255,.45) !important; }
+      .af-subscribe .ml-embedded input[type="email"]:focus { border-color: rgba(255,255,255,.7) !important; }
+
+      /* Button */
+      .af-subscribe .ml-embedded .ml-form-embedSubmit,
+      .af-subscribe .ml-embedded .ml-form-embedSubmit div { padding: 0 !important; margin: 0 !important; background: transparent !important; }
+      .af-subscribe .ml-embedded .ml-form-embedSubmit button,
+      .af-subscribe .ml-embedded input[type="submit"] {
+        padding: .55rem 1.1rem !important; border-radius: 6px !important;
+        border: none !important; background: #E09964 !important;
+        color: #fff !important; font-size: .875rem !important;
+        font-weight: 700 !important; cursor: pointer !important;
+        white-space: nowrap !important; height: auto !important;
+        box-shadow: none !important; transition: background .15s !important;
+        line-height: 1.4 !important;
       }
-      .af-form button:hover { background: #c8844e; }
-      .af-note { font-size: .72rem; color: rgba(255,255,255,0.45); margin-top: .5rem; }
+      .af-subscribe .ml-embedded .ml-form-embedSubmit button:hover { background: #c8844e !important; }
+
+      /* Success state */
+      .af-subscribe .ml-embedded .ml-form-successBody { background: transparent !important; border: none !important; padding: 0 !important; }
+      .af-subscribe .ml-embedded .ml-form-successContent h4,
+      .af-subscribe .ml-embedded .ml-form-successContent p { display: block !important; color: #fff !important; font-size: .875rem !important; background: transparent !important; }
+
+      /* GDPR / reCAPTCHA note */
+      .af-subscribe .ml-embedded .ml-form-checkboxRow,
+      .af-subscribe .ml-embedded .ml-form-recaptcha { font-size: .7rem !important; color: rgba(255,255,255,.45) !important; margin-top: .4rem !important; }
+      .af-subscribe .ml-embedded .ml-form-checkboxRow a,
+      .af-subscribe .ml-embedded .ml-form-recaptcha a { color: rgba(255,255,255,.55) !important; }
 
       /* ── Colophon ── */
       .af-colophon {
-        font-size: .8rem;
-        color: rgba(255,255,255,0.786);
+        font-size: .68rem;
+        color: rgba(255,255,255,0.3);
         text-align: center;
         padding: .75rem 1.5rem;
         border-top: 1px solid rgba(255,255,255,0.1);
@@ -258,11 +283,7 @@
         <div class="af-subscribe">
           <div class="af-heading">Stay in the loop</div>
           <p class="af-subscribe-label">New posts, occasional notes. No noise.</p>
-          <form class="af-form" action="https://assets.mailerlite.com/subscriptions/WfrvP4/subscribe" method="POST" target="_blank">
-            <input type="email" name="fields[email]" placeholder="your@email.com" required autocomplete="email" />
-            <button type="submit">Subscribe</button>
-          </form>
-          <p class="af-note">No spam. Unsubscribe any time.</p>
+          <div class="ml-embedded" data-form="WfrvP4"></div>
         </div>
 
       </div>
