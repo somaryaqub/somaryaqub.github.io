@@ -68,7 +68,7 @@
       if (popupShown) return;
       const scrolled = window.scrollY + window.innerHeight;
       const total = document.documentElement.scrollHeight;
-      if (scrolled >= total - 200) {
+      if (scrolled >= total - 300) {
         popupShown = true;
         if (window.ml) ml('show', 'WfrvP4', { force: true });
       }
