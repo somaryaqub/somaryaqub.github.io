@@ -7,6 +7,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Alegreya:ital,wght@0,400;0,700;1,400;1,700&family=Alegreya+Sans:wght@300;400;500;700&display=swap" rel="stylesheet">
 <script async src="https://tally.so/widgets/embed.js"></script>
+<script async src="https://tally.so/widgets/embed.js"></script>
 <style>
 
 /* ─────────────────────────────────────────
@@ -180,7 +181,6 @@ nav.scrolled { box-shadow: 0 1px 16px rgba(39,93,67,0.08); }
   margin-bottom: 32px;
   width: fit-content;
   opacity: 0;
-  animation: fadeUp 0.5s 0.1s forwards;
 }
 .live-dot {
   width: 6px; height: 6px;
@@ -829,6 +829,17 @@ footer {
   .section, .section-cta, .section-major-partners { padding: 64px 0; }
   footer .footer-inner { flex-direction: column; gap: 12px; text-align: center; }
 }
+
+/* ─────────────────────────────────────────
+   HERO TAG PULSE
+   ───────────────────────────────────────── */
+@keyframes tag-pulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(39,93,67,0); }
+  50%       { box-shadow: 0 0 0 6px rgba(39,93,67,0.12); }
+}
+.hero-tag {
+  animation: fadeUp 0.5s 0.1s forwards, tag-pulse 3s ease-in-out 1.8s infinite;
+}
 </style>
 </head>
 <body>
@@ -872,7 +883,7 @@ footer {
 
     <h1 class="hero-headline">
       New capital for homes<br>
-      that <em>families actually need.</em>
+      that serve&nbsp;<em>families in need.</em>
     </h1>
 
     <p class="hero-sub">
@@ -894,16 +905,16 @@ footer {
         <div class="s-stat-label">New bedrooms under construction</div>
       </div>
       <div class="s-stat">
-        <div class="s-stat-num">100<span>%</span></div>
-        <div class="s-stat-label">Halal-compliant fund structure</div>
+        <div class="s-stat-num">$37.5<span>m</span></div>
+        <div class="s-stat-label">Total project cost • $100m fund target</div>
+      </div>
+      <div class="s-stat">
+        <div class="s-stat-num">100%</div>
+        <div class="s-stat-label"><div><span style="letter-spacing: 0.07em;">Halal-compliant Impact fund • First in Canada</span><br></div></div>
       </div>
       <div class="s-stat">
         <div class="s-stat-num">4<span>+</span></div>
         <div class="s-stat-label">Provinces in national rollout</div>
-      </div>
-      <div class="s-stat">
-        <div class="s-stat-num"><span><font color="#ffffff"><span style="caret-color: rgb(255, 255, 255); font-size: 52px;">3</span></font>yrs+</span></div>
-        <div class="s-stat-label">CMHC-funded research behind the model</div>
       </div>
     </div>
   </div>
@@ -943,7 +954,7 @@ footer {
       <div>
         <div class="eyebrow reveal">What Sets This Fund Apart</div>
         <h2 class="section-headline reveal">
-          Shovel-ready.<br><em>Underserved families.</em><br>Build and sustain.
+          Shovel-ready.<br><em>Underserved families.</em><br>Sustainable.
         </h2>
       </div>
       <div class="pillars-header-right reveal">
@@ -955,7 +966,7 @@ footer {
       <div class="pillar-card reveal">
         <div class="pillar-num">01</div>
         <div class="pillar-title">Momentum already built</div>
-        <p class="pillar-body">Construction is underway on 285 bedrooms in Edmonton. Your capital enters a project with secured land, proven government support, and an experienced housing development partner already on the ground.</p>
+        <p class="pillar-body">Construction is underway on 285 bedrooms in Edmonton. Your capital enters a project with secured land, proven government support, and an experienced housing development partner already on the ground. Targeting <strong>Build Green Platinum</strong> — Canada's highest residential green building standard.</p>
       </div>
       <div class="pillar-card reveal reveal-d1">
         <div class="pillar-num">02</div>
@@ -1128,11 +1139,13 @@ footer {
     <div class="partners-label">Supporting Partners & Funders</div>
     <div class="partners-wrap">
       <div class="partner-chip">City of Edmonton</div>
-      <div class="partner-chip">Government of Alberta</div>
-      <div class="partner-chip">CMHC Innovation Lab</div>
+      <div class="partner-chip">AnotherWay</div>
+      <div class="partner-chip">Social Enterprise Fund</div>
+      <div class="partner-chip">Definity Foundation</div>
+      <div class="partner-chip">Alberta EcoTrust</div>
+      <div class="partner-chip">CMHC</div>
       <div class="partner-chip">CHTC</div>
       <div class="partner-chip">Ummah Society — Nova Scotia</div>
-      <div class="partner-chip">Deen Support — Mississauga</div>
       <div class="partner-chip">Radius / SFU — Vancouver</div>
     </div>
   </div>
