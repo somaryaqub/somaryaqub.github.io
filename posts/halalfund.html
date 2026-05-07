@@ -7,7 +7,6 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Alegreya:ital,wght@0,400;0,700;1,400;1,700&family=Alegreya+Sans:wght@300;400;500;700&display=swap" rel="stylesheet">
 <script async src="https://tally.so/widgets/embed.js"></script>
-<script async src="https://tally.so/widgets/embed.js"></script>
 <style>
 
 /* ─────────────────────────────────────────
@@ -385,7 +384,7 @@ nav.scrolled { box-shadow: 0 1px 16px rgba(39,93,67,0.08); }
 
 .pillars-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(4, 1fr);
   gap: 1px;
   background: var(--on-green-border);
 }
@@ -398,6 +397,28 @@ nav.scrolled { box-shadow: 0 1px 16px rgba(39,93,67,0.08); }
 .pillar-card:hover {
   border-color: var(--pinecone);
   background: var(--on-green-card-hover);
+}
+.pillar-card--green {
+  border-top: 2px solid rgba(247,175,41,0.4);
+}
+.pillar-card--green:hover {
+  border-color: var(--pinecone);
+  border-top-color: rgba(247,175,41,0.6);
+}
+.pillar-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 20px;
+  font-family: 'Alegreya Sans', sans-serif;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #F7AF29;
+  background: rgba(247,175,41,0.1);
+  border: 1px solid rgba(247,175,41,0.22);
+  padding: 5px 12px;
 }
 .pillar-num {
   font-family: 'Alegreya', serif;
@@ -823,6 +844,7 @@ footer {
   .pillars-header,
   .need-grid          { grid-template-columns: 1fr; gap: 40px; }
   .pillars-grid,
+  .pillars-grid,
   .structure-grid,
   .rec-grid,
   .major-partners-grid { grid-template-columns: 1fr; }
@@ -902,7 +924,7 @@ footer {
     <div class="stat-banner-inner">
       <div class="s-stat">
         <div class="s-stat-num">285<span> beds</span></div>
-        <div class="s-stat-label">New bedrooms under construction</div>
+        <div class="s-stat-label">New bedrooms now under construction</div>
       </div>
       <div class="s-stat">
         <div class="s-stat-num">$37.5<span>m</span></div>
@@ -966,7 +988,7 @@ footer {
       <div class="pillar-card reveal">
         <div class="pillar-num">01</div>
         <div class="pillar-title">Momentum already built</div>
-        <p class="pillar-body">Construction is underway on 285 bedrooms in Edmonton. Your capital enters a project with secured land, proven government support, and an experienced housing development partner already on the ground. Targeting <strong>Build Green Platinum</strong> — Canada's highest residential green building standard.</p>
+        <p class="pillar-body">Construction is underway on 285 bedrooms in Edmonton. Your capital enters a project with secured land, proven government support, and an experienced housing development partner already on the ground.</p>
       </div>
       <div class="pillar-card reveal reveal-d1">
         <div class="pillar-num">02</div>
@@ -977,6 +999,12 @@ footer {
         <div class="pillar-num">03</div>
         <div class="pillar-title">New dollars for building and sustaining</div>
         <p class="pillar-body">The Fund unlocks both investment capital for construction and an unprecedented stream of community-based rent supplement revenue for long-term operations — a financing structure that barely exists elsewhere in Canada.</p>
+      </div>
+      <div class="pillar-card pillar-card--green reveal reveal-d2">
+        <div class="pillar-num">04</div>
+        <div class="pillar-title">Build Green Platinum</div>
+        <p class="pillar-body">The Dunluce development is targeting <strong>Build Green Platinum</strong> certification — one of the most rigorous residential green building standards in Canada, covering energy performance, indoor air quality, and whole-home sustainability across seven categories.</p>
+        <div class="pillar-badge">🌿 Built Green Canada</div>
       </div>
     </div>
   </div>
@@ -1155,12 +1183,12 @@ footer {
 <!-- ══════════════ CTA ══════════════ -->
 <section class="section-cta">
   <div class="container">
-    <div class="cta-eyebrow">You're Invited to Shape This</div>
+    <div class="cta-eyebrow">Get Involved</div>
     <h2 class="cta-headline">
-      Two minutes.<br><em>Real influence.</em>
+      We are looking for <em>philanthropic<br>and impact investment capital</em><br>to build critical housing.
     </h2>
     <p class="cta-body">
-      We're speaking with funders and social impact investors to understand how this fund fits your portfolio. Your input directly shapes how we structure investment opportunities.
+      Shovels are in the ground. The fund is structured. The need is urgent. If you are a funder or impact investor who wants stable returns and measurable social outcomes — take two minutes to share your perspective.
     </p>
     <div class="cta-btn-row">
       <a href="#tally-open=7R4Q5A&tally-emoji-text=👋&tally-emoji-animation=wave" class="btn-warm">Take the 2-Minute Survey →</a>
