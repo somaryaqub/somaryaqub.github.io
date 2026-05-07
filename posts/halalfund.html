@@ -156,12 +156,47 @@ nav.scrolled { box-shadow: 0 1px 16px rgba(39,93,67,0.08); }
 /* ─────────────────────────────────────────
    HERO
    ───────────────────────────────────────── */
-.hero { padding-top: 68px; background: var(--bg-light); }
+.hero {
+  padding-top: 68px;
+  position: relative;
+  background: var(--nabawi-dark);
+  overflow: hidden;
+}
+
+/* Full-bleed background image */
+.hero-bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+.hero-bg img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 28%;
+  display: block;
+}
+/* Two-layer overlay: darken overall + heavier on left where text sits */
+.hero-bg::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(to right,
+      rgba(20,52,34,0.82) 0%,
+      rgba(20,52,34,0.55) 55%,
+      rgba(20,52,34,0.25) 100%),
+    linear-gradient(to top,
+      rgba(20,52,34,0.6) 0%,
+      transparent 50%);
+}
 
 .hero-inner {
   max-width: 1120px;
   margin: 0 auto;
-  padding: 72px 48px 0;
+  padding: 88px 48px 80px;
+  position: relative;
+  z-index: 1;
 }
 
 .hero-tag {
@@ -173,9 +208,9 @@ nav.scrolled { box-shadow: 0 1px 16px rgba(39,93,67,0.08); }
   font-weight: 500;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  color: var(--nabawi);
-  background: rgba(39,93,67,0.07);
-  border: 1px solid rgba(39,93,67,0.15);
+  color: var(--warm-sand);
+  background: rgba(255,255,255,0.1);
+  border: 1px solid rgba(255,255,255,0.2);
   padding: 6px 14px;
   margin-bottom: 32px;
   width: fit-content;
@@ -183,7 +218,7 @@ nav.scrolled { box-shadow: 0 1px 16px rgba(39,93,67,0.08); }
 }
 .live-dot {
   width: 6px; height: 6px;
-  background: var(--nabawi);
+  background: var(--warm-sand);
   border-radius: 50%;
   animation: pulse 2.5s infinite;
 }
@@ -198,36 +233,35 @@ nav.scrolled { box-shadow: 0 1px 16px rgba(39,93,67,0.08); }
   font-weight: 400;
   line-height: 1.05;
   letter-spacing: -0.01em;
-  color: var(--kiswah);
-  max-width: 860px;
-  margin-bottom: 32px;
+  color: white;
+  max-width: 720px;
+  margin-bottom: 28px;
   opacity: 0;
   animation: fadeUp 0.6s 0.2s forwards;
 }
 .hero-headline em {
   font-style: italic;
-  color: var(--nabawi);
+  color: var(--warm-sand);
 }
 
 .hero-sub {
   font-family: 'Alegreya Sans', sans-serif;
   font-size: 18px;
   font-weight: 300;
-  color: var(--text-muted);
+  color: rgba(250,250,242,0.78);
   line-height: 1.75;
-  max-width: 580px;
+  max-width: 540px;
   margin-bottom: 40px;
   opacity: 0;
   animation: fadeUp 0.6s 0.35s forwards;
 }
-.hero-sub strong { color: var(--text-primary); font-weight: 500; }
+.hero-sub strong { color: rgba(250,250,242,0.95); font-weight: 500; }
 
 .hero-ctas {
   display: flex;
   align-items: center;
   gap: 14px;
   flex-wrap: wrap;
-  margin-bottom: 72px;
   opacity: 0;
   animation: fadeUp 0.6s 0.5s forwards;
 }
@@ -237,28 +271,30 @@ nav.scrolled { box-shadow: 0 1px 16px rgba(39,93,67,0.08); }
   font-size: 14px;
   font-weight: 500;
   letter-spacing: 0.03em;
-  color: white;
-  background: var(--nabawi);
+  color: var(--kiswah);
+  background: var(--warm-sand);
   padding: 14px 28px;
   transition: background 0.2s, transform 0.15s;
   display: inline-flex;
   align-items: center;
   gap: 8px;
 }
-.btn-primary:hover { background: #1e4a34; transform: translateY(-1px); }
+.btn-primary:hover { background: white; transform: translateY(-1px); }
 
 .btn-secondary {
   font-family: 'Alegreya Sans', sans-serif;
   font-size: 14px;
   font-weight: 400;
-  color: var(--text-muted);
-  border: 1px solid var(--border);
+  color: rgba(250,250,242,0.7);
+  border: 1px solid rgba(250,250,242,0.3);
   padding: 14px 24px;
   transition: all 0.2s;
   display: inline-flex;
   align-items: center;
 }
-.btn-secondary:hover { border-color: var(--nabawi); color: var(--nabawi); }
+.btn-secondary:hover { border-color: rgba(250,250,242,0.7); color: white; }
+
+
 
 /* ─────────────────────────────────────────
    STAT BANNER  (single green strip, hero base)
@@ -384,7 +420,7 @@ nav.scrolled { box-shadow: 0 1px 16px rgba(39,93,67,0.08); }
 
 .pillars-grid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(3, 1fr);
   gap: 1px;
   background: var(--on-green-border);
 }
@@ -397,28 +433,6 @@ nav.scrolled { box-shadow: 0 1px 16px rgba(39,93,67,0.08); }
 .pillar-card:hover {
   border-color: var(--pinecone);
   background: var(--on-green-card-hover);
-}
-.pillar-card--green {
-  border-top: 2px solid rgba(247,175,41,0.4);
-}
-.pillar-card--green:hover {
-  border-color: var(--pinecone);
-  border-top-color: rgba(247,175,41,0.6);
-}
-.pillar-badge {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  margin-top: 20px;
-  font-family: 'Alegreya Sans', sans-serif;
-  font-size: 11px;
-  font-weight: 500;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: #F7AF29;
-  background: rgba(247,175,41,0.1);
-  border: 1px solid rgba(247,175,41,0.22);
-  padding: 5px 12px;
 }
 .pillar-num {
   font-family: 'Alegreya', serif;
@@ -836,14 +850,13 @@ footer {
 @media (max-width: 860px) {
   .container          { padding: 0 24px; }
   .nav-inner          { padding: 0 24px; }
-  .hero-inner         { padding: 56px 24px 0; }
+  .hero-inner         { padding: 64px 24px 56px; }
   .nav-links          { display: none; }
   .stat-banner-inner  { padding: 0 24px; flex-wrap: wrap; }
   .s-stat             { min-width: 50%; border-bottom: 1px solid rgba(255,255,255,0.1); }
   .intro-grid,
   .pillars-header,
   .need-grid          { grid-template-columns: 1fr; gap: 40px; }
-  .pillars-grid,
   .pillars-grid,
   .structure-grid,
   .rec-grid,
@@ -861,6 +874,135 @@ footer {
 }
 .hero-tag {
   animation: fadeUp 0.5s 0.1s forwards, tag-pulse 3s ease-in-out 1.8s infinite;
+}
+/* ─────────────────────────────────────────
+   STORIES SECTION
+   ───────────────────────────────────────── */
+.section-stories {
+  background: var(--bg-light);
+  border-top: 1px solid var(--border);
+  padding: 96px 0;
+}
+.stories-header {
+  text-align: center;
+  max-width: 560px;
+  margin: 0 auto 64px;
+}
+.stories-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1px;
+  background: var(--border);
+}
+.story-card {
+  background: var(--bg-light);
+  padding: 52px 48px;
+  position: relative;
+}
+.story-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+  background: var(--nabawi);
+}
+.story-quote-mark {
+  font-family: 'Alegreya', serif;
+  font-size: 88px;
+  line-height: 0.65;
+  color: var(--arabica);
+  display: block;
+  margin-bottom: 24px;
+  font-weight: 700;
+}
+.story-text {
+  font-family: 'Alegreya', serif;
+  font-size: 20px;
+  font-style: italic;
+  font-weight: 400;
+  color: var(--kiswah);
+  line-height: 1.68;
+  margin-bottom: 28px;
+}
+.story-text strong {
+  font-style: normal;
+  font-weight: 700;
+  color: var(--nabawi);
+}
+.story-name {
+  font-family: 'Alegreya Sans', sans-serif;
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+.story-footnote {
+  font-family: 'Alegreya Sans', sans-serif;
+  font-size: 13px;
+  font-weight: 300;
+  color: var(--text-muted);
+  text-align: center;
+  margin-top: 28px;
+  font-style: italic;
+}
+
+/* ─────────────────────────────────────────
+   FAMILY IMAGE — near CTA
+   ───────────────────────────────────────── */
+.family-image-section {
+  width: 100%;
+  aspect-ratio: 21 / 7;
+  overflow: hidden;
+  position: relative;
+}
+.family-image-section img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 40%;
+  display: block;
+}
+.family-image-section .family-img-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to right,
+    rgba(27,68,48,0.6) 0%,
+    rgba(27,68,48,0.1) 50%,
+    transparent 100%);
+  display: flex;
+  align-items: center;
+  padding: 0 72px;
+}
+.family-img-text {
+  max-width: 420px;
+}
+.family-img-text h3 {
+  font-family: 'Alegreya', serif;
+  font-size: clamp(26px, 3vw, 40px);
+  font-weight: 400;
+  color: white;
+  line-height: 1.15;
+  margin-bottom: 16px;
+  letter-spacing: -0.01em;
+}
+.family-img-text h3 em {
+  font-style: italic;
+  color: var(--warm-sand);
+}
+.family-img-text p {
+  font-family: 'Alegreya Sans', sans-serif;
+  font-size: 16px;
+  font-weight: 300;
+  color: rgba(255,255,255,0.75);
+  line-height: 1.7;
+}
+
+@media (max-width: 860px) {
+  .stories-grid { grid-template-columns: 1fr; }
+  .story-card   { padding: 40px 28px; }
+  .family-image-section { aspect-ratio: 4/3; }
+  .family-image-section .family-img-overlay { padding: 0 24px; }
 }
 </style>
 </head>
@@ -888,7 +1030,7 @@ footer {
       <li><a href="#need">The Need</a></li>
       <li><a href="#structure">The Fund</a></li>
       <li><a href="#partners">Partners</a></li>
-      <li><a href="#tally-open=7R4Q5A&tally-emoji-text=👋&tally-emoji-animation=wave" class="nav-cta">Take the Survey →</a></li>
+      <li><a href="#tally-open=7R4Q5A&amp;tally-emoji-text=👋&amp;tally-emoji-animation=wave" class="nav-cta">Sign-on →</a></li>
     </ul>
   </div>
 </nav>
@@ -896,6 +1038,12 @@ footer {
 
 <!-- ══════════════ HERO ══════════════ -->
 <section class="hero">
+
+  <!-- Background image -->
+  <div class="hero-bg">
+    <img src="fam1.png" alt="A multi-generational family moving into their new home together">
+  </div>
+
   <div class="hero-inner">
 
     <div class="hero-tag">
@@ -932,7 +1080,7 @@ footer {
       </div>
       <div class="s-stat">
         <div class="s-stat-num">100%</div>
-        <div class="s-stat-label"><div><span style="letter-spacing: 0.07em;">Halal-compliant Impact fund • First in Canada</span><br></div></div>
+        <div class="s-stat-label"><div><span style="letter-spacing: 0.07em;">Halal-compliant Impact fund • First in Canada&nbsp;🇨🇦</span><br></div></div>
       </div>
       <div class="s-stat">
         <div class="s-stat-num">4<span>+</span></div>
@@ -988,7 +1136,7 @@ footer {
       <div class="pillar-card reveal">
         <div class="pillar-num">01</div>
         <div class="pillar-title">Momentum already built</div>
-        <p class="pillar-body">Construction is underway on 285 bedrooms in Edmonton. Your capital enters a project with secured land, proven government support, and an experienced housing development partner already on the ground.</p>
+        <p class="pillar-body">Construction is underway on 285 bedrooms in Edmonton. Your capital enters a project with secured land, proven government support, and an experienced housing development partner already on the ground. Targeting <strong>Build Green Platinum</strong> — Canada's highest residential green building standard.</p>
       </div>
       <div class="pillar-card reveal reveal-d1">
         <div class="pillar-num">02</div>
@@ -999,12 +1147,6 @@ footer {
         <div class="pillar-num">03</div>
         <div class="pillar-title">New dollars for building and sustaining</div>
         <p class="pillar-body">The Fund unlocks both investment capital for construction and an unprecedented stream of community-based rent supplement revenue for long-term operations — a financing structure that barely exists elsewhere in Canada.</p>
-      </div>
-      <div class="pillar-card pillar-card--green reveal reveal-d2">
-        <div class="pillar-num">04</div>
-        <div class="pillar-title">Build Green Platinum</div>
-        <p class="pillar-body">The Dunluce development is targeting <strong>Build Green Platinum</strong> certification — one of the most rigorous residential green building standards in Canada, covering energy performance, indoor air quality, and whole-home sustainability across seven categories.</p>
-        <div class="pillar-badge">🌿 Built Green Canada</div>
       </div>
     </div>
   </div>
@@ -1058,6 +1200,52 @@ footer {
     </div>
   </div>
 </section>
+
+
+<!-- ══════════════ STORIES ══════════════ -->
+<section class="section-stories">
+  <div class="container">
+    <div class="stories-header">
+      <div class="eyebrow reveal">The Human Reality</div>
+      <h2 class="section-headline reveal">
+        Behind every number<br>is a <em>family waiting.</em>
+      </h2>
+    </div>
+
+    <div class="stories-grid">
+      <div class="story-card reveal">
+        <span class="story-quote-mark">"</span>
+        <p class="story-text">
+          Imagine <strong>Sarah</strong>, a mother living in an abusive situation who cares for both her kids and her parents. She wants to leave — but shelters won't accept her whole family. The choice she's given is to leave her parents, abandon her kids, or stay in an abusive situation.
+          <br><br>
+          This is not a choice.
+        </p>
+      </div>
+
+      <div class="story-card reveal reveal-d1">
+        <span class="story-quote-mark">"</span>
+        <p class="story-text">
+          Because of the war, <strong>Adam</strong> now cares for his nephews, nieces, and his own kids — a family of 12. There's no apartment big enough, so they end up scattered across multiple units.
+          <br><br>
+          He wishes that after all this time and hardship, they could be together under one roof.
+        </p>
+      </div>
+    </div>
+    <p class="story-footnote">* Names changed. Stories represent lived experiences of families IslamicFamily serves.</p>
+  </div>
+</section>
+
+
+<!-- ══════════════ FAMILY IMAGE ══════════════ -->
+<div class="family-image-section">
+  <img src="fam2.png" alt="Family moving into their new affordable home">
+  <div class="family-img-overlay">
+    <div class="family-img-text">
+      <h3>This is what<br><em>housing underpins.</em></h3>
+      <p>Three generations. One home. Dignity.</p>
+    </div>
+  </div>
+</div>
 
 
 <!-- ══════════════ FUND STRUCTURE ══════════════ -->
@@ -1183,12 +1371,12 @@ footer {
 <!-- ══════════════ CTA ══════════════ -->
 <section class="section-cta">
   <div class="container">
-    <div class="cta-eyebrow">Get Involved</div>
+    <div class="cta-eyebrow">You're Invited to Shape This</div>
     <h2 class="cta-headline">
-      We are looking for <em>philanthropic<br>and impact investment capital</em><br>to build critical housing.
+      Two minutes.<br><em>Real influence.</em>
     </h2>
     <p class="cta-body">
-      Shovels are in the ground. The fund is structured. The need is urgent. If you are a funder or impact investor who wants stable returns and measurable social outcomes — take two minutes to share your perspective.
+      We're speaking with funders and social impact investors to understand how this fund fits your portfolio. Your input directly shapes how we structure investment opportunities.
     </p>
     <div class="cta-btn-row">
       <a href="#tally-open=7R4Q5A&tally-emoji-text=👋&tally-emoji-animation=wave" class="btn-warm">Take the 2-Minute Survey →</a>
