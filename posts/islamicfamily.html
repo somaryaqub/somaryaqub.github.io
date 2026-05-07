@@ -615,10 +615,106 @@
     margin-left: 4px;
   }
 
+  /* ── Voices toggle ── */
+  .voices-toggle {
+    margin: 0 2rem;
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    overflow: hidden;
+  }
+  .voices-toggle-btn {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem 1.5rem;
+    background: #fafafa;
+    border: none;
+    cursor: pointer;
+    font-family: inherit;
+    transition: background 0.15s;
+    gap: 1rem;
+  }
+  .voices-toggle-btn:hover { background: #f3f3f3; }
+  .voices-toggle-left {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .voices-toggle-label {
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--text);
+    text-align: left;
+  }
+  .voices-toggle-sub {
+    font-size: 11px;
+    color: var(--faint);
+    margin-top: 1px;
+    text-align: left;
+  }
+  .voices-toggle-icon {
+    font-size: 16px;
+    color: var(--g);
+    flex-shrink: 0;
+  }
+  .voices-caret {
+    font-size: 18px;
+    color: var(--faint);
+    transition: transform 0.25s;
+    flex-shrink: 0;
+    line-height: 1;
+  }
+  .voices-body {
+    display: none;
+    border-top: 1px solid var(--border);
+    padding: 1.5rem;
+    background: #fff;
+  }
+  .voices-body.open { display: block; }
+  .voices-intro {
+    font-size: 13px;
+    color: var(--muted);
+    line-height: 1.65;
+    margin-bottom: 1.25rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid var(--border);
+  }
+  .voices-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+  }
+  .voice-card {
+    background: #f9f9f9;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 1rem 1.25rem;
+  }
+  .voice-card-label {
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--faint);
+    margin-bottom: 5px;
+  }
+  .voice-card-text {
+    font-family: Georgia, serif;
+    font-size: 14px;
+    line-height: 1.5;
+    color: var(--text);
+  }
+  .voice-card.highlight {
+    background: var(--gl);
+    border-color: var(--gm);
+  }
+  .voice-card.highlight .voice-card-label { color: var(--g); }
+
   @media (max-width: 560px) {
     .mq-grid { grid-template-columns: 1fr; }
     .hero-title { font-size: 26px; }
     .nav-btn { padding: 6px 11px; font-size: 11px; }
+    .voices-grid { grid-template-columns: 1fr; }
   }
 </style>
 </head>
@@ -692,7 +788,57 @@
     <div class="hero-title">Where are we<br>trying to go?</div>
     <div class="hero-sub">A vision describes the future we are building toward — not what we do, but what the world looks like when we have done it well.</div>
   </div>
-  <div class="cards-area">
+  <div class="voices-toggle" style="margin-bottom:1.5rem;">
+    <button class="voices-toggle-btn" onclick="toggleVoices('vision-voices')">
+      <div class="voices-toggle-left">
+        <span class="voices-toggle-icon">💬</span>
+        <div>
+          <div class="voices-toggle-label">Voices from the process</div>
+          <div class="voices-toggle-sub">What the board and leadership said — the raw input that shaped these options</div>
+        </div>
+      </div>
+      <span class="voices-caret" id="caret-vision-voices">›</span>
+    </button>
+    <div class="voices-body" id="vision-voices">
+      <div class="voices-intro">These statements were collected during the board ideation session. They represent the range of perspectives that informed the three vision options above — read them before you vote to understand where each option came from.</div>
+      <div class="voices-grid">
+        <div class="voice-card highlight">
+          <div class="voice-card-label">Strategic positioning</div>
+          <div class="voice-card-text">"First choice social service partner for Muslims in YEG"</div>
+        </div>
+        <div class="voice-card">
+          <div class="voice-card-label">On community strength</div>
+          <div class="voice-card-text">"A transition from emergent need to stable contributor"</div>
+        </div>
+        <div class="voice-card highlight">
+          <div class="voice-card-label">On scope of care</div>
+          <div class="voice-card-text">"Complete care on the spectrum of human life from a Muslim perspective"</div>
+        </div>
+        <div class="voice-card">
+          <div class="voice-card-label">On trajectory</div>
+          <div class="voice-card-text">"Moving from support for a broken arm to strength training"</div>
+        </div>
+        <div class="voice-card">
+          <div class="voice-card-label">On audience</div>
+          <div class="voice-card-text">"Culturally &amp; spiritually appropriate services for at-risk Muslims"</div>
+        </div>
+        <div class="voice-card highlight">
+          <div class="voice-card-label">On leadership development</div>
+          <div class="voice-card-text">"Developing Muslim leadership through service"</div>
+        </div>
+        <div class="voice-card">
+          <div class="voice-card-label">On reach</div>
+          <div class="voice-card-text">"Social services to the Edmonton Muslim community"</div>
+        </div>
+        <div class="voice-card highlight">
+          <div class="voice-card-label">On the arc</div>
+          <div class="voice-card-text">"From services for the vulnerable to building leaders for the future"</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="cards-area" style="padding-top:0;">
     <div class="cards-hint">Three options — click a card to vote</div>
 
     <div class="option-card" data-section="vision" data-opt="A" onclick="vote(this)">
@@ -756,6 +902,48 @@
     <div class="hero-sub">The animating inquiry the whole organization is oriented around. It invites rather than declares.</div>
   </div>
 
+  <div class="voices-toggle" style="margin: 1.5rem 2rem 0;">
+    <button class="voices-toggle-btn" onclick="toggleVoices('mq-voices')">
+      <div class="voices-toggle-left">
+        <span class="voices-toggle-icon">💬</span>
+        <div>
+          <div class="voices-toggle-label">Voices from the process</div>
+          <div class="voices-toggle-sub">How the board articulated what flourishing and community mean</div>
+        </div>
+      </div>
+      <span class="voices-caret" id="caret-mq-voices">›</span>
+    </button>
+    <div class="voices-body" id="mq-voices">
+      <div class="voices-intro">The mission question itself emerged from earlier strategy work. These voices shaped how the board understands the three key terms — whole person, flourishing, and community — and are what the tweaked bullets attempt to capture.</div>
+      <div class="voices-grid">
+        <div class="voice-card highlight">
+          <div class="voice-card-label">On "whole person"</div>
+          <div class="voice-card-text">"It's not just mental health or housing — it's someone's relationship with God, their family, their place in the community. All of it."</div>
+        </div>
+        <div class="voice-card">
+          <div class="voice-card-label">On "flourishing"</div>
+          <div class="voice-card-text">"Flourishing isn't surviving. It's someone who came in crisis and now volunteers here, or sits on a board somewhere."</div>
+        </div>
+        <div class="voice-card">
+          <div class="voice-card-label">On the arc</div>
+          <div class="voice-card-text">"We want to move people from broken arm to strength training — from needing us to not needing us."</div>
+        </div>
+        <div class="voice-card highlight">
+          <div class="voice-card-label">On "our community"</div>
+          <div class="voice-card-text">"Our community isn't just Muslims. It's anyone who comes to us — and we serve them with the values of our tradition regardless."</div>
+        </div>
+        <div class="voice-card highlight">
+          <div class="voice-card-label">On breadth</div>
+          <div class="voice-card-text">"We see pre-arrival refugees and fifth-generation Canadians struggling with identity. The mission has to hold both."</div>
+        </div>
+        <div class="voice-card">
+          <div class="voice-card-label">On leadership</div>
+          <div class="voice-card-text">"Flourishing for us is also about developing Muslim leadership — people who go on to shape Canadian institutions."</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <div class="mq-grid">
     <div class="mq-panel" data-section="mq" data-opt="Previous" onclick="vote(this)">
       <div class="mq-panel-header">
@@ -815,7 +1003,50 @@
     <div class="hero-title">Why we exist and<br>what we do</div>
     <div class="hero-sub">Names who we serve, how, and in what spirit. Lives in annual reports, grant applications, and staff onboarding.</div>
   </div>
-  <div class="cards-area">
+
+  <div class="voices-toggle" style="margin: 1.5rem 2rem 0;">
+    <button class="voices-toggle-btn" onclick="toggleVoices('mission-voices')">
+      <div class="voices-toggle-left">
+        <span class="voices-toggle-icon">💬</span>
+        <div>
+          <div class="voices-toggle-label">Voices from the process</div>
+          <div class="voices-toggle-sub">What the board said about what the mission needs to do and who it needs to reach</div>
+        </div>
+      </div>
+      <span class="voices-caret" id="caret-mission-voices">›</span>
+    </button>
+    <div class="voices-body" id="mission-voices">
+      <div class="voices-intro">These are the recurring themes from board and leadership conversations about what the mission statement needs to accomplish. Each option above attempts to balance these competing pulls in a different way.</div>
+      <div class="voices-grid">
+        <div class="voice-card highlight">
+          <div class="voice-card-label">On who we serve</div>
+          <div class="voice-card-text">"The mission can't only be for Muslims. Anyone who walks through the door should feel it's for them."</div>
+        </div>
+        <div class="voice-card">
+          <div class="voice-card-label">On identity</div>
+          <div class="voice-card-text">"We shouldn't hide that we're Islamic. That's who we are — it's in the name."</div>
+        </div>
+        <div class="voice-card highlight">
+          <div class="voice-card-label">On the full spectrum</div>
+          <div class="voice-card-text">"From crisis support to community leadership — that's the whole arc we're trying to hold."</div>
+        </div>
+        <div class="voice-card">
+          <div class="voice-card-label">On clarity</div>
+          <div class="voice-card-text">"A funder reading this for the first time should understand what we do in one sentence."</div>
+        </div>
+        <div class="voice-card">
+          <div class="voice-card-label">On values</div>
+          <div class="voice-card-text">"Rahma — mercy — is the word. That's what makes us different. Not just compassionate care, but mercy."</div>
+        </div>
+        <div class="voice-card highlight">
+          <div class="voice-card-label">On distinctiveness</div>
+          <div class="voice-card-text">"It should sound like us. Not like every other social service organization in Edmonton."</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="cards-area" style="padding-top:1.5rem;">
     <div class="cards-hint">Four options — click a card to vote</div>
 
     <div class="option-card" data-section="mission" data-opt="A" onclick="vote(this)">
@@ -1248,6 +1479,15 @@
         <div class="synthesis-key">${key}</div>
         <div class="synthesis-val">${val}</div>
       </div>`).join("");
+  }
+
+  // ── Voices toggle ──────────────────────────────────────────────────
+  function toggleVoices(id) {
+    const body = document.getElementById(id);
+    const caret = document.getElementById("caret-" + id);
+    const isOpen = body.classList.contains("open");
+    body.classList.toggle("open", !isOpen);
+    caret.style.transform = isOpen ? "" : "rotate(90deg)";
   }
 
   // ── Voting ─────────────────────────────────────────────────────────
