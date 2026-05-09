@@ -88,7 +88,7 @@ nav {
   position: fixed;
   top: 0; left: 0; right: 0;
   z-index: 200;
-  background: rgba(250,250,242,0.93);
+  background: rgba(250,250,242,0.786);
   backdrop-filter: blur(16px);
   border-bottom: 1px solid var(--border);
   transition: box-shadow 0.3s;
@@ -282,19 +282,47 @@ nav.scrolled { box-shadow: 0 1px 16px rgba(39,93,67,0.08); }
 }
 .btn-primary:hover { background: white; transform: translateY(-1px); }
 
+/* ─────────────────────────────────────────
+   BTN-SECONDARY — border draw on load
+   ───────────────────────────────────────── */
 .btn-secondary {
   font-family: 'Alegreya Sans', sans-serif;
   font-size: 14px;
   font-weight: 400;
   color: rgba(250,250,242,0.7);
-  border: 1px solid rgba(250,250,242,0.3);
   padding: 14px 24px;
-  transition: all 0.2s;
+  transition: color 0.2s;
   display: inline-flex;
   align-items: center;
+  position: relative;
+  border: none;
+  background: none;
 }
-.btn-secondary:hover { border-color: rgba(250,250,242,0.7); color: white; }
-
+.btn-secondary:hover { color: white; }
+/* SVG border drawn via stroke-dashoffset */
+.btn-secondary svg.btn-border {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  overflow: visible;
+}
+.btn-secondary svg.btn-border rect {
+  fill: none;
+  stroke: rgba(250,250,242,0.35);
+  stroke-width: 1;
+  width: calc(100% - 1px);
+  height: calc(100% - 1px);
+  x: 0.5px;
+  y: 0.5px;
+  stroke-dasharray: var(--perimeter, 999);
+  stroke-dashoffset: var(--perimeter, 999);
+  animation: draw-border 1.2s cubic-bezier(0.4,0,0.2,1) 1s forwards;
+}
+.btn-secondary:hover svg.btn-border rect {
+  stroke: rgba(250,250,242,0.75);
+}
 
 
 /* ─────────────────────────────────────────
@@ -801,14 +829,55 @@ nav.scrolled { box-shadow: 0 1px 16px rgba(39,93,67,0.08); }
 .btn-ghost-white {
   font-family: 'Alegreya Sans', sans-serif;
   font-size: 14px;
-  font-weight: 300;
-  color: var(--text-muted);
-  border: 1px solid var(--border);
+  font-weight: 400;
+  color: var(--pinecone);
+  background: transparent;
+  border: 1.5px solid var(--pinecone);
   padding: 15px 32px;
-  transition: all 0.2s;
   display: inline-flex;
+  position: relative;
+  overflow: hidden;
+  transition: color 0.35s ease;
+  z-index: 0;
 }
-.btn-ghost-white:hover { color: var(--nabawi); border-color: var(--nabawi); }
+/* The fill layer — hidden until triggered */
+.btn-ghost-white::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: var(--pinecone);
+  transform: scaleX(0);
+  transform-origin: left center;
+  transition: none;
+  z-index: -1;
+}
+/* Scroll-triggered: fill sweeps in */
+.btn-ghost-white.border-draw-ready {
+  color: white;
+  transition: color 0s 0.3s;
+}
+.btn-ghost-white.border-draw-ready::before {
+  transform: scaleX(1);
+  transition: transform 0.55s cubic-bezier(0.4, 0, 0.2, 1) 0.15s;
+}
+.btn-ghost-white.border-draw-reverse {
+  color: var(--pinecone);
+  transition: color 0s 0.1s;
+}
+.btn-ghost-white.border-draw-reverse::before {
+  transform: scaleX(0);
+  transform-origin: right center;
+  transition: transform 0.45s cubic-bezier(0.4, 0, 0.2, 1) 0s;
+}
+.btn-ghost-white:hover {
+  color: white;
+  background: transparent;
+}
+.btn-ghost-white:hover::before {
+  background: #c8834e;
+  transform: scaleX(1);
+  transition: background 0.2s;
+}
 .cta-footnote {
   margin-top: 20px;
   font-family: 'Alegreya Sans', sans-serif;
@@ -1123,6 +1192,9 @@ footer {
 @media (max-width: 860px) {
   .hf-inner { grid-template-columns: 1fr; gap: 48px; }
 }
+@keyframes draw-border {
+  to { stroke-dashoffset: 0; }
+}
 </style>
 </head>
 <body>
@@ -1135,7 +1207,7 @@ footer {
       <img src="islamicfamily.png" width="34" height="34" viewBox="0 0 34 34">
               <div>
         <div class="nav-logo-text">Halal Affordable Housing Investment Fund</div>
-        <span class="nav-logo-sub">An IslamicFamily Initiative</span>
+        <span class="nav-logo-sub">The next generation of community asset building by IslamicFamily</span>
       </div>
     </div>
     <ul class="nav-links">
@@ -1172,7 +1244,10 @@ footer {
 
     <div class="hero-ctas">
       <a href="#tally-open=7R4Q5A&tally-emoji-text=👋&tally-emoji-animation=wave" class="btn-primary">Share Your Perspective — 2 min survey →</a>
-      <a href="mailto:omary@islamicfamily.ca" class="btn-secondary">Request a Conversation</a>
+      <a href="mailto:omary@islamicfamily.ca" class="btn-secondary">
+        <svg class="btn-border" aria-hidden="true"><rect/></svg>
+        Request a Conversation
+      </a>
     </div>
 
   </div>
@@ -1181,7 +1256,7 @@ footer {
   <div class="stat-banner">
     <div class="stat-banner-inner">
       <div class="s-stat">
-        <div class="s-stat-num">285<span> beds</span></div>
+        <div class="s-stat-num">264<span> beds</span></div>
         <div class="s-stat-label">New bedrooms now under construction</div>
       </div>
       <div class="s-stat">
@@ -1213,13 +1288,13 @@ footer {
       </div>
       <div class="reveal">
         <p class="body-text">
-          Larger and extended families — those with 4 or more members — wait longer &nbsp;(average 4+ years) on affordable housing waitlists than any other group in Canada. Purpose-built housing for them doesn't exist at scale. We're building it.
+          Larger and extended families — those with 4 or more members — wait longer for affordable housing than any other group in Canada — an average of 4 years. Purpose-built housing for them isn't being built at scale. We're changing that.
         </p>
         <p class="body-text">
-          The Fund was created by <strong>IslamicFamily</strong>, developed with <strong>SVX</strong> — Canada's foremost impact investment institution — and is operated in partnership with <strong>Vivid Homes</strong>. Construction is already underway on 285 bedrooms at the Dunluce site in Edmonton, secured through the City of Edmonton.
+          The Fund was created by <strong>IslamicFamily</strong>, developed with <strong>SVX</strong> (Canada's foremost impact investment institution), and is operated in partnership with <strong>Vivid Homes</strong>. Construction is already underway on 264 bedrooms in the Dunluce neighbourhood in Edmonton.
         </p>
         <p class="body-text">
-          This is not a niche investment. It is a scalable, values-driven response to a systemic failure — with shovels already in the ground.
+          This is not a niche investment. It is a scalable, values-driven response to a systemic failure; with shovels already in the ground.
         </p>
       </div>
     </div>
@@ -1238,7 +1313,7 @@ footer {
           Familiar principles.<br><em>Accessible architecture.</em>
         </h2>
         <p class="body-text reveal">
-          Halal finance — also known as Shariah-compliant or Islamic finance — is grounded in three core principles that will feel immediately familiar to any impact investor.
+          Halal finance, also known as Shariah-compliant or Islamic finance, is grounded in three core principles that will feel immediately familiar to any impact investor.
         </p>
 
         <div class="hf-principles">
@@ -1246,7 +1321,7 @@ footer {
             <div class="hf-principle-num">I</div>
             <div class="hf-principle-text">
               <div class="hf-principle-title">Profit & Risk Sharing</div>
-              <div class="hf-principle-sub">Returns are tied to real economic activity — not guaranteed interest. For impact investors, this maps directly onto equity participation and revenue-sharing agreements.</div>
+              <div class="hf-principle-sub">Returns are tied to real economic activity, not guaranteed interest. For impact investors, this maps directly onto equity participation and revenue-sharing agreements.</div>
             </div>
           </div>
           <div class="hf-principle reveal reveal-d1">
@@ -1260,7 +1335,7 @@ footer {
             <div class="hf-principle-num">III</div>
             <div class="hf-principle-text">
               <div class="hf-principle-title">Avoidance of Harm</div>
-              <div class="hf-principle-sub">Capital cannot be deployed in activities that cause social or environmental harm. For Canadian impact investors, this is a responsible investment screen — except here it is embedded at the level of design, not added as a policy overlay.</div>
+              <div class="hf-principle-sub">Capital cannot be deployed in activities that cause social or environmental harm. For Canadian impact investors, this is a responsible investment screen, except here it is embedded at the level of design, not added as a policy overlay.</div>
             </div>
           </div>
         </div>
@@ -1309,7 +1384,7 @@ footer {
       <div class="pillar-card reveal">
         <div class="pillar-num">01</div>
         <div class="pillar-title">Momentum already built</div>
-        <p class="pillar-body">Construction is underway on 285 bedrooms in Edmonton. Your capital enters a project with secured land, confirmed government support, a commitment to 🌱 Built Green Platinum™, &nbsp;and an experienced housing development partner already on the ground.&nbsp;</p>
+        <p class="pillar-body">Construction is underway on 264 bedrooms in Edmonton. Your capital enters a project with secured land, confirmed government support, a commitment to 🌱 Built Green Platinum™, &nbsp;and an experienced housing development partner already on the ground.&nbsp;</p>
       </div>
       <div class="pillar-card reveal reveal-d1">
         <div class="pillar-num">02</div>
@@ -1410,7 +1485,7 @@ footer {
   <img src="fam2.png" alt="Family moving into their new affordable home">
   <div class="family-img-overlay">
     <div class="family-img-text">
-      <h3><em style="font-size: clamp(26px, 3vw, 40px); letter-spacing: -0.01em;"><span style="margin-bottom: 16px; font-size: clamp(26px, 3vw, 40px); color: white; line-height: 1.15; letter-spacing: -0.01em; font-style: normal;">Housing <br>underpings<br><span style="margin-bottom: 16px; font-size: clamp(26px, 3vw, 40px); line-height: 1.15; letter-spacing: -0.01em;"><em><b>everything</b>.</em></span></span></em></h3>
+      <h3><em style="font-size: clamp(26px, 3vw, 40px); letter-spacing: -0.01em;"><span style="margin-bottom: 16px; font-size: clamp(26px, 3vw, 40px); color: white; line-height: 1.15; letter-spacing: -0.01em; font-style: normal;">Housing <br>underpins<br><span style="margin-bottom: 16px; font-size: clamp(26px, 3vw, 40px); line-height: 1.15; letter-spacing: -0.01em;"><em><b>everything</b>.</em></span></span></em></h3>
       <p>Made for generations &amp; dignity.</p>
     </div>
   </div>
@@ -1431,20 +1506,22 @@ footer {
       </div>
       <div class="struct-card reveal reveal-d1">
         <div class="struct-tag">For Impact Investors</div>
-        <h3 class="struct-title">Stable returns. Semi-liquid. Shariah-compliant.</h3>
+        <h3 class="struct-title">Stable returns. Semi-liquid. Shariah-compliant</h3>
         <p class="struct-body">Investment shares are structured for <strong>high stability and predictable modest returns</strong>, backed by real assets and long-term operational revenue. Designed for institutional and accredited investors with a values-aligned mandate. Fully Shariah-compliant. Developed by SVX. First round opens to investors in 2025.</p>
       </div>
       <div class="struct-card reveal">
-        <div class="struct-tag">National Scalability</div>
-        <h3 class="struct-title">Edmonton proves it. The model travels.</h3>
+        <div class="struct-tag">National Impact</div>
+        <h3 class="struct-title">An Edmonton model built for scaling</h3>
         <p class="struct-body">Phase 1 is underway in Edmonton. Rollout partners are confirmed in <strong>Nova Scotia, Ontario, and British Columbia</strong>. The legal structure, community partnerships, and government relationships are designed to replicate. The structure is Islamic. The opportunity is Canadian.</p>
       </div>
       <div class="struct-card reveal reveal-d1">
         <div class="struct-tag">The Systemic Case</div>
-        <h3 class="struct-title">Unlocking capital that CMHC currently blocks</h3>
-        <p class="struct-body">CMHC's current model conditions grant funding on its own debt — <strong>excluding communities</strong> from contributing to affordable housing despite distributing $½ billion in community support annually. This fund is the workaround. It brings new dollars into a system designed to keep them out.</p>
+        <h3 class="struct-title">Removing barriers, creating wealth</h3>
+        <p class="struct-body">Current model necesitate taking on debt — <strong>excluding communities</strong> from contributing to affordable housing despite distributing $½ billion in community support annually. This fund is the workaround. It brings new dollars into a system designed to keep them out.</p>
       </div>
     </div>
+    <br />
+    <div class="eyebrow reveal">Overview</div>
     <img src="halalfund.png">
   </div>
 </section>
@@ -1513,7 +1590,7 @@ footer {
         <div class="mp-label">Construction & Development</div>
         <div class="mp-name">Vivid Homes</div>
         <p class="mp-body">
-          Vivid Homes is the development and construction partner bringing the Dunluce project to life on the ground in Edmonton. Working alongside IslamicFamily on the <strong>285-bedroom Dunluce development</strong> — on land secured through the City of Edmonton — Vivid Homes brings the on-ground expertise to deliver housing that is designed specifically for larger and extended families, with construction already underway.
+          Vivid Homes is the development and construction partner bringing the Dunluce project to life on the ground in Edmonton. Working alongside IslamicFamily on the <strong>264-bedroom Dunluce development</strong> — on land secured through the City of Edmonton — Vivid Homes brings the on-ground expertise to deliver housing that is designed specifically for larger and extended families, with construction already underway.
         </p>
       </div>
 
@@ -1577,14 +1654,90 @@ footer {
 <script>
   // Scroll reveal
   const io = new IntersectionObserver(entries => {
-    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
-  }, { threshold: 0.1, rootMargin: '0px 0px -24px 0px' });
-  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add("visible"); });
+  }, { threshold: 0.1, rootMargin: "0px 0px -24px 0px" });
+  document.querySelectorAll(".reveal").forEach(el => io.observe(el));
+
+  // ── btn-secondary: border draw, reverses and replays every 7s ──
+  function setBorderPerimeters() {
+    document.querySelectorAll(".btn-secondary").forEach(btn => {
+      const w = btn.offsetWidth;
+      const h = btn.offsetHeight;
+      const perimeter = (w + h) * 2;
+      btn.style.setProperty("--perimeter", perimeter);
+      const rect = btn.querySelector("svg.btn-border rect");
+      if (rect) {
+        rect.setAttribute("width", w - 1);
+        rect.setAttribute("height", h - 1);
+      }
+    });
+  }
+  setBorderPerimeters();
+  window.addEventListener("resize", setBorderPerimeters);
+
+  function cycleBorderDraw(btn) {
+    const rect = btn.querySelector("svg.btn-border rect");
+    if (!rect) return;
+    const perimeter = parseFloat(btn.style.getPropertyValue("--perimeter")) || 999;
+    // Step 1: erase (forward dashoffset back to perimeter)
+    rect.animate(
+      [{ strokeDashoffset: 0 }, { strokeDashoffset: perimeter }],
+      { duration: 900, easing: "cubic-bezier(0.4,0,0.2,1)", fill: "forwards" }
+    ).finished.then(() => {
+      // Step 2: brief pause, then redraw
+      setTimeout(() => {
+        rect.animate(
+          [{ strokeDashoffset: perimeter }, { strokeDashoffset: 0 }],
+          { duration: 1200, easing: "cubic-bezier(0.4,0,0.2,1)", fill: "forwards" }
+        );
+      }, 300);
+    });
+  }
+
+  // Initial draw fires via CSS animation; start cycling after first cycle completes
+  document.querySelectorAll(".btn-secondary").forEach(btn => {
+    // First cycle starts after the initial CSS animation (1s delay + 1.2s draw = ~2.5s)
+    setTimeout(() => {
+      setInterval(() => cycleBorderDraw(btn), 7000);
+    }, 2500);
+  });
+
+  // ── btn-ghost-white: fill sweep, reverses and replays every 7s ──
+  function cycleFillSweep(btn) {
+    // Step 1: retract right-to-left
+    btn.classList.remove("border-draw-ready");
+    btn.classList.add("border-draw-reverse");
+    // Step 2: after retract completes (~500ms), reset origin and sweep in again
+    setTimeout(() => {
+      btn.classList.remove("border-draw-reverse");
+      // tiny pause so ::before resets transform-origin to left
+      requestAnimationFrame(() => {
+        requestAnimationFrame(() => {
+          btn.classList.add("border-draw-ready");
+        });
+      });
+    }, 550);
+  }
+
+  const btnObserver = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        // First trigger on scroll
+        e.target.classList.add("border-draw-ready");
+        btnObserver.unobserve(e.target);
+        // Then cycle every 7s
+        setTimeout(() => {
+          setInterval(() => cycleFillSweep(e.target), 7000);
+        }, 800);
+      }
+    });
+  }, { threshold: 0.8 });
+  document.querySelectorAll(".btn-ghost-white").forEach(btn => btnObserver.observe(btn));
 
   // Nav scroll shadow
-  const nav = document.getElementById('nav');
-  window.addEventListener('scroll', () => {
-    nav.classList.toggle('scrolled', window.scrollY > 40);
+  const nav = document.getElementById("nav");
+  window.addEventListener("scroll", () => {
+    nav.classList.toggle("scrolled", window.scrollY > 40);
   });
 </script>
 </body>
