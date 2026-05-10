@@ -792,7 +792,7 @@ function PeopleFirstCharter() {
             <section style={{ padding: "64px 0 48px", textAlign: "center" }}>
               <Reveal>
                 <a
-                  href="#tally-open=kdOLRr&tally-emoji-text=👋&tally-emoji-animation=wave"
+                  href="#tally-open=kdOLRr&tally-emoji-text=👋&tally-emoji-animation=wave&tally-auto-close=2000"
                   style={{
                     display: "inline-block",
                     padding: "18px 48px",
@@ -877,15 +877,17 @@ ReactDOM.render(
       function openTallyPopup() {
         if (triggered) return;
         triggered = true;
-        if (window.Tally) {
-          Tally.openPopup('kdOLRr', {
-            layout: 'modal',
-            width: 700,
-            emoji: { text: '👋', animation: 'wave' },
-            doNotShowAfterSubmit: true,
-            showOnce: true,
-          });
-        }
+        setTimeout(function() {
+          if (window.Tally) {
+            Tally.openPopup('kdOLRr', {
+              layout: 'modal',
+              width: 700,
+              emoji: { text: '👋', animation: 'wave' },
+              doNotShowAfterSubmit: true,
+              showOnce: true,
+            });
+          }
+        }, 5000);
       }
       function setupObserver() {
         var el = document.getElementById('sec-references');

@@ -1186,7 +1186,7 @@ function Article() {
                     {C.cta.body}
                   </p>
                   <div style={{ display:"flex", flexDirection:"column", gap:16, alignItems:"center" }}>
-                    <a href="#tally-open=kdOLRr&tally-emoji-text=👋&tally-emoji-animation=wave"
+                    <a href="#tally-open=kdOLRr&tally-emoji-text=👋&tally-emoji-animation=wave&tally-auto-close=2000"
                       style={{ display:"inline-block", padding:"16px 40px", background:B.primary,
                         color:B.background, fontFamily:FONTS.sans, fontSize:15, fontWeight:500,
                         letterSpacing:"0.08em", textDecoration:"none", borderRadius:4,
@@ -1226,7 +1226,7 @@ function Article() {
             <section style={{ padding:"64px 0 48px", textAlign:"center" }}>
               <Reveal>
                 <a
-                  href="#tally-open=kdOLRr&tally-emoji-text=👋&tally-emoji-animation=wave"
+                  href="#tally-open=kdOLRr&tally-emoji-text=👋&tally-emoji-animation=wave&tally-auto-close=2000"
                   style={{
                     display:"inline-block",
                     padding:"18px 48px",
@@ -1293,30 +1293,34 @@ ReactDOM.render(React.createElement(Article), document.getElementById("root"));
       function openTallyPopup() {
         if (triggered) return;
         triggered = true;
-        if (window.Tally) {
-          Tally.openPopup('kdOLRr', {
-            layout: 'modal',
-            width: 700,
-            emoji: { text: '👋', animation: 'wave' },
-            doNotShowAfterSubmit: true,
-            showOnce: true,
-          });
-        }
-      }
-      // Trigger when "What's Next" CTA section scrolls into view
-      function setupObserver() {
-        // The CTA section is after the last content divider — find it by watching scroll depth
-        // We look for elements with the "What's Next" eyebrow via scroll position approach
-        function checkWhatsNext() {
-          if (triggered) return;
-          // Find the CTA section (has eyebrow "What's Next") — it's roughly 85%+ of the page
-          var scrolled = window.scrollY + window.innerHeight;
-          var total = document.body.scrollHeight;
-          if (scrolled >= total * 0.82) {
-            openTallyPopup();
+        setTimeout(function() {
+          if (window.Tally) {
+            Tally.openPopup('kdOLRr', {
+              layout: 'modal',
+              width: 700,
+              emoji: { text: '👋', animation: 'wave' },
+              doNotShowAfterSubmit: true,
+              showOnce: true,
+            });
           }
+        }, 5000);
+      }
+      function setupObserver() {
+        var el = document.getElementById('sec-references');
+        if (el && window.IntersectionObserver) {
+          var obs = new IntersectionObserver(function(entries) {
+            entries.forEach(function(entry) {
+              if (entry.isIntersecting) { openTallyPopup(); obs.disconnect(); }
+            });
+          }, { threshold: 0.15 });
+          obs.observe(el);
+        } else {
+          window.addEventListener('scroll', function checkScroll() {
+            var scrolled = window.scrollY + window.innerHeight;
+            var total = document.body.scrollHeight;
+            if (scrolled >= total * 0.82) { openTallyPopup(); window.removeEventListener('scroll', checkScroll); }
+          }, { passive: true });
         }
-        window.addEventListener('scroll', checkWhatsNext, { passive: true });
       }
       if (document.readyState === 'loading') {
         document.addEventListener('DOMContentLoaded', setupObserver);
