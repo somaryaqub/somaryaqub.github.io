@@ -8,7 +8,6 @@
   <meta property="og:title" content="The People-First Intake Charter" />
   <meta property="og:description" content="Burned out, boxes ticked & still not helped. A data charter by IslamicFamily & Flourishing Systems." />
   <meta property="og:type" content="article" />
-  <script src="https://tally.so/widgets/embed.js"></script>
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
     body { background: #FAFAF2; }
@@ -871,48 +870,6 @@ ReactDOM.render(
 );
   </script>
 
-  <script>
-    (function() {
-      var triggered = false;
-      function openTallyPopup() {
-        if (triggered) return;
-        triggered = true;
-        setTimeout(function() {
-          if (window.Tally) {
-            Tally.openPopup('kdOLRr', {
-              layout: 'modal',
-              width: 700,
-              emoji: { text: '👋', animation: 'wave' },
-              doNotShowAfterSubmit: true,
-              showOnce: true,
-            });
-          }
-        }, 5000);
-      }
-      function setupObserver() {
-        var el = document.getElementById('sec-references');
-        if (el && window.IntersectionObserver) {
-          var obs = new IntersectionObserver(function(entries) {
-            entries.forEach(function(entry) {
-              if (entry.isIntersecting) { openTallyPopup(); obs.disconnect(); }
-            });
-          }, { threshold: 0.15 });
-          obs.observe(el);
-        } else {
-          // Fallback: scroll depth
-          window.addEventListener('scroll', function checkScroll() {
-            var scrolled = window.scrollY + window.innerHeight;
-            var total = document.body.scrollHeight;
-            if (scrolled >= total * 0.82) { openTallyPopup(); window.removeEventListener('scroll', checkScroll); }
-          }, { passive: true });
-        }
-      }
-      if (document.readyState === 'loading') {
-        document.addEventListener('DOMContentLoaded', setupObserver);
-      } else {
-        setupObserver();
-      }
-    })();
-  </script>
+
 </body>
 </html>
