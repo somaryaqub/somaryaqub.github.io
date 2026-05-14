@@ -3,247 +3,79 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Problem Properties — Acquisition Shortlist Analysis</title>
+<title>Problem Properties — Acquisition Shortlist</title>
 <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Source+Code+Pro:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 <style>
   :root {
-    --ink: #1a1a18;
-    --paper: #f7f4ee;
-    --ruled: #e8e3d8;
-    --green: #275D43;
-    --gold: #b8923a;
-    --red: #8B2020;
-    --yellow-bg: #fffbe6;
-    --red-bg: #fff5f5;
-    --mid-bg: #f0f5f2;
-    --mono: 'Source Code Pro', monospace;
-    --serif: 'Libre Baskerville', Georgia, serif;
+    --ink:#1a1a18; --paper:#f7f4ee; --ruled:#e8e3d8;
+    --green:#275D43; --red:#8B2020;
+    --mono:'Source Code Pro',monospace;
+    --serif:'Libre Baskerville',Georgia,serif;
   }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{background:var(--paper);color:var(--ink);font-family:var(--serif);font-size:13.5px;line-height:1.6;max-width:1200px;margin:0 auto;padding:48px 32px 80px;}
 
-  * { box-sizing: border-box; margin: 0; padding: 0; }
+  .doc-header{border-top:3px solid var(--ink);border-bottom:1px solid var(--ink);padding:24px 0 20px;margin-bottom:40px;display:grid;grid-template-columns:1fr auto;align-items:end;gap:24px;}
+  .doc-header h1{font-size:21px;font-weight:700;line-height:1.25;}
+  .doc-header .meta{font-family:var(--mono);font-size:10.5px;color:#666;text-align:right;line-height:1.8;}
 
-  body {
-    background: var(--paper);
-    color: var(--ink);
-    font-family: var(--serif);
-    font-size: 14px;
-    line-height: 1.6;
-    max-width: 1100px;
-    margin: 0 auto;
-    padding: 48px 32px 80px;
-  }
+  h2{font-size:10.5px;font-family:var(--mono);font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--green);margin:40px 0 16px;padding-bottom:6px;border-bottom:1px solid var(--ruled);}
 
-  /* Header */
-  .doc-header {
-    border-top: 3px solid var(--ink);
-    border-bottom: 1px solid var(--ink);
-    padding: 24px 0 20px;
-    margin-bottom: 40px;
-    display: grid;
-    grid-template-columns: 1fr auto;
-    align-items: end;
-    gap: 24px;
-  }
-  .doc-header h1 {
-    font-size: 22px;
-    font-weight: 700;
-    letter-spacing: -0.3px;
-    line-height: 1.2;
-  }
-  .doc-header .meta {
-    font-family: var(--mono);
-    font-size: 11px;
-    color: #666;
-    text-align: right;
-    line-height: 1.7;
-  }
+  .rule-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-bottom:40px;}
+  .rule-card{border:1px solid var(--ruled);padding:14px;background:white;}
+  .rule-card .zone-label{font-family:var(--mono);font-size:10.5px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;margin-bottom:10px;padding-bottom:7px;border-bottom:2px solid currentColor;}
+  .rule-card.yellow .zone-label{color:#9a7d0a;border-color:#f0c040;}
+  .rule-card.rsm .zone-label{color:#7a5200;border-color:#d4820a;}
+  .rule-card.red .zone-label{color:var(--red);border-color:var(--red);}
+  .rule-row{display:flex;justify-content:space-between;font-size:12px;padding:3px 0;border-bottom:1px dotted #ddd;}
+  .rule-row:last-of-type{border-bottom:none;}
+  .rule-row .label{color:#555;} .rule-row .value{font-family:var(--mono);font-weight:600;}
+  .rule-card .warning{margin-top:10px;font-size:11px;color:var(--red);font-style:italic;line-height:1.5;}
 
-  /* Section headers */
-  h2 {
-    font-size: 11px;
-    font-family: var(--mono);
-    font-weight: 600;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    color: var(--green);
-    margin: 40px 0 16px;
-    padding-bottom: 6px;
-    border-bottom: 1px solid var(--ruled);
-  }
+  .cards-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(310px,1fr));gap:18px;margin-bottom:48px;}
 
-  /* Zone rule cards */
-  .rule-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 16px;
-    margin-bottom: 40px;
-  }
-  .rule-card {
-    border: 1px solid var(--ruled);
-    padding: 16px;
-    background: white;
-  }
-  .rule-card .zone-label {
-    font-family: var(--mono);
-    font-size: 11px;
-    font-weight: 600;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    margin-bottom: 10px;
-    padding-bottom: 8px;
-    border-bottom: 2px solid currentColor;
-  }
-  .rule-card.yellow .zone-label { color: #9a7d0a; border-color: #f0c040; }
-  .rule-card.rsm .zone-label   { color: #7a5200; border-color: #d4820a; }
-  .rule-card.red .zone-label   { color: var(--red); border-color: var(--red); }
+  .prop-card{background:white;border:1px solid var(--ruled);overflow:hidden;display:flex;flex-direction:column;}
+  .map-box{height:155px;width:100%;flex-shrink:0;}
+  .card-links{display:flex;gap:0;border-bottom:1px solid var(--ruled);}
+  .card-links a{flex:1;text-align:center;font-family:var(--mono);font-size:11px;padding:5px 4px;text-decoration:none;color:var(--green);font-weight:600;border-right:1px solid var(--ruled);}
+  .card-links a:last-child{border-right:none;}
+  .card-links a:hover{background:#f0f5f2;}
 
-  .rule-row {
-    display: flex;
-    justify-content: space-between;
-    font-size: 12.5px;
-    padding: 3px 0;
-    border-bottom: 1px dotted #ddd;
-  }
-  .rule-row:last-child { border-bottom: none; }
-  .rule-row .label { color: #555; }
-  .rule-row .value { font-family: var(--mono); font-weight: 600; }
-  .rule-card .warning {
-    margin-top: 10px;
-    font-size: 11.5px;
-    color: var(--red);
-    font-style: italic;
-    line-height: 1.5;
-  }
+  .card-body{padding:11px 13px 13px;flex:1;}
+  .card-header-row{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:6px;gap:8px;}
+  .nbhd{font-family:var(--mono);font-size:10px;text-transform:uppercase;letter-spacing:.1em;color:#888;margin-bottom:2px;}
+  .card-address{font-size:13px;font-weight:700;}
+  .data-rows{margin-top:6px;}
+  .data-row{display:flex;justify-content:space-between;font-size:12px;padding:3px 0;border-bottom:1px dotted #e8e3d8;}
+  .data-row:last-child{border-bottom:none;}
+  .data-row .dl{color:#666;} .data-row .dv{font-family:var(--mono);font-weight:600;}
 
-  /* Tables */
-  .tier-section { margin-bottom: 48px; }
+  .badge{display:inline-block;font-family:var(--mono);font-size:10px;padding:2px 6px;border-radius:2px;font-weight:600;white-space:nowrap;}
+  .badge.rs  {background:#fff9e0;color:#8a6800;border:1px solid #e8c840;}
+  .badge.rsm {background:#fff3e0;color:#7a4500;border:1px solid #d4820a;}
+  .badge.rm16{background:#fdf0f0;color:var(--red);border:1px solid #e8aaaa;}
+  .badge.rm23{background:#fce8e8;color:#6b1010;border:1px solid #cc6666;}
 
-  .tier-label {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    margin-bottom: 12px;
-  }
-  .swatch {
-    width: 14px; height: 14px;
-    border-radius: 2px;
-    display: inline-block;
-  }
-  .swatch.yellow { background: #f0c040; }
-  .swatch.orange { background: #d4820a; }
-  .swatch.red    { background: var(--red); }
+  .units-highlight{font-family:var(--mono);font-weight:600;font-size:13px;color:var(--green);}
+  .flag-note{font-size:11px;color:var(--red);font-style:italic;margin-top:5px;}
+  .star-note{font-size:11px;color:var(--green);font-style:italic;margin-top:5px;}
+  .adj-note {font-size:11px;color:#777;font-style:italic;margin-top:5px;}
 
-  .tier-title {
-    font-size: 15px;
-    font-weight: 700;
-  }
+  .totals-box{border:2px solid var(--ink);padding:22px 26px;margin:0 0 40px;display:grid;grid-template-columns:repeat(4,1fr);gap:16px;background:white;}
+  .total-cell .t-label{font-family:var(--mono);font-size:10px;text-transform:uppercase;letter-spacing:.1em;color:#777;margin-bottom:4px;}
+  .total-cell .t-value{font-size:26px;font-weight:700;line-height:1;}
+  .total-cell .t-sub{font-size:11px;color:#888;margin-top:3px;}
+  .total-cell.highlight .t-value{color:var(--green);}
 
-  table {
-    width: 100%;
-    border-collapse: collapse;
-    font-size: 12.5px;
-  }
-  thead th {
-    font-family: var(--mono);
-    font-size: 10px;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    color: #555;
-    padding: 6px 10px;
-    text-align: left;
-    border-bottom: 2px solid var(--ink);
-    white-space: nowrap;
-  }
-  thead th.right { text-align: right; }
-  tbody tr { border-bottom: 1px solid var(--ruled); }
-  tbody tr:hover { background: rgba(0,0,0,0.02); }
-  tbody td { padding: 7px 10px; vertical-align: top; }
-  tbody td.right { text-align: right; font-family: var(--mono); }
-  tbody td.mono  { font-family: var(--mono); font-size: 12px; }
+  .notes-grid{display:grid;grid-template-columns:1fr 1fr;gap:13px;margin-top:8px;}
+  .note-block{border-left:3px solid var(--ruled);padding:10px 13px;font-size:12px;line-height:1.6;}
+  .note-block strong{display:block;margin-bottom:3px;font-size:10px;font-family:var(--mono);text-transform:uppercase;letter-spacing:.1em;color:var(--green);}
+  .note-block.warn{border-left-color:var(--red);}
+  .note-block.warn strong{color:var(--red);}
 
-  .badge {
-    display: inline-block;
-    font-family: var(--mono);
-    font-size: 10px;
-    padding: 2px 6px;
-    border-radius: 2px;
-    font-weight: 600;
-  }
-  .badge.rs  { background: #fff9e0; color: #8a6800; border: 1px solid #e8c840; }
-  .badge.rsm { background: #fff3e0; color: #7a4500; border: 1px solid #d4820a; }
-  .badge.rm16 { background: #fdf0f0; color: var(--red); border: 1px solid #e8aaaa; }
-  .badge.rm23 { background: #fce8e8; color: var(--red); border: 1px solid #cc6666; }
-  .badge.rl  { background: #f0f5f2; color: var(--green); border: 1px solid #8ab8a0; }
-
-  .units-cell { font-family: var(--mono); font-weight: 600; }
-  .flag { font-size: 11px; color: var(--red); display: block; margin-top: 2px; }
-  .star { font-size: 11px; color: var(--green); display: block; margin-top: 2px; }
-  .note-adj { font-size: 11px; color: #888; display: block; margin-top: 2px; font-style: italic; }
-
-  /* Summary totals box */
-  .totals-box {
-    border: 2px solid var(--ink);
-    padding: 24px 28px;
-    margin: 40px 0;
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 16px;
-    background: white;
-  }
-  .total-cell { }
-  .total-cell .t-label {
-    font-family: var(--mono);
-    font-size: 10px;
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
-    color: #777;
-    margin-bottom: 4px;
-  }
-  .total-cell .t-value {
-    font-size: 28px;
-    font-weight: 700;
-    line-height: 1;
-  }
-  .total-cell .t-sub {
-    font-size: 11px;
-    color: #888;
-    margin-top: 3px;
-  }
-  .total-cell.highlight .t-value { color: var(--green); }
-
-  /* Notes */
-  .notes-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 16px;
-    margin-top: 32px;
-  }
-  .note-block {
-    border-left: 3px solid var(--ruled);
-    padding: 12px 16px;
-    font-size: 12.5px;
-    line-height: 1.6;
-  }
-  .note-block strong { display: block; margin-bottom: 4px; font-size: 11px; font-family: var(--mono); text-transform: uppercase; letter-spacing: 0.1em; color: var(--green); }
-  .note-block.warn { border-left-color: var(--red); }
-  .note-block.warn strong { color: var(--red); }
-
-  footer {
-    margin-top: 60px;
-    padding-top: 16px;
-    border-top: 1px solid var(--ruled);
-    font-family: var(--mono);
-    font-size: 10.5px;
-    color: #aaa;
-    display: flex;
-    justify-content: space-between;
-  }
-
-  @media print {
-    body { padding: 24px; }
-    .rule-grid { page-break-inside: avoid; }
-    .tier-section { page-break-inside: avoid; }
-  }
+  footer{margin-top:56px;padding-top:14px;border-top:1px solid var(--ruled);font-family:var(--mono);font-size:10px;color:#aaa;display:flex;justify-content:space-between;}
 </style>
 </head>
 <body>
@@ -251,360 +83,952 @@
 <header class="doc-header">
   <div>
     <h1>Problem Properties — Acquisition Shortlist Analysis<br>
-    <span style="font-weight:400; font-style:italic; font-size:16px">Zoning capacity &amp; unit potential by tier</span></h1>
+    <span style="font-weight:400;font-style:italic;font-size:15px">Zoning capacity, unit potential &amp; interactive maps · 29 sites</span></h1>
   </div>
   <div class="meta">
     Prepared for IslamicFamily / Anna Bubel<br>
     Edmonton, Alberta &nbsp;·&nbsp; May 2026<br>
-    Source: Edmonton Zoning Bylaw 20001 (eff. Jan 2024)<br>
-    Source: City of Edmonton Open Data (Property Assessment 2026)
+    Zoning: Edmonton Bylaw 20001 (eff. Jan 2024)<br>
+    Data: City of Edmonton Open Data 2026
   </div>
 </header>
 
-<!-- ZONE RULES -->
 <h2>Zoning Rules at a Glance</h2>
 <div class="rule-grid">
-
   <div class="rule-card yellow">
     <div class="zone-label">RS — Small Scale Residential</div>
     <div class="rule-row"><span class="label">Max height</span><span class="value">10.5 m (3 storeys)</span></div>
     <div class="rule-row"><span class="label">Max site coverage</span><span class="value">45%</span></div>
-    <div class="rule-row"><span class="label">Min site area/dwelling</span><span class="value">75 m²</span></div>
+    <div class="rule-row"><span class="label">Min area per dwelling</span><span class="value">75 m²</span></div>
     <div class="rule-row"><span class="label">Max units (interior lot)</span><span class="value">8</span></div>
-    <div class="rule-row"><span class="label">Front setback</span><span class="value">4.5 m</span></div>
-    <div class="rule-row"><span class="label">Rear setback</span><span class="value">10.0 m</span></div>
-    <div class="rule-row"><span class="label">Side setback</span><span class="value">1.2 m</span></div>
-    <div class="rule-row"><span class="label">Vehicle access</span><span class="value">Alley if available</span></div>
-    <p class="warning">Unit cap under political review (June 2025 council debate). Confirm before permit application.</p>
+    <div class="rule-row"><span class="label">Front / Rear setback</span><span class="value">4.5 m / 10.0 m</span></div>
+    <p class="warning">8-unit cap on mid-block lots under political review (June 2025). Confirm before permit.</p>
   </div>
-
   <div class="rule-card rsm">
     <div class="zone-label">RSM h12 — Small-Medium Transition</div>
     <div class="rule-row"><span class="label">Max height</span><span class="value">12.0 m (3–4 storeys)</span></div>
     <div class="rule-row"><span class="label">Max site coverage</span><span class="value">60%</span></div>
-    <div class="rule-row"><span class="label">Min site area/dwelling</span><span class="value">None (FAR controlled)</span></div>
     <div class="rule-row"><span class="label">Min density</span><span class="value">45 units/ha</span></div>
     <div class="rule-row"><span class="label">Max units</span><span class="value">No hard cap</span></div>
-    <div class="rule-row"><span class="label">Front setback</span><span class="value">4.5 m (3.0 m w/ boulevard)</span></div>
-    <div class="rule-row"><span class="label">Rear setback</span><span class="value">5.5 m ← key advantage</span></div>
-    <div class="rule-row"><span class="label">Intended form</span><span class="value">Row housing, multi-unit</span></div>
-    <p class="warning">Single detached/duplex not intended unless part of larger multi-unit development.</p>
+    <div class="rule-row"><span class="label">Front / Rear setback</span><span class="value">4.5 m / 5.5 m</span></div>
+    <p class="warning">Single detached/duplex not intended unless part of a larger multi-unit development.</p>
   </div>
-
   <div class="rule-card red">
     <div class="zone-label">RM h16 / h23 — Medium Scale</div>
     <div class="rule-row"><span class="label">Max height</span><span class="value">16 m (h16) / 23 m (h23)</span></div>
     <div class="rule-row"><span class="label">Max FAR</span><span class="value">2.3 (h16) / 3.0 (h23)</span></div>
     <div class="rule-row"><span class="label">Min density</span><span class="value">45 (h16) / 75 (h23) u/ha</span></div>
     <div class="rule-row"><span class="label">Intended form</span><span class="value">Apartment, 4–8 storeys</span></div>
-    <div class="rule-row"><span class="label">Front setback</span><span class="value">4.5 m</span></div>
-    <div class="rule-row"><span class="label">Rear setback</span><span class="value">7.5 m</span></div>
-    <div class="rule-row"><span class="label">Amenity area</span><span class="value">7.5 m²/unit (>8 units)</span></div>
-    <div class="rule-row"><span class="label">Parking</span><span class="value">Underground preferred</span></div>
-    <p class="warning">Requires apartment-scale capital + design. Lots under 750 m² likely need consolidation for viable development.</p>
+    <div class="rule-row"><span class="label">Front / Rear setback</span><span class="value">4.5 m / 7.5 m</span></div>
+    <p class="warning">Lots under ~750 m² likely need consolidation with adjacent parcels for viable development.</p>
   </div>
-
 </div>
 
-<!-- TIER 1 TABLE -->
-<div class="tier-section">
-  <div class="tier-label">
-    <span class="swatch yellow"></span><span class="swatch orange"></span>
-    <span class="tier-title">Tier 1 — Start Here &nbsp;·&nbsp; RS &amp; RSM h12, ≥590 m²</span>
+<h2>Tier 1 — Start Here &nbsp;·&nbsp; RS &amp; RSM h12, ≥590 m² &nbsp;·&nbsp; 13 sites</h2>
+<div class="cards-grid">
+<div class="prop-card">
+  <div class="map-box" id="map-0"></div>
+  <div class="card-links">
+    <a href="https://www.google.com/maps/search/?api=1&query=53.565904,-113.430399" target="_blank">📍 Google Maps</a>
+    <a href="https://maps.google.com/maps?q=&layer=c&cbll=53.565904,-113.430399" target="_blank">🚶 Street View</a>
   </div>
-  <p style="font-size:12.5px; color:#555; margin-bottom:12px; line-height:1.6;">
-    Consistent rules. No lot consolidation required. Replicable infill at scale. Anna's recommended starting point.
-    Unit estimates assume avg 75 m² per unit; RS capped at 8 (interior sites); RSM estimated at 60% coverage × 2.5 floor equivalent.
-  </p>
-  <table>
-    <thead>
-      <tr>
-        <th>Address</th>
-        <th>Neighbourhood</th>
-        <th>Zone</th>
-        <th class="right">Lot m²</th>
-        <th class="right">Max Units</th>
-        <th class="right">Assessed Value</th>
-        <th>Garage</th>
-        <th>Notes</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>11118 60 St NW</td><td>Highlands</td><td><span class="badge rsm">RSM h12</span></td>
-        <td class="right mono">852.7</td><td class="right units-cell">14–20+</td>
-        <td class="right mono">$460,500</td><td>—</td><td></td>
-      </tr>
-      <tr>
-        <td>12310 76 St NW</td><td>Elmwood Park</td><td><span class="badge rs">RS</span></td>
-        <td class="right mono">852.4</td><td class="right units-cell">8</td>
-        <td class="right mono">$277,500</td><td>✓</td><td></td>
-      </tr>
-      <tr>
-        <td>7324 81 Ave NW</td><td>King Edward Park</td><td><span class="badge rs">RS</span></td>
-        <td class="right mono">798.9</td><td class="right units-cell">8</td>
-        <td class="right mono">$308,500</td><td>✓</td><td></td>
-      </tr>
-      <tr>
-        <td>9713 159 St NW</td><td>Glenwood</td><td><span class="badge rsm">RSM h12</span></td>
-        <td class="right mono">756.7</td><td class="right units-cell">14–18+</td>
-        <td class="right mono">$328,500</td><td>✓</td><td></td>
-      </tr>
-      <tr>
-        <td>11310 101 St NW</td><td>Spruce Avenue</td><td><span class="badge rsm">RSM h12</span></td>
-        <td class="right mono">696.7</td><td class="right units-cell">14–16+</td>
-        <td class="right mono">$277,000</td><td>✓</td><td></td>
-      </tr>
-      <tr>
-        <td>9747 158 St NW</td><td>Glenwood</td><td><span class="badge rs">RS</span></td>
-        <td class="right mono">690.4</td><td class="right units-cell">8</td>
-        <td class="right mono">$380,000</td><td>✓</td><td></td>
-      </tr>
-      <tr>
-        <td>12111 124 St NW</td><td>Prince Charles</td><td><span class="badge rs">RS</span></td>
-        <td class="right mono">650.5</td><td class="right units-cell">8</td>
-        <td class="right mono">$284,000</td><td>✓</td><td></td>
-      </tr>
-      <tr>
-        <td>12139 128 St NW</td><td>Sherbrooke</td><td><span class="badge rs">RS</span></td>
-        <td class="right mono">649.7</td><td class="right units-cell">8</td>
-        <td class="right mono">$326,500</td><td>✓</td><td></td>
-      </tr>
-      <tr>
-        <td>9421 156 St NW</td><td>Sherwood</td><td><span class="badge rs">RS</span></td>
-        <td class="right mono">627.0</td><td class="right units-cell">8</td>
-        <td class="right mono">$319,000</td><td>—</td>
-        <td><span class="note-adj">Adjacent to 9429 — paired opportunity</span></td>
-      </tr>
-      <tr>
-        <td>9429 156 St NW</td><td>Sherwood</td><td><span class="badge rsm">RSM h12</span></td>
-        <td class="right mono">596.2</td><td class="right units-cell">14+</td>
-        <td class="right mono">$305,500</td><td>—</td>
-        <td><span class="note-adj">Adjacent to 9421 — paired opportunity</span></td>
-      </tr>
-      <tr>
-        <td>7903 92 Ave NW</td><td>Holyrood</td><td><span class="badge rs">RS</span></td>
-        <td class="right mono">594.5</td><td class="right units-cell">7</td>
-        <td class="right mono">$474,500</td><td>✓</td><td></td>
-      </tr>
-      <tr>
-        <td>9306 64 Ave NW</td><td>Hazeldean</td><td><span class="badge rs">RS</span></td>
-        <td class="right mono">594.0</td><td class="right units-cell">7</td>
-        <td class="right mono">$381,500</td><td>✓</td><td></td>
-      </tr>
-      <tr>
-        <td>9632 163 St NW</td><td>Glenwood</td><td><span class="badge rs">RS</span></td>
-        <td class="right mono">592.5</td><td class="right units-cell">7</td>
-        <td class="right mono">$273,000</td><td>✓</td><td></td>
-      </tr>
-    </tbody>
-    <tfoot>
-      <tr style="border-top: 2px solid var(--ink); background:#fafaf5;">
-        <td colspan="3"><strong>13 sites</strong></td>
-        <td class="right mono"><strong>8,977</strong></td>
-        <td class="right units-cell"><strong>~82–137</strong></td>
-        <td class="right mono"><strong>$4,395,500</strong></td>
-        <td colspan="2"></td>
-      </tr>
-    </tfoot>
-  </table>
+  <div class="card-body">
+    <div class="card-header-row">
+      <div>
+        <div class="nbhd">Highlands</div>
+        <div class="card-address">11118 60 St NW</div>
+      </div>
+      <span class="badge rsm">RSM h12</span>
+    </div>
+    <div class="data-rows">
+      <div class="data-row"><span class="dl">Lot size</span><span class="dv">852.7 m²</span></div>
+      
+      <div class="data-row"><span class="dl">Max units</span><span class="dv units-highlight">14–20+</span></div>
+      <div class="data-row"><span class="dl">Assessed value</span><span class="dv">$460,500</span></div>
+      <div class="data-row"><span class="dl">Garage</span><span class="dv">No</span></div>
+    </div>
+    
+  </div>
+</div>
+<div class="prop-card">
+  <div class="map-box" id="map-1"></div>
+  <div class="card-links">
+    <a href="https://www.google.com/maps/search/?api=1&query=53.578481,-113.458805" target="_blank">📍 Google Maps</a>
+    <a href="https://maps.google.com/maps?q=&layer=c&cbll=53.578481,-113.458805" target="_blank">🚶 Street View</a>
+  </div>
+  <div class="card-body">
+    <div class="card-header-row">
+      <div>
+        <div class="nbhd">Elmwood Park</div>
+        <div class="card-address">12310 76 St NW</div>
+      </div>
+      <span class="badge rs">RS</span>
+    </div>
+    <div class="data-rows">
+      <div class="data-row"><span class="dl">Lot size</span><span class="dv">852.4 m²</span></div>
+      
+      <div class="data-row"><span class="dl">Max units</span><span class="dv units-highlight">8</span></div>
+      <div class="data-row"><span class="dl">Assessed value</span><span class="dv">$277,500</span></div>
+      <div class="data-row"><span class="dl">Garage</span><span class="dv">Yes</span></div>
+    </div>
+    
+  </div>
+</div>
+<div class="prop-card">
+  <div class="map-box" id="map-2"></div>
+  <div class="card-links">
+    <a href="https://www.google.com/maps/search/?api=1&query=53.51729,-113.440809" target="_blank">📍 Google Maps</a>
+    <a href="https://maps.google.com/maps?q=&layer=c&cbll=53.51729,-113.440809" target="_blank">🚶 Street View</a>
+  </div>
+  <div class="card-body">
+    <div class="card-header-row">
+      <div>
+        <div class="nbhd">King Edward Park</div>
+        <div class="card-address">7324 81 Ave NW</div>
+      </div>
+      <span class="badge rs">RS</span>
+    </div>
+    <div class="data-rows">
+      <div class="data-row"><span class="dl">Lot size</span><span class="dv">798.9 m²</span></div>
+      
+      <div class="data-row"><span class="dl">Max units</span><span class="dv units-highlight">8</span></div>
+      <div class="data-row"><span class="dl">Assessed value</span><span class="dv">$308,500</span></div>
+      <div class="data-row"><span class="dl">Garage</span><span class="dv">Yes</span></div>
+    </div>
+    
+  </div>
+</div>
+<div class="prop-card">
+  <div class="map-box" id="map-3"></div>
+  <div class="card-links">
+    <a href="https://www.google.com/maps/search/?api=1&query=53.535246,-113.595245" target="_blank">📍 Google Maps</a>
+    <a href="https://maps.google.com/maps?q=&layer=c&cbll=53.535246,-113.595245" target="_blank">🚶 Street View</a>
+  </div>
+  <div class="card-body">
+    <div class="card-header-row">
+      <div>
+        <div class="nbhd">Glenwood</div>
+        <div class="card-address">9713 159 St NW</div>
+      </div>
+      <span class="badge rsm">RSM h12</span>
+    </div>
+    <div class="data-rows">
+      <div class="data-row"><span class="dl">Lot size</span><span class="dv">756.7 m²</span></div>
+      
+      <div class="data-row"><span class="dl">Max units</span><span class="dv units-highlight">14–18+</span></div>
+      <div class="data-row"><span class="dl">Assessed value</span><span class="dv">$328,500</span></div>
+      <div class="data-row"><span class="dl">Garage</span><span class="dv">Yes</span></div>
+    </div>
+    
+  </div>
+</div>
+<div class="prop-card">
+  <div class="map-box" id="map-4"></div>
+  <div class="card-links">
+    <a href="https://www.google.com/maps/search/?api=1&query=53.563034,-113.494151" target="_blank">📍 Google Maps</a>
+    <a href="https://maps.google.com/maps?q=&layer=c&cbll=53.563034,-113.494151" target="_blank">🚶 Street View</a>
+  </div>
+  <div class="card-body">
+    <div class="card-header-row">
+      <div>
+        <div class="nbhd">Spruce Avenue</div>
+        <div class="card-address">11310 101 St NW</div>
+      </div>
+      <span class="badge rsm">RSM h12</span>
+    </div>
+    <div class="data-rows">
+      <div class="data-row"><span class="dl">Lot size</span><span class="dv">696.7 m²</span></div>
+      
+      <div class="data-row"><span class="dl">Max units</span><span class="dv units-highlight">14–16+</span></div>
+      <div class="data-row"><span class="dl">Assessed value</span><span class="dv">$277,000</span></div>
+      <div class="data-row"><span class="dl">Garage</span><span class="dv">Yes</span></div>
+    </div>
+    
+  </div>
+</div>
+<div class="prop-card">
+  <div class="map-box" id="map-5"></div>
+  <div class="card-links">
+    <a href="https://www.google.com/maps/search/?api=1&query=53.536051,-113.593558" target="_blank">📍 Google Maps</a>
+    <a href="https://maps.google.com/maps?q=&layer=c&cbll=53.536051,-113.593558" target="_blank">🚶 Street View</a>
+  </div>
+  <div class="card-body">
+    <div class="card-header-row">
+      <div>
+        <div class="nbhd">Glenwood</div>
+        <div class="card-address">9747 158 St NW</div>
+      </div>
+      <span class="badge rs">RS</span>
+    </div>
+    <div class="data-rows">
+      <div class="data-row"><span class="dl">Lot size</span><span class="dv">690.4 m²</span></div>
+      
+      <div class="data-row"><span class="dl">Max units</span><span class="dv units-highlight">8</span></div>
+      <div class="data-row"><span class="dl">Assessed value</span><span class="dv">$380,000</span></div>
+      <div class="data-row"><span class="dl">Garage</span><span class="dv">Yes</span></div>
+    </div>
+    
+  </div>
+</div>
+<div class="prop-card">
+  <div class="map-box" id="map-6"></div>
+  <div class="card-links">
+    <a href="https://www.google.com/maps/search/?api=1&query=53.575611,-113.535279" target="_blank">📍 Google Maps</a>
+    <a href="https://maps.google.com/maps?q=&layer=c&cbll=53.575611,-113.535279" target="_blank">🚶 Street View</a>
+  </div>
+  <div class="card-body">
+    <div class="card-header-row">
+      <div>
+        <div class="nbhd">Prince Charles</div>
+        <div class="card-address">12111 124 St NW</div>
+      </div>
+      <span class="badge rs">RS</span>
+    </div>
+    <div class="data-rows">
+      <div class="data-row"><span class="dl">Lot size</span><span class="dv">650.5 m²</span></div>
+      
+      <div class="data-row"><span class="dl">Max units</span><span class="dv units-highlight">8</span></div>
+      <div class="data-row"><span class="dl">Assessed value</span><span class="dv">$284,000</span></div>
+      <div class="data-row"><span class="dl">Garage</span><span class="dv">Yes</span></div>
+    </div>
+    
+  </div>
+</div>
+<div class="prop-card">
+  <div class="map-box" id="map-7"></div>
+  <div class="card-links">
+    <a href="https://www.google.com/maps/search/?api=1&query=53.575986,-113.542504" target="_blank">📍 Google Maps</a>
+    <a href="https://maps.google.com/maps?q=&layer=c&cbll=53.575986,-113.542504" target="_blank">🚶 Street View</a>
+  </div>
+  <div class="card-body">
+    <div class="card-header-row">
+      <div>
+        <div class="nbhd">Sherbrooke</div>
+        <div class="card-address">12139 128 St NW</div>
+      </div>
+      <span class="badge rs">RS</span>
+    </div>
+    <div class="data-rows">
+      <div class="data-row"><span class="dl">Lot size</span><span class="dv">649.7 m²</span></div>
+      
+      <div class="data-row"><span class="dl">Max units</span><span class="dv units-highlight">8</span></div>
+      <div class="data-row"><span class="dl">Assessed value</span><span class="dv">$326,500</span></div>
+      <div class="data-row"><span class="dl">Garage</span><span class="dv">Yes</span></div>
+    </div>
+    
+  </div>
+</div>
+<div class="prop-card">
+  <div class="map-box" id="map-8"></div>
+  <div class="card-links">
+    <a href="https://www.google.com/maps/search/?api=1&query=53.530431,-113.589947" target="_blank">📍 Google Maps</a>
+    <a href="https://maps.google.com/maps?q=&layer=c&cbll=53.530431,-113.589947" target="_blank">🚶 Street View</a>
+  </div>
+  <div class="card-body">
+    <div class="card-header-row">
+      <div>
+        <div class="nbhd">Sherwood</div>
+        <div class="card-address">9421 156 St NW</div>
+      </div>
+      <span class="badge rs">RS</span>
+    </div>
+    <div class="data-rows">
+      <div class="data-row"><span class="dl">Lot size</span><span class="dv">627.0 m²</span></div>
+      
+      <div class="data-row"><span class="dl">Max units</span><span class="dv units-highlight">8</span></div>
+      <div class="data-row"><span class="dl">Assessed value</span><span class="dv">$319,000</span></div>
+      <div class="data-row"><span class="dl">Garage</span><span class="dv">No</span></div>
+    </div>
+    <p class="adj-note">Adjacent to other 156 St property — combined ~1,223 m² paired opportunity</p>
+  </div>
+</div>
+<div class="prop-card">
+  <div class="map-box" id="map-9"></div>
+  <div class="card-links">
+    <a href="https://www.google.com/maps/search/?api=1&query=53.5306,-113.5901" target="_blank">📍 Google Maps</a>
+    <a href="https://maps.google.com/maps?q=&layer=c&cbll=53.5306,-113.5901" target="_blank">🚶 Street View</a>
+  </div>
+  <div class="card-body">
+    <div class="card-header-row">
+      <div>
+        <div class="nbhd">Sherwood</div>
+        <div class="card-address">9429 156 St NW</div>
+      </div>
+      <span class="badge rsm">RSM h12</span>
+    </div>
+    <div class="data-rows">
+      <div class="data-row"><span class="dl">Lot size</span><span class="dv">596.2 m²</span></div>
+      
+      <div class="data-row"><span class="dl">Max units</span><span class="dv units-highlight">14+</span></div>
+      <div class="data-row"><span class="dl">Assessed value</span><span class="dv">$305,500</span></div>
+      <div class="data-row"><span class="dl">Garage</span><span class="dv">No</span></div>
+    </div>
+    <p class="adj-note">Adjacent to other 156 St property — combined ~1,223 m² paired opportunity</p>
+  </div>
+</div>
+<div class="prop-card">
+  <div class="map-box" id="map-10"></div>
+  <div class="card-links">
+    <a href="https://www.google.com/maps/search/?api=1&query=53.512581,-113.486547" target="_blank">📍 Google Maps</a>
+    <a href="https://maps.google.com/maps?q=&layer=c&cbll=53.512581,-113.486547" target="_blank">🚶 Street View</a>
+  </div>
+  <div class="card-body">
+    <div class="card-header-row">
+      <div>
+        <div class="nbhd">Holyrood</div>
+        <div class="card-address">7903 92 Ave NW</div>
+      </div>
+      <span class="badge rs">RS</span>
+    </div>
+    <div class="data-rows">
+      <div class="data-row"><span class="dl">Lot size</span><span class="dv">594.5 m²</span></div>
+      
+      <div class="data-row"><span class="dl">Max units</span><span class="dv units-highlight">7</span></div>
+      <div class="data-row"><span class="dl">Assessed value</span><span class="dv">$474,500</span></div>
+      <div class="data-row"><span class="dl">Garage</span><span class="dv">Yes</span></div>
+    </div>
+    
+  </div>
+</div>
+<div class="prop-card">
+  <div class="map-box" id="map-11"></div>
+  <div class="card-links">
+    <a href="https://www.google.com/maps/search/?api=1&query=53.513532,-113.486397" target="_blank">📍 Google Maps</a>
+    <a href="https://maps.google.com/maps?q=&layer=c&cbll=53.513532,-113.486397" target="_blank">🚶 Street View</a>
+  </div>
+  <div class="card-body">
+    <div class="card-header-row">
+      <div>
+        <div class="nbhd">Hazeldean</div>
+        <div class="card-address">9306 64 Ave NW</div>
+      </div>
+      <span class="badge rs">RS</span>
+    </div>
+    <div class="data-rows">
+      <div class="data-row"><span class="dl">Lot size</span><span class="dv">594.0 m²</span></div>
+      
+      <div class="data-row"><span class="dl">Max units</span><span class="dv units-highlight">7</span></div>
+      <div class="data-row"><span class="dl">Assessed value</span><span class="dv">$381,500</span></div>
+      <div class="data-row"><span class="dl">Garage</span><span class="dv">Yes</span></div>
+    </div>
+    
+  </div>
+</div>
+<div class="prop-card">
+  <div class="map-box" id="map-12"></div>
+  <div class="card-links">
+    <a href="https://www.google.com/maps/search/?api=1&query=53.534966,-113.603186" target="_blank">📍 Google Maps</a>
+    <a href="https://maps.google.com/maps?q=&layer=c&cbll=53.534966,-113.603186" target="_blank">🚶 Street View</a>
+  </div>
+  <div class="card-body">
+    <div class="card-header-row">
+      <div>
+        <div class="nbhd">Glenwood</div>
+        <div class="card-address">9632 163 St NW</div>
+      </div>
+      <span class="badge rs">RS</span>
+    </div>
+    <div class="data-rows">
+      <div class="data-row"><span class="dl">Lot size</span><span class="dv">592.5 m²</span></div>
+      
+      <div class="data-row"><span class="dl">Max units</span><span class="dv units-highlight">7</span></div>
+      <div class="data-row"><span class="dl">Assessed value</span><span class="dv">$273,000</span></div>
+      <div class="data-row"><span class="dl">Garage</span><span class="dv">Yes</span></div>
+    </div>
+    
+  </div>
+</div>
 </div>
 
-<!-- TIER 3 TABLE -->
-<div class="tier-section">
-  <div class="tier-label">
-    <span class="swatch red"></span>
-    <span class="tier-title">Tier 3 — Different Ruleset &nbsp;·&nbsp; RM h16 &amp; h23, ≥590 m²</span>
+<h2>Tier 3 — Different Ruleset &nbsp;·&nbsp; RM h16 &amp; h23, ≥590 m² &nbsp;·&nbsp; 16 sites</h2>
+<div class="cards-grid">
+<div class="prop-card">
+  <div class="map-box" id="map-13"></div>
+  <div class="card-links">
+    <a href="https://www.google.com/maps/search/?api=1&query=53.5745,-113.5462" target="_blank">📍 Google Maps</a>
+    <a href="https://maps.google.com/maps?q=&layer=c&cbll=53.5745,-113.5462" target="_blank">🚶 Street View</a>
   </div>
-  <p style="font-size:12.5px; color:#555; margin-bottom:12px; line-height:1.6;">
-    Apartment-scale development. Much higher unit yield per site — but requires larger capital, more complex design/permitting,
-    and lots under ~750 m² will almost certainly need consolidation with adjacent parcels.
-    Unit estimates use FAR × lot area ÷ 75 m² avg unit size.
-  </p>
-  <table>
-    <thead>
-      <tr>
-        <th>Address</th>
-        <th>Neighbourhood</th>
-        <th>Zone</th>
-        <th class="right">Lot m²</th>
-        <th class="right">FAR</th>
-        <th class="right">Max GFA m²</th>
-        <th class="right">~Max Units</th>
-        <th class="right">Assessed Value</th>
-        <th>Notes</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>10931 135 St NW</td><td>North Glenora</td><td><span class="badge rm16">RM h16</span></td>
-        <td class="right mono">3,466</td><td class="right mono">2.3</td><td class="right mono">7,971</td>
-        <td class="right units-cell">106</td><td class="right mono">$2,099,000</td>
-        <td><span class="star">★ Standalone feasible</span></td>
-      </tr>
-      <tr>
-        <td>13416 109 Ave NW</td><td>North Glenora</td><td><span class="badge rm16">RM h16</span></td>
-        <td class="right mono">2,982</td><td class="right mono">2.3</td><td class="right mono">6,859</td>
-        <td class="right units-cell">91</td><td class="right mono">$1,847,500</td>
-        <td><span class="star">★ Standalone feasible</span></td>
-      </tr>
-      <tr>
-        <td>10840 81 Ave NW</td><td>Queen Alexandra</td><td><span class="badge rm23">RM h23</span></td>
-        <td class="right mono">2,496</td><td class="right mono">3.0</td><td class="right mono">7,488</td>
-        <td class="right units-cell">99</td><td class="right mono">$2,460,000</td>
-        <td><span class="star">★ Standalone feasible</span></td>
-      </tr>
-      <tr>
-        <td>11634 101 St NW</td><td>Spruce Avenue</td><td><span class="badge rm16">RM h16</span></td>
-        <td class="right mono">2,090</td><td class="right mono">2.3</td><td class="right mono">4,807</td>
-        <td class="right units-cell">64</td><td class="right mono">$593,500</td>
-        <td><span class="star">★ Standalone feasible — low assessed value</span></td>
-      </tr>
-      <tr>
-        <td>11814 48 St NW</td><td>Beacon Heights</td><td><span class="badge rm16">RM h16</span></td>
-        <td class="right mono">865</td><td class="right mono">2.3</td><td class="right mono">1,988</td>
-        <td class="right units-cell">26</td><td class="right mono">$229,000</td>
-        <td></td>
-      </tr>
-      <tr>
-        <td>10155 155 St NW</td><td>Canora</td><td><span class="badge rm16">RM h16</span></td>
-        <td class="right mono">798</td><td class="right mono">2.3</td><td class="right mono">1,834</td>
-        <td class="right units-cell">24</td><td class="right mono">$344,000</td>
-        <td></td>
-      </tr>
-      <tr>
-        <td>8102 85 St NW</td><td>King Edward Park</td><td><span class="badge rm23">RM h23</span></td>
-        <td class="right mono">714</td><td class="right mono">3.0</td><td class="right mono">2,141</td>
-        <td class="right units-cell">28</td><td class="right mono">$490,500</td>
-        <td><span class="flag">⚠ Likely needs consolidation</span></td>
-      </tr>
-      <tr>
-        <td>11841 83 St NW</td><td>Eastwood</td><td><span class="badge rm16">RM h16</span></td>
-        <td class="right mono">697</td><td class="right mono">2.3</td><td class="right mono">1,604</td>
-        <td class="right units-cell">21</td><td class="right mono">$212,000</td>
-        <td><span class="flag">⚠ Likely needs consolidation</span></td>
-      </tr>
-      <tr>
-        <td>11021 108 St NW</td><td>Central McDougall</td><td><span class="badge rm16">RM h16</span></td>
-        <td class="right mono">697</td><td class="right mono">2.3</td><td class="right mono">1,603</td>
-        <td class="right units-cell">21</td><td class="right mono">$290,500</td>
-        <td><span class="flag">⚠ Likely needs consolidation</span></td>
-      </tr>
-      <tr>
-        <td>11943 88 St NW</td><td>Eastwood</td><td><span class="badge rm16">RM h16</span></td>
-        <td class="right mono">697</td><td class="right mono">2.3</td><td class="right mono">1,603</td>
-        <td class="right units-cell">21</td><td class="right mono">$212,000</td>
-        <td><span class="flag">⚠ Likely needs consolidation</span></td>
-      </tr>
-      <tr>
-        <td>11218 101 St NW</td><td>Spruce Avenue</td><td><span class="badge rm16">RM h16</span></td>
-        <td class="right mono">697</td><td class="right mono">2.3</td><td class="right mono">1,602</td>
-        <td class="right units-cell">21</td><td class="right mono">$277,000</td>
-        <td><span class="flag">⚠ Likely needs consolidation</span></td>
-      </tr>
-      <tr>
-        <td>12748 86 St NW</td><td>Killarney</td><td><span class="badge rm16">RM h16</span></td>
-        <td class="right mono">697</td><td class="right mono">2.3</td><td class="right mono">1,602</td>
-        <td class="right units-cell">21</td><td class="right mono">$333,000</td>
-        <td><span class="flag">⚠ Likely needs consolidation</span></td>
-      </tr>
-      <tr>
-        <td>11102 125 St NW</td><td>Inglewood</td><td><span class="badge rm23">RM h23</span></td>
-        <td class="right mono">696</td><td class="right mono">3.0</td><td class="right mono">2,089</td>
-        <td class="right units-cell">27</td><td class="right mono">$384,000</td>
-        <td><span class="flag">⚠ Likely needs consolidation</span></td>
-      </tr>
-      <tr>
-        <td>11735 122 St NW</td><td>Inglewood</td><td><span class="badge rm16">RM h16</span></td>
-        <td class="right mono">696</td><td class="right mono">2.3</td><td class="right mono">1,601</td>
-        <td class="right units-cell">21</td><td class="right mono">$351,000</td>
-        <td><span class="flag">⚠ Likely needs consolidation</span></td>
-      </tr>
-      <tr>
-        <td>10019 153 St NW</td><td>West Jasper Place</td><td><span class="badge rm23">RM h23</span></td>
-        <td class="right mono">683</td><td class="right mono">3.0</td><td class="right mono">2,048</td>
-        <td class="right units-cell">27</td><td class="right mono">$305,500</td>
-        <td><span class="flag">⚠ Likely needs consolidation</span></td>
-      </tr>
-      <tr>
-        <td>11847 96 St NW</td><td>Alberta Avenue</td><td><span class="badge rm16">RM h16</span></td>
-        <td class="right mono">609</td><td class="right mono">2.3</td><td class="right mono">1,400</td>
-        <td class="right units-cell">18</td><td class="right mono">$224,000</td>
-        <td><span class="flag">⚠ Likely needs consolidation</span></td>
-      </tr>
-    </tbody>
-    <tfoot>
-      <tr style="border-top: 2px solid var(--ink); background:#fafaf5;">
-        <td colspan="3"><strong>16 sites</strong></td>
-        <td class="right mono"><strong>19,577</strong></td>
-        <td></td>
-        <td class="right mono"><strong>48,240</strong></td>
-        <td class="right units-cell"><strong>~636</strong></td>
-        <td class="right mono"><strong>$10,632,000</strong></td>
-        <td></td>
-      </tr>
-    </tfoot>
-  </table>
+  <div class="card-body">
+    <div class="card-header-row">
+      <div>
+        <div class="nbhd">North Glenora</div>
+        <div class="card-address">10931 135 St NW</div>
+      </div>
+      <span class="badge rm16">RM h16</span>
+    </div>
+    <div class="data-rows">
+      <div class="data-row"><span class="dl">Lot size</span><span class="dv">3,466 m²</span></div>
+      <div class="data-row"><span class="dl">Max GFA (FAR 2.3)</span><span class="dv">7,972 m²</span></div>
+      <div class="data-row"><span class="dl">Max units</span><span class="dv units-highlight">~106</span></div>
+      <div class="data-row"><span class="dl">Assessed value</span><span class="dv">$2,099,000</span></div>
+      <div class="data-row"><span class="dl">Garage</span><span class="dv">No</span></div>
+    </div>
+    <p class="star-note">★ Standalone feasible — largest lot</p>
+  </div>
+</div>
+<div class="prop-card">
+  <div class="map-box" id="map-14"></div>
+  <div class="card-links">
+    <a href="https://www.google.com/maps/search/?api=1&query=53.5984,-113.5474" target="_blank">📍 Google Maps</a>
+    <a href="https://maps.google.com/maps?q=&layer=c&cbll=53.5984,-113.5474" target="_blank">🚶 Street View</a>
+  </div>
+  <div class="card-body">
+    <div class="card-header-row">
+      <div>
+        <div class="nbhd">North Glenora</div>
+        <div class="card-address">13416 109 Ave NW</div>
+      </div>
+      <span class="badge rm16">RM h16</span>
+    </div>
+    <div class="data-rows">
+      <div class="data-row"><span class="dl">Lot size</span><span class="dv">2,982 m²</span></div>
+      <div class="data-row"><span class="dl">Max GFA (FAR 2.3)</span><span class="dv">6,859 m²</span></div>
+      <div class="data-row"><span class="dl">Max units</span><span class="dv units-highlight">~91</span></div>
+      <div class="data-row"><span class="dl">Assessed value</span><span class="dv">$1,847,500</span></div>
+      <div class="data-row"><span class="dl">Garage</span><span class="dv">No</span></div>
+    </div>
+    <p class="star-note">★ Standalone feasible</p>
+  </div>
+</div>
+<div class="prop-card">
+  <div class="map-box" id="map-15"></div>
+  <div class="card-links">
+    <a href="https://www.google.com/maps/search/?api=1&query=53.5192,-113.5083" target="_blank">📍 Google Maps</a>
+    <a href="https://maps.google.com/maps?q=&layer=c&cbll=53.5192,-113.5083" target="_blank">🚶 Street View</a>
+  </div>
+  <div class="card-body">
+    <div class="card-header-row">
+      <div>
+        <div class="nbhd">Queen Alexandra</div>
+        <div class="card-address">10840 81 Ave NW</div>
+      </div>
+      <span class="badge rm23">RM h23</span>
+    </div>
+    <div class="data-rows">
+      <div class="data-row"><span class="dl">Lot size</span><span class="dv">2,496 m²</span></div>
+      <div class="data-row"><span class="dl">Max GFA (FAR 3.0)</span><span class="dv">7,488 m²</span></div>
+      <div class="data-row"><span class="dl">Max units</span><span class="dv units-highlight">~99</span></div>
+      <div class="data-row"><span class="dl">Assessed value</span><span class="dv">$2,460,000</span></div>
+      <div class="data-row"><span class="dl">Garage</span><span class="dv">No</span></div>
+    </div>
+    <p class="star-note">★ Standalone feasible — h23 allows 7 storeys</p>
+  </div>
+</div>
+<div class="prop-card">
+  <div class="map-box" id="map-16"></div>
+  <div class="card-links">
+    <a href="https://www.google.com/maps/search/?api=1&query=53.5681,-113.4942" target="_blank">📍 Google Maps</a>
+    <a href="https://maps.google.com/maps?q=&layer=c&cbll=53.5681,-113.4942" target="_blank">🚶 Street View</a>
+  </div>
+  <div class="card-body">
+    <div class="card-header-row">
+      <div>
+        <div class="nbhd">Spruce Avenue</div>
+        <div class="card-address">11634 101 St NW</div>
+      </div>
+      <span class="badge rm16">RM h16</span>
+    </div>
+    <div class="data-rows">
+      <div class="data-row"><span class="dl">Lot size</span><span class="dv">2,090 m²</span></div>
+      <div class="data-row"><span class="dl">Max GFA (FAR 2.3)</span><span class="dv">4,807 m²</span></div>
+      <div class="data-row"><span class="dl">Max units</span><span class="dv units-highlight">~64</span></div>
+      <div class="data-row"><span class="dl">Assessed value</span><span class="dv">$593,500</span></div>
+      <div class="data-row"><span class="dl">Garage</span><span class="dv">Yes</span></div>
+    </div>
+    <p class="star-note">★ Best value — large lot, low assessed value</p>
+  </div>
+</div>
+<div class="prop-card">
+  <div class="map-box" id="map-17"></div>
+  <div class="card-links">
+    <a href="https://www.google.com/maps/search/?api=1&query=53.5724,-113.4029" target="_blank">📍 Google Maps</a>
+    <a href="https://maps.google.com/maps?q=&layer=c&cbll=53.5724,-113.4029" target="_blank">🚶 Street View</a>
+  </div>
+  <div class="card-body">
+    <div class="card-header-row">
+      <div>
+        <div class="nbhd">Beacon Heights</div>
+        <div class="card-address">11814 48 St NW</div>
+      </div>
+      <span class="badge rm16">RM h16</span>
+    </div>
+    <div class="data-rows">
+      <div class="data-row"><span class="dl">Lot size</span><span class="dv">865 m²</span></div>
+      <div class="data-row"><span class="dl">Max GFA (FAR 2.3)</span><span class="dv">1,989 m²</span></div>
+      <div class="data-row"><span class="dl">Max units</span><span class="dv units-highlight">~26</span></div>
+      <div class="data-row"><span class="dl">Assessed value</span><span class="dv">$229,000</span></div>
+      <div class="data-row"><span class="dl">Garage</span><span class="dv">Yes</span></div>
+    </div>
+    
+  </div>
+</div>
+<div class="prop-card">
+  <div class="map-box" id="map-18"></div>
+  <div class="card-links">
+    <a href="https://www.google.com/maps/search/?api=1&query=53.5402,-113.5831" target="_blank">📍 Google Maps</a>
+    <a href="https://maps.google.com/maps?q=&layer=c&cbll=53.5402,-113.5831" target="_blank">🚶 Street View</a>
+  </div>
+  <div class="card-body">
+    <div class="card-header-row">
+      <div>
+        <div class="nbhd">Canora</div>
+        <div class="card-address">10155 155 St NW</div>
+      </div>
+      <span class="badge rm16">RM h16</span>
+    </div>
+    <div class="data-rows">
+      <div class="data-row"><span class="dl">Lot size</span><span class="dv">798 m²</span></div>
+      <div class="data-row"><span class="dl">Max GFA (FAR 2.3)</span><span class="dv">1,835 m²</span></div>
+      <div class="data-row"><span class="dl">Max units</span><span class="dv units-highlight">~24</span></div>
+      <div class="data-row"><span class="dl">Assessed value</span><span class="dv">$344,000</span></div>
+      <div class="data-row"><span class="dl">Garage</span><span class="dv">Yes</span></div>
+    </div>
+    
+  </div>
+</div>
+<div class="prop-card">
+  <div class="map-box" id="map-19"></div>
+  <div class="card-links">
+    <a href="https://www.google.com/maps/search/?api=1&query=53.5192,-113.4472" target="_blank">📍 Google Maps</a>
+    <a href="https://maps.google.com/maps?q=&layer=c&cbll=53.5192,-113.4472" target="_blank">🚶 Street View</a>
+  </div>
+  <div class="card-body">
+    <div class="card-header-row">
+      <div>
+        <div class="nbhd">King Edward Park</div>
+        <div class="card-address">8102 85 St NW</div>
+      </div>
+      <span class="badge rm23">RM h23</span>
+    </div>
+    <div class="data-rows">
+      <div class="data-row"><span class="dl">Lot size</span><span class="dv">714 m²</span></div>
+      <div class="data-row"><span class="dl">Max GFA (FAR 3.0)</span><span class="dv">2,142 m²</span></div>
+      <div class="data-row"><span class="dl">Max units</span><span class="dv units-highlight">~28</span></div>
+      <div class="data-row"><span class="dl">Assessed value</span><span class="dv">$490,500</span></div>
+      <div class="data-row"><span class="dl">Garage</span><span class="dv">No</span></div>
+    </div>
+    <p class="flag-note">⚠ Likely needs lot consolidation</p>
+  </div>
+</div>
+<div class="prop-card">
+  <div class="map-box" id="map-20"></div>
+  <div class="card-links">
+    <a href="https://www.google.com/maps/search/?api=1&query=53.5714,-113.444" target="_blank">📍 Google Maps</a>
+    <a href="https://maps.google.com/maps?q=&layer=c&cbll=53.5714,-113.444" target="_blank">🚶 Street View</a>
+  </div>
+  <div class="card-body">
+    <div class="card-header-row">
+      <div>
+        <div class="nbhd">Eastwood</div>
+        <div class="card-address">11841 83 St NW</div>
+      </div>
+      <span class="badge rm16">RM h16</span>
+    </div>
+    <div class="data-rows">
+      <div class="data-row"><span class="dl">Lot size</span><span class="dv">697 m²</span></div>
+      <div class="data-row"><span class="dl">Max GFA (FAR 2.3)</span><span class="dv">1,603 m²</span></div>
+      <div class="data-row"><span class="dl">Max units</span><span class="dv units-highlight">~21</span></div>
+      <div class="data-row"><span class="dl">Assessed value</span><span class="dv">$212,000</span></div>
+      <div class="data-row"><span class="dl">Garage</span><span class="dv">Yes</span></div>
+    </div>
+    <p class="flag-note">⚠ Likely needs lot consolidation</p>
+  </div>
+</div>
+<div class="prop-card">
+  <div class="map-box" id="map-21"></div>
+  <div class="card-links">
+    <a href="https://www.google.com/maps/search/?api=1&query=53.5583,-113.5023" target="_blank">📍 Google Maps</a>
+    <a href="https://maps.google.com/maps?q=&layer=c&cbll=53.5583,-113.5023" target="_blank">🚶 Street View</a>
+  </div>
+  <div class="card-body">
+    <div class="card-header-row">
+      <div>
+        <div class="nbhd">Central McDougall</div>
+        <div class="card-address">11021 108 St NW</div>
+      </div>
+      <span class="badge rm16">RM h16</span>
+    </div>
+    <div class="data-rows">
+      <div class="data-row"><span class="dl">Lot size</span><span class="dv">697 m²</span></div>
+      <div class="data-row"><span class="dl">Max GFA (FAR 2.3)</span><span class="dv">1,603 m²</span></div>
+      <div class="data-row"><span class="dl">Max units</span><span class="dv units-highlight">~21</span></div>
+      <div class="data-row"><span class="dl">Assessed value</span><span class="dv">$290,500</span></div>
+      <div class="data-row"><span class="dl">Garage</span><span class="dv">No</span></div>
+    </div>
+    <p class="flag-note">⚠ Likely needs lot consolidation</p>
+  </div>
+</div>
+<div class="prop-card">
+  <div class="map-box" id="map-22"></div>
+  <div class="card-links">
+    <a href="https://www.google.com/maps/search/?api=1&query=53.574,-113.4501" target="_blank">📍 Google Maps</a>
+    <a href="https://maps.google.com/maps?q=&layer=c&cbll=53.574,-113.4501" target="_blank">🚶 Street View</a>
+  </div>
+  <div class="card-body">
+    <div class="card-header-row">
+      <div>
+        <div class="nbhd">Eastwood</div>
+        <div class="card-address">11943 88 St NW</div>
+      </div>
+      <span class="badge rm16">RM h16</span>
+    </div>
+    <div class="data-rows">
+      <div class="data-row"><span class="dl">Lot size</span><span class="dv">697 m²</span></div>
+      <div class="data-row"><span class="dl">Max GFA (FAR 2.3)</span><span class="dv">1,603 m²</span></div>
+      <div class="data-row"><span class="dl">Max units</span><span class="dv units-highlight">~21</span></div>
+      <div class="data-row"><span class="dl">Assessed value</span><span class="dv">$212,000</span></div>
+      <div class="data-row"><span class="dl">Garage</span><span class="dv">Yes</span></div>
+    </div>
+    <p class="flag-note">⚠ Likely needs lot consolidation</p>
+  </div>
+</div>
+<div class="prop-card">
+  <div class="map-box" id="map-23"></div>
+  <div class="card-links">
+    <a href="https://www.google.com/maps/search/?api=1&query=53.5623,-113.4941" target="_blank">📍 Google Maps</a>
+    <a href="https://maps.google.com/maps?q=&layer=c&cbll=53.5623,-113.4941" target="_blank">🚶 Street View</a>
+  </div>
+  <div class="card-body">
+    <div class="card-header-row">
+      <div>
+        <div class="nbhd">Spruce Avenue</div>
+        <div class="card-address">11218 101 St NW</div>
+      </div>
+      <span class="badge rm16">RM h16</span>
+    </div>
+    <div class="data-rows">
+      <div class="data-row"><span class="dl">Lot size</span><span class="dv">697 m²</span></div>
+      <div class="data-row"><span class="dl">Max GFA (FAR 2.3)</span><span class="dv">1,603 m²</span></div>
+      <div class="data-row"><span class="dl">Max units</span><span class="dv units-highlight">~21</span></div>
+      <div class="data-row"><span class="dl">Assessed value</span><span class="dv">$277,000</span></div>
+      <div class="data-row"><span class="dl">Garage</span><span class="dv">Yes</span></div>
+    </div>
+    <p class="flag-note">⚠ Likely needs lot consolidation</p>
+  </div>
+</div>
+<div class="prop-card">
+  <div class="map-box" id="map-24"></div>
+  <div class="card-links">
+    <a href="https://www.google.com/maps/search/?api=1&query=53.5901,-113.4482" target="_blank">📍 Google Maps</a>
+    <a href="https://maps.google.com/maps?q=&layer=c&cbll=53.5901,-113.4482" target="_blank">🚶 Street View</a>
+  </div>
+  <div class="card-body">
+    <div class="card-header-row">
+      <div>
+        <div class="nbhd">Killarney</div>
+        <div class="card-address">12748 86 St NW</div>
+      </div>
+      <span class="badge rm16">RM h16</span>
+    </div>
+    <div class="data-rows">
+      <div class="data-row"><span class="dl">Lot size</span><span class="dv">697 m²</span></div>
+      <div class="data-row"><span class="dl">Max GFA (FAR 2.3)</span><span class="dv">1,603 m²</span></div>
+      <div class="data-row"><span class="dl">Max units</span><span class="dv units-highlight">~21</span></div>
+      <div class="data-row"><span class="dl">Assessed value</span><span class="dv">$333,000</span></div>
+      <div class="data-row"><span class="dl">Garage</span><span class="dv">Yes</span></div>
+    </div>
+    <p class="flag-note">⚠ Likely needs lot consolidation</p>
+  </div>
+</div>
+<div class="prop-card">
+  <div class="map-box" id="map-25"></div>
+  <div class="card-links">
+    <a href="https://www.google.com/maps/search/?api=1&query=53.5602,-113.5372" target="_blank">📍 Google Maps</a>
+    <a href="https://maps.google.com/maps?q=&layer=c&cbll=53.5602,-113.5372" target="_blank">🚶 Street View</a>
+  </div>
+  <div class="card-body">
+    <div class="card-header-row">
+      <div>
+        <div class="nbhd">Inglewood</div>
+        <div class="card-address">11102 125 St NW</div>
+      </div>
+      <span class="badge rm23">RM h23</span>
+    </div>
+    <div class="data-rows">
+      <div class="data-row"><span class="dl">Lot size</span><span class="dv">696 m²</span></div>
+      <div class="data-row"><span class="dl">Max GFA (FAR 3.0)</span><span class="dv">2,088 m²</span></div>
+      <div class="data-row"><span class="dl">Max units</span><span class="dv units-highlight">~27</span></div>
+      <div class="data-row"><span class="dl">Assessed value</span><span class="dv">$384,000</span></div>
+      <div class="data-row"><span class="dl">Garage</span><span class="dv">Yes</span></div>
+    </div>
+    <p class="flag-note">⚠ Likely needs lot consolidation</p>
+  </div>
+</div>
+<div class="prop-card">
+  <div class="map-box" id="map-26"></div>
+  <div class="card-links">
+    <a href="https://www.google.com/maps/search/?api=1&query=53.5692,-113.5311" target="_blank">📍 Google Maps</a>
+    <a href="https://maps.google.com/maps?q=&layer=c&cbll=53.5692,-113.5311" target="_blank">🚶 Street View</a>
+  </div>
+  <div class="card-body">
+    <div class="card-header-row">
+      <div>
+        <div class="nbhd">Inglewood</div>
+        <div class="card-address">11735 122 St NW</div>
+      </div>
+      <span class="badge rm16">RM h16</span>
+    </div>
+    <div class="data-rows">
+      <div class="data-row"><span class="dl">Lot size</span><span class="dv">696 m²</span></div>
+      <div class="data-row"><span class="dl">Max GFA (FAR 2.3)</span><span class="dv">1,601 m²</span></div>
+      <div class="data-row"><span class="dl">Max units</span><span class="dv units-highlight">~21</span></div>
+      <div class="data-row"><span class="dl">Assessed value</span><span class="dv">$351,000</span></div>
+      <div class="data-row"><span class="dl">Garage</span><span class="dv">Yes</span></div>
+    </div>
+    <p class="flag-note">⚠ Likely needs lot consolidation</p>
+  </div>
+</div>
+<div class="prop-card">
+  <div class="map-box" id="map-27"></div>
+  <div class="card-links">
+    <a href="https://www.google.com/maps/search/?api=1&query=53.5381,-113.5783" target="_blank">📍 Google Maps</a>
+    <a href="https://maps.google.com/maps?q=&layer=c&cbll=53.5381,-113.5783" target="_blank">🚶 Street View</a>
+  </div>
+  <div class="card-body">
+    <div class="card-header-row">
+      <div>
+        <div class="nbhd">West Jasper Place</div>
+        <div class="card-address">10019 153 St NW</div>
+      </div>
+      <span class="badge rm23">RM h23</span>
+    </div>
+    <div class="data-rows">
+      <div class="data-row"><span class="dl">Lot size</span><span class="dv">683 m²</span></div>
+      <div class="data-row"><span class="dl">Max GFA (FAR 3.0)</span><span class="dv">2,049 m²</span></div>
+      <div class="data-row"><span class="dl">Max units</span><span class="dv units-highlight">~27</span></div>
+      <div class="data-row"><span class="dl">Assessed value</span><span class="dv">$305,500</span></div>
+      <div class="data-row"><span class="dl">Garage</span><span class="dv">Yes</span></div>
+    </div>
+    <p class="flag-note">⚠ Likely needs lot consolidation</p>
+  </div>
+</div>
+<div class="prop-card">
+  <div class="map-box" id="map-28"></div>
+  <div class="card-links">
+    <a href="https://www.google.com/maps/search/?api=1&query=53.572,-113.4793" target="_blank">📍 Google Maps</a>
+    <a href="https://maps.google.com/maps?q=&layer=c&cbll=53.572,-113.4793" target="_blank">🚶 Street View</a>
+  </div>
+  <div class="card-body">
+    <div class="card-header-row">
+      <div>
+        <div class="nbhd">Alberta Avenue</div>
+        <div class="card-address">11847 96 St NW</div>
+      </div>
+      <span class="badge rm16">RM h16</span>
+    </div>
+    <div class="data-rows">
+      <div class="data-row"><span class="dl">Lot size</span><span class="dv">609 m²</span></div>
+      <div class="data-row"><span class="dl">Max GFA (FAR 2.3)</span><span class="dv">1,401 m²</span></div>
+      <div class="data-row"><span class="dl">Max units</span><span class="dv units-highlight">~18</span></div>
+      <div class="data-row"><span class="dl">Assessed value</span><span class="dv">$224,000</span></div>
+      <div class="data-row"><span class="dl">Garage</span><span class="dv">No</span></div>
+    </div>
+    <p class="flag-note">⚠ Likely needs lot consolidation</p>
+  </div>
+</div>
 </div>
 
-<!-- TOTALS BOX -->
 <h2>Summary Across All Tiers</h2>
 <div class="totals-box">
-  <div class="total-cell">
-    <div class="t-label">Tier 1 sites</div>
-    <div class="t-value highlight">13</div>
-    <div class="t-sub">RS + RSM h12, ≥590 m²</div>
-  </div>
-  <div class="total-cell">
-    <div class="t-label">Tier 1 unit potential</div>
-    <div class="t-value highlight">82–137</div>
-    <div class="t-sub">Conservative–optimistic range</div>
-  </div>
-  <div class="total-cell">
-    <div class="t-label">Tier 3 sites</div>
-    <div class="t-value">16</div>
-    <div class="t-sub">RM h16/h23, ≥590 m²</div>
-  </div>
-  <div class="total-cell">
-    <div class="t-label">Tier 3 unit potential</div>
-    <div class="t-value">~636</div>
-    <div class="t-sub">Theoretical max at FAR; consolidation req'd for small lots</div>
-  </div>
+  <div class="total-cell highlight"><div class="t-label">Tier 1 sites</div><div class="t-value">13</div><div class="t-sub">RS + RSM h12, ≥590 m²<br>Start here — consistent rules</div></div>
+  <div class="total-cell highlight"><div class="t-label">Tier 1 unit potential</div><div class="t-value">82–137</div><div class="t-sub">Conservative–optimistic<br>50-unit target achievable</div></div>
+  <div class="total-cell"><div class="t-label">Tier 3 sites</div><div class="t-value">16</div><div class="t-sub">RM h16/h23, ≥590 m²<br>Different ruleset, higher yield</div></div>
+  <div class="total-cell"><div class="t-label">Tier 3 unit potential</div><div class="t-value">~636</div><div class="t-sub">Theoretical max at FAR<br>4 large lots standalone-feasible</div></div>
 </div>
 
-<!-- NOTES -->
-<h2>Key Observations &amp; Next Steps</h2>
+<h2>Key Observations &amp; Caveats</h2>
 <div class="notes-grid">
-  <div class="note-block">
-    <strong>50 units is achievable from Tier 1 alone</strong>
-    Even at the conservative end, the 13 Tier 1 sites can yield ~82 units without touching the RM tier. The 4 RSM h12 sites carry disproportionate weight — the Highlands site alone could yield 14–20 units.
-  </div>
-  <div class="note-block">
-    <strong>Paired opportunity — Sherwood (156 St)</strong>
-    9421 (RS) and 9429 (RSM h12) are immediately adjacent on 156 St NW, totalling ~1,223 m². Combined, they straddle both zone types and could be developed as a single site under RSM rules.
-  </div>
-  <div class="note-block">
-    <strong>Tier 3 standouts: 4 large RM lots</strong>
-    The four lots over 2,000 m² (North Glenora ×2, Queen Alexandra, Spruce Ave) are genuinely standalone-feasible at apartment scale — 64–106 units each. The Spruce Ave site at $593,500 assessed is particularly notable given its size.
-  </div>
-  <div class="note-block warn">
-    <strong>RS unit cap under review</strong>
-    As of June 2025, Edmonton City Council was debating reducing the 8-unit cap on mid-block RS lots. Confirm the current bylaw status before any development permit application on RS sites.
-  </div>
-  <div class="note-block">
-    <strong>Lot dimensions still needed</strong>
-    This analysis uses lot area only. Actual width &amp; depth (from yourtruhome.com/edmonton-land-size or a land title search) needed to confirm minimum 30m depth (RS) and buildable envelope. Corner vs. mid-block status affects unit caps.
-  </div>
-  <div class="note-block warn">
-    <strong>Unit estimates are ballpark only</strong>
-    All unit counts assume ~75 m² avg unit size and do not account for parking requirements, amenity area, alley access, or site-specific constraints. A development consultant review is required before any acquisition decision.
-  </div>
+  <div class="note-block"><strong>50 units achievable from Tier 1 alone</strong>Even conservatively, the 13 Tier 1 sites yield ~82 units. The 4 RSM h12 sites carry disproportionate weight at 14–20+ units each.</div>
+  <div class="note-block"><strong>Paired opportunity — 156 St NW, Sherwood</strong>9421 (RS) and 9429 (RSM h12) are immediately adjacent, totalling ~1,223 m². Combined under RSM rules could yield 20+ units.</div>
+  <div class="note-block"><strong>Tier 3 standout — 11634 101 St NW, Spruce Ave</strong>At 2,090 m² assessed at only $593,500, this RM h16 lot offers ~64 units at unusually low land cost.</div>
+  <div class="note-block warn"><strong>RS 8-unit cap under political review</strong>Edmonton Council debated reducing mid-block RS unit caps in June 2025. Confirm current bylaw status before any development permit application.</div>
+  <div class="note-block"><strong>Lot dimensions still needed</strong>Analysis uses lot area only. Confirm width, depth, and corner vs. mid-block status via yourtruhome.com/edmonton-land-size before acquisition.</div>
+  <div class="note-block warn"><strong>Unit estimates are ballpark only</strong>All counts assume ~75 m² avg unit and do not account for parking, amenity area, alley constraints, or site-specific conditions. Development consultant review required.</div>
 </div>
 
 <footer>
   <span>Problem Properties Acquisition Shortlist · IslamicFamily / Anna Bubel · May 2026</span>
-  <span>Data: City of Edmonton Open Data, Zoning Bylaw 20001 (zoningbylaw.edmonton.ca)</span>
+  <span>Map tiles: © OpenStreetMap contributors &nbsp;·&nbsp; Zoning: zoningbylaw.edmonton.ca</span>
 </footer>
 
+<script>
+window.addEventListener('load', function() {
+  
+  (function() {
+    var m = L.map('map-0', {zoomControl:false, attributionControl:false, dragging:false, scrollWheelZoom:false, doubleClickZoom:false, touchZoom:false});
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {maxZoom:19}).addTo(m);
+    m.setView([53.565904, -113.430399], 18);
+    L.circleMarker([53.565904, -113.430399], {radius:7, color:'#c00', fillColor:'#e00', fillOpacity:0.9, weight:2}).addTo(m);
+  })();
+  (function() {
+    var m = L.map('map-1', {zoomControl:false, attributionControl:false, dragging:false, scrollWheelZoom:false, doubleClickZoom:false, touchZoom:false});
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {maxZoom:19}).addTo(m);
+    m.setView([53.578481, -113.458805], 18);
+    L.circleMarker([53.578481, -113.458805], {radius:7, color:'#c00', fillColor:'#e00', fillOpacity:0.9, weight:2}).addTo(m);
+  })();
+  (function() {
+    var m = L.map('map-2', {zoomControl:false, attributionControl:false, dragging:false, scrollWheelZoom:false, doubleClickZoom:false, touchZoom:false});
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {maxZoom:19}).addTo(m);
+    m.setView([53.51729, -113.440809], 18);
+    L.circleMarker([53.51729, -113.440809], {radius:7, color:'#c00', fillColor:'#e00', fillOpacity:0.9, weight:2}).addTo(m);
+  })();
+  (function() {
+    var m = L.map('map-3', {zoomControl:false, attributionControl:false, dragging:false, scrollWheelZoom:false, doubleClickZoom:false, touchZoom:false});
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {maxZoom:19}).addTo(m);
+    m.setView([53.535246, -113.595245], 18);
+    L.circleMarker([53.535246, -113.595245], {radius:7, color:'#c00', fillColor:'#e00', fillOpacity:0.9, weight:2}).addTo(m);
+  })();
+  (function() {
+    var m = L.map('map-4', {zoomControl:false, attributionControl:false, dragging:false, scrollWheelZoom:false, doubleClickZoom:false, touchZoom:false});
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {maxZoom:19}).addTo(m);
+    m.setView([53.563034, -113.494151], 18);
+    L.circleMarker([53.563034, -113.494151], {radius:7, color:'#c00', fillColor:'#e00', fillOpacity:0.9, weight:2}).addTo(m);
+  })();
+  (function() {
+    var m = L.map('map-5', {zoomControl:false, attributionControl:false, dragging:false, scrollWheelZoom:false, doubleClickZoom:false, touchZoom:false});
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {maxZoom:19}).addTo(m);
+    m.setView([53.536051, -113.593558], 18);
+    L.circleMarker([53.536051, -113.593558], {radius:7, color:'#c00', fillColor:'#e00', fillOpacity:0.9, weight:2}).addTo(m);
+  })();
+  (function() {
+    var m = L.map('map-6', {zoomControl:false, attributionControl:false, dragging:false, scrollWheelZoom:false, doubleClickZoom:false, touchZoom:false});
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {maxZoom:19}).addTo(m);
+    m.setView([53.575611, -113.535279], 18);
+    L.circleMarker([53.575611, -113.535279], {radius:7, color:'#c00', fillColor:'#e00', fillOpacity:0.9, weight:2}).addTo(m);
+  })();
+  (function() {
+    var m = L.map('map-7', {zoomControl:false, attributionControl:false, dragging:false, scrollWheelZoom:false, doubleClickZoom:false, touchZoom:false});
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {maxZoom:19}).addTo(m);
+    m.setView([53.575986, -113.542504], 18);
+    L.circleMarker([53.575986, -113.542504], {radius:7, color:'#c00', fillColor:'#e00', fillOpacity:0.9, weight:2}).addTo(m);
+  })();
+  (function() {
+    var m = L.map('map-8', {zoomControl:false, attributionControl:false, dragging:false, scrollWheelZoom:false, doubleClickZoom:false, touchZoom:false});
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {maxZoom:19}).addTo(m);
+    m.setView([53.530431, -113.589947], 18);
+    L.circleMarker([53.530431, -113.589947], {radius:7, color:'#c00', fillColor:'#e00', fillOpacity:0.9, weight:2}).addTo(m);
+  })();
+  (function() {
+    var m = L.map('map-9', {zoomControl:false, attributionControl:false, dragging:false, scrollWheelZoom:false, doubleClickZoom:false, touchZoom:false});
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {maxZoom:19}).addTo(m);
+    m.setView([53.5306, -113.5901], 18);
+    L.circleMarker([53.5306, -113.5901], {radius:7, color:'#c00', fillColor:'#e00', fillOpacity:0.9, weight:2}).addTo(m);
+  })();
+  (function() {
+    var m = L.map('map-10', {zoomControl:false, attributionControl:false, dragging:false, scrollWheelZoom:false, doubleClickZoom:false, touchZoom:false});
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {maxZoom:19}).addTo(m);
+    m.setView([53.512581, -113.486547], 18);
+    L.circleMarker([53.512581, -113.486547], {radius:7, color:'#c00', fillColor:'#e00', fillOpacity:0.9, weight:2}).addTo(m);
+  })();
+  (function() {
+    var m = L.map('map-11', {zoomControl:false, attributionControl:false, dragging:false, scrollWheelZoom:false, doubleClickZoom:false, touchZoom:false});
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {maxZoom:19}).addTo(m);
+    m.setView([53.513532, -113.486397], 18);
+    L.circleMarker([53.513532, -113.486397], {radius:7, color:'#c00', fillColor:'#e00', fillOpacity:0.9, weight:2}).addTo(m);
+  })();
+  (function() {
+    var m = L.map('map-12', {zoomControl:false, attributionControl:false, dragging:false, scrollWheelZoom:false, doubleClickZoom:false, touchZoom:false});
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {maxZoom:19}).addTo(m);
+    m.setView([53.534966, -113.603186], 18);
+    L.circleMarker([53.534966, -113.603186], {radius:7, color:'#c00', fillColor:'#e00', fillOpacity:0.9, weight:2}).addTo(m);
+  })();
+  (function() {
+    var m = L.map('map-13', {zoomControl:false, attributionControl:false, dragging:false, scrollWheelZoom:false, doubleClickZoom:false, touchZoom:false});
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {maxZoom:19}).addTo(m);
+    m.setView([53.5745, -113.5462], 18);
+    L.circleMarker([53.5745, -113.5462], {radius:7, color:'#c00', fillColor:'#e00', fillOpacity:0.9, weight:2}).addTo(m);
+  })();
+  (function() {
+    var m = L.map('map-14', {zoomControl:false, attributionControl:false, dragging:false, scrollWheelZoom:false, doubleClickZoom:false, touchZoom:false});
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {maxZoom:19}).addTo(m);
+    m.setView([53.5984, -113.5474], 18);
+    L.circleMarker([53.5984, -113.5474], {radius:7, color:'#c00', fillColor:'#e00', fillOpacity:0.9, weight:2}).addTo(m);
+  })();
+  (function() {
+    var m = L.map('map-15', {zoomControl:false, attributionControl:false, dragging:false, scrollWheelZoom:false, doubleClickZoom:false, touchZoom:false});
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {maxZoom:19}).addTo(m);
+    m.setView([53.5192, -113.5083], 18);
+    L.circleMarker([53.5192, -113.5083], {radius:7, color:'#c00', fillColor:'#e00', fillOpacity:0.9, weight:2}).addTo(m);
+  })();
+  (function() {
+    var m = L.map('map-16', {zoomControl:false, attributionControl:false, dragging:false, scrollWheelZoom:false, doubleClickZoom:false, touchZoom:false});
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {maxZoom:19}).addTo(m);
+    m.setView([53.5681, -113.4942], 18);
+    L.circleMarker([53.5681, -113.4942], {radius:7, color:'#c00', fillColor:'#e00', fillOpacity:0.9, weight:2}).addTo(m);
+  })();
+  (function() {
+    var m = L.map('map-17', {zoomControl:false, attributionControl:false, dragging:false, scrollWheelZoom:false, doubleClickZoom:false, touchZoom:false});
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {maxZoom:19}).addTo(m);
+    m.setView([53.5724, -113.4029], 18);
+    L.circleMarker([53.5724, -113.4029], {radius:7, color:'#c00', fillColor:'#e00', fillOpacity:0.9, weight:2}).addTo(m);
+  })();
+  (function() {
+    var m = L.map('map-18', {zoomControl:false, attributionControl:false, dragging:false, scrollWheelZoom:false, doubleClickZoom:false, touchZoom:false});
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {maxZoom:19}).addTo(m);
+    m.setView([53.5402, -113.5831], 18);
+    L.circleMarker([53.5402, -113.5831], {radius:7, color:'#c00', fillColor:'#e00', fillOpacity:0.9, weight:2}).addTo(m);
+  })();
+  (function() {
+    var m = L.map('map-19', {zoomControl:false, attributionControl:false, dragging:false, scrollWheelZoom:false, doubleClickZoom:false, touchZoom:false});
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {maxZoom:19}).addTo(m);
+    m.setView([53.5192, -113.4472], 18);
+    L.circleMarker([53.5192, -113.4472], {radius:7, color:'#c00', fillColor:'#e00', fillOpacity:0.9, weight:2}).addTo(m);
+  })();
+  (function() {
+    var m = L.map('map-20', {zoomControl:false, attributionControl:false, dragging:false, scrollWheelZoom:false, doubleClickZoom:false, touchZoom:false});
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {maxZoom:19}).addTo(m);
+    m.setView([53.5714, -113.444], 18);
+    L.circleMarker([53.5714, -113.444], {radius:7, color:'#c00', fillColor:'#e00', fillOpacity:0.9, weight:2}).addTo(m);
+  })();
+  (function() {
+    var m = L.map('map-21', {zoomControl:false, attributionControl:false, dragging:false, scrollWheelZoom:false, doubleClickZoom:false, touchZoom:false});
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {maxZoom:19}).addTo(m);
+    m.setView([53.5583, -113.5023], 18);
+    L.circleMarker([53.5583, -113.5023], {radius:7, color:'#c00', fillColor:'#e00', fillOpacity:0.9, weight:2}).addTo(m);
+  })();
+  (function() {
+    var m = L.map('map-22', {zoomControl:false, attributionControl:false, dragging:false, scrollWheelZoom:false, doubleClickZoom:false, touchZoom:false});
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {maxZoom:19}).addTo(m);
+    m.setView([53.574, -113.4501], 18);
+    L.circleMarker([53.574, -113.4501], {radius:7, color:'#c00', fillColor:'#e00', fillOpacity:0.9, weight:2}).addTo(m);
+  })();
+  (function() {
+    var m = L.map('map-23', {zoomControl:false, attributionControl:false, dragging:false, scrollWheelZoom:false, doubleClickZoom:false, touchZoom:false});
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {maxZoom:19}).addTo(m);
+    m.setView([53.5623, -113.4941], 18);
+    L.circleMarker([53.5623, -113.4941], {radius:7, color:'#c00', fillColor:'#e00', fillOpacity:0.9, weight:2}).addTo(m);
+  })();
+  (function() {
+    var m = L.map('map-24', {zoomControl:false, attributionControl:false, dragging:false, scrollWheelZoom:false, doubleClickZoom:false, touchZoom:false});
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {maxZoom:19}).addTo(m);
+    m.setView([53.5901, -113.4482], 18);
+    L.circleMarker([53.5901, -113.4482], {radius:7, color:'#c00', fillColor:'#e00', fillOpacity:0.9, weight:2}).addTo(m);
+  })();
+  (function() {
+    var m = L.map('map-25', {zoomControl:false, attributionControl:false, dragging:false, scrollWheelZoom:false, doubleClickZoom:false, touchZoom:false});
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {maxZoom:19}).addTo(m);
+    m.setView([53.5602, -113.5372], 18);
+    L.circleMarker([53.5602, -113.5372], {radius:7, color:'#c00', fillColor:'#e00', fillOpacity:0.9, weight:2}).addTo(m);
+  })();
+  (function() {
+    var m = L.map('map-26', {zoomControl:false, attributionControl:false, dragging:false, scrollWheelZoom:false, doubleClickZoom:false, touchZoom:false});
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {maxZoom:19}).addTo(m);
+    m.setView([53.5692, -113.5311], 18);
+    L.circleMarker([53.5692, -113.5311], {radius:7, color:'#c00', fillColor:'#e00', fillOpacity:0.9, weight:2}).addTo(m);
+  })();
+  (function() {
+    var m = L.map('map-27', {zoomControl:false, attributionControl:false, dragging:false, scrollWheelZoom:false, doubleClickZoom:false, touchZoom:false});
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {maxZoom:19}).addTo(m);
+    m.setView([53.5381, -113.5783], 18);
+    L.circleMarker([53.5381, -113.5783], {radius:7, color:'#c00', fillColor:'#e00', fillOpacity:0.9, weight:2}).addTo(m);
+  })();
+  (function() {
+    var m = L.map('map-28', {zoomControl:false, attributionControl:false, dragging:false, scrollWheelZoom:false, doubleClickZoom:false, touchZoom:false});
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {maxZoom:19}).addTo(m);
+    m.setView([53.572, -113.4793], 18);
+    L.circleMarker([53.572, -113.4793], {radius:7, color:'#c00', fillColor:'#e00', fillOpacity:0.9, weight:2}).addTo(m);
+  })();
+});
+</script>
 </body>
 </html>
