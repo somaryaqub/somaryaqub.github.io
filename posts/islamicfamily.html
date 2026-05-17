@@ -669,12 +669,30 @@
     line-height: 1;
   }
   .voices-body {
-    display: none;
     border-top: 1px solid var(--border);
     padding: 1.5rem;
     background: #fff;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.5s cubic-bezier(0.4, 0, 0.2, 1),
+                opacity 0.4s ease,
+                padding 0.4s ease;
+    opacity: 0;
+    padding-top: 0;
+    padding-bottom: 0;
   }
-  .voices-body.open { display: block; }
+  .voices-body.open {
+    max-height: 1200px;
+    opacity: 1;
+    padding-top: 1.5rem;
+    padding-bottom: 1.5rem;
+  }
+  .voices-body.collapsing {
+    max-height: 0;
+    opacity: 0;
+    padding-top: 0;
+    padding-bottom: 0;
+  }
   .voices-intro {
     font-size: 13px;
     color: var(--muted);
@@ -800,9 +818,9 @@
           <div class="voices-toggle-sub">What the board and leadership said — the raw input that shaped these options</div>
         </div>
       </div>
-      <span class="voices-caret" id="caret-vision-voices">›</span>
+      <span class="voices-caret" id="caret-vision-voices" style="transform:rotate(90deg)">›</span>
     </button>
-    <div class="voices-body" id="vision-voices">
+    <div class="voices-body open" id="vision-voices">
       <div class="voices-intro">These statements were collected during the board ideation session. They represent the range of perspectives that informed the three vision options above — read them before you vote to understand where each option came from.</div>
       <div class="voices-grid">
         <div class="voice-card highlight">
@@ -914,9 +932,9 @@
           <div class="voices-toggle-sub">How the board articulated what flourishing and community mean</div>
         </div>
       </div>
-      <span class="voices-caret" id="caret-mq-voices">›</span>
+      <span class="voices-caret" id="caret-mq-voices" style="transform:rotate(90deg)">›</span>
     </button>
-    <div class="voices-body" id="mq-voices">
+    <div class="voices-body open" id="mq-voices">
       <div class="voices-intro">The mission question itself emerged from earlier strategy work. These voices shaped how the board understands the three key terms — whole person, flourishing, and community — and are what the tweaked bullets attempt to capture.</div>
       <div class="voices-grid">
         <div class="voice-card highlight">
@@ -1016,9 +1034,9 @@
           <div class="voices-toggle-sub">What the board said about what the mission needs to do and who it needs to reach</div>
         </div>
       </div>
-      <span class="voices-caret" id="caret-mission-voices">›</span>
+      <span class="voices-caret" id="caret-mission-voices" style="transform:rotate(90deg)">›</span>
     </button>
-    <div class="voices-body" id="mission-voices">
+    <div class="voices-body open" id="mission-voices">
       <div class="voices-intro">These are the recurring themes from board and leadership conversations about what the mission statement needs to accomplish. Each option above attempts to balance these competing pulls in a different way.</div>
       <div class="voices-grid">
         <div class="voice-card highlight">
@@ -1605,9 +1623,62 @@
     const body = document.getElementById(id);
     const caret = document.getElementById("caret-" + id);
     const isOpen = body.classList.contains("open");
-    body.classList.toggle("open", !isOpen);
-    caret.style.transform = isOpen ? "" : "rotate(90deg)";
+    if (isOpen) {
+      body.classList.remove("open");
+      caret.style.transform = "";
+    } else {
+      body.classList.add("open");
+      caret.style.transform = "rotate(90deg)";
+    }
   }
+
+  // ── Auto-collapse voices sections after user scrolls past them ─────
+  (function () {
+    const VOICES_IDS = ["vision-voices", "mq-voices", "mission-voices"];
+    const collapsed = {};
+
+    // Use a sentinel div placed just below each voices-toggle to detect
+    // when the whole block has scrolled out of view upward.
+    function initObserver() {
+      VOICES_IDS.forEach(id => {
+        const body = document.getElementById(id);
+        if (!body) return;
+        const toggle = body.closest(".voices-toggle");
+        if (!toggle) return;
+
+        // Create a tiny sentinel right after the toggle block
+        const sentinel = document.createElement("div");
+        sentinel.style.cssText = "height:1px;margin:0;padding:0;pointer-events:none;";
+        toggle.parentNode.insertBefore(sentinel, toggle.nextSibling);
+
+        const observer = new IntersectionObserver((entries) => {
+          entries.forEach(entry => {
+            // Sentinel has left the top of the viewport (scrolled past)
+            if (!entry.isIntersecting && entry.boundingClientRect.top < 0) {
+              if (!collapsed[id]) {
+                collapsed[id] = true;
+                const b = document.getElementById(id);
+                const c = document.getElementById("caret-" + id);
+                if (b && b.classList.contains("open")) {
+                  b.classList.remove("open");
+                  if (c) c.style.transform = "";
+                }
+              }
+            }
+          });
+        }, { threshold: 0 });
+
+        observer.observe(sentinel);
+      });
+    }
+
+    // Wait for DOM to be fully ready
+    if (document.readyState === "loading") {
+      document.addEventListener("DOMContentLoaded", initObserver);
+    } else {
+      initObserver();
+    }
+  })();
 
   // ── Voting ─────────────────────────────────────────────────────────
   function vote(card) {

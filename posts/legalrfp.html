@@ -1,0 +1,971 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Request for Proposals — Real Estate Legal Counsel | IslamicFamily Affordable Housing</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Alegreya:ital,wght@0,400;0,500;0,700;1,400;1,700&family=Alegreya+Sans:wght@300;400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --green: #275D43;
+    --green-light: #3a7a5a;
+    --green-pale: #eaf4ef;
+    --green-border: #c2ddd2;
+    --brown: #E09964;
+    --brown-pale: #fdf3ea;
+    --red: #BB2D37;
+    --black: #353535;
+    --mist: #FAFAF2;
+    --mist-dark: #f0f0e6;
+    --text-secondary: #5a5a4a;
+    --serif: 'Alegreya', Georgia, serif;
+    --sans: 'Alegreya Sans', system-ui, sans-serif;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: var(--sans);
+    background: var(--mist);
+    color: var(--black);
+    font-size: 16px;
+    line-height: 1.7;
+  }
+
+  /* ── HEADER ── */
+  .header {
+    background: var(--green);
+    color: white;
+    padding: 0;
+  }
+
+  .header-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1.25rem 3rem;
+    border-bottom: 1px solid rgba(255,255,255,0.15);
+  }
+
+  .org-name {
+    font-family: var(--serif);
+    font-size: 1.05rem;
+    font-weight: 400;
+    letter-spacing: 0.01em;
+    opacity: 0.9;
+  }
+
+  .rfp-badge {
+    font-family: var(--sans);
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    background: var(--brown);
+    color: white;
+    padding: 0.3rem 0.8rem;
+    border-radius: 2px;
+  }
+
+  .header-hero {
+    padding: 4rem 3rem 3.5rem;
+    max-width: 900px;
+  }
+
+  .eyebrow {
+    font-family: var(--sans);
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--brown);
+    margin-bottom: 1.25rem;
+  }
+
+  .header-hero h1 {
+    font-family: var(--serif);
+    font-size: 2.9rem;
+    font-weight: 700;
+    line-height: 1.2;
+    color: white;
+    margin-bottom: 1.5rem;
+  }
+
+  .header-hero h1 em {
+    font-style: italic;
+    color: rgba(255,255,255,0.8);
+  }
+
+  .header-hero p {
+    font-size: 1.1rem;
+    line-height: 1.75;
+    color: rgba(255,255,255,0.85);
+    max-width: 700px;
+    font-weight: 300;
+  }
+
+  .header-stats {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    border-top: 1px solid rgba(255,255,255,0.15);
+  }
+
+  .stat-cell {
+    padding: 1.5rem 2rem;
+    border-right: 1px solid rgba(255,255,255,0.12);
+  }
+  .stat-cell:last-child { border-right: none; }
+
+  .stat-number {
+    font-family: var(--serif);
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--brown);
+    line-height: 1;
+    margin-bottom: 0.3rem;
+  }
+
+  .stat-label {
+    font-size: 0.82rem;
+    color: rgba(255,255,255,0.65);
+    line-height: 1.4;
+    font-weight: 300;
+  }
+
+  /* ── BODY LAYOUT ── */
+  .page-body {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 3.5rem 2rem 5rem;
+  }
+
+  /* ── SECTION ── */
+  .section {
+    margin-bottom: 3.5rem;
+  }
+
+  .section-label {
+    font-family: var(--sans);
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--brown);
+    margin-bottom: 0.6rem;
+  }
+
+  .section h2 {
+    font-family: var(--serif);
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: var(--green);
+    margin-bottom: 1.25rem;
+    line-height: 1.25;
+  }
+
+  .section h2 em {
+    font-style: italic;
+    font-weight: 400;
+  }
+
+  .section p {
+    color: var(--black);
+    margin-bottom: 1rem;
+    font-size: 1rem;
+    line-height: 1.75;
+  }
+
+  .section p:last-child { margin-bottom: 0; }
+
+  /* ── DIVIDER ── */
+  .divider {
+    border: none;
+    border-top: 1px solid var(--green-border);
+    margin: 3rem 0;
+  }
+
+  /* ── CALLOUT ── */
+  .callout {
+    background: var(--green-pale);
+    border-left: 3px solid var(--green);
+    padding: 1.25rem 1.5rem;
+    margin: 1.75rem 0;
+    border-radius: 0 4px 4px 0;
+  }
+
+  .callout p {
+    margin: 0;
+    color: var(--black);
+    font-size: 0.97rem;
+  }
+
+  .callout strong {
+    color: var(--green);
+    font-weight: 700;
+  }
+
+  /* ── ALERT CALLOUT ── */
+  .callout-brown {
+    background: var(--brown-pale);
+    border-left: 3px solid var(--brown);
+    padding: 1.25rem 1.5rem;
+    margin: 1.75rem 0;
+    border-radius: 0 4px 4px 0;
+  }
+
+  .callout-brown p {
+    margin: 0;
+    color: var(--black);
+    font-size: 0.97rem;
+  }
+
+  .callout-brown strong {
+    color: #a07040;
+    font-weight: 700;
+  }
+
+  /* ── PULL QUOTE ── */
+  .pull-quote {
+    border-top: 2px solid var(--green);
+    border-bottom: 2px solid var(--green);
+    padding: 1.75rem 0;
+    margin: 2.5rem 0;
+  }
+
+  .pull-quote p {
+    font-family: var(--serif);
+    font-size: 1.3rem;
+    font-style: italic;
+    color: var(--green);
+    line-height: 1.55;
+    margin: 0;
+  }
+
+  /* ── SCOPE GRID ── */
+  .scope-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+    margin-top: 1.5rem;
+  }
+
+  .scope-card {
+    background: white;
+    border: 1px solid var(--green-border);
+    border-radius: 4px;
+    padding: 1.1rem 1.25rem;
+  }
+
+  .scope-card h3 {
+    font-family: var(--sans);
+    font-size: 0.82rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--green);
+    margin-bottom: 0.5rem;
+  }
+
+  .scope-card p {
+    font-size: 0.92rem;
+    color: var(--text-secondary);
+    margin: 0;
+    line-height: 1.6;
+  }
+
+  .scope-card ul {
+    margin: 0;
+    padding-left: 1.1rem;
+    font-size: 0.92rem;
+    color: var(--text-secondary);
+    line-height: 1.65;
+  }
+
+  .scope-card ul li {
+    margin-bottom: 0.25rem;
+  }
+
+  /* ── CRITERIA LIST ── */
+  .criteria-list {
+    list-style: none;
+    margin-top: 1.25rem;
+  }
+
+  .criteria-list li {
+    display: flex;
+    gap: 1rem;
+    align-items: flex-start;
+    padding: 0.9rem 0;
+    border-bottom: 1px solid var(--mist-dark);
+  }
+
+  .criteria-list li:last-child { border-bottom: none; }
+
+  .criteria-num {
+    font-family: var(--serif);
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: var(--brown);
+    min-width: 1.75rem;
+    line-height: 1.5;
+  }
+
+  .criteria-text {
+    font-size: 0.97rem;
+    color: var(--black);
+    line-height: 1.7;
+  }
+
+  .criteria-text strong {
+    font-weight: 700;
+    color: var(--black);
+    display: block;
+    margin-bottom: 0.15rem;
+  }
+
+  /* ── DELIVERABLES TABLE ── */
+  .deliverables-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 1.5rem;
+    font-size: 0.93rem;
+  }
+
+  .deliverables-table thead tr {
+    background: var(--green);
+    color: white;
+  }
+
+  .deliverables-table thead th {
+    padding: 0.75rem 1rem;
+    text-align: left;
+    font-family: var(--sans);
+    font-weight: 700;
+    font-size: 0.78rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .deliverables-table tbody tr {
+    border-bottom: 1px solid var(--green-border);
+    background: white;
+  }
+
+  .deliverables-table tbody tr:nth-child(even) {
+    background: var(--green-pale);
+  }
+
+  .deliverables-table tbody td {
+    padding: 0.85rem 1rem;
+    vertical-align: top;
+    line-height: 1.55;
+    color: var(--black);
+  }
+
+  .deliverables-table tbody td:first-child {
+    font-weight: 600;
+    color: var(--green);
+    width: 35%;
+  }
+
+  /* ── SUBMISSION BOX ── */
+  .submission-box {
+    background: var(--green);
+    color: white;
+    border-radius: 6px;
+    padding: 2.5rem 2.75rem;
+    margin-top: 1.5rem;
+  }
+
+  .submission-box h3 {
+    font-family: var(--serif);
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: white;
+    margin-bottom: 0.35rem;
+  }
+
+  .submission-box .sub-sub {
+    font-size: 0.85rem;
+    color: rgba(255,255,255,0.65);
+    margin-bottom: 1.75rem;
+    font-weight: 300;
+  }
+
+  .submission-item {
+    display: flex;
+    gap: 1rem;
+    align-items: flex-start;
+    margin-bottom: 1.1rem;
+  }
+
+  .submission-item:last-of-type { margin-bottom: 0; }
+
+  .sub-icon {
+    width: 2rem;
+    height: 2rem;
+    border-radius: 50%;
+    background: var(--brown);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    font-family: var(--serif);
+    font-weight: 700;
+    font-size: 0.85rem;
+    color: white;
+  }
+
+  .sub-text {
+    font-size: 0.95rem;
+    color: rgba(255,255,255,0.9);
+    line-height: 1.65;
+    padding-top: 0.2rem;
+  }
+
+  .sub-text strong {
+    display: block;
+    color: white;
+    font-weight: 700;
+    margin-bottom: 0.15rem;
+  }
+
+  .email-link {
+    display: inline-block;
+    margin-top: 2rem;
+    background: var(--brown);
+    color: white;
+    font-family: var(--sans);
+    font-size: 0.9rem;
+    font-weight: 700;
+    letter-spacing: 0.03em;
+    padding: 0.75rem 1.75rem;
+    border-radius: 3px;
+    text-decoration: none;
+  }
+
+  /* ── TIMELINE ── */
+  .timeline {
+    margin-top: 1.5rem;
+    position: relative;
+    padding-left: 1.5rem;
+    border-left: 2px solid var(--green-border);
+  }
+
+  .tl-item {
+    position: relative;
+    padding: 0 0 1.5rem 1.25rem;
+  }
+
+  .tl-item:last-child { padding-bottom: 0; }
+
+  .tl-dot {
+    position: absolute;
+    left: -1.65rem;
+    top: 0.45rem;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: var(--green);
+    border: 2px solid var(--mist);
+    box-shadow: 0 0 0 2px var(--green);
+  }
+
+  .tl-date {
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--brown);
+    margin-bottom: 0.2rem;
+  }
+
+  .tl-event {
+    font-size: 0.97rem;
+    color: var(--black);
+    line-height: 1.6;
+  }
+
+  /* ── COMPLEXITY BADGE ── */
+  .complexity-note {
+    display: inline-block;
+    background: var(--red);
+    color: white;
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 0.2rem 0.6rem;
+    border-radius: 2px;
+    margin-left: 0.5rem;
+    vertical-align: middle;
+  }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--black);
+    color: rgba(255,255,255,0.55);
+    text-align: center;
+    padding: 2.5rem;
+    font-size: 0.82rem;
+    line-height: 1.7;
+  }
+
+  footer a { color: var(--brown); text-decoration: none; }
+
+  @media (max-width: 700px) {
+    .header-hero h1 { font-size: 2rem; }
+    .header-hero, .header-top { padding-left: 1.5rem; padding-right: 1.5rem; }
+    .header-stats { grid-template-columns: repeat(2, 1fr); }
+    .stat-cell { padding: 1rem 1.25rem; }
+    .scope-grid { grid-template-columns: 1fr; }
+    .page-body { padding: 2.5rem 1.25rem 4rem; }
+    .submission-box { padding: 1.75rem; }
+    .deliverables-table { font-size: 0.85rem; }
+  }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="header">
+  <div class="header-top">
+    <span class="org-name">IslamicFamily — Edmonton</span>
+    <span class="rfp-badge">Request for Proposals</span>
+  </div>
+  <div class="header-hero">
+    <p class="eyebrow">Halal Affordable Housing Development — 96 Units · $30M+ · Edmonton, Alberta</p>
+    <h1>Seeking Real Estate Legal Counsel to draft a <em>comprehensive purchase agreement.</em></h1>
+    <p>IslamicFamily is developing Canada's first institutional-quality Shariah-compliant affordable housing project. We require a real estate lawyer with expertise in complex multi-source financing, Islamic finance structures, and purpose-built affordable housing to draft and advise on the purchase agreement governing our $30M+ design-build development.</p>
+  </div>
+  <div class="header-stats">
+    <div class="stat-cell">
+      <div class="stat-number">$30M+</div>
+      <div class="stat-label">Design-build lump-sum contract value</div>
+    </div>
+    <div class="stat-cell">
+      <div class="stat-number">96</div>
+      <div class="stat-label">Halal affordable housing units, 4 buildings</div>
+    </div>
+    <div class="stat-cell">
+      <div class="stat-number">3</div>
+      <div class="stat-label">Funding streams: federal grants, provincial grants, halal investment fund</div>
+    </div>
+    <div class="stat-cell">
+      <div class="stat-number">Aug '26</div>
+      <div class="stat-label">First-close milestone — conditional offer triggered</div>
+    </div>
+  </div>
+</header>
+
+<!-- BODY -->
+<div class="page-body">
+
+  <!-- PROJECT CONTEXT -->
+  <section class="section">
+    <p class="section-label">Project Context</p>
+    <h2>A legally complex, <em>mission-driven development.</em></h2>
+    <p>IslamicFamily is developing 96 halal affordable housing units in north Edmonton — four four-storey buildings with 264 bedrooms, designed for larger and multigenerational families. The project is developed by IslamicFamily (Islamic Family &amp; Social Services Association) in partnership with a design-build general contractor under a lump-sum design-build delivery model.</p>
+    <p>Financing is deliberately diverse. The project draws on co-applied federal and provincial grants, City of Edmonton land disposition support, and the <strong>Halal Affordable Housing Investment Fund</strong> — Canada's first institutional-quality, Shariah-compliant housing investment vehicle, developed in partnership with SVX and structured with legal counsel from Pallett Valo LLP.</p>
+    <div class="callout-brown">
+      <p><strong>Why this engagement is specialized:</strong> The purchase agreement must satisfy the requirements of multiple funders simultaneously — each with distinct reporting obligations, use-of-funds restrictions, and compliance triggers — while being fully Shariah-compliant and workable within Alberta's real estate and nonprofit regulatory frameworks. This is not a standard residential or commercial purchase agreement.</p>    </div>
+    <p>The successful lawyer will work closely with IslamicFamily's Executive Director and will need to coordinate with the existing Islamic finance legal team (Pallett Valo LLP) and the Owner Representative being engaged concurrently. Familiarity with the existing fund structure documentation is expected before engagement begins.</p>
+  </section>
+
+  <hr class="divider">
+
+  <!-- SCOPE OF WORK -->
+  <section class="section">
+    <p class="section-label">Scope of Work</p>
+    <h2>What you'll be <em>engaged to do.</em></h2>
+    <p>The primary deliverable is a comprehensive purchase agreement for the subject property in north Edmonton. Beyond drafting, the engagement encompasses legal advice on related structures and risks. The scope is organized into six interconnected areas:</p>
+
+    <div class="scope-grid">
+      <div class="scope-card">
+        <h3>1. Purchase Agreement — Core Structure</h3>
+        <ul>
+          <li>Conditions precedent tied to multi-source funding milestones</li>
+          <li>Closing mechanics that accommodate staggered fund closings</li>
+          <li>Clear title transfer provisions with Islamic finance lien/charge structure</li>
+          <li>Representations and warranties appropriate to a nonprofit purchaser</li>
+          <li>Risk allocation across IslamicFamily, the contractor, and funders</li>
+        </ul>
+      </div>
+      <div class="scope-card">
+        <h3>2. Multi-Source Funding Integration</h3>
+        <ul>
+          <li>Grant co-application compliance: articulate funder priority, reporting obligations, and spending restrictions within the agreement</li>
+          <li>Halal investment fund provisions: ensure agreement structure does not conflict with musharakah/ijara or other Islamic finance instruments</li>
+          <li>Subordination and intercreditor logic between government funders and private Islamic investors</li>
+          <li>Mechanisms for future funding tranches and amendments</li>
+        </ul>
+      </div>
+      <div class="scope-card">
+        <h3>3. Shariah Compliance</h3>
+        <ul>
+          <li>Review and confirm the agreement is free of riba (interest), gharar (excessive uncertainty), and maysir (speculative elements)</li>
+          <li>Structure payment and security mechanisms in accordance with Shariah principles, in coordination with Pallett Valo LLP</li>
+          <li>Advise on any standard commercial clauses that may require modification for compliance</li>
+          <li>Document Shariah compliance rationale for investor and board reporting</li>
+        </ul>
+      </div>
+      <div class="scope-card">
+        <h3>4. Change Order Process</h3>
+        <ul>
+          <li>Define a clear, enforceable change order protocol within the design-build lump-sum contract context</li>
+          <li>Establish thresholds: what triggers a change order vs. falls within contractor scope</li>
+          <li>IslamicFamily approval authorities and timelines</li>
+          <li>Funder notification obligations when change orders affect funded scope</li>
+          <li>Documentation standards and dispute escalation path</li>
+        </ul>
+      </div>
+      <div class="scope-card">
+        <h3>5. Deliverables, Quality &amp; Durability Standards</h3>
+        <ul>
+          <li>Define final deliverables with specificity: unit specifications, common areas, accessibility features, BUILT GREEN Platinum standards</li>
+          <li>Building performance standards and durability benchmarks tied to affordable housing life-cycle expectations</li>
+          <li>Deficiency rectification process and holdback provisions</li>
+          <li>Warranty terms: new home warranty, structural, mechanical, envelope</li>
+          <li>Substantial completion and final acceptance criteria</li>
+        </ul>
+      </div>
+      <div class="scope-card">
+        <h3>6. Default, Remedy &amp; Dispute Resolution</h3>
+        <ul>
+          <li>Contractor default provisions appropriate to a nonprofit owner with grant obligations</li>
+          <li>Termination rights and notice requirements</li>
+          <li>Funder notification obligations on material breach or default</li>
+          <li>Dispute resolution mechanism: preference for negotiation / mediation before arbitration</li>
+          <li>Governing law: Province of Alberta</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <hr class="divider">
+
+  <!-- KEY CONTRACT ELEMENTS TABLE -->
+  <section class="section">
+    <p class="section-label">Required Contract Provisions</p>
+    <h2>What the agreement <em>must address.</em></h2>
+    <p>The table below identifies the critical provisions IslamicFamily requires, along with the specific complexity each presents in this context. Respondents should demonstrate familiarity with each area in their proposal.</p>
+
+    <table class="deliverables-table">
+      <thead>
+        <tr>
+          <th>Provision Area</th>
+          <th>What the Agreement Must Do</th>
+          <th>Complexity in This Context</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Funding Conditions Precedent</td>
+          <td>Tie closing to milestones including: Halal Fund first-close ($400K, Aug 2026), confirmation of grant disbursement schedules, and IslamicFamily board approval</td>
+          <td>Multiple funders with independent timelines; conditions must be coordinated without giving any single funder unilateral veto</td>
+        </tr>
+        <tr>
+          <td>Payment Structure</td>
+          <td>Progress payment schedule aligned with construction milestones; retain holdback per Alberta Builders' Lien Act; flow of funds from multiple sources</td>
+          <td>Islamic finance requires payment structures free of riba; grant funds carry specific disbursement rules; must satisfy all simultaneously</td>
+        </tr>
+        <tr>
+          <td>Shariah-Compliant Security</td>
+          <td>Security instruments (charges, liens) must be structured to avoid interest-bearing elements; coordinate with fund's ijara or musharakah structure</td>
+          <td>Standard mortgage/charge instruments are riba-based; requires custom or modified instruments reviewed by Islamic finance counsel</td>
+        </tr>
+        <tr>
+          <td>Change Order Protocol</td>
+          <td>Define scope of lump-sum contract clearly; establish what constitutes a change; set approval authorities (OR reviews, ED approves, board notified above threshold)</td>
+          <td>Design-build blurs design/construction scope; lump-sum price obscures underlying cost; grant funders may require approval for scope changes affecting funded elements</td>
+        </tr>
+        <tr>
+          <td>Build Quality &amp; Specifications</td>
+          <td>Bind contractor to BUILT GREEN Platinum standards, specific unit finishes, accessibility requirements, and multigenerational design specifications</td>
+          <td>Design-build means specifications must be locked in the agreement, not left to contractor discretion; specs must satisfy both funder requirements and community standards</td>
+        </tr>
+        <tr>
+          <td>Substantial Completion</td>
+          <td>Define substantial completion clearly, including deficiency list process, holdback release, and occupancy permit requirement</td>
+          <td>Nonprofit owner with housing-ready families waiting; must balance reasonable contractor completion flexibility with community urgency and funder reporting deadlines</td>
+        </tr>
+        <tr>
+          <td>Warranty Provisions</td>
+          <td>Minimum 1-year general warranty, 2-year mechanical/envelope, 10-year structural; coordinate with Alberta New Home Warranty Program</td>
+          <td>Affordable housing stock must be durable for 50+ years; warranties must be enforceable against a design-build contractor, not just a subcontractor chain</td>
+        </tr>
+        <tr>
+          <td>Grant Compliance Covenants</td>
+          <td>Bind the agreement to affordability covenants required by federal/provincial funders; articulate what happens if covenant obligations conflict</td>
+          <td>Multiple funders may impose overlapping affordability periods and eligible tenant restrictions; must be harmonized and not create unworkable obligations</td>
+        </tr>
+        <tr>
+          <td>Reporting &amp; Audit Rights</td>
+          <td>IslamicFamily and funders must retain audit rights over construction costs, progress, and change orders</td>
+          <td>Design-build lump-sum contracts typically limit owner visibility into cost; agreement must carve out transparency rights without undermining the lump-sum structure</td>
+        </tr>
+        <tr>
+          <td>Force Majeure &amp; Delays</td>
+          <td>Define force majeure; set notification requirements; address impact on grant milestones and investor distributions</td>
+          <td>Project delays can trigger grant clawbacks or fund covenant breaches; force majeure provisions must give notice time to manage funder relationships</td>
+        </tr>
+        <tr>
+          <td>Default &amp; Termination</td>
+          <td>Define contractor default; set cure periods; give IslamicFamily step-in rights or termination rights with funder notification obligations</td>
+          <td>Contractor default on a multi-funder project implicates all funders simultaneously; default provisions must allow rapid response without triggering cascading funding failures</td>
+        </tr>
+        <tr>
+          <td>Dispute Resolution</td>
+          <td>Tiered process: negotiation → mediation → binding arbitration; arbitrator to be agreed upon; seat of arbitration: Edmonton, AB</td>
+          <td>Must not impose interest on disputed amounts (Shariah compliance); arbitration clauses may need review by Islamic finance counsel</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <hr class="divider">
+
+  <!-- SHARIAH COMPLIANCE NOTE -->
+  <section class="section">
+    <p class="section-label">Shariah Compliance</p>
+    <h2>Why this isn't an add-on — <em>it's foundational.</em></h2>
+    <p>The Halal Affordable Housing Investment Fund is structured as Canada's first institutional-quality Shariah-compliant housing investment vehicle. Its investors — individual Muslims and impact investors who have specifically sought a halal alternative — have made this commitment on the basis of Shariah compliance. Any purchase agreement that introduces riba, gharar, or other prohibited elements would undermine the integrity of the fund and IslamicFamily's obligations to its investors and community.</p>
+
+    <div class="pull-quote">
+      <p>The agreement must be something that any Muslim investor in the fund can review and confirm: this is how we said we would do it. Compliance is not a legal formality — it is a matter of institutional integrity.</p>
+    </div>
+
+    <p>The successful lawyer must be willing to work in close coordination with Pallett Valo LLP, which has provided the existing fund legal structure. They do not need to be Islamic finance specialists themselves, but they must have demonstrated willingness to learn, adapt standard instruments, and take Shariah review seriously as a binding constraint — not an afterthought. Where any standard clause requires modification, we expect proactive identification and proposed alternatives.</p>
+
+    <div class="callout">
+      <p><strong>Coordination requirement:</strong> The selected lawyer must engage directly with Pallett Valo LLP at the outset to review the existing fund structure documentation and ensure the purchase agreement is structurally coherent with the Islamic finance instruments already in place. This coordination is not optional.</p>
+    </div>
+  </section>
+
+  <hr class="divider">
+
+  <!-- QUALIFICATIONS -->
+  <section class="section">
+    <p class="section-label">Essential Qualifications</p>
+    <h2>What we're <em>looking for.</em></h2>
+    <p>We are looking for a lawyer — or a legal team — who combines technical real estate expertise with genuine interest in this project's purpose. Sophistication and mission-alignment are both required.</p>
+
+    <ul class="criteria-list">
+      <li>
+        <span class="criteria-num">1</span>
+        <span class="criteria-text">
+          <strong>Real property expertise — Alberta <span class="complexity-badge" style="background:var(--green);color:white;font-size:0.7rem;padding:0.15rem 0.45rem;border-radius:2px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;">Required</span></strong>
+          Called to the Alberta Bar with demonstrated experience in complex real estate transactions, purchase agreements, and land transfers. Familiarity with the Alberta Builders' Lien Act and New Home Warranty Program is expected.
+        </span>
+      </li>
+      <li>
+        <span class="criteria-num">2</span>
+        <span class="criteria-text">
+          <strong>Multi-source or public funding transactions <span class="complexity-badge" style="background:var(--green);color:white;font-size:0.7rem;padding:0.15rem 0.45rem;border-radius:2px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;">Required</span></strong>
+          Experience with transactions involving government grants, co-applied funding, or public-private financing. You understand how funder conditions flow into purchase agreements and affordability covenants. At least one comparable engagement should be documented in your proposal.
+        </span>
+      </li>
+      <li>
+        <span class="criteria-num">3</span>
+        <span class="criteria-text">
+          <strong>Willingness to engage with Islamic finance constraints <span class="complexity-badge" style="background:var(--green);color:white;font-size:0.7rem;padding:0.15rem 0.45rem;border-radius:2px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;">Required</span></strong>
+          You do not need prior Islamic finance experience, but you must demonstrate genuine commitment to understanding and working within Shariah compliance constraints. You will be expected to review the existing fund structure documentation, coordinate with Pallett Valo LLP, and proactively flag and resolve compliance issues. Tell us how you've approached novel legal constraints in past engagements.
+        </span>
+      </li>
+      <li>
+        <span class="criteria-num">4</span>
+        <span class="criteria-text">
+          <strong>Design-build contract familiarity</strong>
+          Understanding of how design-build delivery structures affect owner rights, scope definition, and change management. Experience drafting or reviewing lump-sum design-build agreements is strongly preferred.
+        </span>
+      </li>
+      <li>
+        <span class="criteria-num">5</span>
+        <span class="criteria-text">
+          <strong>Nonprofit or community development sector experience</strong>
+          Experience advising nonprofit or community housing organizations is meaningfully valued. You understand the accountability structures nonprofits carry — to funders, boards, and communities — and how those translate into legal risk management.
+        </span>
+      </li>
+      <li>
+        <span class="criteria-num">6</span>
+        <span class="criteria-text">
+          <strong>Collaborative, advisory posture</strong>
+          IslamicFamily is a sophisticated client with strong institutional values. We are looking for a lawyer who can advise clearly and directly, flag risks without catastrophizing, and work as a genuine partner — not just a document drafter. References should speak to your working style, not just your technical output.
+        </span>
+      </li>
+    </ul>
+  </section>
+
+  <hr class="divider">
+
+  <!-- EVALUATION CRITERIA -->
+  <section class="section">
+    <p class="section-label">Evaluation</p>
+    <h2>How proposals will be <em>assessed.</em></h2>
+    <p>Proposals will be evaluated against the following criteria. Weighting is indicative; IslamicFamily reserves the right to adjust based on the quality of submissions received.</p>
+
+    <table class="deliverables-table">
+      <thead>
+        <tr>
+          <th>Criterion</th>
+          <th>Weight</th>
+          <th>What We're Looking For</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Relevant legal expertise and experience</td>
+          <td>30%</td>
+          <td>Quality and comparability of documented transaction experience; depth of Alberta real estate practice</td>
+        </tr>
+        <tr>
+          <td>Understanding of multi-source funding complexity</td>
+          <td>25%</td>
+          <td>Evidence you've navigated co-applied or grant-funded real estate transactions; demonstrated awareness of the specific issues this project presents</td>
+        </tr>
+        <tr>
+          <td>Approach to Shariah compliance</td>
+          <td>20%</td>
+          <td>Thoughtful, credible explanation of how you will engage with Islamic finance constraints; not looking for subject matter expertise, but for genuine intellectual engagement</td>
+        </tr>
+        <tr>
+          <td>Fee proposal — value and transparency</td>
+          <td>15%</td>
+          <td>Clear, detailed fee structure; transparent about what is and isn't included; realistic about scope; demonstrates understanding of the project's complexity</td>
+        </tr>
+        <tr>
+          <td>Values alignment and mission orientation</td>
+          <td>10%</td>
+          <td>Authentic evidence of commitment to affordable housing, community development, or underserved communities; not performative — we can tell</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <hr class="divider">
+
+  <!-- SUBMISSION -->
+  <section class="section">
+    <p class="section-label">How to Apply</p>
+    <h2>Submitting your <em>proposal.</em></h2>
+    <p>Proposals are submitted by email to <strong>Omar Yaqub, Executive Director</strong>, at <a href="mailto:omary@islamicfamily.ca" style="color: var(--green);">omary@islamicfamily.ca</a>. Questions are welcome in advance of the deadline.</p>
+
+    <div class="submission-box">
+      <h3>What your proposal should include</h3>
+      <p class="sub-sub">Submit by email by <strong style="color: white;">Friday, June 6, 2026</strong> — no portal, no forms</p>
+
+      <div class="submission-item">
+        <div class="sub-icon">1</div>
+        <div class="sub-text">
+          <strong>Your rates and fee structure</strong>
+          Proposed fee structure — fixed fee for the purchase agreement, hourly for advisory scope, or a combination. Identify separately: drafting the agreement, Shariah compliance review coordination, change order protocol development, and ongoing advisory retainer (if proposed). Be specific about what is and isn't included.
+        </div>
+      </div>
+      <div class="submission-item">
+        <div class="sub-icon">2</div>
+        <div class="sub-text">
+          <strong>Relevant transactions — documented</strong>
+          A summary of 2–3 comparable engagements: transaction type, your role, complexity, and outcome. Multi-source funding, design-build, or nonprofit purchaser experience should be highlighted. Include client references who can speak specifically to these engagements.
+        </div>
+      </div>
+      <div class="submission-item">
+        <div class="sub-icon">3</div>
+        <div class="sub-text">
+          <strong>Your approach to Islamic finance constraints</strong>
+          How will you engage with Shariah compliance as a binding legal constraint? What process will you follow to identify and resolve standard-clause conflicts? How will you work with Pallett Valo LLP? This is not a trick question — we want to understand your thinking.
+        </div>
+      </div>
+      <div class="submission-item">
+        <div class="sub-icon">4</div>
+        <div class="sub-text">
+          <strong>Your reading of the key legal risks</strong>
+          Based on the scope described above, what do you see as the two or three most significant legal risks in this purchase agreement? What would you prioritize, and why? This is a brief, genuine analytical response — not an exhaustive risk register.
+        </div>
+      </div>
+      <div class="submission-item">
+        <div class="sub-icon">5</div>
+        <div class="sub-text">
+          <strong>Availability and proposed engagement model</strong>
+          Who specifically would work on this file? What is your current capacity? Can you begin within two weeks of engagement? We are working to a tight timeline with a conditional offer trigger in August 2026.
+        </div>
+      </div>
+      <div class="submission-item">
+        <div class="sub-icon">6</div>
+        <div class="sub-text">
+          <strong>Why this project</strong>
+          Why does this project interest you specifically? We want to understand your orientation toward affordable housing and community development — briefly, genuinely.
+        </div>
+      </div>
+
+      <a href="mailto:omary@islamicfamily.ca?subject=Legal Counsel Proposal — Halal Affordable Housing Purchase Agreement" class="email-link">Submit your proposal →</a>
+    </div>
+  </section>
+
+  <hr class="divider">
+
+  <!-- TIMELINE -->
+  <section class="section">
+    <p class="section-label">Timeline</p>
+    <h2>Key <em>milestones.</em></h2>
+    <div class="timeline">
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-date">Now — RFP Open</div>
+        <div class="tl-event">Proposals accepted. Questions to omary@islamicfamily.ca.</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-date">Friday, June 6, 2026 — Proposal Deadline</div>
+        <div class="tl-event">All proposals due by end of business day.</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-date">Week of June 9</div>
+        <div class="tl-event">Shortlisted candidates contacted for a brief conversation with the Executive Director and (if applicable) Islamic finance counsel.</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-date">Mid-June — Engagement Start</div>
+        <div class="tl-event">Successful counsel engaged. Briefing on existing fund structure and Pallett Valo LLP coordination initiated. Purchase agreement drafting begins.</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-date">July 2026 — Draft Agreement</div>
+        <div class="tl-event">First complete draft of purchase agreement submitted to IslamicFamily for review. Shariah compliance review completed with Pallett Valo LLP.</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-date">August 2026 — Conditional Offer Trigger</div>
+        <div class="tl-event">$400,000 first-close on the Halal Affordable Housing Investment Fund triggers the conditional offer to purchase. Agreement must be finalized and execution-ready.</div>
+      </div>
+    </div>
+  </section>
+
+  <hr class="divider">
+
+  <!-- ABOUT IF -->
+  <section class="section">
+    <p class="section-label">About IslamicFamily</p>
+    <h2>More than three decades of <em>community trust.</em></h2>
+    <p>IslamicFamily (Islamic Family &amp; Social Services Association) is an Edmonton-based nonprofit serving equity-seeking communities across Alberta. We provide a wide range of social services, housing support, and financial empowerment programming — rooted in community, accountable to those we serve, and unapologetically values-driven.</p>
+    <p>This affordable housing development is the culmination of a decade of housing research, partnership-building, and work to remove structural barriers that have frustrated previous attempts. It has been recognized with a CIP Award for Planning Excellence (2025), an APPI Merit Award (2024), CMHC Innovation Lab support, the Government of Alberta Inspiration Award, and a Justice Innovation Award.</p>
+    <p>The Halal Affordable Housing Investment Fund — which provides a key component of financing for this project — is a registered offering under a prospectus exemption, structured and advised by SVX and Pallett Valo LLP. It is accessible at <a href="https://halalfund.ca" style="color: var(--green);">halalfund.ca</a>.</p>
+
+    <div class="callout">
+      <p><strong>For questions or to request background materials</strong> (including fund structure documentation), contact Omar Yaqub at <a href="mailto:omary@islamicfamily.ca" style="color: var(--green);">omary@islamicfamily.ca</a>. Background materials will be shared under a standard NDA prior to proposal submission if requested.</p>
+    </div>
+  </section>
+
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <p><strong style="color: rgba(255,255,255,0.85);">IslamicFamily — Islamic Family &amp; Social Services Association</strong></p>
+  <p>Edmonton, Alberta · <a href="https://www.islamicfamily.ca">islamicfamily.ca</a> · <a href="https://halalfund.ca">halalfund.ca</a></p>
+  <p style="margin-top: 0.75rem; font-size: 0.78rem;">This affordable housing development is a project of IslamicFamily, developed in partnership with the Halal Affordable Housing Investment Fund (IslamicFamily / SVX). Legal structure by Pallett Valo LLP.</p>
+</footer>
+
+</body>
+</html>
