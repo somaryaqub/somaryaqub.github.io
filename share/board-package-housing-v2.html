@@ -92,10 +92,10 @@
   .doc-header::before { display: none; }
 
   .header-inner {
-    max-width: 1080px;
+    max-width: 1200px;
     width: 100%;
     margin: 0 auto;
-    padding: 52px 48px 52px;
+    padding: 52px 60px 52px;
     position: relative;
     z-index: 2;
   }
@@ -212,9 +212,9 @@
   .nav-link.active { color: var(--green); border-bottom-color: var(--green); font-weight: 700; }
 
   .page-wrap {
-    max-width: 1080px;
+    max-width: 1200px;
     margin: 0 auto;
-    padding: 0 48px 80px;
+    padding: 0 60px 80px;
   }
 
   @media (max-width: 900px) {
@@ -315,6 +315,8 @@
 
   /* ── SECTION ── */
   section {
+    max-width: 1080px;
+    margin: 0 auto;
     margin-bottom: 64px;
     scroll-margin-top: 60px;
   }
@@ -1338,39 +1340,41 @@
   <ul class="ham-nav-list">
 
     <li class="ham-nav-section">
-      <span class="ham-nav-section-label">For Board Action</span>
-      <a href="#motion" class="ham-nav-link">Motion Before the Board</a>
+      <span class="ham-nav-section-label">Action Items</span>
+      <a href="#motion" class="ham-nav-link">⬤ Motion Before the Board</a>
     </li>
 
     <li class="ham-nav-section">
-      <span class="ham-nav-section-label">The Case for Action</span>
+      <span class="ham-nav-section-label">The Case</span>
       <a href="#stories" class="ham-nav-link">The Human Reality</a>
+      <a href="#stories-sarah" class="ham-nav-sub">Sarah — domestic violence</a>
+      <a href="#stories-adam" class="ham-nav-sub">Adam — extended family</a>
+      <a href="#stories-grandmother" class="ham-nav-sub">Grandmother — overcrowding</a>
       <a href="#data" class="ham-nav-link">The Data</a>
     </li>
 
     <li class="ham-nav-section">
       <span class="ham-nav-section-label">Our History</span>
       <a href="#overview" class="ham-nav-link">A Generation in the Making</a>
-      <a href="#history-ch1" class="ham-nav-sub">The Founding Wound</a>
-      <a href="#history-ch2" class="ham-nav-sub">A Decade of Near Misses</a>
-      <a href="#history-ch3" class="ham-nav-sub">Three Conditions Aligning</a>
-      <a href="#barriers" class="ham-nav-sub">Structural Barriers Resolved</a>
+      <a href="#history-ch1" class="ham-nav-sub">Ch. 1 — The Founding Wound</a>
+      <a href="#history-ch2" class="ham-nav-sub">Ch. 2 — A Decade of Near Misses</a>
+      <a href="#history-ch3" class="ham-nav-sub">Ch. 3 — Three Conditions Aligning</a>
     </li>
 
     <li class="ham-nav-section">
       <span class="ham-nav-section-label">Strategic Rationale</span>
-      <a href="#why" class="ham-nav-link">Why We Must Act Now</a>
-      <a href="#zakat" class="ham-nav-link">Zakat as Structural Tool</a>
+      <a href="#why" class="ham-nav-link">Why We Must Act</a>
     </li>
 
     <li class="ham-nav-section">
       <span class="ham-nav-section-label">The Model</span>
+      <a href="#zakat" class="ham-nav-link">Zakat as Structural Tool</a>
       <a href="#fund" class="ham-nav-link">The Fund (HAHIF)</a>
-      <a href="#fund-structure" class="ham-nav-sub">Fund Structure (GP/LP)</a>
-      <a href="#fund-returns" class="ham-nav-sub">Investor Returns</a>
+      <a href="#fund-structure" class="ham-nav-sub">Fund structure (GP/LP)</a>
+      <a href="#fund-returns" class="ham-nav-sub">Investor returns</a>
       <a href="#dunluce" class="ham-nav-link">Diamonds at Dunluce</a>
-      <a href="#dunluce-design" class="ham-nav-sub">Project &amp; Units</a>
-      <a href="#dunluce-proforma" class="ham-nav-sub">Capital Stack</a>
+      <a href="#dunluce-proforma" class="ham-nav-sub">Pro forma</a>
+      <a href="#dunluce-design" class="ham-nav-sub">Design & units</a>
     </li>
 
     <li class="ham-nav-section">
@@ -1390,7 +1394,8 @@
   </ul>
 
   <div class="ham-sidebar-footer">
-    Confidential · May 2026 &nbsp;·&nbsp; <a href="http://halalfund.ca" target="_blank">halalfund.ca</a>
+    Confidential Board Document · May 2026<br>
+    <a href="http://halalfund.ca" target="_blank">halalfund.ca</a>
   </div>
 </nav>
 
@@ -1523,14 +1528,14 @@
         <div style="font-size:13px;opacity:0.65;">Composite case — IslamicFamily newcomer support files</div>
       </div>
       <div style="overflow:hidden;">
-        <img src="adam.png" alt="A large extended Muslim family crowded together in a small Edmonton living room" style="width:100%;height:100%;object-fit:cover;display:block;">
+        <img src="family8.png" alt="A large extended Muslim family crowded together in a small Edmonton living room" style="width:100%;height:100%;object-fit:cover;display:block;">
       </div>
     </div>
 
     <!-- Story 3: Refugee family -->
     <div style="display:grid;grid-template-columns:1fr 1fr;gap:0;border-radius:10px;overflow:hidden;box-shadow:var(--shadow-lg);margin-bottom:32px;min-height:360px;">
       <div style="overflow:hidden;">
-        <img src="family8.png" alt="A father at the kitchen table, family moving around him in a cramped home" style="width:100%;height:100%;object-fit:cover;display:block;">
+        <img src="adam.png" alt="A father at the kitchen table, family moving around him in a cramped home" style="width:100%;height:100%;object-fit:cover;display:block;">
       </div>
       <div style="background:var(--green-pale);color:var(--black);padding:36px 32px;display:flex;flex-direction:column;justify-content:center;">
         <div style="font-family:'Alegreya Sans',sans-serif;font-size:11px;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;color:var(--text-muted);margin-bottom:16px;">IslamicFamily 2025</div>
@@ -1766,9 +1771,11 @@
 
       </div>
 
+    </div><!-- end generational timeline -->
+
     <!-- Structural barriers resolved -->
-    <h3 id="barriers" style="font-family:'Alegreya',serif;font-size:20px;font-weight:700;color:var(--green);margin:12px 0 18px;">The Three Structural Barriers We Have Now Resolved</h3>
-    <div class="card-grid">
+    <h3 style="font-family:'Alegreya',serif;font-size:20px;font-weight:700;color:var(--green);margin:12px 0 18px;">The Three Structural Barriers We Have Now Resolved</h3>
+    <div class="card-grid" style="grid-template-columns:1fr;">
       <div class="card">
         <div class="card-title">1. Access to Halal Capital</div>
         <div class="card-body">Canada's affordable housing finance system is almost entirely debt-based and interest-bearing. For a decade, this locked IslamicFamily — and many other faith-based organizations — out of housing investment entirely.<a href="#ref1" class="citation">[1]</a> The Halal Affordable Housing Investment Fund resolves this by creating a fully equity-based, Shariah-compliant LP/GP structure that both Muslim and non-Muslim investors can access. This is the solution the 2016 Right at Home partnership could not find.</div>
@@ -2934,7 +2941,7 @@
   </section>
 
   <!-- ══ CLOSING IMAGE ══ -->
-  <div style="margin:48px -48px 0;position:relative;line-height:0;border-radius:10px;overflow:hidden;">
+  <div style="margin:48px -60px 0;position:relative;line-height:0;border-radius:10px;overflow:hidden;">
     <img src="Happy_Family_Image.png" alt="A diverse community of families gathered together outside their new Edmonton townhomes" style="width:100%;height:480px;object-fit:cover;object-position:center 40%;display:block;">
     <div style="position:absolute;inset:0;background:linear-gradient(to top, rgba(20,55,35,0.88) 0%, rgba(20,55,35,0.3) 55%, rgba(20,55,35,0.1) 100%);"></div>
     <div style="position:absolute;bottom:0;left:0;right:0;padding:48px 60px;color:white;text-align:center;">
