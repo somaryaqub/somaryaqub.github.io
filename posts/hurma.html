@@ -1,0 +1,965 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>IslamicFamily — Safeguarding &amp; Conduct Manual</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Alegreya:ital,wght@0,400;0,500;0,700;0,800;1,400;1,500&family=Alegreya+Sans:ital,wght@0,300;0,400;0,500;0,700;0,800;1,400&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --nabawi:#275D43; --nabawi-deep:#1c4632; --pinecone:#E09964; --yaqoot:#BB2D37;
+    --kiswah:#353535; --mist:#FAFAF2; --line:#e3e0d3; --line-strong:#cfcbb8;
+    --ink:#2b2b29; --muted:#6f6c61; --paper:#fff;
+    --serif:'Alegreya', Georgia, serif; --sans:'Alegreya Sans', system-ui, sans-serif;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{margin:0; background:var(--mist); color:var(--ink); font-family:var(--serif); font-size:18px; line-height:1.6; -webkit-font-smoothing:antialiased;}
+  ::selection{background:var(--pinecone); color:#2b2b29;}
+  .wrap{max-width:1180px; margin:0 auto; padding:0 28px;}
+  .grid{display:grid; grid-template-columns:268px 1fr; gap:54px; align-items:start;}
+  @media(max-width:900px){ .grid{grid-template-columns:1fr; gap:0;} }
+
+  /* Cover */
+  .cover{background:radial-gradient(1200px 480px at 84% -10%, rgba(224,153,100,.22), transparent 60%), linear-gradient(155deg, var(--nabawi) 0%, #133322 78%); color:#f4f1e6; position:relative; overflow:hidden;}
+  .cover::after{content:""; position:absolute; inset:0; opacity:.10; pointer-events:none;
+    background-image:repeating-linear-gradient(45deg,#fff 0 1px,transparent 1px 22px),repeating-linear-gradient(-45deg,#fff 0 1px,transparent 1px 22px);
+    mask:radial-gradient(950px 480px at 82% 0%, #000 30%, transparent 72%);}
+  .cover .wrap{padding:72px 28px 62px; position:relative; z-index:2;}
+  .eyebrow{font-family:var(--sans); font-weight:700; letter-spacing:.26em; text-transform:uppercase; font-size:12.5px; color:var(--pinecone);}
+  .cover h1{font-family:var(--serif); font-weight:800; font-size:clamp(34px,5.4vw,62px); line-height:1.04; margin:.32em 0 .26em; letter-spacing:-.01em; max-width:19ch;}
+  .cover .lede{font-size:clamp(17px,2vw,21px); max-width:64ch; color:#e9e5d6; font-weight:400;}
+  .cover .meta{margin-top:30px; display:flex; flex-wrap:wrap; gap:10px 12px; font-family:var(--sans); font-size:13px;}
+  .chip{border:1px solid rgba(244,241,230,.34); border-radius:40px; padding:6px 15px; color:#f1eddf; background:rgba(255,255,255,.05);}
+  .arabic{font-size:1.04em;}
+  .palette-rule{display:flex; height:7px; margin:0; border:0;}
+  .palette-rule span{flex:1;}
+  .pg{background:var(--nabawi);}.pp{background:var(--pinecone);}.py{background:var(--yaqoot);}.pk{background:var(--kiswah);}
+
+  main{padding:52px 0 96px;}
+  nav.toc{position:sticky; top:24px; font-family:var(--sans); font-size:13.5px; line-height:1.38; max-height:calc(100vh - 48px); overflow:auto;}
+  nav.toc .toc-title{font-weight:800; letter-spacing:.14em; text-transform:uppercase; font-size:11px; color:var(--muted); margin:0 0 10px;}
+  nav.toc .ph{font-weight:800; color:var(--nabawi); text-transform:uppercase; letter-spacing:.08em; font-size:10.5px; margin:15px 0 4px;}
+  nav.toc a{display:flex; gap:8px; text-decoration:none; color:var(--kiswah); padding:3px 8px; border-radius:6px; border:1px solid transparent;}
+  nav.toc a:hover{background:#fff; border-color:var(--line); color:var(--nabawi);}
+  nav.toc a .n{color:var(--pinecone); font-weight:700; min-width:24px;}
+  @media(max-width:900px){ nav.toc{position:static; max-height:none; margin-bottom:26px; padding:20px; background:#fff; border:1px solid var(--line); border-radius:14px;} }
+
+  article{min-width:0;}
+  article > section{margin:0 0 46px; scroll-margin-top:24px;}
+  h2.sec{font-family:var(--serif); font-weight:800; font-size:clamp(23px,3vw,30px); line-height:1.12; margin:0 0 6px; color:var(--nabawi-deep); letter-spacing:-.01em;}
+  .sec-no{font-family:var(--sans); font-weight:800; color:var(--pinecone); font-size:12.5px; letter-spacing:.18em; display:block; margin-bottom:6px;}
+  h3{font-family:var(--serif); font-weight:700; font-size:21px; color:var(--kiswah); margin:24px 0 8px;}
+  p{margin:0 0 14px;}
+  .rule{height:2px; background:linear-gradient(90deg,var(--pinecone),transparent); border:0; margin:8px 0 22px; width:120px;}
+  .intro{font-size:19px; color:#37352f;}
+  a.inline{color:var(--nabawi); text-decoration:underline; text-decoration-color:var(--pinecone); text-underline-offset:2px;}
+
+  ul.clean{margin:6px 0 16px; padding:0; list-style:none;}
+  ul.clean li{position:relative; padding-left:26px; margin:0 0 8px;}
+  ul.clean li::before{content:"\2738"; position:absolute; left:0; top:.04em; color:var(--nabawi); font-size:15px; line-height:1.5;}
+
+  ol.steps{margin:8px 0 16px; padding-left:0; list-style:none; counter-reset:st;}
+  ol.steps li{position:relative; padding:2px 0 2px 44px; margin:0 0 11px;}
+  ol.steps li::before{counter-increment:st; content:counter(st); position:absolute; left:0; top:0; width:29px; height:29px; border-radius:50%; background:var(--nabawi); color:#fff; font-family:var(--sans); font-weight:800; font-size:13.5px; display:flex; align-items:center; justify-content:center;}
+  ol.steps li b{color:var(--kiswah);}
+
+  /* Part divider */
+  .partdiv{margin:40px 0 10px; padding:20px 24px; border-radius:14px; background:linear-gradient(120deg,#21513a,#143524); color:#f1eddf;}
+  .partdiv .pn{font-family:var(--sans); font-weight:800; font-size:12.5px; letter-spacing:.22em;}
+  .partdiv h2{font-family:var(--serif); font-weight:800; font-size:26px; margin:4px 0 0; line-height:1.08;}
+  .partdiv p{margin:5px 0 0; font-family:var(--sans); font-size:13.5px; color:#d8d2c2;}
+
+  /* role tags */
+  .hats{display:flex; flex-wrap:wrap; gap:7px; margin:0 0 6px;}
+  .hat{font-family:var(--sans); font-weight:700; font-size:11px; letter-spacing:.06em; text-transform:uppercase; padding:3px 10px; border-radius:30px; border:1px solid;}
+  .hat.emp{color:#1c4632; border-color:#9ec3ad; background:#eef5f0;}
+  .hat.con{color:#9a5a1f; border-color:#e6c39e; background:#fbf2e7;}
+  .hat.par{color:#7a2f36; border-color:#e3b3b6; background:#fbeeef;}
+  .hat.wel{color:#3a4a3f; border-color:#c9c6b6; background:#f4f3ea;}
+
+  /* card grids */
+  .cards{display:grid; grid-template-columns:repeat(2,1fr); gap:15px; margin:16px 0;}
+  @media(max-width:720px){ .cards{grid-template-columns:1fr;} }
+  .pr{background:#fff; border:1px solid var(--line); border-left:5px solid var(--nabawi); border-radius:13px; padding:16px 18px;}
+  .pr .pn{font-family:var(--sans); font-weight:800; color:var(--pinecone); font-size:11.5px; letter-spacing:.14em;}
+  .pr h4{font-family:var(--serif); font-weight:800; font-size:18.5px; color:var(--nabawi-deep); margin:3px 0 6px; letter-spacing:-.01em; text-transform:none;}
+  .pr p{font-size:15px; margin:0; color:#39372f;}
+  .pr .ptr{display:block; margin-top:9px; font-family:var(--sans); font-size:12px; font-weight:700; color:var(--muted); letter-spacing:.03em;}
+
+  /* SOP + scenario cards */
+  .card{background:#fff; border:1px solid var(--line); border-radius:16px; margin:20px 0 24px; overflow:hidden;}
+  .card-head{padding:15px 24px; background:linear-gradient(120deg,var(--nabawi),var(--nabawi-deep)); color:#f4f1e6; display:flex; gap:13px; align-items:baseline; flex-wrap:wrap;}
+  .card-head .id{font-family:var(--sans); font-weight:800; letter-spacing:.05em; font-size:13px; background:rgba(255,255,255,.14); border:1px solid rgba(255,255,255,.25); padding:3px 10px; border-radius:7px; white-space:nowrap;}
+  .card-head .t{font-family:var(--serif); font-weight:800; font-size:20px; line-height:1.15;}
+  .card .body{padding:18px 24px 22px;}
+  .metarow{display:flex; flex-wrap:wrap; gap:7px 9px; margin:0 0 14px; font-family:var(--sans); font-size:12.5px;}
+  .metarow .tag{border:1px solid var(--line-strong); border-radius:7px; padding:3px 10px; color:var(--kiswah); background:#faf8f0;}
+  .metarow .tag b{color:var(--nabawi); font-weight:700; letter-spacing:.03em; text-transform:uppercase; font-size:10.5px; margin-right:5px;}
+  .situation{font-size:16.5px; color:#37352f; background:#faf8f0; border-radius:10px; padding:12px 15px; margin:0 0 13px;}
+  h4.mini{font-family:var(--sans); font-weight:800; font-size:12px; letter-spacing:.14em; text-transform:uppercase; color:var(--nabawi); margin:16px 0 7px;}
+
+  .box{border-radius:12px; padding:14px 17px; margin:12px 0;}
+  .box h4{font-family:var(--sans); font-weight:800; font-size:12px; letter-spacing:.14em; text-transform:uppercase; margin:0 0 7px;}
+  .box p:last-child, .box ul:last-child, .box ul:last-child li:last-child{margin-bottom:0;}
+  .box.xref{background:#fbf3ea; border:1px solid #ecd9c4; border-left:5px solid var(--pinecone);} .box.xref h4{color:#b9712f;} .box.xref ul.clean li::before{color:var(--pinecone);}
+  .box.flag,.box.dont{background:#fbf0ef; border-left:5px solid var(--yaqoot);} .box.flag h4,.box.dont h4{color:var(--yaqoot);} .box.flag ul.clean li::before,.box.dont ul.clean li::before{color:var(--yaqoot);}
+  .box.think{background:#f3f6f2; border-left:5px solid var(--nabawi);} .box.think h4{color:var(--nabawi);}
+  .box.connect{background:#fbf3ea; border:1px solid #ecd9c4; border-left:5px solid var(--pinecone);} .box.connect h4{color:#b9712f;} .box.connect ul.clean li::before{color:var(--pinecone);}
+  .box.note{background:#f3f6f2; border-left:5px solid var(--nabawi);} .box.note h4{color:var(--nabawi);}
+  .box.records{background:#f7f6ef; border:1px dashed var(--line-strong);} .box.records h4{color:var(--kiswah);}
+  .box.alert{background:#fff; border:2px solid var(--yaqoot); border-radius:12px;} .box.alert h4{color:var(--yaqoot);}
+
+  table.std{width:100%; border-collapse:collapse; font-size:14.5px; margin:14px 0;}
+  table.std th, table.std td{text-align:left; padding:9px 11px; border-bottom:1px solid var(--line); vertical-align:top;}
+  table.std th{font-family:var(--sans); font-size:11px; letter-spacing:.1em; text-transform:uppercase; color:var(--muted);}
+  table.std td .sopid{font-family:var(--sans); font-weight:700; color:var(--pinecone); font-size:12.5px; white-space:nowrap;}
+  table.std td a{color:var(--nabawi); text-decoration:none; font-weight:600;} table.std td a:hover{text-decoration:underline;}
+
+  .contacts{display:grid; grid-template-columns:repeat(2,1fr); gap:9px 18px; font-family:var(--sans); font-size:14px;}
+  .contacts div{padding:9px 0; border-bottom:1px solid var(--line);}
+  .contacts b{display:block; color:var(--kiswah); font-size:12.5px;}
+  .contacts span{color:var(--nabawi); font-weight:700;}
+  @media(max-width:620px){ .contacts{grid-template-columns:1fr;} }
+
+  .forms li{margin-bottom:12px;} .forms li b{display:block; font-family:var(--sans); font-weight:800; color:var(--nabawi); font-size:13.5px;} .forms li span{font-size:15px;}
+  .check{list-style:none; margin:8px 0 0; padding:0;}
+  .check li{position:relative; padding:8px 0 8px 36px; border-bottom:1px dashed var(--line); font-size:16px;}
+  .check li::before{content:""; position:absolute; left:2px; top:10px; width:18px; height:18px; border-radius:5px; border:2px solid var(--nabawi); background:#fff;}
+
+  footer.docfoot{border-top:2px solid var(--nabawi); padding:26px 0 60px; font-family:var(--sans); color:var(--muted); font-size:13px;}
+  footer.docfoot strong{color:var(--kiswah);}
+
+  @media print{
+    body{background:#fff; font-size:10.5pt; line-height:1.36;}
+    .cover{color:#000; background:#fff !important; border-bottom:2px solid var(--nabawi);}
+    .cover::after,.cover .chip{display:none;} .cover .eyebrow,.cover h1,.cover .lede{color:#000;}
+    nav.toc{display:none;} .grid{grid-template-columns:1fr;}
+    .card,.box,.pr,.partdiv,.cards,table.std,.contacts{break-inside:avoid;}
+    .card-head,.partdiv{-webkit-print-color-adjust:exact; print-color-adjust:exact;}
+    a.inline, table.std td a{color:#000; text-decoration:underline;}
+  }
+</style>
+</head>
+<body>
+
+<header class="cover">
+  <div class="palette-rule"><span class="pg"></span><span class="pp"></span><span class="py"></span><span class="pk"></span></div>
+  <div class="wrap">
+    <div class="eyebrow">IslamicFamily · Safeguarding &amp; Conduct</div>
+    <h1>Upholding <span class="arabic">Ḥurma</span>: Our Safeguarding &amp; Conduct Manual</h1>
+    <p class="lede">One manual for keeping every person in IslamicFamily&rsquo;s care safe &mdash; our foundations and principles, the commitments we make, the procedures we follow, and how we reason through the hard cases. Written for the four roles we hold at once: <strong>employer</strong>, <strong>convenor</strong>, <strong>partner</strong>, and <strong>welcomer</strong>. Grounded in <em>The Hurma Project</em> and cross-referenced to established practice in social work, trauma-informed care, and faith-sector safeguarding.</p>
+    <div class="meta">
+      <span class="chip">Foundations · Commitments · Procedures · Casebook</span>
+      <span class="chip">15 procedures · 8 scenarios</span>
+      <span class="chip">Alberta-localized</span>
+      <span class="chip">Edition 1.0 · Draft for board review</span>
+    </div>
+  </div>
+</header>
+
+<div class="wrap">
+<main>
+<div class="grid">
+
+  <!-- ============ TOC ============ -->
+  <nav class="toc" aria-label="Contents">
+    <p class="toc-title">Contents</p>
+    <div class="ph">Foundations</div>
+    <a href="#use"><span class="n">—</span><span>How to use this manual</span></a>
+    <a href="#foundation"><span class="n">—</span><span>Our foundation: <em>ḥurma</em></span></a>
+    <a href="#roles"><span class="n">—</span><span>Our four roles</span></a>
+    <a href="#harm"><span class="n">—</span><span>What we understand about harm</span></a>
+    <a href="#principles"><span class="n">—</span><span>Eight guiding principles</span></a>
+    <a href="#sources-note"><span class="n">—</span><span>Where this comes from</span></a>
+
+    <div class="ph">Part 1 · Commitments</div>
+    <a href="#commitments"><span class="n">—</span><span>Our commitments</span></a>
+
+    <div class="ph">Part 2 · Procedures</div>
+    <a href="#prevent"><span class="n">A</span><span>Prevent</span></a>
+    <a href="#respond"><span class="n">B</span><span>Recognize &amp; respond</span></a>
+    <a href="#investigate"><span class="n">C</span><span>Investigate &amp; decide</span></a>
+    <a href="#support"><span class="n">D</span><span>Support &amp; heal</span></a>
+    <a href="#govern"><span class="n">E</span><span>Govern &amp; improve</span></a>
+
+    <div class="ph">Part 3 · Casebook</div>
+    <a href="#s1"><span class="n">1</span><span>Accused or convicted of a crime</span></a>
+    <a href="#s2"><span class="n">2</span><span>Gatherings &amp; outreach</span></a>
+    <a href="#s3"><span class="n">3</span><span>Hiring with a record</span></a>
+    <a href="#s4"><span class="n">4</span><span>A concern at a partner mosque</span></a>
+    <a href="#s5"><span class="n">5</span><span>Staff &amp; participant feelings</span></a>
+    <a href="#s6"><span class="n">6</span><span>A disclosure during a program</span></a>
+    <a href="#s7"><span class="n">7</span><span>Two people kept apart</span></a>
+    <a href="#s8"><span class="n">8</span><span>A banned person returns</span></a>
+    <a href="#s9"><span class="n">9</span><span>Harassment between colleagues</span></a>
+    <a href="#s10"><span class="n">10</span><span>Working late, alone, or off-site</span></a>
+    <a href="#more"><span class="n">+</span><span>To develop next</span></a>
+
+    <div class="ph">Appendices</div>
+    <a href="#crosswalk"><span class="n">I</span><span>Standards crosswalk</span></a>
+    <a href="#forms"><span class="n">II</span><span>Forms &amp; templates</span></a>
+    <a href="#episodes"><span class="n">III</span><span>Hurma Project source map</span></a>
+    <a href="#contacts"><span class="n">IV</span><span>Alberta contacts</span></a>
+    <a href="#checklist"><span class="n">V</span><span>Adoption checklist</span></a>
+  </nav>
+
+  <article>
+
+  <!-- ===================== FOUNDATIONS ===================== -->
+  <section id="use">
+    <span class="sec-no">FOUNDATIONS</span>
+    <h2 class="sec">How to use this manual</h2>
+    <hr class="rule">
+    <p class="intro">This single manual replaces our earlier separate drafts. It moves from belief to practice in four movements: <strong>Foundations</strong> (why we do this and how we think), <strong>Commitments</strong> (what we stand for), <strong>Procedures</strong> (how we do it, step by step), and a <strong>Casebook</strong> (how we reason through hard situations).</p>
+    <p>To avoid repeating ourselves, each idea lives in one place: the principles are stated once here; the commitments are brief and point to the procedure that carries them out; the procedures are the single home for operational detail; and the casebook applies all of it rather than restating it.</p>
+    <div class="box note">
+      <h4>Scope &amp; care</h4>
+      <p>This manual discusses abuse, including of children and sexual violence, in general terms and without graphic detail. It supports policy and training; it is not legal or clinical advice. Adapt every provision to current Alberta law, our insurer&rsquo;s requirements, and our privacy obligations, and have counsel review before adoption. Where there is immediate risk to a person, follow emergency and mandatory-reporting duties first.</p>
+    </div>
+  </section>
+
+  <section id="foundation">
+    <span class="sec-no">FOUNDATIONS</span>
+    <h2 class="sec">Our foundation: <span class="arabic">ḥurma</span></h2>
+    <hr class="rule">
+    <p><em>Ḥurma</em> is the divinely granted inviolability of the human person &mdash; the protection of every body, dignity, and honour in our spaces from abuse, assault, and exploitation. Naming it as our foundation establishes that safety is not a compliance afterthought but a sacred trust (<em>amāna</em>), and reframes safeguarding away from suspicion and toward dignity. Two commitments sit above everything else:</p>
+    <ul class="clean">
+      <li><strong>First, do no harm.</strong> A clinical ethic and an Islamic one: avert harm before pursuing benefit. When a situation exceeds someone&rsquo;s competence, restraint and referral are the faithful response &mdash; not improvisation.</li>
+      <li><strong>The dignity of the vulnerable is our responsibility, not theirs to defend.</strong> The person who arrives carrying trauma, shame, or fear never bears the duty to manage the relationship&rsquo;s boundaries. That duty always sits with whoever holds authority.</li>
+    </ul>
+  </section>
+
+  <section id="roles">
+    <span class="sec-no">FOUNDATIONS</span>
+    <h2 class="sec">Our four roles &mdash; and why the role changes the duty</h2>
+    <hr class="rule">
+    <p>IslamicFamily holds four roles at once. The same incident can call for different action depending on which we are in &mdash; naming the role first keeps us from over-reaching where we have no authority, or under-reaching where we hold real responsibility.</p>
+    <div class="hats" style="margin:12px 0 14px; gap:9px;">
+      <span class="hat emp">Employer</span><span class="hat con">Convenor</span><span class="hat par">Partner</span><span class="hat wel">Welcomer / service provider</span>
+    </div>
+    <ul class="clean">
+      <li><strong>As an employer</strong>, we are responsible for our staff, volunteers, and leaders &mdash; which gives us the authority and the duty to set expectations, supervise, and investigate our own people.</li>
+      <li><strong>As a convenor</strong> of gatherings and programs, we control the conditions of our spaces &mdash; who facilitates, how supervision works, what behaviour is welcome, on-site, off-site, and online.</li>
+      <li><strong>As a partner</strong> to mosques and other organizations, we coordinate but do not control. In a shared space we can set our own conditions and support a person, but another organization&rsquo;s personnel and process belong to them.</li>
+      <li><strong>As a welcomer and service provider</strong>, our default is to include people who need us; our limit is safety, set through conditions rather than reflexive exclusion. We do not adjudicate disputes between the people we serve, but we keep our spaces safe.</li>
+    </ul>
+    <div class="box note">
+      <h4>Two directions of duty</h4>
+      <p>Safeguarding points outward <em>and</em> inward. Most of this manual is about protecting the people we serve. But our duty of care also runs to our own team: keeping the workplace free of harassment between colleagues, holding power within the office responsibly, and keeping people physically safe when they work late, alone, or off-site. That inward duty is set out in Commitment 11 and Procedure A6, and it builds on our <a class="inline" href="https://app.notion.com/p/2fcb46d4433c80e3ac25d8c74b0072c9">After-Hours &amp; Off-Site Work</a> policy rather than repeating it.</p>
+    </div>
+  </section>
+
+  <section id="harm">
+    <span class="sec-no">FOUNDATIONS</span>
+    <h2 class="sec">What we understand about harm</h2>
+    <hr class="rule">
+    <p>Nearly every failure to protect people traces back to a power imbalance the more powerful party did not recognize, name, and manage. Four understandings sit beneath everything that follows.</p>
+    <div class="cards">
+      <div class="pr"><span class="pn">UNDERSTANDING 1</span><h4>Authority distorts consent</h4><p>People do not relate to someone with authority as equals, even when everyone believes the relationship is voluntary. Saying &ldquo;no&rdquo; carries a cost the powerful party may never feel. &ldquo;They agreed&rdquo; does not settle the question where authority is present.</p></div>
+      <div class="pr"><span class="pn">UNDERSTANDING 2</span><h4>Harm is usually a pattern, not an event</h4><p>Abuse rarely begins with an obvious violation. It begins with grooming &mdash; small, defensible-looking boundary crossings (gifts, loans, secrecy, special access) that reveal a pattern only when connected. We watch for patterns, not just single incidents.</p></div>
+      <div class="pr"><span class="pn">UNDERSTANDING 3</span><h4>Trauma changes memory and behaviour</h4><p>People may delay disclosure for years, return to the person who hurt them, or recount events with gaps. These are effects of trauma, not signs of dishonesty. Staff who misread them harm the very people they exist to help.</p></div>
+      <div class="pr"><span class="pn">UNDERSTANDING 4</span><h4>Institutions look away</h4><p>The second harm often comes from the surrounding system &mdash; disbelief, shaming, pressure to stay silent to protect a reputation. Our reflex to protect our image is itself a risk this manual deliberately counteracts.</p></div>
+    </div>
+  </section>
+
+  <section id="principles">
+    <span class="sec-no">FOUNDATIONS</span>
+    <h2 class="sec">Eight guiding principles &mdash; how we act</h2>
+    <hr class="rule">
+    <p>How we think before we reach for a rule. Everything in Parts 1&ndash;3 is an application of these.</p>
+    <div class="cards">
+      <div class="pr"><span class="pn">PRINCIPLE 1</span><h4>Welcome is our default; safety is our limit</h4><p>We welcome people because they need us and often have nowhere else to turn. The limit is not who someone is or what they did, but a real, assessed risk to others&rsquo; safety.</p></div>
+      <div class="pr"><span class="pn">PRINCIPLE 2</span><h4>Distinguish discomfort from risk</h4><p>Others&rsquo; unease, disapproval, or knowledge of a past is not grounds to exclude. Observed behaviour or a substantiated, ongoing risk is. We act on risk, not reputation or rumour.</p></div>
+      <div class="pr"><span class="pn">PRINCIPLE 3</span><h4>Assess the person, not the label</h4><p>&ldquo;Accused,&rdquo; &ldquo;convicted,&rdquo; &ldquo;ex-offender&rdquo; are labels, not risk assessments. We look at this person, this role, this space, this history &mdash; individually. A past act is not a present danger.</p></div>
+      <div class="pr"><span class="pn">PRINCIPLE 4</span><h4>Some risks are categorical</h4><p>Most things are balanced case by case. Child safety is not. A person with a relevant history of harm to children is never placed with access to children. The two-adult rule is never waived.</p></div>
+      <div class="pr"><span class="pn">PRINCIPLE 5</span><h4>Hold belief and fairness together</h4><p>We believe and support the person who comes forward, and we give the person of concern a fair process. Believing one is not pre-judging the other; both flow from <em>ḥurma</em>.</p></div>
+      <div class="pr"><span class="pn">PRINCIPLE 6</span><h4>Conditions before exclusion</h4><p>We reach for the least-restrictive measure that keeps people safe &mdash; an agreement, a schedule, supervision, a role limit &mdash; before a ban. Exclusion is a last resort.</p></div>
+      <div class="pr"><span class="pn">PRINCIPLE 7</span><h4>Share on a need-to-know basis</h4><p>We neither broadcast a person&rsquo;s history or a complaint, nor withhold a safety-relevant fact from the few who must know it. Privacy and protection are balanced deliberately.</p></div>
+      <div class="pr"><span class="pn">PRINCIPLE 8</span><h4>Consistency through process; accessibility by design</h4><p>People get the same careful response wherever they meet us &mdash; gathering, home visit, online &mdash; through standard procedures made low-barrier, trauma-informed, and accessible.</p></div>
+    </div>
+    <div class="box note">
+      <h4>The reconciling idea</h4>
+      <p>Read together, these resolve the central tension of our work: <strong>we are restorative <em>and</em> protective.</strong> Welcome, reintegration, and healing are real commitments &mdash; made credible, not contradicted, by clear limits. A community that cannot protect the vulnerable cannot truly welcome anyone.</p>
+    </div>
+  </section>
+
+  <section id="sources-note">
+    <span class="sec-no">FOUNDATIONS</span>
+    <h2 class="sec">Where this comes from</h2>
+    <hr class="rule">
+    <p>This manual synthesizes <em>The Hurma Project Podcast</em> (Dr. Ingrid Mattson &amp; Mihad Fahmy) and anchors each procedure in bodies of practice tested in settings close to ours. We reference these to show alignment with mainstream practice, not to adopt any single external regime.</p>
+    <ul class="clean">
+      <li><strong>Professional social work ethics</strong> &mdash; NASW Code (sexual contact with current clients prohibited absolutely and extended to former clients, Standard 1.09; dual relationships, 1.06; privacy, 1.07; &ldquo;once a client, always a client&rdquo;), and the Canadian CASW Code and ACSW Standards of Practice that bind our registered social workers.</li>
+      <li><strong>Trauma-informed care</strong> &mdash; SAMHSA&rsquo;s four R&rsquo;s and six principles (safety; trustworthiness &amp; transparency; peer support; collaboration &amp; mutuality; empowerment, voice &amp; choice; cultural, historical &amp; gender issues), the foundation used by sexual-assault services including AASAS in Alberta.</li>
+      <li><strong>Faith-sector safeguarding</strong> &mdash; the Catholic <em>Charter for the Protection of Children and Young People</em> (Dallas Charter, 2002, rev. 2005/2011/2018) and VIRTUS; Praesidium accreditation standards for youth-serving organizations: safe-environment programs, screening, training, prompt response, removal pending investigation, an independent review board, victim assistance, annual audits.</li>
+      <li><strong>Canadian abuse-prevention practice</strong> &mdash; Plan to Protect&rsquo;s five moves (assess; write policy/procedure; screen &amp; train; manage documentation; audit), and the Imagine Canada Standards Program (governance, finance, fundraising, staff, volunteers) we are pursuing.</li>
+    </ul>
+    <p style="font-size:15px; color:var(--muted)">The episode-by-episode source map is in Appendix III; the full standards crosswalk in Appendix I.</p>
+  </section>
+
+  <!-- ===================== PART 1 · COMMITMENTS ===================== -->
+  <div class="partdiv"><span class="pn">PART ONE</span><h2>Our commitments</h2><p>What IslamicFamily stands for. Each commitment is carried out by the procedure noted beside it.</p></div>
+
+  <section id="commitments">
+    <div class="cards">
+      <div class="pr"><span class="pn">COMMITMENT 1</span><h4>Clear roles &amp; honest limits</h4><p>Every trust role has defined limits and escalation points; we know the edge of our competence and refer across it rather than improvising.<span class="ptr">→ Procedures A1, A4, A5</span></p></div>
+      <div class="pr"><span class="pn">COMMITMENT 2</span><h4>Boundaries are ours to keep</h4><p>The person in authority holds the boundary. No romantic or sexual conduct with anyone we serve, with a defined cooling-off period; dual relationships are disclosed and managed.<span class="ptr">→ Procedures A2, A3</span></p></div>
+      <div class="pr"><span class="pn">COMMITMENT 3</span><h4>Children are protected categorically</h4><p>Two-adult/line-of-sight at all times; screening and training for youth work; no role with child access for anyone with a relevant history of harm to children; no hush-ups.<span class="ptr">→ Procedures A1, A2; Principle 4</span></p></div>
+      <div class="pr"><span class="pn">COMMITMENT 4</span><h4>We respond well to disclosures</h4><p>Every staff member and volunteer can receive a disclosure safely &mdash; believe, attend to safety, be honest about confidentiality, route correctly, never re-harm.<span class="ptr">→ Procedure B1</span></p></div>
+      <div class="pr"><span class="pn">COMMITMENT 5</span><h4>We meet our legal duties</h4><p>The duty to report suspected child abuse is personal and non-delegable; we cooperate with authorities and act on credible knowledge, not only formal complaints.<span class="ptr">→ Procedures B2, B3</span></p></div>
+      <div class="pr"><span class="pn">COMMITMENT 6</span><h4>We supervise and consult</h4><p>Direct-service workers receive regular supervision and protected peer consultation; consulting is expected of strong practitioners, and we tend to staff wellbeing.<span class="ptr">→ Procedure A4</span></p></div>
+      <div class="pr"><span class="pn">COMMITMENT 7</span><h4>We investigate fairly &amp; never bury reports</h4><p>Allegations against our people get impartial, procedurally fair fact-finding; roles are separated; findings are not suppressed; the board owns oversight.<span class="ptr">→ Procedures C2, C3</span></p></div>
+      <div class="pr"><span class="pn">COMMITMENT 8</span><h4>Fairness for the accused, without impunity</h4><p>Respondents get notice and a real chance to respond; outcomes are proportionate and applied regardless of status; reputation never shields misconduct.<span class="ptr">→ Procedures C1, C3, D2</span></p></div>
+      <div class="pr"><span class="pn">COMMITMENT 9</span><h4>Inclusion, dignity &amp; access</h4><p>We consult the people affected, build for accessibility, and treat exclusion from our spaces as a real injury to dignity, not a default.<span class="ptr">→ Procedures A5, E2; Principle 8</span></p></div>
+      <div class="pr"><span class="pn">COMMITMENT 10</span><h4>We protect people, not reputations</h4><p>When safety and reputation conflict, we choose people; criticism of our own practice is loyalty to our mission; no one who raises a concern faces retaliation.<span class="ptr">→ Procedures B3, E2; Understanding 4</span></p></div>
+      <div class="pr"><span class="pn">COMMITMENT 11</span><h4>A safe, respectful workplace for our team</h4><p>No harassment, violence, or bullying between colleagues; power within the team is held responsibly; and we keep people physically safe when they work late, alone, or off-site &mdash; with a reporting route that works even when the concern is about someone senior.<span class="ptr">→ Procedure A6; After-Hours &amp; Off-Site Work policy</span></p></div>
+    </div>
+  </section>
+
+  <!-- ===================== PART 2 · PROCEDURES ===================== -->
+  <div class="partdiv"><span class="pn">PART TWO</span><h2>Our procedures</h2><p>Fifteen standard operating procedures across five phases. Each carries an &ldquo;Aligns with&rdquo; note to recognized practice.</p></div>
+
+  <!-- PHASE A -->
+  <div class="partdiv" id="prevent" style="background:#2e6b4d; margin-top:24px;"><span class="pn">PHASE A</span><h2>Prevent</h2><p>Make abuse hard to start and easy to spot.</p></div>
+
+  <div class="card">
+    <div class="card-head"><span class="id">SOP A1</span><span class="t">Screening, selection &amp; onboarding</span></div>
+    <div class="body">
+      <div class="metarow"><span class="tag"><b>Applies to</b>All staff, volunteers, students, contractors, board</span><span class="tag"><b>Trigger</b>Any new or renewing role with participant contact</span></div>
+      <ol class="steps">
+        <li><b>Define the position and its risk level</b> before recruiting &mdash; contact, access to vulnerable people, supervision, whether minors are involved. Risk sets screening depth.</li>
+        <li><b>Application, written role description &amp; signed code-of-conduct agreement.</b></li>
+        <li><b>At least two reference checks,</b> contacted directly, on suitability to work with vulnerable people.</li>
+        <li><b>Criminal-record and vulnerable-sector check</b> appropriate to the role; re-screen on a fixed cycle and on role change.</li>
+        <li><b>Interview for character and conduct,</b> not status alone; probe boundaries, judgment, and power dynamics.</li>
+        <li><b>Orientation before contact</b> (code, boundaries, two-adult rule, disclosure response, reporting duties) and a probationary period with closer oversight.</li>
+      </ol>
+      <div class="box xref"><h4>Aligns with</h4><ul class="clean"><li>Plan to Protect (screening, vulnerable-sector checks, documented onboarding); Dallas Charter/VIRTUS (screening + training before service); Imagine Canada (staff &amp; volunteer management).</li></ul></div>
+      <div class="box records"><h4>Records</h4><p>Application, signed acknowledgment, reference notes, record-check confirmation &amp; date, orientation log, re-screen schedule.</p></div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-head"><span class="id">SOP A2</span><span class="t">Boundaries &amp; the two-adult rule</span></div>
+    <div class="body">
+      <div class="metarow"><span class="tag"><b>Applies to</b>All program delivery — on-site, off-site, online</span></div>
+      <ol class="steps">
+        <li><b>Two-adult / line-of-sight rule.</b> No program places one adult alone and unobserved with a minor or vulnerable participant. One-to-one mentoring happens in open, visible, supervised settings or with a second screened adult.</li>
+        <li><b>Visibility by design</b> &mdash; rooms with windows/open doors; home visits and off-site sessions planned, observable, and logged.</li>
+        <li><b>Organizational communication channels</b> only; no private one-to-one messaging with minors.</li>
+        <li><b>Online sessions</b> follow the same logic &mdash; co-facilitated or recorded where appropriate; never a private one-to-one video with a minor on a personal account.</li>
+        <li><b>No physical discipline ever;</b> personal gifts, loans, and money transfers prohibited or logged and approved.</li>
+        <li><b>Transport or off-hours contact</b> requires prior approval and a logged reason.</li>
+      </ol>
+      <div class="box xref"><h4>Aligns with</h4><ul class="clean"><li>Plan to Protect &amp; church safe-environment programs (&ldquo;rule of two&rdquo;); Praesidium (supervision, limits on one-to-one access).</li></ul></div>
+      <div class="box flag"><h4>Escalate the pattern, not the instance</h4><ul class="clean"><li>Repeated bids for unobserved time, secrecy, special access, off-channel contact, gifts, or money &mdash; classic grooming vectors.</li></ul></div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-head"><span class="id">SOP A3</span><span class="t">Dual relationships &amp; conflicts of interest</span></div>
+    <div class="body">
+      <div class="metarow"><span class="tag"><b>Applies to</b>All trust roles</span></div>
+      <ol class="steps">
+        <li><b>Disclose</b> any second or anticipated relationship with a participant (family, friendship, business, romantic interest, shared role) to a supervisor promptly and in writing.</li>
+        <li><b>Assess &amp; decide</b> &mdash; proceed with safeguards, add oversight, or reassign the participant.</li>
+        <li><b>Romantic / sexual boundary.</b> No romantic or sexual conduct, comments, or marriage proposals toward anyone currently served, with a defined cooling-off period afterward. IslamicFamily adopts a specific standard (e.g., a minimum of one year, with some prior relationships a permanent bar) and writes it down rather than leaving it to discretion.</li>
+        <li><b>Name the hat</b> in unavoidable overlaps; never let casual remarks carry organizational or religious authority.</li>
+      </ol>
+      <div class="box xref"><h4>Aligns with</h4><ul class="clean"><li>NASW 1.06/1.09 &amp; CASW/ACSW (dual relationships; absolute bar on sexual contact with current clients; worker always holds the boundary); APA 3.05; chaplaincy cooling-off norms (one year to perpetuity).</li></ul></div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-head"><span class="id">SOP A4</span><span class="t">Supervision &amp; peer consultation</span></div>
+    <div class="body">
+      <div class="metarow"><span class="tag"><b>Applies to</b>All direct-service roles</span></div>
+      <ol class="steps">
+        <li><b>Scheduled, structured supervision</b> with someone competent to oversee the work &mdash; cases, decisions, boundaries, and the worker&rsquo;s own responses.</li>
+        <li><b>Protected case consultation;</b> consulting is expected of strong practitioners, never treated as weakness.</li>
+        <li><b>Self-monitoring</b> &mdash; workers name transference and counter-transference and raise it.</li>
+        <li><b>Critical-incident debriefs &amp; staff wellbeing</b> &mdash; people cannot hold space for others while drowning in their own pain.</li>
+      </ol>
+      <div class="box xref"><h4>Aligns with</h4><ul class="clean"><li>Social-work &amp; clinical pastoral education supervision norms; SAMHSA TIC (peer support, collaboration, staff wellbeing).</li></ul></div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-head"><span class="id">SOP A5</span><span class="t">Training, certification &amp; the referral directory</span></div>
+    <div class="body">
+      <div class="metarow"><span class="tag"><b>Applies to</b>All staff, volunteers, board — tailored by role</span></div>
+      <ol class="steps">
+        <li><b>Core curriculum</b> for every trust role: abuse &amp; grooming; boundaries &amp; dual relationships; trauma literacy; the two-adult rule; receiving a disclosure; the duty to report.</li>
+        <li><b>Role-specific modules</b> &mdash; youth safeguarding, frontline disclosure response, investigation skills for leads, governance oversight for the board.</li>
+        <li><b>Certify before contact, refresh annually,</b> logged and tracked.</li>
+        <li><b>Maintain a current referral directory</b> (mental health, legal aid, child protection, family violence, sexual-assault services, crisis lines); support and referral happen together, not as an abrupt handoff.</li>
+      </ol>
+      <div class="box xref"><h4>Aligns with</h4><ul class="clean"><li>VIRTUS / Plan to Protect (standardized, certified, refreshed training); AASAS First Responder to Sexual Assault and Abuse training.</li></ul></div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-head"><span class="id">SOP A6</span><span class="t">Inter-office conduct &amp; workplace safety</span></div>
+    <div class="body">
+      <div class="metarow"><span class="tag"><b>Applies to</b>All staff, volunteers, contractors, interns, board — and the ED</span><span class="tag"><b>Trigger</b>Always on; and any concern about conduct or safety between colleagues</span></div>
+      <p style="margin:0 0 12px; font-size:16px; color:#37352f;">This procedure turns the duty inward. It complements &mdash; and does not replace &mdash; the detailed <a class="inline" href="https://app.notion.com/p/2fcb46d4433c80e3ac25d8c74b0072c9">After-Hours &amp; Off-Site Work</a> policy, which governs solo work, two-person presence, visibility, check-ins, and transportation.</p>
+
+      <h4 class="mini">Respectful conduct between colleagues</h4>
+      <ol class="steps">
+        <li><b>No harassment, violence, or bullying</b> between colleagues &mdash; any single or repeated unwelcome conduct, comment, or action that a reasonable person would know causes offence or humiliation, or harms a worker&rsquo;s health and safety. Sexual harassment and discrimination on a protected ground are included.</li>
+        <li><b>Power within the team is held responsibly.</b> Managers, supervisors, and the ED carry authority over colleagues; as with clients, the more senior person holds the boundary. Reasonable management of work (direction, feedback, performance) is not harassment.</li>
+        <li><b>Relationships across a reporting line are disclosed and managed</b> &mdash; a romantic or close personal relationship between a manager and someone they supervise is disclosed to HR/the ED, and the reporting line is changed to remove the conflict (mirrors SOP A3).</li>
+        <li><b>Coworker boundaries</b> &mdash; the same care with gifts, money, secrecy, and off-channel contact that applies with participants applies to power-imbalanced relationships among staff.</li>
+      </ol>
+
+      <h4 class="mini">Practical ways to keep people physically safe</h4>
+      <ol class="steps">
+        <li><b>After-hours &amp; lone work follow the After-Hours &amp; Off-Site Work policy</b> &mdash; avoid being on-site or off-site alone with only one other person; the one / two / three-plus visibility rules; doors and lighting; departure times.</li>
+        <li><b>Check in and check out.</b> Anyone working late, alone, or off-site checks in with their direct manager and the Office Manager (or ED if unavailable) with purpose and expected window, and checks out on leaving &mdash; an effective means of communication for anyone working alone.</li>
+        <li><b>A reachable remote contact</b> is designated and aware whenever a single staff member is working off-site.</li>
+        <li><b>Transportation protocol</b> &mdash; do not transport clients/participants (use the taxi line); follow the gender and approval rules for volunteers and carpooling; no one is required to travel with others.</li>
+        <li><b>&ldquo;Would I be comfortable explaining this publicly?&rdquo;</b> If not, change the situation &mdash; the quick test from the After-Hours policy.</li>
+      </ol>
+
+      <h4 class="mini">Raising a concern &mdash; including about someone senior</h4>
+      <ol class="steps">
+        <li><b>Multiple routes,</b> at least one of which bypasses the person&rsquo;s manager. A concern about a manager goes to HR or the ED; <strong>a concern about the ED goes to the board chair or an independent committee member.</strong> Power at the top is never a dead end.</li>
+        <li><b>Confidentiality, investigation &amp; no retaliation</b> &mdash; concerns are handled confidentially, investigated through the same fair process as any other matter (SOP C2&ndash;C3), and protected from reprisal.</li>
+      </ol>
+
+      <div class="box alert">
+        <h4>Alberta legal duty (employer)</h4>
+        <p>Under Alberta&rsquo;s OHS Act and OHS Code Part 27, IslamicFamily must maintain a single, written <strong>violence and harassment prevention plan</strong> &mdash; with measures to control the hazard, procedures to inform workers, confidentiality safeguards, investigation procedures, and worker training &mdash; reviewed at least every three years (and after a triggering incident or workplace change). Harassment tied to a protected ground also engages the <em>Alberta Human Rights Act</em>. This manual&rsquo;s inter-office provisions should be read as part of that plan; confirm wording with counsel.</p>
+      </div>
+      <div class="box xref"><h4>Aligns with</h4><ul class="clean"><li>Alberta OHS Act &amp; Code Part 27 (consolidated violence &amp; harassment prevention plan; working-alone communication); <em>Alberta Human Rights Act</em> (protected-ground harassment); IslamicFamily After-Hours &amp; Off-Site Work policy; Imagine Canada (staff management).</li></ul></div>
+      <div class="box records"><h4>Records</h4><p>Violence &amp; harassment prevention plan; reporting-line/relationship disclosures; after-hours check-in/out logs; workplace-harassment/violence complaint &amp; investigation records; required incident report (kept available to OHS on demand).</p></div>
+    </div>
+  </div>
+
+  <!-- PHASE B -->
+  <div class="partdiv" id="respond" style="background:#2e6b4d;"><span class="pn">PHASE B</span><h2>Recognize &amp; respond</h2><p>Respond in ways that protect the person and meet our duties.</p></div>
+
+  <div class="card">
+    <div class="card-head"><span class="id">SOP B1</span><span class="t">Receiving a disclosure</span></div>
+    <div class="body">
+      <div class="metarow"><span class="tag"><b>Applies to</b>Everyone — all are potential first responders</span><span class="tag"><b>Trigger</b>Anyone discloses abuse, assault, or a boundary violation</span></div>
+      <ol class="steps">
+        <li><b>Stay calm; receive without judgment.</b> No shock, disbelief, anger, or blame; let them speak in their own words without interruption.</li>
+        <li><b>Believe and affirm</b> that coming forward was right; don&rsquo;t test the story or ask why they waited &mdash; delayed, non-linear disclosure is normal.</li>
+        <li><b>Address immediate safety first;</b> if anyone is in danger, call 911.</li>
+        <li><b>Be honest about confidentiality before they continue</b> &mdash; including any duty to report. Never promise secrecy you cannot keep.</li>
+        <li><b>Don&rsquo;t investigate;</b> support and route. You don&rsquo;t need all the details.</li>
+        <li><b>Offer choice and connection;</b> within legal limits the person keeps control of next steps.</li>
+        <li><b>Route &amp; record</b> factually in their own words; store securely (SOP E1).</li>
+      </ol>
+      <div class="box dont"><h4>Never say</h4><ul class="clean"><li>&ldquo;Are you sure?&rdquo; / &ldquo;He&rsquo;s so respected.&rdquo; · &ldquo;Why now?&rdquo; · &ldquo;Let&rsquo;s not cause discord / give seventy excuses.&rdquo; · Anything that shifts responsibility onto the person harmed.</li></ul></div>
+      <div class="box xref"><h4>Aligns with</h4><ul class="clean"><li>SAMHSA TIC (safety; trustworthiness; empowerment, voice &amp; choice); AASAS / sexual-assault-centre survivor-centred response; Government of Alberta disclosure guidance.</li></ul></div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-head"><span class="id">SOP B2</span><span class="t">Mandatory reporting &amp; duty to report</span></div>
+    <div class="body">
+      <div class="metarow"><span class="tag"><b>Applies to</b>Everyone — the duty is personal &amp; cannot be delegated</span><span class="tag"><b>Trigger</b>Reasonable grounds to believe a child is being or may be harmed</span></div>
+      <div class="box alert"><h4>Alberta legal duty</h4><p>Under Alberta&rsquo;s <em>Child, Youth and Family Enhancement Act</em>, <strong>any person</strong> with reasonable or probable grounds to believe a child is being &mdash; or is at risk of being &mdash; abused or neglected must report it promptly. You <strong>cannot rely on someone else, including a supervisor,</strong> to report for you, and failing to report carries penalties. You do not need proof; assessing the facts is the investigator&rsquo;s job. Immediate danger &rarr; call 911 first.</p></div>
+      <ol class="steps">
+        <li><b>Immediate danger &rarr; 911.</b></li>
+        <li><b>Report</b> to the provincial Child Intervention intake line (or local Children&rsquo;s Services / RCMP) without delay &mdash; yourself, if you hold the grounds.</li>
+        <li><b>Tell the safeguarding lead in parallel;</b> internal notice supports our response but never replaces or delays your personal legal report.</li>
+        <li><b>For adults,</b> respect their choice about police where the law allows; offer sexual-assault services and Alberta&rsquo;s ONE LiNE; follow legal advice where a crime or ongoing risk to others is involved.</li>
+        <li><b>Record</b> the grounds, what/when, time, and report reference &mdash; factually.</li>
+      </ol>
+      <div class="box xref"><h4>Aligns with</h4><ul class="clean"><li>Alberta <em>Child, Youth and Family Enhancement Act</em> (universal, non-delegable duty); Dallas Charter (cooperate with civil authorities); Plan to Protect (report &amp; respond).</li></ul></div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-head"><span class="id">SOP B3</span><span class="t">Complaint intake &amp; triage</span></div>
+    <div class="body">
+      <div class="metarow"><span class="tag"><b>Applies to</b>Concerns about any staff, volunteer, leader, or board member</span></div>
+      <ol class="steps">
+        <li><b>Multiple channels</b> &mdash; at least one bypasses a person&rsquo;s direct supervisor and reaches the safeguarding lead or an independent committee member. We accept concerns in person/virtually (two staff), in writing (transcribed if needed), and via the helpline (<strong>780&nbsp;900&nbsp;2777</strong>) and <a class="inline" href="https://ifssa-feedback.paperform.co">feedback link</a>.</li>
+        <li><b>Knowledge triggers action</b> &mdash; a formal complaint is not required.</li>
+        <li><b>Triage within a set timeframe</b> &mdash; log, screen for any mandatory report and immediate-safety need, classify (conduct/boundary vs. possible criminal matter).</li>
+        <li><b>Anti-retaliation, in writing;</b> acknowledge receipt and explain next steps and supports.</li>
+      </ol>
+      <div class="box xref"><h4>Aligns with</h4><ul class="clean"><li>Workplace-investigation practice (action triggered by knowledge); Dallas Charter review-board model (independent oversight of allegations).</li></ul></div>
+    </div>
+  </div>
+
+  <!-- PHASE C -->
+  <div class="partdiv" id="investigate" style="background:#2e6b4d;"><span class="pn">PHASE C</span><h2>Investigate &amp; decide</h2><p>Find facts fairly, keep everyone safe meanwhile, decide proportionately.</p></div>
+
+  <div class="card">
+    <div class="card-head"><span class="id">SOP C1</span><span class="t">Interim safety measures</span></div>
+    <div class="body">
+      <div class="metarow"><span class="tag"><b>Applies to</b>Any open allegation involving risk</span></div>
+      <ol class="steps">
+        <li><b>Assess risk immediately</b> &mdash; to the person who came forward, to others, to the integrity of the process.</li>
+        <li><b>Apply proportionate, precautionary measures</b> (paused contact, reassignment, administrative leave) framed explicitly as non-disciplinary, not a finding of guilt.</li>
+        <li><b>Protect the person who disclosed</b> from contact or pressure; offer adjustments at their choice.</li>
+        <li><b>Preserve evidence</b> and instruct against destruction; document the rationale and review as facts develop.</li>
+      </ol>
+      <div class="box xref"><h4>Aligns with</h4><ul class="clean"><li>Dallas Charter (removal from duty pending investigation); workplace-investigation practice (interim measures, evidence preservation).</li></ul></div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-head"><span class="id">SOP C2</span><span class="t">Conducting or commissioning an investigation</span></div>
+    <div class="body">
+      <div class="metarow"><span class="tag"><b>Applies to</b>Substantiable allegations against anyone acting for IslamicFamily</span></div>
+      <ol class="steps">
+        <li><b>Choose a trained, impartial investigator</b> &mdash; external for serious or sensitive matters; independent of the parties and of day-to-day management.</li>
+        <li><b>Define scope &amp; process in writing,</b> and confirm in advance how the report will be handled &mdash; it will not be buried.</li>
+        <li><b>Meet the complainant</b> for the specific particulars (who, what, when, where).</li>
+        <li><b>Give the respondent the allegations in writing</b> and a genuine opportunity to respond &mdash; procedural fairness, not a courtesy.</li>
+        <li><b>Interview witnesses individually;</b> gather documentary evidence. A support person may accompany parties.</li>
+        <li><b>Make findings on the balance of probabilities.</b> This is fact-finding &mdash; not a trial (no cross-examination) and not a mediation.</li>
+        <li><b>Deliver the report</b> per the pre-agreed handling, with appropriate sharing to the parties.</li>
+      </ol>
+      <div class="box dont"><h4>Guard against both failures equally</h4><ul class="clean"><li>Burying a credible report to protect a respondent or our image; and railroading a respondent without notice or a real chance to respond.</li></ul></div>
+      <div class="box xref"><h4>Aligns with</h4><ul class="clean"><li>Workplace-investigation practice (Fahmy &amp; Bhabha, Hurma Project) &mdash; particulars, written allegations, individual interviews, findings on fairness principles, reports not buried, board liability; Dallas Charter (prompt response).</li></ul></div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-head"><span class="id">SOP C3</span><span class="t">Findings, decisions &amp; proportionate response</span></div>
+    <div class="body">
+      <div class="metarow"><span class="tag"><b>Applies to</b>Completed investigations</span></div>
+      <ol class="steps">
+        <li><b>Separate the roles</b> &mdash; supporting the complainant, investigating, and deciding are not done by the same people.</li>
+        <li><b>Match response to conduct</b> &mdash; predatory abuse (removal + reporting) vs. boundary errors from inadequate training (education, supervision, final warning) &mdash; never minimizing genuine harm.</li>
+        <li><b>Honour legal duties</b> &mdash; where findings indicate a crime or ongoing risk, ensure authorities are notified regardless of the internal outcome.</li>
+        <li><b>Communicate with care</b> &mdash; inform parties appropriately and lawfully; factual, non-inflammatory; protect privacy.</li>
+        <li><b>Capture learning</b> for review &amp; audit (SOP E2).</li>
+      </ol>
+      <div class="box xref"><h4>Aligns with</h4><ul class="clean"><li>Dallas Charter (discipline, accountability, prevention; zero tolerance for substantiated abuse); employment &amp; human-rights proportionality.</li></ul></div>
+    </div>
+  </div>
+
+  <!-- PHASE D -->
+  <div class="partdiv" id="support" style="background:#2e6b4d;"><span class="pn">PHASE D</span><h2>Support &amp; heal</h2><p>Center the dignity of the person harmed; treat respondents fairly.</p></div>
+
+  <div class="card">
+    <div class="card-head"><span class="id">SOP D1</span><span class="t">Supporting the person harmed</span></div>
+    <div class="body">
+      <div class="metarow"><span class="tag"><b>Applies to</b>Anyone who discloses harm</span></div>
+      <ol class="steps">
+        <li><b>Offer a consistent support person</b> independent of the investigation.</li>
+        <li><b>Co-create a support plan</b> &mdash; safety, practical needs, specialist referrals, program accommodations &mdash; led by the person&rsquo;s own choices.</li>
+        <li><b>Keep them informed</b> without making them carry the process.</li>
+        <li><b>Counter shame and isolation with acceptance</b> &mdash; the conditions under which healing, and even post-traumatic growth, become possible.</li>
+        <li><b>Follow up</b> after the matter closes.</li>
+      </ol>
+      <div class="box xref"><h4>Aligns with</h4><ul class="clean"><li>SAMHSA TIC (empowerment; resisting re-traumatization); AASAS / victim-assistance practice; Dallas Charter (victim assistance, healing).</li></ul></div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-head"><span class="id">SOP D2</span><span class="t">Working fairly with respondents</span></div>
+    <div class="body">
+      <div class="metarow"><span class="tag"><b>Applies to</b>Staff/volunteer respondents; participants who are themselves accused</span></div>
+      <ol class="steps">
+        <li><b>Notice and voice</b> &mdash; the allegations in writing and a real chance to respond before findings.</li>
+        <li><b>Presumption pending findings</b> &mdash; interim measures are precautionary, not punitive; dignity throughout.</li>
+        <li><b>Refuse the misuse of fairness</b> &mdash; reputation, piety, usefulness, or &ldquo;seventy excuses&rdquo; never shut down legitimate scrutiny.</li>
+        <li><b>Proportionate, consistent outcomes</b> regardless of seniority or status.</li>
+        <li><b>Support where appropriate</b> &mdash; for participants we serve who are accused of crimes, continue rights-respecting support while honouring safety and reporting duties.</li>
+      </ol>
+      <div class="box xref"><h4>Aligns with</h4><ul class="clean"><li>Procedural fairness (human-rights &amp; workplace practice); the Hurma Project (belief is not pre-judgment; most who err are fallible, not predators &mdash; so fair process matters).</li></ul></div>
+    </div>
+  </div>
+
+  <!-- PHASE E -->
+  <div class="partdiv" id="govern" style="background:#2e6b4d;"><span class="pn">PHASE E</span><h2>Govern &amp; improve</h2><p>Keep records right, protect privacy, get better every year.</p></div>
+
+  <div class="card">
+    <div class="card-head"><span class="id">SOP E1</span><span class="t">Records, documentation &amp; privacy</span></div>
+    <div class="body">
+      <div class="metarow"><span class="tag"><b>Applies to</b>All safeguarding records</span></div>
+      <ol class="steps">
+        <li><b>Document factually and promptly</b> &mdash; in the person&rsquo;s own words where possible, dated, without speculation.</li>
+        <li><b>Restrict access</b> on a need-to-know basis; store securely (encrypted, access-controlled).</li>
+        <li><b>Apply privacy law</b> &mdash; in Alberta, private-sector privacy law as applicable, and health-information law where it applies; collect only what is necessary; honour the confidentiality limits disclosed at intake.</li>
+        <li><b>Set retention &amp; disposal schedules;</b> never alter or destroy records tied to an open or foreseeable matter.</li>
+      </ol>
+      <div class="box xref"><h4>Aligns with</h4><ul class="clean"><li>NASW 1.07 / social-work documentation standards; Plan to Protect (documentation management); Alberta privacy law.</li></ul></div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-head"><span class="id">SOP E2</span><span class="t">Review, audit &amp; continuous improvement</span></div>
+    <div class="body">
+      <div class="metarow"><span class="tag"><b>Applies to</b>Board, safeguarding lead, ethics/safeguarding committee</span></div>
+      <ol class="steps">
+        <li><b>Annual policy &amp; procedure review,</b> with input from staff and the people served &mdash; consult the affected, especially groups whose experience leaders may not see.</li>
+        <li><b>Audit compliance</b> &mdash; screening currency, training completion, two-adult-rule adherence, complaint handling, record security &mdash; via gap analysis.</li>
+        <li><b>Review every incident</b> for systemic lessons; feed them back into prevention.</li>
+        <li><b>Report to the board annually</b> on safeguarding status and incidents (de-identified) &mdash; a governance responsibility, not delegated away.</li>
+      </ol>
+      <div class="box xref"><h4>Aligns with</h4><ul class="clean"><li>Dallas Charter (annual audits, review board); Plan to Protect (audits, gap analysis); Imagine Canada Standards; integrates with our Quality Improvement Policy.</li></ul></div>
+    </div>
+  </div>
+
+  <!-- ===================== PART 3 · CASEBOOK ===================== -->
+  <div class="partdiv"><span class="pn">PART THREE</span><h2>Casebook</h2><p>The principles and procedures applied to situations we actually face. Each scenario points back rather than restating.</p></div>
+
+  <!-- S1 -->
+  <div class="card" id="s1">
+    <div class="card-head"><span class="id">SCENARIO 1</span><span class="t">Welcoming someone accused &mdash; or convicted &mdash; of a crime</span></div>
+    <div class="body">
+      <div class="hats"><span class="hat wel">Welcomer</span><span class="hat con">Convenor</span></div>
+      <p class="situation">A person charged with, or convicted of, an offence wants to take part in our programs. Some staff or participants know and are uncomfortable &mdash; or afraid. How do we honour welcome, reintegration, and healing while keeping our spaces safe?</p>
+      <div class="box think">
+        <h4>Separate three questions</h4>
+        <ul class="clean">
+          <li><strong>Charged vs. convicted.</strong> Someone merely accused is presumed innocent; we don&rsquo;t pre-punish on a charge or rumour, though we may take precautionary safety steps where there is real risk.</li>
+          <li><strong>Discomfort vs. risk (Principles 1&ndash;2).</strong> That others know or disapprove is not grounds to exclude; an assessed, ongoing risk to specific people is.</li>
+          <li><strong>What role/setting?</strong> Greeting adults at a meal differs from mentoring youth. <strong>Where the history involves harm to children, the answer is categorical (Principle 4): no access to children, ever.</strong></li>
+        </ul>
+      </div>
+      <h4 class="mini">What we do</h4>
+      <ol class="steps">
+        <li><b>Default to welcome (Principle 1)</b> for general participation, absent a real safety reason.</li>
+        <li><b>Make an individualized risk assessment (Principle 3)</b> with the safeguarding lead &mdash; nature/recency of conduct, any orders in force, who shares the space, the role sought.</li>
+        <li><b>Manage with conditions before exclusion (Principle 6)</b> &mdash; participation agreement, supervised attendance, role limits, non-overlapping scheduling.</li>
+        <li><b>Honour any court order;</b> align with the Handling Harassment Claims approach if another participant is the protected person.</li>
+        <li><b>Address discomfort honestly and privately</b> without disclosing the person&rsquo;s history beyond need-to-know (Principle 7).</li>
+        <li><b>Offer support to all sides</b> &mdash; integration and healing for the person returning; reassurance and safety planning for anyone who feels unsafe.</li>
+      </ol>
+      <div class="box dont"><h4>What we don&rsquo;t do</h4><ul class="clean"><li>Exclude solely because of discomfort or unproven rumour; pre-punish a charge as if a conviction; ever place someone with a relevant history of harming children near children; broadcast a record; or take on adjudicating guilt.</li></ul></div>
+      <div class="box connect"><h4>Connects to</h4><ul class="clean"><li>Commitments 3, 8, 9 · Procedures C1, D2, A2 · Companion policies: Handling Harassment Claims; Denying Service/Removal From Programming.</li></ul></div>
+    </div>
+  </div>
+
+  <!-- S2 -->
+  <div class="card" id="s2">
+    <div class="card-head"><span class="id">SCENARIO 2</span><span class="t">Consistent, accessible procedures for gatherings &amp; outreach</span></div>
+    <div class="body">
+      <div class="hats"><span class="hat con">Convenor</span><span class="hat wel">Welcomer</span><span class="hat par">Partner</span></div>
+      <p class="situation">We run gatherings, programs, outreach, and home-based support across many sites &mdash; our spaces, partner mosques, schools, homes, online. How do people get the same safe, welcoming experience everywhere, without it feeling like a checkpoint?</p>
+      <h4 class="mini">What we do &mdash; one backbone, every setting (Principle 8)</h4>
+      <ol class="steps">
+        <li><b>Plan safety before the event</b> &mdash; a short standard check: facilitators screened (A1), the two-adult arrangement, accessibility, the named event safety lead, and how to raise a concern.</li>
+        <li><b>Name an event safety lead</b> responsible for the space and the first point of contact.</li>
+        <li><b>Post conduct expectations and how to get help</b> in plain language &mdash; including the helpline (<strong>780&nbsp;900&nbsp;2777</strong>) and <a class="inline" href="https://ifssa-feedback.paperform.co">feedback link</a>.</li>
+        <li><b>Build for access</b> &mdash; physical accessibility, interpretation/plain language, gender-considerate arrangements, childcare where possible, low/no cost, a welcoming tone.</li>
+        <li><b>Same rules off-site and online</b> (SOP A2) &mdash; home visits planned and observable; one-to-one with minors never unobserved.</li>
+        <li><b>Coordinate in partner spaces</b> &mdash; agree who holds the safety lead, whose rules apply, and how a concern about the host&rsquo;s personnel is handled (Scenario 4).</li>
+        <li><b>If something happens,</b> the safety lead follows SOP B1, screens for a mandatory report (B2), takes any immediate step, and records it.</li>
+        <li><b>Handle photography and consent deliberately</b> &mdash; some people we serve have real safety reasons not to be photographed; ask, offer opt-outs, default to caution.</li>
+      </ol>
+      <div class="box note"><h4>Make it a one-page checklist</h4><p>Turn this backbone into a single pre-event safety checklist any facilitator completes &mdash; the same form for a 200-person gathering, a youth night, or a home visit.</p></div>
+      <div class="box connect"><h4>Connects to</h4><ul class="clean"><li>Commitments 3, 6, 9 · Procedures A1, A2, A5, B1&ndash;B2, E1.</li></ul></div>
+    </div>
+  </div>
+
+  <!-- S3 -->
+  <div class="card" id="s3">
+    <div class="card-head"><span class="id">SCENARIO 3</span><span class="t">Hiring a candidate with a criminal record or a flagged check</span></div>
+    <div class="body">
+      <div class="hats"><span class="hat emp">Employer</span></div>
+      <p class="situation">A strong candidate discloses a record, or a vulnerable-sector check comes back flagged. We believe in second chances &mdash; and we are responsible for the safety of those we serve. How do we decide?</p>
+      <div class="box think">
+        <h4>The test is fit between the record and the role</h4>
+        <ul class="clean">
+          <li><strong>Relevance</strong> &mdash; does the conduct bear on this role and the people it serves? (A relevant offence against children rules out any role with child access &mdash; Principle 4.)</li>
+          <li><strong>Recency, pattern, circumstances, rehabilitation.</strong></li>
+          <li><strong>Mitigation through conditions (Principle 6)</strong> &mdash; can supervision or role limits manage the risk short of exclusion?</li>
+        </ul>
+        <p style="margin-top:8px">In Alberta, a criminal record is generally <em>not</em> a protected ground under the <em>Alberta Human Rights Act</em>, so we have latitude to consider it &mdash; but the right tool is individualized, role-based assessment, not a blanket bar (which can screen out good people and have an unfair impact on protected groups). The federal Act protects pardoned / record-suspended convictions.</p>
+      </div>
+      <h4 class="mini">What we do</h4>
+      <ol class="steps">
+        <li><b>Match screening to role risk (A1)</b> &mdash; vulnerable-sector checks for child/vulnerable-adult access.</li>
+        <li><b>Assess individually,</b> documenting relevance, recency, mitigation, and reasoning.</li>
+        <li><b>Use conditions where safe</b> rather than a blanket no; apply the categorical child rule absolutely.</li>
+        <li><b>Handle the information privately (Principle 7)</b> and confirm approach with counsel.</li>
+      </ol>
+      <div class="box dont"><h4>What we don&rsquo;t do</h4><ul class="clean"><li>Apply a blanket &ldquo;no record ever&rdquo; rule; ignore a safety-relevant record out of generosity; or treat a pardoned/record-suspended conviction as if it still exists where the law protects it.</li></ul></div>
+      <div class="box connect"><h4>Connects to</h4><ul class="clean"><li>Commitments 1, 3 · Procedures A1, E1 · Confirm with counsel: <em>Alberta Human Rights Act</em> vs. federal protections.</li></ul></div>
+    </div>
+  </div>
+
+  <!-- S4 -->
+  <div class="card" id="s4">
+    <div class="card-head"><span class="id">SCENARIO 4</span><span class="t">A concern about someone at a partner mosque or organization</span></div>
+    <div class="body">
+      <div class="hats"><span class="hat par">Partner</span><span class="hat wel">Welcomer</span></div>
+      <p class="situation">During a program we co-host at a partner mosque, a participant says that an imam, volunteer, or staff member <em>of the partner</em> &mdash; not of IslamicFamily &mdash; made them unsafe. The person of concern is not ours. What can we do?</p>
+      <h4 class="mini">What we do</h4>
+      <ol class="steps">
+        <li><b>Respond to the person first (B1)</b> &mdash; receive, believe, support, be honest about confidentiality.</li>
+        <li><b>Meet legal duties ourselves (B2)</b> &mdash; if a child is involved, the mandatory-report duty applies no matter whose personnel is implicated; we don&rsquo;t defer it.</li>
+        <li><b>Protect our shared space</b> &mdash; adjust arrangements, add supervision, or pause the activity.</li>
+        <li><b>Refer to the partner&rsquo;s own process</b> for their personnel and support a proper response &mdash; the outcome is theirs to own.</li>
+        <li><b>Reassess the partnership</b> if a partner won&rsquo;t respond responsibly; safeguarding alignment is a condition of partnering.</li>
+      </ol>
+      <div class="box dont"><h4>What we don&rsquo;t do</h4><ul class="clean"><li>Investigate or discipline another organization&rsquo;s staff as if they were ours; treat &ldquo;not our employee&rdquo; as &ldquo;not our problem&rdquo;; or stay silent to protect a partnership.</li></ul></div>
+      <div class="box connect"><h4>Connects to</h4><ul class="clean"><li>Commitments 4, 5, 10 · Procedures B1, B2, C1.</li></ul></div>
+    </div>
+  </div>
+
+  <!-- S5 -->
+  <div class="card" id="s5">
+    <div class="card-head"><span class="id">SCENARIO 5</span><span class="t">A staff member and a participant develop feelings</span></div>
+    <div class="body">
+      <div class="hats"><span class="hat emp">Employer</span><span class="hat wel">Welcomer</span></div>
+      <p class="situation">A case worker and a participant they support have grown close, and a mutual romantic interest has developed. Both are adults; both say it is genuine. In a small community this is not rare. Is it a problem?</p>
+      <p>The issue is not the sincerity of anyone&rsquo;s feelings; it is the power difference. A participant depending on a worker&rsquo;s help cannot relate to them as an equal &mdash; so the boundary is the worker&rsquo;s responsibility, and &ldquo;they consented&rdquo; does not resolve it where authority is present.</p>
+      <h4 class="mini">What we do</h4>
+      <ol class="steps">
+        <li><b>The worker discloses</b> to a supervisor promptly (A3).</li>
+        <li><b>End the helping relationship cleanly</b> &mdash; reassign the participant so the authority dynamic is removed.</li>
+        <li><b>Apply the adopted cooling-off standard</b> before any romantic relationship is appropriate; write the decision down.</li>
+        <li><b>Support both people;</b> the participant&rsquo;s care continues uninterrupted.</li>
+      </ol>
+      <div class="box dont"><h4>What we don&rsquo;t do</h4><ul class="clean"><li>Treat &ldquo;both adults, both consented&rdquo; as the end of it; let the same worker keep supporting the participant while pursuing a relationship; or shame either person.</li></ul></div>
+      <div class="box connect"><h4>Connects to</h4><ul class="clean"><li>Commitment 2 · Procedure A3.</li></ul></div>
+    </div>
+  </div>
+
+  <!-- S6 -->
+  <div class="card" id="s6">
+    <div class="card-head"><span class="id">SCENARIO 6</span><span class="t">A participant discloses ongoing harm during a program</span></div>
+    <div class="body">
+      <div class="hats"><span class="hat wel">Welcomer</span></div>
+      <p class="situation">Mid-program, a participant quietly tells a facilitator they are being abused at home &mdash; or that someone is exploiting them. The facilitator is not a clinician or a lawyer. What now?</p>
+      <h4 class="mini">What we do</h4>
+      <ol class="steps">
+        <li><b>Receive without judgment (B1)</b> &mdash; calm, believe, own words, address immediate safety.</li>
+        <li><b>Be honest about confidentiality before they continue</b> &mdash; including any duty to report.</li>
+        <li><b>For a child:</b> follow the mandatory-report duty (B2) &mdash; personal, non-delegable.</li>
+        <li><b>For an adult:</b> respect their choices where the law allows; offer specialist support and stay alongside.</li>
+        <li><b>Don&rsquo;t improvise expertise</b> &mdash; refer to clinical/legal/specialist services (Commitment 1).</li>
+        <li><b>Record factually</b> and store securely (E1).</li>
+      </ol>
+      <div class="box dont"><h4>What we don&rsquo;t do</h4><ul class="clean"><li>Promise total secrecy then break it; interrogate or test the story; or try to handle a clinical or legal crisis ourselves instead of referring.</li></ul></div>
+      <div class="box connect"><h4>Connects to</h4><ul class="clean"><li>Commitments 1, 4, 5 · Procedures B1, B2, A5.</li></ul></div>
+    </div>
+  </div>
+
+  <!-- S7 -->
+  <div class="card" id="s7">
+    <div class="card-head"><span class="id">SCENARIO 7</span><span class="t">Two people who need to be kept apart both want to attend</span></div>
+    <div class="body">
+      <div class="hats"><span class="hat wel">Welcomer</span><span class="hat con">Convenor</span></div>
+      <p class="situation">Two participants &mdash; e.g., parties to family violence, or with a protective order between them &mdash; both rely on our programs. Both have a right to be here. How do both keep getting help safely?</p>
+      <p>This is the territory of the existing <a class="inline" href="https://app.notion.com/p/6f75847a86294cc5be4d3442842573f2">Handling Harassment Claims Between Clients/Participants</a> policy, which we follow. We don&rsquo;t adjudicate the dispute, but we shape our space so neither has to choose between safety and access &mdash; and the person who feels unsafe is never required to face the other.</p>
+      <h4 class="mini">What we do</h4>
+      <ol class="steps">
+        <li><b>Listen and co-identify options;</b> the person who feels unsafe leads the choices.</li>
+        <li><b>Non-overlapping scheduling or separate sessions</b> so both can access services without contact.</li>
+        <li><b>Assign separate staff</b> to each party where possible.</li>
+        <li><b>Enforce any active court order;</b> support legal options and a restraining order where appropriate.</li>
+        <li><b>Escalate to denial of service only if needed</b> (Denying Service/Removal From Programming) &mdash; e.g., non-compliance or identified predatory intent.</li>
+      </ol>
+      <div class="box connect"><h4>Connects to</h4><ul class="clean"><li>Companion policies: Handling Harassment Claims; Denying Service/Removal From Programming · Commitment 9 · Procedure D1.</li></ul></div>
+    </div>
+  </div>
+
+  <!-- S8 -->
+  <div class="card" id="s8">
+    <div class="card-head"><span class="id">SCENARIO 8</span><span class="t">A person who has been denied service keeps returning</span></div>
+    <div class="body">
+      <div class="hats"><span class="hat con">Convenor</span><span class="hat par">Partner</span></div>
+      <p class="situation">Someone asked not to attend &mdash; after a fair process &mdash; keeps showing up, including at an event we co-host at a partner mosque. Staff feel unsure and unsafe. What do we do?</p>
+      <h4 class="mini">What we do</h4>
+      <ol class="steps">
+        <li><b>Keep staff and participants safe first</b> &mdash; de-escalate; call 911 if there is any threat.</li>
+        <li><b>The event safety lead handles it</b> calmly and privately, reiterating the decision without re-litigating it.</li>
+        <li><b>Coordinate with the partner in advance</b> for co-hosted events &mdash; who enforces, how, and what their rules require in their space.</li>
+        <li><b>Document each occurrence;</b> review whether further steps (trespass, legal advice) are warranted.</li>
+        <li><b>Leave a door for review</b> &mdash; a denial is not necessarily forever (Principle 6).</li>
+      </ol>
+      <div class="box dont"><h4>What we don&rsquo;t do</h4><ul class="clean"><li>Let one staff member confront the person alone; assume a partner will enforce our decision in their space; or treat a denial as permanent without telling the person how it could be reviewed.</li></ul></div>
+      <div class="box connect"><h4>Connects to</h4><ul class="clean"><li>Companion policy: Denying Service/Removal From Programming · Procedures C1, C3.</li></ul></div>
+    </div>
+  </div>
+
+  <div class="card" id="s9">
+    <div class="card-head"><span class="id">SCENARIO 9</span><span class="t">Harassment, or a power-imbalanced relationship, between colleagues</span></div>
+    <div class="body">
+      <div class="hats"><span class="hat emp">Employer</span></div>
+      <p class="situation">A staff member experiences unwelcome conduct from a colleague &mdash; comments, pressure, or bullying. In a variation, a manager and someone they directly supervise begin a romantic relationship. Sometimes the person of concern is senior, even the ED. What do we do?</p>
+      <p>The lens we use with clients applies inside the office too: the issue is conduct and power, not personalities. Where there is a reporting relationship, &ldquo;it&rsquo;s mutual&rdquo; does not resolve the imbalance &mdash; the more senior person holds the boundary. And a concern about someone senior must have somewhere to go.</p>
+      <h4 class="mini">What we do</h4>
+      <ol class="steps">
+        <li><b>Receive the concern (SOP A6)</b> through a route that bypasses the person of concern &mdash; HR/ED for a manager; <strong>the board chair or an independent member for a concern about the ED.</strong></li>
+        <li><b>For a relationship across a reporting line:</b> disclose it and change the reporting line to remove the conflict.</li>
+        <li><b>Investigate fairly (C2&ndash;C3)</b> &mdash; confidential, impartial, proportionate, with no retaliation &mdash; and meet the OHS Part 27 duty to investigate and document.</li>
+        <li><b>Support everyone involved</b> and protect the person who raised it from reprisal.</li>
+      </ol>
+      <div class="box dont"><h4>What we don&rsquo;t do</h4><ul class="clean"><li>Treat &ldquo;reasonable management&rdquo; (direction, feedback, performance) as harassment; let a relationship continue inside a reporting line; or let seniority make a concern a dead end.</li></ul></div>
+      <div class="box connect"><h4>Connects to</h4><ul class="clean"><li>Commitments 2, 8, 11 · Procedures A6, A3, C2&ndash;C3 · Alberta OHS Code Part 27; Alberta Human Rights Act.</li></ul></div>
+    </div>
+  </div>
+
+  <div class="card" id="s10">
+    <div class="card-head"><span class="id">SCENARIO 10</span><span class="t">Working late, alone, or off-site</span></div>
+    <div class="body">
+      <div class="hats"><span class="hat emp">Employer</span><span class="hat con">Convenor</span></div>
+      <p class="situation">A staff member needs to finish work in the office in the evening, run an after-hours program, or carry out an off-site visit alone. How do we keep them safe &mdash; both physically, and from situations that could be misread?</p>
+      <p>This is exactly what the <a class="inline" href="https://app.notion.com/p/2fcb46d4433c80e3ac25d8c74b0072c9">After-Hours &amp; Off-Site Work</a> policy is for. The casebook&rsquo;s job is only to point to it and reinforce the habit.</p>
+      <h4 class="mini">What we do</h4>
+      <ol class="steps">
+        <li><b>Avoid being alone with only one other person</b> after hours; if two people are present, use the open-door, common-area visibility rules.</li>
+        <li><b>Check in with the direct manager and Office Manager</b> (or ED) with purpose and expected window; check out on leaving; keep a reachable remote contact for solo off-site work.</li>
+        <li><b>Follow the space rules</b> &mdash; doors, lighting, locked exterior doors when truly alone, reasonable departure times.</li>
+        <li><b>Follow the transportation protocol</b> &mdash; no transporting participants; gender and approval rules for others; travel-partner choice respected.</li>
+        <li><b>Use the public test</b> &mdash; if you wouldn&rsquo;t be comfortable explaining the situation publicly, change it.</li>
+      </ol>
+      <div class="box connect"><h4>Connects to</h4><ul class="clean"><li>Commitment 11 · Procedure A6 · After-Hours &amp; Off-Site Work policy (and its event checklist) · Alberta OHS working-alone requirements.</li></ul></div>
+    </div>
+  </div>
+
+  <section id="more" style="margin-top:30px;">
+    <span class="sec-no">CASEBOOK</span>
+    <h2 class="sec">Scenarios to develop next</h2>
+    <hr class="rule">
+    <p>Other situations worth working through in the same format. Flag which to build out.</p>
+    <ul class="clean">
+      <li><strong>A concern about a board member or major donor</strong> &mdash; protecting the independence of the process when the person of concern holds power over the organization.</li>
+      <li><strong>A mental-health or suicide crisis at a gathering</strong> &mdash; immediate safety, staying in scope, connecting to crisis services.</li>
+      <li><strong>Online and social-media boundaries</strong> &mdash; personal-account contact; group vs. one-to-one with youth.</li>
+      <li><strong>Financial exploitation of an isolated newcomer</strong> &mdash; recognizing predatory &ldquo;help&rdquo; and isolation as warning signs.</li>
+      <li><strong>A staff member who is themselves a survivor</strong> &mdash; supporting wellbeing when the work surfaces their own history.</li>
+      <li><strong>Photography, recording &amp; consent</strong> &mdash; a standalone procedure for images at gatherings.</li>
+      <li><strong>A drift from support into unsupervised &ldquo;counselling&rdquo;</strong> &mdash; when supportive contact has quietly become clinical without referral.</li>
+    </ul>
+  </section>
+
+  <!-- ===================== APPENDICES ===================== -->
+  <div class="partdiv"><span class="pn">APPENDICES</span><h2>Reference</h2><p>Crosswalk, forms, sources, contacts, and an adoption checklist.</p></div>
+
+  <section id="crosswalk">
+    <span class="sec-no">APPENDIX I</span>
+    <h2 class="sec">Standards crosswalk</h2>
+    <hr class="rule">
+    <table class="std">
+      <thead><tr><th>SOP</th><th>Procedure</th><th>Primary external anchors</th></tr></thead>
+      <tbody>
+        <tr><td><span class="sopid">A1</span></td><td>Screening &amp; onboarding</td><td>Plan to Protect; Dallas Charter/VIRTUS; Imagine Canada; CPIC/vulnerable-sector checks</td></tr>
+        <tr><td><span class="sopid">A2</span></td><td>Boundaries &amp; two-adult rule</td><td>Plan to Protect &ldquo;rule of two&rdquo;; Praesidium; church safe-environment programs</td></tr>
+        <tr><td><span class="sopid">A3</span></td><td>Dual relationships &amp; conflicts</td><td>NASW 1.06/1.09; CASW/ACSW; APA 3.05; chaplaincy codes</td></tr>
+        <tr><td><span class="sopid">A4</span></td><td>Supervision &amp; peer consult</td><td>Social-work &amp; CPE supervision norms; SAMHSA TIC</td></tr>
+        <tr><td><span class="sopid">A5</span></td><td>Training &amp; referral directory</td><td>VIRTUS; Plan to Protect; AASAS First Responder training</td></tr>
+        <tr><td><span class="sopid">A6</span></td><td>Inter-office conduct &amp; workplace safety</td><td>Alberta OHS Code Part 27 (violence &amp; harassment plan; working alone); Alberta Human Rights Act; After-Hours &amp; Off-Site Work policy</td></tr>
+        <tr><td><span class="sopid">B1</span></td><td>Receiving a disclosure</td><td>SAMHSA TIC; AASAS / sexual-assault-centre advocacy; Alberta disclosure guidance</td></tr>
+        <tr><td><span class="sopid">B2</span></td><td>Mandatory reporting</td><td>AB Child, Youth and Family Enhancement Act; Dallas Charter; Plan to Protect</td></tr>
+        <tr><td><span class="sopid">B3</span></td><td>Complaint intake &amp; triage</td><td>Workplace-investigation practice; Dallas Charter review-board model</td></tr>
+        <tr><td><span class="sopid">C1</span></td><td>Interim safety measures</td><td>Dallas Charter (removal pending investigation); workplace practice</td></tr>
+        <tr><td><span class="sopid">C2</span></td><td>Conducting an investigation</td><td>Fahmy &amp; Bhabha procedural-fairness model; Dallas Charter</td></tr>
+        <tr><td><span class="sopid">C3</span></td><td>Findings &amp; response</td><td>Dallas Charter (discipline/accountability); proportionality &amp; fairness</td></tr>
+        <tr><td><span class="sopid">D1</span></td><td>Supporting the person harmed</td><td>SAMHSA TIC; AASAS/victim assistance; Dallas Charter healing</td></tr>
+        <tr><td><span class="sopid">D2</span></td><td>Working with respondents</td><td>Procedural fairness; Hurma Project</td></tr>
+        <tr><td><span class="sopid">E1</span></td><td>Records &amp; privacy</td><td>NASW 1.07; Plan to Protect; Alberta privacy law</td></tr>
+        <tr><td><span class="sopid">E2</span></td><td>Review &amp; audit</td><td>Dallas Charter audits; Plan to Protect; Imagine Canada</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section id="forms">
+    <span class="sec-no">APPENDIX II</span>
+    <h2 class="sec">Forms &amp; templates to build</h2>
+    <hr class="rule">
+    <p>Field lists are starting points; finalize with counsel and align to SOP E1.</p>
+    <ul class="clean forms">
+      <li><b>Screening &amp; onboarding record (A1)</b><span>Role &amp; risk level · application · two reference notes · record-check type/result/date · re-screen due · orientation completed · probation review.</span></li>
+      <li><b>Code-of-conduct acknowledgment (A1/A3)</b><span>Expectations on boundaries, dual relationships, romantic prohibition &amp; cooling-off, gifts/money, confidentiality, child protection · signature · date · renewal.</span></li>
+      <li><b>Conflict-of-interest / dual-relationship disclosure (A3)</b><span>Worker · participant · nature of overlap · risk assessment · supervisor determination · review date.</span></li>
+      <li><b>Disclosure record (B1)</b><span>Date/time/location · who disclosed · account in own words · immediate-safety actions · confidentiality explained · mandatory-report screen · supports offered · routed to.</span></li>
+      <li><b>Mandatory-report log (B2)</b><span>Grounds · what/when · 911? · authority &amp; time · report reference · lead notified · follow-up.</span></li>
+      <li><b>Complaint intake &amp; triage (B3)</b><span>Source &amp; channel · subject · concern · immediate-risk &amp; mandatory-report screens · classification · handler · acknowledgment · anti-retaliation noted.</span></li>
+      <li><b>Interim safety plan (C1)</b><span>Risks · precautionary measures · protections for the person who disclosed · evidence preservation · rationale · review date.</span></li>
+      <li><b>Investigation plan &amp; report (C2)</b><span>Scope · investigator &amp; independence · parties/witnesses · evidence · particulars · respondent&rsquo;s written allegations &amp; response · findings · report-handling decision.</span></li>
+      <li><b>Outcome &amp; decision record (C3)</b><span>Findings · decision-maker (role-separated) · proportionate action · legal-duty check · communications · learning logged.</span></li>
+      <li><b>Survivor support plan (D1)</b><span>Support person · safety &amp; practical needs · referrals · accommodations · person&rsquo;s choices · follow-up.</span></li>
+      <li><b>Pre-event safety checklist (Scenario 2)</b><span>Facilitators screened · two-adult arrangement · accessibility · named event safety lead · how to raise a concern · photography consent.</span></li>
+      <li><b>Annual safeguarding audit / gap analysis (E2)</b><span>Screening currency · training completion · two-adult adherence · complaint-handling review · record-security review · actions &amp; owners · board report.</span></li>
+      <li><b>Workplace harassment / violence complaint &amp; incident report (A6)</b><span>Parties · conduct described · date(s) · reporting route used (incl. bypass) · immediate-safety actions · investigation &amp; findings · corrective action · confidentiality safeguards · kept available to OHS on demand.</span></li>
+      <li><b>Reporting-line / relationship disclosure (A6/A3)</b><span>Parties &amp; relationship · reporting-line conflict · management decision (reassignment / oversight) · review date.</span></li>
+    </ul>
+  </section>
+
+  <section id="episodes">
+    <span class="sec-no">APPENDIX III</span>
+    <h2 class="sec">Hurma Project source map</h2>
+    <hr class="rule">
+    <p>Every episode of <em>The Hurma Project Podcast</em> with the commitments and procedures it most informs. Titles link to the published transcript.</p>
+    <table class="std">
+      <thead><tr><th>Ep.</th><th>Episode &amp; guest</th><th>Informs</th></tr></thead>
+      <tbody>
+        <tr><td><span class="sopid">S1·E1</span></td><td><a href="https://hurmaproject.com/dr-rania-awaad-spiritual-abuse-p1/">Spiritual Abuse I — Dr. Rania Awaad</a></td><td>Understandings 1&ndash;2; Commitments 2&ndash;4</td></tr>
+        <tr><td><span class="sopid">S1·E2</span></td><td><a href="https://hurmaproject.com/dr-rania-awwad-spiritual-abuse-part-2/">Spiritual Abuse II — Dr. Rania Awaad</a></td><td>Understandings 1&amp;3; B1</td></tr>
+        <tr><td><span class="sopid">S1·E3</span></td><td><a href="https://hurmaproject.com/imam-muhammad-abuelezz-imams-as-counselors/">Imams as Counselors — Imam Muhammad Abuelezz</a></td><td>Commitment 1; A1, A4</td></tr>
+        <tr><td><span class="sopid">S1·E4</span></td><td><a href="https://hurmaproject.com/salma-abugideiri-healthy-boundaries-part-one/">Healthy Boundaries I — Salma Abugideiri</a></td><td>Commitment 2; A2&ndash;A3</td></tr>
+        <tr><td><span class="sopid">S1·E5</span></td><td><a href="https://hurmaproject.com/salma-abugideiri-healthy-boundaries-part-two/">Healthy Boundaries II — Salma Abugideiri</a></td><td>Commitment 2; Scenario 5</td></tr>
+        <tr><td><span class="sopid">S1·E6</span></td><td><a href="https://hurmaproject.com/imam-abdul-malik-merchant-pastoral-care-dynamics-between-men-women/">Pastoral Care Dynamics — Imam Abdul-Malik Merchant</a></td><td>Commitments 1&amp;6; A4</td></tr>
+        <tr><td><span class="sopid">S1·E7</span></td><td><a href="https://hurmaproject.com/nadiah-mohajir-responding-to-disclosures-of-sexual-assault/">Responding to Disclosures — Nadiah Mohajir</a></td><td>Commitment 4; B1; D2</td></tr>
+        <tr><td><span class="sopid">S1·E8</span></td><td><a href="https://hurmaproject.com/season-one-finale/">Season 1 Finale</a></td><td>Understanding 4</td></tr>
+        <tr><td><span class="sopid">S2·E1</span></td><td><a href="https://hurmaproject.com/tamara-gray-zaynab-ansari-teacher-student-relationships-part-1/">Teacher–Student Relationships I — Gray &amp; Ansari</a></td><td>Commitment 2</td></tr>
+        <tr><td><span class="sopid">S2·E2</span></td><td><a href="https://hurmaproject.com/tamara-gray-zaynab-ansari-teacher-student-relationships-part-2/">Teacher–Student Relationships II — Gray &amp; Ansari</a></td><td>Commitment 2</td></tr>
+        <tr><td><span class="sopid">S2·E3</span></td><td><a href="https://hurmaproject.com/hind-makki-inclusion-and-dignity-in-the-mosque/">Inclusion and Dignity — Hind Makki</a></td><td>Commitment 9; E2</td></tr>
+        <tr><td><span class="sopid">S2·E4</span></td><td><a href="https://hurmaproject.com/imam-mohamed-magid-and-magda-saleh-protecting-children/">Protecting Children — Magid &amp; Saleh</a></td><td>Commitment 3; Principle 4</td></tr>
+        <tr><td><span class="sopid">S2·E5</span></td><td><a href="https://hurmaproject.com/mihad-fahmy-and-faisal-bhabha-investigating-allegations-of-misconduct/">Investigating Allegations — Fahmy &amp; Bhabha</a></td><td>Commitments 7&amp;8; C2&ndash;C3</td></tr>
+        <tr><td><span class="sopid">S2·E6</span></td><td><a href="https://hurmaproject.com/amc-chaplains-holding-ourselves-accountable-part-one-2/">Holding Ourselves Accountable I — AMC</a></td><td>Commitment 7; B3</td></tr>
+        <tr><td><span class="sopid">S2·E7</span></td><td><a href="https://hurmaproject.com/amc-chaplains-holding-ourselves-accountable-part-two/">Holding Ourselves Accountable II — AMC</a></td><td>Commitment 2; A3, B3</td></tr>
+        <tr><td><span class="sopid">S2·E8</span></td><td><a href="https://hurmaproject.com/iman-boundaoui-community-trauma-healing/">Community Trauma &amp; Healing — Iman Boundaoui</a></td><td>Understanding 4; D1</td></tr>
+        <tr><td><span class="sopid">S2·E9</span></td><td><a href="https://hurmaproject.com/season-two-wrap-up/">Season 2 Wrap-Up</a></td><td>Foundations</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section id="contacts">
+    <span class="sec-no">APPENDIX IV</span>
+    <h2 class="sec">Alberta quick-reference contacts</h2>
+    <hr class="rule">
+    <p>Post these where staff and volunteers can find them instantly. Confirm numbers periodically.</p>
+    <div class="contacts">
+      <div><b>Immediate danger</b><span>911</span></div>
+      <div><b>Child Intervention Provincial Intake (24/7)</b><span>1-800-638-0715</span></div>
+      <div><b>Alberta Child Abuse Hotline (24/7)</b><span>1-800-387-5437 (KIDS)</span></div>
+      <div><b>Alberta&rsquo;s ONE LiNE for Sexual Violence</b><span>Call / text — support &amp; referral</span></div>
+      <div><b>Kids Help Phone (24/7)</b><span>1-800-668-6868 · text CONNECT to 686868</span></div>
+      <div><b>Local sexual-assault centre</b><span>Edmonton: SACE</span></div>
+      <div><b>Child advocacy centre</b><span>Edmonton: Zebra Child &amp; Youth Advocacy Centre</span></div>
+      <div><b>IslamicFamily safeguarding lead</b><span>[ name · phone · email — fill in ]</span></div>
+      <div><b>After-hours check-in</b><span>Direct manager + Office Manager (or ED) via Slack / iPhone Check-In</span></div>
+      <div><b>Alberta OHS Contact Centre</b><span>1-866-415-8690 — workplace health &amp; safety</span></div>
+      <div><b>Co-op Taxi (participant transport)</b><span>780-425-2525</span></div>
+    </div>
+    <div class="box note" style="margin-top:16px"><h4>Reminder</h4><p>The duty to report suspected child abuse is personal and cannot be delegated. When in doubt, call the intake line and describe the concern &mdash; assessing the facts is their job, not yours.</p></div>
+  </section>
+
+  <section id="checklist">
+    <span class="sec-no">APPENDIX V</span>
+    <h2 class="sec">Adoption checklist</h2>
+    <hr class="rule">
+    <p>A sequence for moving from this manual to live practice.</p>
+    <ul class="check">
+      <li>Board approves the <em>ḥurma</em> foundation, the four-role framing, and this manual.</li>
+      <li>Name a safeguarding lead and stand up an ethics/safeguarding committee with an independent member.</li>
+      <li>Adopt the code of conduct and set our specific cooling-off standard (Commitment 2 / SOP A3).</li>
+      <li>Stand up screening (A1), the two-adult rule (A2), supervision (A4), and the training curriculum + referral directory (A5).</li>
+      <li>Publish the disclosure protocol (B1), mandatory-reporting duty (B2), and a multi-channel, anti-retaliation complaint route (B3).</li>
+      <li>Adopt the investigation procedure and the rule against burying reports (C2&ndash;C3).</li>
+      <li>Build the forms in Appendix II and the pre-event safety checklist.</li>
+      <li>Confirm insurance/liability coverage and privacy handling with counsel.</li>
+      <li>Set the annual review &amp; audit (E2) and report safeguarding to the board.</li>
+    </ul>
+  </section>
+
+  <footer class="docfoot">
+    <p><strong>IslamicFamily — Upholding Ḥurma: Safeguarding &amp; Conduct Manual.</strong> Edition 1.0, draft for board review. Synthesizes <em>The Hurma Project Podcast</em> (Dr. Ingrid Mattson &amp; Mihad Fahmy) and cross-references recognized practice (NASW/CASW/ACSW; SAMHSA trauma-informed care; the Catholic Charter for the Protection of Children and Young People &amp; VIRTUS; Praesidium; Plan to Protect; AASAS; Imagine Canada Standards) to show alignment with mainstream practice &mdash; references indicate alignment, not adoption of any single external regime. This manual supports policy and training and is not legal advice; confirm current Alberta statutes (including that criminal record is not a protected ground under the Alberta Human Rights Act, unlike federally protected pardoned/record-suspended convictions), regulations, insurer requirements, and privacy obligations, and have counsel review before adoption.</p>
+  </footer>
+
+  </article>
+</div>
+</main>
+</div>
+</body>
+</html>
