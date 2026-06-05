@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Utility Submetering Options — Diamond at Dunluce</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Alegreya:ital,wght@0,400;0,700;1,400&family=Alegreya+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  background: #FAFAF2;
+  font-family: 'Alegreya Sans', system-ui, sans-serif;
+  color: #353535;
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ─── HEADER ─────────────────────────────────────── */
+.site-header {
+  background: #275D43;
+  color: #FAFAF2;
+  padding: 40px 48px 36px;
+}
+
+.header-eyebrow {
+  font-size: 11px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  opacity: 0.6;
+  margin-bottom: 12px;
+}
+
+.header-title {
+  font-family: 'Alegreya', Georgia, serif;
+  font-size: 36px;
+  font-weight: 700;
+  line-height: 1.15;
+  margin-bottom: 6px;
+}
+
+.header-address {
+  font-size: 16px;
+  opacity: 0.72;
+  margin-bottom: 24px;
+}
+
+.header-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.pill {
+  font-size: 12px;
+  padding: 4px 12px;
+  background: rgba(255,255,255,0.13);
+  border-radius: 20px;
+  letter-spacing: 0.03em;
+}
+
+/* ─── MAIN ───────────────────────────────────────── */
+.main {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 44px 48px 72px;
+}
+
+/* ─── ALERT ──────────────────────────────────────── */
+.alert {
+  background: #FEF9EC;
+  border: 1px solid #EEC96A;
+  border-radius: 6px;
+  padding: 12px 18px;
+  font-size: 13px;
+  color: #7A5A1A;
+  margin-bottom: 36px;
+  line-height: 1.6;
+}
+
+.alert strong { color: #5A3A08; }
+
+/* ─── SECTION LABELS ─────────────────────────────── */
+.label {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #AAAAAA;
+  margin-bottom: 12px;
+}
+
+/* ─── TABLE ──────────────────────────────────────── */
+.table-wrap {
+  overflow-x: auto;
+  border-radius: 10px;
+  border: 1px solid #E2DED6;
+  background: white;
+  margin-bottom: 28px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13.5px;
+  table-layout: fixed;
+}
+
+thead th {
+  padding: 15px 18px 13px;
+  text-align: right;
+  font-weight: 700;
+  font-size: 14.5px;
+  color: #353535;
+  border-bottom: 2px solid #EAE7DF;
+  background: white;
+}
+
+thead th:first-child {
+  text-align: left;
+  font-size: 11px;
+  color: #B8B4AB;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.09em;
+}
+
+thead th.rec {
+  background: #EEF6F2;
+  border-bottom: 3px solid #275D43;
+  color: #275D43;
+}
+
+.rec-tag {
+  display: block;
+  font-size: 9.5px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  color: #275D43;
+  opacity: 0.65;
+  margin-bottom: 2px;
+}
+
+tbody td {
+  padding: 7px 18px;
+  text-align: right;
+  border-bottom: 1px solid #F2EFEA;
+  color: #353535;
+}
+
+tbody td:first-child {
+  text-align: left;
+  color: #777;
+  font-size: 13px;
+}
+
+tbody td.rec {
+  background: #F5FAF7;
+}
+
+.sec-row td {
+  padding: 11px 18px 4px;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #BABAB4;
+  border-bottom: none;
+  background: #FAFAF8;
+}
+
+.val-best {
+  color: #1A6B3C;
+  font-weight: 700;
+}
+
+.val-dim {
+  color: #D0CCC5;
+}
+
+.total-row td {
+  font-weight: 700;
+  font-size: 14.5px;
+  padding: 12px 18px;
+  border-top: 2px solid #E2DED6;
+  border-bottom: none;
+  background: #FAFAF8;
+}
+
+.total-row td.rec {
+  color: #275D43;
+  background: #E6F2EB;
+}
+
+/* ─── WYSE NOTE ──────────────────────────────────── */
+.wyse-note {
+  background: #FFF8EE;
+  border: 1px solid #E8C68A;
+  border-radius: 8px;
+  padding: 14px 20px;
+  font-size: 13px;
+  color: #7A5A2A;
+  margin-bottom: 36px;
+  line-height: 1.65;
+}
+
+.wyse-note strong { color: #5A3A08; }
+
+/* ─── CHART ──────────────────────────────────────── */
+.chart-card {
+  background: white;
+  border: 1px solid #E2DED6;
+  border-radius: 10px;
+  padding: 26px 28px 22px;
+  margin-bottom: 36px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+}
+
+.chart-legend {
+  display: flex;
+  gap: 22px;
+  margin-bottom: 18px;
+  font-size: 12px;
+  color: #999;
+}
+
+.legend-swatch {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  border-radius: 2px;
+  vertical-align: middle;
+  margin-right: 5px;
+}
+
+/* ─── CONCERNS ───────────────────────────────────── */
+.concerns-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+  margin-bottom: 48px;
+}
+
+.c-card {
+  background: white;
+  border: 1px solid #E2DED6;
+  border-radius: 10px;
+  padding: 18px 20px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+}
+
+.c-card.rec-card {
+  border: 2px solid #275D43;
+  background: #F4F9F6;
+}
+
+.c-card h3 {
+  font-family: 'Alegreya Sans', sans-serif;
+  font-size: 13.5px;
+  font-weight: 700;
+  margin-bottom: 10px;
+  color: #353535;
+}
+
+.c-card.rec-card h3 { color: #275D43; }
+
+.c-card ul {
+  padding-left: 16px;
+  font-size: 13px;
+  color: #666;
+  line-height: 1.7;
+}
+
+.c-card ul li { margin-bottom: 2px; }
+
+/* ─── FOOTER ─────────────────────────────────────── */
+.site-footer {
+  border-top: 1px solid #E2DED6;
+  padding-top: 22px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  gap: 14px;
+}
+
+.footer-brand {
+  font-family: 'Alegreya', Georgia, serif;
+  font-size: 16px;
+  font-weight: 700;
+  color: #275D43;
+}
+
+.footer-domain {
+  font-size: 12px;
+  color: #BBBBBB;
+  margin-top: 3px;
+}
+
+.footer-note {
+  font-size: 12px;
+  color: #BBBBBB;
+  max-width: 460px;
+  line-height: 1.65;
+  text-align: right;
+}
+
+/* ─── RESPONSIVE ─────────────────────────────────── */
+@media (max-width: 680px) {
+  .site-header { padding: 28px 22px; }
+  .header-title { font-size: 28px; }
+  .main { padding: 28px 22px 52px; }
+  .concerns-grid { grid-template-columns: 1fr; }
+  .site-footer { flex-direction: column; }
+  .footer-note { text-align: left; max-width: 100%; }
+}
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="header-eyebrow">IslamicFamily · Affordable Housing Initiative</div>
+  <h1 class="header-title">Utility Submetering Options</h1>
+  <p class="header-address">Diamond at Dunluce &nbsp;·&nbsp; 365 Dunluce Road NW, Edmonton AB</p>
+  <div class="header-pills">
+    <span class="pill">96 suites</span>
+    <span class="pill">15-year term</span>
+    <span class="pill">3% annual escalation</span>
+    <span class="pill">Electricity · cold water · gas</span>
+    <span class="pill">Rental new construction</span>
+  </div>
+</header>
+
+<main class="main">
+
+  <div class="alert">
+    <strong>Action required:</strong> CARMA proposal dated March 5, 2026. 90-day validity expired approximately June 3. Contact Matthew McGeown at 587-598-3441 to confirm pricing still holds before proceeding.
+  </div>
+
+  <p class="label">Option comparison — CARMA Corp</p>
+
+  <div class="table-wrap">
+    <table>
+      <colgroup>
+        <col style="width:35%">
+        <col style="width:16.25%">
+        <col style="width:16.25%">
+        <col style="width:16.25%">
+        <col style="width:16.25%">
+      </colgroup>
+      <thead>
+        <tr>
+          <th></th>
+          <th>Option 1</th>
+          <th class="rec"><span class="rec-tag">Recommended</span>Option 2</th>
+          <th>Option 3</th>
+          <th>Option 4</th>
+        </tr>
+      </thead>
+      <tbody>
+
+        <tr class="sec-row">
+          <td colspan="5">Resident costs — monthly admin fee</td>
+        </tr>
+        <tr>
+          <td>Year 1</td>
+          <td class="val-best">$14.95</td>
+          <td class="rec">$34.95</td>
+          <td>$34.95</td>
+          <td>$34.95</td>
+        </tr>
+        <tr>
+          <td>Year 15 (after 14 annual increases)</td>
+          <td class="val-best">$22.61</td>
+          <td class="rec">$52.87</td>
+          <td>$52.87</td>
+          <td>$52.87</td>
+        </tr>
+        <tr>
+          <td>Total per suite over term</td>
+          <td class="val-best">$3,337</td>
+          <td class="rec">$7,802</td>
+          <td>$7,802</td>
+          <td>$7,802</td>
+        </tr>
+        <tr>
+          <td>Total — all 96 suites over term</td>
+          <td class="val-best">$320,352</td>
+          <td class="rec">$748,992</td>
+          <td>$748,992</td>
+          <td>$748,992</td>
+        </tr>
+
+        <tr class="sec-row">
+          <td colspan="5">Owner financial position</td>
+        </tr>
+        <tr>
+          <td>Installation credit received (upfront)</td>
+          <td class="val-dim">—</td>
+          <td class="rec val-dim">—</td>
+          <td>$96,000</td>
+          <td>$192,000</td>
+        </tr>
+        <tr>
+          <td>Revenue share per suite/month</td>
+          <td class="val-dim">—</td>
+          <td class="rec">$20.00</td>
+          <td>$10.00</td>
+          <td class="val-dim">—</td>
+        </tr>
+        <tr>
+          <td>Annual revenue share — Year 1</td>
+          <td class="val-dim">—</td>
+          <td class="rec">$23,040</td>
+          <td>$11,520</td>
+          <td class="val-dim">—</td>
+        </tr>
+        <tr>
+          <td>Total revenue share over term</td>
+          <td class="val-dim">—</td>
+          <td class="rec">$428,518</td>
+          <td>$214,259</td>
+          <td class="val-dim">—</td>
+        </tr>
+        <tr class="total-row">
+          <td>Total owner benefit over term</td>
+          <td class="val-dim">—</td>
+          <td class="rec">$428,518</td>
+          <td>$310,259</td>
+          <td>$192,000</td>
+        </tr>
+
+      </tbody>
+    </table>
+  </div>
+
+  <div class="wyse-note">
+    <strong>Why Wyse Meter Solutions was excluded:</strong> 20-year term versus CARMA's 15, no revenue share offered, and the proposal misclassifies the project as a new condominium rather than a rental. CARMA also accepts full responsibility for bad debt. Wyse does not.
+  </div>
+
+  <p class="label">Owner benefit vs. total resident fees — 15-year totals</p>
+  <div class="chart-card">
+    <div class="chart-legend">
+      <span><span class="legend-swatch" style="background:#275D43;"></span>Owner benefit</span>
+      <span><span class="legend-swatch" style="background:#E09964;"></span>Total resident admin fees — all 96 suites</span>
+    </div>
+    <div style="position:relative; height:230px;">
+      <canvas id="compChart"
+        role="img"
+        aria-label="Grouped bar chart: owner benefit versus total resident admin fees over 15 years. Option 1: zero owner benefit, $320K resident fees. Option 2 recommended: $429K owner benefit, $749K resident fees. Option 3: $310K owner benefit, $749K. Option 4: $192K owner benefit, $749K.">
+      </canvas>
+    </div>
+  </div>
+
+  <p class="label">Considerations and risks by option</p>
+  <div class="concerns-grid">
+
+    <div class="c-card">
+      <h3>Option 1 — resident-first</h3>
+      <ul>
+        <li>No financial return to owner — leaves operating budget unsupported</li>
+        <li>Cleanest mission alignment: residents pay only what metering actually costs</li>
+        <li>Right choice only if other operating revenue sources exist</li>
+      </ul>
+    </div>
+
+    <div class="c-card rec-card">
+      <h3>Option 2 — recommended</h3>
+      <ul>
+        <li>Residents pay $20/month above CARMA's actual metering cost</li>
+        <li>Revenue must demonstrably flow back to residents (lower rents, better services) to satisfy mission framing</li>
+        <li>CMHC/AHC may scrutinize ongoing fee extraction from affordable housing residents</li>
+        <li>Zero upfront construction capital</li>
+      </ul>
+    </div>
+
+    <div class="c-card">
+      <h3>Option 3 — balanced (not optimal for either goal)</h3>
+      <ul>
+        <li>$96K upfront is modest against a $30M+ project</li>
+        <li>Ongoing income roughly half of Option 2 over the full term</li>
+        <li>CARMA nets significantly more per suite than in Options 1 or 2</li>
+      </ul>
+    </div>
+
+    <div class="c-card">
+      <h3>Option 4 — solves the wrong problem</h3>
+      <ul>
+        <li>Addresses construction capital, which is not the constraint</li>
+        <li>Residents pay $20/month premium with zero ongoing benefit returning to the project</li>
+        <li>CARMA keeps approximately $428K of the fee premium over the 15-year term</li>
+      </ul>
+    </div>
+
+  </div>
+
+  <footer class="site-footer">
+    <div>
+      <div class="footer-brand">IslamicFamily</div>
+      <div class="footer-domain">islamicfamily.ca &nbsp;·&nbsp; Diamond at Dunluce</div>
+    </div>
+    <div class="footer-note">
+      Calculations assume 3% annual escalation commencing post-occupancy. CARMA Corp proposal March 5, 2026 — Matthew McGeown, 587-598-3441, mmcgeown@carmacorp.com. All figures CAD. For decision-making purposes only.
+    </div>
+  </footer>
+
+</main>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"></script>
+<script>
+new Chart(document.getElementById('compChart'), {
+  type: 'bar',
+  data: {
+    labels: ['Option 1', ['Option 2', '(recommended)'], 'Option 3', 'Option 4'],
+    datasets: [
+      {
+        label: 'Owner benefit (15yr)',
+        data: [0, 428518, 310259, 192000],
+        backgroundColor: '#275D43',
+        borderRadius: 4,
+        borderSkipped: false
+      },
+      {
+        label: 'Total resident admin fees (15yr)',
+        data: [320352, 748992, 748992, 748992],
+        backgroundColor: '#E09964',
+        borderRadius: 4,
+        borderSkipped: false
+      }
+    ]
+  },
+  options: {
+    responsive: true,
+    maintainAspectRatio: false,
+    plugins: {
+      legend: { display: false },
+      tooltip: {
+        backgroundColor: '#353535',
+        titleColor: '#FAFAF2',
+        bodyColor: '#D0CCB8',
+        padding: 10,
+        callbacks: {
+          label: function(ctx) {
+            if (ctx.raw === 0) return ctx.dataset.label + ': none';
+            return ctx.dataset.label + ': $' + ctx.raw.toLocaleString('en-CA');
+          }
+        }
+      }
+    },
+    scales: {
+      x: {
+        grid: { display: false },
+        border: { display: false },
+        ticks: {
+          font: { size: 12, family: "'Alegreya Sans', sans-serif" },
+          color: '#AAAAAA'
+        }
+      },
+      y: {
+        grid: { color: 'rgba(0,0,0,0.05)' },
+        border: { display: false },
+        ticks: {
+          font: { size: 11, family: "'Alegreya Sans', sans-serif" },
+          color: '#AAAAAA',
+          callback: function(v) {
+            if (v === 0) return '$0';
+            return '$' + Math.round(v / 1000) + 'K';
+          }
+        }
+      }
+    }
+  }
+});
+</script>
+
+</body>
+</html>
