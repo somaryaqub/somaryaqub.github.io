@@ -5,7 +5,7 @@
 :root {
   /* Text Colors */
   --text-light: #1a202c;
-  --text-dark: #ffffff;
+  --text-dark: #353535;
   
   /* Prayer Time Colors */
   --prayer-past: rgba(255, 255, 255, 0.8);
