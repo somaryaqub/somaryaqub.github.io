@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<title>Omar Yaqub</title>
+<meta name="description" content="Omar Yaqub — IslamicFamily · Flourishing Systems">
+<meta property="og:title" content="Omar Yaqub">
+<meta property="og:description" content="Servant of Servant · IslamicFamily · Founder · Flourishing Systems">
+<meta name="theme-color" content="#275D43">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Alegreya:ital,wght@0,400;1,400&family=Alegreya+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+
+<style>
+  /* ── Reset ── */
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  /* ── Base ── */
+  body, .wrap {
+    background: #FAFAF2;
+    min-height: 100vh;
+    font-family: 'Alegreya Sans', sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+  .wrap { max-width: 420px; margin: 0 auto; padding: 0 0 2rem; }
+
+  /* ── Top bar ── */
+  .top-bar { background: #275D43; height: 4px; }
+
+  /* ── Hero ── */
+  .hero { padding: 1.75rem 1.5rem 1.5rem; border-bottom: 0.5px solid rgba(39,93,67,0.15); }
+
+  .name-row {
+    display: flex; align-items: flex-start;
+    justify-content: space-between; gap: 12px; margin-bottom: 0.4rem;
+  }
+
+  .name {
+    font-family: 'Alegreya', serif; font-size: 36px; font-weight: 400;
+    line-height: 1.0; color: #353535; letter-spacing: -0.01em;
+  }
+  .name em { font-style: italic; color: #275D43; }
+
+  .vcf-btn {
+    flex-shrink: 0; margin-top: 4px;
+    display: flex; align-items: center; gap: 6px;
+    padding: 7px 13px; background: #275D43; border: none; border-radius: 100px;
+    font-family: 'Alegreya Sans', sans-serif; font-size: 12px; font-weight: 500;
+    color: #FAFAF2; cursor: pointer; text-decoration: none;
+    letter-spacing: 0.02em; white-space: nowrap;
+    transition: background 0.15s, transform 0.1s;
+    -webkit-tap-highlight-color: transparent;
+  }
+  .vcf-btn:hover { background: #1e4a34; }
+  .vcf-btn:active { transform: scale(0.97); }
+  .vcf-btn svg { width: 14px; height: 14px; }
+
+  .credentials {
+    font-size: 10.5px; font-weight: 400; letter-spacing: 0.1em;
+    text-transform: uppercase; color: #275D43; opacity: 0.75; margin-bottom: 0.9rem;
+  }
+
+  .role-block { display: flex; flex-direction: column; gap: 3px; }
+  .role-line { font-size: 12.5px; color: #353535; opacity: 0.55; font-weight: 300; line-height: 1.4; }
+  .star { color: #275D43; opacity: 1; margin: 0 3px; font-size: 9px; vertical-align: 1px; }
+
+  /* ── Links ── */
+  .links {
+    padding: 0.75rem 1.5rem;
+    display: flex; flex-direction: column;
+    border-bottom: 0.5px solid rgba(39,93,67,0.1);
+  }
+
+  .contact-link {
+    display: flex; align-items: center; gap: 12px;
+    padding: 0.65rem 0; border-bottom: 0.5px solid rgba(39,93,67,0.1);
+    text-decoration: none; color: #353535;
+    -webkit-tap-highlight-color: transparent;
+  }
+  .contact-link:first-child { border-top: 0.5px solid rgba(39,93,67,0.1); }
+  .contact-link:last-child  { border-bottom: none; }
+  .contact-link:hover .link-label { color: #275D43; }
+
+  .link-icon {
+    width: 30px; height: 30px; border-radius: 50%;
+    border: 0.5px solid rgba(39,93,67,0.2);
+    display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+  }
+  .link-icon svg { width: 13px; height: 13px; }
+  .link-body  { flex: 1; display: flex; flex-direction: column; }
+  .link-label { font-size: 13px; font-weight: 500; color: #353535; transition: color 0.15s; }
+  .link-sub   { font-size: 11px; color: #353535; opacity: 0.4; font-weight: 300; }
+  .link-arrow { font-size: 14px; color: #275D43; opacity: 0.3; }
+
+  /* ── Share section ── */
+  .share-section { padding: 1rem 1.5rem 0; }
+  .share-eyebrow {
+    font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase;
+    color: #275D43; opacity: 0.75; margin-bottom: 0.7rem;
+  }
+
+  .share-fields { display: flex; flex-direction: column; gap: 7px; margin-bottom: 0.85rem; }
+
+  .share-input {
+    width: 100%; height: 38px;
+    border: 0.5px solid rgba(39,93,67,0.22); border-radius: 6px;
+    padding: 0 11px;
+    font-family: 'Alegreya Sans', sans-serif; font-size: 13.5px;
+    color: #353535; background: #fff; outline: none;
+    transition: border-color 0.15s;
+    -webkit-appearance: none;
+  }
+  .share-input:focus { border-color: #275D43; }
+  .share-input::placeholder { color: #8a9e94; opacity: 1; font-weight: 300; font-size: 13px; }
+
+  /* ── Chips ── */
+  .interests-label {
+    font-size: 10px; letter-spacing: 0.08em; text-transform: uppercase;
+    color: #275D43; opacity: 0.7; margin-bottom: 7px;
+  }
+  .chips { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 0.85rem; }
+  .chip {
+    display: inline-flex; align-items: center; padding: 5px 11px;
+    border: 0.5px solid rgba(39,93,67,0.28); border-radius: 100px;
+    font-family: 'Alegreya Sans', sans-serif; font-size: 12px;
+    color: #353535; background: #FAFAF2; cursor: pointer;
+    transition: all 0.15s; user-select: none; -webkit-user-select: none;
+    -webkit-tap-highlight-color: transparent;
+  }
+  .chip:hover   { border-color: #275D43; color: #275D43; }
+  .chip.selected { background: #275D43; border-color: #275D43; color: #FAFAF2; }
+
+  .other-input {
+    width: 100%; height: 36px;
+    border: 0.5px solid rgba(39,93,67,0.22); border-radius: 6px; padding: 0 11px;
+    font-family: 'Alegreya Sans', sans-serif; font-size: 13px;
+    color: #353535; background: #fff; outline: none;
+    transition: border-color 0.15s; margin-bottom: 0.85rem; display: none;
+    -webkit-appearance: none;
+  }
+  .other-input.visible { display: block; }
+  .other-input:focus { border-color: #275D43; }
+  .other-input::placeholder { color: #8a9e94; opacity: 1; font-weight: 300; }
+
+  /* ── Submit button ── */
+  .share-btn {
+    width: 100%; height: 42px; background: #275D43; border: none; border-radius: 6px;
+    font-family: 'Alegreya Sans', sans-serif; font-size: 13.5px; font-weight: 500;
+    color: #FAFAF2; cursor: pointer; letter-spacing: 0.02em;
+    transition: background 0.15s, transform 0.1s;
+    -webkit-tap-highlight-color: transparent;
+  }
+  .share-btn:hover   { background: #1e4a34; }
+  .share-btn:active  { transform: scale(0.99); }
+  .share-btn:disabled { opacity: 0.6; cursor: default; }
+
+  /* ── Footer ── */
+  .footer { padding: 1.25rem 1.5rem 0; display: flex; align-items: center; gap: 7px; }
+  .footer-mark { width: 14px; height: 14px; background: #275D43; border-radius: 50%; flex-shrink: 0; }
+  .footer-text { font-size: 10.5px; color: #353535; opacity: 0.28; letter-spacing: 0.04em; }
+
+  /* ── Toast ── */
+  .toast {
+    position: fixed; bottom: 1.5rem; left: 50%;
+    transform: translateX(-50%) translateY(16px);
+    background: #275D43; color: #FAFAF2;
+    font-family: 'Alegreya Sans', sans-serif; font-size: 13px;
+    padding: 9px 18px; border-radius: 100px;
+    opacity: 0; transition: all 0.3s; pointer-events: none; white-space: nowrap;
+    z-index: 999;
+  }
+  .toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
+  .toast.error { background: #BB2D37; }
+
+  /* ── Dark mode ── */
+  @media (prefers-color-scheme: dark) {
+    body, .wrap    { background: #1a1f1c; }
+    .name          { color: #FAFAF2; }
+    .role-line     { color: #FAFAF2; }
+    .link-label    { color: #FAFAF2; }
+    .link-sub      { color: #FAFAF2; }
+    .share-input   { background: #222a25; color: #FAFAF2; border-color: rgba(159,225,203,0.2); }
+    .share-input::placeholder { color: #6a8a78; }
+    .other-input   { background: #222a25; color: #FAFAF2; border-color: rgba(159,225,203,0.2); }
+    .other-input::placeholder { color: #6a8a78; }
+    .chip          { background: #1a1f1c; color: #FAFAF2; border-color: rgba(159,225,203,0.22); }
+    .chip:hover    { border-color: #9FE1CB; color: #9FE1CB; }
+    .chip.selected { background: #275D43; border-color: #275D43; color: #FAFAF2; }
+    .contact-link  { color: #FAFAF2; }
+    .footer-text   { color: #FAFAF2; }
+    .credentials   { color: #9FE1CB; }
+    .share-eyebrow { color: #9FE1CB; }
+    .interests-label { color: #9FE1CB; }
+  }
+</style>
+</head>
+
+<body>
+<div class="wrap">
+  <div class="top-bar"></div>
+
+  <!-- Hero -->
+  <div class="hero">
+    <div class="name-row">
+      <h1 class="name">Omar<br><em>Yaqub</em></h1>
+      <a class="vcf-btn" href="#" onclick="downloadVCard(event)">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/>
+          <circle cx="9" cy="7" r="4"/>
+          <path d="M19 8v6M22 11h-6"/>
+        </svg>
+        Add contact
+      </a>
+    </div>
+    <p class="credentials">ICD.D &nbsp;·&nbsp; DSL(Hon) &nbsp;·&nbsp; MBA &nbsp;·&nbsp; BSc</p>
+    <div class="role-block">
+      <span class="role-line">Servant of Servant <span class="star">✸</span> IslamicFamily</span>
+      <span class="role-line">Founder <span class="star">✸</span> Flourishing Systems</span>
+    </div>
+  </div>
+
+  <!-- Contact links -->
+  <div class="links">
+    <a class="contact-link" href="https://linkedin.com/somaryaqub" target="_blank" rel="noopener">
+      <div class="link-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#275D43" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="2" y="2" width="20" height="20" rx="4"/>
+          <path d="M7 10v7M7 7v.01M12 17v-4a2 2 0 0 1 4 0v4M12 10v7"/>
+        </svg>
+      </div>
+      <div class="link-body">
+        <span class="link-label">LinkedIn</span>
+        <span class="link-sub">linkedin.com/somaryaqub</span>
+      </div>
+      <span class="link-arrow">→</span>
+    </a>
+
+    <a class="contact-link" href="tel:+17806957477">
+      <div class="link-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#275D43" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2"/>
+        </svg>
+      </div>
+      <div class="link-body">
+        <span class="link-label">Phone</span>
+        <span class="link-sub">+1 780 695 7477</span>
+      </div>
+      <span class="link-arrow">→</span>
+    </a>
+
+    <a class="contact-link" href="mailto:omary@islamicfamily.ca">
+      <div class="link-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#275D43" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="2" y="4" width="20" height="16" rx="2"/>
+          <path d="m2 7 10 7 10-7"/>
+        </svg>
+      </div>
+      <div class="link-body">
+        <span class="link-label">Email</span>
+        <span class="link-sub">omary@islamicfamily.ca</span>
+      </div>
+      <span class="link-arrow">→</span>
+    </a>
+  </div>
+
+  <!-- Your turn -->
+  <div class="share-section">
+    <p class="share-eyebrow">Your turn</p>
+    <div class="share-fields">
+      <input class="share-input" type="text"  placeholder="Your full name"    id="f-name"  autocomplete="name">
+      <input class="share-input" type="email" placeholder="Your email address" id="f-email" autocomplete="email">
+      <input class="share-input" type="tel"   placeholder="Your phone number"  id="f-phone" autocomplete="tel">
+    </div>
+
+    <p class="interests-label">Common interests</p>
+    <div class="chips">
+      <span class="chip" onclick="toggleChip(this)" data-value="people-first data">People-first data</span>
+      <span class="chip" onclick="toggleChip(this)" data-value="halal housing">Halal housing</span>
+      <span class="chip" onclick="toggleChip(this)" data-value="collaboration">Collaboration</span>
+      <span class="chip" onclick="toggleChip(this, true)" data-value="other">Other…</span>
+    </div>
+    <input class="other-input" type="text" placeholder="Tell me more…" id="f-other">
+
+    <button class="share-btn" id="submitBtn" onclick="handleShare()">Send my details →</button>
+  </div>
+
+  <div class="footer">
+    <div class="footer-mark"></div>
+    <span class="footer-text">Edmonton · Treaty 6 · Amiskwaciwâskahikan</span>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+  // ── IMPORTANT: paste your Apps Script deployment URL here ──
+  const ENDPOINT = "https://script.google.com/macros/s/AKfycbyWz1OA3DTl9J4KtJB7AtfWE74S2vAkw2AXXfRxlO4Bf5QeS4bbc3mb1eukCeyZFSXt2w/exec";
+  // ────────────────────────────────────────────────────────────
+
+  function toggleChip(el, isOther) {
+    el.classList.toggle("selected");
+    if (isOther) {
+      var inp = document.getElementById("f-other");
+      if (el.classList.contains("selected")) { inp.classList.add("visible"); inp.focus(); }
+      else { inp.classList.remove("visible"); inp.value = ""; }
+    }
+  }
+
+  function downloadVCard(e) {
+    e.preventDefault();
+    var vcard = [
+      "BEGIN:VCARD", "VERSION:3.0",
+      "FN:Omar Yaqub", "N:Yaqub;Omar;;;",
+      "TITLE:Servant of Servant \u00b7 IslamicFamily / Founder \u00b7 Flourishing Systems",
+      "ORG:IslamicFamily",
+      "EMAIL;TYPE=WORK:omary@islamicfamily.ca",
+      "TEL;TYPE=WORK,VOICE:+17806957477",
+      "URL:https://linkedin.com/somaryaqub",
+      "NOTE:ICD.D \u00b7 DSL(Hon) \u00b7 MBA \u00b7 BSc",
+      "END:VCARD"
+    ].join("\r\n");
+    var blob = new Blob([vcard], { type: "text/vcard" });
+    var url  = URL.createObjectURL(blob);
+    var a    = document.createElement("a");
+    a.href = url; a.download = "Omar-Yaqub.vcf";
+    document.body.appendChild(a); a.click();
+    document.body.removeChild(a); URL.revokeObjectURL(url);
+    showToast("Contact saved.", false);
+  }
+
+  async function handleShare() {
+    var name  = document.getElementById("f-name").value.trim();
+    var email = document.getElementById("f-email").value.trim();
+    var phone = document.getElementById("f-phone").value.trim();
+    var other = document.getElementById("f-other").value.trim();
+    var btn   = document.getElementById("submitBtn");
+
+    if (!name || (!email && !phone)) {
+      showToast("Name + email or phone required", true);
+      return;
+    }
+
+    var selected = Array.from(document.querySelectorAll(".chip.selected")).map(function(c) {
+      return c.dataset.value === "other" ? (other || "other") : c.dataset.value;
+    });
+
+    btn.disabled = true;
+    btn.textContent = "Sending…";
+
+    try {
+      var res = await fetch(ENDPOINT, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ name, email, phone, interests: selected.join(", ") })
+      });
+      var data = await res.json();
+
+      if (data.ok) {
+        btn.textContent = "Sent ✓";
+        var venue = data.venue ? " at " + data.venue : "";
+        showToast(email ? "Check your inbox — reply on its way!" : "Details sent. Talk soon.", false);
+        // Clear fields
+        ["f-name","f-email","f-phone","f-other"].forEach(function(id) {
+          document.getElementById(id).value = "";
+        });
+        document.querySelectorAll(".chip.selected").forEach(function(c) { c.classList.remove("selected"); });
+        document.getElementById("f-other").classList.remove("visible");
+      } else {
+        throw new Error(data.error || "unknown error");
+      }
+    } catch (err) {
+      console.error(err);
+      // Graceful fallback — open mailto
+      var lines = ["Hi Omar,\n\nI tapped your tag.\n"];
+      if (name)  lines.push("Name: "  + name);
+      if (email) lines.push("Email: " + email);
+      if (phone) lines.push("Phone: " + phone);
+      if (selected.length) lines.push("Interests: " + selected.join(", "));
+      lines.push("\nLooking forward to connecting.");
+      window.location.href = "mailto:omary@islamicfamily.ca?subject=" +
+        encodeURIComponent("Nice to meet you \u2014 " + name) +
+        "&body=" + encodeURIComponent(lines.join("\n"));
+      btn.textContent = "Send my details \u2192";
+      btn.disabled = false;
+    }
+  }
+
+  function showToast(msg, isError) {
+    var t = document.getElementById("toast");
+    t.textContent = msg;
+    t.className = "toast" + (isError ? " error" : "");
+    t.classList.add("show");
+    setTimeout(function() { t.classList.remove("show"); }, 3000);
+  }
+</script>
+</body>
+</html>
