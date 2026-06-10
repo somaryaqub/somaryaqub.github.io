@@ -348,42 +348,30 @@
     btn.disabled = true;
     btn.textContent = "Sending…";
 
-    try {
-      var res = await fetch(ENDPOINT, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ name, email, phone, interests: selected.join(", ") })
-      });
-      var data = await res.json();
+    // Apps Script requires form-encoded data with no-cors.
+    // We can't read the response in no-cors mode, so we show
+    // success optimistically — the script handles everything server-side.
+    var formData = new FormData();
+    formData.append("name",      name);
+    formData.append("email",     email);
+    formData.append("phone",     phone);
+    formData.append("interests", selected.join(", "));
 
-      if (data.ok) {
-        btn.textContent = "Sent ✓";
-        var venue = data.venue ? " at " + data.venue : "";
-        showToast(email ? "Check your inbox — reply on its way!" : "Details sent. Talk soon.", false);
-        // Clear fields
-        ["f-name","f-email","f-phone","f-other"].forEach(function(id) {
-          document.getElementById(id).value = "";
-        });
-        document.querySelectorAll(".chip.selected").forEach(function(c) { c.classList.remove("selected"); });
-        document.getElementById("f-other").classList.remove("visible");
-      } else {
-        throw new Error(data.error || "unknown error");
-      }
-    } catch (err) {
-      console.error(err);
-      // Graceful fallback — open mailto
-      var lines = ["Hi Omar,\n\nI tapped your tag.\n"];
-      if (name)  lines.push("Name: "  + name);
-      if (email) lines.push("Email: " + email);
-      if (phone) lines.push("Phone: " + phone);
-      if (selected.length) lines.push("Interests: " + selected.join(", "));
-      lines.push("\nLooking forward to connecting.");
-      window.location.href = "mailto:omary@islamicfamily.ca?subject=" +
-        encodeURIComponent("Nice to meet you \u2014 " + name) +
-        "&body=" + encodeURIComponent(lines.join("\n"));
-      btn.textContent = "Send my details \u2192";
-      btn.disabled = false;
-    }
+    fetch(ENDPOINT, { method: "POST", body: formData, mode: "no-cors" })
+      .catch(function(err) { console.warn("Endpoint unreachable:", err); });
+
+    // Show success after a short delay — don't make them wait
+    setTimeout(function() {
+      btn.textContent = "Sent ✓";
+      showToast(email ? "Done — check your inbox shortly." : "Details sent. Talk soon.", false);
+      ["f-name","f-email","f-phone","f-other"].forEach(function(id) {
+        document.getElementById(id).value = "";
+      });
+      document.querySelectorAll(".chip.selected").forEach(function(c) {
+        c.classList.remove("selected");
+      });
+      document.getElementById("f-other").classList.remove("visible");
+    }, 600);
   }
 
   function showToast(msg, isError) {
