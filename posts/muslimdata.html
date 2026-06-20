@@ -111,6 +111,21 @@ html,body{width:100%;height:100%;overflow:hidden;background:#0d1f16;font-family:
 .s-hou .cmp-row-val.muslim{color:var(--br)}.s-hou .cmp-row-val.general{color:rgba(255,255,255,.45)}
 .s-hou .callout{background:rgba(224,153,100,.1);border:1px solid rgba(224,153,100,.25)}
 
+.s-yth .stat-left-bg{background:linear-gradient(135deg,#071828,#0d4060,#0a2038)}
+.s-yth .stat-domain,.s-yth .stat-num{color:#7ec8e3}
+.s-yth .cmp-fill.muslim{background:#7ec8e3}.s-yth .cmp-fill.general{background:rgba(255,255,255,.25)}
+.s-yth .cmp-row-val.muslim{color:#7ec8e3}.s-yth .cmp-row-val.general{color:rgba(255,255,255,.45)}
+.s-yth .callout{background:rgba(126,200,227,.1);border:1px solid rgba(126,200,227,.28)}
+.s-yth .edmonton-pill{display:inline-flex;align-items:center;gap:8px;background:rgba(39,93,67,.35);border:1px solid rgba(74,148,120,.4);border-radius:30px;padding:8px 18px;margin-top:20px}
+.s-yth .edmonton-pill-num{font-family:'Alegreya',serif;font-size:clamp(18px,2.2vw,28px);font-weight:700;color:var(--g-lt)}
+.s-yth .edmonton-pill-label{font-size:12px;color:rgba(74,148,120,.85);font-weight:600}
+
+.s-urb .stat-left-bg{background:linear-gradient(135deg,#0f1a08,#2a4a10,#162808)}
+.s-urb .stat-domain,.s-urb .stat-num{color:#a8d87a}
+.s-urb .cmp-fill.muslim{background:#a8d87a}.s-urb .cmp-fill.general{background:rgba(255,255,255,.25)}
+.s-urb .cmp-row-val.muslim{color:#a8d87a}.s-urb .cmp-row-val.general{color:rgba(255,255,255,.45)}
+.s-urb .callout{background:rgba(168,216,122,.1);border:1px solid rgba(168,216,122,.28)}
+
 .s-pri .stat-left-bg{background:linear-gradient(135deg,#1f0508,#7a0d14,#2d0508)}
 .s-pri .stat-domain,.s-pri .stat-num{color:#f08090}
 .s-pri .cmp-fill.muslim{background:var(--red)}.s-pri .cmp-fill.official{background:var(--br);opacity:.7}.s-pri .cmp-fill.general{background:rgba(255,255,255,.25)}
@@ -243,7 +258,7 @@ html,body{width:100%;height:100%;overflow:hidden;background:#0d1f16;font-family:
   <div class="geo-ring" style="width:380px;height:380px;bottom:-60px;right:-60px;border-color:rgba(255,255,255,.07)"></div>
   <div class="intro-inner">
     <div class="intro-eyebrow">IslamicFamily — Community Evidence</div>
-    <div class="intro-title">Muslim representation<br>across <em>eight domains</em></div>
+    <div class="intro-title">Muslim representation<br>across <em>nine domains</em></div>
     <div class="intro-sub">Each statistic tells a story of interst, a gap, a disparity; together they show us the urgent need for IslamicFamily to serve & grow.</div>
     <div class="intro-hint"><kbd>→</kbd> or <kbd>space</kbd> to advance &nbsp;·&nbsp; <kbd>←</kbd> to go back</div>
   </div>
@@ -281,8 +296,60 @@ html,body{width:100%;height:100%;overflow:hidden;background:#0d1f16;font-family:
   </div>
 </div>
 
+<!-- SLIDE: MUSLIM YOUTH POPULATION -->
+<div class="slide s-yth stat-slide" data-idx="2">
+  <div class="stat-left s-yth">
+    <div class="stat-left-bg"></div>
+    <div class="geo-ring" style="width:480px;height:480px;bottom:-160px;right:-160px"></div>
+    <div style="position:relative;z-index:2">
+      <div class="stat-domain reveal-up">Youth Population</div>
+      <span class="stat-num reveal-up">7.3%</span>
+      <span class="stat-num-unit reveal-up">of Canadian children</span>
+      <div class="stat-label reveal-up">are Muslim — but in Canada's cities, that share climbs dramatically above the <strong>national average</strong></div>
+      <div class="stat-source reveal-up">Source: StatsCan 2021 Census; JFA 2025 estimates</div>
+      <div class="edmonton-pill reveal-up">
+        <span class="edmonton-pill-num">~7.5%</span>
+        <span class="edmonton-pill-label">Edmonton youth — at the national average &amp; rising</span>
+      </div>
+    </div>
+  </div>
+  <div class="stat-right s-yth">
+    <div class="cmp-title reveal-up">Estimated Muslim share of youth (0–18) by city</div>
+    <div class="cmp-rows">
+      <div class="cmp-row reveal-up">
+        <div class="cmp-row-label"><span class="cmp-row-name">Canada (national avg.)</span><span class="cmp-row-val general">~7.3%</span></div>
+        <div class="cmp-track"><div class="cmp-fill general" data-pct="46"></div></div>
+      </div>
+      <div class="cmp-row reveal-up">
+        <div class="cmp-row-label"><span class="cmp-row-name">Vancouver</span><span class="cmp-row-val general">~4.1%</span></div>
+        <div class="cmp-track"><div class="cmp-fill general" data-pct="26"></div></div>
+      </div>
+      <div class="cmp-row reveal-up">
+        <div class="cmp-row-label"><span class="cmp-row-name">Calgary</span><span class="cmp-row-val muslim">~9.1%</span></div>
+        <div class="cmp-track"><div class="cmp-fill muslim" data-pct="58"></div></div>
+      </div>
+      <div class="cmp-row reveal-up">
+        <div class="cmp-row-label"><span class="cmp-row-name">Ottawa</span><span class="cmp-row-val muslim">~10.2%</span></div>
+        <div class="cmp-track"><div class="cmp-fill muslim" data-pct="65"></div></div>
+      </div>
+      <div class="cmp-row reveal-up">
+        <div class="cmp-row-label"><span class="cmp-row-name">Montréal</span><span class="cmp-row-val muslim">~13.7%</span></div>
+        <div class="cmp-track"><div class="cmp-fill muslim" data-pct="87"></div></div>
+      </div>
+      <div class="cmp-row reveal-up">
+        <div class="cmp-row-label"><span class="cmp-row-name">Greater Toronto Area</span><span class="cmp-row-val muslim">~15.8%</span></div>
+        <div class="cmp-track"><div class="cmp-fill muslim" data-pct="100"></div></div>
+      </div>
+    </div>
+    <div class="callout s-yth reveal-up">
+      <span class="callout-icon">📈</span>
+      <div class="callout-text">By 2036, the GTA's Muslim adult share is projected to reach <strong>13.2%</strong> — pushing the youth share toward <strong>1 in 5 children</strong>. The demand for culturally grounded children's services is already here.</div>
+    </div>
+  </div>
+</div>
+
 <!-- SLIDE 2: BORN IN CANADA -->
-<div class="slide s-born stat-slide" data-idx="2">
+<div class="slide s-born stat-slide" data-idx="3">
   <div class="stat-left s-born">
     <div class="stat-left-bg"></div>
     <div class="geo-ring" style="width:480px;height:480px;bottom:-160px;right:-160px"></div>
@@ -314,7 +381,7 @@ html,body{width:100%;height:100%;overflow:hidden;background:#0d1f16;font-family:
 </div>
 
 <!-- SLIDE 3: EDUCATION -->
-<div class="slide s-edu stat-slide" data-idx="3">
+<div class="slide s-edu stat-slide" data-idx="4">
   <div class="stat-left s-edu">
     <div class="stat-left-bg"></div>
     <div class="geo-ring" style="width:480px;height:480px;bottom:-160px;right:-160px"></div>
@@ -346,7 +413,7 @@ html,body{width:100%;height:100%;overflow:hidden;background:#0d1f16;font-family:
 </div>
 
 <!-- SLIDE 4: LOW INCOME -->
-<div class="slide s-inc stat-slide" data-idx="4">
+<div class="slide s-inc stat-slide" data-idx="5">
   <div class="stat-left s-inc">
     <div class="stat-left-bg"></div>
     <div class="geo-ring" style="width:520px;height:520px;bottom:-200px;right:-180px"></div>
@@ -378,7 +445,7 @@ html,body{width:100%;height:100%;overflow:hidden;background:#0d1f16;font-family:
 </div>
 
 <!-- SLIDE 5: MENTAL HEALTH -->
-<div class="slide s-mh stat-slide" data-idx="5">
+<div class="slide s-mh stat-slide" data-idx="6">
   <div class="stat-left s-mh">
     <div class="stat-left-bg"></div>
     <div class="geo-ring" style="width:500px;height:500px;bottom:-170px;right:-170px"></div>
@@ -410,39 +477,95 @@ html,body{width:100%;height:100%;overflow:hidden;background:#0d1f16;font-family:
 </div>
 
 <!-- SLIDE 6: HOUSING -->
-<div class="slide s-hou stat-slide" data-idx="6">
+<div class="slide s-hou stat-slide" data-idx="7">
   <div class="stat-left s-hou">
     <div class="stat-left-bg"></div>
     <div class="geo-ring" style="width:460px;height:460px;bottom:-150px;right:-150px"></div>
     <div style="position:relative;z-index:2">
       <div class="stat-domain reveal-up">Housing</div>
-      <span class="stat-num reveal-up">16×</span>
-      <span class="stat-num-unit reveal-up">more </span>
-      <div class="stat-label reveal-up"><strong>Black Muslim Edmontonians</strong> live in subsidized housing than the general population</div>
-      <div class="stat-source reveal-up">Source: Edmonton social housing data</div>
+      <span class="stat-num reveal-up" style="font-size:clamp(58px,8.5vw,120px)">58.1%</span>
+      <span class="stat-num-unit reveal-up">own their home</span>
+      <div class="stat-label reveal-up">of Muslim households in the GTHA — vs. <strong>72.9%</strong> of non-Muslims. A <strong>14.8 percentage point</strong> ownership gap, statistically significant at p&nbsp;&lt;&nbsp;0.0001</div>
+      <div class="stat-source reveal-up">Source: <em>Working While Muslim</em>, Islamophobia Research Hub, York University, 2026</div>
     </div>
   </div>
   <div class="stat-right s-hou">
-    <div class="cmp-title reveal-up">Affordable housing residents</div>
+    <div class="cmp-title reveal-up">Homeownership rate — GTHA</div>
     <div class="cmp-rows">
       <div class="cmp-row reveal-up">
-        <div class="cmp-row-label"><span class="cmp-row-name">Muslim share of tenants</span><span class="cmp-row-val muslim">11%</span></div>
-        <div class="cmp-track"><div class="cmp-fill muslim" data-pct="55"></div></div>
+        <div class="cmp-row-label"><span class="cmp-row-name">Muslim households</span><span class="cmp-row-val muslim">58.1%</span></div>
+        <div class="cmp-track"><div class="cmp-fill muslim" data-pct="58"></div></div>
       </div>
       <div class="cmp-row reveal-up">
-        <div class="cmp-row-label"><span class="cmp-row-name">Muslim share of population</span><span class="cmp-row-val general">~5%</span></div>
-        <div class="cmp-track"><div class="cmp-fill general" data-pct="25"></div></div>
+        <div class="cmp-row-label"><span class="cmp-row-name">Non-Muslim households</span><span class="cmp-row-val general">72.9%</span></div>
+        <div class="cmp-track"><div class="cmp-fill general" data-pct="73"></div></div>
       </div>
     </div>
-    <div class="callout s-hou reveal-up">
+    <div class="callout s-hou reveal-up" style="margin-top:24px">
+      <span class="callout-icon">🏘️</span>
+      <div class="callout-text"><strong>1 in 4 (23%)</strong> GTHA Muslims living in rented housing reside in subsidized units — pointing to a compounding gap between income, wealth, and housing access.</div>
+    </div>
+    <div class="callout s-hou reveal-up" style="margin-top:16px">
       <span class="callout-icon">🏠</span>
       <div class="callout-text">Housing insecurity compounds every other issue — mental health, employment, family stability. <strong>Affordable housing is a front door to all services.</strong></div>
     </div>
   </div>
 </div>
 
+<!-- SLIDE: URBAN CONCENTRATION -->
+<div class="slide s-urb stat-slide" data-idx="8">
+  <div class="stat-left s-urb">
+    <div class="stat-left-bg"></div>
+    <div class="geo-ring" style="width:480px;height:480px;bottom:-160px;right:-160px"></div>
+    <div style="position:relative;z-index:2">
+      <div class="stat-domain reveal-up">Urban Concentration</div>
+      <span class="stat-num reveal-up">70%+</span>
+      <span class="stat-num-unit reveal-up">of Canadian Muslims</span>
+      <div class="stat-label reveal-up">live in Canada's <strong>major metropolitan areas</strong> — rising to nearly 80% when Edmonton and Calgary are included</div>
+      <div class="stat-source reveal-up">Source: StatsCan 2021 Census; JFA 2025 estimates</div>
+    </div>
+  </div>
+  <div class="stat-right s-urb">
+    <div class="cmp-title reveal-up">Muslim share of total population by city</div>
+    <div class="cmp-rows">
+      <div class="cmp-row reveal-up">
+        <div class="cmp-row-label"><span class="cmp-row-name">Canada (national)</span><span class="cmp-row-val general">4.9%</span></div>
+        <div class="cmp-track"><div class="cmp-fill general" data-pct="31"></div></div>
+      </div>
+      <div class="cmp-row reveal-up">
+        <div class="cmp-row-label"><span class="cmp-row-name">Vancouver</span><span class="cmp-row-val general">2.6%</span></div>
+        <div class="cmp-track"><div class="cmp-fill general" data-pct="16"></div></div>
+      </div>
+      <div class="cmp-row reveal-up">
+        <div class="cmp-row-label"><span class="cmp-row-name">Edmonton</span><span class="cmp-row-val muslim">4.8%</span></div>
+        <div class="cmp-track"><div class="cmp-fill muslim" data-pct="30"></div></div>
+      </div>
+      <div class="cmp-row reveal-up">
+        <div class="cmp-row-label"><span class="cmp-row-name">Calgary</span><span class="cmp-row-val muslim">5.8%</span></div>
+        <div class="cmp-track"><div class="cmp-fill muslim" data-pct="37"></div></div>
+      </div>
+      <div class="cmp-row reveal-up">
+        <div class="cmp-row-label"><span class="cmp-row-name">Ottawa</span><span class="cmp-row-val muslim">6.5%</span></div>
+        <div class="cmp-track"><div class="cmp-fill muslim" data-pct="41"></div></div>
+      </div>
+      <div class="cmp-row reveal-up">
+        <div class="cmp-row-label"><span class="cmp-row-name">Montréal</span><span class="cmp-row-val muslim">8.7%</span></div>
+        <div class="cmp-track"><div class="cmp-fill muslim" data-pct="55"></div></div>
+      </div>
+      <div class="cmp-row reveal-up">
+        <div class="cmp-row-label"><span class="cmp-row-name">Greater Toronto Area</span><span class="cmp-row-val muslim">10.2%</span></div>
+        <div class="cmp-track"><div class="cmp-fill muslim" data-pct="65"></div></div>
+      </div>
+    </div>
+    <div class="callout s-urb reveal-up">
+      <span class="callout-icon">🌆</span>
+      <div class="callout-text">Muslim housing demand isn't spread evenly across Canada. It's concentrated in a handful of cities — and <strong>growing fastest among family-formation-aged communities</strong>. By 2036, the GTA's Muslim population share is projected to reach 13.2%.</div>
+    </div>
+  </div>
+</div>
+
 <!-- SLIDE 7: PRISON -->
-<div class="slide s-pri stat-slide" data-idx="7">
+<div class="slide s-pri stat-slide" data-idx="9">
   <div class="stat-left s-pri">
     <div class="stat-left-bg"></div>
     <div class="geo-ring" style="width:500px;height:500px;bottom:-180px;right:-180px"></div>
@@ -478,7 +601,7 @@ html,body{width:100%;height:100%;overflow:hidden;background:#0d1f16;font-family:
 </div>
 
 <!-- SLIDE 8: FOSTER CARE -->
-<div class="slide s-fos" data-idx="8">
+<div class="slide s-fos" data-idx="10">
   <div class="fos-glow"></div>
   <div class="fos-center">
 
@@ -520,7 +643,7 @@ html,body{width:100%;height:100%;overflow:hidden;background:#0d1f16;font-family:
 </div>
 
 <!-- OUTRO -->
-<div class="slide s-outro" data-idx="9">
+<div class="slide s-outro" data-idx="11">
   <div class="s-outro-bg"></div>
   <div class="outro-inner">
     <div class="outro-num reveal-up">2×</div>
