@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Defining the Standard of Care — IslamicFamily &amp; The Muslim Fund</title>
+<link href="https://fonts.googleapis.com/css2?family=Alegreya:ital,wght@0,400;0,700;1,400&family=Alegreya+Sans:wght@300;400;500;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --green:#275D43;--green-dark:#1e4a35;--green-light:#eaf2ed;--green-mid:#3a7a5a;
+  --brown:#E09964;--brown-light:#fdf4ec;--bg:#FAFAF2;
+  --black:#353535;--arabica:#DCD9B8;--white:#ffffff;--red:#BB2D37;
+  --text:#353535;--text-mid:#4a4a45;--text-muted:#888880;
+  --border:rgba(39,93,67,0.13);--radius:10px;
+}
+body{font-family:'Alegreya Sans',system-ui,sans-serif;background:var(--bg);color:var(--text);font-size:15px;line-height:1.75}
+
+/* HEADER */
+.header{background:var(--green);padding:20px 32px;display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap}
+.header-logo img{height:38px;display:block}
+.header-tag{background:rgba(255,255,255,0.12);border:1px solid rgba(255,255,255,0.25);color:rgba(255,255,255,0.9);font-size:10px;font-weight:500;letter-spacing:0.12em;text-transform:uppercase;padding:5px 13px;border-radius:100px;white-space:nowrap}
+
+/* HERO */
+.hero{background:var(--green);padding:52px 32px 56px;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;top:-80px;right:-80px;width:400px;height:400px;border-radius:50%;background:rgba(255,255,255,0.03);pointer-events:none}
+.hero::after{content:'';position:absolute;bottom:0;left:0;right:0;height:4px;background:linear-gradient(to right,#E09964,#F7AF29,#EECBAF)}
+.hero h1{font-family:'Alegreya',serif;font-size:clamp(26px,4vw,40px);font-weight:700;color:#fff;line-height:1.18;margin-bottom:10px;max-width:760px}
+.hero-subtitle{font-size:16px;color:rgba(255,255,255,0.65);margin-bottom:28px;max-width:640px;font-style:italic;font-family:'Alegreya',serif}
+.hero-meta{display:flex;flex-wrap:wrap;gap:6px 28px;margin-bottom:28px}
+.hero-meta-item{display:flex;gap:7px;align-items:baseline}
+.hero-meta-label{font-size:10px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:rgba(255,255,255,0.5);white-space:nowrap}
+.hero-meta-value{font-size:13px;color:rgba(255,255,255,0.85)}
+.hero-rec-label{font-size:10px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:var(--brown);margin-bottom:10px}
+.hero-rec{background:rgba(255,255,255,0.1);border-left:3px solid var(--brown);border-radius:0 8px 8px 0;padding:16px 20px;max-width:720px}
+.hero-rec p{font-size:15px;line-height:1.65;color:rgba(255,255,255,0.92);font-weight:400}
+
+/* PAGE LAYOUT */
+.page{display:grid;grid-template-columns:1fr 268px;min-height:100vh}
+@media(max-width:768px){.page{grid-template-columns:1fr}}
+
+/* MAIN */
+main{padding:40px 36px 80px;border-right:1px solid var(--border);min-width:0}
+@media(max-width:768px){main{padding:28px 20px 56px;border-right:none}}
+
+/* SIDEBAR */
+aside{padding:36px 22px;background:var(--white);display:flex;flex-direction:column;gap:32px;position:sticky;top:0;height:100vh;overflow-y:auto}
+@media(max-width:768px){aside{position:static;height:auto;padding:24px 20px;border-top:1px solid var(--border);display:grid;grid-template-columns:1fr 1fr;gap:20px}}
+@media(max-width:480px){aside{grid-template-columns:1fr}}
+
+/* SECTION */
+.section{margin-bottom:44px}
+.section-label{font-size:10px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:var(--brown);margin-bottom:8px;display:flex;align-items:center;gap:10px}
+.section-label::after{content:'';flex:1;height:1px;background:var(--arabica)}
+h2{font-family:'Alegreya',serif;font-size:25px;font-weight:700;line-height:1.22;color:var(--green);margin-bottom:14px}
+h3{font-size:11px;font-weight:700;color:var(--text);margin:22px 0 8px;letter-spacing:0.07em;text-transform:uppercase}
+p{color:var(--text-mid);margin-bottom:13px}
+p:last-child{margin-bottom:0}
+strong{color:var(--text);font-weight:700}
+ul{margin:8px 0 13px 0;padding-left:0;list-style:none}
+ul li{color:var(--text-mid);padding:4px 0 4px 18px;position:relative;font-size:14.5px;line-height:1.6}
+ul li::before{content:'—';position:absolute;left:0;color:var(--brown);font-weight:700}
+
+/* CALLOUT */
+.callout{border-left:3px solid var(--brown);background:var(--brown-light);border-radius:0 8px 8px 0;padding:15px 18px;margin:18px 0}
+.callout p{font-size:14.5px;font-weight:500;color:var(--green);margin:0;line-height:1.6}
+.callout-green{border-left-color:var(--green);background:var(--green-light)}
+.callout-green p{color:var(--green-dark)}
+
+/* TABLE */
+.data-table{width:100%;border-collapse:collapse;font-size:13px;margin:16px 0;overflow-x:auto;display:block}
+@media(min-width:600px){.data-table{display:table}}
+.data-table th{background:var(--green-light);color:var(--green);font-size:10px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;padding:9px 11px;text-align:left;border-bottom:2px solid var(--border);white-space:nowrap}
+.data-table td{padding:9px 11px;border-bottom:1px solid var(--border);color:var(--text-mid);vertical-align:top}
+.data-table tr:last-child td{border-bottom:none}
+.data-table .total-row td{background:var(--green-light);font-weight:700;color:var(--green)}
+
+/* STANDARDS MATRIX */
+.matrix{width:100%;border-collapse:collapse;font-size:13px;margin:6px 0 4px}
+.matrix th{font-size:10px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;color:var(--text-muted);padding:8px 6px;text-align:center;border-bottom:2px solid var(--border)}
+.matrix th:first-child{text-align:left;color:var(--green)}
+.matrix th.std{color:var(--green);background:var(--green-light);border-radius:6px 6px 0 0}
+.matrix td{padding:9px 6px;border-bottom:1px solid var(--border);text-align:center;font-size:15px;font-weight:700}
+.matrix td:first-child{text-align:left;font-size:13px;font-weight:400;color:var(--text-mid)}
+.matrix td.std{background:var(--green-light)}
+.matrix tr:last-child td{border-bottom:none}
+.mk-y{color:var(--green)}
+.mk-p{color:var(--brown)}
+.mk-n{color:var(--red)}
+.matrix-legend{font-size:11px;color:var(--text-muted);margin-top:8px;display:flex;gap:16px;flex-wrap:wrap}
+.matrix-legend span{display:inline-flex;align-items:center;gap:5px}
+.matrix-wrap{background:var(--white);border:1px solid var(--border);border-radius:var(--radius);padding:18px 20px;margin:18px 0}
+.matrix-title{font-size:10px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--text-muted);margin-bottom:6px}
+
+/* STRAND CARDS */
+.strand{border:1px solid var(--border);border-radius:var(--radius);padding:20px 22px;margin-bottom:13px;background:var(--white);border-left:4px solid var(--green);position:relative}
+.strand-num{font-size:10px;font-weight:700;color:var(--brown);letter-spacing:0.12em;text-transform:uppercase;margin-bottom:5px}
+.strand h3{margin:0 0 10px;font-size:13.5px;color:var(--green);letter-spacing:0;text-transform:none;font-weight:700}
+.strand p,.strand ul{font-size:13.5px;margin:0}
+.strand ul{margin-top:6px}
+.strand ul li{font-size:13px}
+
+/* STANDARD AREAS LIST */
+.area{display:flex;gap:12px;padding:12px 0;border-bottom:1px solid var(--border)}
+.area:last-child{border-bottom:none}
+.area-icon{width:30px;height:30px;border-radius:7px;background:var(--green-light);display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:2px;font-size:14px}
+.area-body{font-size:13.5px;color:var(--text-mid);line-height:1.55}
+.area-body strong{color:var(--green)}
+
+/* TEAM GRID */
+.team-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:13px 0}
+@media(max-width:520px){.team-grid{grid-template-columns:1fr}}
+.team-card{border:1px solid var(--border);border-radius:8px;padding:13px 15px;background:var(--white)}
+.team-card ul li::before{content:none}
+.team-name{font-size:13px;font-weight:700;color:var(--text);margin-bottom:2px}
+.team-role{font-size:11px;color:var(--brown);font-weight:600;letter-spacing:0.05em;text-transform:uppercase;margin-bottom:5px}
+.team-desc{font-size:12px;color:var(--text-muted);line-height:1.5}
+
+/* PHASE TIMELINE */
+.phase-row{display:grid;grid-template-columns:96px 1fr;gap:0;margin-bottom:0;border-bottom:1px solid var(--border)}
+.phase-row:last-child{border-bottom:none}
+.phase-label{padding:14px 12px 14px 0;font-size:10px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--brown);line-height:1.3}
+.phase-content{padding:14px 0;border-left:1px solid var(--border);padding-left:16px}
+.phase-title{font-size:13px;font-weight:700;color:var(--green);margin-bottom:4px}
+.phase-desc{font-size:12.5px;color:var(--text-muted);line-height:1.55;margin:0}
+
+/* COST CASE */
+.cost-case{background:var(--green);border-radius:var(--radius);padding:20px 22px;margin:18px 0;color:white}
+.cost-case-label{font-size:10px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--brown);margin-bottom:10px}
+.cost-case p{color:rgba(255,255,255,0.85);font-size:14px;line-height:1.65;margin-bottom:8px}
+.cost-case p:last-child{margin-bottom:0}
+.cost-case strong{color:white}
+
+/* ASK */
+.ask-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:14px 0}
+@media(max-width:520px){.ask-grid{grid-template-columns:1fr}}
+.ask-card{border:2px solid var(--green);border-radius:8px;padding:16px 18px;background:var(--white)}
+.ask-card.primary{background:var(--green);border-color:var(--green);grid-column:1/-1}
+.ask-num{font-size:10px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--brown);margin-bottom:5px}
+.ask-card.primary .ask-num{color:rgba(255,255,255,0.6)}
+.ask-title{font-size:14px;font-weight:700;color:var(--green);line-height:1.3}
+.ask-card.primary .ask-title{color:white}
+.ask-desc{font-size:12px;color:var(--text-muted);margin-top:4px;line-height:1.5}
+.ask-card.primary .ask-desc{color:rgba(255,255,255,0.7)}
+
+/* TOC MENU */
+.toc-btn{background:none;border:none;cursor:pointer;padding:6px;display:flex;flex-direction:column;gap:5px;justify-content:center;align-items:center;border-radius:6px;transition:background 0.15s}
+.toc-btn:hover{background:rgba(255,255,255,0.12)}
+.toc-btn span{display:block;width:20px;height:2px;background:rgba(255,255,255,0.85);border-radius:2px;transition:transform 0.25s, opacity 0.25s}
+.toc-btn.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+.toc-btn.open span:nth-child(2){opacity:0}
+.toc-btn.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+.toc-drawer{position:fixed;top:0;right:-280px;width:272px;height:100vh;background:var(--white);z-index:1000;box-shadow:-4px 0 24px rgba(0,0,0,0.12);transition:right 0.3s cubic-bezier(0.4,0,0.2,1);display:flex;flex-direction:column;overflow:hidden}
+.toc-drawer.open{right:0}
+.toc-drawer-header{background:var(--green);padding:18px 20px;display:flex;align-items:center;justify-content:space-between;flex-shrink:0}
+.toc-drawer-title{font-size:11px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:rgba(255,255,255,0.85)}
+.toc-close{background:none;border:none;cursor:pointer;color:rgba(255,255,255,0.7);font-size:20px;line-height:1;padding:2px 4px;border-radius:4px}
+.toc-close:hover{color:white;background:rgba(255,255,255,0.12)}
+.toc-list{padding:16px 0;overflow-y:auto;flex:1}
+.toc-item{display:block;padding:10px 20px;text-decoration:none;color:var(--text-mid);font-size:13.5px;line-height:1.4;border-left:3px solid transparent;transition:all 0.15s;cursor:pointer}
+.toc-item:hover{color:var(--green);background:var(--green-light);border-left-color:var(--brown)}
+.toc-item.active{color:var(--green);background:var(--green-light);border-left-color:var(--green);font-weight:600}
+.toc-item-label{font-size:10px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--brown);display:block;margin-bottom:2px}
+.toc-overlay{position:fixed;inset:0;background:rgba(0,0,0,0.3);z-index:999;opacity:0;pointer-events:none;transition:opacity 0.3s}
+.toc-overlay.open{opacity:1;pointer-events:all}
+
+/* SIDEBAR WIDGETS */
+.sw-label{font-size:10px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--green);margin-bottom:10px;padding-bottom:7px;border-bottom:2px solid var(--arabica)}
+.stat-pill{background:var(--green-light);border-radius:8px;padding:12px 14px;margin-bottom:7px}
+.stat-num{font-family:'Alegreya',serif;font-size:28px;font-weight:700;color:var(--green);line-height:1;margin-bottom:3px}
+.stat-lbl{font-size:11.5px;color:var(--text-muted);line-height:1.4}
+
+/* FOOTER */
+.footer{background:var(--green);padding:24px 32px;display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap}
+.footer-left{color:rgba(255,255,255,0.9);font-size:13px;line-height:1.7}
+.footer-left strong{color:white}
+</style>
+</head>
+<body>
+
+<!-- Header -->
+<header class="header">
+  <div class="header-logo">
+    <img src="https://prod-files-secure.s3.us-west-2.amazonaws.com/a0ff1b5b-7f0b-4f5c-8950-900ae6f4e89a/28538a70-1d35-404b-94c3-7093521a32cb/Horizontal_-_Full_Colour.png" alt="IslamicFamily"
+      onerror="this.outerHTML='<span style=\'font-family:Alegreya Sans,sans-serif;color:white;font-size:18px;font-weight:700\'>IslamicFamily</span>'">
+  </div>
+  <div style="display:flex;align-items:center;gap:12px">
+    <span class="header-tag">Funding Proposal — Confidential</span>
+    <button class="toc-btn" id="tocBtn" aria-label="Table of contents">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<!-- TOC Overlay -->
+<div class="toc-overlay" id="tocOverlay"></div>
+
+<!-- TOC Drawer -->
+<div class="toc-drawer" id="tocDrawer">
+  <div class="toc-drawer-header">
+    <span class="toc-drawer-title">Contents</span>
+    <button class="toc-close" id="tocClose">✕</button>
+  </div>
+  <nav class="toc-list">
+    <a class="toc-item" data-target="sec-gap"><span class="toc-item-label">01</span>The Gap</a>
+    <a class="toc-item" data-target="sec-first"><span class="toc-item-label">02</span>Why This Comes First</a>
+    <a class="toc-item" data-target="sec-standards"><span class="toc-item-label">03</span>The Standard</a>
+    <a class="toc-item" data-target="sec-work"><span class="toc-item-label">04</span>The Work</a>
+    <a class="toc-item" data-target="sec-team"><span class="toc-item-label">05</span>The Team</a>
+    <a class="toc-item" data-target="sec-why"><span class="toc-item-label">06</span>Why The Muslim Fund</a>
+    <a class="toc-item" data-target="sec-budget"><span class="toc-item-label">07</span>Budget</a>
+    <a class="toc-item" data-target="sec-ask"><span class="toc-item-label">08</span>The Ask</a>
+  </nav>
+</div>
+
+<!-- Hero -->
+<div class="hero">
+  <h1>Defining the Standard of Care for Muslims in Canadian Corrections</h1>
+  <div class="hero-subtitle">Codifying who is served and what care is owed, training the people who deliver it, and securing its adoption</div>
+  <div class="hero-meta">
+    <div class="hero-meta-item"><span class="hero-meta-label">To</span><span class="hero-meta-value">Junaid Qadri, The Muslim Fund</span></div>
+    <div class="hero-meta-item"><span class="hero-meta-label">From</span><span class="hero-meta-value">Omar Yaqub, IslamicFamily</span></div>
+    <div class="hero-meta-item"><span class="hero-meta-label">Date</span><span class="hero-meta-value">June 2026</span></div>
+  </div>
+  <div class="hero-rec-label">The Ask</div>
+  <div class="hero-rec">
+    <p>A two-year, $300,000 investment ($150,000 per year) for IslamicFamily to define and publish a national standard of care for Muslims in federal corrections, train the community and institutional providers who deliver that care, and secure its adoption through sustained government relations.</p>
+  </div>
+</div>
+
+<div class="page">
+<main>
+
+  <!-- THE GAP -->
+  <div class="section" id="sec-gap">
+    <div class="section-label">The Gap</div>
+    <h2>The questions no one has answered</h2>
+    <p>Across Canada's federal corrections system, the most basic questions about Muslim care have no consistent answer. Who counts as Muslim when a person is admitted? How is a conversion recorded, recognized, or even noticed? When a parent dies, who is permitted a funeral visit, and on what terms? Is halal food available? Is the Quran accessible in a language the person reads? How often does a chaplain actually come?</p>
+    <p>Today, the answer to every one of these depends on the institution, the staff on shift, and whether a relationship happens to exist. In some facilities Quran access is restricted to English audio only. Halal diet was unavailable in BC institutions as of 2026. Chaplain visits can be as infrequent as once a month. Access to funeral rites and prayer accommodation varies facility by facility.</p>
+    <p>This is not, at root, a delivery problem. It is a definition problem. Care cannot be delivered consistently, measured honestly, or defended as a right when there is no agreed standard for what the care is, or for who is owed it.</p>
+
+    <div class="callout">
+      <p>Muslims are roughly 5% of Canada's population and over 9% of the federal prison population. Yet there is no national standard for what Muslim religious care in custody must include. What exists in one institution is absent in the next.</p>
+    </div>
+
+    <h3>Conversion: the invisible population</h3>
+    <p>Conversions inside custody are frequent and largely untracked. A person who embraces Islam in prison may have no record of it, no chaplain who knows, and no claim to accommodation that follows them through their sentence or their release. The Convert Muslim Foundation's <em>Inside Out</em> report (2020) identifies converts as among the most isolated and underserved within the Muslim prison population. Without a standard for how conversion is recognized and recorded, an entire and growing group is invisible to the system meant to serve it.</p>
+
+    <h3>Funeral rites and end of life</h3>
+    <p>Among the most acute failures is inconsistent access to funeral visits (Janazah) and to end-of-life and burial accommodation. These are not comfort items. In Islam they are obligations, and being denied them at the moment of a death in the family compounds harm in ways that are difficult to repair, both for the incarcerated person and for the community that receives them afterward.</p>
+  </div>
+
+  <!-- WHY THIS COMES FIRST -->
+  <div class="section" id="sec-first">
+    <div class="section-label">Why This Comes First</div>
+    <h2>The foundation the rest of the work depends on</h2>
+    <p>IslamicFamily is pursuing a larger, five-year reentry pilot with Correctional Service Canada (CSC) to reduce recidivism among Muslim Canadians through community-delivered reintegration. That pilot, and every reentry effort like it, rests on a foundation that does not yet exist: a clear, agreed standard for who is being served and what care they are owed.</p>
+    <p>You cannot track recidivism by religion if you cannot reliably identify who is Muslim. You cannot train providers to a standard that has not been written. You cannot hold an institution accountable for accommodation it has never agreed to define. The standards work sits upstream of all of it.</p>
+
+    <div class="callout callout-green">
+      <p>Philanthropy builds the standard. Government scales the delivery. This is the de-risking layer that makes the larger pilot fundable, measurable, and durable.</p>
+    </div>
+
+    <p>Government will fund delivery once a credible standard exists. It rarely funds the development of that standard, particularly when the work requires religious and community authority that government does not hold and cannot manufacture. This is precisely the gap philanthropy is positioned to close, and precisely where a focused, relatively modest investment unlocks a far larger public commitment downstream.</p>
+  </div>
+
+  <!-- THE STANDARD -->
+  <div class="section" id="sec-standards">
+    <div class="section-label">The Standard</div>
+    <h2>What gets defined</h2>
+    <p>The project produces a published <strong>Muslim Standard of Care for Canadian Corrections</strong>: a clear, defensible, citable framework developed with religious, academic, and institutional input, covering the questions that are today left to chance. The matrix below illustrates the patchwork the standard is built to replace.</p>
+
+    <div class="matrix-wrap">
+      <div class="matrix-title">Illustrative variation in accommodation, by facility</div>
+      <table class="matrix">
+        <thead>
+          <tr><th>Element of care</th><th>Facility A</th><th>Facility B</th><th>Facility C</th><th class="std">Standard</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Halal diet</td><td class="mk-y">✓</td><td class="mk-n">✗</td><td class="mk-p">~</td><td class="std mk-y">✓</td></tr>
+          <tr><td>Quran in a readable language</td><td class="mk-p">~</td><td class="mk-n">✗</td><td class="mk-y">✓</td><td class="std mk-y">✓</td></tr>
+          <tr><td>Funeral / Janazah visits</td><td class="mk-n">✗</td><td class="mk-p">~</td><td class="mk-n">✗</td><td class="std mk-y">✓</td></tr>
+          <tr><td>Conversion recognized &amp; recorded</td><td class="mk-n">✗</td><td class="mk-n">✗</td><td class="mk-p">~</td><td class="std mk-y">✓</td></tr>
+          <tr><td>Chaplain visit frequency</td><td class="mk-p">~</td><td class="mk-y">✓</td><td class="mk-n">✗</td><td class="std mk-y">✓</td></tr>
+          <tr><td>Prayer space &amp; ablution</td><td class="mk-y">✓</td><td class="mk-p">~</td><td class="mk-p">~</td><td class="std mk-y">✓</td></tr>
+        </tbody>
+      </table>
+      <div class="matrix-legend">
+        <span><strong class="mk-y">✓</strong> Consistently met</span>
+        <span><strong class="mk-p">~</strong> Partial or discretionary</span>
+        <span><strong class="mk-n">✗</strong> Absent</span>
+      </div>
+    </div>
+    <p style="font-size:12px;color:var(--text-muted)">Illustrative of variation observed across institutions; not drawn from a single audit. Establishing the real, current baseline is itself part of the work.</p>
+
+    <h3 style="margin-top:22px">The areas the standard covers</h3>
+    <div style="margin-top:6px">
+      <div class="area"><div class="area-icon">☪</div><div class="area-body"><strong>Definition and identification.</strong> Who is recorded as Muslim, on what basis, and how self-identification is captured at admission and throughout a sentence.</div></div>
+      <div class="area"><div class="area-icon">↻</div><div class="area-body"><strong>Conversion recognition and tracking.</strong> How a conversion in custody is recorded, recognized, and carried forward into accommodation and reentry planning.</div></div>
+      <div class="area"><div class="area-icon">📖</div><div class="area-body"><strong>Religious materials and worship.</strong> Quran access in appropriate languages, prayer space and time, ablution facilities, and permitted religious items.</div></div>
+      <div class="area"><div class="area-icon">🍃</div><div class="area-body"><strong>Diet.</strong> Halal provision as a baseline expectation, not a facility-by-facility discretion.</div></div>
+      <div class="area"><div class="area-icon">🤲</div><div class="area-body"><strong>Funeral, bereavement, and end of life.</strong> Janazah visits, end-of-life rites, and burial accommodation, governed by clear and consistent criteria.</div></div>
+      <div class="area"><div class="area-icon">👤</div><div class="area-body"><strong>Chaplaincy and pastoral access.</strong> Minimum standards for frequency, qualification, and continuity of Muslim chaplaincy.</div></div>
+      <div class="area"><div class="area-icon">🌙</div><div class="area-body"><strong>Observances.</strong> Ramadan, Eid, and Friday prayer accommodation.</div></div>
+    </div>
+  </div>
+
+  <!-- THE WORK -->
+  <div class="section" id="sec-work">
+    <div class="section-label">The Work</div>
+    <h2>Three workstreams over two years</h2>
+    <p>The investment funds three linked workstreams, mapped directly to the budget: academic staffing to build the standard, coordination to turn it into training, and government relations to make it stick.</p>
+
+    <div class="strand">
+      <div class="strand-num">Workstream 01 — Academic staffing</div>
+      <h3>Standards development</h3>
+      <p>An embedded academic partnership researches, drafts, and validates the standard of care, grounded in normative Islamic scholarship, comparative practice in the UK and US, and the reality of Canadian institutions.</p>
+      <ul>
+        <li>Co-investigators Dr. Amin Asfari (University of Regina) and Dr. Fahid Qurashi (University of Salford), working with community scholars on the definitional and conversion-recognition questions</li>
+        <li>A current-state baseline of accommodation across institutions, replacing assumption with evidence</li>
+        <li>Output: a published, citable Muslim Standard of Care framework that government, chaplaincy, and community can all point to</li>
+      </ul>
+    </div>
+
+    <div class="strand">
+      <div class="strand-num">Workstream 02 — Coordination</div>
+      <h3>Training and curriculum</h3>
+      <p>The standard becomes a training curriculum for the two groups who decide whether care actually happens. This is not awareness sessions; it is structured, credible professional development.</p>
+      <ul>
+        <li><strong>Community providers</strong> (chaplains, imams, volunteers): equipped to deliver to one consistent standard rather than improvising site by site</li>
+        <li><strong>CSC frontline and correctional staff</strong>: equipped to recognize and accommodate Muslim religious needs with informed confidence, reducing friction and rights violations</li>
+        <li>Coordination convenes religious, academic, and institutional stakeholders, manages curriculum development, and runs delivery in both regions</li>
+      </ul>
+    </div>
+
+    <div class="strand">
+      <div class="strand-num">Workstream 03 — Government relations</div>
+      <h3>Adoption, data, and accommodation policy</h3>
+      <p>A sustained effort to move the standard from document to practice, pursuing three outcomes as a single package.</p>
+      <ul>
+        <li><strong>National adoption.</strong> CSC recognition and uptake of the standard across regions, not as an optional reference but as expected practice</li>
+        <li><strong>Data-sharing.</strong> Reliable identification and conversion tracking, the precondition for measuring any outcome by religion, including recidivism</li>
+        <li><strong>Accommodation policy.</strong> Formal, written policy covering funerals, diet, and prayer, so that basic rights no longer depend on the institution or the individual on shift</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- THE TEAM -->
+  <div class="section" id="sec-team">
+    <div class="section-label">The Team</div>
+    <h2>Who is doing this</h2>
+    <div class="team-grid">
+      <div class="team-card">
+        <div class="team-name">IslamicFamily</div>
+        <div class="team-role">Lead Organization</div>
+        <div class="team-desc">5+ years of sustained presence across 12 provincial and federal facilities. 7+ years of Public Safety Canada engagement since 2018. Imagine Canada accredited. The institutional anchor for the standard and its delivery.</div>
+      </div>
+      <div class="team-card">
+        <div class="team-name">Dr. Amin Asfari</div>
+        <div class="team-role">Academic Lead — University of Regina</div>
+        <div class="team-desc">Law Foundation of Saskatchewan Chair in Police Studies. Author of <em>Islam, Islamophobia, and the Carceral Experience</em> (Routledge, 2024). Canadian academic anchor with proximity to Prairie institutions.</div>
+      </div>
+      <div class="team-card">
+        <div class="team-name">Dr. Fahid Qurashi</div>
+        <div class="team-role">Research Co-Investigator — University of Salford</div>
+        <div class="team-desc">Co-author of <em>Beyond Imprisonment</em> (Nuffield Foundation). Leading researcher on Muslim experiences in Western correctional systems, bringing comparative UK practice to the standard.</div>
+      </div>
+      <div class="team-card">
+        <div class="team-name">Al Rashid Mosque</div>
+        <div class="team-role">Community &amp; Religious Authority</div>
+        <div class="team-desc">Canada's first mosque (1938). Over a decade of direct corrections engagement, including parole reviews and chaplaincy. Religious grounding for the normative questions the standard must settle.</div>
+      </div>
+      <div class="team-card">
+        <div class="team-name">National Council of Imams</div>
+        <div class="team-role">Scholarly Network</div>
+        <div class="team-desc">National network providing the scholarly authority needed to resolve the "who is Muslim" and conversion-recognition questions credibly and durably.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- WHY THE MUSLIM FUND -->
+  <div class="section" id="sec-why">
+    <div class="section-label">Why The Muslim Fund</div>
+    <h2>Securing Muslim interests in the public space</h2>
+    <p>The Muslim Fund exists to create sustainable funding that secures Muslim interests in the public space. Few investments fit that mission more precisely than this one. Prisons are the public institution where Muslims are most over-represented, least visible, and least able to advocate for themselves. Defining and securing their standard of care is securing Muslim interests at the sharpest possible edge.</p>
+    <p>There is a faith dimension that is hard to overstate. Ensuring that a person can pray, eat what their faith permits, hold a Quran, and bury their dead with dignity is among the most basic obligations a community owes its most vulnerable members. Building a standard that endures, one that outlives any single staff member, government, or grant, is <em>sadaqah jariyah</em> in its truest institutional form: an ongoing benefit that continues to serve long after the initial gift is made.</p>
+
+    <div class="callout">
+      <p>Government will fund the delivery. It will not fund the development of its own standard, and it cannot supply the religious authority the work requires. That is the gap this investment closes.</p>
+    </div>
+  </div>
+
+  <!-- BUDGET -->
+  <div class="section" id="sec-budget">
+    <div class="section-label">Budget</div>
+    <h2>Two-year budget</h2>
+
+    <div style="margin-bottom:16px">
+      <div class="phase-row">
+        <div class="phase-label">Year 1<br>$150K</div>
+        <div class="phase-content">
+          <div class="phase-title">Foundation — build the standard</div>
+          <div class="phase-desc">Standards research and drafting begins. Religious, academic, and institutional convening. Current-state baseline established. Curriculum design starts. Government relations engagement opens with CSC.</div>
+        </div>
+      </div>
+      <div class="phase-row">
+        <div class="phase-label">Year 2<br>$150K</div>
+        <div class="phase-content">
+          <div class="phase-title">Adoption — publish, train, and secure</div>
+          <div class="phase-desc">Standard published and validated. Training delivered to community providers and CSC staff. Government relations push toward national adoption, data-sharing, and accommodation policy. Handoff to the CSC reentry pilot.</div>
+        </div>
+      </div>
+    </div>
+
+    <table class="data-table">
+      <thead>
+        <tr><th>Category</th><th>Year 1</th><th>Year 2</th><th>Total</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Academic staffing (research, drafting, curriculum)</td><td>$80,000</td><td>$80,000</td><td>$160,000</td></tr>
+        <tr><td>Coordination (convening, training delivery)</td><td>$40,000</td><td>$40,000</td><td>$80,000</td></tr>
+        <tr><td>Government relations (adoption, data, policy)</td><td>$30,000</td><td>$30,000</td><td>$60,000</td></tr>
+        <tr class="total-row"><td><strong>Annual Total</strong></td><td>$150,000</td><td>$150,000</td><td><strong>$300,000</strong></td></tr>
+      </tbody>
+    </table>
+    <p style="font-size:12px;color:var(--text-muted)">Final figures subject to refinement. IslamicFamily's existing operational infrastructure absorbs overhead, keeping the full investment directed at the work itself.</p>
+
+    <div class="cost-case">
+      <div class="cost-case-label">The leverage</div>
+      <p>This $300,000 builds the standard, the curriculum, and the adoption pathway that a multi-million-dollar federal reentry program will rest on. The annual federal cost of keeping one person incarcerated exceeds <strong>$120,000</strong>. The standard makes it possible to measure, and therefore to reduce, reoffending among a population the system currently cannot even count.</p>
+      <p>Philanthropy seeds the foundation; government funds the building. This is the highest-leverage point in the entire chain.</p>
+    </div>
+  </div>
+
+  <!-- THE ASK -->
+  <div class="section" id="sec-ask">
+    <div class="section-label">The Ask</div>
+    <h2>What we are asking for</h2>
+
+    <div class="ask-grid">
+      <div class="ask-card primary">
+        <div class="ask-num">Primary</div>
+        <div class="ask-title">A two-year standards investment of $300,000</div>
+        <div class="ask-desc">$150,000 per year to define, publish, train to, and secure adoption of a national Muslim standard of care in corrections.</div>
+      </div>
+      <div class="ask-card">
+        <div class="ask-num">Ask 02</div>
+        <div class="ask-title">A multi-year commitment</div>
+        <div class="ask-desc">A two-year horizon so the work can move from drafting to adoption without a funding cliff between the two stages.</div>
+      </div>
+      <div class="ask-card">
+        <div class="ask-num">Ask 03</div>
+        <div class="ask-title">A named partner</div>
+        <div class="ask-desc">The Muslim Fund's public association lends credibility and community authority that both the standard and the government-relations work require.</div>
+      </div>
+    </div>
+
+    <div class="callout" style="margin-top:20px">
+      <p>IslamicFamily brings the institutional access, the community relationships, and the academic partners. The Muslim Fund brings the means and the mandate. Together this builds the foundation that every downstream effort to serve Muslims in Canadian corrections will stand on.</p>
+    </div>
+  </div>
+
+</main>
+
+<!-- Sidebar -->
+<aside>
+  <div>
+    <div class="sw-label">The gap</div>
+    <div class="stat-pill"><div class="stat-num">~5%</div><div class="stat-lbl">Muslim share of Canada's population (Statistics Canada, 2021)</div></div>
+    <div class="stat-pill"><div class="stat-num">9%+</div><div class="stat-lbl">Share of the federal prison population, an all-time high</div></div>
+    <div class="stat-pill"><div class="stat-num">0</div><div class="stat-lbl">National standards for Muslim religious care in custody</div></div>
+    <div class="stat-pill"><div class="stat-num">1×/mo</div><div class="stat-lbl">Chaplain visits in some facilities</div></div>
+  </div>
+  <div>
+    <div class="sw-label">This investment</div>
+    <div class="stat-pill"><div class="stat-num">$300K</div><div class="stat-lbl">Two-year total investment</div></div>
+    <div class="stat-pill"><div class="stat-num">$150K</div><div class="stat-lbl">Per year, over two years</div></div>
+    <div class="stat-pill"><div class="stat-num">2</div><div class="stat-lbl">Provider groups trained: community + CSC staff</div></div>
+    <div class="stat-pill"><div class="stat-num">1</div><div class="stat-lbl">Published national standard of care</div></div>
+  </div>
+</aside>
+</div>
+
+<!-- Footer -->
+<footer class="footer">
+  <div class="footer-left"><strong>Omar Yaqub</strong> ICD.D DSL (Hon) MBA BSc<br>Servant of Servants, IslamicFamily<br>omary@islamicfamily.ca &nbsp;·&nbsp; +1.780.695.7477<br>IslamicFamily Hüb, 2-786 – 10545 108 Street, Edmonton AB T5H 2Z8</div>
+</footer>
+
+<script>
+// TOC MENU
+(function(){
+  const btn=document.getElementById('tocBtn');
+  const drawer=document.getElementById('tocDrawer');
+  const overlay=document.getElementById('tocOverlay');
+  const closeBtn=document.getElementById('tocClose');
+  const items=document.querySelectorAll('.toc-item');
+
+  function open(){drawer.classList.add('open');overlay.classList.add('open');btn.classList.add('open')}
+  function close(){drawer.classList.remove('open');overlay.classList.remove('open');btn.classList.remove('open')}
+
+  btn.addEventListener('click',()=>drawer.classList.contains('open')?close():open());
+  overlay.addEventListener('click',close);
+  closeBtn.addEventListener('click',close);
+
+  items.forEach(item=>{
+    item.addEventListener('click',()=>{
+      const target=document.getElementById(item.dataset.target);
+      if(target){
+        close();
+        setTimeout(()=>target.scrollIntoView({behavior:'smooth',block:'start'}),300);
+      }
+    });
+  });
+
+  const sections=Array.from(document.querySelectorAll('.section[id]'));
+  const observer=new IntersectionObserver(entries=>{
+    entries.forEach(e=>{
+      if(e.isIntersecting){
+        items.forEach(i=>i.classList.remove('active'));
+        const active=document.querySelector(`.toc-item[data-target="${e.target.id}"]`);
+        if(active)active.classList.add('active');
+      }
+    });
+  },{threshold:0.3});
+  sections.forEach(s=>observer.observe(s));
+})();
+</script>
+</body>
+</html>
