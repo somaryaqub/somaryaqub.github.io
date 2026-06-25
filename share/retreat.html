@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>IslamicFamily — Managers Retreat · Participant Guide</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Alegreya:ital,wght@0,400;0,700;1,400&family=Alegreya+Sans:ital,wght@0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+:root{
+  --green:#275D43;--green-lt:#eaf2ed;--green-rule:#c5d9ce;
+  --brown:#E09964;--brown-lt:#fdf5eb;--brown-mid:#c47e45;
+  --black:#353535;--mist:#FAFAF2;--gray:#6e6e66;--gray-lt:#9e9e96;
+  --border:#dedad2;--border-lt:#ece9e0;--white:#ffffff;
+  --serif:'Alegreya',Georgia,serif;
+  --sans:'Alegreya Sans',system-ui,sans-serif;
+  --sidebar:200px;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{font-family:var(--sans);background:var(--mist);color:var(--black);font-size:15px;line-height:1.7;display:flex;min-height:100vh;}
+
+/* ── SIDEBAR ─────────────────────────────── */
+.sidebar{
+  width:var(--sidebar);min-width:var(--sidebar);
+  background:#1a4a33;
+  position:fixed;top:0;left:0;height:100vh;
+  display:flex;flex-direction:column;
+  overflow-y:auto;z-index:100;scrollbar-width:none;
+}
+.sidebar::-webkit-scrollbar{display:none;}
+
+.sidebar-brand{padding:18px 14px 12px;}
+.brand-label{font-size:10px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:rgba(255,255,255,0.45);margin-bottom:4px;}
+.brand-name{font-family:var(--serif);font-size:15px;font-weight:700;color:white;line-height:1.2;}
+.brand-sub{font-size:11px;color:rgba(255,255,255,0.45);margin-top:2px;}
+.guide-pill{display:inline-block;margin-top:6px;font-size:10px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;background:var(--brown);color:var(--white);padding:2px 8px;border-radius:20px;}
+
+.clock-box{margin:0 10px 10px;background:rgba(0,0,0,0.2);border-radius:8px;padding:10px 12px;}
+.clock-time{font-size:20px;font-weight:700;color:white;font-variant-numeric:tabular-nums;}
+.clock-status{font-size:11px;margin-top:3px;font-weight:500;}
+.clock-status.on-track{color:#9FE1CB;}
+.clock-status.before{color:rgba(255,255,255,0.4);}
+
+.timeline-bar{margin:0 10px 10px;height:6px;background:rgba(255,255,255,0.12);border-radius:3px;overflow:hidden;}
+.timeline-progress{height:100%;background:var(--brown);border-radius:3px;transition:width 1s linear;}
+
+.nav-list{list-style:none;padding:0 0 20px;}
+.nav-item a{
+  display:flex;align-items:center;gap:8px;
+  padding:7px 14px;font-size:12px;
+  color:rgba(255,255,255,0.55);
+  text-decoration:none;transition:all 0.15s;
+  border-left:2px solid transparent;
+}
+.nav-item a:hover{color:rgba(255,255,255,0.9);background:rgba(255,255,255,0.06);}
+.nav-item a.active{color:white;border-left-color:var(--brown);background:rgba(255,255,255,0.08);}
+.nav-dot{width:7px;height:7px;border-radius:50%;flex-shrink:0;}
+.nav-time{font-size:11px;color:rgba(255,255,255,0.35);min-width:32px;font-variant-numeric:tabular-nums;}
+.nav-label{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.nav-break{padding:4px 14px;font-size:10px;color:rgba(255,255,255,0.25);display:flex;align-items:center;gap:6px;}
+.nav-break::before,.nav-break::after{content:'';display:block;height:1px;flex:1;background:rgba(255,255,255,0.1);}
+
+/* ── MAIN ────────────────────────────────── */
+.main{margin-left:var(--sidebar);flex:1;min-width:0;padding:0 28px 80px;max-width:740px;}
+
+/* Pre-work card */
+.prework-card{
+  margin:24px 0 0;padding:18px 20px;
+  border:1.5px solid var(--brown);
+  border-radius:10px;background:var(--brown-lt);
+}
+.prework-title{font-family:var(--serif);font-size:16px;font-weight:700;color:var(--brown-mid);margin-bottom:10px;}
+.prework-list{list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:6px;}
+.prework-list li{font-size:13px;display:flex;align-items:flex-start;gap:7px;color:var(--black);}
+.prework-list li::before{content:'□';color:var(--brown-mid);font-size:14px;flex-shrink:0;line-height:1.5;}
+
+/* Day arc */
+.day-arc{
+  margin:16px 0 0;padding:14px 16px;
+  background:var(--green-lt);border-radius:8px;
+  display:grid;grid-template-columns:1fr 1fr 1fr;gap:1px;
+  font-size:12px;
+}
+.arc-phase{padding:6px 10px;}
+.arc-phase+.arc-phase{border-left:0.5px solid var(--green-rule);}
+.arc-time{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:0.06em;color:var(--green);margin-bottom:2px;}
+.arc-label{font-weight:500;color:var(--black);}
+.arc-sub{font-size:11px;color:var(--gray);margin-top:1px;}
+
+/* Blocks */
+.block{padding:28px 0 32px;border-bottom:1px solid var(--border);}
+.block:last-child{border-bottom:none;}
+
+.block-meta{display:flex;align-items:center;gap:10px;margin-bottom:8px;flex-wrap:wrap;}
+.block-time{font-size:11px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;}
+.block-dur{font-size:11px;color:var(--gray);background:var(--border);padding:2px 9px;border-radius:20px;}
+
+.block-title{
+  font-family:var(--serif);font-size:24px;font-weight:700;
+  line-height:1.15;margin-bottom:8px;
+  padding-left:14px;border-left-width:4px;border-left-style:solid;
+}
+.block-desc{font-size:14px;color:var(--gray);font-style:italic;margin-bottom:18px;padding-left:14px;border-left:1px solid var(--border-lt);}
+
+/* Your job box */
+.job-box{
+  background:var(--white);
+  border:1px solid var(--border);
+  border-top:3px solid;
+  border-radius:0 0 8px 8px;
+  padding:14px 16px;margin-bottom:16px;
+}
+.job-label{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;margin-bottom:8px;}
+.job-box ul{list-style:none;padding:0;}
+.job-box ul li{font-size:14px;padding:4px 0;display:flex;gap:8px;align-items:flex-start;border-bottom:0.5px solid var(--border-lt);}
+.job-box ul li:last-child{border-bottom:none;}
+.job-box ul li::before{content:'→';color:var(--gray-lt);flex-shrink:0;margin-top:1px;}
+
+/* Bring reminder */
+.bring-box{background:var(--brown-lt);border-left:3px solid var(--brown);border-radius:0 6px 6px 0;padding:8px 14px;margin-bottom:14px;font-size:12.5px;color:var(--gray);}
+.bring-box strong{color:var(--brown-mid);}
+
+/* Notes area */
+.notes-wrap{margin-top:14px;}
+.notes-label{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;color:var(--gray-lt);margin-bottom:6px;}
+.notes-area{
+  background:var(--white);
+  border:1px solid var(--border);
+  border-radius:8px;
+  padding:14px 16px;
+  font-size:13.5px;line-height:1.9;
+  color:var(--gray-lt);font-style:italic;
+}
+
+/* Commitment page */
+.commit-block{
+  border:1.5px solid var(--brown);
+  border-radius:10px;padding:20px 22px;
+  background:var(--brown-lt);margin:16px 0;
+}
+.commit-block h3{font-family:var(--serif);font-size:17px;font-weight:700;color:var(--brown-mid);margin-bottom:14px;}
+.commit-field{margin-bottom:16px;}
+.commit-field label{display:block;font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:0.07em;color:var(--brown-mid);margin-bottom:8px;}
+.commit-line{
+  background:var(--white);border:1px solid var(--border);
+  border-radius:6px;padding:12px 14px;
+  min-height:52px;font-size:14px;
+  color:var(--gray-lt);font-style:italic;
+}
+.commit-line.tall{min-height:90px;}
+
+/* Print */
+@media print{
+  .sidebar{display:none;}
+  .main{margin-left:0;max-width:100%;}
+  .notes-area{min-height:80pt;color:transparent;}
+  .commit-line{min-height:60pt;color:transparent;}
+  .clock-box,.timeline-bar{display:none;}
+}
+</style>
+</head>
+<body>
+
+<!-- ═══════════════ SIDEBAR ═══════════════ -->
+<nav class="sidebar">
+  <div class="sidebar-brand">
+    <p class="brand-label">IslamicFamily</p>
+    <p class="brand-name">Managers Retreat</p>
+    <p class="brand-sub">Your guide for the day</p>
+    <span class="guide-pill">Participant</span>
+  </div>
+
+  <div class="clock-box">
+    <div class="clock-time" id="clock">--:--</div>
+    <div class="clock-status before" id="track">Loading...</div>
+  </div>
+  <div class="timeline-bar"><div class="timeline-progress" id="tlbar" style="width:0%"></div></div>
+
+  <ul class="nav-list">
+    <li class="nav-item" data-id="b1"><a href="#b1"><span class="nav-dot" style="background:#888780"></span><span class="nav-time">9:00</span><span class="nav-label">Welcome</span></a></li>
+    <li class="nav-item" data-id="b2"><a href="#b2"><span class="nav-dot" style="background:#1D9E75"></span><span class="nav-time">9:20</span><span class="nav-label">Sharing pre-work</span></a></li>
+    <li class="nav-break">break</li>
+    <li class="nav-item" data-id="b3"><a href="#b3"><span class="nav-dot" style="background:#7F77DD"></span><span class="nav-time">11:05</span><span class="nav-label">Integration</span></a></li>
+    <li class="nav-break">lunch</li>
+    <li class="nav-item" data-id="b4"><a href="#b4"><span class="nav-dot" style="background:#275D43"></span><span class="nav-time">12:50</span><span class="nav-label">Values exercise</span></a></li>
+    <li class="nav-break">break</li>
+    <li class="nav-item" data-id="b5"><a href="#b5"><span class="nav-dot" style="background:#7F77DD"></span><span class="nav-time">2:35</span><span class="nav-label">Annual priorities</span></a></li>
+    <li class="nav-item" data-id="b6"><a href="#b6"><span class="nav-dot" style="background:#534AB7"></span><span class="nav-time">3:05</span><span class="nav-label">Budget &amp; targets</span></a></li>
+    <li class="nav-item" data-id="b7"><a href="#b7"><span class="nav-dot" style="background:#BA7517"></span><span class="nav-time">3:30</span><span class="nav-label">Commitments</span></a></li>
+  </ul>
+</nav>
+
+<!-- ═══════════════ MAIN ═══════════════ -->
+<main class="main">
+
+  <!-- Top card -->
+  <div class="prework-card">
+    <p class="prework-title">Bring from your pre-work</p>
+    <ul class="prework-list">
+      <li>Your north star sentence (1.1)</li>
+      <li>Your most important goal (Part 2)</li>
+      <li>Your biggest revenue opportunity (Part 3)</li>
+      <li>The conversation you most need (Part 5.3)</li>
+    </ul>
+  </div>
+
+  <div class="day-arc">
+    <div class="arc-phase">
+      <p class="arc-time">Morning</p>
+      <p class="arc-label">Individual → collective</p>
+      <p class="arc-sub">Share · connect · integrate</p>
+    </div>
+    <div class="arc-phase">
+      <p class="arc-time">After lunch</p>
+      <p class="arc-label">Who we are</p>
+      <p class="arc-sub">Values exercise</p>
+    </div>
+    <div class="arc-phase">
+      <p class="arc-time">Late afternoon</p>
+      <p class="arc-label">Where we're going</p>
+      <p class="arc-sub">Priorities · budget · commitments</p>
+    </div>
+  </div>
+
+<!-- ── BLOCK 1: WELCOME ───────────────── -->
+<section class="block" id="b1">
+  <div class="block-meta">
+    <span class="block-time" style="color:#888780">9:00 – 9:20</span>
+    <span class="block-dur">20 min</span>
+  </div>
+  <h2 class="block-title" style="border-color:#888780">Welcome &amp; grounding</h2>
+  <p class="block-desc">We open together — with intention, a check-in, and agreements for how we'll work. This is our moment to arrive before the day begins.</p>
+
+  <div class="job-box" style="border-top-color:#888780">
+    <p class="job-label" style="color:#888780">Your job in this block</p>
+    <ul>
+      <li>Show up as you are. The check-in is honest, not performative — one word is enough.</li>
+      <li>Listen to what others name. You'll work with these people all day.</li>
+      <li>Take the agreements seriously, especially the one about candor.</li>
+    </ul>
+  </div>
+
+  <div class="notes-wrap">
+    <p class="notes-label">Notes</p>
+    <div class="notes-area" style="min-height:80px">What I'm bringing into the room today...</div>
+  </div>
+</section>
+
+<!-- ── BLOCK 2: SHARING PRE-WORK ──────── -->
+<section class="block" id="b2">
+  <div class="block-meta">
+    <span class="block-time" style="color:#1D9E75">9:20 – 10:50</span>
+    <span class="block-dur">90 min</span>
+  </div>
+  <h2 class="block-title" style="border-color:#1D9E75">Sharing pre-work frameworks</h2>
+  <p class="block-desc">Each manager shares what they brought. We listen to understand before we connect — this is not a debate, it's a disclosure.</p>
+
+  <div class="bring-box"><strong>When it's your turn, share these four things:</strong> your north star sentence · your most important goal · your biggest revenue opportunity · the conversation you most need to have today.</div>
+
+  <div class="job-box" style="border-top-color:#1D9E75">
+    <p class="job-label" style="color:#1D9E75">Your job in this block</p>
+    <ul>
+      <li>Share your four things clearly in 10–12 minutes. Be specific — numbers, names, timelines where you have them.</li>
+      <li>When it's someone else's turn: ask one clarifying question that helps you genuinely understand, not one that challenges their thinking.</li>
+      <li>Notice what surprises you, what connects to your own work, and what you didn't know about other areas.</li>
+    </ul>
+  </div>
+
+  <div class="notes-wrap">
+    <p class="notes-label">What I heard that I didn't know before</p>
+    <div class="notes-area" style="min-height:100px">...</div>
+  </div>
+  <div class="notes-wrap" style="margin-top:10px">
+    <p class="notes-label">Where I see connections to my own work</p>
+    <div class="notes-area" style="min-height:80px">...</div>
+  </div>
+</section>
+
+<!-- ── BLOCK 3: INTEGRATION ───────────── -->
+<section class="block" id="b3">
+  <div class="block-meta">
+    <span class="block-time" style="color:#7F77DD">11:05 – 11:50</span>
+    <span class="block-dur">45 min</span>
+  </div>
+  <h2 class="block-title" style="border-color:#7F77DD">Integration: finding the connections</h2>
+  <p class="block-desc">We move from individual plans to shared direction — finding where programs intersect and where coordinating our effort changes what's possible for the people we serve.</p>
+
+  <div class="job-box" style="border-top-color:#7F77DD">
+    <p class="job-label" style="color:#7F77DD">Your job in this block</p>
+    <ul>
+      <li>Name your dependencies honestly — don't protect information that would help others plan more accurately.</li>
+      <li>Identify at least one place where your work could amplify someone else's goals. Be specific about what that looks like for clients.</li>
+      <li>If you're assigned as an integration owner, say yes clearly and agree to a timeline.</li>
+    </ul>
+  </div>
+
+  <div class="notes-wrap">
+    <p class="notes-label">Integration opportunities I see</p>
+    <div class="notes-area" style="min-height:90px">...</div>
+  </div>
+  <div class="notes-wrap" style="margin-top:10px">
+    <p class="notes-label">Dependencies I'm carrying that others should know about</p>
+    <div class="notes-area" style="min-height:80px">...</div>
+  </div>
+</section>
+
+<!-- ── BLOCK 4: VALUES ─────────────────── -->
+<section class="block" id="b4">
+  <div class="block-meta">
+    <span class="block-time" style="color:#275D43">12:50 – 2:20</span>
+    <span class="block-dur">90 min</span>
+  </div>
+  <h2 class="block-title" style="border-color:#275D43">Values exercise</h2>
+  <p class="block-desc">We refresh the language of who IslamicFamily is — drawn from what we've actually lived this year, not what we aspire to say about ourselves. The goal is language that feels earned.</p>
+
+  <div class="job-box" style="border-top-color:#275D43">
+    <p class="job-label" style="color:#275D43">Your job in this block</p>
+    <ul>
+      <li>Write specific examples — a moment, a decision, a story. "We are compassionate" is a claim; a story is evidence.</li>
+      <li>Push for language that could only describe IslamicFamily. If it could be any nonprofit, it's not ours.</li>
+      <li>Name the honest gap. Where did we fall short of our own values this year? That conversation is what makes the draft real.</li>
+      <li>Stay open to words that surprise you. The unexpected ones often carry the most life.</li>
+    </ul>
+  </div>
+
+  <div class="notes-wrap">
+    <p class="notes-label">A moment this year when I saw us living a value</p>
+    <div class="notes-area" style="min-height:90px">...</div>
+  </div>
+  <div class="notes-wrap" style="margin-top:10px">
+    <p class="notes-label">Words or phrases that feel true to who we are</p>
+    <div class="notes-area" style="min-height:80px">...</div>
+  </div>
+  <div class="notes-wrap" style="margin-top:10px">
+    <p class="notes-label">Draft value statements (working language — not final)</p>
+    <div class="notes-area" style="min-height:120px">...</div>
+  </div>
+</section>
+
+<!-- ── BLOCK 5: ANNUAL PRIORITIES ────────── -->
+<section class="block" id="b5">
+  <div class="block-meta">
+    <span class="block-time" style="color:#7F77DD">2:35 – 3:05</span>
+    <span class="block-dur">30 min</span>
+  </div>
+  <h2 class="block-title" style="border-color:#7F77DD">Annual priorities synthesis</h2>
+  <p class="block-desc">We agree on the 3–5 things IslamicFamily will organize around as an institution this year. These are organizational priorities — they require the group to coordinate, not just individual programs to deliver.</p>
+
+  <div class="job-box" style="border-top-color:#7F77DD">
+    <p class="job-label" style="color:#7F77DD">Your job in this block</p>
+    <ul>
+      <li>Come with your top 3 — written down before we start. Not your program's priorities; the institution's.</li>
+      <li>Be willing to let yours go if something broader matters more for IslamicFamily's direction this year.</li>
+      <li>If you're named as a priority owner, confirm it clearly and know what ownership means.</li>
+    </ul>
+  </div>
+
+  <div class="notes-wrap">
+    <p class="notes-label">My top 3 organizational priorities (write before the session starts)</p>
+    <div class="notes-area" style="min-height:90px">1. <br><br>2. <br><br>3.</div>
+  </div>
+  <div class="notes-wrap" style="margin-top:10px">
+    <p class="notes-label">Agreed organizational priorities &amp; owners</p>
+    <div class="notes-area" style="min-height:100px">...</div>
+  </div>
+</section>
+
+<!-- ── BLOCK 6: BUDGET & TARGETS ──────── -->
+<section class="block" id="b6">
+  <div class="block-meta">
+    <span class="block-time" style="color:#534AB7">3:05 – 3:30</span>
+    <span class="block-dur">25 min</span>
+  </div>
+  <h2 class="block-title" style="border-color:#534AB7">Budget &amp; targets alignment</h2>
+  <p class="block-desc">A fast pass — not a budget meeting. We surface mismatches between our priorities and our spending, name our revenue commitments, and build the list of things that need to go to the board.</p>
+
+  <div class="job-box" style="border-top-color:#534AB7">
+    <p class="job-label" style="color:#534AB7">Your job in this block</p>
+    <ul>
+      <li>Name one place where your current budget doesn't match what you said matters today. Be honest — this isn't an audit, it's a planning conversation.</li>
+      <li>State your revenue commitment specifically: not "explore grants" but what you would actually do, by when, and what you need to move it.</li>
+      <li>Flag anything that needs board attention before the year begins.</li>
+    </ul>
+  </div>
+
+  <div class="notes-wrap">
+    <p class="notes-label">Budget mismatch I'm flagging</p>
+    <div class="notes-area" style="min-height:72px">...</div>
+  </div>
+  <div class="notes-wrap" style="margin-top:10px">
+    <p class="notes-label">My specific revenue commitment</p>
+    <div class="notes-area" style="min-height:72px">...</div>
+  </div>
+</section>
+
+<!-- ── BLOCK 7: COMMITMENTS & CLOSE ───── -->
+<section class="block" id="b7">
+  <div class="block-meta">
+    <span class="block-time" style="color:#BA7517">3:30 – 4:00</span>
+    <span class="block-dur">30 min</span>
+  </div>
+  <h2 class="block-title" style="border-color:#BA7517">Commitments &amp; close</h2>
+  <p class="block-desc">We land the day. Real commitments heard out loud, clean assignments, and a closing that honours the weight of the work we've done together.</p>
+
+  <div class="job-box" style="border-top-color:#BA7517">
+    <p class="job-label" style="color:#BA7517">Your job in this block</p>
+    <ul>
+      <li>Have your "Starting Monday" commitment ready before this block starts. One thing. Specific enough that on Friday someone could ask you and you'd have a clear yes or no.</li>
+      <li>Accept the follow-up items that belong to you. Confirm the deadline out loud.</li>
+      <li>Be present for the closing. Set your phone aside. The du'a is the close — let it land.</li>
+    </ul>
+  </div>
+
+  <div class="commit-block">
+    <h3>My commitments from today</h3>
+    <div class="commit-field">
+      <label>Starting Monday, I will:</label>
+      <div class="commit-line">...</div>
+    </div>
+    <div class="commit-field">
+      <label>Follow-up items I own</label>
+      <div class="commit-line tall">Item: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;By:<br><br>Item: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;By:</div>
+    </div>
+    <div class="commit-field" style="margin-bottom:0">
+      <label>One thing I am grateful for</label>
+      <div class="commit-line">...</div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<script>
+const blocks=[
+  {id:'b1',start:9*60,    end:9*60+20},
+  {id:'b2',start:9*60+20, end:10*60+50},
+  {id:'b3',start:11*60+5, end:11*60+50},
+  {id:'b4',start:12*60+50,end:14*60+20},
+  {id:'b5',start:14*60+35,end:15*60+5},
+  {id:'b6',start:15*60+5, end:15*60+30},
+  {id:'b7',start:15*60+30,end:16*60}
+];
+const DAY_START=9*60,DAY_END=16*60,DAY_LEN=DAY_END-DAY_START;
+function pad(n){return String(n).padStart(2,'0');}
+
+function tick(){
+  const now=new Date();
+  const cur=now.getHours()*60+now.getMinutes();
+  document.getElementById('clock').textContent=now.getHours()+':'+pad(now.getMinutes());
+  document.getElementById('tlbar').style.width=Math.max(0,Math.min(100,((cur-DAY_START)/DAY_LEN)*100))+'%';
+  const trackEl=document.getElementById('track');
+  document.querySelectorAll('.nav-item a').forEach(a=>a.classList.remove('active'));
+  const active=blocks.find(b=>cur>=b.start&&cur<b.end);
+  if(cur<DAY_START){
+    trackEl.className='clock-status before';trackEl.textContent='Starts at 9:00 am';
+  } else if(cur>=DAY_END){
+    trackEl.className='clock-status before';trackEl.textContent='Day complete';
+  } else if(active){
+    const rem=active.end-cur;
+    trackEl.className='clock-status on-track';trackEl.textContent=rem+' min remaining';
+    const link=document.querySelector('[data-id="'+active.id+'"] a');
+    if(link)link.classList.add('active');
+  } else {
+    trackEl.className='clock-status before';trackEl.textContent='Break / lunch';
+  }
+}
+tick();setInterval(tick,30000);
+
+const obs=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){
+      document.querySelectorAll('.nav-item a').forEach(a=>a.classList.remove('active'));
+      const link=document.querySelector('[data-id="'+e.target.id+'"] a');
+      if(link)link.classList.add('active');
+    }
+  });
+},{rootMargin:'-20% 0px -60% 0px'});
+document.querySelectorAll('section.block').forEach(s=>obs.observe(s));
+</script>
+</body>
+</html>

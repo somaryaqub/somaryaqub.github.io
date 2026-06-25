@@ -1,0 +1,619 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>IslamicFamily — Managers Retreat Guide</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Alegreya:ital,wght@0,400;0,700;1,400&family=Alegreya+Sans:ital,wght@0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+:root{
+  --green:#275D43;--green-mid:#3a7a5a;--green-lt:#eaf2ed;--green-rule:#c5d9ce;
+  --brown:#E09964;--brown-lt:#fdf5eb;--brown-mid:#c47e45;
+  --black:#353535;--mist:#FAFAF2;--gray:#6e6e66;--gray-lt:#9e9e96;
+  --border:#dedad2;--border-lt:#ece9e0;
+  --serif:'Alegreya',Georgia,serif;
+  --sans:'Alegreya Sans',system-ui,sans-serif;
+  --sidebar:200px;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{font-family:var(--sans);background:var(--mist);color:var(--black);font-size:15px;line-height:1.7;display:flex;min-height:100vh;}
+
+/* ── SIDEBAR ─────────────────────────────── */
+.sidebar{
+  width:var(--sidebar);min-width:var(--sidebar);
+  background:var(--green);
+  position:fixed;top:0;left:0;height:100vh;
+  display:flex;flex-direction:column;
+  overflow-y:auto;z-index:100;
+  scrollbar-width:none;
+}
+.sidebar::-webkit-scrollbar{display:none;}
+
+.sidebar-brand{padding:18px 14px 12px;}
+.brand-label{font-size:10px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:rgba(255,255,255,0.5);margin-bottom:4px;}
+.brand-name{font-family:var(--serif);font-size:15px;font-weight:700;color:white;line-height:1.2;}
+.brand-sub{font-size:11px;color:rgba(255,255,255,0.55);margin-top:2px;}
+
+/* Live clock */
+.clock-box{margin:0 10px 10px;background:rgba(0,0,0,0.2);border-radius:8px;padding:10px 12px;}
+.clock-time{font-size:20px;font-weight:700;color:white;font-variant-numeric:tabular-nums;letter-spacing:0.02em;}
+.clock-status{font-size:11px;margin-top:3px;font-weight:500;}
+.clock-status.on-track{color:#9FE1CB;}
+.clock-status.behind{color:#FAC775;}
+.clock-status.before{color:rgba(255,255,255,0.5);}
+
+/* Timeline visual */
+.timeline-bar{margin:0 10px 10px;position:relative;height:6px;background:rgba(255,255,255,0.12);border-radius:3px;overflow:hidden;}
+.timeline-progress{height:100%;background:var(--brown);border-radius:3px;transition:width 1s linear;}
+
+/* Nav list */
+.nav-list{list-style:none;padding:0 0 20px;}
+.nav-item a{
+  display:flex;align-items:center;gap:8px;
+  padding:7px 14px;
+  font-size:12px;color:rgba(255,255,255,0.6);
+  text-decoration:none;
+  transition:all 0.15s;
+  border-left:2px solid transparent;
+}
+.nav-item a:hover{color:rgba(255,255,255,0.9);background:rgba(255,255,255,0.06);}
+.nav-item a.active{color:white;border-left-color:var(--brown);background:rgba(255,255,255,0.08);}
+.nav-dot{width:7px;height:7px;border-radius:50%;flex-shrink:0;}
+.nav-time{font-size:11px;color:rgba(255,255,255,0.4);min-width:32px;font-variant-numeric:tabular-nums;}
+.nav-label{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.nav-break{padding:4px 14px;font-size:10px;color:rgba(255,255,255,0.3);letter-spacing:0.05em;display:flex;align-items:center;gap:6px;}
+.nav-break::before{content:'';display:block;height:1px;flex:1;background:rgba(255,255,255,0.12);}
+.nav-break::after{content:'';display:block;height:1px;flex:1;background:rgba(255,255,255,0.12);}
+
+/* ── MAIN CONTENT ────────────────────────── */
+.main{margin-left:var(--sidebar);flex:1;min-width:0;padding:0 28px 80px;max-width:740px;}
+
+/* Blocks */
+.block{padding:28px 0 32px;border-bottom:1px solid var(--border);}
+.block:last-child{border-bottom:none;}
+
+.block-meta{display:flex;align-items:center;gap:10px;margin-bottom:8px;flex-wrap:wrap;}
+.block-time{font-size:11px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;}
+.block-dur{font-size:11px;color:var(--gray);background:var(--border);padding:2px 9px;border-radius:20px;}
+
+.block-title{
+  font-family:var(--serif);font-size:24px;font-weight:700;
+  line-height:1.15;margin-bottom:8px;
+  padding-left:14px;border-left-width:4px;border-left-style:solid;
+}
+.block-purpose{
+  font-size:14px;color:var(--gray);font-style:italic;
+  margin-bottom:18px;padding-left:14px;
+  border-left:1px solid var(--border-lt);
+}
+
+.block-content h3{
+  font-family:var(--serif);font-size:17px;font-weight:700;
+  color:var(--green);margin:22px 0 8px;
+}
+.block-content h4{
+  font-size:12px;font-weight:700;color:var(--gray);
+  text-transform:uppercase;letter-spacing:0.07em;
+  margin:16px 0 6px;
+}
+.block-content p{margin-bottom:11px;}
+.block-content ol{padding-left:20px;margin-bottom:12px;}
+.block-content ol li{margin-bottom:8px;padding-left:3px;}
+.block-content ul{padding-left:18px;margin-bottom:12px;}
+.block-content ul li{margin-bottom:6px;}
+
+.script{
+  border-left:3px solid var(--brown);
+  padding:10px 16px;margin:14px 0;
+  background:var(--brown-lt);
+  border-radius:0 6px 6px 0;
+  font-style:italic;font-size:14.5px;line-height:1.75;
+}
+
+.callout{border-radius:8px;padding:12px 16px;margin:14px 0;font-size:13.5px;line-height:1.65;}
+.c-watch{background:#fef9ec;border-left:3px solid var(--brown);}
+.c-watch strong{color:#7a5200;font-weight:700;}
+.c-output{background:var(--green-lt);border-left:3px solid var(--green);}
+.c-output strong{color:var(--green);font-weight:700;}
+.c-tip{background:#f0effe;border-left:3px solid #7F77DD;}
+.c-tip strong{color:#3C3489;font-weight:700;}
+
+.block-content table{width:100%;border-collapse:collapse;margin:14px 0;font-size:13.5px;}
+.block-content th{background:var(--green);color:white;padding:7px 12px;text-align:left;font-weight:500;font-size:12px;letter-spacing:0.04em;}
+.block-content td{padding:8px 12px;border-bottom:1px solid var(--border);vertical-align:top;}
+.block-content tr:last-child td{border-bottom:none;}
+
+hr.sec{border:none;border-top:1px dashed var(--border);margin:20px 0;}
+</style>
+</head>
+<body>
+
+<!-- ═══════════════ SIDEBAR ═══════════════ -->
+<nav class="sidebar">
+  <div class="sidebar-brand">
+    <p class="brand-label">IslamicFamily</p>
+    <p class="brand-name">Managers Retreat</p>
+    <p class="brand-sub">Facilitation guide</p>
+  </div>
+
+  <div class="clock-box">
+    <div class="clock-time" id="clock">--:--</div>
+    <div class="clock-status before" id="track">Loading...</div>
+  </div>
+  <div class="timeline-bar"><div class="timeline-progress" id="tlbar" style="width:0%"></div></div>
+
+  <ul class="nav-list">
+    <li class="nav-item" data-id="b1"><a href="#b1"><span class="nav-dot" style="background:#888780"></span><span class="nav-time">9:00</span><span class="nav-label">Welcome</span></a></li>
+    <li class="nav-item" data-id="b2"><a href="#b2"><span class="nav-dot" style="background:#1D9E75"></span><span class="nav-time">9:20</span><span class="nav-label">Sharing pre-work</span></a></li>
+    <li class="nav-break">break</li>
+    <li class="nav-item" data-id="b3"><a href="#b3"><span class="nav-dot" style="background:#7F77DD"></span><span class="nav-time">11:05</span><span class="nav-label">Integration</span></a></li>
+    <li class="nav-break">lunch</li>
+    <li class="nav-item" data-id="b4"><a href="#b4"><span class="nav-dot" style="background:#275D43"></span><span class="nav-time">12:50</span><span class="nav-label">Values exercise</span></a></li>
+    <li class="nav-break">break</li>
+    <li class="nav-item" data-id="b5"><a href="#b5"><span class="nav-dot" style="background:#7F77DD"></span><span class="nav-time">2:35</span><span class="nav-label">Annual priorities</span></a></li>
+    <li class="nav-item" data-id="b6"><a href="#b6"><span class="nav-dot" style="background:#534AB7"></span><span class="nav-time">3:05</span><span class="nav-label">Budget &amp; targets</span></a></li>
+    <li class="nav-item" data-id="b7"><a href="#b7"><span class="nav-dot" style="background:#BA7517"></span><span class="nav-time">3:30</span><span class="nav-label">Commitments &amp; close</span></a></li>
+  </ul>
+</nav>
+
+<!-- ═══════════════ MAIN ═══════════════ -->
+<main class="main">
+
+<!-- ── BLOCK 1: WELCOME ───────────────── -->
+<section class="block" id="b1">
+  <div class="block-meta">
+    <span class="block-time" style="color:#888780">9:00 – 9:20</span>
+    <span class="block-dur">20 min</span>
+  </div>
+  <h2 class="block-title" style="border-color:#888780">Welcome &amp; grounding</h2>
+  <p class="block-purpose">Land the group, set the tone for the day, and establish the conditions for honest conversation.</p>
+  <div class="block-content">
+
+    <h3>Opening bismillah &amp; intention (3–4 min)</h3>
+    <p>Begin seated, not standing. A facilitator who starts standing signals presentation mode — you want the room to feel like a gathering.</p>
+    <div class="script">
+      "Bismillah al-rahman al-rahim. Let's begin in the name of God, the Most Gracious, the Most Merciful.<br><br>
+      Before we get into the work of today, I want to take a moment to set an intention together — because what we do in this room matters. The decisions we make today, the priorities we set, the values we articulate — they will shape what hundreds of families in this city experience when they come to us in their most vulnerable moments.<br><br>
+      Shura — consultation — is a principle rooted in our tradition. It asks us to bring our full wisdom into collective conversation, to listen as much as we speak, and to trust that the best thinking emerges between us rather than from any one of us. That's what today is.<br><br>
+      Our intention: to be honest, to be generous with our thinking, and to leave this room having served the people who depend on IslamicFamily well. Bismillah."
+    </div>
+    <p>Then pause. Let the silence sit for a few seconds. Silence after an intention isn't awkward — it's the intention landing. Close with a brief du'a for clarity and barakah in the work (30 seconds).</p>
+
+    <h3>Check-in round: one word (8–10 min)</h3>
+    <p>This isn't icebreaking — it's orientation. You're giving people permission to bring their whole self in, and giving the group information about the range of energy they're carrying.</p>
+    <div class="script">
+      "Before we go through the agenda, I want to do a quick check-in. I'll ask each person to share one word — just one — that captures where you're entering from today. Not how you want to feel, not what you think you should say. Just where you actually are. I'll go first."
+    </div>
+    <p><strong>You go first, always.</strong> If you're tired, say tired. If you're carrying something from home, name it. The word doesn't need to be positive.</p>
+    <p>Go around the circle. Do not comment on each person's word as they say it. No "great!" or "I hear that." Receive it and move on. After the last person:</p>
+    <div class="script">
+      "Thank you. We're coming in from different places today — that's always true — and it's useful to know that about each other. Whatever you named, it's welcome in the room."
+    </div>
+    <div class="callout c-watch">
+      <strong>Watch for:</strong> Someone giving a sentence or story instead of a word. Let them finish, then say "thank you, I'm going to hold onto that" and move on. Don't make anyone feel they did it wrong.
+    </div>
+
+    <h3>Agenda walk-through &amp; agreements (5–6 min)</h3>
+    <p>Walk the arc of the day — not a schedule, just the three phases:</p>
+    <div class="script">
+      "This morning is about surfacing — we share what we've each worked through in pre-work and find the connections. After lunch, we'll do our values work — digging into the language of who we are. And the late afternoon is about direction — priorities, budget, commitments. We finish at four."
+    </div>
+    <p>Offer 4–5 agreements and invite the group to add:</p>
+    <ul>
+      <li>Candor over comfort — we say the true thing, even when it's harder</li>
+      <li>Curiosity before judgment — when we hear something we disagree with, we get curious first</li>
+      <li>Phones away — we give each other the full day</li>
+      <li>We speak for ourselves — "I think" not "everyone thinks"</li>
+      <li>What's discussed here stays here</li>
+    </ul>
+    <p>Write them somewhere visible. Ask: <em>"What would you add? What do you need from each other today?"</em></p>
+    <p>Close by naming who goes first in the pre-work sharing: <em>"Good. [Name], would you like to start us off?"</em></p>
+
+    <div class="callout c-output">
+      <strong>Output:</strong> Shared intention established. Group agreements visible. Everyone present and named.
+    </div>
+  </div>
+</section>
+
+<!-- ── BLOCK 2: SHARING PRE-WORK ──────── -->
+<section class="block" id="b2">
+  <div class="block-meta">
+    <span class="block-time" style="color:#1D9E75">9:20 – 10:50</span>
+    <span class="block-dur">90 min</span>
+  </div>
+  <h2 class="block-title" style="border-color:#1D9E75">Sharing pre-work frameworks</h2>
+  <p class="block-purpose">Surface each manager's commitments before looking for connections. The purpose is to understand, not to debate.</p>
+  <div class="block-content">
+
+    <h3>Setup</h3>
+    <p>Before the session: prepare a shared capture surface — whiteboard, flip chart, or large shared screen. Draw a simple grid: rows for each area (Ops, Finance, Comms, Foundations, Community, Youth), columns for <em>North star · Key goal · Revenue opportunity · Conversation needed.</em></p>
+
+    <h3>Round-robin sharing (60–72 min)</h3>
+    <p>Introduce the exercise:</p>
+    <div class="script">
+      "Each person has 10–12 minutes. Share four things from your pre-work: your north star sentence — what your area exists to do — your most important goal this year, your biggest revenue opportunity, and the conversation you most need to have today. I'll capture as you speak. After each person, the group gets one clarifying question. Not a challenge, not a debate. A genuine question that helps us understand. Then we move on."
+    </div>
+    <p>Run the round. Capture silently on the shared surface as each person speaks — don't editorialize or interpret, just record. After each person, invite one question from the group:</p>
+    <div class="script">"One clarifying question for [Name] — what do you genuinely want to understand better?"</div>
+    <p>Hold the time. At the 10-minute mark, give a quiet signal. At 12 minutes, close them: <em>"Let's bring that to the question and move on — we'll have a chance to go deeper."</em></p>
+
+    <div class="callout c-watch">
+      <strong>Watch for:</strong>
+      <ul style="margin-top:6px">
+        <li><strong>Clarifying questions becoming debates.</strong> Redirect: "I'm going to hold that for the integration block. Right now we're listening."</li>
+        <li><strong>Someone running significantly long.</strong> Hold them — no exceptions, or the last person presents to a depleted room.</li>
+        <li><strong>Back-to-back agreement.</strong> If everyone is nodding and saying "same for me," push for specificity: "What's the difference between how you'd approach that and how [Name] described it?"</li>
+      </ul>
+    </div>
+
+    <h3>Pattern-finding (15 min)</h3>
+    <p>Step back from the surface and open:</p>
+    <div class="script">
+      "We've heard a lot. Before we move to the integration conversation, let's name what we're seeing. What themes are showing up? Where do goals overlap? Where might there be tension? What surprised you?"
+    </div>
+    <p>Facilitate open discussion. Add emerging patterns to the surface in a different colour. Look for:</p>
+    <ul>
+      <li>Goals that two or more areas share (coordination opportunity)</li>
+      <li>Revenue assumptions that depend on another area</li>
+      <li>Areas where someone's success requires another area's action</li>
+      <li>Gaps — things no one mentioned that should have been</li>
+    </ul>
+    <p>Close by naming 2–3 headline patterns yourself: <em>"Here's what I'm seeing: [X], [Y], [Z]. Does that land?"</em></p>
+    <p>Then: <em>"Good. This is our raw material for after the break. Let's take 15 minutes."</em></p>
+
+    <div class="callout c-output">
+      <strong>Output:</strong> Populated capture grid on shared surface. 2–3 named patterns visible to the group. Inputs for the integration block identified.
+    </div>
+  </div>
+</section>
+
+<!-- ── BLOCK 3: INTEGRATION ───────────── -->
+<section class="block" id="b3">
+  <div class="block-meta">
+    <span class="block-time" style="color:#7F77DD">11:05 – 11:50</span>
+    <span class="block-dur">45 min</span>
+  </div>
+  <h2 class="block-title" style="border-color:#7F77DD">Integration: finding the connections</h2>
+  <p class="block-purpose">Move from "here's what I'm working on" to "here's what we can do together." This block turns seven separate plans into a coordinated direction.</p>
+  <div class="block-content">
+
+    <h3>Frame the question (3 min)</h3>
+    <div class="script">
+      "The question we're working with now is: where do two or more programs working together produce something stronger than either could alone? We're not talking about coordination for its own sake — we're looking for genuine multiplication opportunities. Where does combining effort actually change what's possible for the people we serve?"
+    </div>
+
+    <h3>Mapping opportunities (20 min)</h3>
+    <p>Ask: <em>"Looking at what we heard this morning — where do you see the clearest integration opportunities?"</em> Let the group identify them. Don't impose. Aim for 2–3 real ones.</p>
+    <p>For each candidate, push for specificity before naming it an opportunity:</p>
+    <ul>
+      <li><em>"What specifically would that look like in practice?"</em></li>
+      <li><em>"What would change for a client because of this coordination?"</em></li>
+      <li><em>"What's the joint output — not a meeting, an actual product or result?"</em></li>
+    </ul>
+    <p>Once it passes that test: <strong>assign one named owner.</strong> Not a team, not a joint committee — one person who is accountable for making the coordination happen.</p>
+
+    <h3>Dependency resolution (15 min)</h3>
+    <p>Shift focus:</p>
+    <div class="script">
+      "Now a different question. Where is someone's plan contingent on a decision, resource, or action that lives in another area? Where could one team get blocked without knowing it?"
+    </div>
+    <p>Go through the capture grid area by area. For each: <em>"Does anyone see a dependency here that hasn't been named?"</em></p>
+    <p>For every named dependency: either resolve it now (make the decision or commitment in the room) or assign it — <em>"[Name] will confirm X by [date]."</em> No dependency leaves unassigned.</p>
+
+    <h3>Close (5 min)</h3>
+    <p>Read the integration list back — opportunities and owners, dependencies and assignments. Confirm everyone heard the same thing. Flag anything that still feels unresolved for the priorities conversation this afternoon.</p>
+
+    <div class="callout c-watch">
+      <strong>Watch for:</strong>
+      <ul style="margin-top:6px">
+        <li><strong>"Integration opportunity" that's just a meeting.</strong> Push: "What would a client experience differently because of this? If the answer is nothing, it's coordination overhead, not integration."</li>
+        <li><strong>Budget conversations starting early.</strong> Park them: "That's for the budget block at 3:05 — let's note it and keep moving."</li>
+        <li><strong>A dependency that's actually a conflict.</strong> Name it directly: "It sounds like [Name] and [Name] have different assumptions about [X]. Does that need to be a priority conversation this afternoon?"</li>
+      </ul>
+    </div>
+
+    <div class="callout c-output">
+      <strong>Output:</strong> 2–3 named integration opportunities with a single owner each. All dependencies either resolved or assigned to a person with a deadline.
+    </div>
+  </div>
+</section>
+
+<!-- ── BLOCK 4: VALUES ─────────────────── -->
+<section class="block" id="b4">
+  <div class="block-meta">
+    <span class="block-time" style="color:#275D43">12:50 – 2:20</span>
+    <span class="block-dur">90 min</span>
+  </div>
+  <h2 class="block-title" style="border-color:#275D43">Values exercise</h2>
+  <p class="block-purpose">Refresh the language of who IslamicFamily is — earned from lived experience, not invented in a committee.</p>
+  <div class="block-content">
+
+    <h3>Setup</h3>
+    <p>Prepare a simple table everyone can fill in simultaneously — physical cards or a shared doc works equally well. Three columns: <em>Value name · A moment we genuinely lived it this year · An honest gap or stretch.</em></p>
+    <p>This block benefits from a change of pace after the morning's strategic work. Open with something brief and grounding — a short verse or hadith about character and intention is appropriate here.</p>
+
+    <h4>Part A — Values audit (20 min)</h4>
+    <p>Distribute the table. Ask everyone to fill it in individually for 8 minutes in silence. Then share around the table — no commentary from others while someone speaks. Facilitator captures recurring words and themes, and — importantly — recurring gaps.</p>
+    <p>After everyone has shared, name what you heard:</p>
+    <div class="script">
+      "Here's what I noticed: we saw [X] lived consistently — I heard that in at least three stories. And [Y] came up as a genuine gap for several of us — not as a failure, but as a growing edge. That's honest and useful."
+    </div>
+
+    <h4>Part B — Language exploration (25 min)</h4>
+    <p>Ask each person to free-write for 5 minutes: <em>"What words or phrases feel true to who IslamicFamily is right now — not what we aspire to be, but who we actually are at our best?"</em></p>
+    <p>Then share. Capture every word on a shared surface. Cluster them — group similar words and ask the group to name each cluster. Pay close attention to which words generate energy in the room versus which ones land flat. Energy is the signal.</p>
+    <div class="callout c-tip">
+      <strong>The test for a live word:</strong> When you say it, do people nod and lean in, or do they stay neutral? Live words generate a visible response. Flat words often sound like brochure copy — "excellence," "integrity," "community." Push past the generic.
+    </div>
+
+    <h4>Part C — Draft together (30 min)</h4>
+    <p>Start with the cluster that generated the most energy. Draft a value statement together — aloud, iterating. One person takes rough notes while the group shapes the language.</p>
+    <p>Test each draft with two questions:</p>
+    <ul>
+      <li><em>"Could this be any nonprofit, or is this distinctly IslamicFamily?"</em></li>
+      <li><em>"Would this actually help someone make a hard decision under pressure?"</em></li>
+    </ul>
+    <p>Aim for 4–6 statements. Don't polish — this is a working draft. Remind the group: <em>"We're not finalizing today. We're making something worth refining."</em></p>
+
+    <h4>Next steps (15 min)</h4>
+    <p>Before closing this block, nail down three things:</p>
+    <ol>
+      <li>Who takes the draft and runs the async refinement round? (Name a person.)</li>
+      <li>What's the refinement process? (Draft by email → 48 hours for suggested edits → ED review → board.)</li>
+      <li>When does the final version go to the board?</li>
+    </ol>
+
+    <div class="callout c-watch">
+      <strong>Watch for:</strong>
+      <ul style="margin-top:6px">
+        <li><strong>Language that sounds like a mission statement.</strong> "We serve our community with compassion" describes a mission, not a value. A value is a principle that guides a decision: "We show up before we're called" is a value.</li>
+        <li><strong>One voice dominating the drafting.</strong> Ask explicitly: "What's a word that's missing from this?" directed at whoever is quietest.</li>
+        <li><strong>Group getting attached to a specific word.</strong> Loosen it: "If someone who joined the team next year read this, what would they understand about us?"</li>
+      </ul>
+    </div>
+
+    <div class="callout c-output">
+      <strong>Output:</strong> Working draft of 4–6 value statements. Named person for async refinement. Clear timeline to board presentation.
+    </div>
+  </div>
+</section>
+
+<!-- ── BLOCK 5: ANNUAL PRIORITIES ────────── -->
+<section class="block" id="b5">
+  <div class="block-meta">
+    <span class="block-time" style="color:#7F77DD">2:35 – 3:05</span>
+    <span class="block-dur">30 min</span>
+  </div>
+  <h2 class="block-title" style="border-color:#7F77DD">Annual priorities synthesis</h2>
+  <p class="block-purpose">Agree on the 3–5 things IslamicFamily will organize around as an institution this year — not a department list, an organizational direction.</p>
+  <div class="block-content">
+
+    <h3>Frame (3 min)</h3>
+    <div class="script">
+      "We've heard seven program plans today. Now the question is: what are IslamicFamily's organizational priorities — the things that cut across all of us, that the board would recognize as our direction, that a new staff member would see reflected in how we allocate time and money? No more than five. Probably three or four."
+    </div>
+
+    <h3>Silent individual write (3 min)</h3>
+    <p>Ask each person to write their top 3 on paper — no discussion. This prevents anchoring on whoever speaks first.</p>
+
+    <h3>Read out and map (5 min)</h3>
+    <p>Go around the table. Each person names their 3. Facilitator maps on the shared surface. Don't comment — just record.</p>
+
+    <h3>Find the overlaps (10 min)</h3>
+    <p>Step back: <em>"Where did we land together? What's on almost everyone's list?"</em> Usually 2–3 items emerge clearly. Name those as anchors. Then work through the remaining candidates:</p>
+    <ul>
+      <li><em>"Is this an organizational priority, or a program priority?"</em> — Program priorities belong in the manager's pre-work framework. Organizational priorities require coordinated action across the group.</li>
+      <li><em>"What does this enable that we couldn't do without naming it explicitly?"</em></li>
+    </ul>
+
+    <h3>Assign owners and close (7 min)</h3>
+    <p>For each agreed priority: one named owner. Read them back. Confirm.</p>
+
+    <div class="callout c-watch">
+      <strong>Watch for:</strong>
+      <ul style="margin-top:6px">
+        <li><strong>"Priority" that's actually standing work.</strong> Challenge it: "Is this a 2025 priority or is this just our job? What makes it a specific priority this year?"</li>
+        <li><strong>Too many priorities.</strong> Hold the five-maximum frame: "If we commit to seven things we've committed to nothing. What can we drop?" This is the most important discipline of the block.</li>
+        <li><strong>Department lobbying.</strong> Redirect to organizational impact: "What does choosing this priority do for the people we serve?"</li>
+      </ul>
+    </div>
+
+    <div class="callout c-output">
+      <strong>Output:</strong> 3–5 organizational priorities with named owners. Confirmed by the full group.
+    </div>
+  </div>
+</section>
+
+<!-- ── BLOCK 6: BUDGET & TARGETS ──────── -->
+<section class="block" id="b6">
+  <div class="block-meta">
+    <span class="block-time" style="color:#534AB7">3:05 – 3:30</span>
+    <span class="block-dur">25 min</span>
+  </div>
+  <h2 class="block-title" style="border-color:#534AB7">Budget &amp; targets alignment</h2>
+  <p class="block-purpose">A fast pass — not a budget meeting. Surface mismatches, consolidate revenue commitments, and build the board list.</p>
+  <div class="block-content">
+
+    <h3>Budget alignment (10 min)</h3>
+    <div class="script">
+      "One question: does our budget follow our priorities? Not a full review — just: is there anything we said matters today that isn't currently budgeted? Or anything we're currently spending on that we just decided doesn't matter? Name it."
+    </div>
+    <p>Go around briefly. Capture mismatches. Don't try to solve them — just name them and assign to Finance to review against the priorities framework.</p>
+
+    <h3>Revenue commitments (8 min)</h3>
+    <div class="script">
+      "From your pre-work, each of you named specific revenue opportunities — things that could move the needle by more than 5%. Let's name them collectively. Not to debate, just to know what we're counting on and what we each need to move it."
+    </div>
+    <p>Go around. For each opportunity: confirm the action, the estimated impact, and what the person needs to make it happen. Capture the list.</p>
+
+    <h3>Board escalation list (7 min)</h3>
+    <div class="script">
+      "What from today needs to reach the board before the year begins? Not everything — just the decisions and asks that are above our authority, or that the board needs to know about to govern well."
+    </div>
+    <p>Build the list. Assign one person to draft the memo (typically the ED). Confirm a target date.</p>
+
+    <div class="callout c-watch">
+      <strong>Watch for:</strong>
+      <ul style="margin-top:6px">
+        <li><strong>Going into budget detail.</strong> Hold the frame: "We're not solving the budget now — we're flagging the mismatches and moving on."</li>
+        <li><strong>Vague revenue commitments.</strong> Push: "What specifically would you do? By when? Who's involved?"</li>
+      </ul>
+    </div>
+
+    <div class="callout c-output">
+      <strong>Output:</strong> Budget mismatch list. Revenue commitments by area. Board escalation list with memo owner and deadline.
+    </div>
+  </div>
+</section>
+
+<!-- ── BLOCK 7: COMMITMENTS & CLOSE ───── -->
+<section class="block" id="b7">
+  <div class="block-meta">
+    <span class="block-time" style="color:#BA7517">3:30 – 4:00</span>
+    <span class="block-dur">30 min</span>
+  </div>
+  <h2 class="block-title" style="border-color:#BA7517">Commitments &amp; close</h2>
+  <p class="block-purpose">Land the day. Real commitments, clean assignments, and a closing that honours the weight of the work.</p>
+  <div class="block-content">
+
+    <h3>Set up the close (1 min)</h3>
+    <p>Make sure two things are still visible: the integration priorities with owners from the morning, and the follow-up items that accumulated across the day.</p>
+    <div class="script">
+      "We have half an hour. I want us to use it well — not to summarize everything we discussed, but to make sure we leave this room with real commitments, not good intentions. Three things: personal commitments, follow-up assignments, and then we close together."
+    </div>
+
+    <h3>The "Starting Monday" round (10 min)</h3>
+    <p>Ask each person to complete one sentence: <strong>"Starting Monday, I will…"</strong></p>
+    <div class="script">
+      "One commitment. Specific enough that on Friday someone could ask you if you did it and you'd have a clear yes or no. I'll go first."
+    </div>
+    <p><strong>Go first, every time.</strong> Model specificity: <em>"Starting Monday, I will block two hours on Wednesday to draft the board memo, and I'll have a draft to all of you by end of day Thursday."</em></p>
+    <p>Go around the circle. Don't comment between commitments. After the last person:</p>
+    <div class="script">"Good. Those are real commitments. We heard them from each other — that matters."</div>
+
+    <div class="callout c-watch">
+      <strong>Watch for:</strong>
+      <ul style="margin-top:6px">
+        <li><strong>Vague commitment</strong> ("I'll focus more on integration"): push gently — "Can you name one specific thing that would look like on Monday morning?"</li>
+        <li><strong>Multiple commitments</strong>: hold them to one — "Pick the most important one."</li>
+        <li><strong>Commitment that depends entirely on others</strong>: redirect — "That's a follow-up item. What's the thing only you can do?"</li>
+      </ul>
+    </div>
+
+    <h3>Follow-up assignments (10 min)</h3>
+    <p>Walk through every follow-up item captured across the day. For each: one owner, one deadline. Write the person's name — not a team name — next to each item. Confirm aloud: <em>"[Name], you have the values refinement draft — two weeks. Does that work?"</em> Wait for a verbal yes.</p>
+
+    <table>
+      <thead><tr><th>Item</th><th>Default owner</th><th>Suggested by</th></tr></thead>
+      <tbody>
+        <tr><td>Board memo (escalation items)</td><td>ED</td><td>Before next board meeting</td></tr>
+        <tr><td>Values — async refinement round</td><td>Designated person</td><td>2 weeks from today</td></tr>
+        <tr><td>Values — board presentation prep</td><td>ED</td><td>Before next board meeting</td></tr>
+        <tr><td>Budget revision (mismatch items)</td><td>Finance manager</td><td>Before fiscal year begins</td></tr>
+        <tr><td>Integration opportunity follow-ups</td><td>Named owner per opportunity</td><td>30 days</td></tr>
+      </tbody>
+    </table>
+
+    <p>Close by reading the complete list back — owner names included — so everyone hears it once.</p>
+    <div class="callout c-watch">
+      <strong>Watch for:</strong> Items that get debated instead of assigned. Hold the frame: "We're not reopening that now — we're assigning. If something needs revisiting, let's put it on the next check-in agenda."
+    </div>
+
+    <h3>Closing reflection (5 min)</h3>
+    <p>Ask everyone to set aside notebooks and phones. Then one question — not a recap of the day:</p>
+    <div class="script">
+      "Before we close, one question: what is one thing you are grateful for as you step out of this room today — about this team, this work, or this year ahead?"
+    </div>
+    <p>Give ten seconds of silence. Let responses flow organically. Don't push for a complete circle. Receive what comes without redirecting or building on it. When the energy feels complete, close the reflection:</p>
+    <div class="script">"Thank you. That's what this work is grounded in."</div>
+
+    <h3>The du'a</h3>
+    <p>Ask one person to lead, or lead it yourself. Adapt freely to your own voice.</p>
+    <div class="script">
+      "Bismillah al-rahman al-rahim.<br><br>
+      Ya Allah — we gathered today in service of something larger than any of us. The families who come to IslamicFamily in their hardest moments — the mother navigating a system she doesn't yet understand, the young person looking for somewhere to belong, the man who has been away and is trying to find his way back — they are the reason we sat in this room.<br><br>
+      Accept this day from us as an act of worship. Every conversation, every difficult truth we spoke, every commitment we made — let it count.<br><br>
+      Grant us tawfeeq to carry what we've decided today with consistency. Protect us from the ego that can corrupt good work — the need to be right, the reluctance to be held accountable, the comfort of the familiar over the courage of the necessary.<br><br>
+      Make easy what we have committed to. Put barakah in our programs, in our teams, and in the lives of the people who depend on us.<br><br>
+      You are Al-Wakeel — the One in whom we place our trust. We have planned. We ask You to bless the plan.<br><br>
+      Rabbana taqabbal minna.<br><br>
+      Ameen."
+    </div>
+    <p>After the ameen: let the silence sit. Then simply — <em>"JazakumAllahu khairan. Have a safe journey home. See you on Monday."</em></p>
+    <p>No summary. No "great job everyone." The du'a is the close. Let it be.</p>
+
+    <div class="callout c-output">
+      <strong>Output:</strong> Personal commitments heard and named. All follow-up items assigned with deadlines. Day closed in gratitude.
+    </div>
+  </div>
+</section>
+
+</main>
+
+<script>
+// ── BLOCKS with minute-of-day start/end ────────────
+const blocks=[
+  {id:'b1',start:9*60,   end:9*60+20},
+  {id:'b2',start:9*60+20,end:10*60+50},
+  {id:'b3',start:11*60+5,end:11*60+50},
+  {id:'b4',start:12*60+50,end:14*60+20},
+  {id:'b5',start:14*60+35,end:15*60+5},
+  {id:'b6',start:15*60+5, end:15*60+30},
+  {id:'b7',start:15*60+30,end:16*60}
+];
+
+const DAY_START=9*60, DAY_END=16*60, DAY_LEN=DAY_END-DAY_START;
+
+function pad(n){return String(n).padStart(2,'0');}
+
+function tick(){
+  const now=new Date();
+  const cur=now.getHours()*60+now.getMinutes();
+  document.getElementById('clock').textContent=now.getHours()+':'+pad(now.getMinutes());
+
+  const prog=Math.max(0,Math.min(100,((cur-DAY_START)/DAY_LEN)*100));
+  document.getElementById('tlbar').style.width=prog+'%';
+
+  const trackEl=document.getElementById('track');
+  const activeBlock=blocks.find(b=>cur>=b.start&&cur<b.end);
+  const allLinks=document.querySelectorAll('.nav-item a');
+  allLinks.forEach(a=>a.classList.remove('active'));
+
+  if(cur<DAY_START){
+    trackEl.className='clock-status before';
+    trackEl.textContent='Starts at 9:00 am';
+  } else if(cur>=DAY_END){
+    trackEl.className='clock-status before';
+    trackEl.textContent='Day complete';
+  } else if(activeBlock){
+    const remaining=activeBlock.end-cur;
+    trackEl.className='clock-status on-track';
+    trackEl.textContent=remaining+' min remaining';
+    const link=document.querySelector('[data-id="'+activeBlock.id+'"] a');
+    if(link) link.classList.add('active');
+  } else {
+    trackEl.className='clock-status before';
+    trackEl.textContent='Break / lunch';
+  }
+}
+
+tick();
+setInterval(tick,30000);
+
+// ── SCROLLSPY ─────────────────────────────────────
+const observer=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){
+      document.querySelectorAll('.nav-item a').forEach(a=>a.classList.remove('active'));
+      const link=document.querySelector('[data-id="'+e.target.id+'"] a');
+      if(link) link.classList.add('active');
+    }
+  });
+},{rootMargin:'-20% 0px -60% 0px'});
+
+document.querySelectorAll('section.block').forEach(s=>observer.observe(s));
+</script>
+</body>
+</html>
