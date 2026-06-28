@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Memorandum — Canadian Withholding Tax Treatment of an IsDB Investment into HAHIF</title>
+<style>
+  :root{
+    --ink:#1a1d1c;
+    --ink-soft:#3c423f;
+    --muted:#6b716e;
+    --rule:#d8dcd9;
+    --rule-soft:#e9ece9;
+    --accent:#1d6b5e;        /* restrained deep teal-green */
+    --accent-soft:#eef4f1;
+    --flag:#8a5a1c;          /* amber for risk/confirm items */
+    --flag-soft:#f6efe3;
+    --paper:#ffffff;
+    --maxw:46rem;
+  }
+  *{box-sizing:border-box;}
+  html{-webkit-text-size-adjust:100%;}
+  body{
+    margin:0;
+    background:#f3f5f3;
+    color:var(--ink);
+    font-family:Georgia,"Iowan Old Style","Times New Roman",serif;
+    font-size:17px;
+    line-height:1.62;
+    -webkit-font-smoothing:antialiased;
+  }
+  .sheet{
+    max-width:var(--maxw);
+    margin:2.4rem auto;
+    background:var(--paper);
+    padding:3.2rem 3.4rem 3.6rem;
+    box-shadow:0 1px 2px rgba(0,0,0,.04),0 10px 34px rgba(20,30,26,.07);
+    border:1px solid var(--rule-soft);
+  }
+
+  /* ---- masthead ---- */
+  .eyebrow{
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    font-size:.66rem;
+    letter-spacing:.22em;
+    text-transform:uppercase;
+    color:var(--accent);
+    font-weight:700;
+    margin:0 0 .5rem;
+  }
+  h1{
+    font-size:1.62rem;
+    line-height:1.22;
+    margin:0 0 1.2rem;
+    font-weight:600;
+    letter-spacing:-.01em;
+  }
+  .meta{
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    font-size:.83rem;
+    line-height:1.5;
+    color:var(--ink-soft);
+    border-top:1.5px solid var(--ink);
+    border-bottom:1px solid var(--rule);
+    padding:.85rem 0;
+    margin:0 0 .4rem;
+    display:grid;
+    grid-template-columns:auto 1fr;
+    gap:.15rem 1.1rem;
+  }
+  .meta dt{
+    font-weight:700;
+    letter-spacing:.04em;
+    text-transform:uppercase;
+    font-size:.7rem;
+    color:var(--muted);
+    padding-top:.12rem;
+  }
+  .meta dd{margin:0;}
+
+  .notice{
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    font-size:.78rem;
+    line-height:1.5;
+    color:var(--ink-soft);
+    background:var(--accent-soft);
+    border-left:3px solid var(--accent);
+    padding:.7rem .95rem;
+    margin:1.4rem 0 0;
+  }
+  .notice strong{color:var(--accent);}
+
+  /* ---- section structure ---- */
+  h2{
+    font-size:1.13rem;
+    font-weight:600;
+    letter-spacing:-.005em;
+    margin:2.5rem 0 .2rem;
+    padding-bottom:.35rem;
+    border-bottom:1px solid var(--rule);
+    display:flex;
+    align-items:baseline;
+    gap:.7rem;
+  }
+  h2 .num{
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    font-size:.72rem;
+    font-weight:700;
+    color:var(--accent);
+    letter-spacing:.08em;
+    transform:translateY(-.15em);
+    flex:none;
+  }
+  h3{
+    font-size:.97rem;
+    font-weight:700;
+    margin:1.5rem 0 .25rem;
+    color:var(--ink);
+  }
+  p{margin:.7rem 0;}
+  .lead{font-size:1.02rem;color:var(--ink-soft);}
+
+  a.ref{
+    text-decoration:none;
+    color:var(--accent);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    font-weight:700;
+    font-size:.62em;
+    vertical-align:super;
+    line-height:0;
+    padding:0 .04em;
+  }
+  a.ref:hover{text-decoration:underline;}
+
+  /* ---- summary box ---- */
+  .summary{
+    background:#fbfcfb;
+    border:1px solid var(--rule);
+    border-radius:4px;
+    padding:1.2rem 1.4rem .4rem;
+    margin:1.6rem 0 .5rem;
+  }
+  .summary h2{
+    border:0;
+    margin:0 0 .4rem;
+    font-size:.92rem;
+    text-transform:uppercase;
+    letter-spacing:.1em;
+    color:var(--muted);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    font-weight:700;
+  }
+  .summary ul{margin:.2rem 0 1rem;padding-left:1.1rem;}
+  .summary li{margin:.45rem 0;}
+
+  /* ---- callout flags ---- */
+  .flag{
+    background:var(--flag-soft);
+    border-left:3px solid var(--flag);
+    padding:.75rem 1rem;
+    margin:1.1rem 0;
+    font-size:.95rem;
+  }
+  .flag .tag{
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    font-size:.62rem;
+    font-weight:700;
+    letter-spacing:.13em;
+    text-transform:uppercase;
+    color:var(--flag);
+    display:block;
+    margin-bottom:.2rem;
+  }
+
+  ul.body-list{padding-left:1.15rem;margin:.7rem 0;}
+  ul.body-list li{margin:.5rem 0;}
+
+  /* ---- questions for counsel ---- */
+  ol.counsel{
+    counter-reset:q;
+    list-style:none;
+    padding:0;
+    margin:1rem 0;
+  }
+  ol.counsel li{
+    position:relative;
+    padding:.55rem 0 .55rem 2.4rem;
+    border-bottom:1px solid var(--rule-soft);
+  }
+  ol.counsel li:last-child{border-bottom:0;}
+  ol.counsel li::before{
+    counter-increment:q;
+    content:"Q" counter(q);
+    position:absolute;
+    left:0;top:.55rem;
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    font-size:.66rem;
+    font-weight:700;
+    letter-spacing:.04em;
+    color:#fff;
+    background:var(--accent);
+    padding:.12rem .34rem;
+    border-radius:3px;
+  }
+
+  /* ---- references ---- */
+  .refs{margin-top:2.8rem;border-top:1.5px solid var(--ink);padding-top:1.2rem;}
+  .refs h2{border:0;margin:0 0 .7rem;font-size:.82rem;text-transform:uppercase;letter-spacing:.12em;color:var(--muted);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;font-weight:700;}
+  ol.sources{
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    font-size:.78rem;
+    line-height:1.5;
+    color:var(--ink-soft);
+    padding-left:1.4rem;
+    margin:0;
+  }
+  ol.sources li{margin:.55rem 0;}
+  ol.sources li::marker{color:var(--accent);font-weight:700;}
+  ol.sources a{color:var(--accent);word-break:break-word;}
+  .src-title{color:var(--ink);font-weight:600;}
+
+  footer{
+    margin-top:2.4rem;
+    padding-top:1rem;
+    border-top:1px solid var(--rule);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    font-size:.72rem;
+    color:var(--muted);
+    line-height:1.55;
+  }
+
+  @media (max-width:640px){
+    .sheet{padding:2rem 1.4rem 2.4rem;margin:0;border:0;box-shadow:none;}
+    body{font-size:16px;}
+    .meta{grid-template-columns:1fr;gap:.05rem;}
+    .meta dt{padding-top:.5rem;}
+  }
+  @media print{
+    body{background:#fff;}
+    .sheet{box-shadow:none;border:0;margin:0;max-width:none;padding:0;}
+    a.ref{color:var(--accent);}
+    h2{page-break-after:avoid;}
+    .flag,.summary{page-break-inside:avoid;}
+  }
+</style>
+</head>
+<body>
+<main class="sheet">
+
+  <p class="eyebrow">Internal Working Memorandum &middot; Privileged &amp; Confidential</p>
+  <h1>Canadian Withholding Tax on an Islamic Development Bank Investment into the Halal Affordable Housing Investment Fund</h1>
+
+  <dl class="meta">
+    <dt>Prepared for</dt><dd>Omar Yaqub, Executive Director, IslamicFamily</dd>
+    <dt>Re</dt><dd>Non-resident tax treatment of a proposed IsDB limited-partner investment into HAHIF, whose first deployment is Diamond at Dunluce (96 units, Edmonton)</dd>
+    <dt>Date</dt><dd>23 June 2026</dd>
+    <dt>Status</dt><dd>Preliminary analysis to scope questions for legal and cross-border tax counsel ahead of the 15 August 2026 first close</dd>
+  </dl>
+
+  <p class="notice"><strong>Not tax or legal advice.</strong> This memo maps the terrain and frames the questions to put to counsel (Pallett Valo LLP and a cross-border tax specialist). The two most consequential points below — characterization of IsDB's interest and the participating-debt-interest rules — are fact-specific and must be confirmed in a formal opinion before close. It should not be relied upon for the transaction itself.</p>
+
+  <div class="summary">
+    <h2>Bottom line</h2>
+    <ul>
+      <li>There is <strong>no Canada–Saudi Arabia tax treaty in force</strong>, so a Saudi-resident investor gets no treaty-reduced rates; Canada's default 25% non-resident (Part XIII) rate is the starting point.<a class="ref" href="#s1">1</a></li>
+      <li>IsDB's status as a multilateral development bank <strong>likely does not create a Canadian tax exemption</strong> on its Canadian-source investment income — Canada is not a member, and the relevant mechanism is narrow.<a class="ref" href="#s4">4</a></li>
+      <li>Because HAHIF is a <strong>flow-through limited partnership</strong> investing in Canadian real estate, the income is taxed in Canada regardless — but generally on a <strong>net basis via Canadian filing</strong>, which is far better than 25% on gross.<a class="ref" href="#s5">5</a><a class="ref" href="#s6">6</a></li>
+      <li>Routing IsDB's investment as an <strong>equity / limited-partner interest</strong> (rather than financing) neutralizes the biggest risk — recharacterization as 25%-taxable participating debt interest.<a class="ref" href="#s2">2</a></li>
+    </ul>
+  </div>
+
+  <h2><span class="num">01</span> No Canada–Saudi tax treaty to optimize against</h2>
+  <p>The instinct in cross-border structuring is to reach for a tax treaty to reduce withholding. That lever is not available here. Saudi Arabia sits on the short list of jurisdictions with which Canada has <strong>no income tax treaty in force</strong>, alongside places such as the Bahamas and the Cayman Islands.<a class="ref" href="#s1">1</a> For a Saudi-resident payee, the consequence is that Canada's domestic non-resident rate applies without treaty relief: a default <strong>25% Part XIII withholding</strong> on interest, dividends, rents, royalties, and similar passive payments to a non-resident.<a class="ref" href="#s1">1</a> Every optimization discussed below therefore works <em>within</em> Canadian domestic law rather than through a treaty.</p>
+
+  <h2><span class="num">02</span> IsDB's multilateral status probably does not create an exemption</h2>
+  <p>IsDB is a AAA-rated multilateral development bank headquartered in Jeddah, owned by 57 member states.<a class="ref" href="#s3">3</a> It is tempting to assume it enjoys the kind of tax immunity that the World Bank or IMF can have. Canada's mechanism for that — the Foreign Missions and International Organizations Act (FMIOA) — only reaches organizations <strong>of which Canada is a member</strong>, is implemented through a specific Governor-in-Council order, and even then is directed mainly at the income of officials rather than the institution's investment returns.<a class="ref" href="#s4">4</a> Canada is not a member of IsDB and there is no order recognizing it. On its face, IsDB's Canadian-source investment income is therefore ordinary non-resident income.</p>
+  <div class="flag">
+    <span class="tag">Confirm with counsel</span>
+    Obtain a definitive read on whether any FMIOA recognition, sovereign-related relief, or member-state structuring could change this. Do not model the close assuming an exemption.
+  </div>
+
+  <h2><span class="num">03</span> The two-tier structure: IsDB &rarr; Fund (LP) &rarr; real estate</h2>
+  <p>Under the contemplated structure, IsDB holds a <strong>limited partnership interest in HAHIF</strong>, and HAHIF in turn invests in the real estate. A limited partnership is fiscally transparent for Canadian tax: it is not itself a taxpayer, and each partner includes its share of the partnership's income, with the <em>character</em> of that income preserved as it flows up.<a class="ref" href="#s5">5</a> Interposing the fund does not shield the underlying Canadian real-estate income from Canadian tax — but "flows through" is the favourable outcome, for the reasons in §4.</p>
+  <p>What matters most is <em>what IsDB holds</em>. As a limited partner, its return is its distributive share of the fund's net rental income and capital gains — <strong>equity-style partnership income, not a payment that could be characterized as interest</strong>. This is the structural fact that resolves the recharacterization risk discussed in §5.</p>
+
+  <h2><span class="num">04</span> Withholding on gross vs. net-basis taxation by filing</h2>
+  <p>The practical goal is not to make the tax disappear — Canadian real-property income is taxable in Canada either way — but to avoid being taxed 25% on <em>gross</em> receipts when net-basis taxation is available and materially lower.</p>
+  <ul class="body-list">
+    <li>Canadian withholding tends to bite on <strong>passive investment income</strong> routed through a partnership. Where the partnership is instead carrying on business or earning net rental income, the non-resident partner is generally taxed on its share on a <strong>net basis</strong> via a Canadian return.<a class="ref" href="#s5">5</a></li>
+    <li>As a backstop for rental flows, a non-resident can <strong>elect under section 216</strong> to file a Canadian return on net rental income and recover part or all of any Part XIII tax that was withheld on the gross amount.<a class="ref" href="#s6">6</a></li>
+    <li>The trade-off is administrative: IsDB will have Canadian filing obligations, and the fund files a T5013 partnership return. The partnership can be liable for withholding tax that should have been remitted on a non-resident partner's share, so the remittance mechanics need to be handled correctly.<a class="ref" href="#s7">7</a></li>
+  </ul>
+  <p>Net of operating costs, financing, and capital cost allowance, net-basis taxation is meaningfully better than 25% of gross rent — so the design priority is to land on the "carrying on business / net rental" side and use the section 216 election where gross withholding would otherwise apply.</p>
+
+  <h2><span class="num">05</span> The participating-debt-interest trap — and why the LP structure avoids it</h2>
+  <p>Canada does <strong>not</strong> withhold on ordinary arm's-length interest — but it carves out "participating debt interest," meaning a return calculated by reference to revenue, profit, cash flow, commodity price, or dividends, which remains subject to withholding.<a class="ref" href="#s2">2</a> That carve-out is precisely what profit-linked Islamic instruments (musharaka, mudaraba, many sukuk) can resemble. With no treaty to soften it, such a characterization would mean the full 25%.</p>
+  <p>The two-tier equity structure largely removes this risk <em>at the investor level</em>: because IsDB holds a limited-partnership (equity) interest rather than a debt instrument, there is no payment from the fund to recharacterize as interest. A musharaka-style equity interest maps cleanly onto partnership treatment.</p>
+  <div class="flag">
+    <span class="tag">Key drafting point</span>
+    This protection holds only if IsDB's interest is a genuine equity / limited-partner interest and <em>not</em> a loan to the fund dressed up as a unit. The Shariah structure (Mufti Baig) and the tax characterization (Pallett Valo) must agree on this point.
+  </div>
+
+  <h2><span class="num">06</span> The fund's "charitable focus" does not reduce the investor's withholding</h2>
+  <p>It is worth stating plainly: the charitable or affordable-housing purpose of the fund does not flow tax attributes to a foreign limited partner. A registered Canadian charity is tax-exempt, but IsDB earning a return is not the charity. The charitable focus may matter for IslamicFamily's own general-partner position and for the fund's overall design, but it does not lower IsDB's Canadian tax on its investment return.</p>
+
+  <h2><span class="num">07</span> Disposition mechanics (section 116)</h2>
+  <p>The real estate is "taxable Canadian property" (TCP). Because the partnership owns TCP and has a non-resident partner, a sale triggers the <strong>section 116 clearance-certificate process</strong> — and even a single non-resident partner is enough to bring it into play.<a class="ref" href="#s5">5</a> IsDB's eventual sale of its limited-partnership interest is in the same category, since that interest derives its value from Canadian real estate. This is not a barrier; it means a clearance timeline and a purchase-price/proceeds holdback need to sit inside the fund's liquidity and exit planning rather than surprise the parties at sale.</p>
+
+  <h2><span class="num">08</span> Adjacent benefit: financing-cost deductibility for purpose-built rental</h2>
+  <p>Separate from withholding but relevant to the fund's overall tax efficiency given Diamond at Dunluce is 96 units of purpose-built rental: Budget 2024 expanded the carve-out from the interest-deductibility (EIFEL) limits to cover arm's-length financing used to build or acquire purpose-built residential rentals — broadly, buildings with at least four private apartment units.<a class="ref" href="#s8">8</a> This affects the fund's ability to deduct financing costs, which improves the net income that flows through to IsDB.</p>
+
+  <h2><span class="num">09</span> Structural variables to confirm, and questions for counsel</h2>
+  <p>Two structural variables determine which version of the analysis applies. First, the <strong>fund's legal form</strong>: everything above assumes HAHIF is and remains a flow-through limited partnership. If a <em>corporation</em> appears anywhere in the stack — the fund itself, or a corporate blocker between the fund and IsDB — the math reverses badly: Canadian corporate tax on the real-estate income <em>plus</em> a 25% dividend withholding on distributions up to IsDB, with no treaty to reduce that 25%. Second, the <strong>disposition timeline</strong> and section 116 holdback must be planned in advance.</p>
+  <ol class="counsel">
+    <li>Confirm HAHIF is, and will remain through close and operation, a flow-through limited partnership, with no inadvertent corporate layer converting net business income into dividends.</li>
+    <li>Confirm IsDB's interest is true equity (a limited-partnership interest) rather than financing, and that the Shariah and tax characterizations are aligned.</li>
+    <li>Model the section 216 net-basis position against gross 25% withholding, including the fund's T5013 and remittance obligations.</li>
+    <li>Obtain a definitive read on any FMIOA / sovereign-related relief available to IsDB specifically.</li>
+    <li>Build the section 116 clearance timeline and holdback into the fund's liquidity and exit planning.</li>
+  </ol>
+
+  <h2><span class="num">10</span> Recommended next step</h2>
+  <p>Commission a focused cross-border tax opinion (Pallett Valo plus a cross-border specialist) addressing Questions 1–5 above, scoped to the 15 August 2026 first close. The questions are now narrower than a general "how do we reduce withholding" brief, because the two-tier equity structure has already resolved the largest single risk.</p>
+
+  <section class="refs">
+    <h2>Sources</h2>
+    <ol class="sources">
+      <li id="s1"><span class="src-title">Marcil Lavall&eacute;e, "Paying non-residents — watch out for withholding tax!"</span> (Saudi Arabia listed among no-treaty countries; 25% default Part XIII rate; section 216 rental election). <a href="https://marcil-lavallee.ca/en/bulletin/paying-non-residents-watch-out-for-withholding-tax/">marcil-lavallee.ca</a>. See also Department of Finance Canada, <span class="src-title">Tax treaties — status</span>, <a href="https://www.canada.ca/en/department-finance/programs/tax-policy/tax-treaties.html">canada.ca</a>.</li>
+      <li id="s2"><span class="src-title">PwC Tax Summaries, "Canada — Corporate — Withholding taxes"</span> (no WHT on arm's-length interest except participating debt interest; participating-debt definition). <a href="https://taxsummaries.pwc.com/canada/corporate/withholding-taxes">taxsummaries.pwc.com</a>.</li>
+      <li id="s3"><span class="src-title">Islamic Development Bank — "Who we are"</span> and Wikipedia, "Islamic Development Bank" (multilateral development bank, Jeddah, 57 member states, AAA-rated). <a href="https://www.isdb.org/who-we-are">isdb.org</a>; <a href="https://en.wikipedia.org/wiki/Islamic_Development_Bank">en.wikipedia.org</a>.</li>
+      <li id="s4"><span class="src-title">CanadianCharityLaw.ca, on prescribed international organizations and the FMIOA</span> (FMIOA reaches organizations of which Canada is a member; mechanism directed mainly at officials' income; list of prescribed organizations). <a href="https://www.canadiancharitylaw.ca/blog/is_the_african_development_bank_a_prescribed_international_organization_und/">canadiancharitylaw.ca</a>.</li>
+      <li id="s5"><span class="src-title">Multilaw, "Canada — Limited Partnerships"</span> (LP fiscal transparency; withholding mainly on passive investment income through a partnership; TCP sale requires a clearance certificate; a single non-resident partner triggers section 116). <a href="https://multilaw.com/Multilaw/Multilaw/Global_Business_Entities_Guide/Canada_-_Limited_Partnerships.aspx">multilaw.com</a>.</li>
+      <li id="s6"><span class="src-title">Canada Revenue Agency, "Non-residents of Canada"</span> (election under section 216 to file a Canadian return on rental income and recover Part XIII tax). <a href="https://www.canada.ca/en/revenue-agency/services/tax/international-non-residents/individuals-leaving-entering-canada-non-residents/non-residents-canada.html">canada.ca</a>.</li>
+      <li id="s7"><span class="src-title">D. Rotfleisch, "How are Limited Partnerships Taxed in Canada?"</span> (non-resident limited partners and Part XIII; partnership liability for unremitted withholding; T5013 filing). <a href="https://taxpage.com/articles-and-tips/how-are-limited-partnerships-taxed-in-canada-advantages-and-drawbacks-from-a-canadian-tax-lawyer/">taxpage.com</a>.</li>
+      <li id="s8"><span class="src-title">Canada Revenue Agency, "Guide for the Partnership Information Return (T5013 Forms)"</span> (Budget 2024 expansion of the EIFEL exempt-financing carve-out for purpose-built residential rental). <a href="https://www.canada.ca/en/revenue-agency/services/forms-publications/publications/t4068/guide-partnership-information-return-t5013-forms.html">canada.ca</a>.</li>
+    </ol>
+  </section>
+
+  <footer>
+    Sources are public secondary and government materials current as of June 2026 and are cited for orientation; statutory provisions and CRA administrative positions change, and treaty status and the participating-debt and section 116 rules are fact-specific. Confirm all points against the Income Tax Act (Canada) and a formal opinion before relying on them for the transaction. Prepared as an internal working document for IslamicFamily.
+  </footer>
+
+</main>
+</body>
+</html>
