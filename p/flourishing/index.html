@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Built for Purpose — IslamicFamily & Flourishing Systems</title>
+    <link href="https://fonts.googleapis.com/css2?family=Alegreya:ital,wght@0,400;0,700;1,400&family=Alegreya+Sans:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+        :root {
+            --green:       #275D43;
+            --brown:       #E09964;
+            --red:         #BB2D37;
+            --black:       #353535;
+            --cream:       #FAFAF2;
+            --green-light: #e8f0ec;
+            --rule:        #e4e4dc;
+        }
+
+        body {
+            font-family: 'Alegreya Sans', sans-serif;
+            background: var(--cream);
+            color: var(--black);
+            font-size: 15px;
+            line-height: 1.65;
+        }
+
+        .page {
+            max-width: 820px;
+            margin: 0 auto;
+            background: white;
+            box-shadow: 0 2px 20px rgba(39,93,67,0.09);
+        }
+
+        /* ── HEADER ── */
+        header {
+            background: var(--green);
+            color: white;
+            padding: 44px 52px 40px;
+        }
+        header .eyebrow {
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 0.16em;
+            text-transform: uppercase;
+            color: var(--brown);
+            margin-bottom: 12px;
+        }
+        header h1 {
+            font-family: 'Alegreya', serif;
+            font-size: 32px;
+            font-weight: 700;
+            line-height: 1.2;
+            color: white;
+        }
+        header .subtitle {
+            margin-top: 10px;
+            font-size: 15px;
+            font-weight: 300;
+            color: rgba(255,255,255,0.75);
+            max-width: 580px;
+            line-height: 1.5;
+        }
+
+        /* ── BODY ── */
+        .body {
+            padding: 0 52px 52px;
+        }
+
+        /* ── LEAD ── */
+        .lead {
+            border-left: 4px solid var(--brown);
+            padding: 20px 24px;
+            margin: 36px 0 34px;
+            background: var(--green-light);
+        }
+        .lead p {
+            font-family: 'Alegreya', serif;
+            font-size: 17px;
+            line-height: 1.65;
+            color: var(--green);
+            font-style: italic;
+        }
+
+        /* ── SECTIONS ── */
+        .section {
+            margin-bottom: 28px;
+            padding-bottom: 28px;
+            border-bottom: 1px solid var(--rule);
+        }
+        .section:last-of-type {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+        .section h2 {
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            color: var(--green);
+            margin-bottom: 10px;
+        }
+        .section p { font-size: 15px; line-height: 1.7; }
+        .section p + p { margin-top: 10px; }
+
+        strong { font-weight: 700; color: var(--green); }
+
+        /* ── SAFEGUARDS ── */
+        .safeguards {
+            list-style: none;
+            margin-top: 12px;
+        }
+        .safeguards li {
+            padding: 9px 0 9px 20px;
+            position: relative;
+            font-size: 15px;
+            border-bottom: 1px solid #f0f0e8;
+            line-height: 1.6;
+        }
+        .safeguards li:last-child { border-bottom: none; }
+        .safeguards li::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 19px;
+            width: 8px;
+            height: 2px;
+            background: var(--brown);
+        }
+
+        /* ── NO BOX ── */
+        .no-box {
+            display: inline-block;
+            background: var(--green);
+            color: white;
+            font-family: 'Alegreya', serif;
+            font-size: 22px;
+            font-weight: 700;
+            padding: 1px 12px;
+            margin-right: 6px;
+            vertical-align: middle;
+            line-height: 1.5;
+        }
+
+        /* ── RECOGNITION ── */
+        .recognition {
+            background: var(--green-light);
+            border-top: 3px solid var(--brown);
+            padding: 24px 28px;
+            margin: 32px 0;
+        }
+        .recognition h2 {
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            color: var(--green);
+            margin-bottom: 14px;
+        }
+        .advisors {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+        .advisor-tag {
+            background: white;
+            border: 1px solid rgba(39,93,67,0.2);
+            color: var(--green);
+            font-size: 13px;
+            font-weight: 500;
+            padding: 5px 14px;
+            border-radius: 2px;
+        }
+
+        /* ── FAQ ── */
+        .faq-block {
+            border-top: 3px solid var(--green);
+            margin-top: 44px;
+            padding-top: 36px;
+        }
+        .faq-block > h2 {
+            font-family: 'Alegreya', serif;
+            font-size: 22px;
+            font-weight: 700;
+            color: var(--green);
+            margin-bottom: 6px;
+        }
+        .faq-block > p {
+            font-size: 14px;
+            color: #666;
+            margin-bottom: 28px;
+        }
+
+        .faq-group {
+            margin-bottom: 28px;
+        }
+        .faq-group-label {
+            font-size: 10px;
+            font-weight: 700;
+            letter-spacing: 0.16em;
+            text-transform: uppercase;
+            color: var(--brown);
+            margin-bottom: 14px;
+            padding-bottom: 6px;
+            border-bottom: 1px solid var(--rule);
+        }
+
+        .faq-item {
+            margin-bottom: 18px;
+        }
+        .faq-item:last-child { margin-bottom: 0; }
+        .faq-q {
+            font-weight: 700;
+            color: var(--black);
+            font-size: 15px;
+            margin-bottom: 5px;
+        }
+        .faq-a {
+            font-size: 14.5px;
+            line-height: 1.65;
+            color: #444;
+        }
+
+        /* ── FOOTER ── */
+        footer {
+            background: var(--black);
+            color: rgba(255,255,255,0.5);
+            font-size: 12px;
+            padding: 16px 52px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 48px;
+        }
+        footer span { color: white; font-weight: 500; }
+
+        @media print {
+            body { background: white; }
+            .page { box-shadow: none; margin: 0; max-width: 100%; }
+            header, .lead, .recognition { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+        }
+
+        @media (max-width: 600px) {
+            header, .body, footer { padding-left: 24px; padding-right: 24px; }
+            header h1 { font-size: 26px; }
+        }
+    </style>
+</head>
+<body>
+<div class="page">
+
+    <header>
+        <div class="eyebrow">For Funders &amp; Donors</div>
+        <h1>Built for Purpose: How IslamicFamily's Social Enterprise Works</h1>
+        <p class="subtitle">The structure behind Flourishing Systems and how it advances IslamicFamily's people-first service work.</p>
+    </header>
+
+    <div class="body">
+
+        <div class="section" style="margin-top: 36px;">
+            <p>Flourishing Systems is a wholly owned subsidiary of IslamicFamily, created to advance IslamicFamily's charitable mission through social enterprise. IslamicFamily built software internally to improve client-centred care and service delivery. That software is now being commercialized — extending the reach of people-first, data justice principles across the sector, and returning revenue to IslamicFamily's charitable work.</p>
+        </div>
+
+        <!-- WHY SEPARATE -->
+        <div class="section">
+            <h2>Why a separate entity?</h2>
+            <p>A for-profit subsidiary protects IslamicFamily's charitable status. Selling software directly from a charity carries legal and compliance risk under CRA, and limits access to organizations that are nonprofits but not registered charities. A separate structure ensures CRA compliance, enables broader access to the tools, and keeps IslamicFamily's charitable focus protected.</p>
+            <p>This structure was reviewed by independent legal counsel and recommended by Grant Thornton, Pürppl, the Social Enterprise Fund, and others as the optimal approach.</p>
+        </div>
+
+        <!-- GOVERNANCE -->
+        <div class="section">
+            <h2>How is it governed and safeguarded?</h2>
+            <p>IslamicFamily's board appoints all board members of Flourishing Systems and determines compensation for shared leadership, including the Executive Director. The following safeguards are in place:</p>
+            <ul class="safeguards">
+                <li><strong>Single paycheck.</strong> The ED, controller, and other shared staff are paid once, by IslamicFamily. Flourishing Systems reimburses IslamicFamily for the use of their time — there is no double-billing.</li>
+                <li><strong>No additional compensation.</strong> No leadership receives additional benefits or income through the subsidiary.</li>
+                <li><strong>Arm's-length pricing.</strong> IslamicFamily sets fees for shared resources (management time, controller services, office space) based on industry standards, reviewed independently by auditors.</li>
+                <li><strong>No debt permitted.</strong> Flourishing Systems is prohibited from taking on debt, limiting financial risk to IslamicFamily.</li>
+                <li><strong>Dual audit.</strong> Both entities are independently audited each year.</li>
+            </ul>
+        </div>
+
+        <!-- DONOR FUNDS -->
+        <div class="section">
+            <h2>Does this use IslamicFamily donor funds?</h2>
+            <p><span class="no-box">No.</span> The development of Flourishing Systems was funded through <strong>restricted innovation grants</strong> from funders including the <strong>McConnell Foundation</strong>, <strong>MetaLab</strong>, the <strong>City of Edmonton</strong>, and others — all of whom explicitly supported commercialization as a path to long-term sustainability for the sector. Flourishing Systems receives restricted grant funding only; no general charitable funds flow to the subsidiary.</p>
+            <p>Flourishing Systems' ongoing revenue comes from selling software to other organizations. Any profits flow back to IslamicFamily. Donor funds support charitable programs. Commercial activity supports the tools that make those programs better.</p>
+        </div>
+
+        <!-- RECOGNITION -->
+        <div class="recognition">
+            <h2>Recognition &amp; Validation</h2>
+            <div class="advisors">
+                <span class="advisor-tag">🏆 YEG Startup Award</span>
+                <span class="advisor-tag">Pürppl — Social Impact Advisors</span>
+                <span class="advisor-tag">Social Enterprise Fund</span>
+                <span class="advisor-tag">Grant Thornton</span>
+                <span class="advisor-tag">Platform Calgary</span>
+            </div>
+        </div>
+
+        <!-- IMPACT -->
+        <div class="section">
+            <h2>What's the impact?</h2>
+            <p>Flourishing Systems advances data justice, puts people at the center of their own data, and makes IslamicFamily's social service work more effective and transparent. As the subsidiary matures, it creates a second revenue stream for IslamicFamily — reducing dependency on grants and strengthening long-term sustainability. Donor funds support charitable work. Commercial activity makes that work better.</p>
+        </div>
+
+        <!-- FAQ -->
+        <div class="faq-block">
+            <h2>Common Questions</h2>
+            <p>Answers to questions funders and donors frequently raise.</p>
+
+            <div class="faq-group">
+                <div class="faq-group-label">Money &amp; Conflicts</div>
+
+                <div class="faq-item">
+                    <div class="faq-q">If Flourishing Systems becomes profitable, who benefits?</div>
+                    <div class="faq-a">Flourishing Systems is a purpose-driven social enterprise. Its primary objective is advancing people-first service, acting sustainably, and returning profit to IslamicFamily's charitable mission. All intercompany agreements are reviewed by the board and auditors for compliance and competitiveness. Profits flow to IslamicFamily's charitable mission — not to individuals.</div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-q">Who sets the fees IslamicFamily charges Flourishing Systems?</div>
+                    <div class="faq-a">IslamicFamily sets fees based on industry standards. All intercompany agreements are independently reviewed by auditors to ensure they are fair, arm's-length, and compliant.</div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-q">Could IslamicFamily be liable for Flourishing Systems' debts?</div>
+                    <div class="faq-a">No. Flourishing Systems is prohibited from taking on debt, structurally limiting any financial risk to IslamicFamily.</div>
+                </div>
+            </div>
+
+            <div class="faq-group">
+                <div class="faq-group-label">Mission &amp; IP</div>
+
+                <div class="faq-item">
+                    <div class="faq-q">Does running a commercial subsidiary distract from IslamicFamily's core work?</div>
+                    <div class="faq-a">No — Flourishing Systems' work directly supports and advances IslamicFamily's charitable programs. Better data tools mean better service delivery. The commercial activity is mission-aligned by design, not a parallel track.</div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-q">What happens to the software and IP if Flourishing Systems is wound down?</div>
+                    <div class="faq-a">All intellectual property is owned by IslamicFamily. Flourishing Systems operates under a license. If the subsidiary were ever wound down, the IP remains with IslamicFamily.</div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-q">Could Flourishing Systems be sold to a third party?</div>
+                    <div class="faq-a">IslamicFamily holds majority ownership and therefore determines the disposition of the subsidiary and where any proceeds go. Any such decision would be a board-level decision, subject to the same governance standards.</div>
+                </div>
+            </div>
+
+            <div class="faq-group">
+                <div class="faq-group-label">Client Data &amp; Protection</div>
+
+                <div class="faq-item">
+                    <div class="faq-q">Does Flourishing Systems have access to IslamicFamily's client data?</div>
+                    <div class="faq-a">Client data is governed by strict standards that exceed sector and government regulations. Data sovereignty and client-centered data principles are foundational to why this software was built in the first place. No client data is transferred to third-party organizations through the software.</div>
+                </div>
+            </div>
+
+            <div class="faq-group">
+                <div class="faq-group-label">Grants &amp; Funding Integrity</div>
+
+                <div class="faq-item">
+                    <div class="faq-q">Did the original innovation grant funders approve commercialization as an outcome?</div>
+                    <div class="faq-a">Yes. Funders including the McConnell Foundation, MetaLab, and the City of Edmonton explicitly supported commercialization as an intended outcome — seeing it as a path to long-term sustainability for people-first social service technology.</div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-q">Is IslamicFamily still receiving grants for work that Flourishing Systems then commercializes?</div>
+                    <div class="faq-a">Yes, and this is fully and transparently disclosed. Flourishing Systems receives restricted grant funding only — no general charitable funds. All grant activity is reported in IslamicFamily's audited financial statements and reviewed by auditors each year.</div>
+                </div>
+            </div>
+
+        </div><!-- /faq -->
+
+    </div><!-- /body -->
+
+    <footer>
+        <div><span>IslamicFamily</span> — islamicfamily.ca</div>
+        <div>Questions? <span>omary@islamicfamily.ca</span></div>
+    </footer>
+
+</div>
+</body>
+</html>
