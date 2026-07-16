@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>IslamicFamily — Voices from the Process</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Alegreya:ital,wght@0,400;0,500;0,700;1,400;1,500&family=Alegreya+Sans:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --g:  #0F6E56;
+    --gl: #E1F5EE;
+    --gd: #085041;
+    --gm: #1D9E75;
+    --border: #e4e4e4;
+    --text: #111;
+    --muted: #666;
+    --faint: #aaa;
+  }
+
+  body {
+    font-family: 'Alegreya Sans', Georgia, sans-serif;
+    background: #fff;
+    color: var(--text);
+    min-height: 100vh;
+  }
+
+  /* ── Header ── */
+  .header { padding: 2rem 2rem 0; border-bottom: 1px solid var(--border); }
+  .header-top {
+    display: flex; align-items: flex-end; justify-content: space-between;
+    gap: 1rem; flex-wrap: wrap; margin-bottom: 1.25rem;
+  }
+  .wordmark { font-family: 'Alegreya', Georgia, serif; font-size: 24px; font-weight: 500; letter-spacing: -0.01em; line-height: 1; }
+  .wordmark span { color: var(--g); }
+  .tagline { font-size: 11px; color: var(--faint); text-transform: uppercase; letter-spacing: 0.1em; margin-top: 5px; }
+  .nav { display: flex; gap: 4px; flex-wrap: wrap; margin-bottom: 1rem; }
+  .nav-btn {
+    background: transparent; border: 1px solid var(--border); border-radius: 100px;
+    padding: 7px 14px; font-size: 12px; color: var(--muted); cursor: pointer;
+    font-family: inherit; transition: all 0.15s; position: relative;
+  }
+  .nav-btn:hover { background: #f5f5f5; color: var(--text); }
+  .nav-btn.active { background: var(--g); border-color: var(--g); color: #fff; }
+  .progress-bar { height: 2px; background: #f0f0f0; border-radius: 99px; margin: 0; }
+  .progress-fill { height: 100%; background: var(--g); border-radius: 99px; transition: width 0.35s ease; }
+
+  /* ── Sections ── */
+  .section { display: none; padding: 2.5rem 0 4rem; }
+  .section.active { display: block; }
+
+  .hero { padding: 0 2rem 1.75rem; max-width: 700px; }
+  .eyebrow { font-size: 11px; text-transform: uppercase; letter-spacing: 0.12em; color: var(--g); font-weight: 600; margin-bottom: 10px; }
+  .hero-title { font-family: 'Alegreya', Georgia, serif; font-size: 32px; font-weight: 500; line-height: 1.15; margin-bottom: 14px; }
+  .hero-sub { font-size: 15px; color: var(--muted); line-height: 1.7; }
+
+  .next-row { padding: 2.5rem 2rem 0; display: flex; justify-content: flex-end; gap: 10px; }
+  .next-btn, .back-btn {
+    font-family: inherit; font-weight: 700; font-size: 14px;
+    padding: 11px 26px; border-radius: 3px; cursor: pointer;
+  }
+  .next-btn { background: var(--g); border: none; color: #fff; }
+  .next-btn:hover { background: var(--gd); }
+  .back-btn { background: none; border: 1px solid var(--border); color: var(--text); margin-right: auto; }
+  .back-btn:hover { border-color: var(--g); color: var(--g); }
+
+  /* ── Guardrails (kept as-is) ── */
+  .cards-area { padding: 0 2rem; display: grid; gap: 10px; }
+  .guardrail-card { background: #fafafa; border: 1px solid var(--border); border-radius: 12px; padding: 1.1rem 1.4rem; }
+  .guardrail-num { font-size: 11px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--g); font-weight: 600; margin-bottom: 4px; }
+  .guardrail-title { font-family: 'Alegreya', Georgia, serif; font-size: 17px; font-weight: 500; margin-bottom: 5px; }
+  .guardrail-desc { font-size: 13.5px; color: var(--muted); line-height: 1.6; }
+
+  /* ── Voices (permanent, animated) ── */
+  .voices-toggle { margin: 0 2rem; border: 1px solid var(--border); border-radius: 12px; overflow: hidden; }
+  .voices-toggle-btn {
+    width: 100%; display: flex; align-items: center; justify-content: space-between;
+    padding: 1rem 1.5rem; background: #fafafa; border: none; border-bottom: 1px solid var(--border);
+    font-family: inherit; gap: 1rem;
+  }
+  .voices-toggle-left { display: flex; align-items: center; gap: 10px; }
+  .voices-toggle-label { font-size: 12px; font-weight: 500; color: var(--text); text-align: left; }
+  .voices-toggle-sub { font-size: 11px; color: var(--faint); margin-top: 1px; text-align: left; }
+  .voices-toggle-icon { font-size: 16px; color: var(--g); flex-shrink: 0; }
+  .voices-body { padding: 1.5rem; background: #fff; }
+  .voices-intro { font-size: 13px; color: var(--muted); line-height: 1.65; margin-bottom: 1.25rem; padding-bottom: 1rem; border-bottom: 1px solid var(--border); }
+  .voices-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+
+  @keyframes voiceIn {
+    from { opacity: 0; transform: translateY(6px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  .voice-card {
+    background: #f9f9f9; border: 1px solid var(--border); border-radius: 10px;
+    padding: 1rem 1.25rem; animation: voiceIn 0.25s ease-out both;
+  }
+  .voice-card:nth-child(1) { animation-delay: 0s; }
+  .voice-card:nth-child(2) { animation-delay: 0.035s; }
+  .voice-card:nth-child(3) { animation-delay: 0.07s; }
+  .voice-card:nth-child(4) { animation-delay: 0.105s; }
+  .voice-card:nth-child(5) { animation-delay: 0.14s; }
+  .voice-card:nth-child(6) { animation-delay: 0.175s; }
+  .voice-card:nth-child(7) { animation-delay: 0.21s; }
+  .voice-card:nth-child(8) { animation-delay: 0.245s; }
+  .voice-card-label { font-size: 10px; text-transform: uppercase; letter-spacing: 0.1em; color: var(--faint); margin-bottom: 5px; }
+  .voice-card-text { font-family: 'Alegreya', Georgia, serif; font-size: 14px; line-height: 1.5; color: var(--text); }
+  .voice-card.highlight { background: var(--gl); border-color: var(--gm); }
+  .voice-card.highlight .voice-card-label { color: var(--g); }
+
+  .closing-note {
+    margin: 2.5rem 2rem 0; padding: 1.5rem 1.75rem; background: var(--gl);
+    border: 1px solid var(--gm); border-radius: 12px; font-size: 14.5px; color: var(--gd); line-height: 1.7;
+  }
+
+  @media (max-width: 560px) {
+    .hero-title { font-size: 26px; }
+    .nav-btn { padding: 6px 11px; font-size: 11px; }
+    .voices-grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="header-top">
+    <div>
+      <div class="wordmark">Islamic<span>Family</span></div>
+      <div class="tagline">Strategic Plan Development · Voices from the process</div>
+    </div>
+    <nav class="nav" id="nav"></nav>
+  </div>
+  <div class="progress-bar"><div class="progress-fill" id="progress"></div></div>
+</div>
+
+<!-- ── GUARDRAILS (unchanged) ── -->
+<div class="section active" id="section-guardrails">
+  <div class="hero">
+    <div class="eyebrow">What to expect</div>
+    <div class="hero-title">Foundation Setting</div>
+    <div class="hero-sub">This is foundational work that will set the path for IslamicFamily for years to come. It outlines who we are, where're going, and how we'll get there.&nbsp;<div><br></div><div>This doc gives you the chance to see the range of thoughts that have emerged and help refine and decide.</div><div><br></div><div>Below are the constraints any good vision, mission, or values statement must respect. Keep them in mind as you review each option — and use the flag tool on any card that you think falls short of one.</div></div>
+  </div>
+
+  <div class="cards-area">
+    <div class="guardrail-card">
+      <div class="guardrail-num">Guardrail 1</div>
+      <div class="guardrail-title">Accessible to all</div>
+      <div class="guardrail-desc">The language must not exclude anyone seeking services — Muslim or not, newcomer or fifth-generation Canadian. Insider framing or community-only phrasing closes doors before they can be opened.</div>
+    </div>
+    <div class="guardrail-card">
+      <div class="guardrail-num">Guardrail 2</div>
+      <div class="guardrail-title">Anchored in tradition</div>
+      <div class="guardrail-desc">We are grounded in Islamic values — rahma, karama, adl, amanah. The language should reflect that rootedness without requiring it as a condition of access or belonging.</div>
+    </div>
+    <div class="guardrail-card">
+      <div class="guardrail-num">Guardrail 3</div>
+      <div class="guardrail-title">Breadth of community</div>
+      <div class="guardrail-desc">Our community spans an enormous range of need and background: from pre-arrival refugees navigating displacement to fifth-generation Canadians struggling with identity and mental health. The language must hold that full spectrum without collapsing it.</div>
+    </div>
+    <div class="guardrail-card">
+      <div class="guardrail-num">Guardrail 4</div>
+      <div class="guardrail-title">Legible to outsiders</div>
+      <div class="guardrail-desc">Funders, government partners, and referring agencies need to understand who we are without a translator. Avoid insider language, religious terminology without context, or framing that only makes sense from inside the community.</div>
+    </div>
+    <div class="guardrail-card">
+      <div class="guardrail-num">Guardrail 5</div>
+      <div class="guardrail-title">Honest about scope</div>
+      <div class="guardrail-desc">We should not overclaim. The mission shouldn't promise what IslamicFamily alone cannot deliver. Aspirational language is essential — but overreach is a governance and credibility risk with funders and partners.</div>
+    </div>
+    <div class="guardrail-card">
+      <div class="guardrail-num">Guardrail 6</div>
+      <div class="guardrail-title">Durable, not dated</div>
+      <div class="guardrail-desc">The language should hold up in ten years. Avoid references to current events, specific programs, or demographic trends that may shift. A good mission statement outlasts the strategic cycle that produced it.</div>
+    </div>
+    <div class="guardrail-card">
+      <div class="guardrail-num">Guardrail 7</div>
+      <div class="guardrail-title">Distinctive, not generic</div>
+      <div class="guardrail-desc">"Compassionate whole-person care" could describe dozens of organizations. The language should actually sound like IslamicFamily — specific enough that it could not easily belong to anyone else.</div>
+    </div>
+  </div>
+
+  <div class="next-row"><button class="next-btn" onclick="goTo('vision')">See what we heard →</button></div>
+</div>
+
+<!-- ── VISION ── -->
+<div class="section" id="section-vision">
+  <div class="hero">
+    <div class="eyebrow">Our vision</div>
+    <div class="hero-title">Where are we<br>trying to go?</div>
+    <div class="hero-sub">A vision describes the future we are building toward — not what we do, but what the world looks like when we have done it well.</div>
+  </div>
+
+  <div class="voices-toggle">
+    <div class="voices-toggle-btn">
+      <div class="voices-toggle-left">
+        <span class="voices-toggle-icon">💬</span>
+        <div>
+          <div class="voices-toggle-label">Voices from the process</div>
+          <div class="voices-toggle-sub">What the board and leadership said — the raw input that shaped these options</div>
+        </div>
+      </div>
+    </div>
+    <div class="voices-body" id="vision-voices">
+      <div class="voices-intro">These statements were collected during the board ideation session. They represent the range of perspectives that informed the vision for IslamicFamily.</div>
+      <div class="voices-grid">
+        <div class="voice-card highlight">
+          <div class="voice-card-label">Strategic positioning</div>
+          <div class="voice-card-text">"First choice social service partner for Muslims in YEG"</div>
+        </div>
+        <div class="voice-card">
+          <div class="voice-card-label">On community strength</div>
+          <div class="voice-card-text">"A transition from emergent need to stable contributor"</div>
+        </div>
+        <div class="voice-card highlight">
+          <div class="voice-card-label">On scope of care</div>
+          <div class="voice-card-text">"Complete care on the spectrum of human life from a Muslim perspective"</div>
+        </div>
+        <div class="voice-card">
+          <div class="voice-card-label">On trajectory</div>
+          <div class="voice-card-text">"Moving from support for a broken arm to strength training"</div>
+        </div>
+        <div class="voice-card">
+          <div class="voice-card-label">On audience</div>
+          <div class="voice-card-text">"Culturally &amp; spiritually appropriate services for at-risk Muslims"</div>
+        </div>
+        <div class="voice-card highlight">
+          <div class="voice-card-label">On leadership development</div>
+          <div class="voice-card-text">"Developing Muslim leadership through service"</div>
+        </div>
+        <div class="voice-card">
+          <div class="voice-card-label">On reach</div>
+          <div class="voice-card-text">"Social services to the Edmonton Muslim community"</div>
+        </div>
+        <div class="voice-card highlight">
+          <div class="voice-card-label">On the arc</div>
+          <div class="voice-card-text">"From services for the vulnerable to building leaders for the future"</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="next-row">
+    <button class="back-btn" onclick="goTo('guardrails')">← Back</button>
+    <button class="next-btn" onclick="goTo('mq')">Next section →</button>
+  </div>
+</div>
+
+<!-- ── MISSION QUESTION ── -->
+<div class="section" id="section-mq">
+  <div class="hero">
+    <div class="eyebrow">The mission question</div>
+    <div class="hero-title">The question that<br>guides everything</div>
+    <div class="hero-sub">The animating inquiry the whole organization is oriented around. It invites rather than declares.</div>
+  </div>
+
+  <div class="voices-toggle">
+    <div class="voices-toggle-btn">
+      <div class="voices-toggle-left">
+        <span class="voices-toggle-icon">💬</span>
+        <div>
+          <div class="voices-toggle-label">Voices from the process</div>
+          <div class="voices-toggle-sub">How the board articulated what flourishing and community mean</div>
+        </div>
+      </div>
+    </div>
+    <div class="voices-body" id="mq-voices">
+      <div class="voices-intro">The mission question itself emerged from earlier strategy work. These voices shaped how the board understands the three key terms — whole person, flourishing, and community.</div>
+      <div class="voices-grid">
+        <div class="voice-card highlight">
+          <div class="voice-card-label">On "whole person"</div>
+          <div class="voice-card-text">"It's not just mental health or housing — it's someone's relationship with God, their family, their place in the community. All of it."</div>
+        </div>
+        <div class="voice-card">
+          <div class="voice-card-label">On "flourishing"</div>
+          <div class="voice-card-text">"Flourishing isn't surviving. It's someone who came in crisis and now volunteers here, or sits on a board somewhere."</div>
+        </div>
+        <div class="voice-card">
+          <div class="voice-card-label">On the arc</div>
+          <div class="voice-card-text">"We want to move people from broken arm to strength training — from needing us to not needing us."</div>
+        </div>
+        <div class="voice-card highlight">
+          <div class="voice-card-label">On "our community"</div>
+          <div class="voice-card-text">"Our community isn't just Muslims. It's anyone who comes to us — and we serve them with the values of our tradition regardless."</div>
+        </div>
+        <div class="voice-card highlight">
+          <div class="voice-card-label">On breadth</div>
+          <div class="voice-card-text">"We see pre-arrival refugees and fifth-generation Canadians struggling with identity. The mission has to hold both."</div>
+        </div>
+        <div class="voice-card">
+          <div class="voice-card-label">On leadership</div>
+          <div class="voice-card-text">"Flourishing for us is also about developing Muslim leadership — people who go on to shape Canadian institutions."</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="next-row">
+    <button class="back-btn" onclick="goTo('vision')">← Back</button>
+    <button class="next-btn" onclick="goTo('mission')">Next section →</button>
+  </div>
+</div>
+
+<!-- ── MISSION STATEMENT ── -->
+<div class="section" id="section-mission">
+  <div class="hero">
+    <div class="eyebrow">Mission statement</div>
+    <div class="hero-title">Why we exist and<br>what we do</div>
+    <div class="hero-sub">Names who we serve, how, and in what spirit. Lives in annual reports, grant applications, and staff onboarding.</div>
+  </div>
+
+  <div class="voices-toggle">
+    <div class="voices-toggle-btn">
+      <div class="voices-toggle-left">
+        <span class="voices-toggle-icon">💬</span>
+        <div>
+          <div class="voices-toggle-label">Voices from the process</div>
+          <div class="voices-toggle-sub">What the board said about what the mission needs to do and who it needs to reach</div>
+        </div>
+      </div>
+    </div>
+    <div class="voices-body" id="mission-voices">
+      <div class="voices-intro">These are the recurring themes from board and leadership conversations about what the mission statement needs to accomplish.</div>
+      <div class="voices-grid">
+        <div class="voice-card highlight">
+          <div class="voice-card-label">On who we serve</div>
+          <div class="voice-card-text">"The mission can't only be for Muslims. Anyone who walks through the door should feel it's for them."</div>
+        </div>
+        <div class="voice-card">
+          <div class="voice-card-label">On identity</div>
+          <div class="voice-card-text">"We shouldn't hide that we're Islamic. That's who we are — it's in the name."</div>
+        </div>
+        <div class="voice-card highlight">
+          <div class="voice-card-label">On the full spectrum</div>
+          <div class="voice-card-text">"From crisis support to community leadership — that's the whole arc we're trying to hold."</div>
+        </div>
+        <div class="voice-card">
+          <div class="voice-card-label">On clarity</div>
+          <div class="voice-card-text">"A funder reading this for the first time should understand what we do in one sentence."</div>
+        </div>
+        <div class="voice-card">
+          <div class="voice-card-label">On values</div>
+          <div class="voice-card-text">"Rahma — mercy — is the word. That's what makes us different. Not just compassionate care, but mercy."</div>
+        </div>
+        <div class="voice-card highlight">
+          <div class="voice-card-label">On distinctiveness</div>
+          <div class="voice-card-text">"It should sound like us. Not like every other social service organization in Edmonton."</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="closing-note">That's everything we've heard from the process so far. No voting or reflections in this version — just the raw voices behind the vision, mission question, and mission statement.</div>
+
+  <div class="next-row">
+    <button class="back-btn" onclick="goTo('mq')">← Back</button>
+  </div>
+</div>
+
+<script>
+  const TABS = ["guardrails","vision","mq","mission"];
+  const TAB_LABELS = { guardrails:"Guardrails", vision:"Vision", mq:"Mission question", mission:"Mission statement" };
+
+  const nav = document.getElementById("nav");
+  TABS.forEach(t => {
+    const btn = document.createElement("button");
+    btn.className = "nav-btn";
+    btn.id = "nav-" + t;
+    btn.textContent = TAB_LABELS[t];
+    btn.onclick = () => goTo(t);
+    nav.appendChild(btn);
+  });
+
+  goTo("guardrails");
+
+  function goTo(tab) {
+    document.querySelectorAll(".section").forEach(s => s.classList.remove("active"));
+    document.querySelectorAll(".nav-btn").forEach(b => b.classList.remove("active"));
+    document.getElementById("section-" + tab).classList.add("active");
+    document.getElementById("nav-" + tab).classList.add("active");
+    const idx = TABS.indexOf(tab);
+    document.getElementById("progress").style.width = ((idx + 1) / TABS.length * 100) + "%";
+    window.scrollTo({ top: 0, behavior: "smooth" });
+    replayVoiceAnimations(tab);
+  }
+
+  function replayVoiceAnimations(tab) {
+    const section = document.getElementById("section-" + tab);
+    if (!section) return;
+    const cards = section.querySelectorAll(".voice-card");
+    if (!cards.length) return;
+    cards.forEach(c => { c.style.animation = "none"; });
+    void section.offsetWidth;
+    cards.forEach(c => { c.style.animation = ""; });
+  }
+</script>
+
+</body>
+</html>

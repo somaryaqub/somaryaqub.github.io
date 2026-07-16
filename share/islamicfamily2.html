@@ -618,7 +618,7 @@
     margin-left: 4px;
   }
 
-  /* ── Voices toggle ── */
+  /* ── Voices (permanent) ── */
   .voices-toggle {
     margin: 0 2rem;
     border: 1px solid var(--border);
@@ -633,12 +633,10 @@
     padding: 1rem 1.5rem;
     background: #fafafa;
     border: none;
-    cursor: pointer;
+    border-bottom: 1px solid var(--border);
     font-family: inherit;
-    transition: background 0.15s;
     gap: 1rem;
   }
-  .voices-toggle-btn:hover { background: #f3f3f3; }
   .voices-toggle-left {
     display: flex;
     align-items: center;
@@ -661,37 +659,9 @@
     color: var(--g);
     flex-shrink: 0;
   }
-  .voices-caret {
-    font-size: 18px;
-    color: var(--faint);
-    transition: transform 0.25s;
-    flex-shrink: 0;
-    line-height: 1;
-  }
   .voices-body {
-    border-top: 1px solid var(--border);
     padding: 1.5rem;
     background: #fff;
-    max-height: 0;
-    overflow: hidden;
-    transition: max-height 0.5s cubic-bezier(0.4, 0, 0.2, 1),
-                opacity 0.4s ease,
-                padding 0.4s ease;
-    opacity: 0;
-    padding-top: 0;
-    padding-bottom: 0;
-  }
-  .voices-body.open {
-    max-height: 1200px;
-    opacity: 1;
-    padding-top: 1.5rem;
-    padding-bottom: 1.5rem;
-  }
-  .voices-body.collapsing {
-    max-height: 0;
-    opacity: 0;
-    padding-top: 0;
-    padding-bottom: 0;
   }
   .voices-intro {
     font-size: 13px;
@@ -706,12 +676,25 @@
     grid-template-columns: 1fr 1fr;
     gap: 10px;
   }
+  @keyframes voiceIn {
+    from { opacity: 0; transform: translateY(6px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
   .voice-card {
     background: #f9f9f9;
     border: 1px solid var(--border);
     border-radius: 10px;
     padding: 1rem 1.25rem;
+    animation: voiceIn 0.25s ease-out both;
   }
+  .voice-card:nth-child(1) { animation-delay: 0s; }
+  .voice-card:nth-child(2) { animation-delay: 0.035s; }
+  .voice-card:nth-child(3) { animation-delay: 0.07s; }
+  .voice-card:nth-child(4) { animation-delay: 0.105s; }
+  .voice-card:nth-child(5) { animation-delay: 0.14s; }
+  .voice-card:nth-child(6) { animation-delay: 0.175s; }
+  .voice-card:nth-child(7) { animation-delay: 0.21s; }
+  .voice-card:nth-child(8) { animation-delay: 0.245s; }
   .voice-card-label {
     font-size: 10px;
     text-transform: uppercase;
@@ -787,6 +770,87 @@
 </head>
 <body>
 
+<script>
+  // ── Flag-panel system (must be defined before option cards below,
+  // which call buildFlagPanel() via document.write during initial parse) ──
+  const GUARDRAILS = [
+    { id:"g1", short:"Accessible to all",       full:"The language must not exclude anyone seeking services — Muslim or not, newcomer or fifth-generation Canadian. Insider framing or community-only phrasing closes doors." },
+    { id:"g2", short:"Anchored in tradition",    full:"We are grounded in Islamic values — rahma, karama, adl, amanah. The language should reflect that rootedness without requiring it as a condition of access." },
+    { id:"g3", short:"Breadth of community",     full:"Our community spans an enormous range of need and background: from pre-arrival refugees navigating displacement to fifth-generation Canadians struggling with identity and mental health. The language must hold that full spectrum." },
+    { id:"g4", short:"Legible to outsiders",     full:"Funders, government partners, and referring agencies need to understand who we are without a translator. Avoid insider language, acronyms, or framing that only makes sense from inside the community." },
+    { id:"g5", short:"Honest about scope",       full:"We should not overclaim. The mission shouldn't promise what IslamicFamily alone cannot deliver. Aspirational is good; misleading is a governance risk." },
+    { id:"g6", short:"Durable, not dated",       full:"The language should hold up in ten years. Avoid references to current events, specific programs, or demographic trends that may shift. The statement should outlast a strategic cycle." },
+    { id:"g7", short:"Distinctive, not generic", full:"'Compassionate whole-person care' could describe dozens of organizations. The language should actually sound like IslamicFamily — specific enough that it could not belong to anyone else." },
+  ];
+
+  // flags: { "vision-A": ["g1","g3"], "mission-C": ["g5"], ... }
+  const flags = {};
+
+  function flagKey(section, opt) { return section + "-" + opt; }
+
+  function toggleFlag(section, opt, gid, el) {
+    const k = flagKey(section, opt);
+    if (!flags[k]) flags[k] = [];
+    const idx = flags[k].indexOf(gid);
+    if (idx === -1) {
+      flags[k].push(gid);
+      el.classList.add("flag-active");
+    } else {
+      flags[k].splice(idx, 1);
+      el.classList.remove("flag-active");
+    }
+    updateFlagSummary(section, opt);
+  }
+
+  function updateFlagSummary(section, opt) {
+    const k = flagKey(section, opt);
+    const el = document.getElementById("flag-summary-" + k);
+    if (!el) return;
+    const raised = (flags[k] || []);
+    if (raised.length === 0) {
+      el.style.display = "none";
+      el.innerHTML = "";
+    } else {
+      const labels = raised.map(gid => {
+        const g = GUARDRAILS.find(x => x.id === gid);
+        return g ? `<span class="flag-chip">${g.short}</span>` : "";
+      }).join("");
+      el.innerHTML = `<span class="flag-summary-label">⚑ Concerns flagged:</span> ${labels}`;
+      el.style.display = "block";
+    }
+  }
+
+  function buildFlagPanel(section, opt) {
+    const k = flagKey(section, opt);
+    return `
+      <div class="flag-panel" id="flagpanel-${k}">
+        <div class="flag-panel-toggle" onclick="toggleFlagPanel('${k}')">
+          <span class="flag-panel-icon">⚑</span> Flag a guardrail concern
+          <span class="flag-panel-caret" id="caret-${k}">›</span>
+        </div>
+        <div class="flag-panel-body" id="flagbody-${k}" style="display:none;">
+          <div class="flag-panel-hint">Which guardrail does this option risk violating?</div>
+          <div class="flag-chips-row">
+            ${GUARDRAILS.map(g => `
+              <button class="flag-chip-btn" id="flagbtn-${k}-${g.id}"
+                onclick="toggleFlag('${section}','${opt}','${g.id}',this)">
+                ${g.short}
+              </button>`).join("")}
+          </div>
+        </div>
+      </div>
+      <div class="flag-summary" id="flag-summary-${k}" style="display:none;"></div>`;
+  }
+
+  function toggleFlagPanel(k) {
+    const body = document.getElementById("flagbody-" + k);
+    const caret = document.getElementById("caret-" + k);
+    const open = body.style.display !== "none";
+    body.style.display = open ? "none" : "block";
+    caret.style.transform = open ? "" : "rotate(90deg)";
+  }
+</script>
+
 <!-- ── Header ── -->
 <div class="header">
   <div class="header-top">
@@ -855,12 +919,8 @@
     <div class="hero-title">Where are we<br>trying to go?</div>
     <div class="hero-sub">A vision describes the future we are building toward — not what we do, but what the world looks like when we have done it well.</div>
   </div>
-  <div class="update-note">
-    <div class="update-note-label">Since round 1</div>
-    <div class="update-note-body">Two respondents chose <b>Option B</b> outright. The other two wrote their own versions instead — both independently reaching for <b>belonging</b> and <b>trust</b> rather than picking a card. One flagged Option A's "no safety net" as risking a "we're withdrawing support" reading, and Option C's "last organization standing" as sounding competitive rather than collaborative.</div>
-  </div>
   <div class="voices-toggle" style="margin-bottom:1.5rem;">
-    <button class="voices-toggle-btn" onclick="toggleVoices('vision-voices')">
+    <div class="voices-toggle-btn">
       <div class="voices-toggle-left">
         <span class="voices-toggle-icon">💬</span>
         <div>
@@ -868,9 +928,8 @@
           <div class="voices-toggle-sub">What the board and leadership said — the raw input that shaped these options</div>
         </div>
       </div>
-      <span class="voices-caret" id="caret-vision-voices" style="transform:rotate(90deg)">›</span>
-    </button>
-    <div class="voices-body open" id="vision-voices">
+    </div>
+    <div class="voices-body" id="vision-voices">
       <div class="voices-intro">These statements were collected during the board ideation session. They represent the range of perspectives that informed the three vision options above — read them before you vote to understand where each option came from.</div>
       <div class="voices-grid">
         <div class="voice-card highlight">
@@ -934,15 +993,14 @@
       <script>document.write(buildFlagPanel('vision','B'))</script>
     </div>
 
-    <div class="option-card recommended-card" data-section="vision" data-opt="C" onclick="vote(this)">
-      <div class="rec-banner">★ Recommended</div>
+    <div class="option-card" data-section="vision" data-opt="C" onclick="vote(this)">
       <div class="card-header">
         <div class="card-num">Option C — Bold and specific</div>
         <span class="voted-badge">✓ Your vote</span>
       </div>
       <div class="card-text">"To be the first call in crisis and the last organization standing — until injustice is a memory, and our community leads visibly in every corner of Canadian life."</div>
       <div class="card-note">Holds the full tension of urgency now and obsolescence as the goal. Most memorable for board and donor audiences.</div>
-      <span class="card-tag rec">Recommended</span>
+      <span class="card-tag">Memorable · Bold</span>
       <script>document.write(buildFlagPanel('vision','C'))</script>
     </div>
 
@@ -962,6 +1020,11 @@
     </div>
   </div>
 
+  <div class="update-note">
+    <div class="update-note-label">Since round 1</div>
+    <div class="update-note-body">Two respondents chose <b>Option B</b> outright. The other two wrote their own versions instead — both independently reaching for <b>belonging</b> and <b>trust</b> rather than picking a card. One flagged Option A's "no safety net" as risking a "we're withdrawing support" reading, and Option C's "last organization standing" as sounding competitive rather than collaborative.</div>
+  </div>
+
   <div class="next-row"><button class="next-btn" onclick="goTo('mq')">Next section →</button></div>
 </div>
 
@@ -973,12 +1036,8 @@
     <div class="hero-sub">The animating inquiry the whole organization is oriented around. It invites rather than declares.</div>
   </div>
 
-  <div class="update-note">
-    <div class="update-note-label">Since round 1</div>
-    <div class="update-note-body">All four respondents agree the question itself is right — no one wants it to change. Two flagged the same gap in the bullets underneath it: belonging, dignity, and agency aren't fully named. One drafted a fuller rewrite of the bullets to close that gap; worth reading before you vote again.</div>
-  </div>
   <div class="voices-toggle" style="margin: 1.5rem 2rem 0;">
-    <button class="voices-toggle-btn" onclick="toggleVoices('mq-voices')">
+    <div class="voices-toggle-btn">
       <div class="voices-toggle-left">
         <span class="voices-toggle-icon">💬</span>
         <div>
@@ -986,9 +1045,8 @@
           <div class="voices-toggle-sub">How the board articulated what flourishing and community mean</div>
         </div>
       </div>
-      <span class="voices-caret" id="caret-mq-voices" style="transform:rotate(90deg)">›</span>
-    </button>
-    <div class="voices-body open" id="mq-voices">
+    </div>
+    <div class="voices-body" id="mq-voices">
       <div class="voices-intro">The mission question itself emerged from earlier strategy work. These voices shaped how the board understands the three key terms — whole person, flourishing, and community — and are what the tweaked bullets attempt to capture.</div>
       <div class="voices-grid">
         <div class="voice-card highlight">
@@ -1068,6 +1126,11 @@
     </div>
   </div>
 
+  <div class="update-note">
+    <div class="update-note-label">Since round 1</div>
+    <div class="update-note-body">All four respondents agree the question itself is right — no one wants it to change. Two flagged the same gap in the bullets underneath it: belonging, dignity, and agency aren't fully named. One drafted a fuller rewrite of the bullets to close that gap; worth reading before you vote again.</div>
+  </div>
+
   <div class="next-row"><button class="next-btn" onclick="goTo('mission')">Next section →</button></div>
 </div>
 
@@ -1079,13 +1142,8 @@
     <div class="hero-sub">Names who we serve, how, and in what spirit. Lives in annual reports, grant applications, and staff onboarding.</div>
   </div>
 
-  <div class="update-note">
-    <div class="update-note-label">Since round 1</div>
-    <div class="update-note-body">The vote split evenly: two respondents chose <b>Option C</b> (names rahma explicitly), two chose <b>Option D</b> (shortest). One still prefers the current baseline. The respondent who chose D also flagged "for anyone who needs it" as reading generic — worth watching for in whichever option moves forward.</div>
-  </div>
-
   <div class="voices-toggle" style="margin: 1.5rem 2rem 0;">
-    <button class="voices-toggle-btn" onclick="toggleVoices('mission-voices')">
+    <div class="voices-toggle-btn">
       <div class="voices-toggle-left">
         <span class="voices-toggle-icon">💬</span>
         <div>
@@ -1093,9 +1151,8 @@
           <div class="voices-toggle-sub">What the board said about what the mission needs to do and who it needs to reach</div>
         </div>
       </div>
-      <span class="voices-caret" id="caret-mission-voices" style="transform:rotate(90deg)">›</span>
-    </button>
-    <div class="voices-body open" id="mission-voices">
+    </div>
+    <div class="voices-body" id="mission-voices">
       <div class="voices-intro">These are the recurring themes from board and leadership conversations about what the mission statement needs to accomplish. Each option above attempts to balance these competing pulls in a different way.</div>
       <div class="voices-grid">
         <div class="voice-card highlight">
@@ -1188,6 +1245,11 @@
       <div class="reflection-prompt">What language resonates? What doesn't sit right?</div>
       <textarea class="reflection-textarea" id="ref-mission-1" rows="3" placeholder="Type your thoughts here..."></textarea>
     </div>
+  </div>
+
+  <div class="update-note">
+    <div class="update-note-label">Since round 1</div>
+    <div class="update-note-body">The vote split evenly: two respondents chose <b>Option C</b> (names rahma explicitly), two chose <b>Option D</b> (shortest). One still prefers the current baseline. The respondent who chose D also flagged "for anyone who needs it" as reading generic — worth watching for in whichever option moves forward.</div>
   </div>
 
   <div class="next-row"><button class="next-btn" onclick="goTo('values')">Next section →</button></div>
@@ -1310,12 +1372,7 @@
     </div>
     <div style="font-size:15px; color:var(--text); line-height:1.8; margin-bottom:1.5rem;">IslamicFamily has long run on the dedication of a few people carrying too much. This track is about changing that. It means investing in staff — real career ladders, better compensation, manageable caseloads — so that the people doing this work can sustain it. It also means building outward: strengthening the capacity of the broader Muslim organizational ecosystem so that we aren't the only place carrying this weight. The shift is from heroic effort to institutional health. People who flourish here help other people flourish.</div>
 
-    <div class="update-note" style="margin:0 0 1.5rem;">
-      <div class="update-note-label">Since round 1</div>
-      <div class="update-note-body">All four respondents converged here independently, unprompted: staffing, wages, and clear internal career systems are the biggest gap. Two specifically called for moving from "reliance on goodwill" to built systems for compensation, growth, and role progression.</div>
-    </div>
-
-    <div class="reflection-box" style="margin:0 0 2rem;">
+    <div class="reflection-box" style="margin:0 0 1.5rem;">
       <div class="reflection-header">Your reflection — People</div>
       <div class="reflection-body">
         <div class="reflection-prompt">What would a genuinely people-centred IslamicFamily look like in three years — for staff, volunteers, and the broader community it supports?</div>
@@ -1323,6 +1380,11 @@
         <div class="reflection-prompt">Where is the biggest gap between how IslamicFamily currently invests in people and what this track is asking for?</div>
         <textarea class="reflection-textarea" id="ref-goals-0b" rows="3" placeholder="Type your thoughts here..."></textarea>
       </div>
+    </div>
+
+    <div class="update-note" style="margin:0 0 2rem;">
+      <div class="update-note-label">Since round 1</div>
+      <div class="update-note-body">All four respondents converged here independently, unprompted: staffing, wages, and clear internal career systems are the biggest gap. Two specifically called for moving from "reliance on goodwill" to built systems for compensation, growth, and role progression.</div>
     </div>
   </div>
 
@@ -1337,12 +1399,7 @@
     </div>
     <div style="font-size:15px; color:var(--text); line-height:1.8; margin-bottom:1.5rem;">For too long, success in this sector has been measured by activity — how many hampers distributed, how many sessions held, how many people through the door. This track is about a different question: did people's lives actually change? IslamicFamily wants to build the evidence infrastructure to answer that honestly — tracking housing stability, mental health, economic mobility, belonging — not just for funders, but because it makes the work better. Measuring well also means telling the story well: turning data into the case for why this community deserves more.</div>
 
-    <div class="update-note" style="margin:0 0 1.5rem;">
-      <div class="update-note-label">Since round 1</div>
-      <div class="update-note-body">One respondent wants outcome-based tracking (employment, stability, next life step) plus a leading role in Muslim mental health care. Another wants belonging and connectedness measured — while flagging that those outcomes are inherently hard to quantify without compromising a participant-centred experience.</div>
-    </div>
-
-    <div class="reflection-box" style="margin:0 0 2rem;">
+    <div class="reflection-box" style="margin:0 0 1.5rem;">
       <div class="reflection-header">Your reflection — Impact</div>
       <div class="reflection-body">
         <div class="reflection-prompt">Which area of IslamicFamily's work do you most want to see measured — and what would meaningful progress look like to you personally?</div>
@@ -1350,6 +1407,11 @@
         <div class="reflection-prompt">What would make it hard — culturally, practically, or organizationally — for people to engage honestly with how their well-being is tracked?</div>
         <textarea class="reflection-textarea" id="ref-goals-1b" rows="3" placeholder="Type your thoughts here..."></textarea>
       </div>
+    </div>
+
+    <div class="update-note" style="margin:0 0 2rem;">
+      <div class="update-note-label">Since round 1</div>
+      <div class="update-note-body">One respondent wants outcome-based tracking (employment, stability, next life step) plus a leading role in Muslim mental health care. Another wants belonging and connectedness measured — while flagging that those outcomes are inherently hard to quantify without compromising a participant-centred experience.</div>
     </div>
   </div>
 
@@ -1364,11 +1426,6 @@
     </div>
     <div style="font-size:15px; color:var(--text); line-height:1.8; margin-bottom:1.5rem;">The nonprofit starvation cycle — chronically underfunding infrastructure to look lean — quietly breaks organizations. Regenerative growth is the alternative: building financial foundations strong enough to absorb shocks, invest in people, and actively generate community wealth rather than just sustaining existing programs. For IslamicFamily that means diversified revenue, multi-year commitments, a growing donor base, and aligning spending with the halal economy. It also means the taking moonshots — moving from advocacy to ownership, building the kind of community infrastructure that lasts generations.</div>
 
-    <div class="update-note" style="margin:0 0 1.5rem;">
-      <div class="update-note-label">Since round 1</div>
-      <div class="update-note-body">Broad agreement on the goal. The sharpest caution: pursuing too many ambitious initiatives at once has stretched capacity before, and growth has often been reactive to crisis rather than planned — worth weighing before adding new moonshots.</div>
-    </div>
-
     <div class="reflection-box" style="margin:0 0 1.5rem;">
       <div class="reflection-header">Your reflection — Regeneration</div>
       <div class="reflection-body">
@@ -1377,6 +1434,11 @@
         <div class="reflection-prompt">What gives you confidence in our moonshots — and what concerns you most?</div>
         <textarea class="reflection-textarea" id="ref-goals-2b" rows="3" placeholder="Type your thoughts here..."></textarea>
       </div>
+    </div>
+
+    <div class="update-note" style="margin:0 0 1.5rem;">
+      <div class="update-note-label">Since round 1</div>
+      <div class="update-note-body">Broad agreement on the goal. The sharpest caution: pursuing too many ambitious initiatives at once has stretched capacity before, and growth has often been reactive to crisis rather than planned — worth weighing before adding new moonshots.</div>
     </div>
   </div>
 
@@ -1472,85 +1534,26 @@
       }
     }
     if (tab === "together") renderTogether();
+    replayVoiceAnimations(tab);
   }
 
-  const GUARDRAILS = [
-    { id:"g1", short:"Accessible to all",       full:"The language must not exclude anyone seeking services — Muslim or not, newcomer or fifth-generation Canadian. Insider framing or community-only phrasing closes doors." },
-    { id:"g2", short:"Anchored in tradition",    full:"We are grounded in Islamic values — rahma, karama, adl, amanah. The language should reflect that rootedness without requiring it as a condition of access." },
-    { id:"g3", short:"Breadth of community",     full:"Our community spans an enormous range of need and background: from pre-arrival refugees navigating displacement to fifth-generation Canadians struggling with identity and mental health. The language must hold that full spectrum." },
-    { id:"g4", short:"Legible to outsiders",     full:"Funders, government partners, and referring agencies need to understand who we are without a translator. Avoid insider language, acronyms, or framing that only makes sense from inside the community." },
-    { id:"g5", short:"Honest about scope",       full:"We should not overclaim. The mission shouldn't promise what IslamicFamily alone cannot deliver. Aspirational is good; misleading is a governance risk." },
-    { id:"g6", short:"Durable, not dated",       full:"The language should hold up in ten years. Avoid references to current events, specific programs, or demographic trends that may shift. The statement should outlast a strategic cycle." },
-    { id:"g7", short:"Distinctive, not generic", full:"'Compassionate whole-person care' could describe dozens of organizations. The language should actually sound like IslamicFamily — specific enough that it could not belong to anyone else." },
-  ];
-
-  // flags: { "vision-A": ["g1","g3"], "mission-C": ["g5"], ... }
-  const flags = {};
-
-  function flagKey(section, opt) { return section + "-" + opt; }
-
-  function toggleFlag(section, opt, gid, el) {
-    const k = flagKey(section, opt);
-    if (!flags[k]) flags[k] = [];
-    const idx = flags[k].indexOf(gid);
-    if (idx === -1) {
-      flags[k].push(gid);
-      el.classList.add("flag-active");
-    } else {
-      flags[k].splice(idx, 1);
-      el.classList.remove("flag-active");
-    }
-    // update summary line on card
-    updateFlagSummary(section, opt);
+  function replayVoiceAnimations(tab) {
+    const section = document.getElementById("section-" + tab);
+    if (!section) return;
+    const cards = section.querySelectorAll(".voice-card");
+    if (!cards.length) return;
+    cards.forEach(c => { c.style.animation = "none"; });
+    // force reflow so the browser "forgets" the previous animation state
+    void section.offsetWidth;
+    cards.forEach(c => { c.style.animation = ""; });
   }
 
-  function updateFlagSummary(section, opt) {
-    const k = flagKey(section, opt);
-    const el = document.getElementById("flag-summary-" + k);
-    if (!el) return;
-    const raised = (flags[k] || []);
-    if (raised.length === 0) {
-      el.style.display = "none";
-      el.innerHTML = "";
-    } else {
-      const labels = raised.map(gid => {
-        const g = GUARDRAILS.find(x => x.id === gid);
-        return g ? `<span class="flag-chip">${g.short}</span>` : "";
-      }).join("");
-      el.innerHTML = `<span class="flag-summary-label">⚑ Concerns flagged:</span> ${labels}`;
-      el.style.display = "block";
-    }
-  }
+  // (GUARDRAILS and the flag-panel functions — flagKey, toggleFlag,
+  // updateFlagSummary, buildFlagPanel, toggleFlagPanel — now live in the
+  // early script block at the top of <body>, since option cards call
+  // buildFlagPanel() via document.write before this script block would
+  // otherwise have run.)
 
-  function buildFlagPanel(section, opt) {
-    const k = flagKey(section, opt);
-    return `
-      <div class="flag-panel" id="flagpanel-${k}">
-        <div class="flag-panel-toggle" onclick="toggleFlagPanel('${k}')">
-          <span class="flag-panel-icon">⚑</span> Flag a guardrail concern
-          <span class="flag-panel-caret" id="caret-${k}">›</span>
-        </div>
-        <div class="flag-panel-body" id="flagbody-${k}" style="display:none;">
-          <div class="flag-panel-hint">Which guardrail does this option risk violating?</div>
-          <div class="flag-chips-row">
-            ${GUARDRAILS.map(g => `
-              <button class="flag-chip-btn" id="flagbtn-${k}-${g.id}"
-                onclick="toggleFlag('${section}','${opt}','${g.id}',this)">
-                ${g.short}
-              </button>`).join("")}
-          </div>
-        </div>
-      </div>
-      <div class="flag-summary" id="flag-summary-${k}" style="display:none;"></div>`;
-  }
-
-  function toggleFlagPanel(k) {
-    const body = document.getElementById("flagbody-" + k);
-    const caret = document.getElementById("caret-" + k);
-    const open = body.style.display !== "none";
-    body.style.display = open ? "none" : "block";
-    caret.style.transform = open ? "" : "rotate(90deg)";
-  }
   const OPTION_TEXT = {
     vision: {
       A: '"A Canada where our community needs no safety net — because it has built the leaders, the wealth, and the belonging that makes one unnecessary."',
@@ -1570,7 +1573,7 @@
   };
 
   const OPTION_LABELS = {
-    vision:  { A:"Option A", B:"Option B", C:"Option C (Recommended)" },
+    vision:  { A:"Option A", B:"Option B", C:"Option C" },
     mq:      { Previous:"Previous version", Tweaked:"Tweaked version (Recommended)" },
     mission: { A:"Current statement", B:"Option B", C:"Option C (Recommended)", D:"Option D" },
   };
@@ -1643,68 +1646,6 @@
       </div>`).join("");
   }
 
-  // ── Voices toggle ──────────────────────────────────────────────────
-  function toggleVoices(id) {
-    const body = document.getElementById(id);
-    const caret = document.getElementById("caret-" + id);
-    const isOpen = body.classList.contains("open");
-    if (isOpen) {
-      body.classList.remove("open");
-      caret.style.transform = "";
-    } else {
-      body.classList.add("open");
-      caret.style.transform = "rotate(90deg)";
-    }
-  }
-
-  // ── Auto-collapse voices sections after user scrolls past them ─────
-  (function () {
-    const VOICES_IDS = ["vision-voices", "mq-voices", "mission-voices"];
-    const collapsed = {};
-
-    // Use a sentinel div placed just below each voices-toggle to detect
-    // when the whole block has scrolled out of view upward.
-    function initObserver() {
-      VOICES_IDS.forEach(id => {
-        const body = document.getElementById(id);
-        if (!body) return;
-        const toggle = body.closest(".voices-toggle");
-        if (!toggle) return;
-
-        // Create a tiny sentinel right after the toggle block
-        const sentinel = document.createElement("div");
-        sentinel.style.cssText = "height:1px;margin:0;padding:0;pointer-events:none;";
-        toggle.parentNode.insertBefore(sentinel, toggle.nextSibling);
-
-        const observer = new IntersectionObserver((entries) => {
-          entries.forEach(entry => {
-            // Sentinel has left the top of the viewport (scrolled past)
-            if (!entry.isIntersecting && entry.boundingClientRect.top < 0) {
-              if (!collapsed[id]) {
-                collapsed[id] = true;
-                const b = document.getElementById(id);
-                const c = document.getElementById("caret-" + id);
-                if (b && b.classList.contains("open")) {
-                  b.classList.remove("open");
-                  if (c) c.style.transform = "";
-                }
-              }
-            }
-          });
-        }, { threshold: 0 });
-
-        observer.observe(sentinel);
-      });
-    }
-
-    // Wait for DOM to be fully ready
-    if (document.readyState === "loading") {
-      document.addEventListener("DOMContentLoaded", initObserver);
-    } else {
-      initObserver();
-    }
-  })();
-
   // ── Voting ─────────────────────────────────────────────────────────
   function vote(card) {
     const section = card.dataset.section;
@@ -1733,7 +1674,7 @@
     const date = new Date().toLocaleDateString("en-CA");
 
     const VOTE_LABELS = {
-      vision:  { A:"Option A", B:"Option B", C:"Option C (Recommended)" },
+      vision:  { A:"Option A", B:"Option B", C:"Option C" },
       mq:      { Previous:"Previous version", Tweaked:"Tweaked version (Recommended)" },
       mission: { A:"Current statement", B:"Option B", C:"Option C (Recommended)", D:"Option D" },
     };
