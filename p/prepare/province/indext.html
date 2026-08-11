@@ -1,0 +1,630 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>[DRAFT] EFRS + IslamicFamily: Coordinated Emergency Preparedness Proposal (Alberta)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Alegreya:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,500&family=Alegreya+Sans:wght@300;400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --nabawi:#275D43; --nabawi-dark:#1C4433; --nabawi-mid:#326B50;
+    --pinecone:#E09964; --mist:#FAFAF2; --kiswah:#353535;
+    --yaqoot:#BB2D37; --sun:#F7AF29; --sand:#EECBAF; --arabica:#DCD9B8;
+    --line:rgba(53,53,53,.16); --line-soft:rgba(53,53,53,.09); --white:#FFFFFF;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{margin:0;background:var(--mist);color:var(--kiswah);
+    font-family:"Alegreya Sans",system-ui,sans-serif;font-weight:400;line-height:1.62;
+    -webkit-font-smoothing:antialiased;font-size:17.5px;}
+  .wrap{max-width:880px;margin:0 auto;padding:0 30px;}
+  h1,h2,h3,.serif{font-family:"Alegreya",Georgia,serif;font-weight:700;line-height:1.15;}
+  p{margin:0 0 1.05em;}
+  a{color:var(--nabawi);}
+  .eyebrow{font-family:"Alegreya Sans",sans-serif;font-size:12.5px;letter-spacing:.2em;
+    text-transform:uppercase;color:var(--nabawi-mid);font-weight:700;}
+  .placeholder{color:var(--pinecone);font-style:italic;}
+
+  /* Letterhead */
+  .letterhead{border-bottom:3px solid var(--nabawi);padding:44px 0 22px;margin-top:44px;
+    display:flex;justify-content:space-between;align-items:flex-end;gap:24px;flex-wrap:wrap;}
+  .cobrand{display:flex;align-items:center;gap:18px;}
+  .cb-org{display:flex;flex-direction:column;}
+  .cb-org .nm{font-family:"Alegreya",serif;font-weight:700;font-size:17px;line-height:1.1;color:var(--nabawi-dark);}
+  .cb-org .sb{font-size:11.5px;color:var(--nabawi-mid);letter-spacing:.02em;}
+  .cb-plus{width:34px;height:34px;border-radius:50%;background:var(--nabawi);color:var(--white);
+    display:grid;place-items:center;font-family:"Alegreya",serif;font-size:18px;flex:0 0 34px;}
+  .lh-meta{text-align:right;font-size:12.5px;color:var(--nabawi-mid);line-height:1.7;}
+
+  /* Memo */
+  .memo{padding:30px 0 4px;font-size:15.5px;}
+  .memo .row{display:flex;gap:16px;margin-bottom:6px;}
+  .memo .k{font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--nabawi-mid);
+    flex:0 0 66px;padding-top:4px;font-weight:700;}
+
+  /* Hero */
+  .hero{padding:36px 0 30px;border-bottom:1px solid var(--line-soft);}
+  .hero .eyebrow{margin-bottom:20px;}
+  .hero h1{font-size:clamp(31px,5.1vw,47px);margin:0 0 20px;max-width:24ch;font-weight:800;color:var(--nabawi-dark);}
+  .hero h1 em{font-style:italic;color:var(--pinecone);font-weight:700;}
+  .hero .lede{font-size:19.5px;max-width:62ch;margin:0;}
+
+  /* Scale band */
+  .band{background:var(--white);border-top:1px solid var(--line-soft);border-bottom:1px solid var(--line-soft);
+    padding:30px 0 26px;}
+  .band .lead{font-family:"Alegreya",serif;font-size:19px;font-weight:600;color:var(--nabawi-dark);margin-bottom:18px;}
+  .stats{display:grid;grid-template-columns:repeat(3,1fr);gap:26px;}
+  .stat .fig{font-family:"Alegreya",serif;font-weight:800;font-size:38px;color:var(--nabawi);line-height:1;}
+  .stat .lab{font-size:14px;color:var(--kiswah);margin-top:8px;}
+  .band .foot{font-size:13px;color:var(--nabawi-mid);margin:20px 0 0;font-style:italic;}
+
+  /* Sections */
+  section{padding:40px 0;border-bottom:1px solid var(--line-soft);}
+  .sec-head{display:flex;align-items:baseline;gap:16px;margin-bottom:20px;}
+  .sec-num{font-family:"Alegreya",serif;font-size:15px;color:var(--pinecone);font-weight:700;padding-top:5px;flex:0 0 auto;}
+  h2{font-size:clamp(25px,3.7vw,32px);margin:0;color:var(--nabawi-dark);}
+  .sec-body{max-width:64ch;}
+  .sec-body p:last-child{margin-bottom:0;}
+  strong{font-weight:700;color:var(--nabawi-dark);}
+
+  ul.brand{list-style:none;padding:0;margin:6px 0 0;}
+  ul.brand > li{position:relative;padding-left:30px;margin-bottom:16px;max-width:64ch;}
+  ul.brand > li::before{content:"\2738";position:absolute;left:0;top:0;color:var(--pinecone);font-size:15px;line-height:1.7;}
+  ul.brand > li h3{font-size:18.5px;margin:0 0 3px;color:var(--nabawi-dark);}
+  ul.brand > li p{margin:0;font-size:15.8px;}
+
+  /* Diagram + zoom */
+  .figure{margin:30px 0 4px;}
+  .figure svg{width:100%;height:auto;display:block;}
+  .figcap{font-size:11.5px;letter-spacing:.08em;color:var(--nabawi-mid);margin-top:14px;text-transform:uppercase;font-weight:700;}
+  .zoomable{position:relative;cursor:zoom-in;border-radius:4px;transition:box-shadow .18s ease;}
+  .zoomable:hover,.zoomable:focus-visible{box-shadow:0 0 0 2px var(--pinecone);outline:none;}
+  .zoom-hint{position:absolute;top:10px;right:10px;display:inline-flex;align-items:center;gap:6px;
+    background:var(--nabawi);color:var(--white);font-family:"Alegreya Sans",sans-serif;font-size:11px;
+    font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:5px 10px;border-radius:20px;opacity:.9;pointer-events:none;}
+  .zoom-hint svg{width:13px;height:13px;display:block;}
+  .lightbox{position:fixed;inset:0;z-index:1000;display:none;background:rgba(28,68,51,.94);padding:24px;
+    align-items:center;justify-content:center;}
+  .lightbox.open{display:flex;}
+  .lightbox-inner{background:var(--mist);border-radius:6px;padding:26px;width:100%;max-width:1200px;
+    max-height:92vh;overflow:auto;position:relative;box-shadow:0 24px 60px rgba(0,0,0,.4);}
+  .lightbox-inner svg{width:100%;height:auto;display:block;}
+  .lightbox-cap{font-size:12px;letter-spacing:.06em;color:var(--nabawi-mid);text-transform:uppercase;
+    font-weight:700;margin-top:16px;text-align:center;}
+  .lightbox-close{position:absolute;top:12px;right:12px;width:38px;height:38px;border-radius:50%;border:none;
+    background:var(--nabawi);color:var(--white);font-size:20px;line-height:1;cursor:pointer;display:grid;place-items:center;}
+  .lightbox-close:hover{background:var(--nabawi-dark);}
+  .lightbox-close:focus-visible{outline:2px solid var(--pinecone);outline-offset:2px;}
+
+  /* Gaps */
+  .gap{display:grid;grid-template-columns:auto 1fr;gap:22px;padding:22px 0;border-top:1px solid var(--line);}
+  .gaps .gap:last-child{border-bottom:1px solid var(--line);}
+  .gap-id{font-family:"Alegreya",serif;font-size:15px;color:var(--pinecone);font-weight:700;padding-top:3px;}
+  .gap h3{font-size:19.5px;margin:0 0 6px;color:var(--nabawi-dark);}
+  .gap p{margin:0;font-size:15.8px;}
+
+  /* Opportunity */
+  .opps{display:grid;grid-template-columns:repeat(4,1fr);gap:0;margin-top:10px;}
+  .opp{padding:20px 22px;border-right:1px solid var(--line);}
+  .opps .opp:first-child{padding-left:0;}
+  .opps .opp:last-child{border-right:none;padding-right:0;}
+  .opp .n{font-size:11px;letter-spacing:.16em;color:var(--nabawi-mid);text-transform:uppercase;font-weight:700;}
+  .opp h3{font-size:17.5px;margin:8px 0 4px;color:var(--nabawi-dark);}
+  .opp p{font-size:14px;margin:0;}
+
+  /* Scan cards */
+  .scan{display:grid;grid-template-columns:1fr 1fr;gap:26px;margin-top:10px;}
+  .scan-card{background:var(--white);border:1px solid var(--line);border-radius:4px;padding:24px 26px;}
+  .scan-card .flag{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--pinecone);font-weight:700;margin-bottom:8px;}
+  .scan-card h3{font-size:19px;margin:0 0 8px;color:var(--nabawi-dark);}
+  .scan-card p{font-size:15px;margin:0;}
+  .scan-note{margin-top:22px;background:var(--nabawi);color:#E7F1EB;border-radius:4px;padding:20px 26px;}
+  .scan-note strong{color:var(--white);}
+  .scan-note p{margin:0;font-size:15.5px;}
+
+  /* Alignment / ESS */
+  .ess-call{margin:28px 0 4px;text-align:center;}
+  .ess-call .hl{font-family:"Alegreya",serif;font-weight:700;font-size:clamp(20px,3vw,26px);color:var(--kiswah);
+    background-image:linear-gradient(120deg,rgba(247,175,41,.62),rgba(247,175,41,.62));background-repeat:no-repeat;
+    background-size:0% 42%;background-position:0 82%;transition:background-size .9s cubic-bezier(.4,0,.2,1);
+    line-height:1.55;padding:0 3px;-webkit-box-decoration-break:clone;box-decoration-break:clone;}
+  .ess-call .hl.in{background-size:100% 42%;}
+  .draft-badge{display:inline-block;font-family:"Alegreya Sans",sans-serif;font-size:11px;font-weight:700;letter-spacing:.18em;
+    text-transform:uppercase;color:var(--yaqoot);border:1.5px solid var(--yaqoot);border-radius:4px;padding:3px 10px;margin-bottom:8px;}
+  @media (prefers-reduced-motion:reduce){.ess-call .hl{transition:none;background-size:100% 42%;}}
+
+  /* Model */
+  .model{display:grid;grid-template-columns:1fr 1fr;gap:30px;margin-top:10px;}
+  .model h3{font-size:18.5px;margin:0 0 8px;color:var(--nabawi-dark);}
+  .model p{font-size:15.5px;margin:0;}
+
+  /* Why IF */
+  .whyif{background:var(--white);border:1px solid var(--line);border-left:4px solid var(--pinecone);
+    border-radius:4px;padding:30px 34px;margin-top:8px;}
+  .whyif ul.brand{margin-top:2px;}
+  .whyif ul.brand > li:last-child{margin-bottom:0;}
+
+  /* Timeline */
+  .timeline{margin-top:14px;}
+  .phase{display:grid;grid-template-columns:118px 1fr;gap:24px;padding:0 0 26px;}
+  .timeline .phase:last-child{padding-bottom:0;}
+  .phase-when{padding-top:2px;}
+  .phase-when .ph{font-family:"Alegreya",serif;font-weight:700;font-size:17px;color:var(--nabawi);}
+  .phase-when .mo{font-size:12px;color:var(--nabawi-mid);letter-spacing:.04em;text-transform:uppercase;font-weight:700;}
+  .phase-body{border-left:2px solid var(--line);padding:0 0 4px 24px;position:relative;}
+  .phase-body::before{content:"";position:absolute;left:-7px;top:5px;width:12px;height:12px;border-radius:50%;
+    background:var(--pinecone);border:2px solid var(--mist);}
+  .phase.key .phase-body::before{background:var(--nabawi);}
+  .phase-body h3{font-size:18px;margin:0 0 4px;color:var(--nabawi-dark);}
+  .phase-body p{font-size:15px;margin:0;}
+  .phase.key .phase-body h3{color:var(--nabawi);}
+
+  /* Metrics */
+  .metrics{display:grid;grid-template-columns:1fr 1fr;gap:0 40px;margin-top:8px;}
+  .metric{display:grid;grid-template-columns:auto 1fr;gap:16px;padding:18px 0;border-top:1px solid var(--line);}
+  .metric .mid{font-family:"Alegreya",serif;font-weight:800;font-size:15px;color:var(--pinecone);padding-top:2px;}
+  .metric h3{font-size:16.5px;margin:0 0 3px;color:var(--nabawi-dark);}
+  .metric p{font-size:14px;margin:0;color:var(--kiswah);}
+
+  /* Ask */
+  .ask{background:var(--nabawi);color:#DDECE3;border-radius:4px;padding:40px 42px;margin:8px 0 0;}
+  .ask .eyebrow{color:var(--sand);}
+  .ask h2{color:var(--white);margin:14px 0 24px;font-size:28px;}
+  .ask-grid{display:grid;grid-template-columns:1fr 1fr;gap:26px 42px;}
+  .ask-item{border-top:1px solid rgba(255,255,255,.18);padding-top:16px;}
+  .ask-item .lab{font-size:11px;letter-spacing:.15em;text-transform:uppercase;color:var(--sand);margin-bottom:8px;font-weight:700;}
+  .ask-item .big{font-family:"Alegreya",serif;font-size:31px;color:var(--white);line-height:1;font-weight:800;}
+  .ask-item .big span{font-size:16px;color:#A7C4B4;font-weight:400;}
+  .ask-item p{font-size:14px;color:#B9D2C6;margin:9px 0 0;}
+  .fte{width:100%;border-collapse:collapse;margin-top:24px;font-size:14px;}
+  .fte th{font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--sand);text-align:left;
+    padding:0 0 10px;border-bottom:1px solid rgba(255,255,255,.24);font-weight:700;}
+  .fte td{padding:12px 0;border-bottom:1px solid rgba(255,255,255,.11);color:#CFE0D6;vertical-align:top;}
+  .fte td.n{color:var(--white);font-variant-numeric:tabular-nums;text-align:right;white-space:nowrap;}
+  .fte td:first-child{color:var(--white);font-weight:500;}
+
+  /* Partners */
+  .partners{display:grid;grid-template-columns:repeat(2,1fr);gap:24px;margin-top:8px;}
+  .partner{border-top:3px solid var(--pinecone);padding-top:14px;}
+  .partner.confirmed{border-top-color:var(--nabawi);}
+  .partner .tag{font-size:11px;text-transform:uppercase;letter-spacing:.1em;color:var(--nabawi-mid);font-weight:700;margin-bottom:6px;}
+  .partner h3{font-size:17.5px;margin:0 0 6px;color:var(--nabawi-dark);}
+  .partner p{font-size:14px;margin:0;}
+  .shortlist{margin-top:26px;background:var(--white);border:1px solid var(--line);border-radius:4px;padding:24px 28px;}
+  .shortlist h3{font-size:17px;margin:0 0 12px;color:var(--nabawi-dark);}
+  .shortlist ul.brand > li{margin-bottom:12px;}
+  .shortlist ul.brand > li:last-child{margin-bottom:0;}
+
+  /* Close + sign */
+  .close .sec-body p{max-width:64ch;}
+  .next{background:var(--white);border-left:4px solid var(--nabawi);border-radius:4px;padding:20px 26px;margin-top:22px;}
+  .next .lab{font-size:11px;letter-spacing:.15em;text-transform:uppercase;color:var(--nabawi-mid);font-weight:700;margin-bottom:6px;}
+  .next p{margin:0;font-size:16px;color:var(--kiswah);}
+  .signrow{display:grid;grid-template-columns:1fr 1fr;gap:36px;margin-top:38px;padding-top:24px;border-top:1px solid var(--line);}
+  .sign .name{font-family:"Alegreya",serif;font-size:20px;font-weight:700;color:var(--nabawi-dark);}
+  .sign .title{font-size:14px;margin-top:2px;}
+  .sign .org{font-size:12px;color:var(--nabawi-mid);text-transform:uppercase;letter-spacing:.08em;margin-top:6px;font-weight:700;}
+
+  /* Sources */
+  .sources{padding:30px 0 6px;}
+  .sources h3{font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:var(--nabawi-mid);margin:0 0 12px;}
+  .sources ol{margin:0;padding-left:18px;font-size:12.5px;color:var(--kiswah);line-height:1.7;}
+
+  footer{padding:20px 0 60px;font-size:11.5px;color:var(--nabawi-mid);letter-spacing:.04em;font-weight:500;}
+
+  @media (max-width:640px){
+    body{font-size:16.5px;}
+    .stats{grid-template-columns:1fr;gap:18px;}
+    .opps{grid-template-columns:1fr 1fr;}
+    .opp{border-right:none;border-bottom:1px solid var(--line);padding:16px 0;}
+    .opps .opp:nth-child(odd){padding-left:0;padding-right:18px;border-right:1px solid var(--line);}
+    .opps .opp:nth-child(even){padding-left:18px;}
+    .model,.ask-grid,.partners,.signrow,.scan,.metrics{grid-template-columns:1fr;}
+    .ask,.whyif,.scan-card,.shortlist{padding:24px 22px;}
+    .metric{border-top:1px solid var(--line);}
+    .gap{grid-template-columns:1fr;gap:6px;}
+    .phase{grid-template-columns:1fr;gap:6px;}
+    .phase-body{border-left:none;padding-left:0;}
+    .phase-body::before{display:none;}
+    .memo .row{flex-wrap:wrap;}
+  }
+  @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto;}}
+
+  /* Sandwich nav */
+  section[id]{scroll-margin-top:24px;}
+  .nav-toggle{position:fixed;top:18px;right:18px;z-index:950;width:46px;height:46px;border-radius:50%;border:none;
+    background:var(--nabawi);color:var(--white);cursor:pointer;display:grid;place-items:center;box-shadow:0 4px 14px rgba(28,68,51,.28);}
+  .nav-toggle:hover{background:var(--nabawi-dark);}
+  .nav-toggle:focus-visible{outline:2px solid var(--pinecone);outline-offset:3px;}
+  .nav-toggle svg{width:22px;height:22px;display:block;}
+  .nav-toggle .ic-close{display:none;}
+  .nav-toggle[aria-expanded="true"] .ic-menu{display:none;}
+  .nav-toggle[aria-expanded="true"] .ic-close{display:block;}
+  .nav-overlay{position:fixed;inset:0;z-index:900;background:rgba(28,68,51,.35);opacity:0;visibility:hidden;transition:opacity .2s ease,visibility .2s ease;}
+  .nav-overlay.open{opacity:1;visibility:visible;}
+  .nav-panel{position:fixed;top:0;right:0;z-index:940;height:100%;width:292px;max-width:82vw;background:var(--mist);
+    box-shadow:-8px 0 30px rgba(0,0,0,.18);transform:translateX(100%);transition:transform .24s ease;overflow-y:auto;padding:76px 12px 24px;}
+  .nav-panel.open{transform:translateX(0);}
+  .nav-panel .nav-title{font-family:"Alegreya",serif;font-weight:700;font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--nabawi-mid);padding:0 18px 10px;}
+  .nav-panel a{display:block;text-decoration:none;color:var(--kiswah);font-size:15px;padding:9px 18px;border-radius:6px;line-height:1.3;}
+  .nav-panel a .idx{font-family:"Alegreya",serif;color:var(--pinecone);font-weight:700;font-size:12px;margin-right:10px;}
+  .nav-panel a:hover,.nav-panel a:focus-visible{background:var(--white);color:var(--nabawi-dark);outline:none;}
+  @media (prefers-reduced-motion:reduce){.nav-panel,.nav-overlay,.nav-toggle .bar{transition:none;}}
+  @media print{.nav-toggle,.nav-panel,.nav-overlay{display:none !important;}}
+</style>
+</head>
+<body>
+<button class="nav-toggle" id="navToggle" aria-label="Open section menu" aria-expanded="false" aria-controls="navPanel">
+  <svg class="ic-menu" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+  <svg class="ic-close" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+</button>
+<div class="nav-overlay" id="navOverlay"></div>
+<nav class="nav-panel" id="navPanel" aria-label="Section navigation" aria-hidden="true">
+  <div class="nav-title">Contents</div>
+  <a href="#s-context"><span class="idx">01</span>Context</a>
+    <a href="#s-onground"><span class="idx">02</span>On the ground</a>
+    <a href="#s-gaps"><span class="idx">03</span>The gaps</a>
+    <a href="#s-opportunity"><span class="idx">04</span>Opportunity</a>
+    <a href="#s-dividend"><span class="idx">05</span>Second dividend</a>
+    <a href="#s-elsewhere"><span class="idx">06</span>Proven elsewhere</a>
+    <a href="#s-alignment"><span class="idx">07</span>ESS Framework</a>
+    <a href="#s-model"><span class="idx">08</span>What we build</a>
+    <a href="#s-whyif"><span class="idx">09</span>Why IslamicFamily</a>
+    <a href="#s-partners"><span class="idx">10</span>Anchor partners</a>
+    <a href="#s-timeline"><span class="idx">11</span>Timeline</a>
+    <a href="#s-metrics"><span class="idx">12</span>Metrics</a>
+    <a href="#s-ask"><span class="idx">✸</span>The ask</a>
+    <a href="#s-close"><span class="idx">13</span>Why now</a>
+    
+</nav>
+
+
+<div class="wrap">
+
+  <!-- LETTERHEAD -->
+  <div class="letterhead">
+    <div class="cobrand">
+      <div class="cb-org"><div class="nm">Edmonton Fire Rescue Services</div><div class="sb">Office of the Fire Chief</div></div>
+      <div class="cb-plus" aria-hidden="true">&amp;</div>
+      <div class="cb-org"><div class="nm">IslamicFamily</div><div class="sb">Serving Edmonton since 1986</div></div>
+    </div>
+    <div class="lh-meta"><span class="draft-badge">Draft</span><br>A joint proposal to the Government of Alberta<br><span class="placeholder">[Date]</span></div>
+  </div>
+
+  <!-- MEMO -->
+  <div class="memo">
+    <div class="row"><div class="k">To</div><div class="v">The Honourable Mike Ellis<br>Deputy Premier and Minister of Public Safety and Emergency Services, Government of Alberta</div></div>
+    <div class="row"><div class="k">From</div><div class="v">David Lazenby, Fire Chief, Edmonton Fire Rescue Services<br>Omar Yaqub, Servant of Servants, IslamicFamily</div></div>
+    <div class="row"><div class="k">Re</div><div class="v">Building the community-anchor layer of Edmonton's emergency social services: a coordinated preparedness proposal</div></div>
+  </div>
+
+  <!-- HERO -->
+  <div class="hero">
+    <div class="eyebrow">A proposal for coordinated response</div>
+    <h1>We can shelter thousands in a single night. We must also reliably connect people and families to the <em>communities</em> that will carry them through the years that follow.</h1>
+    <p class="lede">Edmonton Fire Rescue Services and IslamicFamily propose a coordinated, EFRS-led function that brings cultural agencies, faith communities, and social service organizations into emergency preparedness before the next disaster, not after it.</p>
+  </div>
+
+  <!-- SCALE BAND -->
+  <div class="band">
+    <div class="lead">Edmonton is already a reception city, again and again.</div>
+    <div class="stats">
+      <div class="stat"><div class="fig">2,813</div><div class="lab">Syrian refugees resettled in Edmonton since 2016, most within a compressed window.</div></div>
+      <div class="stat"><div class="fig">~31,000</div><div class="lab">Ukrainian evacuees registered across Alberta by 2023, in 194 communities.</div></div>
+      <div class="stat"><div class="fig">~88,000</div><div class="lab">People evacuated in the 2016 Fort McMurray wildfire, with Edmonton a primary host city.</div></div>
+    </div>
+    <p class="foot">Each wave was met with real goodwill, and coordinated, each time, largely from scratch.</p>
+  </div>
+
+  <!-- 01 CONTEXT -->
+  <section id="s-context">
+    <div class="sec-head"><div class="sec-num">01</div><h2>Displacement now arrives from every direction</h2></div>
+    <div class="sec-body">
+      <p>Edmonton receives people fleeing disaster from within our own province and from around the world. Wildfire and flood evacuations from Fort McMurray, Grande Prairie, and northern communities. Families arriving from conflict in Ukraine, in Gaza, and elsewhere. The trigger differs, but the arrival looks much the same: people land in our city with almost nothing, and they land quickly.</p>
+      <p>Edmonton Fire Rescue Services and its partners are good at the first hours. Shelter, registration, food, immediate safety: these are well drilled and reliably delivered. The problem begins the moment the immediate emergency ends and the longer work of resettlement begins. That is the stretch where the system frays, and it is the stretch this proposal is written to fix.</p>
+    </div>
+  </section>
+
+  <!-- 02 WHAT WE SEE -->
+  <section id="s-onground">
+    <div class="sec-head"><div class="sec-num">02</div><h2>What we see on the ground</h2></div>
+    <div class="sec-body">
+      <p>Support for evacuees and the civil society response around them is not coordinated. Community organizations do not know what their role is, or how they can help, while the agencies already doing the work are overwhelmed and under-resourced. Multiple organizations independently launch the same clothing drive while no one owns systems navigation. Mental health support arrives as a single model that does not fit the languages, faiths, and histories of the people in front of us.</p>
+      <p>This is not a new observation. In 2019 the Edmonton Chamber of Voluntary Organizations studied Edmonton's Syrian response and captured a lament heard again and again from those involved: that each time, they were "inventing systems as we went along." The result is a response that is simultaneously duplicated and full of holes. We are not short on goodwill or capacity in this city. We are short on a plan that connects them.</p>
+    </div>
+
+    <div class="figure">
+      <div class="zoomable" role="button" tabindex="0" aria-label="Enlarge Figure 1" data-zoom="fig1">
+        <span class="zoom-hint"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><line x1="16" y1="16" x2="21" y2="21"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg>Tap to zoom</span>
+        <svg viewBox="0 0 860 340" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Diagram contrasting today's fragmented response with the proposed coordinated model">
+          <defs><style>
+            .fld{font-family:"Alegreya Sans",sans-serif;font-size:11px;letter-spacing:.12em;fill:#326B50;font-weight:700;text-transform:uppercase;}
+            .flh{font-family:"Alegreya",serif;font-size:17px;fill:#1C4433;font-weight:700;}
+            .fsm{font-family:"Alegreya Sans",sans-serif;font-size:10.5px;fill:#353535;}
+            .fsmw{font-family:"Alegreya Sans",sans-serif;font-size:10.5px;fill:#FAFAF2;}
+          </style></defs>
+          <line x1="430" y1="24" x2="430" y2="316" stroke="rgba(53,53,53,.16)" stroke-width="1" stroke-dasharray="3 5"/>
+          <text x="24" y="30" class="fld">Today</text><text x="24" y="52" class="flh">Fragmented</text>
+          <circle cx="150" cy="150" r="52" fill="none" stroke="#E09964" stroke-width="1.8"/>
+          <circle cx="200" cy="120" r="52" fill="none" stroke="#E09964" stroke-width="1.8"/>
+          <circle cx="185" cy="185" r="52" fill="none" stroke="#E09964" stroke-width="1.8"/>
+          <text x="176" y="150" class="fsm" text-anchor="middle">duplicated</text>
+          <text x="176" y="164" class="fsm" text-anchor="middle">clothing drives</text>
+          <rect x="70" y="238" width="150" height="30" fill="none" stroke="#BB2D37" stroke-width="1" stroke-dasharray="4 4"/>
+          <text x="145" y="257" class="fsm" text-anchor="middle">gap: systems navigation</text>
+          <rect x="230" y="238" width="150" height="30" fill="none" stroke="#BB2D37" stroke-width="1" stroke-dasharray="4 4"/>
+          <text x="305" y="257" class="fsm" text-anchor="middle">gap: community connection</text>
+          <text x="60" y="300" class="fsm">Overlap in some areas. Empty in others.</text>
+          <text x="460" y="30" class="fld">Proposed</text><text x="460" y="52" class="flh">Coordinated</text>
+          <circle cx="645" cy="175" r="42" fill="#275D43"/>
+          <text x="645" y="171" class="fsmw" text-anchor="middle" font-weight="700">EFRS</text>
+          <text x="645" y="185" class="fsmw" text-anchor="middle">coordination</text>
+          <g stroke="#E09964" stroke-width="1.8">
+            <line x1="645" y1="133" x2="645" y2="98"/><line x1="687" y1="175" x2="760" y2="130"/>
+            <line x1="687" y1="175" x2="760" y2="220"/><line x1="603" y1="175" x2="530" y2="130"/>
+            <line x1="603" y1="175" x2="530" y2="220"/><line x1="645" y1="217" x2="645" y2="262"/>
+          </g>
+          <g>
+            <circle cx="645" cy="90" r="20" fill="#FAFAF2" stroke="#326B50" stroke-width="1.4"/><text x="645" y="94" class="fsm" text-anchor="middle">faith</text>
+            <circle cx="778" cy="122" r="20" fill="#FAFAF2" stroke="#326B50" stroke-width="1.4"/><text x="778" y="126" class="fsm" text-anchor="middle">cultural</text>
+            <circle cx="778" cy="228" r="20" fill="#FAFAF2" stroke="#326B50" stroke-width="1.4"/><text x="778" y="232" class="fsm" text-anchor="middle">social</text>
+            <circle cx="512" cy="122" r="20" fill="#FAFAF2" stroke="#326B50" stroke-width="1.4"/><text x="512" y="126" class="fsm" text-anchor="middle">health</text>
+            <circle cx="512" cy="228" r="20" fill="#FAFAF2" stroke="#326B50" stroke-width="1.4"/><text x="512" y="232" class="fsm" text-anchor="middle">City</text>
+            <circle cx="645" cy="270" r="20" fill="#FAFAF2" stroke="#326B50" stroke-width="1.4"/><text x="645" y="274" class="fsm" text-anchor="middle">settle</text>
+          </g>
+          <text x="512" y="308" class="fsm">One hub. No duplication. No family left unheld.</text>
+        </svg>
+      </div>
+      <div class="figcap">Figure 1 — From a fragmented response to a coordinated one</div>
+    </div>
+  </section>
+
+  <!-- 03 GAPS -->
+  <section id="s-gaps">
+    <div class="sec-head"><div class="sec-num">03</div><h2>Three gaps we can name</h2></div>
+    <div class="gaps">
+      <div class="gap"><div class="gap-id">G1</div><div>
+        <h3>Mental health support is one size fits all</h3>
+        <p>A single delivery model is offered to everyone, regardless of language, faith, culture, or the specific trauma people carry. The 2019 Edmonton study found needs going unmet for want of specialists, particularly in Arabic. Many evacuees never receive support that fits them, so they go without.</p>
+      </div></div>
+      <div class="gap"><div class="gap-id">G2</div><div>
+        <h3>Community connection is unmapped and disorganized</h3>
+        <p>There is no shared map of which activities, foods, programs, and services exist for which communities. People are left to find their own way to belonging, at exactly the moment they have the least capacity to do so.</p>
+      </div></div>
+      <div class="gap"><div class="gap-id">G3</div><div>
+        <h3>Financial and crisis supports are poorly organized</h3>
+        <p>Several organizations pile onto the same visible needs (clothing, for example) while critical functions like systems navigation and financial crisis support have no clear owner at all.</p>
+      </div></div>
+    </div>
+  </section>
+
+  <!-- 04 OPPORTUNITY -->
+  <section id="s-opportunity">
+    <div class="sec-head"><div class="sec-num">04</div><h2>The opportunity</h2></div>
+    <div class="sec-body"><p>Every one of these gaps is a coordination problem, not a capacity problem. Edmonton already has the organizations, the trust, and the reach. Bringing them into the plan before the next disaster turns scattered effort into a system.</p></div>
+    <div class="opps">
+      <div class="opp"><div class="n">01</div><h3>Efficiency</h3><p>End the duplication. Direct effort where it is actually missing.</p></div>
+      <div class="opp"><div class="n">02</div><h3>Integration</h3><p>One shared plan across City, Province, and civil society.</p></div>
+      <div class="opp"><div class="n">03</div><h3>Coordination</h3><p>A single point that owns who does what, and when.</p></div>
+      <div class="opp"><div class="n">04</div><h3>Better support</h3><p>People in crisis reach the right help sooner, from someone they trust.</p></div>
+    </div>
+  </section>
+
+  <!-- SECONDARY BENEFITS -->
+  <section id="s-dividend">
+    <div class="sec-head"><div class="sec-num">05</div><h2>A second dividend: stronger EFRS, stronger civil society</h2></div>
+    <div class="sec-body"><p>The case for this stands on evacuee outcomes alone. But a coordinated model pays a second dividend, one that accrues to Edmonton Fire Rescue Services and to the city's civil society, and that lasts between emergencies.</p></div>
+    <div class="whyif"><ul class="brand">
+      <li><h3>Trust and rapport in every community</h3><p>Working shoulder to shoulder with cultural, faith, and settlement organizations builds relationships that serve EFRS well beyond disasters, in fire safety, prevention, and everyday community risk work, and earns trust in communities that first responders can otherwise find hard to reach.</p></li>
+      <li><h3>A broader recruiting pool</h3><p>Deeper community relationships widen the pipeline of people who can see themselves in the fire service, helping EFRS recruit and better reflect the city it protects.</p></li>
+      <li><h3>A stronger, more resilient civil society</h3><p>Resourcing and connecting community organizations leaves the whole sector more capable, better coordinated, and more resilient: an asset the city can draw on in every kind of crisis, not only evacuations.</p></li>
+    </ul></div>
+  </section>
+
+  <!-- 05 ELSEWHERE -->
+  <section id="s-elsewhere">
+    <div class="sec-head"><div class="sec-num">06</div><h2>This is proven practice, not an experiment</h2></div>
+    <div class="sec-body"><p>Formally organizing civil society into emergency response is well established in comparable jurisdictions. Two mature models show both the shape and the payoff.</p></div>
+    <div class="scan">
+      <div class="scan-card">
+        <div class="flag">United States · 50+ years</div>
+        <h3>National VOAD</h3>
+        <p>Founded after Hurricane Camille in 1969, when independent responders left survivors helped haphazardly. Today it spans 70+ national organizations, 56 state and territorial bodies, and local chapters that deliberately include groups not usually seen as disaster responders. FEMA formalizes the link through Voluntary Agency Liaisons.</p>
+      </div>
+      <div class="scan-card">
+        <div class="flag">United Kingdom · government-funded</div>
+        <h3>VCS Emergencies Partnership</h3>
+        <p>Formed after the Grenfell fire and the 2017 crises, it now unites 250+ organizations, is co-chaired by the British Red Cross, and explicitly includes faith and equality organizations alongside statutory services. The UK government funded its build-out, and the sector is campaigning to enshrine its role in law.</p>
+      </div>
+    </div>
+    <div class="scan-note"><p>Closer to home, Alberta already has the foundations through AEMA's Emergency Social Services Framework and the NGO Council of Alberta. <strong>What is missing here is the community-anchor layer.</strong> This proposal builds it.</p></div>
+  </section>
+
+  <!-- 06 ESS ALIGNMENT (PROVINCIAL) -->
+  <section id="s-alignment">
+    <div class="sec-head"><div class="sec-num">07</div><h2>Building on Alberta's Emergency Social Services Framework</h2></div>
+    <div class="sec-body">
+      <p>This proposal is not a new priority for the Province. It operationalizes one Alberta has already set. The 2025 Emergency Social Services (ESS) Framework, administered by AEMA under the Emergency Management Act, makes municipalities responsible for ensuring evacuees can access a defined set of services. Among the required "personal services," the framework already names multicultural and linguistic services, and mental health and psychosocial supports.</p>
+      <p>In other words, the Province has already committed, on paper, to the very supports that gaps G1 and G2 describe. What the framework does not do is say who delivers culturally-specific support, or how, or resource the community anchors who actually can. It names the requirement. This proposal supplies the delivery mechanism.</p>
+      <p>The framework also gives EFRS its role. Its "host community" provision covers exactly Edmonton's situation: when an evacuation sends people into another jurisdiction, the receiving community provides their emergency social services. Edmonton is perpetually that host, for Fort McMurray, for northern wildfire evacuations, for international arrivals. A standing, EFRS-led coordination function is, in the Province's own language, Edmonton's host-community ESS capability, pre-arranged and community-anchored rather than improvised each time. And because ESS is meant to be planned in advance through written plans and pre-completed service agreements, this proposal is simply that planning done properly: the cultural, faith, and settlement anchors wired into the plan before activation. In doing so, it also advances the ministry's own mandate to keep Alberta prepared for and resilient to the impacts of disasters: community resilience made concrete, built in the places people actually turn to.</p>
+    </div>
+    <div class="ess-call"><span class="hl">The framework already requires it. This proposal delivers it.</span></div>
+  </section>
+
+  <!-- 07 MODEL -->
+  <section id="s-model">
+    <div class="sec-head"><div class="sec-num">08</div><h2>What we propose to build</h2></div>
+    <div class="sec-body">
+      <p>An EFRS-led community coordination function for emergency preparedness and evacuee response, designed with civil society from the start rather than consulted at the end. Edmonton Fire Rescue Services convenes and leads. Two anchor partner agencies receive dedicated, embedded staffing so the work is shared and grounded in community, not layered onto already stretched volunteers.</p>
+    </div>
+    <div class="model">
+      <div class="card"><h3>EFRS leads and convenes</h3><p>The coordination function is housed within EFRS, giving it clear authority, a permanent home, and a direct line into the City and Provincial emergency management structure, including AEMA and the Emergency Social Services system.</p></div>
+      <div class="card"><h3>A standing seat for civil society</h3><p>Cultural agencies, faith communities, and social service organizations hold a formal, standing seat in emergency preparedness planning, so the people evacuees already trust are in the room before the next disaster, not phoned during it.</p></div>
+    </div>
+  </section>
+
+  <!-- 08 WHY ISLAMICFAMILY -->
+  <section id="s-whyif">
+    <div class="sec-head"><div class="sec-num">09</div><h2>Why IslamicFamily is the right anchor partner</h2></div>
+    <div class="sec-body"><p>A coordinated response needs an anchor that communities already trust across many origins, not one. IslamicFamily has played this role in Edmonton for nearly four decades, most often without any dedicated resourcing. It is no coincidence that when the 2019 study documented Edmonton's welcome of Syrian refugees, its photographs were of IslamicFamily meeting new Edmontonians at the airport.</p></div>
+    <div class="whyif"><ul class="brand">
+      <li><h3>Trusted across many communities, not one</h3><p>IslamicFamily's reach spans dozens of cultural and linguistic communities. For families arriving in crisis, it is a door that already feels familiar, regardless of where in the world they have come from.</p></li>
+      <li><h3>On the frontline of international crises that land in Edmonton</h3><p>When displacement from Syria, Afghanistan, Ukraine, Sudan, Gaza, and other crises reaches our city, IslamicFamily is among the first organizations families turn to. We have absorbed these arrivals in real time, year after year, ahead of any formal plan or funding.</p></li>
+      <li><h3>Holistic services under one roof</h3><p>Crisis financial support, housing, mental health, food security, systems navigation, and community connection are delivered together. A family is met as a whole person rather than handed a list of referrals.</p></li>
+      <li><h3>Nearly four decades of relationships</h3><p>IslamicFamily has served Edmonton's Muslim and newcomer communities since 1986, building exactly the depth of trust and local knowledge that a coordinated emergency response depends on.</p></li>
+    </ul></div>
+  </section>
+
+  <!-- 12 PARTNERS -->
+  <section id="s-partners">
+    <div class="sec-head"><div class="sec-num">10</div><h2>Anchor partners</h2></div>
+    <div class="sec-body"><p>These organizations are trusted by the very communities that arrive in crisis. Today they step in reactively, informally, and without resourcing. This proposal formalizes and funds a role they already play.</p></div>
+    <div class="partners">
+      <div class="partner confirmed"><div class="tag">Confirmed anchor</div><h3>IslamicFamily</h3><p>Nearly four decades anchoring Edmonton's Muslim and newcomer communities across crisis, housing, mental health, and holistic social supports.</p></div>
+      <div class="partner"><div class="tag">Second seat, to be confirmed</div><h3>One of three shortlisted below</h3><p>Chosen to complement IslamicFamily's reach so the two anchors together span the widest possible set of communities.</p></div>
+    </div>
+    <div class="shortlist">
+      <h3>Shortlist for the second staffed anchor</h3>
+      <ul class="brand">
+        <li><h3>Bent Arrow Traditional Healing Society</h3><p>Indigenous-led on Treaty 6. Northern First Nations are among Alberta's most frequently evacuated communities, with Edmonton a common reception city, so Bent Arrow reaches a population the current system serves least well.</p></li>
+        <li><h3>Africa Centre</h3><p>A hub for African and Black communities across settlement, connection, and social services, extending reach into communities IslamicFamily does not primarily serve.</p></li>
+        <li><h3>Newcomer Centre</h3><p>Formerly the Edmonton Mennonite Centre for Newcomers, among the largest settlement agencies in the city, with significant service infrastructure and a documented role in the 2015 to 2017 Syrian response.</p></li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- 09 TIMELINE -->
+  <section id="s-timeline">
+    <div class="sec-head"><div class="sec-num">11</div><h2>A phased rollout</h2></div>
+    <div class="sec-body"><p>The model is built to prove itself first, then grow. We stand up the coordination scaffolding with two anchor agencies, test it against real activation, and only then onboard additional partners so growth rests on a foundation that works.</p></div>
+    <div class="timeline">
+      <div class="phase key"><div class="phase-when"><div class="ph">Phase 1</div><div class="mo">Months 1&ndash;4</div></div>
+        <div class="phase-body"><h3>Build the scaffolding</h3><p>Hire the four roles, establish the coordination function within EFRS, formalize the civil society seat, set metric baselines, and begin mapping community assets, languages, and services across the city.</p></div></div>
+      <div class="phase"><div class="phase-when"><div class="ph">Phase 2</div><div class="mo">Months 5&ndash;14</div></div>
+        <div class="phase-body"><h3>Run the pilot</h3><p>Embed the two anchor agencies, build the shared community connection map, establish culturally grounded mental health and navigation pathways, and test coordination against real or simulated activation.</p></div></div>
+      <div class="phase key"><div class="phase-when"><div class="ph">Phase 3</div><div class="mo">Months 15&ndash;26</div></div>
+        <div class="phase-body"><h3>Onboard 2 to 3 more agencies</h3><p>With the scaffolding proven, extend embedded partnership to two or three additional agencies, broadening cultural and geographic coverage so more communities are reached before the next disaster.</p></div></div>
+      <div class="phase"><div class="phase-when"><div class="ph">Phase 4</div><div class="mo">Months 27&ndash;36</div></div>
+        <div class="phase-body"><h3>Evaluate and scale</h3><p>Independent evaluation against the metrics below, refinement of the model, and a costed case for sustained funding and adoption across other Alberta communities.</p></div></div>
+    </div>
+  </section>
+
+  <!-- 10 METRICS -->
+  <section id="s-metrics">
+    <div class="sec-head"><div class="sec-num">12</div><h2>How we will measure success</h2></div>
+    <div class="sec-body"><p>Baselines are established in Phase 1 and targets agreed with AEMA, so the pilot can be reported on honestly. Six measures track whether coordination is actually improving outcomes.</p></div>
+    <div class="metrics">
+      <div class="metric"><div class="mid">01</div><div><h3>Time to mobilize</h3><p>Hours from activation to community anchors deployed and receiving evacuees.</p></div></div>
+      <div class="metric"><div class="mid">02</div><div><h3>Access to appropriate support</h3><p>Share of evacuees connected to language- and culture-matched supports, especially mental health.</p></div></div>
+      <div class="metric"><div class="mid">03</div><div><h3>Asset-map coverage</h3><p>Share of key communities and languages with a mapped anchor and a current service inventory.</p></div></div>
+      <div class="metric"><div class="mid">04</div><div><h3>Duplication reduced, gaps owned</h3><p>Duplicated services counted down; critical functions like navigation given a clear owner.</p></div></div>
+      <div class="metric"><div class="mid">05</div><div><h3>Community offers converted</h3><p>Share of volunteer and in-kind offers actually deployed rather than lost.</p></div></div>
+      <div class="metric"><div class="mid">06</div><div><h3>Families reached</h3><p>Families served through the coordinated pathway per activation.</p></div></div>
+    </div>
+  </section>
+
+  <!-- 11 ASK -->
+  <section id="s-ask">
+    <div class="ask">
+      <div class="eyebrow">The ask</div>
+      <h2>What we are requesting from the Province</h2>
+      <div class="ask-grid">
+        <div class="ask-item"><div class="lab">Dedicated staffing</div><div class="big">4 <span>FTEs</span></div><p>Two based at EFRS to lead the function, and one embedded in each of two anchor partner agencies.</p></div>
+        <div class="ask-item"><div class="lab">Annual investment</div><div class="big">$420K&ndash;$520K <span>per year</span></div><p>Fully loaded personnel plus a modest operating budget for training, convening, materials, and evaluation, across the three-year term. Final figure to be scoped with AEMA.</p></div>
+        <div class="ask-item"><div class="lab">Governance</div><div class="big" style="font-size:21px;line-height:1.2;">A formal seat</div><p>A standing role for civil society in City and Provincial emergency preparedness planning, within the ESS structure.</p></div>
+        <div class="ask-item"><div class="lab">Term</div><div class="big" style="font-size:21px;line-height:1.2;">3-year pilot</div><p>EFRS-led, with two anchor agencies, built to be evaluated and scaled to more.</p></div>
+      </div>
+      <table class="fte">
+        <thead><tr><th>Role</th><th>Host</th><th>Purpose</th><th style="text-align:right;">Loaded range</th></tr></thead>
+        <tbody>
+          <tr><td>Coordination Lead</td><td>EFRS</td><td>Owns the plan, convenes partners, holds Provincial and City relationships.</td><td class="n">$115&ndash;140K</td></tr>
+          <tr><td>Coordinator</td><td>EFRS</td><td>Runs day-to-day coordination, asset mapping, and activation logistics.</td><td class="n">$85&ndash;105K</td></tr>
+          <tr><td>Community Integration Lead</td><td>IslamicFamily</td><td>Embedded community bridge: connection, navigation, culturally grounded support.</td><td class="n">$80&ndash;100K</td></tr>
+          <tr><td>Community Integration Lead</td><td>Second anchor (to be confirmed)</td><td>Embedded community bridge: connection, navigation, culturally grounded support.</td><td class="n">$80&ndash;100K</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- 13 CLOSE -->
+  <section id="s-close" class="close">
+    <div class="sec-head"><div class="sec-num">13</div><h2>Why now, and why us</h2></div>
+    <div class="sec-body">
+      <p>The next evacuation is not a question of if. Alberta will see more wildfire and flood displacement, and Edmonton will continue to receive people fleeing crises far beyond our borders. Each time, we rebuild the same informal coordination from scratch, and each time the same families fall through the same gaps.</p>
+      <p>Edmonton Fire Rescue Services is trusted to lead in emergencies, and coordination is what it does. IslamicFamily is trusted by the communities who arrive, and holistic community support is what it does. Together we are asking for something modest and well precedented: four people, a defined three-year pilot, and a formal seat at the table for the communities who are always there anyway. In return, the Province operationalizes commitments its own Emergency Social Services Framework already makes, and gets a response system that is more efficient, more integrated, and measurably better for people in crisis.</p>
+    </div>
+    <div class="next"><div class="lab">Proposed next step</div><p>A 45-minute scoping session with your office and the Alberta Emergency Management Agency to define the pilot scope, confirm metric baselines, and cost the function within the Emergency Social Services Framework.</p></div>
+    <div class="signrow">
+      <div class="sign"><div class="name">David Lazenby</div><div class="title">Fire Chief</div><div class="org">Edmonton Fire Rescue Services</div></div>
+      <div class="sign"><div class="name">Omar Yaqub</div><div class="title">Servant of Servants</div><div class="org">IslamicFamily</div></div>
+    </div>
+  </section>
+
+  <!-- SOURCES -->
+  <div class="sources">
+    <h3>Sources</h3>
+    <ol>
+      <li>Edmonton Chamber of Voluntary Organizations, "Lessons from the Influx: How Edmonton Welcomed Refugees from Syria" (2019).</li>
+      <li>Government of Alberta / AEMA, Alberta Emergency Social Services Framework (2025); Alberta Municipalities summary of the framework (2025).</li>
+      <li>National Voluntary Organizations Active in Disaster (National VOAD); FEMA, Voluntary and Community-Based Organizations.</li>
+      <li>Voluntary and Community Sector Emergencies Partnership (UK); British Red Cross.</li>
+      <li>Alberta Health Ukrainian evacuee registration figures (2023); Government of Canada, Fort McMurray / 2016 Wood Buffalo wildfire evacuation.</li>
+    </ol>
+  </div>
+
+  <footer>Edmonton Fire Rescue Services &nbsp;+&nbsp; IslamicFamily &nbsp;·&nbsp; Prepared for the Government of Alberta &nbsp;·&nbsp; Draft for review</footer>
+
+</div>
+
+<!-- LIGHTBOX -->
+<div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Enlarged figure">
+  <div class="lightbox-inner">
+    <button class="lightbox-close" id="lightboxClose" aria-label="Close enlarged figure">&times;</button>
+    <div id="lightboxContent"></div>
+    <div class="lightbox-cap" id="lightboxCap"></div>
+  </div>
+</div>
+<script>
+(function(){
+  var lb=document.getElementById('lightbox'),content=document.getElementById('lightboxContent'),
+      cap=document.getElementById('lightboxCap'),closeBtn=document.getElementById('lightboxClose'),lastFocus=null;
+  function open(t){var svg=t.querySelector('svg[role="img"]');if(!svg)return;lastFocus=t;
+    content.innerHTML=svg.outerHTML;var fc=t.parentElement.querySelector('.figcap');
+    cap.textContent=fc?fc.textContent:'';lb.classList.add('open');document.body.style.overflow='hidden';closeBtn.focus();}
+  function close(){lb.classList.remove('open');content.innerHTML='';document.body.style.overflow='';if(lastFocus)lastFocus.focus();}
+  document.querySelectorAll('.zoomable').forEach(function(z){
+    z.addEventListener('click',function(){open(z);});
+    z.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();open(z);}});});
+  closeBtn.addEventListener('click',close);
+  lb.addEventListener('click',function(e){if(e.target===lb)close();});
+  document.addEventListener('keydown',function(e){if(e.key==='Escape'&&lb.classList.contains('open'))close();});
+})();
+</script>
+<script>
+(function(){
+  var t=document.getElementById('navToggle'),p=document.getElementById('navPanel'),o=document.getElementById('navOverlay');
+  function setOpen(open){
+    t.setAttribute('aria-expanded',open?'true':'false');
+    p.classList.toggle('open',open);o.classList.toggle('open',open);
+    p.setAttribute('aria-hidden',open?'false':'true');
+    document.body.style.overflow=open?'hidden':'';
+    if(open){var a=p.querySelector('a');if(a)a.focus();}
+  }
+  t.addEventListener('click',function(){setOpen(!p.classList.contains('open'));});
+  o.addEventListener('click',function(){setOpen(false);t.focus();});
+  p.querySelectorAll('a').forEach(function(a){a.addEventListener('click',function(){setOpen(false);});});
+  document.addEventListener('keydown',function(e){if(e.key==='Escape'&&p.classList.contains('open')){setOpen(false);t.focus();}});
+})();
+</script>
+<script>
+(function(){
+  var els=document.querySelectorAll('.ess-call .hl');
+  if(!('IntersectionObserver' in window)){els.forEach(function(e){e.classList.add('in');});return;}
+  var io=new IntersectionObserver(function(en){en.forEach(function(x){if(x.isIntersecting){x.target.classList.add('in');io.unobserve(x.target);}});},{threshold:0.6});
+  els.forEach(function(e){io.observe(e);});
+})();
+</script>
+</body>
+</html>
