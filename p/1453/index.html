@@ -1,0 +1,737 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>IslamicFamily · 1453⇢ Strategic Plan</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Alegreya:ital,wght@0,400;0,500;0,700;0,800;0,900;1,400;1,500&family=Alegreya+Sans:wght@300;400;500;700;800&family=Noto+Naskh+Arabic:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --nabawi:#275D43;
+    --nabawi-dark:#1C4433;
+    --nabawi-deep:#123024;
+    --nabawi-mid:#326B50;
+    --pinecone:#E09964;
+    --mist:#FAFAF2;
+    --kiswah:#353535;
+    --yaqoot:#BB2D37;
+    --sun:#F7AF29;
+    --sand:#EECBAF;
+    --arabica:#DCD9B8;
+
+    --display:'Alegreya', Georgia, serif;
+    --body:'Alegreya Sans', system-ui, sans-serif;
+    --arabic:'Noto Naskh Arabic', serif;
+
+    --rail-w:88px;
+    --ease:cubic-bezier(.22,.61,.36,1);
+  }
+
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth;-webkit-text-size-adjust:100%;scroll-snap-type:y proximity}
+  body{
+    font-family:var(--body);
+    color:var(--kiswah);
+    background:var(--nabawi-deep);
+    line-height:1.55;
+    overflow-x:hidden;
+    -webkit-font-smoothing:antialiased;
+  }
+
+  /* ---------- Geometric lattice for deep green chapters ---------- */
+  .lattice{position:relative}
+  .lattice::before{
+    content:"";position:absolute;inset:0;pointer-events:none;
+    background-image:url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20width='128'%20height='128'%20viewBox='0%200%203000%203000'%3E%3Cg%20fill='none'%20stroke='%23FAFAF2'%20stroke-opacity='0.05'%20stroke-width='24'%20stroke-linecap='round'%20stroke-linejoin='round'%3E%3Cpath%20d='m2033.95,1500.08c29.67-28,54.48-54.26,81.06-85.24,58.83-69.68,109.65-143.23,150.28-231.76-91.32-33.87-179.27-49.95-270.05-57.39-40.8-3.34-76.91-4.36-117.69-3.19,1.18-40.78.16-76.89-2.96-117.59-7.67-90.87-23.75-178.82-57.62-270.14-88.52,40.63-162.08,91.45-231.53,150.37-31.21,26.48-57.47,51.3-85.47,80.96-28-29.67-54.26-54.48-85.24-81.06-69.68-58.83-143.23-109.65-231.76-150.28-33.87,91.32-49.95,179.27-57.39,270.05-3.34,40.8-4.36,76.91-3.18,117.69-40.78-1.18-76.89-.16-117.59,2.96-90.87,7.67-178.82,23.75-270.14,57.62,40.63,88.52,91.45,162.08,150.37,231.53,26.48,31.21,51.3,57.47,80.96,85.47-29.67,28-54.48,54.26-81.06,85.24-58.83,69.68-109.65,143.24-150.28,231.76,91.32,33.87,179.27,49.95,270.05,57.39,40.8,3.34,76.91,4.36,117.69,3.19-1.18,40.77-.16,76.89,2.96,117.59,7.67,90.87,23.75,178.82,57.62,270.14,88.52-40.62,162.08-91.45,231.53-150.37,31.21-26.48,57.47-51.3,85.47-80.96,28,29.67,54.26,54.48,85.24,81.06,69.68,58.82,143.23,109.65,231.76,150.27,33.87-91.32,49.95-179.27,57.39-270.05,3.34-40.8,4.36-76.91,3.18-117.68,40.78,1.18,76.89.16,117.59-2.96,90.87-7.67,178.82-23.75,270.14-57.62-40.63-88.52-91.45-162.08-150.37-231.53-26.48-31.21-51.3-57.47-80.96-85.47Z'/%3E%3Cpath%20d='m1078.86,2516.71c6.91.07,13.85.07,20.77-.14,2.31-.05,4.61-.13,6.87-.16,62.3-2.48,125.2-15.6,186.27-40.43,82.42-33.52,152.32-84.63,207.19-147.31,99.96,114.08,243.01,181.65,393.27,187.67,2.37.11,4.76.18,7.12.24,6.91.22,13.85.22,20.77.14-1.27,4.23-2.59,8.37-3.96,12.53-36.61,116.18-101.34,225.4-194.14,316.97-66.72,65.88-142.41,117.17-223.07,153.79-197.94-90.2-351.03-261.34-417.3-470.81-1.32-4.1-2.64-8.24-3.82-12.48'/%3E%3Cpath%20d='m483.29,1921.13c4.86,4.94,9.76,9.84,14.79,14.59,1.68,1.59,3.34,3.2,4.97,4.72,45.81,42.34,99.56,77.54,160.31,103.14,81.99,34.59,167.53,47.89,250.66,42.32-9.96,151.36,43.39,300.3,145.41,410.81,1.57,1.77,3.2,3.47,4.83,5.21,4.75,5.04,9.65,9.94,14.63,14.81-3.89,2.08-7.76,4.09-11.68,6.04-108.03,56.3-231.04,87.72-361.41,86.85-93.76-.6-183.58-17.84-266.48-49-76.19-203.76-63.41-432.97,37.86-627.96,1.97-3.83,3.96-7.72,6.11-11.53'/%3E%3Cpath%20d='m483.29,1078.86c-.07,6.91-.07,13.85.14,20.77.05,2.31.13,4.61.16,6.87,2.48,62.3,15.6,125.2,40.43,186.27,33.52,82.43,84.63,152.32,147.31,207.19-114.08,99.96-181.66,243.01-187.67,393.27-.11,2.37-.18,4.75-.24,7.12-.22,6.91-.22,13.85-.14,20.77-4.23-1.26-8.37-2.58-12.53-3.96-116.18-36.61-225.4-101.34-316.97-194.14-65.88-66.71-117.17-142.41-153.79-223.07,90.2-197.94,261.34-351.03,470.81-417.3,4.1-1.32,8.24-2.64,12.48-3.81'/%3E%3Cpath%20d='m1078.87,483.29c-4.93,4.86-9.83,9.76-14.59,14.79-1.59,1.66-3.2,3.34-4.72,4.97-42.34,45.81-77.54,99.56-103.14,160.31-34.59,81.99-47.89,167.53-42.34,250.66-151.34-9.96-300.29,43.39-410.79,145.42-1.77,1.55-3.47,3.2-5.21,4.83-5.04,4.75-9.94,9.65-14.81,14.63-2.08-3.89-4.09-7.76-6.04-11.68-56.3-108.04-87.72-231.04-86.85-361.41.6-93.76,17.84-183.58,49-266.48,203.76-76.19,432.97-63.41,627.96,37.86,3.83,1.97,7.72,3.96,11.53,6.11'/%3E%3Cpath%20d='m1921.14,483.29c-6.91-.07-13.85-.07-20.77.14-2.31.05-4.61.13-6.87.16-62.3,2.48-125.2,15.6-186.27,40.43-82.42,33.52-152.32,84.59-207.19,147.31-99.96-114.08-243.01-181.66-393.27-187.67-2.37-.11-4.76-.18-7.12-.24-6.91-.22-13.85-.22-20.77-.14,1.27-4.23,2.59-8.37,3.96-12.53,36.61-116.18,101.34-225.4,194.14-316.97C1343.68,87.9,1419.37,36.61,1500.03,0c197.94,90.2,351.03,261.34,417.3,470.81,1.32,4.1,2.64,8.24,3.82,12.48'/%3E%3Cpath%20d='m2516.71,1078.86c-4.86-4.94-9.76-9.84-14.79-14.59-1.66-1.59-3.35-3.2-4.97-4.72-45.81-42.34-99.56-77.54-160.31-103.14-81.99-34.59-167.53-47.89-250.66-42.32,9.96-151.36-43.39-300.3-145.41-410.81-1.56-1.77-3.2-3.47-4.83-5.21-4.75-5.04-9.65-9.94-14.63-14.81,3.89-2.08,7.76-4.09,11.68-6.04,108.03-56.3,231.04-87.72,361.41-86.85,93.78.6,183.58,17.84,266.48,49,76.19,203.76,63.4,432.97-37.86,627.96-1.97,3.83-3.96,7.72-6.11,11.53'/%3E%3Cpath%20d='m2516.71,1921.14c.07-6.91.07-13.85-.15-20.77-.05-2.31-.13-4.61-.16-6.87-2.48-62.3-15.6-125.2-40.43-186.27-33.52-82.43-84.63-152.32-147.31-207.19,114.08-99.96,181.66-243.01,187.67-393.27.11-2.37.18-4.75.23-7.12.22-6.91.22-13.85.15-20.77,4.23,1.27,8.37,2.59,12.53,3.96,116.18,36.61,225.4,101.34,316.97,194.14,65.88,66.71,117.18,142.41,153.79,223.07-90.2,197.94-261.34,351.03-470.81,417.3-4.1,1.32-8.24,2.64-12.47,3.81'/%3E%3Cpath%20d='m1921.13,2516.71c4.93-4.86,9.83-9.76,14.59-14.79,1.59-1.68,3.2-3.34,4.72-4.97,42.34-45.81,77.54-99.56,103.14-160.31,34.59-81.99,47.89-167.53,42.34-250.66,151.34,9.96,300.29-43.39,410.79-145.42,1.77-1.55,3.47-3.2,5.21-4.83,5.04-4.75,9.94-9.66,14.81-14.63,2.08,3.89,4.09,7.76,6.04,11.68,56.3,108.03,87.72,231.04,86.89,361.41-.63,93.76-17.88,183.58-49.03,266.48-203.76,76.19-432.97,63.41-627.96-37.86-3.83-1.97-7.72-3.96-11.53-6.11'/%3E%3C/g%3E%3C/svg%3E");
+    background-size:128px 128px;
+    opacity:.9;
+    mask-image:linear-gradient(to bottom, transparent, #000 14%, #000 86%, transparent);
+    -webkit-mask-image:linear-gradient(to bottom, transparent, #000 14%, #000 86%, transparent);
+  }
+
+  /* ---------- Trajectory rail (desktop) ---------- */
+  .rail{
+    position:fixed;top:0;left:0;height:100vh;width:var(--rail-w);
+    display:flex;flex-direction:column;align-items:center;justify-content:flex-start;
+    padding:26px 0 26px;z-index:40;pointer-events:none;
+    mix-blend-mode:normal;
+  }
+  .rail__hijri{
+    font-family:var(--display);font-weight:800;font-size:15px;letter-spacing:.06em;
+    color:var(--sun);opacity:.9;margin-bottom:14px;
+  }
+  .rail__track{
+    position:relative;flex:1;width:3px;border-radius:3px;
+    background:rgba(250,250,242,.14);overflow:visible;
+  }
+  .rail__fill{
+    position:absolute;top:0;left:0;width:100%;height:0%;border-radius:3px;
+    background:linear-gradient(var(--sun), var(--pinecone));
+    box-shadow:0 0 12px rgba(247,175,41,.55);
+    transition:height .12s linear;
+  }
+  .rail__dot{
+    position:absolute;left:50%;transform:translate(-50%,-50%);
+    width:11px;height:11px;border-radius:50%;
+    background:var(--nabawi-deep);border:2px solid rgba(250,250,242,.35);
+    transition:all .4s var(--ease);
+  }
+  .rail__dot.is-on{
+    background:var(--sun);border-color:var(--sun);
+    box-shadow:0 0 0 5px rgba(247,175,41,.18);
+    transform:translate(-50%,-50%) scale(1.12);
+  }
+  .rail__dot span{
+    position:absolute;left:22px;top:50%;transform:translateY(-50%);
+    font-family:var(--body);font-weight:700;font-size:10.5px;letter-spacing:.16em;
+    text-transform:uppercase;color:rgba(250,250,242,.55);white-space:nowrap;
+    transition:color .4s var(--ease), transform .4s var(--ease);
+  }
+  .rail__dot.is-on span{color:var(--sun);transform:translateY(-50%) translateX(2px)}
+  .rail__arrow{
+    margin-top:14px;font-size:20px;color:var(--sun);line-height:1;
+    animation:nudge 2.4s var(--ease) infinite;
+  }
+  @keyframes nudge{0%,100%{transform:translateY(0)}50%{transform:translateY(6px)}}
+
+  /* ---------- Mobile top progress ---------- */
+  .topbar{
+    position:fixed;top:0;left:0;width:100%;height:4px;z-index:60;display:none;
+    background:rgba(18,48,36,.35);
+  }
+  .topbar__fill{height:100%;width:0%;background:linear-gradient(90deg,var(--sun),var(--pinecone));box-shadow:0 0 10px rgba(247,175,41,.6)}
+
+  /* ---------- Layout scaffold ---------- */
+  main{padding-left:var(--rail-w);padding-right:var(--rail-w)}
+  section{position:relative;padding:clamp(88px,13vh,150px) clamp(28px,7vw,110px);min-height:100vh;min-height:100svh;display:flex;flex-direction:column;justify-content:center;scroll-snap-align:start}
+  .wrap{width:100%;max-width:1000px;margin:0 auto}
+
+  .eyebrow{
+    font-family:var(--body);font-weight:800;font-size:12.5px;letter-spacing:.22em;
+    text-transform:uppercase;display:inline-flex;align-items:center;gap:12px;
+  }
+  .eyebrow::before{content:"✸";font-size:13px;transform:translateY(1px)}
+
+  /* ---------- HERO ---------- */
+  .hero{
+    min-height:100vh;min-height:100svh;display:flex;flex-direction:column;justify-content:center;
+    background:radial-gradient(120% 90% at 78% 20%, var(--nabawi-mid) 0%, var(--nabawi-dark) 42%, var(--nabawi-deep) 100%);
+    color:var(--mist);overflow:hidden;
+  }
+  .hero__inner{
+    position:relative;z-index:2;display:flex;flex-direction:column;
+    align-items:flex-start;text-align:left;
+  }
+  .hero__crown{position:relative;display:inline-block;margin-bottom:22px}
+  .hero__bism{
+    font-family:var(--arabic);font-size:clamp(30px,5vw,52px);color:var(--sun);
+    position:relative;z-index:2;line-height:1;direction:rtl;
+    opacity:0;transform:translateY(-10px);
+    animation:fadeDown 1.2s var(--ease) .25s forwards;
+  }
+  .hero__eyebrow{color:var(--sand);opacity:0;animation:fadeUp .9s var(--ease) .5s forwards}
+  .hero__eyebrow::before{color:var(--sun)}
+
+  .hero__title{
+    font-family:var(--display);font-weight:900;line-height:.92;
+    font-size:clamp(84px,20vw,240px);letter-spacing:-.02em;
+    margin:18px 0 6px;display:flex;align-items:baseline;flex-wrap:wrap;
+  }
+  .hero__title .digit{display:inline-block;opacity:0;transform:translateY(.5em) rotate(3deg);color:var(--mist)}
+  .hero__title .arrow{
+    display:inline-block;color:var(--sun);margin-left:.08em;opacity:0;
+    transform:translateX(-.35em);font-weight:800;
+    text-shadow:0 0 30px rgba(247,175,41,.4);
+  }
+  .hero__title .digit.d1{animation:riseIn .8s var(--ease) .75s forwards}
+  .hero__title .digit.d2{animation:riseIn .8s var(--ease) .85s forwards}
+  .hero__title .digit.d3{animation:riseIn .8s var(--ease) .95s forwards}
+  .hero__title .digit.d4{animation:riseIn .8s var(--ease) 1.05s forwards}
+  .hero__title .arrow{animation:slideIn 1s var(--ease) 1.3s forwards}
+
+  .hero__sub{
+    font-family:var(--display);font-style:italic;font-weight:400;
+    font-size:clamp(18px,2.5vw,27px);max-width:30ch;color:var(--arabica);
+    opacity:0;animation:fadeUp 1s var(--ease) 1.55s forwards;margin-top:10px;
+  }
+  .hero__from{
+    margin-top:34px;display:flex;align-items:center;gap:14px;
+    font-family:var(--body);font-weight:700;letter-spacing:.04em;
+    color:rgba(250,250,242,.7);font-size:14px;
+    opacity:0;animation:fadeUp 1s var(--ease) 1.8s forwards;
+  }
+  .hero__from b{color:var(--mist)}
+  .hero__from .seg{width:46px;height:2px;background:linear-gradient(90deg,rgba(250,250,242,.3),var(--sun));border-radius:2px}
+
+  /* Self-tracing khatim star */
+  .hero__star{
+    position:absolute;right:clamp(-120px,-6vw,-40px);top:50%;transform:translateY(-50%);
+    width:min(58vw,620px);height:min(58vw,620px);opacity:.5;pointer-events:none;
+    z-index:0;
+  }
+  .hero__star svg{width:100%;height:100%;overflow:visible}
+  .hero__star path,.hero__star circle{
+    stroke:var(--sun);fill:none;stroke-width:14;
+    stroke-linecap:round;stroke-linejoin:round;
+    stroke-dasharray:1;stroke-dashoffset:1;
+  }
+  .hero__star .p1{animation:trace 2.4s var(--ease) 1.10s forwards}
+  .hero__star .p2{animation:trace 2.4s var(--ease) 1.24s forwards}
+  .hero__star .p3{animation:trace 2.4s var(--ease) 1.38s forwards}
+  .hero__star .p4{animation:trace 2.4s var(--ease) 1.52s forwards}
+  .hero__star .p5{animation:trace 2.4s var(--ease) 1.66s forwards}
+  .hero__star .p6{animation:trace 2.4s var(--ease) 1.80s forwards}
+  .hero__star .p7{animation:trace 2.4s var(--ease) 1.94s forwards}
+  .hero__star .p8{animation:trace 2.4s var(--ease) 2.08s forwards}
+  .hero__star .p9{animation:trace 2.6s var(--ease) 2.22s forwards}
+  .hero__star .spin{transform-origin:center;animation:spin 90s linear infinite}
+
+  .scrollcue{
+    position:absolute;bottom:26px;left:50%;transform:translateX(-50%);
+    display:flex;flex-direction:column;align-items:center;gap:7px;
+    color:rgba(250,250,242,.55);font-size:11px;letter-spacing:.24em;text-transform:uppercase;
+    opacity:0;animation:fadeUp 1s var(--ease) 2.1s forwards;
+  }
+  .scrollcue i{width:1px;height:34px;background:linear-gradient(var(--sun),transparent);animation:drop 1.8s var(--ease) infinite}
+  .advance{
+    position:fixed;left:50%;bottom:calc(clamp(16px,3vh,30px) + env(safe-area-inset-bottom,0px));transform:translateX(-50%);z-index:70;
+    width:48px;height:48px;border-radius:50%;display:flex;align-items:center;justify-content:center;
+    background:rgba(18,48,36,.72);color:var(--sun);border:1px solid rgba(250,250,242,.28);
+    -webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);
+    font-size:22px;line-height:1;cursor:pointer;
+    transition:opacity .4s var(--ease),transform .25s var(--ease),background .25s;
+  }
+  .advance:hover{transform:translateX(-50%) translateY(3px);background:rgba(18,48,36,.92)}
+  .advance:focus-visible{outline:2px solid var(--sun);outline-offset:3px}
+
+  /* ---------- Light chapter ---------- */
+  .light{background:var(--mist);color:var(--kiswah)}
+  .light .eyebrow{color:var(--nabawi)}
+  .light .eyebrow::before{color:var(--pinecone)}
+
+  /* VISION */
+  .vision__statement{
+    font-family:var(--display);font-weight:800;letter-spacing:-.015em;
+    font-size:clamp(34px,6vw,76px);line-height:1.04;margin-top:30px;max-width:16ch;
+  }
+  .vision__statement .fewer{color:var(--nabawi);position:relative;white-space:nowrap}
+  .vision__statement .more{color:var(--pinecone);position:relative;white-space:nowrap}
+  .vision__statement .amp{font-style:italic;font-weight:500;color:var(--pinecone);padding:0 .02em}
+  /* Highlighter marker: wipes in a few seconds after the section is in view */
+  .vision__statement .mark{position:relative;white-space:nowrap}
+  .vision__statement .mark::after{
+    content:"";position:absolute;left:-.12em;right:-.12em;bottom:.02em;height:.34em;
+    background:linear-gradient(100deg, rgba(247,175,41,.78), rgba(247,175,41,.5));
+    border-radius:.22em .12em .2em .14em;pointer-events:none;
+    transform:scaleX(0) rotate(-.6deg);transform-origin:left center;
+    transition:transform .85s cubic-bezier(.34,.55,.2,1);
+  }
+  .vision__statement .mark.m1::after{transition-delay:2.4s}
+  .vision__statement .mark.m2::after{transition-delay:2.95s}
+  .is-visible .vision__statement .mark::after{transform:scaleX(1) rotate(-.6deg)}
+  .vision__dirs{display:flex;gap:34px;margin-top:44px;flex-wrap:wrap}
+  .vision__dir{display:flex;align-items:center;gap:13px;font-weight:700;font-size:15px;letter-spacing:.02em}
+  .vision__dir .glyph{
+    width:44px;height:44px;border-radius:50%;display:grid;place-items:center;
+    font-size:20px;flex-shrink:0;
+  }
+  .vision__dir.down .glyph{background:rgba(39,93,67,.12);color:var(--nabawi)}
+  .vision__dir.up .glyph{background:rgba(224,153,100,.18);color:var(--pinecone)}
+  .vision__dir small{display:block;font-weight:500;color:#6b6b63;font-size:13px;letter-spacing:0}
+
+  /* MISSION (deep band) */
+  .mission{background:var(--nabawi);color:var(--mist)}
+  .mission .eyebrow{color:var(--sand)}
+  .mission .eyebrow::before{color:var(--sun)}
+  .mission__text{
+    font-family:var(--display);font-weight:500;font-style:italic;
+    font-size:clamp(28px,4.4vw,54px);line-height:1.16;margin-top:26px;max-width:20ch;
+  }
+  .mission__text .uplift{
+    font-style:normal;font-weight:800;color:var(--sun);display:inline-block;
+  }
+
+  /* VALUES */
+  .values-pine{background:radial-gradient(130% 110% at 80% 8%, #E9AE84 0%, var(--pinecone) 46%, #D2854E 100%);color:var(--kiswah)}
+  .values-pine .eyebrow{color:var(--nabawi-dark)}
+  .values-pine .eyebrow::before{color:var(--nabawi)}
+  .values__head{display:flex;flex-direction:column;gap:14px;margin-bottom:52px}
+  .values__head h2{font-family:var(--display);font-weight:800;font-size:clamp(30px,4.4vw,52px);letter-spacing:-.01em;color:var(--nabawi-dark)}
+  .values__grid{display:grid;grid-template-columns:repeat(3,1fr);gap:0}
+  .value{position:relative;padding:6px 30px;border-left:1px solid rgba(28,68,51,.18);overflow:hidden}
+  .value:first-child{border-left:none;padding-left:0}
+  .value:last-child{padding-right:0}
+  .value__ghost{position:absolute;top:16px;right:16px;font-family:var(--arabic);font-weight:700;font-size:75px;line-height:1;color:var(--nabawi-dark);opacity:.045;direction:rtl;pointer-events:none;z-index:0;white-space:nowrap}
+  .value__in{position:relative;z-index:1}
+  .value h3{font-family:var(--display);font-weight:800;font-size:23px;line-height:1.2;color:var(--nabawi-dark);margin-bottom:12px}
+  .value p{font-family:var(--body);font-size:15.5px;color:rgba(28,68,51,.9);line-height:1.55}
+  .values-pine .rc{color:var(--nabawi-dark);transition:color 1s var(--ease)}
+  .values-pine.rc-go .value:nth-child(1) .rc{color:var(--nabawi-mid);transition-delay:.2s}
+  .values-pine.rc-go .value:nth-child(2) .rc{color:var(--nabawi-mid);transition-delay:.55s}
+  .values-pine.rc-go .value:nth-child(3) .rc{color:var(--nabawi-mid);transition-delay:.9s}
+
+  /* GUIDING QUESTION */
+  .guiding__head{margin-bottom:30px}
+  .guiding__q{font-family:var(--display);font-weight:800;letter-spacing:-.01em;font-size:clamp(28px,4.6vw,50px);line-height:1.14;color:var(--nabawi-dark);max-width:24ch}
+  .guiding__q .mark{position:relative;white-space:nowrap}
+  .guiding__q .mark::after{
+    content:"";position:absolute;left:-.1em;right:-.1em;bottom:.04em;height:.32em;
+    background:linear-gradient(100deg, rgba(247,175,41,.78), rgba(247,175,41,.5));
+    border-radius:.22em .12em .2em .14em;pointer-events:none;
+    transform:scaleX(0) rotate(-.6deg);transform-origin:left center;
+    transition:transform .85s cubic-bezier(.34,.55,.2,1);
+  }
+  .guiding__q .mark.gm1::after{transition-delay:.5s}
+  .guiding__q .mark.gm2::after{transition-delay:1s}
+  .guiding__q .mark.gm3::after{transition-delay:1.5s}
+  .guiding.q-go .guiding__q .mark::after{transform:scaleX(1) rotate(-.6deg)}
+  .guiding__defs{margin-top:6px}
+  .gdiv{color:var(--pinecone);font-size:14px;letter-spacing:.3em;line-height:1;margin:32px 0}
+  .gdef{font-family:var(--display);font-size:clamp(17px,2vw,21px);line-height:1.55;color:var(--kiswah);max-width:62ch}
+  .gdef b{font-weight:800;color:var(--nabawi)}
+  .guiding__q .wecircle{position:relative;white-space:nowrap}
+  .guiding__q .wescribble{
+    position:absolute;left:50%;top:50%;transform:translate(-50%,-50%) rotate(-3deg);
+    width:2.2em;height:1.25em;overflow:visible;pointer-events:none;
+  }
+  .guiding__q .wescribble path{
+    fill:none;stroke:rgba(247,175,41,.6);stroke-width:9;stroke-linecap:round;stroke-linejoin:round;
+    stroke-dasharray:1;stroke-dashoffset:1;opacity:0;
+    transition:stroke-dashoffset .95s cubic-bezier(.5,.15,.35,1), opacity .18s linear;
+  }
+  .guiding.we-go .guiding__q .wescribble path{stroke-dashoffset:0;opacity:1}
+
+  /* ---------- GOALS ---------- */
+  .goals{background:linear-gradient(180deg,var(--nabawi-dark),var(--nabawi-deep));color:var(--mist)}
+  .goals .eyebrow{color:var(--sand)}
+  .goals .eyebrow::before{color:var(--sun)}
+  .goals__head{max-width:760px;margin-bottom:64px}
+  .goals__head h2{font-family:var(--display);font-weight:800;font-size:clamp(32px,5vw,60px);letter-spacing:-.01em;margin-top:18px;line-height:1.05}
+  .goals__head p{margin-top:16px;color:var(--arabica);font-size:clamp(16px,1.9vw,19px);max-width:52ch}
+
+  .track{
+    display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.4fr);gap:clamp(24px,5vw,70px);
+    padding:44px 0;border-top:1px solid rgba(250,250,242,.14);align-items:start;
+  }
+  .track__left{position:sticky;top:calc(50% - 90px);align-self:start}
+  .track__num{
+    font-family:var(--display);font-weight:900;font-size:clamp(64px,11vw,132px);
+    line-height:.85;color:transparent;-webkit-text-stroke:1.5px var(--sun);
+    letter-spacing:-.02em;
+  }
+  .track__title{
+    font-family:var(--display);font-weight:800;font-size:clamp(24px,3.2vw,38px);
+    line-height:1.08;margin-top:12px;color:var(--mist);max-width:12ch;
+  }
+  .track__bar{width:56px;height:4px;border-radius:3px;margin-top:20px;background:var(--sun)}
+  .track:nth-child(3) .track__bar{background:var(--pinecone)}
+  .track:nth-child(4) .track__bar{background:var(--sand)}
+
+  .subs{display:flex;flex-direction:column;gap:2px}
+  .sub{
+    display:flex;align-items:flex-start;gap:18px;padding:20px 4px;
+    border-bottom:1px solid rgba(250,250,242,.09);
+    opacity:0;transform:translateY(18px);transition:all .7s var(--ease);
+  }
+  .is-visible .sub{opacity:1;transform:none}
+  .is-visible .sub:nth-child(1){transition-delay:.05s}
+  .is-visible .sub:nth-child(2){transition-delay:.14s}
+  .is-visible .sub:nth-child(3){transition-delay:.23s}
+  .is-visible .sub:nth-child(4){transition-delay:.32s}
+  .sub__star{color:var(--sun);font-size:16px;line-height:1.6;flex-shrink:0}
+  .track:nth-child(3) .sub__star{color:var(--pinecone)}
+  .track:nth-child(4) .sub__star{color:var(--sand)}
+  .sub__body h4{font-family:var(--display);font-weight:700;font-size:clamp(19px,2.3vw,25px);color:var(--mist);line-height:1.2}
+  .sub__idx{font-family:var(--body);font-weight:800;font-size:11px;letter-spacing:.18em;color:rgba(250,250,242,.4);display:block;margin-bottom:5px}
+
+  /* Cycle closer inside goals */
+  .cycle{
+    margin-top:70px;padding:38px clamp(26px,5vw,54px);border-radius:20px;
+    background:rgba(250,250,242,.05);border:1px solid rgba(250,250,242,.12);
+    display:flex;align-items:center;gap:26px;flex-wrap:wrap;
+  }
+  .cycle__ring{width:70px;height:70px;flex-shrink:0}
+  .cycle__ring svg{width:100%;height:100%}
+  .cycle p{font-family:var(--display);font-style:italic;font-size:clamp(18px,2.4vw,26px);color:var(--sand);line-height:1.3;max-width:34ch}
+  .cycle p b{font-style:normal;color:var(--sun)}
+
+  /* ---------- CLOSING ---------- */
+  .close{
+    background:radial-gradient(120% 100% at 20% 10%, var(--nabawi-mid), var(--nabawi-deep) 70%);
+    color:var(--mist);text-align:center;min-height:100vh;min-height:100svh;display:flex;flex-direction:column;
+    align-items:center;justify-content:center;
+  }
+  .close .wrap{display:flex;flex-direction:column;align-items:center}
+  .close__arrow{font-family:var(--display);font-weight:900;font-size:clamp(60px,12vw,150px);color:var(--sun);line-height:1;text-shadow:0 0 40px rgba(247,175,41,.35)}
+  .close h2{font-family:var(--display);font-weight:800;font-size:clamp(26px,3.6vw,44px);margin:22px 0 8px;max-width:20ch;line-height:1.14}
+  .close p{color:var(--arabica);font-family:var(--display);font-style:italic;font-size:clamp(17px,2vw,22px);max-width:34ch}
+  .close__mark{margin-top:44px;display:flex;flex-direction:column;align-items:center;gap:10px}
+  .close__wordmark{font-family:var(--display);font-weight:900;letter-spacing:.02em;font-size:22px}
+  .close__wordmark b{color:var(--sun);font-weight:900}
+  .close__dua{font-family:var(--arabic);color:var(--sand);font-size:20px;opacity:.85}
+  .close__tag{font-family:var(--body);font-weight:700;letter-spacing:.2em;text-transform:uppercase;font-size:11px;color:rgba(250,250,242,.5)}
+
+  /* ---------- Reveal system ---------- */
+  .reveal{opacity:0;transform:translateY(30px);transition:opacity .9s var(--ease),transform .9s var(--ease)}
+  .reveal.is-visible{opacity:1;transform:none}
+  .reveal.d1{transition-delay:.08s}.reveal.d2{transition-delay:.18s}.reveal.d3{transition-delay:.28s}
+
+  /* ---------- Keyframes ---------- */
+  @keyframes riseIn{to{opacity:1;transform:translateY(0) rotate(0)}}
+  @keyframes slideIn{to{opacity:1;transform:translateX(0)}}
+  @keyframes fadeUp{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
+  @keyframes fadeDown{from{opacity:0;transform:translateY(-12px)}to{opacity:1;transform:translateY(0)}}
+  @keyframes trace{to{stroke-dashoffset:0}}
+  @keyframes spin{to{transform:rotate(360deg)}}
+  @keyframes drop{0%{transform:translateY(-6px);opacity:0}40%{opacity:1}100%{transform:translateY(10px);opacity:0}}
+
+  /* ---------- Responsive ---------- */
+  @media (max-width:900px){
+    :root{--rail-w:0px}
+    .rail{display:none}
+    .topbar{display:block}
+    main{padding-left:0}
+    .hero__star{opacity:.28;right:-30%}
+    .values__grid{grid-template-columns:1fr;gap:36px}
+    .values-pine .value{border-left:none;padding-left:0;padding-right:0}
+    .track{grid-template-columns:1fr;gap:18px;padding:36px 0}
+    .track__left{position:static}
+    .track__title{max-width:100%}
+  }
+  @media (max-width:560px){
+    .vision__dirs{gap:20px}
+    .cycle{gap:16px}
+    .guiding__q{font-size:clamp(24px,7.2vw,34px);max-width:100%}
+    section{padding-top:clamp(72px,11vh,150px);padding-bottom:clamp(72px,11vh,150px)}
+  }
+
+  @media (prefers-reduced-motion:reduce){
+    *{animation:none !important;transition:none !important;scroll-behavior:auto !important}
+    .reveal,.sub{opacity:1 !important;transform:none !important}
+    .hero__bism,.hero__eyebrow,.hero__sub,.hero__from,.scrollcue{opacity:1 !important}
+    .hero__title .digit,.hero__title .arrow{opacity:1 !important;transform:none !important}
+    .hero__star path,.hero__star circle{stroke-dashoffset:0 !important}
+    .vision__statement .mark::after{transform:scaleX(1) rotate(-.6deg) !important}
+    .guiding__q .mark::after{transform:scaleX(1) rotate(-.6deg) !important}
+    .guiding__q .wescribble path{stroke-dashoffset:0 !important;opacity:1 !important}
+    .values-pine .rc{color:var(--nabawi-mid) !important}
+  }
+</style>
+</head>
+<body>
+
+  <button id="advanceBtn" class="advance" aria-label="Next section">⇣</button>
+
+  <!-- Mobile progress -->
+  <div class="topbar"><div class="topbar__fill" id="topFill"></div></div>
+
+  <!-- Desktop trajectory rail -->
+  <aside class="rail" aria-hidden="true">
+    <div class="rail__hijri">1448</div>
+    <div class="rail__track">
+      <div class="rail__fill" id="railFill"></div>
+      <div class="rail__dot" data-wp="hero"  style="top:2%"><span>Plan</span></div>
+      <div class="rail__dot" data-wp="vision" style="top:18%"><span>Vision</span></div>
+      <div class="rail__dot" data-wp="mission" style="top:34%"><span>Mission</span></div>
+      <div class="rail__dot" data-wp="values" style="top:50%"><span>Values</span></div>
+      <div class="rail__dot" data-wp="guiding" style="top:66%"><span>Question</span></div>
+      <div class="rail__dot" data-wp="goals" style="top:82%"><span>Goals</span></div>
+      <div class="rail__dot" data-wp="close" style="top:98%"><span>1453</span></div>
+    </div>
+    <div class="rail__arrow">⇢</div>
+  </aside>
+
+  <main>
+
+    <!-- ============ HERO ============ -->
+    <section class="hero" id="hero">
+      <div class="hero__star">
+        <svg viewBox="0 0 3000 3000" aria-hidden="true">
+          <g class="spin">
+            <path class="p1" pathLength="1" d="m2033.95,1500.08c29.67-28,54.48-54.26,81.06-85.24,58.83-69.68,109.65-143.23,150.28-231.76-91.32-33.87-179.27-49.95-270.05-57.39-40.8-3.34-76.91-4.36-117.69-3.19,1.18-40.78.16-76.89-2.96-117.59-7.67-90.87-23.75-178.82-57.62-270.14-88.52,40.63-162.08,91.45-231.53,150.37-31.21,26.48-57.47,51.3-85.47,80.96-28-29.67-54.26-54.48-85.24-81.06-69.68-58.83-143.23-109.65-231.76-150.28-33.87,91.32-49.95,179.27-57.39,270.05-3.34,40.8-4.36,76.91-3.18,117.69-40.78-1.18-76.89-.16-117.59,2.96-90.87,7.67-178.82,23.75-270.14,57.62,40.63,88.52,91.45,162.08,150.37,231.53,26.48,31.21,51.3,57.47,80.96,85.47-29.67,28-54.48,54.26-81.06,85.24-58.83,69.68-109.65,143.24-150.28,231.76,91.32,33.87,179.27,49.95,270.05,57.39,40.8,3.34,76.91,4.36,117.69,3.19-1.18,40.77-.16,76.89,2.96,117.59,7.67,90.87,23.75,178.82,57.62,270.14,88.52-40.62,162.08-91.45,231.53-150.37,31.21-26.48,57.47-51.3,85.47-80.96,28,29.67,54.26,54.48,85.24,81.06,69.68,58.82,143.23,109.65,231.76,150.27,33.87-91.32,49.95-179.27,57.39-270.05,3.34-40.8,4.36-76.91,3.18-117.68,40.78,1.18,76.89.16,117.59-2.96,90.87-7.67,178.82-23.75,270.14-57.62-40.63-88.52-91.45-162.08-150.37-231.53-26.48-31.21-51.3-57.47-80.96-85.47Z"/>
+            <path class="p2" pathLength="1" d="m1078.86,2516.71c6.91.07,13.85.07,20.77-.14,2.31-.05,4.61-.13,6.87-.16,62.3-2.48,125.2-15.6,186.27-40.43,82.42-33.52,152.32-84.63,207.19-147.31,99.96,114.08,243.01,181.65,393.27,187.67,2.37.11,4.76.18,7.12.24,6.91.22,13.85.22,20.77.14-1.27,4.23-2.59,8.37-3.96,12.53-36.61,116.18-101.34,225.4-194.14,316.97-66.72,65.88-142.41,117.17-223.07,153.79-197.94-90.2-351.03-261.34-417.3-470.81-1.32-4.1-2.64-8.24-3.82-12.48"/>
+            <path class="p3" pathLength="1" d="m483.29,1921.13c4.86,4.94,9.76,9.84,14.79,14.59,1.68,1.59,3.34,3.2,4.97,4.72,45.81,42.34,99.56,77.54,160.31,103.14,81.99,34.59,167.53,47.89,250.66,42.32-9.96,151.36,43.39,300.3,145.41,410.81,1.57,1.77,3.2,3.47,4.83,5.21,4.75,5.04,9.65,9.94,14.63,14.81-3.89,2.08-7.76,4.09-11.68,6.04-108.03,56.3-231.04,87.72-361.41,86.85-93.76-.6-183.58-17.84-266.48-49-76.19-203.76-63.41-432.97,37.86-627.96,1.97-3.83,3.96-7.72,6.11-11.53"/>
+            <path class="p4" pathLength="1" d="m483.29,1078.86c-.07,6.91-.07,13.85.14,20.77.05,2.31.13,4.61.16,6.87,2.48,62.3,15.6,125.2,40.43,186.27,33.52,82.43,84.63,152.32,147.31,207.19-114.08,99.96-181.66,243.01-187.67,393.27-.11,2.37-.18,4.75-.24,7.12-.22,6.91-.22,13.85-.14,20.77-4.23-1.26-8.37-2.58-12.53-3.96-116.18-36.61-225.4-101.34-316.97-194.14-65.88-66.71-117.17-142.41-153.79-223.07,90.2-197.94,261.34-351.03,470.81-417.3,4.1-1.32,8.24-2.64,12.48-3.81"/>
+            <path class="p5" pathLength="1" d="m1078.87,483.29c-4.93,4.86-9.83,9.76-14.59,14.79-1.59,1.66-3.2,3.34-4.72,4.97-42.34,45.81-77.54,99.56-103.14,160.31-34.59,81.99-47.89,167.53-42.34,250.66-151.34-9.96-300.29,43.39-410.79,145.42-1.77,1.55-3.47,3.2-5.21,4.83-5.04,4.75-9.94,9.65-14.81,14.63-2.08-3.89-4.09-7.76-6.04-11.68-56.3-108.04-87.72-231.04-86.85-361.41.6-93.76,17.84-183.58,49-266.48,203.76-76.19,432.97-63.41,627.96,37.86,3.83,1.97,7.72,3.96,11.53,6.11"/>
+            <path class="p6" pathLength="1" d="m1921.14,483.29c-6.91-.07-13.85-.07-20.77.14-2.31.05-4.61.13-6.87.16-62.3,2.48-125.2,15.6-186.27,40.43-82.42,33.52-152.32,84.59-207.19,147.31-99.96-114.08-243.01-181.66-393.27-187.67-2.37-.11-4.76-.18-7.12-.24-6.91-.22-13.85-.22-20.77-.14,1.27-4.23,2.59-8.37,3.96-12.53,36.61-116.18,101.34-225.4,194.14-316.97C1343.68,87.9,1419.37,36.61,1500.03,0c197.94,90.2,351.03,261.34,417.3,470.81,1.32,4.1,2.64,8.24,3.82,12.48"/>
+            <path class="p7" pathLength="1" d="m2516.71,1078.86c-4.86-4.94-9.76-9.84-14.79-14.59-1.66-1.59-3.35-3.2-4.97-4.72-45.81-42.34-99.56-77.54-160.31-103.14-81.99-34.59-167.53-47.89-250.66-42.32,9.96-151.36-43.39-300.3-145.41-410.81-1.56-1.77-3.2-3.47-4.83-5.21-4.75-5.04-9.65-9.94-14.63-14.81,3.89-2.08,7.76-4.09,11.68-6.04,108.03-56.3,231.04-87.72,361.41-86.85,93.78.6,183.58,17.84,266.48,49,76.19,203.76,63.4,432.97-37.86,627.96-1.97,3.83-3.96,7.72-6.11,11.53"/>
+            <path class="p8" pathLength="1" d="m2516.71,1921.14c.07-6.91.07-13.85-.15-20.77-.05-2.31-.13-4.61-.16-6.87-2.48-62.3-15.6-125.2-40.43-186.27-33.52-82.43-84.63-152.32-147.31-207.19,114.08-99.96,181.66-243.01,187.67-393.27.11-2.37.18-4.75.23-7.12.22-6.91.22-13.85.15-20.77,4.23,1.27,8.37,2.59,12.53,3.96,116.18,36.61,225.4,101.34,316.97,194.14,65.88,66.71,117.18,142.41,153.79,223.07-90.2,197.94-261.34,351.03-470.81,417.3-4.1,1.32-8.24,2.64-12.47,3.81"/>
+            <path class="p9" pathLength="1" d="m1921.13,2516.71c4.93-4.86,9.83-9.76,14.59-14.79,1.59-1.68,3.2-3.34,4.72-4.97,42.34-45.81,77.54-99.56,103.14-160.31,34.59-81.99,47.89-167.53,42.34-250.66,151.34,9.96,300.29-43.39,410.79-145.42,1.77-1.55,3.47-3.2,5.21-4.83,5.04-4.75,9.94-9.66,14.81-14.63,2.08,3.89,4.09,7.76,6.04,11.68,56.3,108.03,87.72,231.04,86.89,361.41-.63,93.76-17.88,183.58-49.03,266.48-203.76,76.19-432.97,63.41-627.96-37.86-3.83-1.97-7.72-3.96-11.53-6.11"/>
+          </g>
+        </svg>
+      </div>
+      <div class="hero__inner wrap">
+        <div class="hero__crown">
+          <div class="hero__bism" aria-label="Bismillah">﷽</div>
+        </div>
+        <span class="eyebrow hero__eyebrow">IslamicFamily · Strategic Plan</span>
+        <h1 class="hero__title" aria-label="1453">
+          <span class="digit d1">1</span><span class="digit d2">4</span><span class="digit d3">5</span><span class="digit d4">3</span><span class="arrow">⇢</span>
+        </h1>
+        <p class="hero__sub">A five-year mission to positively impact the community's existing &amp; emerging needs.</p>
+        <div class="hero__from">
+          <span><b>1448</b> today</span><span class="seg"></span><span>toward <b>1453</b>, insha'Allah</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ VISION ============ -->
+    <section class="light reveal" id="vision" data-track>
+      <div class="wrap">
+        <span class="eyebrow">Our Vision</span>
+        <p class="vision__statement">
+          A thriving community where <span class="fewer">fewer people are in <span class="mark m1">crisis</span></span>&nbsp;<span class="amp">&amp;</span> <span class="more">more people are in <span class="mark m2">leadership</span></span>.
+        </p>
+        <div class="vision__dirs">
+          <div class="vision__dir down">
+            <span class="glyph">↓</span>
+            <span>Fewer in crisis<small>the number of people dependent on our food bank</small></span>
+          </div>
+          <div class="vision__dir up">
+            <span class="glyph">↑</span>
+            <span>More in leadership<small>community equipped and building solutions</small></span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ MISSION ============ -->
+    <section class="mission lattice reveal" id="mission" data-track>
+      <div class="wrap">
+        <span class="eyebrow">Our Mission</span>
+        <p class="mission__text">To <span class="uplift">uplift</span> individuals, families, &amp; community through impactful services.</p>
+      </div>
+    </section>
+
+    <!-- ============ VALUES ============ -->
+    <section class="values-pine" id="values" data-track>
+      <div class="wrap">
+        <div class="values__head reveal">
+          <span class="eyebrow">Our Values</span>
+          <h2>The way we carry the work.</h2>
+        </div>
+        <div class="values__grid">
+          <div class="value reveal d1">
+            <div class="value__ghost">&#1585;&#1614;&#1581;&#1618;&#1605;&#1614;&#1577;</div>
+            <div class="value__in">
+              <h3>We are <span class="rc">responsive</span> &amp; <span class="rc">compassionate</span></h3>
+              <p>We meet people where they are, with dignity &amp; mercy, &amp; we move when it matters most.</p>
+            </div>
+          </div>
+          <div class="value reveal d2">
+            <div class="value__ghost">&#1582;&#1616;&#1583;&#1618;&#1605;&#1614;&#1577;</div>
+            <div class="value__in">
+              <h3>We are <span class="rc">people-centred</span> &amp; <span class="rc">growth minded</span></h3>
+              <p>We build with the community, not merely for it, &amp; we keep learning as we serve.</p>
+            </div>
+          </div>
+          <div class="value reveal d3">
+            <div class="value__ghost">&#1571;&#1614;&#1605;&#1614;&#1575;&#1606;&#1614;&#1577;</div>
+            <div class="value__in">
+              <h3>We are <span class="rc">accountable</span>, <span class="rc">transparent</span>, &amp; <span class="rc">serve justly</span></h3>
+              <p>We hold what is entrusted to us as an amana, &amp; we answer for it openly.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ OUR GUIDING QUESTION ============ -->
+    <section class="light guiding" id="guiding" data-track>
+      <div class="wrap">
+        <div class="guiding__head reveal">
+          <span class="eyebrow">Our Guiding Question</span>
+        </div>
+        <h2 class="guiding__q reveal">How can <span class="wecircle">we<svg class="wescribble" viewBox="0 0 124 60" aria-hidden="true"><path pathLength="1" d="M22 40 C8 34 8 16 34 10 C60 4 96 6 112 18 C122 28 112 44 86 50 C58 56 22 54 12 40 C8 33 14 27 30 24"/></svg></span> support <span class="mark gm1">the whole person</span> to <span class="mark gm2">flourish</span> in <span class="mark gm3">our community</span>?</h2>
+        <div class="guiding__defs">
+          <div class="gdiv reveal d1" aria-hidden="true">&#10040;</div>
+          <p class="gdef reveal d1"><b>The whole person</b> includes mental, emotional, physical, familial, social, economic, and spiritual well-being, honouring the dignity, strengths, and hopes of every person.</p>
+          <div class="gdiv reveal d2" aria-hidden="true">&#10040;</div>
+          <p class="gdef reveal d2"><b>Flourishing</b> means people &amp; families belong, have stability, opportunity, and support to realize their potential, lead with confidence, and contribute positively to communities.</p>
+          <div class="gdiv reveal d3" aria-hidden="true">&#10040;</div>
+          <p class="gdef reveal d3"><b>Our community</b> includes the many geographical, cultural, and faith-based networks that shape identity, nurture, and create opportunities for people to care for one another.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ GOALS ============ -->
+    <section class="goals lattice" id="goals" data-track>
+      <div class="wrap">
+        <div class="goals__head reveal">
+          <span class="eyebrow">Our Goals · Three tracks</span>
+          <h2>Three tracks, one trajectory.</h2>
+          <p>Every goal moves the community forward along the same line: from crisis toward leadership, from need toward capacity, from services toward systems that renew themselves.</p>
+        </div>
+
+        <!-- Track 01 -->
+        <div class="track reveal" data-track>
+          <div class="track__left">
+            <div class="track__num">01</div>
+            <div class="track__title">Nurture People and Community</div>
+            <div class="track__bar"></div>
+          </div>
+          <div class="subs">
+            <div class="sub"><span class="sub__star">✸</span><div class="sub__body"><span class="sub__idx">1.1</span><h4>Invest in our team</h4></div></div>
+            <div class="sub"><span class="sub__star">✸</span><div class="sub__body"><span class="sub__idx">1.2</span><h4>Support the needs of people &amp; community</h4></div></div>
+            <div class="sub"><span class="sub__star">✸</span><div class="sub__body"><span class="sub__idx">1.3</span><h4>Strengthen the community ecosystem</h4></div></div>
+            <div class="sub"><span class="sub__star">✸</span><div class="sub__body"><span class="sub__idx">1.4</span><h4>Advance reconciliation</h4></div></div>
+          </div>
+        </div>
+
+        <!-- Track 02 -->
+        <div class="track reveal" data-track>
+          <div class="track__left">
+            <div class="track__num">02</div>
+            <div class="track__title">Meaningful Impact</div>
+            <div class="track__bar"></div>
+          </div>
+          <div class="subs">
+            <div class="sub"><span class="sub__star">✸</span><div class="sub__body"><span class="sub__idx">2.1</span><h4>Help people where its needed</h4></div></div>
+            <div class="sub"><span class="sub__star">✸</span><div class="sub__body"><span class="sub__idx">2.2</span><h4>Advance people-first data</h4></div></div>
+            <div class="sub"><span class="sub__star">✸</span><div class="sub__body"><span class="sub__idx">2.3</span><h4>Communicate impact better</h4></div></div>
+          </div>
+        </div>
+
+        <!-- Track 03 -->
+        <div class="track reveal" data-track>
+          <div class="track__left">
+            <div class="track__num">03</div>
+            <div class="track__title">Regenerative Growth</div>
+            <div class="track__bar"></div>
+          </div>
+          <div class="subs">
+            <div class="sub"><span class="sub__star">✸</span><div class="sub__body"><span class="sub__idx">3.1</span><h4>Strengthen financial foundations</h4></div></div>
+            <div class="sub"><span class="sub__star">✸</span><div class="sub__body"><span class="sub__idx">3.2</span><h4>Increase operational excellence</h4></div></div>
+            <div class="sub"><span class="sub__star">✸</span><div class="sub__body"><span class="sub__idx">3.3</span><h4>Turn community priorities into action</h4></div></div>
+          </div>
+        </div>
+
+        <!-- Cycle closer -->
+        <div class="cycle reveal">
+          <div class="cycle__ring">
+            <svg viewBox="0 0 100 100" aria-hidden="true">
+              <path d="M50 12 A38 38 0 1 1 18 30" fill="none" stroke="var(--sun)" stroke-width="4" stroke-linecap="round"/>
+              <path d="M18 30 L14 14 M18 30 L34 26" fill="none" stroke="var(--sun)" stroke-width="4" stroke-linecap="round"/>
+              <text x="50" y="58" text-anchor="middle" font-family="Alegreya, serif" font-weight="900" font-size="26" fill="var(--sand)">✸</text>
+            </svg>
+          </div>
+          <p>Regenerative growth reinvests in people, so track <b>03</b> returns us to track <b>01</b>. The trajectory is also a cycle.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ CLOSING ============ -->
+    <section class="close" id="close">
+      <div class="wrap reveal">
+        <div class="close__arrow">⇢</div>
+        <h2><b>Fewer in crisis. <br>More in leadership.</b></h2>
+        <p>We get there together.</p>
+        <div class="close__mark">
+          <div class="close__dua">بارك الله فيكم</div>
+          <div class="close__wordmark">Islamic<b>Family</b></div>
+          <div class="close__tag">Strategic Plan · 1453⇢</div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+<script>
+(function(){
+  var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* Reveal on scroll */
+  var reveals = document.querySelectorAll('.reveal, [data-track]');
+  if('IntersectionObserver' in window){
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if(e.isIntersecting){ e.target.classList.add('is-visible'); }
+      });
+    }, {threshold:0.16, rootMargin:'0px 0px -8% 0px'});
+    reveals.forEach(function(el){ io.observe(el); });
+  } else {
+    reveals.forEach(function(el){ el.classList.add('is-visible'); });
+  }
+
+  /* Waypoint activation */
+  var dots = {};
+  document.querySelectorAll('.rail__dot').forEach(function(d){ dots[d.getAttribute('data-wp')] = d; });
+  var sections = ['hero','vision','mission','values','guiding','goals','close'];
+  if('IntersectionObserver' in window){
+    var io2 = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if(e.isIntersecting){
+          var id = e.target.id;
+          Object.keys(dots).forEach(function(k){ dots[k].classList.remove('is-on'); });
+          if(dots[id]) dots[id].classList.add('is-on');
+        }
+      });
+    }, {threshold:0.5});
+    sections.forEach(function(id){ var s=document.getElementById(id); if(s) io2.observe(s); });
+  }
+
+  /* Full-screen advance: arrow button, spacebar, arrow keys */
+  (function(){
+    function sTop(el){ return el.getBoundingClientRect().top + window.scrollY; }
+    function curIdx(){ var idx=0, y=window.scrollY+6; for(var i=0;i<sections.length;i++){ var el=document.getElementById(sections[i]); if(el && sTop(el)<=y) idx=i; } return idx; }
+    function goTo(i){ i=Math.max(0,Math.min(sections.length-1,i)); var el=document.getElementById(sections[i]); if(el) window.scrollTo({top:sTop(el),behavior:'smooth'}); }
+    var btn=document.getElementById('advanceBtn');
+    if(btn) btn.addEventListener('click', function(){ goTo(curIdx()+1); });
+    document.addEventListener('keydown', function(e){
+      var t=(e.target.tagName||'').toLowerCase();
+      if(t==='input'||t==='textarea'||e.target.isContentEditable) return;
+      if(e.key===' '||e.key==='Spacebar'||e.key==='PageDown'||e.key==='ArrowDown'){ e.preventDefault(); goTo(curIdx()+1); }
+      else if(e.key==='PageUp'||e.key==='ArrowUp'){ e.preventDefault(); goTo(curIdx()-1); }
+    });
+    function toggleBtn(){ if(!btn) return; var atEnd=(window.innerHeight+window.scrollY)>=(document.body.scrollHeight-8); btn.style.opacity=atEnd?'0':'1'; btn.style.pointerEvents=atEnd?'none':'auto'; }
+    window.addEventListener('scroll', toggleBtn, {passive:true}); window.addEventListener('resize', toggleBtn); toggleBtn();
+  })();
+
+  /* Guiding question: highlights fire once the section fills the viewport; circle "we" 7s later */
+  (function(){
+    var sec=document.getElementById('guiding'); if(!sec) return; var fired=false;
+    function fire(){ if(fired) return; fired=true; sec.classList.add('q-go'); setTimeout(function(){ sec.classList.add('we-go'); }, 7000); }
+    function check(){
+      var r=sec.getBoundingClientRect();
+      if(r.top<=4 && r.bottom>=window.innerHeight*0.5){ fire(); window.removeEventListener('scroll',check); }
+    }
+    window.addEventListener('scroll', check, {passive:true});
+    window.addEventListener('resize', check);
+    check();
+  })();
+
+  /* Values: recolour key words when the section is actually on screen */
+  (function(){
+    var sec=document.getElementById('values'); if(!sec) return; var fired=false;
+    function check(){
+      if(fired) return;
+      var r=sec.getBoundingClientRect(), h=window.innerHeight;
+      if(r.top<=4 && r.bottom>=h*0.5){ fired=true; sec.classList.add('rc-go'); window.removeEventListener('scroll',check); }
+    }
+    window.addEventListener('scroll', check, {passive:true});
+    window.addEventListener('resize', check);
+    check();
+  })();
+
+  /* Scroll progress fill (rail + topbar) */
+  var railFill = document.getElementById('railFill');
+  var topFill = document.getElementById('topFill');
+  var ticking = false;
+  function onScroll(){
+    var h = document.documentElement;
+    var max = h.scrollHeight - h.clientHeight;
+    var pct = max > 0 ? (h.scrollTop / max) * 100 : 0;
+    if(railFill) railFill.style.height = pct + '%';
+    if(topFill) topFill.style.width = pct + '%';
+    ticking = false;
+  }
+  window.addEventListener('scroll', function(){
+    if(!ticking){ window.requestAnimationFrame(onScroll); ticking = true; }
+  }, {passive:true});
+  onScroll();
+})();
+</script>
+</body>
+</html>

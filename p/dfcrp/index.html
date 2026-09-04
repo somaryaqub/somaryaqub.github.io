@@ -1,0 +1,674 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>D-FCRP Muslim Initiative · Collaborator Call</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Alegreya:ital,wght@0,400;0,500;0,700;1,400&family=Alegreya+Sans:ital,wght@0,300;0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+:root{
+  --nabawi:#275D43;
+  --nabawi-dark:#1C4433;
+  --nabawi-mid:#326B50;
+  --pinecone:#E09964;
+  --mist:#FAFAF2;
+  --kiswah:#353535;
+  --yaqoot:#BB2D37;
+  --sun:#F7AF29;
+  --sand:#EECBAF;
+  --arabica:#DCD9B8;
+  --rail:64px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:var(--rail)}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+body{
+  margin:0;
+  background:var(--mist);
+  color:var(--kiswah);
+  font-family:"Alegreya Sans",system-ui,sans-serif;
+  font-weight:400;
+  font-size:1.0625rem;
+  line-height:1.6;
+  -webkit-font-smoothing:antialiased;
+}
+
+/* ---------- time rail ---------- */
+.rail{
+  position:sticky;top:0;z-index:50;
+  background:var(--nabawi-dark);
+  color:var(--mist);
+  height:var(--rail);
+  display:flex;align-items:stretch;
+  border-bottom:1px solid var(--nabawi);
+}
+.rail-clock{
+  flex:0 0 auto;
+  display:flex;align-items:center;gap:.55rem;
+  padding:0 .9rem 0 1rem;
+  border-right:1px solid rgba(250,250,242,.18);
+}
+.clock-btn{
+  font:inherit;font-family:"Alegreya Sans",sans-serif;font-weight:500;
+  background:none;border:1px solid rgba(250,250,242,.4);
+  color:var(--mist);border-radius:2px;
+  padding:.2rem .5rem;font-size:.8rem;cursor:pointer;
+  white-space:nowrap;
+}
+.clock-btn:hover{background:rgba(250,250,242,.12)}
+.clock-btn:focus-visible{outline:2px solid var(--sun);outline-offset:2px}
+.clock-read{
+  font-family:"Alegreya",serif;font-size:1.15rem;font-variant-numeric:tabular-nums;
+  min-width:3.4rem;
+}
+.clock-read.over{color:var(--sun)}
+
+.track{flex:1 1 auto;display:flex;position:relative;min-width:0}
+.seg{
+  position:relative;
+  display:block;
+  border:0;padding:0;margin:0;
+  background:none;cursor:pointer;
+  border-right:1px solid rgba(250,250,242,.18);
+  color:rgba(250,250,242,.72);
+  font:inherit;font-family:"Alegreya Sans",sans-serif;
+  text-align:left;
+  overflow:hidden;
+  transition:background .18s ease;
+}
+.seg:last-child{border-right:0}
+.seg:hover{background:rgba(250,250,242,.1)}
+.seg:focus-visible{outline:2px solid var(--sun);outline-offset:-2px}
+.seg-inner{
+  display:block;padding:.5rem .5rem 0 .55rem;
+  font-size:.7rem;line-height:1.25;
+  white-space:nowrap;text-overflow:ellipsis;overflow:hidden;
+}
+.seg-min{font-family:"Alegreya",serif;font-size:.78rem;display:block;opacity:.72}
+.seg.active{background:var(--nabawi);color:#fff}
+.seg.active .seg-min{opacity:1;color:var(--sun)}
+.seg-dec{
+  position:absolute;bottom:0;left:0;right:0;height:4px;background:var(--yaqoot);
+}
+.needle{
+  position:absolute;top:0;bottom:0;width:2px;background:var(--sun);
+  left:0;display:none;pointer-events:none;
+}
+.needle.on{display:block}
+
+@media (max-width:760px){
+  :root{--rail:52px}
+  .seg-inner{display:none}
+  .seg-min{display:none}
+  .rail-clock{padding:0 .6rem}
+}
+
+/* ---------- sections ---------- */
+main{max-width:none}
+section{
+  padding:3.4rem 1.6rem 4.2rem;
+  border-bottom:1px solid var(--arabica);
+}
+.wrap{max-width:44rem;margin:0 auto}
+.stamp{
+  font-family:"Alegreya",serif;
+  font-size:.95rem;
+  color:var(--nabawi-mid);
+  border-bottom:2px solid var(--pinecone);
+  display:inline-block;
+  padding-bottom:.15rem;
+  margin-bottom:1.1rem;
+  font-variant-numeric:tabular-nums;
+}
+h1{
+  font-family:"Alegreya",serif;
+  font-weight:700;font-size:clamp(2rem,5.4vw,3.1rem);
+  line-height:1.08;margin:.2rem 0 .8rem;color:var(--nabawi-dark);
+  letter-spacing:-.01em;
+}
+h2{
+  font-family:"Alegreya",serif;
+  font-weight:700;font-size:clamp(1.6rem,3.8vw,2.3rem);
+  line-height:1.14;margin:0 0 1rem;color:var(--nabawi-dark);
+  letter-spacing:-.005em;
+}
+h3{
+  font-family:"Alegreya",serif;font-weight:500;
+  font-size:1.22rem;margin:1.8rem 0 .45rem;color:var(--nabawi);
+}
+p{margin:0 0 1rem;max-width:38rem}
+.lede{font-size:1.2rem;line-height:1.5}
+.sub{font-family:"Alegreya",serif;font-style:italic;font-size:1.15rem;color:var(--nabawi-mid);margin-bottom:1.6rem}
+strong{font-weight:700}
+em{font-style:italic}
+
+ul{list-style:none;padding:0;margin:0 0 1.2rem}
+ul li{position:relative;padding-left:1.5rem;margin-bottom:.55rem;max-width:38rem}
+ul li::before{content:"✸";position:absolute;left:0;top:-.05rem;color:var(--pinecone);font-size:.85rem}
+ul ul{margin:.45rem 0 .2rem}
+ul ul li{padding-left:1.35rem;margin-bottom:.3rem}
+ul ul li::before{content:"○";color:var(--nabawi-mid);font-size:.72rem;top:.08rem}
+
+/* facts grid */
+.facts{
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(13rem,1fr));
+  gap:0;margin:1.4rem 0 1.6rem;
+  border-top:1px solid var(--arabica);
+}
+.fact{padding:.9rem 1rem .9rem 0;border-bottom:1px solid var(--arabica)}
+.fact dt{font-size:.82rem;color:var(--nabawi-mid);margin-bottom:.15rem}
+.fact dd{margin:0;font-family:"Alegreya",serif;font-size:1.16rem;line-height:1.3;color:var(--nabawi-dark)}
+.fact dd small{display:block;font-family:"Alegreya Sans",sans-serif;font-size:.82rem;color:var(--kiswah);opacity:.8;margin-top:.15rem}
+
+/* decision callout: white on nabawi */
+.decision{
+  background:var(--nabawi);color:#fff;
+  padding:1.5rem 1.5rem 1.3rem;
+  margin:2rem 0;
+  border-left:5px solid var(--yaqoot);
+  max-width:40rem;
+}
+.decision .tag{
+  font-family:"Alegreya",serif;font-size:.92rem;
+  color:var(--sun);display:block;margin-bottom:.35rem;
+}
+.decision h3{color:#fff;margin:0 0 .6rem;font-weight:700;font-size:1.3rem}
+.decision p{color:rgba(255,255,255,.92);margin-bottom:.7rem}
+.decision ul li{color:rgba(255,255,255,.92)}
+.decision ul li::before{content:"✸";color:var(--sand)}
+.decision ul{margin-bottom:.4rem}
+.decision .by{font-size:.9rem;color:var(--sand);margin:0}
+
+/* option cards */
+.opts{display:grid;gap:1.1rem;margin:1.5rem 0 1rem}
+.opt{border:1px solid var(--nabawi);padding:1.1rem 1.2rem;background:#fff}
+.opt h3{margin:0 0 .4rem;font-weight:700;color:var(--nabawi-dark);font-size:1.2rem}
+.opt p{margin-bottom:.6rem;font-size:1rem}
+.opt .line{font-size:.92rem;margin:0;color:var(--kiswah)}
+.opt .line b{font-family:"Alegreya",serif;font-weight:500;color:var(--nabawi)}
+
+/* tables */
+.tbl{width:100%;border-collapse:collapse;margin:1.3rem 0 1.5rem;font-size:.98rem}
+.tbl th{
+  text-align:left;font-family:"Alegreya",serif;font-weight:500;font-size:1rem;
+  color:var(--nabawi-dark);border-bottom:2px solid var(--nabawi);
+  padding:.5rem .7rem .4rem 0;vertical-align:bottom;
+}
+.tbl td{padding:.6rem .7rem .6rem 0;border-bottom:1px solid var(--arabica);vertical-align:top}
+.tbl .code{font-family:"Alegreya",serif;font-weight:700;color:var(--nabawi);white-space:nowrap}
+.gap-need{color:var(--yaqoot);font-weight:500}
+.gap-have{color:var(--nabawi-mid)}
+.paid{font-family:"Alegreya",serif;color:var(--nabawi);white-space:nowrap}
+.inkind{font-family:"Alegreya",serif;color:var(--kiswah);opacity:.75;white-space:nowrap}
+.tbd{font-family:"Alegreya",serif;color:var(--yaqoot);white-space:nowrap}
+.held{font-size:.94rem}
+
+/* friction list */
+.fric{border-left:3px solid var(--sand);padding-left:1.1rem;margin:1.4rem 0}
+.fric h3{margin-top:0}
+.fric + .fric{margin-top:1.9rem}
+
+/* board */
+.board{width:100%;border-collapse:collapse;margin:1.2rem 0;font-size:.98rem}
+.board th{text-align:left;font-family:"Alegreya",serif;font-weight:500;border-bottom:2px solid var(--nabawi);padding:.45rem .7rem .4rem 0;color:var(--nabawi-dark)}
+.board td{padding:.65rem .7rem;border-bottom:1px solid var(--arabica);vertical-align:top}
+.board tr td:first-child{font-family:"Alegreya",serif;font-weight:700;color:var(--yaqoot);white-space:nowrap;padding-left:0}
+.board .fill{color:var(--kiswah);opacity:.45;font-style:italic}
+
+.sig{border-top:1px solid var(--arabica);margin-top:2.6rem;padding-top:1.2rem;font-size:.95rem;color:var(--kiswah)}
+.sig b{font-family:"Alegreya",serif;font-weight:700;color:var(--nabawi-dark);display:block;font-size:1.05rem}
+.conf{font-size:.86rem;color:var(--nabawi-mid);margin-top:1.4rem}
+
+.hero{background:var(--nabawi-dark);color:var(--mist);border-bottom:6px solid var(--pinecone)}
+.hero h1{color:#fff}
+.hero .stamp{color:var(--sand);border-color:var(--pinecone)}
+.hero p{color:rgba(250,250,242,.9)}
+.hero .lede{max-width:34rem}
+.hero .meta{font-size:.92rem;color:var(--sand);margin-top:2rem}
+.hero .meta span{display:block}
+
+@media print{
+  .rail{display:none}
+  section{page-break-after:always;border:0;min-height:0}
+}
+</style>
+</head>
+<body>
+
+<nav class="rail" aria-label="Call agenda and time">
+  <div class="rail-clock">
+    <button class="clock-btn" id="clockBtn" type="button">Start 30:00</button>
+    <span class="clock-read" id="clockRead" aria-live="off">30:00</span>
+  </div>
+  <div class="track" id="track">
+    <button class="seg" data-target="s1" style="flex:3" title="0–3 min · Why you're in the room"><span class="seg-inner"><span class="seg-min">0–3</span>Why you're here</span></button>
+    <button class="seg" data-target="s2" style="flex:4" title="3–7 min · The contract in plain terms"><span class="seg-inner"><span class="seg-min">3–7</span>The contract</span></button>
+    <button class="seg" data-target="s3" style="flex:3" title="7–10 min · What the work actually is"><span class="seg-inner"><span class="seg-min">7–10</span>The work</span></button>
+    <button class="seg" data-target="s4" style="flex:3" title="10–13 min · What we are not pretending (decision)"><span class="seg-inner"><span class="seg-min">10–13</span>Frictions</span><span class="seg-dec"></span></button>
+    <button class="seg" data-target="s5" style="flex:5" title="13–18 min · What it takes to bid (two decisions)"><span class="seg-inner"><span class="seg-min">13–18</span>What it takes</span><span class="seg-dec"></span></button>
+    <button class="seg" data-target="s6" style="flex:4" title="18–22 min · Three configurations (decision)"><span class="seg-inner"><span class="seg-min">18–22</span>Configurations</span><span class="seg-dec"></span></button>
+    <button class="seg" data-target="s7" style="flex:2" title="22–24 min · How evaluation and wraparound get funded at all"><span class="seg-inner"><span class="seg-min">22–24</span>The stack</span></button>
+    <button class="seg" data-target="s8" style="flex:3" title="24–27 min · Supporting roles and who funds each one"><span class="seg-inner"><span class="seg-min">24–27</span>Who funds what</span></button>
+    <button class="seg" data-target="s9" style="flex:2" title="27–29 min · What we are asking of you (decision)"><span class="seg-inner"><span class="seg-min">27–29</span>The ask</span><span class="seg-dec"></span></button>
+    <button class="seg" data-target="s10" style="flex:1.5" title="29–30 min · Decision board and dates"><span class="seg-inner"><span class="seg-min">29–30</span>Close</span></button>
+    <span class="needle" id="needle"></span>
+  </div>
+</nav>
+
+<main>
+
+<!-- 1 -->
+<section id="s1" class="hero">
+  <div class="wrap">
+    <span class="stamp">0–3 min</span>
+    <h1>A foothold, not a fix</h1>
+    <p class="lede">Correctional Service Canada has opened a contract for Muslim reentry support in Edmonton and in the Greater Toronto and Hamilton area. It is small. It closes on 22 September. And it is the first federal instrument that would put this work on paper rather than on relationships.</p>
+    <p>We are not asking anyone to believe this contract funds the model. It does not. What it does is convert access that currently lives in individual friendships into an agreement with option years running to 2033, which is the base the larger national proposal needs in order to stand on something.</p>
+    <p>Thirty minutes. Five decisions. Nothing here is settled.</p>
+    <p class="meta">
+      <span>Solicitation 21120-27-5405982 · Correctional Service Canada</span>
+      <span>Closes 22 September 2026, 12:00 noon Mountain</span>
+      <span>Convened by IslamicFamily · Edmonton, Treaty 6</span>
+    </p>
+  </div>
+</section>
+
+<!-- 2 -->
+<section id="s2">
+  <div class="wrap">
+    <span class="stamp">3–7 min</span>
+    <h2>What the contract actually is</h2>
+    <p class="sub">Read this part literally. The shape of the instrument drives every decision that follows.</p>
+
+    <dl class="facts">
+      <div class="fact"><dt>Who is buying</dt><dd>Correctional Service Canada<small>Contracting Authority: Mbinwi Ghogomu</small></dd></div>
+      <div class="fact"><dt>Two streams, two contracts</dt><dd>Edmonton, and Toronto with Hamilton<small>One contract per stream, awarded separately</small></dd></div>
+      <div class="fact"><dt>Estimated hours</dt><dd>500 Edmonton · 1,400 Toronto<small>Estimates for evaluation only, per period</small></dd></div>
+      <div class="fact"><dt>Term</dt><dd>Award to 31 March 2028<small>Plus five one-year options, to 31 March 2033</small></dd></div>
+      <div class="fact"><dt>How money moves</dt><dd>Firm hourly rate, drawn by task<small>Task Authorizations up to $10,000 each</small></dd></div>
+      <div class="fact"><dt>Guaranteed minimum</dt><dd>5% of contract value<small>The rest is requested as needed</small></dd></div>
+      <div class="fact"><dt>Scoring</dt><dd>60% technical, 40% price<small>Four pass-or-fail criteria, one scored out of 10</small></dd></div>
+      <div class="fact"><dt>Who may bid</dt><dd>Canadian suppliers only<small>Joint ventures permitted, all members Canadian</small></dd></div>
+    </dl>
+
+    <h3>Sense of scale</h3>
+    <p>Five hundred hours across a year is roughly a quarter of one position. For comparison, the single Toronto contract that has been running under this program has been about $281,000 over three years, with no wraparound services and no evaluation. This is a doorway, sized like a doorway.</p>
+    <p>It also carries real cost: an organizational security clearance, two million dollars of liability coverage, monthly reporting, and a named person who can be cleared. Any group that treats this as free money will lose money on it.</p>
+  </div>
+</section>
+
+<!-- 3 -->
+<section id="s3">
+  <div class="wrap">
+    <span class="stamp">7–10 min</span>
+    <h2>What the work is</h2>
+    <p class="sub">Five task areas, written by CSC, that map closely onto what we already do.</p>
+
+    <ul>
+      <li><strong>Post-release correctional support.</strong> Liaise with the person, their case management team, and their faith community. Assess religious and spiritual needs, build care plans, coordinate transition rites, recruit and supervise volunteers, encourage compliance with release conditions, and engage people inside institutions before release.</li>
+      <li><strong>Local needs assessment.</strong> Work with parole offices, institutional chaplains, and the existing justice sector, including John Howard Society, Elizabeth Fry Society, and the Salvation Army. Engage halfway houses and community correctional centres where Muslim clients live.</li>
+      <li><strong>A documented strategy.</strong> Stand up an advisory group that includes local religious communities, police, CSC parole, clinical or social work practitioners, and academics, and convene it regularly. Build or adapt a reintegration support model.</li>
+      <li><strong>Community safety and stigma.</strong> Educate the public, accompany people into faith communities, coach congregations to engage safely, and facilitate restorative practice where a community was itself affected.</li>
+      <li><strong>Belonging and pro-social involvement.</strong> Connect people to activities they actually want to be part of, broker donations and material help, open employment pathways through congregations, and support coping and self-care.</li>
+    </ul>
+
+    <h3>What has to be handed in</h3>
+    <ul>
+      <li>A disengagement model within six months of award</li>
+      <li>Monthly quantitative indicator reports with invoices, within thirty days of month end</li>
+      <li>Quarterly narrative reports, within thirty days of quarter end</li>
+      <li>Two meetings a year with the CSC project authority</li>
+      <li>Everything in Excel, in English</li>
+    </ul>
+    <p>CSC provides bookable desk space, a phone, and videoconferencing at the designated parole office. Nothing else is supplied.</p>
+  </div>
+</section>
+
+<!-- 4 -->
+<section id="s4">
+  <div class="wrap">
+    <span class="stamp">10–13 min</span>
+    <h2>What we are not pretending</h2>
+    <p class="sub">Four things in this contract that a community partner should hear from us rather than discover later.</p>
+
+    <div class="fric">
+      <h3>The disengagement language</h3>
+      <p>The contract requires a disengagement model and asks us to promote a religious perspective described as non-extremist and rooted in mainstream religious thought. CSC defines disengagement as changing behaviour rather than ideology. That definition is defensible. The vocabulary is still the vocabulary of countering violent extremism, and some of our people will hear it that way.</p>
+      <p>Our position going in: we do not do intelligence work, we do not report on belief, and we do not accept referrals framed around ideology rather than release planning. If we cannot hold that line inside the contract, we should not sign it.</p>
+    </div>
+
+    <div class="fric">
+      <h3>The reporting asks for individual-level data</h3>
+      <p>The monthly template collects the last four digits of a federal offender number, date of birth, religion, a zero-to-five rating of the person's motivation to integrate into a faith community, and counts of our contacts with their parole officer. We would be scoring people for the government.</p>
+      <p>This is a consent and data governance problem before it is an administrative one. It needs an answer we can say out loud to a participant.</p>
+    </div>
+
+    <div class="fric">
+      <h3>Clearance filters who can serve</h3>
+      <p>The organization needs a Designated Organization Screening. Anyone touching protected information needs Reliability Status. Protected material cannot leave the site. Subcontracts that carry security requirements need written permission first. Volunteers and imams who cannot or will not be screened can still serve on the community side, but not everywhere.</p>
+    </div>
+
+    <div class="fric">
+      <h3>It is a contract, not a grant</h3>
+      <p>Work only happens when a task is authorized. There is no core funding, no separate overhead recovery, and a travel allowance of about five thousand dollars. Cash flow depends on invoices tied to completed tasks and accepted reports.</p>
+    </div>
+
+    <div class="decision">
+      <span class="tag">Decision 1</span>
+      <h3>What we will and will not do under this contract</h3>
+      <p>We need a shared line on the disengagement framing and on participant data, written down, before a bid goes in. Not a communications position. An operating rule that a coordinator can apply on a Tuesday.</p>
+      <ul>
+        <li>Do we accept referrals that are framed around ideology?</li>
+        <li>What do we tell a participant about what gets reported, and when?</li>
+        <li>Who has authority to refuse a task authorization on these grounds?</li>
+      </ul>
+      <p class="by">Needed before submission. Owner to be named today.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 5 -->
+<section id="s5">
+  <div class="wrap">
+    <span class="stamp">13–18 min</span>
+    <h2>What it takes to respond</h2>
+    <p class="sub">Four criteria are pass or fail. One is scored. Everything else is paperwork with a deadline.</p>
+
+    <table class="tbl">
+      <thead><tr><th style="width:3.5rem">&nbsp;</th><th>Pass or fail requirement</th><th style="width:9rem">Where we stand</th></tr></thead>
+      <tbody>
+        <tr><td class="code">M1</td><td>Two projects of at least six months each, collaborating with agencies that work with people in or out of custody, within the last seven years</td><td class="gap-have">Evidenced</td></tr>
+        <tr><td class="code">M2</td><td>Two years collaborating with Muslim faith-based organizations to deliver support for people returning to the community or at risk of criminal involvement</td><td class="gap-need">Needs dated detail and a referee</td></tr>
+        <tr><td class="code">M3</td><td>Two years managing a community volunteer program, showing recruitment, selection, training and retention</td><td class="gap-have">Evidenced</td></tr>
+        <tr><td class="code">M4</td><td>Two years providing services to released Muslim clients transitioning back into the community</td><td class="gap-need">Needs dated detail and a referee</td></tr>
+        <tr><td class="code">R1</td><td>Scored out of 10, minimum 5. Full marks require a Muslim-led or Muslim-serving organization <em>with demonstrated active operations in the stream being bid</em></td><td class="gap-have">Strong for Edmonton</td></tr>
+      </tbody>
+    </table>
+
+    <p>Because the technical spread between credible bidders will be narrow, this contest is decided by R1 and by price. Local presence is the asset, and it is the one thing a national organization cannot borrow.</p>
+
+    <h3>Two constraints worth reading twice</h3>
+    <ul>
+      <li><strong>The named person must already work for the bidding organization.</strong> Not a partner's staff, not a contractor lined up for award. This is why partnership cannot substitute for payroll.</li>
+      <li><strong>Reference letters must be signed, and the referee should not be a federal employee.</strong> Our strongest witnesses are CSC chaplains and parole staff, and they do not count. We need community and sector referees instead.</li>
+    </ul>
+
+    <h3>The rest of the stack</h3>
+    <ul>
+      <li>Security Program application for registration, filed with the bid</li>
+      <li>Broker letter confirming two million in commercial general liability, with Canada and volunteers as additional insured</li>
+      <li>Certifications: Canadian supplier declaration, employment equity, former public servant questions, integrity disclosure, governing law set to Alberta</li>
+      <li>Three separate PDFs for technical, financial and certifications, with no prices anywhere but the financial bid</li>
+      <li>Email only, under ten megabytes, no encryption and no password-protected attachments</li>
+      <li>Written questions to CSC by 17 September, the last day they will answer</li>
+    </ul>
+
+    <div class="decision">
+      <span class="tag">Decision 2</span>
+      <h3>Who signs the reference letters</h3>
+      <p>We need named, non-federal referees who can attest to Muslim-specific reentry work and to collaboration with Muslim organizations, with month and year for start and end dates. Two letters minimum, ideally four.</p>
+      <p class="by">Names today. Signed letters by 12 September.</p>
+    </div>
+
+    <div class="decision">
+      <span class="tag">Decision 3</span>
+      <h3>Who the coordinator is</h3>
+      <p>One person, already employed by whichever organization submits, able to clear Reliability Status, able to work out of a parole office, and able to hold Decision 1 under pressure. If that person does not exist on a payroll today, that is the finding, and it changes the configuration.</p>
+      <p class="by">Named today. Clearance paperwork started this week.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 6 -->
+<section id="s6">
+  <div class="wrap">
+    <span class="stamp">18–22 min</span>
+    <h2>Three ways to configure this</h2>
+    <p class="sub">These are genuinely open. The third is the one most people have not considered.</p>
+
+    <div class="opts">
+      <div class="opt">
+        <h3>A · Edmonton anchor</h3>
+        <p>IslamicFamily bids Edmonton alone. Partners sit on the advisory group, host the community side, and take referrals. No Toronto bid from this table.</p>
+        <p class="line"><b>Needs</b> one coordinator on payroll, four reference letters, clearance in motion.</p>
+        <p class="line"><b>Risk</b> Toronto goes to someone with no interest in a shared framework, and the national argument stays theoretical.</p>
+      </div>
+      <div class="opt">
+        <h3>B · Both streams, one bidder</h3>
+        <p>IslamicFamily bids Edmonton and Toronto, and must be able to serve every location in both. Toronto delivery would run through a person employed by IslamicFamily.</p>
+        <p class="line"><b>Needs</b> a Toronto hire or secondment onto our payroll before submission, in eighteen days.</p>
+        <p class="line"><b>Risk</b> a thin Toronto presence scores badly on R1, and we would be bidding against the very organizations that have it.</p>
+      </div>
+      <div class="opt">
+        <h3>C · Parallel bids, one framework</h3>
+        <p>IslamicFamily bids Edmonton. An Ontario partner bids Toronto on its own paper. Both commit in advance to a shared model, shared training, common referral protocols, and a joint approach to national headquarters.</p>
+        <p class="line"><b>Needs</b> a written framework agreement, and strict separation of pricing.</p>
+        <p class="line"><b>Risk</b> we cannot coordinate bids without crossing a line, so the agreement has to be about delivery, never about price.</p>
+      </div>
+    </div>
+
+    <div class="decision">
+      <span class="tag">Decision 4</span>
+      <h3>A, B, or C</h3>
+      <p>This one shapes everything else, including who in this room is a partner and who is a separate bidder. If anyone here intends to bid Toronto, say so now and we will stop discussing anything that touches price.</p>
+      <p class="by">Needed by 8 September to leave time to assemble.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 7 -->
+<section id="s7">
+  <div class="wrap">
+    <span class="stamp">22–24 min</span>
+    <h2>The stack around it</h2>
+    <p class="sub">Evaluation and wraparound are not in this contract. They still have to exist, so they get built alongside it on purpose rather than by accident.</p>
+
+    <h3>Some of it is billable if we scope it that way</h3>
+    <p>Work is released through task authorizations, and four things CSC already asks for are legitimately billable hours that also build our own capacity. We should agree the first year of task authorizations at award rather than take them as they come.</p>
+    <ul>
+      <li>The disengagement model, which is a named deliverable due within six months</li>
+      <li>The local needs assessment, which is our baseline measurement whether or not we call it that</li>
+      <li>Convening the advisory group, which the contract requires us to establish and meet regularly</li>
+      <li>Building the volunteer recruitment, training and retention program</li>
+    </ul>
+
+    <h3>Stack the funding, do not braid it</h3>
+    <p>Each layer sits in its own instrument with its own accountability, and they share one intake and one dataset. Nothing here depends on CSC widening the contract.</p>
+    <ul>
+      <li>CSC contract pays only for the coordinator's authorized hours</li>
+      <li>Public Safety Canada community resilience funding for training, curriculum and convert supports, where we already have a track record</li>
+      <li>Provincial and municipal funding for the wraparound services people actually need: housing navigation, employment, counselling</li>
+      <li>Community philanthropy and waqf for the parts no government will fund, including family support and stigma work</li>
+      <li>University-held research funding through our academic partners, so evaluation costs sit outside the contract entirely</li>
+    </ul>
+
+    <h3>One intake, layered consent</h3>
+    <p>The contract obliges us to report individual-level data monthly. Evaluation needs richer data than that, and it needs permission. One intake with three separate consents solves both: what CSC requires, what we use to improve the program, and what a participant chooses to contribute to research. Ethics approval runs through the university partner, not through us.</p>
+    <p>That structure means we can build a longitudinal picture that CSC cannot currently produce, since it does not disaggregate outcomes by religion, without asking CSC for data access we are unlikely to get.</p>
+
+    <h3>Make the reporting work twice</h3>
+    <p>The monthly template already counts contacts, accompaniments, restorative processes, donations brokered, and volunteer hours by organization. If we hold the source data in our own system and export the CSC subset, the same effort produces the evidence base for the larger national proposal. Volunteer hours in particular become an auditable community contribution figure sitting next to the federal spend.</p>
+
+    <h3>Partners get agreements, not a directory</h3>
+    <p>Every wraparound partner signs a short agreement covering how a referral arrives, how fast it is answered, and what comes back. Costs nothing, and it is the difference between a list and a network.</p>
+
+    <h3>Then use the option years</h3>
+    <p>Year one proves delivery. Year two produces the first evaluation output. Year three is when we go to national headquarters with data rather than argument and ask for scope and funding that match the need. The option years to 2033 are the runway for that, which is the whole reason a small contract is worth signing.</p>
+  </div>
+</section>
+
+<!-- 8 -->
+<section id="s8">
+  <div class="wrap">
+    <span class="stamp">24–27 min</span>
+    <h2>Who funds what</h2>
+    <p class="sub">The contract pays for one line in this table. Everything below it has to be held by someone and paid for by someone else. Red is where the money is not yet there.</p>
+
+    <table class="tbl">
+      <thead><tr><th>Function</th><th>Held by</th><th style="width:11rem">Funding</th></tr></thead>
+      <tbody>
+        <tr><td>Direct service and accompaniment<br><span class="held">Coordinator hours, care plans, parole liaison, in-reach before release</span></td><td>IslamicFamily</td><td class="paid">CSC contract</td></tr>
+        <tr><td>Evaluation and research<br><span class="held">Outcomes disaggregated by religion, ethics oversight, published findings</span></td><td>Academic partners with IslamicFamily</td><td class="paid">The Muslim Fund</td></tr>
+        <tr><td>National standard setting<br><span class="held">Referral protocols, training curriculum, a framework other regions can adopt</span></td><td>IslamicFamily with partners</td><td class="paid">The Muslim Fund</td></tr>
+        <tr><td>Systems navigation and housing support<br><span class="held">Intake, identification and benefits, housing placement</span></td><td>IslamicFamily</td><td class="inkind">IslamicFamily core</td></tr>
+        <tr><td>Counselling and trauma support<br><span class="held">Grief, addiction, family separation, identity</span></td><td>IslamicFamily counselling</td><td class="inkind">IslamicFamily core</td></tr>
+        <tr><td>Advisory group and needs assessment<br><span class="held">Required by the contract, and our baseline measurement</span></td><td>IslamicFamily with the group</td><td class="paid">Task authorization</td></tr>
+        <tr><td>Community readiness and stigma<br><span class="held">Training for imams, families and congregations to receive people back</span></td><td>IslamicFamily with mosque partners</td><td class="tbd">To be secured</td></tr>
+        <tr><td>Volunteer program<br><span class="held">Recruitment, screening, training, retention, hours reported monthly</span></td><td>Mosque partners with IslamicFamily</td><td class="inkind">Part billable, part in-kind</td></tr>
+        <tr><td>Convert supports<br><span class="held">Dedicated programming for the most isolated group in this work</span></td><td class="tbd">Partner to name</td><td class="tbd">To be secured</td></tr>
+        <tr><td>Employment and livelihoods<br><span class="held">Placements through congregations and employers</span></td><td>IslamicFamily livelihoods</td><td class="tbd">To be secured</td></tr>
+        <tr><td>Legal navigation<br><span class="held">Records, immigration and family law triage</span></td><td>Community legal initiative</td><td class="tbd">To be secured</td></tr>
+        <tr><td>Data and consent infrastructure<br><span class="held">One intake, three consents, exports that satisfy CSC</span></td><td>IslamicFamily</td><td class="inkind">IslamicFamily core</td></tr>
+        <tr><td>Toronto and Hamilton delivery<br><span class="held">Only if we go with configuration C</span></td><td class="tbd">Ontario partner</td><td class="paid">Separate CSC contract</td></tr>
+      </tbody>
+    </table>
+
+    <p>Four functions are unfunded and two have no organization attached. That is the honest state of the model, and it is more useful to say so now than to discover it in month four. The two named funders and the contract together cover the spine: delivery, evaluation, and standard setting. The gaps are all on the community side, which is also where this room has the most to offer.</p>
+  </div>
+</section>
+
+<!-- 9 -->
+<section id="s9">
+  <div class="wrap">
+    <span class="stamp">27–29 min</span>
+    <h2>What we are asking of you</h2>
+    <p class="sub">One role each, with a named person and something specific attached. Two of these are paid from the contract and both sit with IslamicFamily. The rest is what we cannot do without you.</p>
+
+    <table class="tbl">
+      <thead><tr><th>Role</th><th>What it involves</th><th style="width:6.5rem">Funding</th></tr></thead>
+      <tbody>
+        <tr><td>Lead bidder</td><td>Holds the clearance and the insurance, employs the coordinator, invoices, reports monthly, carries the liability</td><td class="paid">Contract</td></tr>
+        <tr><td>Coordinator</td><td>The named, cleared person doing in-reach, care planning, accompaniment, and parole liaison</td><td class="paid">Contract</td></tr>
+        <tr><td>Advisory group member</td><td>Meets regularly, brings a religious, policing, clinical, or academic perspective. A contract requirement rather than a courtesy</td><td class="inkind">Contributed</td></tr>
+        <tr><td>Faith community anchor</td><td>A mosque that will actually receive returning people, host activity, and name someone accountable for it</td><td class="inkind">Contributed</td></tr>
+        <tr><td>Volunteer pipeline</td><td>Recruits, screens, trains and retains volunteers, and reports hours monthly</td><td class="inkind">Contributed</td></tr>
+        <tr><td>Reference provider</td><td>Signs a letter attesting to specific dated work, and is not a federal employee</td><td class="inkind">Contributed</td></tr>
+        <tr><td>Gap holder</td><td>Takes one of the four unfunded functions from the previous table and helps us find the money for it</td><td class="tbd">To be secured</td></tr>
+      </tbody>
+    </table>
+
+    <div class="decision">
+      <span class="tag">Decision 5</span>
+      <h3>Which role each organization takes</h3>
+      <p>One role each, with a named person and something specific attached to it. A letter, a room, ten volunteers, a seat at the advisory group. Vague endorsement does not survive a monthly report.</p>
+      <p class="by">Named today. Confirmed in writing by 12 September.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 8 -->
+<section id="s10">
+  <div class="wrap">
+    <span class="stamp">29–30 min</span>
+    <h2>Decision board</h2>
+
+    <table class="board">
+      <thead><tr><th style="width:2.4rem">&nbsp;</th><th>Decision</th><th style="width:8rem">Owner</th><th style="width:7rem">By</th></tr></thead>
+      <tbody>
+        <tr><td>1</td><td>What we will and will not do on disengagement framing and participant data</td><td class="fill">to name</td><td>Before filing</td></tr>
+        <tr><td>2</td><td>Non-federal referees for M2 and M4, with signed letters</td><td class="fill">to name</td><td>12 Sept</td></tr>
+        <tr><td>3</td><td>The named coordinator, already on payroll, clearance started</td><td class="fill">to name</td><td>8 Sept</td></tr>
+        <tr><td>4</td><td>Configuration A, B, or C</td><td class="fill">to name</td><td>8 Sept</td></tr>
+        <tr><td>5</td><td>Role and specific contribution per organization</td><td class="fill">to name</td><td>12 Sept</td></tr>
+      </tbody>
+    </table>
+
+    <h3>Fixed dates</h3>
+    <ul>
+      <li><strong>17 September</strong> last day CSC will answer a written question</li>
+      <li><strong>22 September, 12:00 noon Mountain</strong> bids close, and late bids are deleted rather than considered</li>
+      <li><strong>Bids stay valid 120 days</strong> from closing</li>
+    </ul>
+
+    <h3>One thing to confirm before we build the schedule</h3>
+    <p>The tender notice should be checked for amendments. A change to the closing date or to the annexes would move every date on this board.</p>
+
+    <div class="sig">
+      <b>Omar Yaqub</b>
+      Servant of Servants, IslamicFamily<br>
+      omary@islamicfamily.ca · +1.780.695.7477<br>
+      IslamicFamily Hüb, 2-786 – 10545 108 Street, Edmonton AB T5H 2Z8
+      <p class="conf">Shared in confidence for the purpose of assessing collaboration. Contains no pricing information.</p>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<script>
+(function(){
+  var segs = Array.prototype.slice.call(document.querySelectorAll('.seg'));
+  var sections = segs.map(function(s){ return document.getElementById(s.dataset.target); });
+
+  segs.forEach(function(seg){
+    seg.addEventListener('click', function(){
+      document.getElementById(seg.dataset.target).scrollIntoView({block:'start'});
+    });
+  });
+
+  function setActive(i){
+    segs.forEach(function(s,n){ s.classList.toggle('active', n===i); });
+  }
+
+  var current = 0;
+  if ('IntersectionObserver' in window){
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if (e.isIntersecting){
+          var i = sections.indexOf(e.target);
+          if (i > -1){ current = i; setActive(i); }
+        }
+      });
+    }, {rootMargin: '-45% 0px -50% 0px', threshold: 0});
+    sections.forEach(function(sec){ if (sec) io.observe(sec); });
+  }
+  setActive(0);
+
+  document.addEventListener('keydown', function(e){
+    if (e.target && /INPUT|TEXTAREA|BUTTON/.test(e.target.tagName) && e.key !== 'ArrowRight' && e.key !== 'ArrowLeft') return;
+    if (e.key === 'ArrowRight' || e.key === 'PageDown'){
+      if (current < sections.length - 1){ e.preventDefault(); sections[current+1].scrollIntoView({block:'start'}); }
+    } else if (e.key === 'ArrowLeft' || e.key === 'PageUp'){
+      if (current > 0){ e.preventDefault(); sections[current-1].scrollIntoView({block:'start'}); }
+    }
+  });
+
+  // 30 minute clock
+  var TOTAL = 30 * 60;
+  var btn = document.getElementById('clockBtn');
+  var read = document.getElementById('clockRead');
+  var needle = document.getElementById('needle');
+  var startedAt = null, timer = null;
+
+  function pad(n){ return (n < 10 ? '0' : '') + n; }
+
+  function tick(){
+    var elapsed = Math.floor((Date.now() - startedAt) / 1000);
+    var left = TOTAL - elapsed;
+    var over = left < 0;
+    var mag = Math.abs(left);
+    read.textContent = (over ? '\u2212' : '') + pad(Math.floor(mag/60)) + ':' + pad(mag % 60);
+    read.classList.toggle('over', over);
+    needle.style.left = (Math.min(elapsed / TOTAL, 1) * 100) + '%';
+  }
+
+  btn.addEventListener('click', function(){
+    if (timer){
+      clearInterval(timer); timer = null; startedAt = null;
+      needle.classList.remove('on'); needle.style.left = '0%';
+      read.textContent = '30:00'; read.classList.remove('over');
+      btn.textContent = 'Start 30:00';
+    } else {
+      startedAt = Date.now();
+      needle.classList.add('on');
+      tick();
+      timer = setInterval(tick, 1000);
+      btn.textContent = 'Reset';
+    }
+  });
+})();
+</script>
+</body>
+</html>
