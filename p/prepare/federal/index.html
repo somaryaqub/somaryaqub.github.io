@@ -3,627 +3,764 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>[DRAFT] EFRS + IslamicFamily: Coordinated Emergency Preparedness Proposal (Federal)</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Alegreya:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,500&family=Alegreya+Sans:wght@300;400;500;700&display=swap" rel="stylesheet">
+<title>Community Justice Architecture · Making legal support accessible &amp; cost-effective</title>
+<link href="https://fonts.googleapis.com/css2?family=Alegreya:ital,wght@0,400;0,700;1,400&family=Alegreya+Sans:wght@300;400;500;700&display=swap" rel="stylesheet">
 <style>
-  :root{
-    --nabawi:#275D43; --nabawi-dark:#1C4433; --nabawi-mid:#326B50;
-    --pinecone:#E09964; --mist:#FAFAF2; --kiswah:#353535;
-    --yaqoot:#BB2D37; --sun:#F7AF29; --sand:#EECBAF; --arabica:#DCD9B8;
-    --line:rgba(53,53,53,.16); --line-soft:rgba(53,53,53,.09); --white:#FFFFFF;
-  }
-  *{box-sizing:border-box;}
-  html{scroll-behavior:smooth;}
-  body{margin:0;background:var(--mist);color:var(--kiswah);
-    font-family:"Alegreya Sans",system-ui,sans-serif;font-weight:400;line-height:1.62;
-    -webkit-font-smoothing:antialiased;font-size:17.5px;}
-  .wrap{max-width:880px;margin:0 auto;padding:0 30px;}
-  h1,h2,h3,.serif{font-family:"Alegreya",Georgia,serif;font-weight:700;line-height:1.15;}
-  p{margin:0 0 1.05em;}
-  a{color:var(--nabawi);}
-  .eyebrow{font-family:"Alegreya Sans",sans-serif;font-size:12.5px;letter-spacing:.2em;
-    text-transform:uppercase;color:var(--nabawi-mid);font-weight:700;}
-  .placeholder{color:var(--pinecone);font-style:italic;}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --green:#275D43;--green-dark:#1e4a35;--green-light:#eaf2ed;--green-mid:#3a7a5a;
+  --brown:#E09964;--brown-light:#fdf4ec;--bg:#FAFAF2;
+  --black:#353535;--arabica:#DCD9B8;--white:#ffffff;
+  --red:#BB2D37;
+  --text:#353535;--text-mid:#4a4a45;--text-muted:#888880;
+  --border:rgba(39,93,67,0.13);--radius:10px;
+}
+body{font-family:'Alegreya Sans',system-ui,sans-serif;background:var(--bg);color:var(--text);font-size:15px;line-height:1.75}
 
-  /* Letterhead */
-  .letterhead{border-bottom:3px solid var(--nabawi);padding:44px 0 22px;margin-top:44px;
-    display:flex;justify-content:space-between;align-items:flex-end;gap:24px;flex-wrap:wrap;}
-  .cobrand{display:flex;align-items:center;gap:18px;}
-  .cb-org{display:flex;flex-direction:column;}
-  .cb-org .nm{font-family:"Alegreya",serif;font-weight:700;font-size:17px;line-height:1.1;color:var(--nabawi-dark);}
-  .cb-org .sb{font-size:11.5px;color:var(--nabawi-mid);letter-spacing:.02em;}
-  .cb-plus{width:34px;height:34px;border-radius:50%;background:var(--nabawi);color:var(--white);
-    display:grid;place-items:center;font-family:"Alegreya",serif;font-size:18px;flex:0 0 34px;}
-  .lh-meta{text-align:right;font-size:12.5px;color:var(--nabawi-mid);line-height:1.7;}
+/* HEADER */
+.header{background:var(--green);padding:20px 32px;display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap}
+.header-logo img{height:38px;display:block}
+.header-tag{background:rgba(255,255,255,0.12);border:1px solid rgba(255,255,255,0.25);color:rgba(255,255,255,0.9);font-size:10px;font-weight:500;letter-spacing:0.12em;text-transform:uppercase;padding:5px 13px;border-radius:100px;white-space:nowrap}
 
-  /* Memo */
-  .memo{padding:30px 0 4px;font-size:15.5px;}
-  .memo .row{display:flex;gap:16px;margin-bottom:6px;}
-  .memo .k{font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--nabawi-mid);
-    flex:0 0 66px;padding-top:4px;font-weight:700;}
+/* HERO */
+.hero{background:var(--green);padding:52px 32px 56px;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;top:-80px;right:-80px;width:400px;height:400px;border-radius:50%;background:rgba(255,255,255,0.03);pointer-events:none}
+.hero::after{content:'';position:absolute;bottom:0;left:0;right:0;height:4px;background:linear-gradient(to right,#E09964,#F7AF29,#EECBAF)}
+.hero-meta{display:flex;flex-wrap:wrap;gap:6px 28px;margin-bottom:28px}
+.hero-meta-item{display:flex;gap:7px;align-items:baseline}
+.hero-meta-label{font-size:10px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:rgba(255,255,255,0.5);white-space:nowrap}
+.hero-meta-value{font-size:13px;color:rgba(255,255,255,0.85)}
+.hero h1{font-family:'Alegreya',serif;font-size:clamp(26px,4vw,40px);font-weight:700;color:#fff;line-height:1.18;margin-bottom:10px;max-width:760px}
+.hero-framework{font-family:'Alegreya',serif;font-size:clamp(17px,2.4vw,23px);font-weight:700;color:var(--brown);line-height:1.25;margin-bottom:14px;max-width:760px}
+.hero-subtitle{font-size:16px;color:rgba(255,255,255,0.65);margin-bottom:28px;max-width:640px;font-style:italic;font-family:'Alegreya',serif}
+.hero-rec-label{font-size:10px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:var(--brown);margin-bottom:10px}
+.hero-rec{background:rgba(255,255,255,0.1);border-left:3px solid var(--brown);border-radius:0 8px 8px 0;padding:16px 20px;max-width:720px}
+.hero-rec p{font-size:15px;line-height:1.65;color:rgba(255,255,255,0.92);font-weight:400}
 
-  /* Hero */
-  .hero{padding:36px 0 30px;border-bottom:1px solid var(--line-soft);}
-  .hero .eyebrow{margin-bottom:20px;}
-  .hero h1{font-size:clamp(31px,5.1vw,47px);margin:0 0 20px;max-width:24ch;font-weight:800;color:var(--nabawi-dark);}
-  .hero h1 em{font-style:italic;color:var(--pinecone);font-weight:700;}
-  .hero .lede{font-size:19.5px;max-width:62ch;margin:0;}
+/* PAGE LAYOUT */
+.page{display:grid;grid-template-columns:1fr 268px;min-height:100vh}
+@media(max-width:768px){.page{grid-template-columns:1fr}}
 
-  /* Scale band */
-  .band{background:var(--white);border-top:1px solid var(--line-soft);border-bottom:1px solid var(--line-soft);
-    padding:30px 0 26px;}
-  .band .lead{font-family:"Alegreya",serif;font-size:19px;font-weight:600;color:var(--nabawi-dark);margin-bottom:18px;}
-  .stats{display:grid;grid-template-columns:repeat(3,1fr);gap:26px;}
-  .stat .fig{font-family:"Alegreya",serif;font-weight:800;font-size:38px;color:var(--nabawi);line-height:1;}
-  .stat .lab{font-size:14px;color:var(--kiswah);margin-top:8px;}
-  .band .foot{font-size:13px;color:var(--nabawi-mid);margin:20px 0 0;font-style:italic;}
+/* MAIN */
+main{padding:40px 36px 80px;border-right:1px solid var(--border);min-width:0}
+@media(max-width:768px){main{padding:28px 20px 56px;border-right:none}}
 
-  /* Sections */
-  section{padding:40px 0;border-bottom:1px solid var(--line-soft);}
-  .sec-head{display:flex;align-items:baseline;gap:16px;margin-bottom:20px;}
-  .sec-num{font-family:"Alegreya",serif;font-size:15px;color:var(--pinecone);font-weight:700;padding-top:5px;flex:0 0 auto;}
-  h2{font-size:clamp(25px,3.7vw,32px);margin:0;color:var(--nabawi-dark);}
-  .sec-body{max-width:64ch;}
-  .sec-body p:last-child{margin-bottom:0;}
-  strong{font-weight:700;color:var(--nabawi-dark);}
+/* SIDEBAR */
+aside{padding:36px 22px;background:var(--white);display:flex;flex-direction:column;gap:32px;position:sticky;top:0;height:100vh;overflow-y:auto}
+@media(max-width:768px){aside{position:static;height:auto;padding:24px 20px;border-top:1px solid var(--border);display:grid;grid-template-columns:1fr 1fr;gap:20px}}
+@media(max-width:480px){aside{grid-template-columns:1fr}}
 
-  ul.brand{list-style:none;padding:0;margin:6px 0 0;}
-  ul.brand > li{position:relative;padding-left:30px;margin-bottom:16px;max-width:64ch;}
-  ul.brand > li::before{content:"\2738";position:absolute;left:0;top:0;color:var(--pinecone);font-size:15px;line-height:1.7;}
-  ul.brand > li h3{font-size:18.5px;margin:0 0 3px;color:var(--nabawi-dark);}
-  ul.brand > li p{margin:0;font-size:15.8px;}
+/* SECTION */
+.section{margin-bottom:44px}
+.section-label{font-size:10px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:var(--brown);margin-bottom:8px;display:flex;align-items:center;gap:10px}
+.section-label::after{content:'';flex:1;height:1px;background:var(--arabica)}
+h2{font-family:'Alegreya',serif;font-size:25px;font-weight:700;line-height:1.22;color:var(--green);margin-bottom:14px}
+h3{font-size:11px;font-weight:700;color:var(--text);margin:22px 0 8px;letter-spacing:0.07em;text-transform:uppercase}
+p{color:var(--text-mid);margin-bottom:13px}
+p:last-child{margin-bottom:0}
+strong{color:var(--text);font-weight:700}
+ul{margin:8px 0 13px 0;padding-left:0;list-style:none}
+ul li{color:var(--text-mid);padding:4px 0 4px 18px;position:relative;font-size:14.5px;line-height:1.6}
+ul li::before{content:'•';position:absolute;left:0;color:var(--brown);font-weight:700}
+.strand ul li::before{content:'✸';color:var(--brown);font-size:11px;top:5px}
 
-  /* Diagram + zoom */
-  .figure{margin:30px 0 4px;}
-  .figure svg{width:100%;height:auto;display:block;}
-  .figcap{font-size:11.5px;letter-spacing:.08em;color:var(--nabawi-mid);margin-top:14px;text-transform:uppercase;font-weight:700;}
-  .zoomable{position:relative;cursor:zoom-in;border-radius:4px;transition:box-shadow .18s ease;}
-  .zoomable:hover,.zoomable:focus-visible{box-shadow:0 0 0 2px var(--pinecone);outline:none;}
-  .zoom-hint{position:absolute;top:10px;right:10px;display:inline-flex;align-items:center;gap:6px;
-    background:var(--nabawi);color:var(--white);font-family:"Alegreya Sans",sans-serif;font-size:11px;
-    font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:5px 10px;border-radius:20px;opacity:.9;pointer-events:none;}
-  .zoom-hint svg{width:13px;height:13px;display:block;}
-  .lightbox{position:fixed;inset:0;z-index:1000;display:none;background:rgba(28,68,51,.94);padding:24px;
-    align-items:center;justify-content:center;}
-  .lightbox.open{display:flex;}
-  .lightbox-inner{background:var(--mist);border-radius:6px;padding:26px;width:100%;max-width:1200px;
-    max-height:92vh;overflow:auto;position:relative;box-shadow:0 24px 60px rgba(0,0,0,.4);}
-  .lightbox-inner svg{width:100%;height:auto;display:block;}
-  .lightbox-cap{font-size:12px;letter-spacing:.06em;color:var(--nabawi-mid);text-transform:uppercase;
-    font-weight:700;margin-top:16px;text-align:center;}
-  .lightbox-close{position:absolute;top:12px;right:12px;width:38px;height:38px;border-radius:50%;border:none;
-    background:var(--nabawi);color:var(--white);font-size:20px;line-height:1;cursor:pointer;display:grid;place-items:center;}
-  .lightbox-close:hover{background:var(--nabawi-dark);}
-  .lightbox-close:focus-visible{outline:2px solid var(--pinecone);outline-offset:2px;}
+/* CALLOUT */
+.callout{border-left:3px solid var(--brown);background:var(--brown-light);border-radius:0 8px 8px 0;padding:15px 18px;margin:18px 0}
+.callout p{font-size:14.5px;font-weight:500;color:var(--green);margin:0;line-height:1.6}
+.callout-green{border-left-color:var(--green);background:var(--green-light)}
+.callout-green p{color:var(--green-dark)}
 
-  /* Gaps */
-  .gap{display:grid;grid-template-columns:auto 1fr;gap:22px;padding:22px 0;border-top:1px solid var(--line);}
-  .gaps .gap:last-child{border-bottom:1px solid var(--line);}
-  .gap-id{font-family:"Alegreya",serif;font-size:15px;color:var(--pinecone);font-weight:700;padding-top:3px;}
-  .gap h3{font-size:19.5px;margin:0 0 6px;color:var(--nabawi-dark);}
-  .gap p{margin:0;font-size:15.8px;}
+/* STRAND CARDS */
+.strand{border:1px solid var(--border);border-radius:var(--radius);padding:20px 22px;margin-bottom:13px;background:var(--white);border-left:4px solid var(--green);position:relative}
+.strand-num{font-size:10px;font-weight:700;color:var(--brown);letter-spacing:0.12em;text-transform:uppercase;margin-bottom:5px}
+.strand h3{margin:0 0 10px;font-size:13.5px;color:var(--green);letter-spacing:0;text-transform:none;font-weight:700}
+.strand p,.strand ul{font-size:13.5px;margin:0}
+.strand ul{margin-top:6px}
+.strand ul li{font-size:13px}
 
-  /* Opportunity */
-  .opps{display:grid;grid-template-columns:repeat(4,1fr);gap:0;margin-top:10px;}
-  .opp{padding:20px 22px;border-right:1px solid var(--line);}
-  .opps .opp:first-child{padding-left:0;}
-  .opps .opp:last-child{border-right:none;padding-right:0;}
-  .opp .n{font-size:11px;letter-spacing:.16em;color:var(--nabawi-mid);text-transform:uppercase;font-weight:700;}
-  .opp h3{font-size:17.5px;margin:8px 0 4px;color:var(--nabawi-dark);}
-  .opp p{font-size:14px;margin:0;}
+/* FUNCTION GRID */
+.fn-grid{display:grid;grid-template-columns:1fr 1fr;gap:11px;margin:16px 0}
+@media(max-width:560px){.fn-grid{grid-template-columns:1fr}}
+.fn-card{border:1px solid var(--border);border-radius:var(--radius);padding:18px 20px;background:var(--white);border-top:4px solid var(--green)}
+.fn-card .fn-num{font-family:'Alegreya',serif;font-size:20px;font-weight:700;color:var(--brown);line-height:1;margin-bottom:7px}
+.fn-card h3{margin:0 0 7px;font-size:14px;color:var(--green);letter-spacing:0;text-transform:none;font-weight:700}
+.fn-card p{font-size:13px;margin:0;line-height:1.55}
 
-  /* Scan cards */
-  .scan{display:grid;grid-template-columns:1fr 1fr;gap:26px;margin-top:10px;}
-  .scan-card{background:var(--white);border:1px solid var(--line);border-radius:4px;padding:24px 26px;}
-  .scan-card .flag{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--pinecone);font-weight:700;margin-bottom:8px;}
-  .scan-card h3{font-size:19px;margin:0 0 8px;color:var(--nabawi-dark);}
-  .scan-card p{font-size:15px;margin:0;}
-  .scan-note{margin-top:22px;background:var(--nabawi);color:#E7F1EB;border-radius:4px;padding:20px 26px;}
-  .scan-note strong{color:var(--white);}
-  .scan-note p{margin:0;font-size:15.5px;}
+/* SCAN GRID */
+.scan-card{border:1px solid var(--border);border-radius:var(--radius);padding:16px 20px;margin-bottom:11px;background:var(--white)}
+.scan-flag{font-size:10px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--brown);margin-bottom:6px}
+.scan-card h3{margin:0 0 6px;font-size:14px;color:var(--green);letter-spacing:0;text-transform:none;font-weight:700}
+.scan-card p{font-size:13.5px;margin:0;line-height:1.6}
 
-  /* Alignment / ESS */
-  .ess-call{margin:28px 0 4px;text-align:center;}
-  .ess-call .hl{font-family:"Alegreya",serif;font-weight:700;font-size:clamp(20px,3vw,26px);color:var(--kiswah);
-    background-image:linear-gradient(120deg,rgba(247,175,41,.62),rgba(247,175,41,.62));background-repeat:no-repeat;
-    background-size:0% 42%;background-position:0 82%;transition:background-size .9s cubic-bezier(.4,0,.2,1);
-    line-height:1.55;padding:0 3px;-webkit-box-decoration-break:clone;box-decoration-break:clone;}
-  .ess-call .hl.in{background-size:100% 42%;}
-  .draft-badge{display:inline-block;font-family:"Alegreya Sans",sans-serif;font-size:11px;font-weight:700;letter-spacing:.18em;
-    text-transform:uppercase;color:var(--yaqoot);border:1.5px solid var(--yaqoot);border-radius:4px;padding:3px 10px;margin-bottom:8px;}
-  @media (prefers-reduced-motion:reduce){.ess-call .hl{transition:none;background-size:100% 42%;}}
+/* CASE STUDY */
+.case-card{border:1px solid var(--border);border-radius:var(--radius);padding:18px 20px;margin-bottom:12px;background:var(--white);border-left:4px solid var(--brown)}
+.case-tag{font-size:10px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--brown);margin-bottom:6px}
+.case-card h3{margin:0 0 8px;font-size:14.5px;color:var(--green);letter-spacing:0;text-transform:none;font-weight:700}
+.case-card p{font-size:13.5px;margin:0 0 8px;line-height:1.6}
+.case-card .case-result{font-size:13px;color:var(--green-dark);background:var(--green-light);border-radius:6px;padding:9px 12px;margin:0;line-height:1.55}
+.case-card .case-result strong{color:var(--green-dark)}
 
-  /* Model */
-  .model{display:grid;grid-template-columns:1fr 1fr;gap:30px;margin-top:10px;}
-  .model h3{font-size:18.5px;margin:0 0 8px;color:var(--nabawi-dark);}
-  .model p{font-size:15.5px;margin:0;}
+/* TEAM GRID */
+.team-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:14px 0}
+@media(max-width:520px){.team-grid{grid-template-columns:1fr}}
+.team-card{border:1px solid var(--border);border-radius:8px;padding:14px 16px;background:var(--white)}
+.team-name{font-size:13px;font-weight:700;color:var(--text);margin-bottom:2px}
+.team-role{font-size:11px;color:var(--brown);font-weight:600;letter-spacing:0.05em;text-transform:uppercase;margin-bottom:6px}
+.team-desc{font-size:12.5px;color:var(--text-muted);line-height:1.55}
 
-  /* Why IF */
-  .whyif{background:var(--white);border:1px solid var(--line);border-left:4px solid var(--pinecone);
-    border-radius:4px;padding:30px 34px;margin-top:8px;}
-  .whyif ul.brand{margin-top:2px;}
-  .whyif ul.brand > li:last-child{margin-bottom:0;}
+/* PHASE TIMELINE */
+.phase-row{display:grid;grid-template-columns:96px 1fr;gap:0;margin-bottom:0;border-bottom:1px solid var(--border)}
+.phase-row:last-child{border-bottom:none}
+.phase-label{padding:14px 12px 14px 0;font-size:10px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--brown);line-height:1.3}
+.phase-content{padding:14px 0;border-left:1px solid var(--border);padding-left:16px}
+.phase-title{font-size:13px;font-weight:700;color:var(--green);margin-bottom:4px}
+.phase-desc{font-size:12.5px;color:var(--text-muted);line-height:1.55;margin:0}
 
-  /* Timeline */
-  .timeline{margin-top:14px;}
-  .phase{display:grid;grid-template-columns:118px 1fr;gap:24px;padding:0 0 26px;}
-  .timeline .phase:last-child{padding-bottom:0;}
-  .phase-when{padding-top:2px;}
-  .phase-when .ph{font-family:"Alegreya",serif;font-weight:700;font-size:17px;color:var(--nabawi);}
-  .phase-when .mo{font-size:12px;color:var(--nabawi-mid);letter-spacing:.04em;text-transform:uppercase;font-weight:700;}
-  .phase-body{border-left:2px solid var(--line);padding:0 0 4px 24px;position:relative;}
-  .phase-body::before{content:"";position:absolute;left:-7px;top:5px;width:12px;height:12px;border-radius:50%;
-    background:var(--pinecone);border:2px solid var(--mist);}
-  .phase.key .phase-body::before{background:var(--nabawi);}
-  .phase-body h3{font-size:18px;margin:0 0 4px;color:var(--nabawi-dark);}
-  .phase-body p{font-size:15px;margin:0;}
-  .phase.key .phase-body h3{color:var(--nabawi);}
+/* POLICY HOOKS */
+.hook-list{margin:12px 0}
+.hook{display:flex;gap:12px;padding:11px 0;border-bottom:1px solid var(--border)}
+.hook:last-child{border-bottom:none}
+.hook-icon{width:28px;height:28px;border-radius:6px;background:var(--green-light);display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:2px}
+.hook-icon svg{width:14px;height:14px;fill:var(--green)}
+.hook-text{font-size:13.5px;color:var(--text-mid);line-height:1.55}
+.hook-text strong{color:var(--text)}
 
-  /* Metrics */
-  .metrics{display:grid;grid-template-columns:1fr 1fr;gap:0 40px;margin-top:8px;}
-  .metric{display:grid;grid-template-columns:auto 1fr;gap:16px;padding:18px 0;border-top:1px solid var(--line);}
-  .metric .mid{font-family:"Alegreya",serif;font-weight:800;font-size:15px;color:var(--pinecone);padding-top:2px;}
-  .metric h3{font-size:16.5px;margin:0 0 3px;color:var(--nabawi-dark);}
-  .metric p{font-size:14px;margin:0;color:var(--kiswah);}
+/* MANDATE ALIGNMENT */
+.align-row{border-left:3px solid var(--brown);background:var(--brown-light);border-radius:0 8px 8px 0;padding:12px 16px;margin-bottom:9px}
+.align-mandate{font-size:12.5px;font-weight:700;color:var(--green);margin-bottom:3px;line-height:1.45}
+.align-cals{font-size:13px;color:var(--text-mid);line-height:1.55;margin:0}
+.align-cals strong{color:var(--text)}
 
-  /* Ask */
-  .ask{background:var(--nabawi);color:#DDECE3;border-radius:4px;padding:40px 42px;margin:8px 0 0;}
-  .ask .eyebrow{color:var(--sand);}
-  .ask h2{color:var(--white);margin:14px 0 24px;font-size:28px;}
-  .ask-grid{display:grid;grid-template-columns:1fr 1fr;gap:26px 42px;}
-  .ask-item{border-top:1px solid rgba(255,255,255,.18);padding-top:16px;}
-  .ask-item .lab{font-size:11px;letter-spacing:.15em;text-transform:uppercase;color:var(--sand);margin-bottom:8px;font-weight:700;}
-  .ask-item .big{font-family:"Alegreya",serif;font-size:31px;color:var(--white);line-height:1;font-weight:800;}
-  .ask-item .big span{font-size:16px;color:#A7C4B4;font-weight:400;}
-  .ask-item p{font-size:14px;color:#B9D2C6;margin:9px 0 0;}
-  .fte{width:100%;border-collapse:collapse;margin-top:24px;font-size:14px;}
-  .fte th{font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--sand);text-align:left;
-    padding:0 0 10px;border-bottom:1px solid rgba(255,255,255,.24);font-weight:700;}
-  .fte td{padding:12px 0;border-bottom:1px solid rgba(255,255,255,.11);color:#CFE0D6;vertical-align:top;}
-  .fte td.n{color:var(--white);font-variant-numeric:tabular-nums;text-align:right;white-space:nowrap;}
-  .fte td:first-child{color:var(--white);font-weight:500;}
+/* OUTCOME STATS */
+.outcome-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;margin:16px 0}
+@media(max-width:520px){.outcome-grid{grid-template-columns:1fr 1fr}}
+.outcome-card{background:var(--white);border:1px solid var(--border);border-radius:8px;padding:14px;text-align:center}
+.outcome-num{font-family:'Alegreya',serif;font-size:26px;font-weight:700;color:var(--green);line-height:1;margin-bottom:4px}
+.outcome-lbl{font-size:11px;color:var(--text-muted);line-height:1.4}
 
-  /* Partners */
-  .partners{display:grid;grid-template-columns:repeat(2,1fr);gap:24px;margin-top:8px;}
-  .partner{border-top:3px solid var(--pinecone);padding-top:14px;}
-  .partner.confirmed{border-top-color:var(--nabawi);}
-  .partner .tag{font-size:11px;text-transform:uppercase;letter-spacing:.1em;color:var(--nabawi-mid);font-weight:700;margin-bottom:6px;}
-  .partner h3{font-size:17.5px;margin:0 0 6px;color:var(--nabawi-dark);}
-  .partner p{font-size:14px;margin:0;}
-  .shortlist{margin-top:26px;background:var(--white);border:1px solid var(--line);border-radius:4px;padding:24px 28px;}
-  .shortlist h3{font-size:17px;margin:0 0 12px;color:var(--nabawi-dark);}
-  .shortlist ul.brand > li{margin-bottom:12px;}
-  .shortlist ul.brand > li:last-child{margin-bottom:0;}
+/* SIDEBAR WIDGETS */
+.sw-label{font-size:10px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--green);margin-bottom:10px;padding-bottom:7px;border-bottom:2px solid var(--arabica)}
+.stat-pill{background:var(--green-light);border-radius:8px;padding:12px 14px;margin-bottom:7px}
+.stat-num{font-family:'Alegreya',serif;font-size:28px;font-weight:700;color:var(--green);line-height:1;margin-bottom:3px}
+.stat-lbl{font-size:11.5px;color:var(--text-muted);line-height:1.4}
 
-  /* Close + sign */
-  .close .sec-body p{max-width:64ch;}
-  .next{background:var(--white);border-left:4px solid var(--nabawi);border-radius:4px;padding:20px 26px;margin-top:22px;}
-  .next .lab{font-size:11px;letter-spacing:.15em;text-transform:uppercase;color:var(--nabawi-mid);font-weight:700;margin-bottom:6px;}
-  .next p{margin:0;font-size:16px;color:var(--kiswah);}
-  .signrow{display:grid;grid-template-columns:1fr 1fr;gap:36px;margin-top:38px;padding-top:24px;border-top:1px solid var(--line);}
-  .sign .name{font-family:"Alegreya",serif;font-size:20px;font-weight:700;color:var(--nabawi-dark);}
-  .sign .title{font-size:14px;margin-top:2px;}
-  .sign .org{font-size:12px;color:var(--nabawi-mid);text-transform:uppercase;letter-spacing:.08em;margin-top:6px;font-weight:700;}
+/* COST CASE */
+.cost-case{background:var(--green);border-radius:var(--radius);padding:20px 22px;margin:18px 0;color:white}
+.cost-case-label{font-size:10px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--brown);margin-bottom:10px}
+.cost-case p{color:rgba(255,255,255,0.85);font-size:14px;line-height:1.65;margin-bottom:8px}
+.cost-case p:last-child{margin-bottom:0}
+.cost-case strong{color:white}
+.cost-case .big{font-family:'Alegreya',serif;font-size:30px;font-weight:700;color:#fff;line-height:1.1;display:block;margin:4px 0 2px}
 
-  /* Sources */
-  .sources{padding:30px 0 6px;}
-  .sources h3{font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:var(--nabawi-mid);margin:0 0 12px;}
-  .sources ol{margin:0;padding-left:18px;font-size:12.5px;color:var(--kiswah);line-height:1.7;}
+/* ASK SECTION */
+.ask-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:14px 0}
+@media(max-width:520px){.ask-grid{grid-template-columns:1fr}}
+.ask-card{border:2px solid var(--green);border-radius:8px;padding:16px 18px;background:var(--white)}
+.ask-card.primary{background:var(--green);border-color:var(--green)}
+.ask-num{font-size:10px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--brown);margin-bottom:5px}
+.ask-card.primary .ask-num{color:rgba(255,255,255,0.6)}
+.ask-title{font-size:14px;font-weight:700;color:var(--green);line-height:1.3}
+.ask-card.primary .ask-title{color:white}
+.ask-desc{font-size:12px;color:var(--text-muted);margin-top:4px;line-height:1.5}
+.ask-card.primary .ask-desc{color:rgba(255,255,255,0.7)}
 
-  footer{padding:20px 0 60px;font-size:11.5px;color:var(--nabawi-mid);letter-spacing:.04em;font-weight:500;}
+/* DATA TABLE */
+.data-table{width:100%;border-collapse:collapse;font-size:13px;margin:16px 0;overflow-x:auto;display:block}
+@media(min-width:600px){.data-table{display:table}}
+.data-table th{background:var(--green-light);color:var(--green);font-size:10px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;padding:9px 11px;text-align:left;border-bottom:2px solid var(--border);white-space:nowrap}
+.data-table td{padding:9px 11px;border-bottom:1px solid var(--border);color:var(--text-mid);vertical-align:top}
+.data-table td.num{text-align:right;white-space:nowrap;font-variant-numeric:tabular-nums}
+.data-table th.num{text-align:right}
+.data-table tr:last-child td{border-bottom:none}
+.data-table .total-row td{background:var(--green-light);font-weight:700;color:var(--green)}
+.data-table .section-head td{background:#f0f4f2;font-size:10px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--green);padding:8px 11px 4px;border-bottom:none}
 
-  @media (max-width:640px){
-    body{font-size:16.5px;}
-    .stats{grid-template-columns:1fr;gap:18px;}
-    .opps{grid-template-columns:1fr 1fr;}
-    .opp{border-right:none;border-bottom:1px solid var(--line);padding:16px 0;}
-    .opps .opp:nth-child(odd){padding-left:0;padding-right:18px;border-right:1px solid var(--line);}
-    .opps .opp:nth-child(even){padding-left:18px;}
-    .model,.ask-grid,.partners,.signrow,.scan,.metrics{grid-template-columns:1fr;}
-    .ask,.whyif,.scan-card,.shortlist{padding:24px 22px;}
-    .metric{border-top:1px solid var(--line);}
-    .gap{grid-template-columns:1fr;gap:6px;}
-    .phase{grid-template-columns:1fr;gap:6px;}
-    .phase-body{border-left:none;padding-left:0;}
-    .phase-body::before{display:none;}
-    .memo .row{flex-wrap:wrap;}
-  }
-  @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto;}}
+/* FOOTNOTE */
+.fineprint{font-size:11.5px;color:var(--text-muted);line-height:1.55;margin-top:10px;font-style:italic}
 
-  /* Sandwich nav */
-  section[id]{scroll-margin-top:24px;}
-  .nav-toggle{position:fixed;top:18px;right:18px;z-index:950;width:46px;height:46px;border-radius:50%;border:none;
-    background:var(--nabawi);color:var(--white);cursor:pointer;display:grid;place-items:center;box-shadow:0 4px 14px rgba(28,68,51,.28);}
-  .nav-toggle:hover{background:var(--nabawi-dark);}
-  .nav-toggle:focus-visible{outline:2px solid var(--pinecone);outline-offset:3px;}
-  .nav-toggle svg{width:22px;height:22px;display:block;}
-  .nav-toggle .ic-close{display:none;}
-  .nav-toggle[aria-expanded="true"] .ic-menu{display:none;}
-  .nav-toggle[aria-expanded="true"] .ic-close{display:block;}
-  .nav-overlay{position:fixed;inset:0;z-index:900;background:rgba(28,68,51,.35);opacity:0;visibility:hidden;transition:opacity .2s ease,visibility .2s ease;}
-  .nav-overlay.open{opacity:1;visibility:visible;}
-  .nav-panel{position:fixed;top:0;right:0;z-index:940;height:100%;width:292px;max-width:82vw;background:var(--mist);
-    box-shadow:-8px 0 30px rgba(0,0,0,.18);transform:translateX(100%);transition:transform .24s ease;overflow-y:auto;padding:76px 12px 24px;}
-  .nav-panel.open{transform:translateX(0);}
-  .nav-panel .nav-title{font-family:"Alegreya",serif;font-weight:700;font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--nabawi-mid);padding:0 18px 10px;}
-  .nav-panel a{display:block;text-decoration:none;color:var(--kiswah);font-size:15px;padding:9px 18px;border-radius:6px;line-height:1.3;}
-  .nav-panel a .idx{font-family:"Alegreya",serif;color:var(--pinecone);font-weight:700;font-size:12px;margin-right:10px;}
-  .nav-panel a:hover,.nav-panel a:focus-visible{background:var(--white);color:var(--nabawi-dark);outline:none;}
-  @media (prefers-reduced-motion:reduce){.nav-panel,.nav-overlay,.nav-toggle .bar{transition:none;}}
-  @media print{.nav-toggle,.nav-panel,.nav-overlay{display:none !important;}}
+/* TOC MENU */
+.toc-btn{background:none;border:none;cursor:pointer;padding:6px;display:flex;flex-direction:column;gap:5px;justify-content:center;align-items:center;border-radius:6px;transition:background 0.15s}
+.toc-btn:hover{background:rgba(255,255,255,0.12)}
+.toc-btn span{display:block;width:20px;height:2px;background:rgba(255,255,255,0.85);border-radius:2px;transition:transform 0.25s, opacity 0.25s}
+.toc-btn.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+.toc-btn.open span:nth-child(2){opacity:0}
+.toc-btn.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+.toc-drawer{position:fixed;top:0;right:-300px;width:288px;height:100vh;background:var(--white);z-index:1000;box-shadow:-4px 0 24px rgba(0,0,0,0.12);transition:right 0.3s cubic-bezier(0.4,0,0.2,1);display:flex;flex-direction:column;overflow:hidden}
+.toc-drawer.open{right:0}
+.toc-drawer-header{background:var(--green);padding:18px 20px;display:flex;align-items:center;justify-content:space-between;flex-shrink:0}
+.toc-drawer-title{font-size:11px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:rgba(255,255,255,0.85)}
+.toc-close{background:none;border:none;cursor:pointer;color:rgba(255,255,255,0.7);font-size:20px;line-height:1;padding:2px 4px;border-radius:4px}
+.toc-close:hover{color:white;background:rgba(255,255,255,0.12)}
+.toc-list{padding:16px 0;overflow-y:auto;flex:1}
+.toc-item{display:block;padding:10px 20px;text-decoration:none;color:var(--text-mid);font-size:13.5px;line-height:1.4;border-left:3px solid transparent;transition:all 0.15s;cursor:pointer}
+.toc-item:hover{color:var(--green);background:var(--green-light);border-left-color:var(--brown)}
+.toc-item.active{color:var(--green);background:var(--green-light);border-left-color:var(--green);font-weight:600}
+.toc-item-label{font-size:10px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--brown);display:block;margin-bottom:2px}
+.toc-overlay{position:fixed;inset:0;background:rgba(0,0,0,0.3);z-index:999;opacity:0;pointer-events:none;transition:opacity 0.3s}
+.toc-overlay.open{opacity:1;pointer-events:all}
+
+/* FOOTER */
+.footer{background:var(--green);padding:24px 32px;display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap}
+.footer-left{color:rgba(255,255,255,0.9);font-size:13px;line-height:1.7}
+.footer-left strong{color:white}
 </style>
 </head>
 <body>
-<button class="nav-toggle" id="navToggle" aria-label="Open section menu" aria-expanded="false" aria-controls="navPanel">
-  <svg class="ic-menu" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
-  <svg class="ic-close" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
-</button>
-<div class="nav-overlay" id="navOverlay"></div>
-<nav class="nav-panel" id="navPanel" aria-label="Section navigation" aria-hidden="true">
-  <div class="nav-title">Contents</div>
-  <a href="#s-context"><span class="idx">01</span>Context</a>
-    <a href="#s-onground"><span class="idx">02</span>On the ground</a>
-    <a href="#s-gaps"><span class="idx">03</span>The gaps</a>
-    <a href="#s-opportunity"><span class="idx">04</span>Opportunity</a>
-    <a href="#s-dividend"><span class="idx">05</span>Second dividend</a>
-    <a href="#s-elsewhere"><span class="idx">06</span>Proven elsewhere</a>
-    <a href="#s-alignment"><span class="idx">07</span>Alignment</a>
-    <a href="#s-model"><span class="idx">08</span>What we build</a>
-    <a href="#s-whyif"><span class="idx">09</span>Why IslamicFamily</a>
-    <a href="#s-partners"><span class="idx">10</span>Anchor partners</a>
-    <a href="#s-timeline"><span class="idx">11</span>Timeline</a>
-    <a href="#s-metrics"><span class="idx">12</span>Metrics</a>
-    <a href="#s-ask"><span class="idx">✸</span>The ask</a>
-    <a href="#s-close"><span class="idx">13</span>Why now</a>
-    
-</nav>
 
+<!-- Header -->
+<header class="header">
+  <div class="header-logo">
+    <img src="https://prod-files-secure.s3.us-west-2.amazonaws.com/a0ff1b5b-7f0b-4f5c-8950-900ae6f4e89a/28538a70-1d35-404b-94c3-7093521a32cb/Horizontal_-_Full_Colour.png" alt="IslamicFamily"
+      onerror="this.outerHTML='<span style=\'font-family:Alegreya Sans,sans-serif;color:white;font-size:18px;font-weight:700\'>IslamicFamily</span>'">
+  </div>
+  <div style="display:flex;align-items:center;gap:12px">
+    <span class="header-tag">Concept Proposal · Confidential Draft</span>
+    <button class="toc-btn" id="tocBtn" aria-label="Table of contents">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
 
-<div class="wrap">
+<!-- TOC Overlay -->
+<div class="toc-overlay" id="tocOverlay"></div>
 
-  <!-- LETTERHEAD -->
-  <div class="letterhead">
-    <div class="cobrand">
-      <div class="cb-org"><div class="nm">Edmonton Fire Rescue Services</div><div class="sb">Office of the Fire Chief</div></div>
-      <div class="cb-plus" aria-hidden="true">&amp;</div>
-      <div class="cb-org"><div class="nm">IslamicFamily</div><div class="sb">Serving Edmonton since 1986</div></div>
+<!-- TOC Drawer -->
+<div class="toc-drawer" id="tocDrawer">
+  <div class="toc-drawer-header">
+    <span class="toc-drawer-title">Contents</span>
+    <button class="toc-close" id="tocClose">✕</button>
+  </div>
+  <nav class="toc-list">
+    <a class="toc-item" data-target="sec-mandate"><span class="toc-item-label">01</span>Mission Alignment</a>
+    <a class="toc-item" data-target="sec-gap"><span class="toc-item-label">02</span>The Problem</a>
+    <a class="toc-item" data-target="sec-what"><span class="toc-item-label">03</span>What We Propose</a>
+    <a class="toc-item" data-target="sec-track"><span class="toc-item-label">04</span>Why IslamicFamily</a>
+    <a class="toc-item" data-target="sec-model"><span class="toc-item-label">05</span>How It Works</a>
+    <a class="toc-item" data-target="sec-fund"><span class="toc-item-label">06</span>The Philanthropy Engine</a>
+    <a class="toc-item" data-target="sec-diversion"><span class="toc-item-label">07</span>Dispute Resolution</a>
+    <a class="toc-item" data-target="sec-predatory"><span class="toc-item-label">08</span>Predatory Harm</a>
+    <a class="toc-item" data-target="sec-scan"><span class="toc-item-label">09</span>Environmental Scan</a>
+    <a class="toc-item" data-target="sec-case"><span class="toc-item-label">10</span>The Business Case</a>
+    <a class="toc-item" data-target="sec-value"><span class="toc-item-label">11</span>System Value</a>
+    <a class="toc-item" data-target="sec-plan"><span class="toc-item-label">12</span>Work Plan</a>
+    <a class="toc-item" data-target="sec-budget"><span class="toc-item-label">13</span>Budget</a>
+    <a class="toc-item" data-target="sec-partners"><span class="toc-item-label">14</span>Partners</a>
+    <a class="toc-item" data-target="sec-policy"><span class="toc-item-label">15</span>Policy Alignment</a>
+    <a class="toc-item" data-target="sec-ask"><span class="toc-item-label">16</span>The Ask</a>
+  </nav>
+</div>
+
+<!-- Hero -->
+<div class="hero">
+  <div class="hero-meta">
+    <div class="hero-meta-item"><span class="hero-meta-label">To</span><span class="hero-meta-value">The Alberta Law Foundation · Program &amp; Operating Grants</span></div>
+    <div class="hero-meta-item"><span class="hero-meta-label">Prepared by</span><span class="hero-meta-value">IslamicFamily</span></div>
+    <div class="hero-meta-item"><span class="hero-meta-label">Date</span><span class="hero-meta-value">August 2026</span></div>
+  </div>
+  <h1>Community Justice Architecture</h1>
+  <div class="hero-framework">Making legal support accessible &amp; cost-effective</div>
+  <div class="hero-subtitle">Unlocking pro bono and low-bono legal capacity for Alberta communities, and giving community philanthropy a transparent, accountable channel to fund it.</div>
+  <div class="hero-rec-label">The Core Idea</div>
+  <div class="hero-rec">
+    <p>Between the legal-aid cutoff and the cost of a private lawyer sits a large group of Albertans with real legal problems and no real options. Their communities already contain qualified lawyers willing to help, and already practise generous, organized charitable giving. What is missing is the infrastructure that connects vetted legal capacity to the people who need it, and channels community philanthropy to pay for it transparently. A focused, Foundation-funded pilot builds that infrastructure once, and it pays for itself in reduced demand on Legal Aid, the courts, and downstream social services.</p>
+  </div>
+</div>
+
+<div class="page">
+<main>
+
+  <!-- MANDATE ALIGNMENT -->
+  <div class="section" id="sec-mandate">
+    <div class="section-label">Mission Alignment</div>
+    <h2>This delivers on the Foundation's own objects</h2>
+    <p>This proposal maps directly onto the Alberta Law Foundation's mission: to advance access to justice by supporting collaboration and innovation in the delivery of legal services and the administration of justice in Alberta. Community Amplified Legal Supports is a community-led, sustainable way to advance several of the Foundation's funding objects at once, with priority given, as the Foundation directs, to Albertans facing vulnerabilities and barriers.</p>
+
+    <div class="align-row">
+      <div class="align-mandate">Foundation object: provide legal information and education so Albertans understand their rights and obligations, and what they can expect from the justice system.</div>
+      <p class="align-cals">This is CALS on one side of the ledger: multilingual public legal education and "know your rights" literacy, delivered where communities actually gather.</p>
     </div>
-    <div class="lh-meta"><span class="draft-badge">Draft</span><br>A joint proposal to the Government of Canada<br><span class="placeholder">[Date]</span></div>
+    <div class="align-row">
+      <div class="align-mandate">Foundation object: provide direct services, such as legal advice or representation, in response to genuine need, with a focus on individuals facing vulnerabilities.</div>
+      <p class="align-cals">This is the other side: warm connection to vetted, qualified counsel, with a philanthropic fund covering the affordability gap so that advice actually reaches the client.</p>
+    </div>
+    <div class="align-row">
+      <div class="align-mandate">Foundation priority: organizations serving individuals facing barriers, with the cultural competency, trauma-informed care, and newcomer focus reflected in the Foundation's own granting.</div>
+      <p class="align-cals">CALS is built for exactly the barrier-compounded Albertan: language, literacy, disability, newcomer status, or distrust. Its navigator model shares the justice-navigation ethos the Foundation is already investing in.</p>
+    </div>
+    <div class="align-row">
+      <div class="align-mandate">Foundation strategic goal: invest in sustainable, effective initiatives with demonstrable impact, and build sector capacity as a convener.</div>
+      <p class="align-cals">CALS pairs a one-time build with a community-philanthropy engine that sustains the help after the grant ends, and it convenes the bar's latent pro bono capacity into an organized, accountable service.</p>
+    </div>
+    <div class="align-row">
+      <div class="align-mandate">Foundation object: undertake research that helps the law and the administration of justice evolve to meet Albertans' needs.</div>
+      <p class="align-cals">A core Year 1 deliverable is an audited evidence base, so CALS is not only a service but a documented, replicable model that other Alberta communities can adopt.</p>
+    </div>
   </div>
 
-  <!-- MEMO -->
-  <div class="memo">
-    <div class="row"><div class="k">To</div><div class="v">The Honourable Eleanor Olszewski<br>Minister of Emergency Management and Community Resilience, Government of Canada</div></div>
-    <div class="row"><div class="k">From</div><div class="v">David Lazenby, Fire Chief, Edmonton Fire Rescue Services<br>Omar Yaqub, Servant of Servants, IslamicFamily</div></div>
-    <div class="row"><div class="k">Re</div><div class="v">Building the community-anchor layer of Edmonton's emergency social services: a coordinated preparedness proposal</div></div>
-  </div>
+  <!-- THE PROBLEM -->
+  <div class="section" id="sec-gap">
+    <div class="section-label">The Problem</div>
+    <h2>The problem is bigger than a funding gap</h2>
+    <p>It is tempting to describe this as a thin "missing middle" of people who earn just too much for legal aid. The reality is broader. Across the whole low-to-middle income range, Albertans cannot reliably access legal help. Legal Aid Alberta is stretched, its expenses nearly doubling in a decade from roughly $72 million in 2014 to over $138 million in 2024, and it is concentrated by design on criminal, child-protection, and some family and immigration matters, which leaves most everyday civil problems uncovered even for many who qualify. Just above the eligibility line, people have no funded option at all, against private fees that run to hundreds of dollars an hour. This is an access failure across a wide band of the population, not a narrow slice.</p>
+    <p>And it compounds. Add any barrier, a first language other than English, limited literacy, a disability, unfamiliarity with Canadian systems, or distrust earned from a bad experience, and the difficulty does not simply add up, it multiplies. National research by the Canadian Forum on Civil Justice found that within any three-year period, roughly half of Canadian adults, about 11.4 million people, experience a serious civil or family legal problem, and that the average person who spends money trying to resolve one spends about $6,100. Federal Department of Justice research found that for most immigrant participants, simple lack of information was the main barrier. The people who most need help are the ones for whom the system is least navigable, and that is exactly where predatory actors move in.</p>
+    <p>Meanwhile, communities are already trying to fill the gap themselves. When a neighbour faces a costly legal fight, families quietly pool money to help. This community-sponsored aid is generous, but it operates in the wilderness, with no structure, no vetting of who gets hired, no oversight of the funds, and no record of what the case recovered. It is goodwill without scaffolding, and it is invisible to the system that could learn from it.</p>
 
-  <!-- HERO -->
-  <div class="hero">
-    <div class="eyebrow">A proposal for coordinated response</div>
-    <h1>We can shelter thousands in a single night. We must also reliably connect people and families to the <em>communities</em> that will carry them through the years that follow.</h1>
-    <p class="lede">Edmonton Fire Rescue Services and IslamicFamily propose a coordinated, EFRS-led function that brings cultural agencies, faith communities, and social service organizations into emergency preparedness before the next disaster, not after it.</p>
-  </div>
-
-  <!-- SCALE BAND -->
-  <div class="band">
-    <div class="lead">Edmonton is already a reception city, again and again.</div>
-    <div class="stats">
-      <div class="stat"><div class="fig">2,813</div><div class="lab">Syrian refugees resettled in Edmonton since 2016, most within a compressed window.</div></div>
-      <div class="stat"><div class="fig">~31,000</div><div class="lab">Ukrainian evacuees registered across Alberta by 2023, in 194 communities.</div></div>
-      <div class="stat"><div class="fig">~88,000</div><div class="lab">People evacuated in the 2016 Fort McMurray wildfire, with Edmonton a primary host city.</div></div>
-    </div>
-    <p class="foot">Each wave was met with real goodwill, and coordinated, each time, largely from scratch.</p>
-  </div>
-
-  <!-- 01 CONTEXT -->
-  <section id="s-context">
-    <div class="sec-head"><div class="sec-num">01</div><h2>Displacement now arrives from every direction</h2></div>
-    <div class="sec-body">
-      <p>Edmonton receives people fleeing disaster from within our own province and from around the world. Wildfire and flood evacuations from Fort McMurray, Grande Prairie, and northern communities. Families arriving from conflict in Ukraine, in Gaza, and elsewhere. The trigger differs, but the arrival looks much the same: people land in our city with almost nothing, and they land quickly.</p>
-      <p>Edmonton Fire Rescue Services and its partners are good at the first hours. Shelter, registration, food, immediate safety: these are well drilled and reliably delivered. The problem begins the moment the immediate emergency ends and the longer work of resettlement begins. That is the stretch where the system frays, and it is the stretch this proposal is written to fix.</p>
-    </div>
-  </section>
-
-  <!-- 02 WHAT WE SEE -->
-  <section id="s-onground">
-    <div class="sec-head"><div class="sec-num">02</div><h2>What we see on the ground</h2></div>
-    <div class="sec-body">
-      <p>Support for evacuees and the civil society response around them is not coordinated. Community organizations do not know what their role is, or how they can help, while the agencies already doing the work are overwhelmed and under-resourced. Multiple organizations independently launch the same clothing drive while no one owns systems navigation. Mental health support arrives as a single model that does not fit the languages, faiths, and histories of the people in front of us.</p>
-      <p>This is not a new observation. In 2019 the Edmonton Chamber of Voluntary Organizations studied Edmonton's Syrian response and captured a lament heard again and again from those involved: that each time, they were "inventing systems as we went along." The result is a response that is simultaneously duplicated and full of holes. We are not short on goodwill or capacity in this city. We are short on a plan that connects them.</p>
-    </div>
-
-    <div class="figure">
-      <div class="zoomable" role="button" tabindex="0" aria-label="Enlarge Figure 1" data-zoom="fig1">
-        <span class="zoom-hint"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><line x1="16" y1="16" x2="21" y2="21"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg>Tap to zoom</span>
-        <svg viewBox="0 0 860 340" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Diagram contrasting today's fragmented response with the proposed coordinated model">
-          <defs><style>
-            .fld{font-family:"Alegreya Sans",sans-serif;font-size:11px;letter-spacing:.12em;fill:#326B50;font-weight:700;text-transform:uppercase;}
-            .flh{font-family:"Alegreya",serif;font-size:17px;fill:#1C4433;font-weight:700;}
-            .fsm{font-family:"Alegreya Sans",sans-serif;font-size:10.5px;fill:#353535;}
-            .fsmw{font-family:"Alegreya Sans",sans-serif;font-size:10.5px;fill:#FAFAF2;}
-          </style></defs>
-          <line x1="430" y1="24" x2="430" y2="316" stroke="rgba(53,53,53,.16)" stroke-width="1" stroke-dasharray="3 5"/>
-          <text x="24" y="30" class="fld">Today</text><text x="24" y="52" class="flh">Fragmented</text>
-          <circle cx="150" cy="150" r="52" fill="none" stroke="#E09964" stroke-width="1.8"/>
-          <circle cx="200" cy="120" r="52" fill="none" stroke="#E09964" stroke-width="1.8"/>
-          <circle cx="185" cy="185" r="52" fill="none" stroke="#E09964" stroke-width="1.8"/>
-          <text x="176" y="150" class="fsm" text-anchor="middle">duplicated</text>
-          <text x="176" y="164" class="fsm" text-anchor="middle">clothing drives</text>
-          <rect x="70" y="238" width="150" height="30" fill="none" stroke="#BB2D37" stroke-width="1" stroke-dasharray="4 4"/>
-          <text x="145" y="257" class="fsm" text-anchor="middle">gap: systems navigation</text>
-          <rect x="230" y="238" width="150" height="30" fill="none" stroke="#BB2D37" stroke-width="1" stroke-dasharray="4 4"/>
-          <text x="305" y="257" class="fsm" text-anchor="middle">gap: community connection</text>
-          <text x="60" y="300" class="fsm">Overlap in some areas. Empty in others.</text>
-          <text x="460" y="30" class="fld">Proposed</text><text x="460" y="52" class="flh">Coordinated</text>
-          <circle cx="645" cy="175" r="42" fill="#275D43"/>
-          <text x="645" y="171" class="fsmw" text-anchor="middle" font-weight="700">EFRS</text>
-          <text x="645" y="185" class="fsmw" text-anchor="middle">coordination</text>
-          <g stroke="#E09964" stroke-width="1.8">
-            <line x1="645" y1="133" x2="645" y2="98"/><line x1="687" y1="175" x2="760" y2="130"/>
-            <line x1="687" y1="175" x2="760" y2="220"/><line x1="603" y1="175" x2="530" y2="130"/>
-            <line x1="603" y1="175" x2="530" y2="220"/><line x1="645" y1="217" x2="645" y2="262"/>
-          </g>
-          <g>
-            <circle cx="645" cy="90" r="20" fill="#FAFAF2" stroke="#326B50" stroke-width="1.4"/><text x="645" y="94" class="fsm" text-anchor="middle">faith</text>
-            <circle cx="778" cy="122" r="20" fill="#FAFAF2" stroke="#326B50" stroke-width="1.4"/><text x="778" y="126" class="fsm" text-anchor="middle">cultural</text>
-            <circle cx="778" cy="228" r="20" fill="#FAFAF2" stroke="#326B50" stroke-width="1.4"/><text x="778" y="232" class="fsm" text-anchor="middle">social</text>
-            <circle cx="512" cy="122" r="20" fill="#FAFAF2" stroke="#326B50" stroke-width="1.4"/><text x="512" y="126" class="fsm" text-anchor="middle">health</text>
-            <circle cx="512" cy="228" r="20" fill="#FAFAF2" stroke="#326B50" stroke-width="1.4"/><text x="512" y="232" class="fsm" text-anchor="middle">City</text>
-            <circle cx="645" cy="270" r="20" fill="#FAFAF2" stroke="#326B50" stroke-width="1.4"/><text x="645" y="274" class="fsm" text-anchor="middle">settle</text>
-          </g>
-          <text x="512" y="308" class="fsm">One hub. No duplication. No family left unheld.</text>
-        </svg>
+    <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;margin:20px 0">
+      <div style="background:var(--green-light);border:1px solid rgba(39,93,67,0.15);border-radius:var(--radius);padding:16px 18px">
+        <div style="font-size:10px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--green);margin-bottom:8px">Access, Not Just Affordability</div>
+        <p style="font-size:13px;color:var(--text-mid);margin:0;line-height:1.6">Across low-to-middle incomes, legal help is out of reach. Legal aid is stretched and narrow in scope; just above the line, there is no funded option at all.</p>
       </div>
-      <div class="figcap">Figure 1 — From a fragmented response to a coordinated one</div>
-    </div>
-  </section>
-
-  <!-- 03 GAPS -->
-  <section id="s-gaps">
-    <div class="sec-head"><div class="sec-num">03</div><h2>Three gaps we can name</h2></div>
-    <div class="gaps">
-      <div class="gap"><div class="gap-id">G1</div><div>
-        <h3>Mental health support is one size fits all</h3>
-        <p>A single delivery model is offered to everyone, regardless of language, faith, culture, or the specific trauma people carry. The 2019 Edmonton study found needs going unmet for want of specialists, particularly in Arabic. Many evacuees never receive support that fits them, so they go without.</p>
-      </div></div>
-      <div class="gap"><div class="gap-id">G2</div><div>
-        <h3>Community connection is unmapped and disorganized</h3>
-        <p>There is no shared map of which activities, foods, programs, and services exist for which communities. People are left to find their own way to belonging, at exactly the moment they have the least capacity to do so.</p>
-      </div></div>
-      <div class="gap"><div class="gap-id">G3</div><div>
-        <h3>Financial and crisis supports are poorly organized</h3>
-        <p>Several organizations pile onto the same visible needs (clothing, for example) while critical functions like systems navigation and financial crisis support have no clear owner at all.</p>
-      </div></div>
-    </div>
-  </section>
-
-  <!-- 04 OPPORTUNITY -->
-  <section id="s-opportunity">
-    <div class="sec-head"><div class="sec-num">04</div><h2>The opportunity</h2></div>
-    <div class="sec-body"><p>Every one of these gaps is a coordination problem, not a capacity problem. Edmonton already has the organizations, the trust, and the reach. Bringing them into the plan before the next disaster turns scattered effort into a system.</p></div>
-    <div class="opps">
-      <div class="opp"><div class="n">01</div><h3>Efficiency</h3><p>End the duplication. Direct effort where it is actually missing.</p></div>
-      <div class="opp"><div class="n">02</div><h3>Integration</h3><p>One shared plan across City, Province, and civil society.</p></div>
-      <div class="opp"><div class="n">03</div><h3>Coordination</h3><p>A single point that owns who does what, and when.</p></div>
-      <div class="opp"><div class="n">04</div><h3>Better support</h3><p>People in crisis reach the right help sooner, from someone they trust.</p></div>
-    </div>
-  </section>
-
-  <!-- SECONDARY BENEFITS -->
-  <section id="s-dividend">
-    <div class="sec-head"><div class="sec-num">05</div><h2>A second dividend: stronger EFRS, stronger civil society</h2></div>
-    <div class="sec-body"><p>The case for this stands on evacuee outcomes alone. But a coordinated model pays a second dividend, one that accrues to Edmonton Fire Rescue Services and to the city's civil society, and that lasts between emergencies.</p></div>
-    <div class="whyif"><ul class="brand">
-      <li><h3>Trust and rapport in every community</h3><p>Working shoulder to shoulder with cultural, faith, and settlement organizations builds relationships that serve EFRS well beyond disasters, in fire safety, prevention, and everyday community risk work, and earns trust in communities that first responders can otherwise find hard to reach.</p></li>
-      <li><h3>A broader recruiting pool</h3><p>Deeper community relationships widen the pipeline of people who can see themselves in the fire service, helping EFRS recruit and better reflect the city it protects.</p></li>
-      <li><h3>A stronger, more resilient civil society</h3><p>Resourcing and connecting community organizations leaves the whole sector more capable, better coordinated, and more resilient: an asset the city can draw on in every kind of crisis, not only evacuations.</p></li>
-    </ul></div>
-  </section>
-
-  <!-- 05 ELSEWHERE -->
-  <section id="s-elsewhere">
-    <div class="sec-head"><div class="sec-num">06</div><h2>This is proven practice, not an experiment</h2></div>
-    <div class="sec-body"><p>Formally organizing civil society into emergency response is well established in comparable jurisdictions. Two mature models show both the shape and the payoff.</p></div>
-    <div class="scan">
-      <div class="scan-card">
-        <div class="flag">United States · 50+ years</div>
-        <h3>National VOAD</h3>
-        <p>Founded after Hurricane Camille in 1969, when independent responders left survivors helped haphazardly. Today it spans 70+ national organizations, 56 state and territorial bodies, and local chapters that deliberately include groups not usually seen as disaster responders. FEMA formalizes the link through Voluntary Agency Liaisons.</p>
+      <div style="background:var(--brown-light);border:1px solid rgba(224,153,100,0.3);border-radius:var(--radius);padding:16px 18px">
+        <div style="font-size:10px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--brown);margin-bottom:8px">Barriers Compound</div>
+        <p style="font-size:13px;color:var(--text-mid);margin:0;line-height:1.6">Language, literacy, disability, newcomer status, or distrust do not just add difficulty, they multiply it. The greatest need sits where the system is least navigable.</p>
       </div>
-      <div class="scan-card">
-        <div class="flag">United Kingdom · government-funded</div>
-        <h3>VCS Emergencies Partnership</h3>
-        <p>Formed after the Grenfell fire and the 2017 crises, it now unites 250+ organizations, is co-chaired by the British Red Cross, and explicitly includes faith and equality organizations alongside statutory services. The UK government funded its build-out, and the sector is campaigning to enshrine its role in law.</p>
+      <div style="background:var(--white);border:2px solid var(--border);border-radius:var(--radius);padding:16px 18px">
+        <div style="font-size:10px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--text-muted);margin-bottom:8px">Community Aid in the Wilderness</div>
+        <p style="font-size:13px;color:var(--text-mid);margin:0;line-height:1.6">Communities already pool money to help, but with no structure, vetting, or oversight. Generosity without accountability, and invisible to the system.</p>
       </div>
     </div>
-    <div class="scan-note"><p>Closer to home, Alberta already has the foundations through AEMA's Emergency Social Services Framework and the NGO Council of Alberta. <strong>What is missing here is the community-anchor layer.</strong> This proposal builds it.</p></div>
-  </section>
 
-  <!-- 06 ALIGNMENT (FEDERAL) -->
-  <section id="s-alignment">
-    <div class="sec-head"><div class="sec-num">07</div><h2>Aligned with the community resilience mandate</h2></div>
-    <div class="sec-body">
-      <p>This proposal speaks directly to the federal government's own stated priority. In 2025 the portfolio was renamed the Minister of Emergency Management and Community Resilience, putting community resilience, the exact aim of this proposal, at the centre of the mandate. Building the community-anchor layer of a city's response is community resilience made concrete.</p>
-      <p>The timing is deliberate. Following one of the worst wildfire seasons on record, the Minister has launched a national engagement asking Canadians and emergency management stakeholders how the federal role should evolve, in partnership with provinces and territories. This proposal is offered as a direct, fundable contribution to that conversation: a working model of the community-resilience layer, ready to pilot in an Edmonton context, with lessons transferable across the country.</p>
-      <p>There is a clear federal interest in the specific population this reaches. Many of the arrivals Edmonton receives, from Ukraine, Gaza, Sudan, Afghanistan and beyond, come through federal immigration and resettlement systems, yet the connective work of turning arrival into belonging happens locally and is currently unfunded and uncoordinated. Provinces run emergency social services on the ground; the federal opportunity is to invest in the resilience layer that binds arrival, settlement, and community together. Recent federal engagement with National Indigenous Organizations on emergency management further reinforces the case for anchors like Bent Arrow within this model.</p>
+    <div class="callout">
+      <p>Unresolved legal problems do not disappear when people cannot afford a lawyer or cannot navigate the system. They migrate downstream into lost jobs, housing instability, family breakdown, and ill health, where the public pays for them anyway, at far higher cost. The cheapest moment to resolve a legal problem is the earliest one.</p>
     </div>
-    <div class="ess-call"><span class="hl">Community resilience is the mandate. This is what it looks like on the ground.</span></div>
-  </section>
+  </div>
 
-  <!-- 07 MODEL -->
-  <section id="s-model">
-    <div class="sec-head"><div class="sec-num">08</div><h2>What we propose to build</h2></div>
-    <div class="sec-body">
-      <p>An EFRS-led community coordination function for emergency preparedness and evacuee response, designed with civil society from the start rather than consulted at the end. Edmonton Fire Rescue Services convenes and leads. Two anchor partner agencies receive dedicated, embedded staffing so the work is shared and grounded in community, not layered onto already stretched volunteers.</p>
-    </div>
-    <div class="model">
-      <div class="card"><h3>EFRS leads and convenes</h3><p>The coordination function is housed within EFRS, giving it clear authority, a permanent home, and a direct line into the City, Provincial, and Federal emergency management structure, including provincial Emergency Social Services and federal resilience programs.</p></div>
-      <div class="card"><h3>A standing seat for civil society</h3><p>Cultural agencies, faith communities, and social service organizations hold a formal, standing seat in emergency preparedness planning, so the people evacuees already trust are in the room before the next disaster, not phoned during it.</p></div>
-    </div>
-  </section>
+  <!-- WHAT WE PROPOSE -->
+  <div class="section" id="sec-what">
+    <div class="section-label">The Proposal</div>
+    <h2>Community Amplified Legal Supports (CALS)</h2>
+    <p>CALS is a trusted-intermediary service that does four things the current system does not do well. It connects low-to-middle income Albertans, and especially those facing added barriers, to vetted, qualified legal professionals who speak their language and understand their values. It subsidizes affordable low-bono fees through a transparent community-philanthropy fund. It protects people from predatory and unlicensed advisors, and brings oversight to community giving that currently has none. And, carefully and over time, it develops culturally grounded dispute-resolution pathways that keep suitable matters out of court entirely.</p>
+    <p>It is built on infrastructure that already exists. IslamicFamily already runs legal education and legal clinics, already serves more than 10,000 clients a year in over ten languages, and already operates a trusted, transparent system for directing charitable giving to people in need. CALS does not invent these capacities. It points them, deliberately, at the access-to-justice gap.</p>
 
-  <!-- 08 WHY ISLAMICFAMILY -->
-  <section id="s-whyif">
-    <div class="sec-head"><div class="sec-num">09</div><h2>Why IslamicFamily is the right anchor partner</h2></div>
-    <div class="sec-body"><p>A coordinated response needs an anchor that communities already trust across many origins, not one. IslamicFamily has played this role in Edmonton for nearly four decades, most often without any dedicated resourcing. It is no coincidence that when the 2019 study documented Edmonton's welcome of Syrian refugees, its photographs were of IslamicFamily meeting new Edmontonians at the airport.</p></div>
-    <div class="whyif"><ul class="brand">
-      <li><h3>Trusted across many communities, not one</h3><p>IslamicFamily's reach spans dozens of cultural and linguistic communities. For families arriving in crisis, it is a door that already feels familiar, regardless of where in the world they have come from.</p></li>
-      <li><h3>On the frontline of international crises that land in Edmonton</h3><p>When displacement from Syria, Afghanistan, Ukraine, Sudan, Gaza, and other crises reaches our city, IslamicFamily is among the first organizations families turn to. We have absorbed these arrivals in real time, year after year, ahead of any formal plan or funding.</p></li>
-      <li><h3>Holistic services under one roof</h3><p>Crisis financial support, housing, mental health, food security, systems navigation, and community connection are delivered together. A family is met as a whole person rather than handed a list of referrals.</p></li>
-      <li><h3>Nearly four decades of relationships</h3><p>IslamicFamily has served Edmonton's Muslim and newcomer communities since 1986, building exactly the depth of trust and local knowledge that a coordinated emergency response depends on.</p></li>
-    </ul></div>
-  </section>
-
-  <!-- 12 PARTNERS -->
-  <section id="s-partners">
-    <div class="sec-head"><div class="sec-num">10</div><h2>Anchor partners</h2></div>
-    <div class="sec-body"><p>These organizations are trusted by the very communities that arrive in crisis. Today they step in reactively, informally, and without resourcing. This proposal formalizes and funds a role they already play.</p></div>
-    <div class="partners">
-      <div class="partner confirmed"><div class="tag">Confirmed anchor</div><h3>IslamicFamily</h3><p>Nearly four decades anchoring Edmonton's Muslim and newcomer communities across crisis, housing, mental health, and holistic social supports.</p></div>
-      <div class="partner"><div class="tag">Second seat, to be confirmed</div><h3>One of three shortlisted below</h3><p>Chosen to complement IslamicFamily's reach so the two anchors together span the widest possible set of communities.</p></div>
+    <div class="fn-grid">
+      <div class="fn-card">
+        <div class="fn-num">01</div>
+        <h3>Connect</h3>
+        <p>A vetted roster of qualified lawyers and licensed professionals, matched to clients by language, culture, and values, so help actually lands. Warm referral and follow-through, not a phone number on a website.</p>
+      </div>
+      <div class="fn-card">
+        <div class="fn-num">02</div>
+        <h3>Subsidize</h3>
+        <p>A transparent Legal Supports Fund pays the gap between a reduced low-bono fee and what a vetted client can afford. It extends affordable advice above the legal-aid line, where no public funding currently reaches.</p>
+      </div>
+      <div class="fn-card">
+        <div class="fn-num">03</div>
+        <h3>Protect &amp; Educate</h3>
+        <p>Multilingual public legal education, plus oversight of community giving. Albertans already donate to help with each other's legal cases, often with no record of where the money goes, what the lawyer charged, or how the settlement turned out. CALS gives that generosity transparency and accountability, and steers people away from ghost consultants before harm is done.</p>
+      </div>
+      <div class="fn-card">
+        <div class="fn-num">04</div>
+        <h3>Resolve</h3>
+        <p>A phased, consultative dispute-resolution track, modelled on our counselling services, that is faith-grounded but delivered by licensed professionals fully within Alberta's legal framework.</p>
+      </div>
     </div>
-    <div class="shortlist">
-      <h3>Shortlist for the second staffed anchor</h3>
-      <ul class="brand">
-        <li><h3>Bent Arrow Traditional Healing Society</h3><p>Indigenous-led on Treaty 6. Northern First Nations are among Alberta's most frequently evacuated communities, with Edmonton a common reception city, so Bent Arrow reaches a population the current system serves least well.</p></li>
-        <li><h3>Africa Centre</h3><p>A hub for African and Black communities across settlement, connection, and social services, extending reach into communities IslamicFamily does not primarily serve.</p></li>
-        <li><h3>Newcomer Centre</h3><p>Formerly the Edmonton Mennonite Centre for Newcomers, among the largest settlement agencies in the city, with significant service infrastructure and a documented role in the 2015 to 2017 Syrian response.</p></li>
+
+    <div class="callout callout-green">
+      <p>The pitch to the Foundation is not "fund a service." It is this: invest once in the connective infrastructure, and unlock two forms of capacity already sitting idle: the goodwill of community lawyers, and the organized generosity of community donors.</p>
+    </div>
+  </div>
+
+  <!-- WHY ISLAMICFAMILY -->
+  <div class="section" id="sec-track">
+    <div class="section-label">Track Record</div>
+    <h2>Why IslamicFamily is the right anchor for this</h2>
+    <p>CALS is not a standing start. For more than three decades, IslamicFamily has been a load-bearing piece of Edmonton's social infrastructure, the organization that shows up when the formal system cannot or will not reach. In the legal-empowerment space specifically, the foundations are already laid.</p>
+
+    <div class="strand">
+      <div class="strand-num">What We Already Do</div>
+      <h3>An existing base of legal-empowerment work</h3>
+      <ul>
+        <li><strong>Legal education and workshops.</strong> IslamicFamily has hosted legal information sessions and clinics for years, delivered in the languages and settings where its communities actually gather, in partnership with the Alberta Law Foundation and legal volunteers</li>
+        <li><strong>Recognized for justice innovation.</strong> Recipient of a Government of Alberta Justice award for innovation in community justice delivery, alongside broader provincial recognition for community impact</li>
+        <li><strong>Imagine Canada accredited.</strong> Meeting national standards for governance, financial accountability, and transparency, the prerequisite for holding and disbursing restricted charitable funds responsibly</li>
+        <li><strong>Trusted, multilingual reach.</strong> More than 10,000 clients served annually, services delivered in over ten languages, by practitioners who in many cases share the cultural and faith background of the people they serve</li>
       </ul>
     </div>
-  </section>
 
-  <!-- 09 TIMELINE -->
-  <section id="s-timeline">
-    <div class="sec-head"><div class="sec-num">11</div><h2>A phased rollout</h2></div>
-    <div class="sec-body"><p>The model is built to prove itself first, then grow. We stand up the coordination scaffolding with two anchor agencies, test it against real activation, and only then onboard additional partners so growth rests on a foundation that works.</p></div>
-    <div class="timeline">
-      <div class="phase key"><div class="phase-when"><div class="ph">Phase 1</div><div class="mo">Months 1&ndash;4</div></div>
-        <div class="phase-body"><h3>Build the scaffolding</h3><p>Hire the four roles, establish the coordination function within EFRS, formalize the civil society seat, set metric baselines, and begin mapping community assets, languages, and services across the city.</p></div></div>
-      <div class="phase"><div class="phase-when"><div class="ph">Phase 2</div><div class="mo">Months 5&ndash;14</div></div>
-        <div class="phase-body"><h3>Run the pilot</h3><p>Embed the two anchor agencies, build the shared community connection map, establish culturally grounded mental health and navigation pathways, and test coordination against real or simulated activation.</p></div></div>
-      <div class="phase key"><div class="phase-when"><div class="ph">Phase 3</div><div class="mo">Months 15&ndash;26</div></div>
-        <div class="phase-body"><h3>Onboard 2 to 3 more agencies</h3><p>With the scaffolding proven, extend embedded partnership to two or three additional agencies, broadening cultural and geographic coverage so more communities are reached before the next disaster.</p></div></div>
-      <div class="phase"><div class="phase-when"><div class="ph">Phase 4</div><div class="mo">Months 27&ndash;36</div></div>
-        <div class="phase-body"><h3>Evaluate and scale</h3><p>Independent evaluation against the metrics below, refinement of the model, and a costed case for sustained funding and adoption across reception cities nationally.</p></div></div>
+    <p>This matters because the hardest problem any new legal service faces is the first one: getting people through the door. Trust is not transferable and cannot be bought. It is earned slowly, and IslamicFamily has already earned it. Attaching legal supports to that existing trust shortens the adoption curve from years to weeks, and gives both the lawyer and the client a credible institution standing behind the relationship.</p>
+  </div>
+
+  <!-- HOW IT WORKS -->
+  <div class="section" id="sec-model">
+    <div class="section-label">The Model</div>
+    <h2>How CALS works in practice</h2>
+    <p>CALS is a switchboard with quality control on both sides. It vets the legal professionals who join the roster, and it vets the clients and matters that come in, confirming that the need is genuine, appropriately scoped, and a fit for pro bono or subsidized low-bono support rather than a fee-generating case better served privately.</p>
+
+    <div class="strand">
+      <div class="strand-num">The Pathway</div>
+      <h3>From first contact to resolution</h3>
+      <ul>
+        <li><strong>Intake and triage.</strong> A multilingual navigator identifies the legal issue, screens financial eligibility on a sliding scale, and flags urgency and risk, including signs that someone has already been targeted by an unlicensed advisor</li>
+        <li><strong>Matching.</strong> The client is matched to a vetted lawyer by area of law and, wherever possible, by shared language and cultural context, with a warm handoff rather than a cold referral</li>
+        <li><strong>Pro bono or low-bono.</strong> Straightforward matters are handled pro bono. Where a fuller engagement is needed, the lawyer charges a reduced rate and the Legal Supports Fund pays the affordability gap</li>
+        <li><strong>Follow-through and education.</strong> The navigator holds the relationship to completion, and every interaction doubles as legal literacy the client carries forward</li>
+      </ul>
     </div>
-  </section>
 
-  <!-- 10 METRICS -->
-  <section id="s-metrics">
-    <div class="sec-head"><div class="sec-num">12</div><h2>How we will measure success</h2></div>
-    <div class="sec-body"><p>Baselines are established in Phase 1 and targets agreed with Public Safety Canada, so the pilot can be reported on honestly and its lessons shared nationally. Six measures track whether coordination is actually improving outcomes.</p></div>
-    <div class="metrics">
-      <div class="metric"><div class="mid">01</div><div><h3>Time to mobilize</h3><p>Hours from activation to community anchors deployed and receiving evacuees.</p></div></div>
-      <div class="metric"><div class="mid">02</div><div><h3>Access to appropriate support</h3><p>Share of evacuees connected to language- and culture-matched supports, especially mental health.</p></div></div>
-      <div class="metric"><div class="mid">03</div><div><h3>Asset-map coverage</h3><p>Share of key communities and languages with a mapped anchor and a current service inventory.</p></div></div>
-      <div class="metric"><div class="mid">04</div><div><h3>Duplication reduced, gaps owned</h3><p>Duplicated services counted down; critical functions like navigation given a clear owner.</p></div></div>
-      <div class="metric"><div class="mid">05</div><div><h3>Community offers converted</h3><p>Share of volunteer and in-kind offers actually deployed rather than lost.</p></div></div>
-      <div class="metric"><div class="mid">06</div><div><h3>Families reached</h3><p>Families served through the coordinated pathway per activation.</p></div></div>
+    <h3>Where the need is greatest</h3>
+    <p>CALS focuses on the everyday civil and family matters that fall through the existing net: employment and unpaid wages, tenancy and eviction, family separation and custody, immigration and sponsorship, small-business and entrepreneurship law, and wills, estates, and notarial services, which are disproportionately absent in newcomer and lower-income households. Federal Department of Justice research has found that for the large majority of immigrant participants, simple lack of information was the main reason they could not find legal help or did not pursue it at all. CALS is built for exactly that person.</p>
+
+    <h3>A proper channel for civil-liberties and rights matters</h3>
+    <p>Some of the most consequential problems people bring are not everyday civil disputes but rights matters: discrimination, religious freedom and accommodation, hate-motivated harm, and privacy violations. These are exactly the cases that go unaddressed today, because people do not know whether they have a claim or where it belongs, and meritorious matters never reach the right venue. CALS gives them a trusted channel. It identifies and triages these matters and routes them to the proper destination, whether a human-rights complaint, specialist or public-interest counsel, or an appropriate clinic or organization. CALS channels and connects rather than conducting impact litigation itself, so this adds reach for communities that are too often on the receiving end of rights violations, without adding litigation cost.</p>
+
+    <div class="callout">
+      <p>Pro bono and low-bono are complements to legal aid, not substitutes for it. Every credible program in this field, from Pro Bono Law Alberta to the UK's LawWorks, is careful to make that point. CALS is designed to relieve pressure on legal aid by resolving matters upstream, not to replace a properly funded public system.</p>
     </div>
-  </section>
+  </div>
 
-  <!-- 11 ASK -->
-  <section id="s-ask">
-    <div class="ask">
-      <div class="eyebrow">The ask</div>
-      <h2>What we are requesting from the federal government</h2>
-      <div class="ask-grid">
-        <div class="ask-item"><div class="lab">Dedicated staffing</div><div class="big">4 <span>FTEs</span></div><p>Two based at EFRS to lead the function, and one embedded in each of two anchor partner agencies.</p></div>
-        <div class="ask-item"><div class="lab">Annual investment</div><div class="big">$420K&ndash;$520K <span>per year</span></div><p>Fully loaded personnel plus a modest operating budget for training, convening, materials, and evaluation, across the three-year term. Final figure to be scoped with Public Safety Canada.</p></div>
-        <div class="ask-item"><div class="lab">Governance</div><div class="big" style="font-size:21px;line-height:1.2;">A formal seat</div><p>A standing role for civil society in emergency preparedness planning, and a model feeding the national resilience engagement.</p></div>
-        <div class="ask-item"><div class="lab">Term</div><div class="big" style="font-size:21px;line-height:1.2;">3-year pilot</div><p>EFRS-led, with two anchor agencies, built to be evaluated and scaled to more.</p></div>
+  <!-- THE PHILANTHROPY ENGINE -->
+  <div class="section" id="sec-fund">
+    <div class="section-label">The Funding Innovation</div>
+    <h2>The community philanthropy engine, built on giving that already happens</h2>
+    <p>The distinctive feature of CALS is how the legal help gets paid for. IslamicFamily already operates a trusted, accountable system for directing community charitable giving, zakat and sadaqa, to community members in need. These are not ad hoc collections. They are structured forms of giving with their own requirements for eligible recipients and transparent administration, practised faithfully across the community. CALS extends that existing engine to a new purpose: legal need.</p>
+
+    <div class="strand">
+      <div class="strand-num">The Legal Supports Fund</div>
+      <h3>How a donor's gift reaches a family in need</h3>
+      <ul>
+        <li><strong>Give.</strong> Community members and institutions contribute to a restricted Legal Supports Fund held within IslamicFamily, with charitable tax receipts and full reporting</li>
+        <li><strong>Direct (optional).</strong> Donors may restrict gifts to a particular community or legal area, the way a named or advised fund works, while administration remains independent and rules-based</li>
+        <li><strong>Subsidize.</strong> The fund pays the gap on low-bono matters and underwrites clinic operations, so a family pays what it can and the fund covers the rest</li>
+        <li><strong>Account.</strong> Every dollar in and out is reported, satisfying both charitable-law requirements and the transparency that faith-based giving traditions themselves demand</li>
+      </ul>
+    </div>
+
+    <p>This design draws on giving traditions common across many of Alberta's faith and cultural communities, including zakat and sadaqa, tithing, and dāna, and turns diffuse generosity into a reliable, auditable stream of legal support. It is built to extend coverage beyond what legal aid reaches, not to duplicate it. The fund deliberately serves low-to-middle income Albertans, those facing added barriers, and the matter types that public funding does not cover.</p>
+
+    <p>It also fixes a real accountability gap. Today, when a community member faces a costly legal fight, families quietly pool money to help, sometimes substantial sums, with no record of how much was raised, how it was spent, what the lawyer charged, or what the case recovered. Routing that generosity through the Legal Supports Fund replaces good intentions with an audit trail, protects donors and recipients alike, and keeps the giving from fracturing the relationships it was meant to strengthen.</p>
+
+    <div class="callout callout-green">
+      <p>For the Foundation, this is the leverage. The grant is not the whole cost of the help. It is the scaffolding that makes community philanthropy flow reliably into legal supports. Every Foundation dollar is multiplied by community dollars that would otherwise never reach a courtroom or a clinic.</p>
+    </div>
+  </div>
+
+  <!-- DISPUTE RESOLUTION -->
+  <div class="section" id="sec-diversion">
+    <div class="section-label">Act Now, Within the Law</div>
+    <h2>Culturally grounded dispute resolution, on a framework that already exists</h2>
+    <p>The need is established, and so is the legal framework. Alberta's <em>Arbitration Act</em>, together with well-established family and commercial arbitration practice in the province, already lets parties resolve civil and commercial disputes out of court, with awards enforceable through and reviewable by the courts. CALS does not need new legislation. It needs trained, accredited, culturally and linguistically competent practitioners working within the law already on the books. The task is delivery, not study.</p>
+
+    <p>Other jurisdictions show both that this works and where the guardrails belong. In British Columbia, family-law arbitrators are accredited by the Law Society, must meet minimum training and practice standards, and cannot opt out of the law: every decision must be consistent with the Family Law Act (Province of British Columbia). In the United Kingdom, faith-informed arbitration of civil and commercial matters operates under the Arbitration Act 1996, enforceable in court where both parties agree and the law is followed. And the Canadian experience, especially Ontario's reforms, sets the bright lines: family arbitration must apply Canadian law only, there is no parallel religious jurisdiction, criminal and divorce matters are off the table, and protection for women and vulnerable parties is non-negotiable.</p>
+
+    <p>CALS adopts those guardrails as design features, not caveats. Mediation and arbitration here are faith-informed in sensibility but Canadian-law in substance, conducted by accredited, licensed professionals to provincial standards, with independent legal advice for each party, domestic-violence and power-imbalance screening built into intake, and full rights of review and appeal. This is the counselling-services model applied to disputes: culturally attuned and professionally accountable, with no parallel system.</p>
+
+    <div class="strand">
+      <div class="strand-num">Sequenced, and Starting Now</div>
+      <h3>Year 1 puts the people and frameworks in place</h3>
+      <ul>
+        <li><strong>Hiring and frameworks (Year 1).</strong> Recruit and train accredited, culturally and linguistically competent mediators and arbitrators who meet Law Society and provincial standards, and put the screening, standards, and intake protocols in place, with domestic-violence and power-imbalance safeguards built in from the start</li>
+        <li><strong>Community legal education (Year 1).</strong> Rights-first education so people understand their options, the limits of any out-of-court process, and how to avoid coercive or unlicensed informal forums</li>
+        <li><strong>Limited, supervised piloting (Year 2 onward).</strong> Once the frameworks and trained capacity are in place, begin with the cleanest matters, commercial and civil disputes and family mediation with independent legal advice, scaling only as evaluated outcomes justify</li>
+      </ul>
+    </div>
+
+    <div class="callout">
+      <p>We are not asking permission to study a need that is already proven. In Year 1 we put the people and frameworks in place and educate the community, and we begin to pilot carefully once those foundations are set, all within Alberta's existing legal framework, with fairness and the protection of vulnerable parties as the first test rather than an afterthought.</p>
+    </div>
+  </div>
+
+  <!-- PREDATORY HARM -->
+  <div class="section" id="sec-predatory">
+    <div class="section-label">A Concrete Public-Protection Win</div>
+    <h2>Reducing the harm of predatory and unlicensed advisors</h2>
+    <p>Where trustworthy legal help is unaffordable, a market of predatory actors fills the vacuum, nowhere more visibly than in immigration. The harm is real, documented, and local. In 2024, an unauthorized Edmonton-area immigration consultant was convicted of charging for services she was not licensed to provide, including fake job offers and forged documents, and was ordered to pay $148,000 in victim restitution (Canada Border Services Agency). Between 2019 and 2024, the CBSA charged more than 150 individuals nationally with immigration-consultant-related fraud.</p>
+
+    <p>The regulatory system has a structural blind spot that CALS is positioned to address. New federal rules taking effect in 2026 create a compensation fund for victims of dishonest <em>licensed</em> consultants, but that fund explicitly does not cover losses caused by unlicensed "ghost" consultants, who cause much of the most serious harm (Government of Canada). Enforcement reaches these actors only after the money is gone, and the immigration file is often already jeopardized.</p>
+
+    <div class="callout callout-green">
+      <p>CALS works upstream of all of this. The most effective protection against a ghost consultant is the early availability of a trustworthy, affordable, community-rooted alternative, together with the multilingual public legal education that helps people recognize a scam before they pay for it. This is harm prevention, delivered by the institutions communities already trust.</p>
+    </div>
+  </div>
+
+  <!-- ENVIRONMENTAL SCAN -->
+  <div class="section" id="sec-scan">
+    <div class="section-label">Environmental Scan</div>
+    <h2>This model is proven: Alberta would be assembling known parts in a new way</h2>
+    <p>CALS is not speculative. Each of its components has an established analogue in Canada, the United States, or the United Kingdom. What is novel is the combination of a community-trusted intermediary, language-and-values matching, and a philanthropic subsidy engine, brought together in a single Alberta service.</p>
+
+    <div class="scan-card">
+      <div class="scan-flag">Canada · Coordination</div>
+      <h3>Pro Bono Law Alberta and Access Pro Bono BC</h3>
+      <p>Pro Bono Law Alberta, a charitable legacy project of the Law Society, promotes and coordinates pro bono work and brokers partnerships, but by design does not deliver services to the public directly. That leaves the community-facing, language-matched delivery layer open. CALS fills it, and partners with the coordination bodies rather than duplicating them.</p>
+    </div>
+
+    <div class="scan-card">
+      <div class="scan-flag">United States · The Subsidy Mechanic</div>
+      <h3>"Modest means" and low-bono panels</h3>
+      <p>Bar associations and legal-aid bodies across the US run reduced-fee panels for people above the pro bono cutoff but unable to pay full rates, typically with sliding-scale fees (often in the range of $35 to $80 an hour) and eligibility around 250% of the poverty line. Low-bono is formally recognized in the American Bar Association's Model Rule 6.1 as legitimate public service. CALS adapts this mechanic, adding a philanthropic fund to cover the client's share.</p>
+    </div>
+
+    <div class="scan-card">
+      <div class="scan-flag">United Kingdom · Clinic Network at Scale</div>
+      <h3>LawWorks and Advocate</h3>
+      <p>LawWorks, the solicitors' national pro bono charity, supports a network of more than 300 independent legal clinics that handled roughly 70,000 enquiries in a single recent year. Advocate, the Bar's charity, matches barristers to people who cannot get legal aid and cannot afford to pay. Both are explicit that pro bono complements and never replaces legal aid, the framing CALS adopts directly.</p>
+    </div>
+
+    <div class="callout">
+      <p>The lesson from all three jurisdictions is consistent: volunteer and reduced-fee legal capacity is abundant, but it only reaches people when a trusted intermediary organizes it. CALS is that intermediary, with the added Alberta innovation of a community-philanthropy engine to pay for the subsidized share.</p>
+    </div>
+  </div>
+
+  <!-- THE BUSINESS CASE -->
+  <div class="section" id="sec-case">
+    <div class="section-label">The Business Case</div>
+    <h2>What this looks like for real people, and the public purse</h2>
+    <p>The following are illustrative composites, drawn from the kinds of matters IslamicFamily already encounters, not real individuals. Each traces the same logic: an early, affordable, trusted intervention prevents a far costlier downstream outcome.</p>
+
+    <div class="case-card">
+      <div class="case-tag">Case A · Employment</div>
+      <h3>The unpaid wages that became a rent-assistance claim</h3>
+      <p>A newcomer takes a framing job with a small contractor. After six weeks he is let go with about $4,200 in wages unpaid and his final cheque returned NSF. He earns just above the Legal Aid Alberta eligibility line, so he does not qualify. The two private lawyers he calls want a retainer larger than the wages he is owed, and neither speaks his language. He does not know that Alberta's employment-standards complaint process is free to file and needs no lawyer at all. Discouraged and now behind on rent, he gives up, borrows from family, and within two months is relying on rent assistance while he looks for work.</p>
+      <p class="case-result"><strong>With CALS:</strong> intake flags a strong, low-cost claim. A vetted lawyer who shares his language advises him pro bono on filing the employment-standards complaint and drafts the demand letter, with the Fund covering a few hours of follow-up. The wages are recovered in weeks. No rent arrears, no rent-assistance claim, no eviction filing. The public cost is avoided, and a worker is kept housed and employed.</p>
+    </div>
+
+    <div class="case-card">
+      <div class="case-tag">Case B · Immigration</div>
+      <h3>The ghost consultant, intercepted before the harm</h3>
+      <p>A woman wants to sponsor her husband. A man advertising in a community group quotes $9,000 for a "guaranteed fast" spousal sponsorship and offers to supply a supporting employment letter "to make the file stronger." He is unlicensed, the letter is fabricated, and if she submits it she risks not only losing the money but a finding of misrepresentation that can carry a multi-year bar from re-applying. She has no easy way to tell a legitimate representative from a fraudulent one.</p>
+      <p class="case-result"><strong>With CALS:</strong> a community legal-literacy session, delivered in her language, teaches her to check any representative against the public licensing register, and she recognizes the warning signs. The navigator confirms the consultant is unlicensed and matches her to a licensed immigration lawyer who handles the sponsorship honestly at a subsidized rate. A $9,000 loss and a jeopardized immigration future are both prevented, and a fraudster loses a customer.</p>
+    </div>
+
+    <div class="case-card">
+      <div class="case-tag">Case C · Community-Funded Case</div>
+      <h3>Generosity that finally has an audit trail</h3>
+      <p>When a respected community member faces a costly legal fight, word spreads and families quietly contribute, sometimes tens of thousands of dollars, to help cover legal fees. It is generous and well-meant. It is also completely unaccountable. There is no record of how much was raised, how it was spent, what the lawyer charged, or what the case ultimately recovered. Donors never learn the outcome, and disputes over leftover funds or the settlement can fracture the very relationships the giving was meant to strengthen.</p>
+      <p class="case-result"><strong>With CALS:</strong> the same generosity flows through the restricted Legal Supports Fund. Contributions are receipted, the engagement and the lawyer's reduced fee are documented, disbursements are recorded, and donors receive clean reporting on how their giving was used. Charitable generosity keeps its spirit and gains accountability, and the community's trust is protected rather than put at risk.</p>
+    </div>
+
+    <div class="case-card">
+      <div class="case-tag">Case D · Family and Small Business</div>
+      <h3>The dispute that never needed a courtroom</h3>
+      <p>Two relatives who built a small business together are falling out. Left alone, this becomes parallel court actions, a partnership dissolution alongside a family-law thread, months of delay, and, if either qualifies, a Legal Aid certificate plus dozens of hours of court and chambers time. The relationship, and likely the business and the jobs it supports, will not survive the process.</p>
+      <p class="case-result"><strong>With CALS (Year 2 onward):</strong> the matter is screened as suitable for the supervised, lawful mediation pilot. A licensed mediator, working within Alberta's <em>Arbitration Act</em> and with independent legal advice available to each party, resolves the split over a small number of sessions. The court file is never opened, the business is sold as a going concern rather than collapsed, and the jobs are preserved.</p>
+    </div>
+  </div>
+
+  <!-- VALUE FOR TAXPAYERS -->
+  <div class="section" id="sec-value">
+    <div class="section-label">System Value</div>
+    <h2>The fiscal case: conservative, and it still clears the bar</h2>
+    <p>The strongest argument for CALS is that early legal help is cheaper than the alternatives the public pays for anyway. We can put a defensible, conservative number on it using Legal Aid Alberta's own figures.</p>
+
+    <p>Legal Aid Alberta's own duty-counsel triage program offers a clean Alberta anchor. It resolves roughly 1,000 low-level matters a year, saving about $1.6 million in certificate costs. That works out to roughly $1,600 in avoided certificate cost per matter diverted, before counting court time at all. The Canadian Bar Association has estimated that a single contested matter can consume up to 60 hours of court time (2013). And nationally, the Canadian Forum on Civil Justice estimates that unresolved everyday legal problems cost the state about $799 million a year in added social-assistance ($248M), employment-insurance ($450M), and health-care ($101M) spending.</p>
+
+    <div class="cost-case">
+      <div class="cost-case-label">The break-even line</div>
+      <p>Using Legal Aid Alberta's own figure of roughly $1,600 in certificate-cost saving per diverted matter, the entire $300,000 annual grant is returned if CALS diverts just:</p>
+      <span class="big">~188 matters per year</span>
+      <p>That is the break-even in avoided certificate costs alone, roughly three or four matters a week. It counts none of the court-time savings, none of the downstream social-assistance, EI, and health-care costs avoided, and none of the community philanthropy the Fund channels on top. Those are all additional return.</p>
+    </div>
+
+    <p>A mature CALS handling several hundred advice interactions a year, of which a conservative subset genuinely divert a certificate or court matter, comfortably exceeds break-even. The table below sketches an illustrative annual value at modest scale.</p>
+
+    <table class="data-table">
+      <thead>
+        <tr><th>Conservative annual value (illustrative)</th><th class="num">Basis</th><th class="num">Est. value</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Matters diverted from a Legal Aid certificate or court stream</td><td class="num">250 × ~$1,600</td><td class="num">$400,000</td></tr>
+        <tr><td>Court-time savings on diverted contested matters</td><td class="num">subset of above</td><td class="num">$120,000+</td></tr>
+        <tr><td>Downstream social-assistance, EI, and health costs avoided</td><td class="num">share of $799M/yr</td><td class="num">$150,000+</td></tr>
+        <tr><td>Predatory-advisor losses prevented for clients</td><td class="num">illustrative</td><td class="num">$100,000+</td></tr>
+        <tr class="total-row"><td>Indicative annual public and community value</td><td class="num"></td><td class="num">$770,000+</td></tr>
+        <tr><td>Against an annual grant of</td><td class="num"></td><td class="num">$300,000</td></tr>
+      </tbody>
+    </table>
+    <p class="fineprint">Figures are illustrative and deliberately conservative, intended to frame order-of-magnitude return rather than forecast precise savings. Sources: Legal Aid Alberta (certificate cost per diverted matter, expense trend); Canadian Bar Association, 2013 (court time per contested matter); Canadian Forum on Civil Justice (downstream state costs of unresolved legal problems); Canada Border Services Agency (immigration-fraud restitution). A core deliverable of Year 1 is to replace these estimates with measured, audited program data.</p>
+
+    <div class="callout callout-green">
+      <p>This is upstream investment at exactly the right point in the system. Every matter resolved at the advice, clinic, or mediation stage is a Legal Aid certificate not issued, court hours not consumed, and downstream social-services demand not triggered, at a fraction of the cost of intervening after the fact.</p>
+    </div>
+  </div>
+
+  <!-- WORK PLAN -->
+  <div class="section" id="sec-plan">
+    <div class="section-label">Work Plan</div>
+    <h2>A high-level three-year plan</h2>
+    <p>The pilot runs six parallel workstreams. Year 1 builds and launches, Year 2 scales and pilots, and Year 3 proves the model and prepares it to travel to other Alberta communities. Each workstream carries its own milestones and is measured against them.</p>
+
+    <table class="data-table">
+      <thead>
+        <tr><th>Workstream</th><th>Year 1 · Build</th><th>Year 2 · Scale</th><th>Year 3 · Prove</th></tr>
+      </thead>
+      <tbody>
+        <tr><td><strong>Service and roster</strong></td><td>Hire team, recruit and vet the roster, launch intake, triage, matching, and clinics</td><td>Expand roster and clinic hours, add matter types, raise volume</td><td>Steady-state operations with a documented delivery playbook</td></tr>
+        <tr><td><strong>Legal Supports Fund</strong></td><td>Establish the restricted fund, receipting, disbursement and reporting rules, first subsidized matters</td><td>Grow donor base and philanthropy match, publish first transparency report</td><td>Fund covers the majority of the subsidy, annual public reporting</td></tr>
+        <tr><td><strong>Education and anti-fraud</strong></td><td>Multilingual workshops and a "check the licence" campaign through community channels</td><td>Broaden reach across communities, measure scam recognition</td><td>Embed as an ongoing program with train-the-trainer capacity</td></tr>
+        <tr><td><strong>Dispute resolution (ADR)</strong></td><td>ADR rights education, recruit and train accredited mediators, put screening, standards, and protocols in place</td><td>Launch limited supervised piloting of commercial and civil matters, add family mediation with independent legal advice</td><td>Evaluate outcomes and fairness, decide on continuation and expansion</td></tr>
+        <tr><td><strong>Civil-liberties channel</strong></td><td>Build referral pathways with human-rights bodies and specialist counsel, set the triage protocol</td><td>Active channeling, track where matters land and how they resolve</td><td>Formalize the referral network and report on outcomes</td></tr>
+        <tr><td><strong>Evaluation and templating</strong></td><td>Baseline metrics, data system, and logic model</td><td>Mid-point evaluation and audited savings data</td><td>Independent evaluation and a replication playbook for Calgary, Red Deer, and Lethbridge</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- BUDGET -->
+  <div class="section" id="sec-budget">
+    <div class="section-label">Budget</div>
+    <h2>$300,000 per year for three years: what it buys</h2>
+    <p>The request is for $300,000 annually over a three-year pilot, $900,000 in total, to build and prove the CALS model in Edmonton with a design that is explicitly portable to other Alberta communities. The lean structure reflects the core principle: grant dollars build infrastructure and seed the subsidy pool, while community philanthropy and donated professional time supply the bulk of the legal capacity.</p>
+
+    <table class="data-table">
+      <thead>
+        <tr><th>Line item</th><th>What it covers</th><th class="num">Annual</th></tr>
+      </thead>
+      <tbody>
+        <tr class="section-head"><td colspan="3">People</td></tr>
+        <tr><td>Program Director / Legal Navigator Lead</td><td>Roster development and vetting, partnerships, fund administration, reporting, supervision (up to 1.0 FTE)</td><td class="num">$95,000</td></tr>
+        <tr><td>Bilingual Intake and Client Navigator</td><td>Triage, eligibility screening, matching, predatory-advisor screening, follow-through (1.0 FTE)</td><td class="num">$62,000</td></tr>
+        <tr class="section-head"><td colspan="3">Direct legal support</td></tr>
+        <tr><td>Low-Bono Subsidy Pool (grant share)</td><td>Pays the affordability gap on subsidized matters, matched and topped up by the community Legal Supports Fund</td><td class="num">$60,000</td></tr>
+        <tr><td>Roster honoraria and clinic delivery</td><td>Drop-in clinic costs and modest stipends for clinic hours beyond donated pro bono time</td><td class="num">$25,000</td></tr>
+        <tr class="section-head"><td colspan="3">Education, protection, and development</td></tr>
+        <tr><td>Multilingual public legal education</td><td>Workshops, translated materials, community-channel distribution, anti-fraud campaigns</td><td class="num">$22,000</td></tr>
+        <tr><td>Dispute resolution: education, training, piloting</td><td>ADR rights education, training of accredited mediators, and limited supervised piloting within Alberta's framework</td><td class="num">$12,000</td></tr>
+        <tr class="section-head"><td colspan="3">Systems and accountability</td></tr>
+        <tr><td>Evaluation and impact reporting</td><td>Outcome measurement and the audited evidence base for continued investment</td><td class="num">$9,000</td></tr>
+        <tr><td>Technology and intake systems</td><td>Secure intake, case tracking, fund-disbursement records</td><td class="num">$5,000</td></tr>
+        <tr><td>Administration and overhead (~3.3%)</td><td>Finance, insurance, audit, facilities allocation</td><td class="num">$10,000</td></tr>
+        <tr class="total-row"><td>Total annual request</td><td></td><td class="num">$300,000</td></tr>
+        <tr class="total-row"><td>Total three-year pilot</td><td></td><td class="num">$900,000</td></tr>
+      </tbody>
+    </table>
+
+    <p class="fineprint">The annual total holds steady at $300,000, but the mix shifts: Year 1 weights toward people, roster development, training, and education; Year 2 shifts toward the subsidy pool as matter volume and the philanthropy match grow; Year 3 weights toward evaluation and the work of making the model portable to other Alberta communities. The full milestone view is set out in the Work Plan above.</p>
+  </div>
+
+  <!-- PARTNERS -->
+  <div class="section" id="sec-partners">
+    <div class="section-label">Partners</div>
+    <h2>Who is at the table</h2>
+    <p>CALS is anchored and operated by IslamicFamily. Around it we are convening a coalition of legal organizations and practitioners, both current and prospective, who bring professional capacity, cultural and linguistic competency, and standing in the bar. The partnership combines a trusted community institution with the legal expertise to deliver at a professional standard. Final partner commitments will be confirmed as the pilot is scoped with the Foundation.</p>
+
+    <div class="team-grid">
+      <div class="team-card">
+        <div class="team-name">IslamicFamily</div>
+        <div class="team-role">Anchor &amp; Lead Operator</div>
+        <div class="team-desc">More than 30 years of community service. Imagine Canada accredited. Recognized with a Government of Alberta Justice award for innovation in community justice delivery. Operator of the intake, clinics, navigator team, and the Legal Supports Fund. 10,000+ clients served annually in over ten languages.</div>
       </div>
-      <table class="fte">
-        <thead><tr><th>Role</th><th>Host</th><th>Purpose</th><th style="text-align:right;">Loaded range</th></tr></thead>
-        <tbody>
-          <tr><td>Coordination Lead</td><td>EFRS</td><td>Owns the plan, convenes partners, holds Provincial and City relationships.</td><td class="n">$115&ndash;140K</td></tr>
-          <tr><td>Coordinator</td><td>EFRS</td><td>Runs day-to-day coordination, asset mapping, and activation logistics.</td><td class="n">$85&ndash;105K</td></tr>
-          <tr><td>Community Integration Lead</td><td>IslamicFamily</td><td>Embedded community bridge: connection, navigation, culturally grounded support.</td><td class="n">$80&ndash;100K</td></tr>
-          <tr><td>Community Integration Lead</td><td>Second anchor (to be confirmed)</td><td>Embedded community bridge: connection, navigation, culturally grounded support.</td><td class="n">$80&ndash;100K</td></tr>
-        </tbody>
-      </table>
+      <div class="team-card">
+        <div class="team-name">South Asian Bar Association Edmonton</div>
+        <div class="team-role">Legal Delivery Partner</div>
+        <div class="team-desc">Legal professionals with cultural and linguistic competency across the communities CALS serves. Workshop delivery, pro bono and low-bono clinic hours, and access to a wider legal network.</div>
+      </div>
+      <div class="team-card">
+        <div class="team-name">Canadian Muslim Lawyers Association (CMLA)</div>
+        <div class="team-role">Legal Delivery Partner</div>
+        <div class="team-desc">A national network of Muslim legal professionals with deep community trust and cultural competency, extending the program's reach and credibility across Alberta.</div>
+      </div>
     </div>
-  </section>
 
-  <!-- 13 CLOSE -->
-  <section id="s-close" class="close">
-    <div class="sec-head"><div class="sec-num">13</div><h2>Why now, and why us</h2></div>
-    <div class="sec-body">
-      <p>The next evacuation is not a question of if. Alberta will see more wildfire and flood displacement, and Edmonton will continue to receive people fleeing crises far beyond our borders. Each time, we rebuild the same informal coordination from scratch, and each time the same families fall through the same gaps.</p>
-      <p>Edmonton Fire Rescue Services is trusted to lead in emergencies, and coordination is what it does. IslamicFamily is trusted by the communities who arrive, and holistic community support is what it does. Together we are asking for something modest and well precedented: four people, a defined three-year pilot, and a formal seat at the table for the communities who are always there anyway. In return, the federal government gets a working, evaluable model of the community-resilience layer it has made a mandate priority, one whose lessons transfer to reception cities across the country.</p>
-    </div>
-    <div class="next"><div class="lab">Proposed next step</div><p>To submit this as a contribution to your national engagement on the future of federal emergency management, and a 45-minute meeting with your office and Public Safety Canada to define the pilot scope, confirm metric baselines, and cost the function.</p></div>
-    <div class="signrow">
-      <div class="sign"><div class="name">David Lazenby</div><div class="title">Fire Chief</div><div class="org">Edmonton Fire Rescue Services</div></div>
-      <div class="sign"><div class="name">Omar Yaqub</div><div class="title">Servant of Servants</div><div class="org">IslamicFamily</div></div>
-    </div>
-  </section>
-
-  <!-- SOURCES -->
-  <div class="sources">
-    <h3>Sources</h3>
-    <ol>
-      <li>Edmonton Chamber of Voluntary Organizations, "Lessons from the Influx: How Edmonton Welcomed Refugees from Syria" (2019).</li>
-      <li>Government of Alberta / AEMA, Alberta Emergency Social Services Framework (2025); Alberta Municipalities summary of the framework (2025).</li>
-      <li>National Voluntary Organizations Active in Disaster (National VOAD); FEMA, Voluntary and Community-Based Organizations.</li>
-      <li>Voluntary and Community Sector Emergencies Partnership (UK); British Red Cross.</li>
-      <li>Alberta Health Ukrainian evacuee registration figures (2023); Government of Canada, Fort McMurray / 2016 Wood Buffalo wildfire evacuation.</li>
-    </ol>
+    <p>This coalition, a community anchor joined by specialist legal organizations and committed practitioners, is the right group to deliver at scale. Provincial investment is the catalyst that moves it from coalition to program.</p>
   </div>
 
-  <footer>Edmonton Fire Rescue Services &nbsp;+&nbsp; IslamicFamily &nbsp;·&nbsp; Prepared for the Government of Canada &nbsp;·&nbsp; Draft for review</footer>
-
-</div>
-
-<!-- LIGHTBOX -->
-<div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Enlarged figure">
-  <div class="lightbox-inner">
-    <button class="lightbox-close" id="lightboxClose" aria-label="Close enlarged figure">&times;</button>
-    <div id="lightboxContent"></div>
-    <div class="lightbox-cap" id="lightboxCap"></div>
+  <!-- POLICY ALIGNMENT -->
+  <div class="section" id="sec-policy">
+    <div class="section-label">Policy Alignment</div>
+    <h2>Where this fits the access-to-justice agenda</h2>
+    <div class="hook-list">
+      <div class="hook">
+        <div class="hook-icon"><svg viewBox="0 0 16 16"><path d="M8 1a7 7 0 100 14A7 7 0 008 1zm.75 10.5h-1.5v-5h1.5v5zm0-6.5h-1.5V3.5h1.5V5z"/></svg></div>
+        <div class="hook-text"><strong>Access to justice, delivered upstream.</strong> CALS is direct delivery of Alberta's access-to-justice goals for underserved Albertans. It is preventive, community-anchored, and designed to relieve pressure on Legal Aid Alberta rather than compete with it.</div>
+      </div>
+      <div class="hook">
+        <div class="hook-icon"><svg viewBox="0 0 16 16"><path d="M13 2H3a1 1 0 00-1 1v10a1 1 0 001 1h10a1 1 0 001-1V3a1 1 0 00-1-1zM7 11H5V7h2v4zm4 0H9V5h2v6z"/></svg></div>
+        <div class="hook-text"><strong>Fiscal responsibility and leverage.</strong> A focused pilot that pays for itself in avoided system costs, and multiplies every granted dollar with community philanthropy. The Foundation builds the scaffolding once, and the community keeps funding the help.</div>
+      </div>
+      <div class="hook">
+        <div class="hook-icon"><svg viewBox="0 0 16 16"><path d="M8 2a6 6 0 100 12A6 6 0 008 2zm1 9H7V7h2v4zm0-5.5H7v-2h2v2z"/></svg></div>
+        <div class="hook-text"><strong>Consumer protection.</strong> A concrete, measurable reduction in the harm done by predatory and unlicensed advisors, filling the gap that even the new federal compensation fund leaves open for ghost consultants.</div>
+      </div>
+      <div class="hook">
+        <div class="hook-icon"><svg viewBox="0 0 16 16"><path d="M2 4h12v1.5H2V4zm0 3.5h12V9H2V7.5zm0 3.5h8V12H2v-1z"/></svg></div>
+        <div class="hook-text"><strong>Civil-society activation.</strong> Alberta's bar holds significant pro bono and low-bono goodwill that goes underused for lack of infrastructure to deploy it. CALS turns that latent capacity into organized, accountable community benefit.</div>
+      </div>
+    </div>
   </div>
+
+  <!-- THE ASK -->
+  <div class="section" id="sec-ask">
+    <div class="section-label">The Ask</div>
+    <h2>What we are asking of the Foundation</h2>
+    <p>A single, focused investment: the funding to build and prove a three-year pilot.</p>
+
+    <div class="ask-card primary" style="margin:14px 0">
+      <div class="ask-num">The ask</div>
+      <div class="ask-title">$300,000 per year, for three years</div>
+      <div class="ask-desc">A Program and Operating Grant to build and prove Community Amplified Legal Supports in Edmonton, designed to scale to other Alberta communities.</div>
+    </div>
+
+    <div class="callout" style="margin-top:24px">
+      <p>The lawyers willing to help are here. The community generosity to pay for it is here. The trusted institution to connect them is here. What is missing is the scaffolding, and a small, focused pilot builds it once, then lets community capacity carry it forward.</p>
+    </div>
+  </div>
+
+</main>
+
+<aside>
+  <div>
+    <div class="sw-label">IslamicFamily</div>
+    <div class="stat-pill"><div class="stat-num">10,000+</div><div class="stat-lbl">Clients served annually across all programs</div></div>
+    <div class="stat-pill"><div class="stat-num">30+</div><div class="stat-lbl">Years serving Edmonton's newcomer, faith, and cultural communities</div></div>
+    <div class="stat-pill"><div class="stat-num">10+</div><div class="stat-lbl">Languages in which services are delivered</div></div>
+    <div class="stat-pill"><div class="stat-num">12+</div><div class="stat-lbl">Active program areas, including legal education and clinics</div></div>
+  </div>
+  <div>
+    <div class="sw-label">The Gap, in Numbers</div>
+    <div class="stat-pill"><div class="stat-num">~½</div><div class="stat-lbl">Of Canadian adults face a serious civil or family legal problem within 3 years (CFCJ)</div></div>
+    <div class="stat-pill"><div class="stat-num">$799M</div><div class="stat-lbl">Annual downstream cost to the state of unresolved legal problems (CFCJ)</div></div>
+    <div class="stat-pill"><div class="stat-num">$72M&#8594;$138M</div><div class="stat-lbl">Legal Aid Alberta expense growth, 2014 to 2024</div></div>
+    <div class="stat-pill"><div class="stat-num">~188</div><div class="stat-lbl">Matters per year diverted: the break-even on a $300K investment</div></div>
+  </div>
+  <div>
+    <div class="sw-label">Noteworthy</div>
+    <div class="stat-pill" style="background:var(--brown-light)"><div class="stat-num" style="color:var(--brown);font-size:14px;font-weight:700;line-height:1.4">Government of Alberta Justice Award</div><div class="stat-lbl">Recognized for innovation in community justice delivery</div></div>
+    <div class="stat-pill" style="background:var(--brown-light)"><div class="stat-num" style="color:var(--brown);font-size:14px;font-weight:700;line-height:1.5">Alberta Law Foundation</div><div class="stat-lbl">Partner in legal education and public legal information</div></div>
+    <div class="stat-pill" style="background:var(--brown-light)"><div class="stat-num" style="color:var(--brown);font-size:14px;font-weight:700;line-height:1.5">Imagine Canada Accredited</div><div class="stat-lbl">National standards for governance and financial accountability</div></div>
+  </div>
+</aside>
 </div>
+
+<!-- Footer -->
+<footer class="footer">
+  <div class="footer-left"><strong>Omar Yaqub</strong> ICD.D DSL (Hon) MBA BSc<br>Servant of Servants, IslamicFamily<br>omary@islamicfamily.ca &nbsp;·&nbsp; +1.780.695.7477<br>IslamicFamily Hüb, 2-786, 10545 108 Street, Edmonton AB T5H 2Z8</div>
+</footer>
+
 <script>
 (function(){
-  var lb=document.getElementById('lightbox'),content=document.getElementById('lightboxContent'),
-      cap=document.getElementById('lightboxCap'),closeBtn=document.getElementById('lightboxClose'),lastFocus=null;
-  function open(t){var svg=t.querySelector('svg[role="img"]');if(!svg)return;lastFocus=t;
-    content.innerHTML=svg.outerHTML;var fc=t.parentElement.querySelector('.figcap');
-    cap.textContent=fc?fc.textContent:'';lb.classList.add('open');document.body.style.overflow='hidden';closeBtn.focus();}
-  function close(){lb.classList.remove('open');content.innerHTML='';document.body.style.overflow='';if(lastFocus)lastFocus.focus();}
-  document.querySelectorAll('.zoomable').forEach(function(z){
-    z.addEventListener('click',function(){open(z);});
-    z.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();open(z);}});});
+  const btn=document.getElementById('tocBtn');
+  const drawer=document.getElementById('tocDrawer');
+  const overlay=document.getElementById('tocOverlay');
+  const closeBtn=document.getElementById('tocClose');
+  const items=document.querySelectorAll('.toc-item');
+
+  function open(){drawer.classList.add('open');overlay.classList.add('open');btn.classList.add('open')}
+  function close(){drawer.classList.remove('open');overlay.classList.remove('open');btn.classList.remove('open')}
+
+  btn.addEventListener('click',()=>drawer.classList.contains('open')?close():open());
+  overlay.addEventListener('click',close);
   closeBtn.addEventListener('click',close);
-  lb.addEventListener('click',function(e){if(e.target===lb)close();});
-  document.addEventListener('keydown',function(e){if(e.key==='Escape'&&lb.classList.contains('open'))close();});
-})();
-</script>
-<script>
-(function(){
-  var t=document.getElementById('navToggle'),p=document.getElementById('navPanel'),o=document.getElementById('navOverlay');
-  function setOpen(open){
-    t.setAttribute('aria-expanded',open?'true':'false');
-    p.classList.toggle('open',open);o.classList.toggle('open',open);
-    p.setAttribute('aria-hidden',open?'false':'true');
-    document.body.style.overflow=open?'hidden':'';
-    if(open){var a=p.querySelector('a');if(a)a.focus();}
-  }
-  t.addEventListener('click',function(){setOpen(!p.classList.contains('open'));});
-  o.addEventListener('click',function(){setOpen(false);t.focus();});
-  p.querySelectorAll('a').forEach(function(a){a.addEventListener('click',function(){setOpen(false);});});
-  document.addEventListener('keydown',function(e){if(e.key==='Escape'&&p.classList.contains('open')){setOpen(false);t.focus();}});
-})();
-</script>
-<script>
-(function(){
-  var els=document.querySelectorAll('.ess-call .hl');
-  if(!('IntersectionObserver' in window)){els.forEach(function(e){e.classList.add('in');});return;}
-  var io=new IntersectionObserver(function(en){en.forEach(function(x){if(x.isIntersecting){x.target.classList.add('in');io.unobserve(x.target);}});},{threshold:0.6});
-  els.forEach(function(e){io.observe(e);});
+
+  items.forEach(item=>{
+    item.addEventListener('click',()=>{
+      const target=document.getElementById(item.dataset.target);
+      if(target){
+        close();
+        setTimeout(()=>target.scrollIntoView({behavior:'smooth',block:'start'}),300);
+      }
+    });
+  });
+
+  const sections=Array.from(document.querySelectorAll('.section[id]'));
+  const observer=new IntersectionObserver(entries=>{
+    entries.forEach(e=>{
+      if(e.isIntersecting){
+        items.forEach(i=>i.classList.remove('active'));
+        const active=document.querySelector('.toc-item[data-target="'+e.target.id+'"]');
+        if(active)active.classList.add('active');
+      }
+    });
+  },{threshold:0.3});
+  sections.forEach(s=>observer.observe(s));
 })();
 </script>
 </body>
