@@ -1,0 +1,17 @@
+part,name,qty,sheet,material,length_in,width_in,thickness_in
+SIDE_L,"Side, left",1,A,3/4 in,30.094,9.100,0.719
+SIDE_R,"Side, right",1,A,3/4 in,30.094,9.100,0.719
+TOP,"Top panel",1,A,3/4 in,62.500,9.100,0.719
+MID,"Mid deck (door floor)",1,A,3/4 in,61.563,9.100,0.719
+BASE,"Base deck (drawer floor)",1,A,3/4 in,61.563,7.631,0.719
+FRONT,"Drawer front",1,A,3/4 in,60.938,4.500,0.719
+DOOR_L,"Door, left",1,B,1/2 in,31.219,24.750,0.469
+DOOR_R,"Door, right",1,B,1/2 in,31.219,24.750,0.469
+BOTTOM,"Drawer bottom",1,B,1/2 in,61.563,7.913,0.469
+END_L,"Drawer end, left",1,B,1/2 in,7.569,3.438,0.469
+END_R,"Drawer end, right",1,B,1/2 in,7.569,3.438,0.469
+BACK,"Drawer back",1,B,1/2 in,60.000,3.438,0.469
+DIV_L,"Center divider panel, left face",1,B,1/2 in,24.922,6.962,0.469
+DIV_R,"Center divider panel, right face",1,B,1/2 in,24.922,6.962,0.469
+SHELF,"Adjustable shelf",8,A,3/4 in,30.000,6.212,0.719
+DIVIDER,"Drawer compartment divider",1,C,1/4 in,60.344,2.938,0.219
