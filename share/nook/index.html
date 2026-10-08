@@ -179,6 +179,7 @@ footer { padding: 30px 0 20px; font-family: var(--ui); font-size: 15px; color: v
 .seclbl { font: 500 14px 'IBM Plex Sans Condensed', Arial, sans-serif; fill: #17252F; }
 .sheetlbl { font: 700 15px 'IBM Plex Sans Condensed', Arial, sans-serif; fill: #17252F; }
 .sheetlbl.sm { font-size: 11px; }
+.mvd, .mvv { transition: transform .6s cubic-bezier(.22,.7,.2,1); }
 
 @media (max-width: 980px) {
   .shell { grid-template-columns: minmax(0, 1fr); gap: 0; padding: 0 16px; }
@@ -259,7 +260,7 @@ footer { padding: 30px 0 20px; font-family: var(--ui); font-size: 15px; color: v
       <div class="controls"><button type="button" id="resetp">Reset to starting values</button></div>
       <ul class="checks" id="checks" aria-live="polite"></ul>
     </div>
-    <p class="small">Starting values match typical North American hardwood plywood (23/32, 15/32 and 7/32 in) and the sizes you gave: 62.5 by 30.5 by 9.1 in, a 4.5 in baseboard, an assumed 5/8 in baseboard thickness, and a tight 3/16 in total clearance behind the drawer.</p>
+    <p class="small">Starting values match typical North American hardwood plywood (23/32 and 15/32 in) and the sizes you gave: 62.5 by 30.5 by 9.1 in, a 4.5 in baseboard, an assumed 5/8 in baseboard thickness, and a tight 3/16 in total clearance behind the drawer.</p>
     <h3>Before you commit a sheet</h3>
     <ol class="pre">
       <li>Measure the nook length at the top, middle and bottom. If it varies by more than 1/16 in, take the smallest number.</li>
@@ -289,15 +290,16 @@ footer { padding: 30px 0 20px; font-family: var(--ui); font-size: 15px; color: v
         <p>Each side has a notch at the back bottom corner. The base deck stops short of the wall by the baseboard thickness plus clearance, and the drawer box stops 1/16 in short of that line. The box reaches about 91 percent of the 9.1 in depth, and the rest is the baseboard itself, which cannot be used while it is there.</p>
         <h3>Divider and shelves</h3>
         <p>The center divider is two 1/2 in panels glued face to face and seated in a dado in the mid deck and another in the top. It starts behind the rear door track, so the doors pass in front of it. Both sides of the divider and both side panels have two columns of 1/4 in holes, so each bay takes four shelves on shelf pins and you can move them every 1 1/4 in.</p>
-        <h3>Hidden compartment</h3>
-        <p>Inside the drawer, a thin divider sits in grooves just behind the drawer front. Pull the drawer out, lift the divider by its scoop, and a flat compartment appears. It is deep enough for documents, passports or a tablet.</p>
-        <div class="controls">
-          <button type="button" id="s-drawer" aria-pressed="false">Pull the drawer</button>
-          <button type="button" id="s-divider" aria-pressed="false">Lift the divider</button>
-        </div>
       </div>
-      <figure class="secwrap"><div class="plate" id="sec-fig"></div><figcaption>Side section through the middle of the cabinet. The dashed teal box is the hidden compartment.</figcaption></figure>
+      <figure class="secwrap"><div class="plate" id="sec-fig"></div><figcaption>Side section through the middle of the cabinet. Both door tracks, the felt strips and the stop screw are visible.</figcaption></figure>
     </div>
+
+    <h3>Drawer close-up</h3>
+    <p>Try it: pull the drawer out. The dashed outline shows where it sat when closed, and the dimension shows how far it travels.</p>
+    <div class="controls" role="group" aria-label="Try the drawer">
+      <button type="button" id="s-drawer" aria-pressed="false">Pull the drawer</button>
+    </div>
+    <figure style="margin-top:12px"><div class="scroller"><div class="plate" id="dd-fig" style="min-width:720px"></div></div><figcaption id="dd-caption" aria-live="polite"></figcaption></figure>
 
     <h3>Key numbers</h3>
     <div class="tablewrap"><table class="keynums" id="keynums"></table></div>
@@ -309,7 +311,7 @@ footer { padding: 30px 0 20px; font-family: var(--ui); font-size: 15px; color: v
     <div class="tablewrap"><table id="cuttable"></table></div>
     <h3>Materials and hardware</h3>
     <dl class="defs">
-      <dt>Plywood</dt><dd>One 4 by 8 ft sheet each of 3/4 in, 1/2 in and 1/4 in. The 1/4 in part is a single 60 in strip, so a 2 by 4 ft offcut is enough.</dd>
+      <dt>Plywood</dt><dd>One 4 by 8 ft sheet of 3/4 in and one of 1/2 in. Two sheets in all.</dd>
       <dt>Bit</dt><dd>One 1/4 in compression spiral. A 1/8 in bit is optional for tight corners.</dd>
       <dt>Drawer latch</dt><dd>One Lee Valley Magnetic Secret Latch (12K8001) and one magnetic key (12K8002). They are sold separately. Check the product page for the current mounting template, since the stem hole and screw positions come from it.</dd>
       <dt>Felt</dt><dd>Self adhesive felt tape, 1 in wide and about 1/8 in thick, enough for seven strips as long as the base deck is deep.</dd>
@@ -377,7 +379,7 @@ footer { padding: 30px 0 20px; font-family: var(--ui); font-size: 15px; color: v
       <li><div><b>Glue up the center divider</b><p>Glue the two divider panels together with the hole faces outward and clamp flat. Wipe off squeeze out right away, and test that the divider enters a dado dry.</p></div></li>
       <li><div><b>Glue the decks and divider into one side</b><p>Lay the left side inside face up. Glue the rabbet and the dado, set both decks in, stand the divider in its dado, then glue and set the right side on top. Strap or clamp across the width.</p><span class="chk">Measure both diagonals of the front opening. They should match within 1/32 in.</span></div></li>
       <li><div><b>Add the top</b><p>Glue the six tabs and mortises and the top of the divider, set the top on, and weigh it down. Wipe any squeeze out of the door grooves right away.</p></div></li>
-      <li><div><b>Build the drawer</b><p>Glue the front to the tabs on the drawer bottom. Add the two ends, then the back between them. Do not glue the divider. Hold everything square until the glue sets.</p><span class="chk">The drawer should sit flat on a bench with all four corners touching.</span></div></li>
+      <li><div><b>Build the drawer</b><p>Glue the front to the tabs on the drawer bottom. Add the two ends, then the back between them. Hold everything square until the glue sets.</p><span class="chk">The drawer should sit flat on a bench with all four corners touching.</span></div></li>
       <li><div><b>Fit the latch</b><p>Press the felt strips into the recesses in the base deck. On the back of the drawer front, drill the stem hole at the marked center following the latch template, and screw the latch on. Do not drill through the front. Test the key on the outside before going further.</p><span class="chk">The key releases the latch from the outside, and the face of the front shows no mark.</span></div></li>
       <li><div><b>Slide the drawer in from the front</b><p>Feed the tongues into the slots. It should glide with no sticking over the full length. Then drive the two stop screws down through the mid deck at the marked pilots so the tips show inside the drawer zone. Close the drawer, set the strike against the latch, and screw the strike block to the underside of the mid deck from above.</p><span class="chk">The drawer stops at full travel and cannot be pulled out without removing a screw.</span></div></li>
       <li><div><b>Add the shelves</b><p>Press the shelf pins into the holes at the heights you want and set a shelf on four pins. Shelves are loose, so they lift out for cleaning.</p></div></li>
@@ -413,16 +415,14 @@ footer { padding: 30px 0 20px; font-family: var(--ui); font-size: 15px; color: v
     <h2>Files</h2>
     <p>The DXF layers are named for the operation. The starting-value files assume typical plywood thickness, so measure yours and use the rebuilt files if it differs by more than 0.01 in.</p>
     <h3>Ready to cut with the starting values</h3>
-    <p>Plain links, so you can share them or save them directly. These assume 23/32, 15/32 and 7/32 in plywood.</p>
+    <p>Plain links, so you can share them or save them directly. These assume 23/32 and 15/32 in plywood.</p>
     <ul class="filelist">
-      <li><a href="files/nook-cabinet-cnc-plans.zip" download><div><b>Everything (ZIP)</b><small>All DXF and SVG sheets, the cut list and a readme</small></div><span>63 KB</span></a></li>
+      <li><a href="files/nook-cabinet-cnc-plans.zip" download><div><b>Everything (ZIP)</b><small>All DXF and SVG sheets, the cut list and a readme</small></div><span>59 KB</span></a></li>
       <li><a href="files/sheet-A-three-quarter-inch.dxf" download><div><b>Sheet A, 3/4 in plywood (DXF)</b><small>Sides, top, decks, drawer front and eight shelves</small></div><span>19 KB</span></a></li>
-      <li><a href="files/sheet-B-half-inch.dxf" download><div><b>Sheet B, 1/2 in plywood (DXF)</b><small>Doors, drawer box and the two divider panels</small></div><span>15 KB</span></a></li>
-      <li><a href="files/sheet-C-quarter-inch.dxf" download><div><b>Sheet C, 1/4 in plywood (DXF)</b><small>Drawer compartment divider</small></div><span>2 KB</span></a></li>
+      <li><a href="files/sheet-B-half-inch.dxf" download><div><b>Sheet B, 1/2 in plywood (DXF)</b><small>Doors, drawer box and the two center divider panels</small></div><span>14 KB</span></a></li>
       <li><a href="files/nook-cabinet-cutlist.csv" download><div><b>Cut list (CSV)</b><small>Every part with size, sheet and thickness</small></div><span>1 KB</span></a></li>
       <li><a href="files/sheet-A-three-quarter-inch.svg" download><div><b>Sheet A as SVG</b><small>For software that prefers SVG</small></div><span>13 KB</span></a></li>
       <li><a href="files/sheet-B-half-inch.svg" download><div><b>Sheet B as SVG</b><small></small></div><span>10 KB</span></a></li>
-      <li><a href="files/sheet-C-quarter-inch.svg" download><div><b>Sheet C as SVG</b><small></small></div><span>1 KB</span></a></li>
     </ul>
     <h3>Rebuilt for your measurements</h3>
     <p class="small">These are generated in your browser from the numbers in the first section, so they match your plywood.</p>
@@ -446,7 +446,6 @@ footer { padding: 30px 0 20px; font-family: var(--ui); font-size: 15px; color: v
   const DEFAULTS = {
     T: 0.71875,   // actual thickness of the "3/4 in" plywood (carcass, drawer front)
     H: 0.46875,   // actual thickness of the "1/2 in" plywood (doors, drawer box)
-    Q: 0.21875,   // actual thickness of the "1/4 in" plywood (drawer divider)
     W: 62.5,      // overall length of the cabinet
     Ht: 30.5,     // overall height
     D: 9.1,       // overall depth
@@ -512,11 +511,6 @@ footer { padding: 30px 0 20px; font-family: var(--ui); font-size: 15px; color: v
     d.Lb = d.yb1 - d.yb0;             // box length (front to back)
     d.Hend = d.zm - 0.1875 - (d.zb + H); // height of drawer ends and back
     d.Wbk = d.Wf - 2 * H;             // back panel width
-    d.cd = 1.25;                      // hidden compartment depth
-    d.gd = 0.1875;                    // divider groove depth in the ends
-    d.Hdiv = d.Hend - 0.25;           // divider height
-    d.Wdiv = d.Wbk + 2 * d.gd - 0.03125;
-    d.scoopR = 1.0;                   // divider finger scoop radius
     d.latchZ = 3.75;                  // height of the hidden latch stem above the floor
     d.feltN = 7; d.feltW = 1.0;       // felt strips glued in shallow recesses in the base deck
     d.stopY = 3.0;                    // drawer stop screw position (from front)
@@ -555,7 +549,6 @@ footer { padding: 30px 0 20px; font-family: var(--ui); font-size: 15px; color: v
     const { T, H, Q } = P;
     if (T < 0.5 || T > 0.85) add('error', 'The 3/4 in sheet thickness should be between 0.5 and 0.85 in.');
     if (H < 0.35 || H > 0.6) add('error', 'The 1/2 in sheet thickness should be between 0.35 and 0.6 in.');
-    if (Q < 0.15 || Q > 0.3) add('error', 'The 1/4 in sheet thickness should be between 0.15 and 0.3 in.');
     const leave = T - d.gt;
     add(leave >= 0.3 ? 'ok' : 'warn', 'Material left above the top door groove: ' + fmt(leave) + ' in' + (leave >= 0.3 ? '.' : '. This is thin. Use a deeper sheet or reduce the groove depth.'));
     const lift = d.Hd - d.Ho;
@@ -565,9 +558,9 @@ footer { padding: 30px 0 20px; font-family: var(--ui); font-size: 15px; color: v
     add(d.Hend > 2 ? 'ok' : 'error', 'Drawer wall height: ' + fmt(d.Hend) + ' in.');
     add(d.Lb > 5 ? 'ok' : 'error', 'Drawer uses ' + fmt(d.yb1) + ' of the ' + fmt(P.D) + ' in depth (' + fmt(100 * d.yb1 / P.D, 0) + ' percent). The baseboard and its clearance take ' + fmt(P.D - d.yb1) + ' in.');
     add(P.BBclr + d.rearGap >= 0.1875 ? 'ok' : 'warn', 'Total gap between the drawer back and the baseboard: ' + fmt(P.BBclr + d.rearGap) + ' in. Measure the baseboard carefully, because this is tight.');
-    const tipOK = (d.zm - d.stopTip) > (d.zb + P.H + d.Hdiv) && (d.zm - d.stopTip) < (d.zb + P.H + d.Hend);
-    add(tipOK ? 'ok' : 'error', 'Stop screw tip sits between the divider top and the back panel top.');
-    add(d.travel > 2.5 ? 'ok' : 'warn', 'Drawer travel: ' + fmt(d.travel) + ' in. The hidden compartment is fully clear at ' + fmt(d.cd + P.T + P.Q) + ' in.');
+    const tipOK = (d.zm - d.stopTip) > (d.zb + P.H + 1) && (d.zm - d.stopTip) < (d.zb + P.H + d.Hend);
+    add(tipOK ? 'ok' : 'error', 'Stop screw tip sits inside the drawer height and below the top of the back panel.');
+    add(d.travel > 2.5 ? 'ok' : 'warn', 'Drawer travel: ' + fmt(d.travel) + ' in.');
     add((P.T - d.mort) >= 0.3 ? 'ok' : 'warn', 'Material left behind the drawer front mortises: ' + fmt(P.T - d.mort) + ' in.');
     add(d.shDepth > 4 ? 'ok' : 'error', 'Each shelf is ' + fmt(d.shW) + ' in wide and ' + fmt(d.shDepth) + ' in deep. Eight shelves in all.');
     add((d.pinZ0 + (d.pinRows - 1) * d.pinPitch) < d.zt - 2 ? 'ok' : 'warn', 'Shelf pin rows run from ' + fmt(d.pinZ0 - d.zmt) + ' to ' + fmt(d.pinZ0 + (d.pinRows - 1) * d.pinPitch - d.zmt) + ' in above the mid deck.');
@@ -771,17 +764,16 @@ footer { padding: 30px 0 20px; font-family: var(--ui); font-size: 15px; color: v
       const outL = [[0, 0]];
       eC.forEach((c) => outL.push([c - hl, 0], [c - hl, -d.tabP], [c + hl, -d.tabP], [c + hl, 0]));
       outL.push([d.Lb, 0], [d.Lb, d.Hend], [0, d.Hend]);
-      const gro = (mir) => { const p = rect(d.cd, 0, d.cd + Q + fit + 0.0156, d.Hend); return mir ? mirrorPoly(p, d.Lb) : p; };
       push({
         id: 'END_L', name: 'Drawer end, left', qty: 1, mat: '1/2', thk: H, outline: outL,
-        ops: [pocket('Groove for divider (open top and bottom)', gro(false), d.gd, { through: true })],
+        ops: [],
         face: 'Inside face up.', frame: 'Horizontal runs from the front of the drawer (left) to the back (right). Tabs point down.',
         marks: [{ side: 'left', text: 'Front' }, { side: 'right', text: 'Back' }],
         notes: ['Tabs pin the end to the drawer bottom. Glue the front edge to the back of the drawer front.']
       });
       push({
         id: 'END_R', name: 'Drawer end, right', qty: 1, mat: '1/2', thk: H, outline: mirrorPoly(outL, d.Lb),
-        ops: [pocket('Groove for divider (open top and bottom)', gro(true), d.gd, { through: true })],
+        ops: [],
         face: 'Inside face up.', frame: 'Mirror of the left end. Horizontal runs from the back (left) to the front (right).',
         marks: [{ side: 'left', text: 'Back' }, { side: 'right', text: 'Front' }],
         notes: ['Cut as a true mirror of the left end.']
@@ -828,18 +820,6 @@ footer { padding: 30px 0 20px; font-family: var(--ui); font-size: 15px; color: v
       });
     }
 
-    /* --- Divider ---------------------------------------------------- */
-    {
-      const cx = d.Wdiv / 2; const pts = [[0, 0], [d.Wdiv, 0], [d.Wdiv, d.Hdiv], [cx + d.scoopR, d.Hdiv]];
-      const n = 24; for (let i = 1; i < n; i++) { const a = -Math.PI * i / n; pts.push([cx + d.scoopR * Math.cos(a), d.Hdiv + d.scoopR * Math.sin(a)]); }
-      pts.push([cx - d.scoopR, d.Hdiv], [0, d.Hdiv]);
-      push({
-        id: 'DIVIDER', name: 'Drawer compartment divider', qty: 1, mat: '1/4', thk: Q, outline: pts, ops: [],
-        face: 'Either face up. No machining.', frame: 'Horizontal runs along the length. Vertical runs from the bottom edge up.',
-        marks: [{ side: 'top', text: 'Top edge, finger scoop' }],
-        notes: ['Drops into the grooves in the drawer ends and rests on the drawer bottom. It lifts out to open the compartment.']
-      });
-    }
     return parts;
   }
 
@@ -868,18 +848,14 @@ footer { padding: 30px 0 20px; font-family: var(--ui); font-size: 15px; color: v
     sheets.push(A);
     // Sheet B, 1/2 in. Doors sit side by side so the grain runs continuously across both.
     const B = { id: 'B', mat: '1/2 in plywood', size, placements: [] };
-    const r1 = place(B, 'DOOR_L', m, m, 0); place(B, 'DOOR_R', m + r1.w + gap, m, 0);
+    const r1 = place(B, 'DOOR_L', m, m, 0); const r2 = place(B, 'DOOR_R', m + r1.w + gap, m, 0);
+    const dx0 = m + r1.w + gap + r2.w + gap;
+    const rd = place(B, 'DIV_L', dx0, m, 90); place(B, 'DIV_R', dx0, m + rd.h + gap, 90);
     const yy = m + r1.h + gap;
     const rb = place(B, 'BOTTOM', m, yy, 0);
     const rk = place(B, 'BACK', m, yy + rb.h + gap, 0);
     const ex = m + rb.w + gap + 0.25; const re = place(B, 'END_L', ex, yy, 0); place(B, 'END_R', ex, yy + re.h + gap, 0);
-    const dy = yy + rb.h + gap + rk.h + gap;
-    const rd = place(B, 'DIV_L', m, dy, 90); place(B, 'DIV_R', m + rd.w + gap, dy, 90);
     sheets.push(B);
-    // Sheet C, 1/4 in
-    const C = { id: 'C', mat: '1/4 in plywood (a 2 ft x 4 ft offcut is enough)', size, placements: [] };
-    place(C, 'DIVIDER', m, m, 0);
-    sheets.push(C);
     return sheets;
   }
 
@@ -1137,9 +1113,6 @@ footer { padding: 30px 0 20px; font-family: var(--ui); font-size: 15px; color: v
     o += R(T, d.latchZ - 0.55, T + 0.5, d.latchZ + 0.55, '#6E7B84', '#2B3A44');
     o += R(T + 0.05, d.zm - 0.3, T + 0.75, d.zm, '#6E7B84', '#2B3A44');
     o += R(d.yb1 - H, cdz, d.yb1, cdz + d.Hend, WOOD, EDGE);
-    o += '<g id="sec-divider" class="mvv" data-dy="' + fmt(-2.4 * s, 2) + '">' + R(T + d.cd, cdz, T + d.cd + Q, cdz + d.Hdiv - d.scoopR, '#E9C089', EDGE) + '</g>';
-    o += '<rect x="' + fmt(X(T), 2) + '" y="' + fmt(Z(cdz + d.Hend), 2) + '" width="' + fmt(d.cd * s, 2) + '" height="' + fmt(d.Hend * s * 0.0 + (d.Hdiv - d.scoopR) * s * 0, 2) + '" fill="none"/>';
-    o += '<rect id="sec-compartment" x="' + fmt(X(T), 2) + '" y="' + fmt(Z(cdz + d.Hdiv), 2) + '" width="' + fmt(d.cd * s, 2) + '" height="' + fmt(d.Hdiv * s, 2) + '" fill="#B8E2DD" opacity=".55" stroke="' + COL.pocket + '" stroke-dasharray="4 3"/>';
     o += '</g>';
     // labels
     const L = (y, z, t, ay, az) => '<text x="' + fmt(X(y), 1) + '" y="' + fmt(Z(z), 1) + '" class="seclbl">' + t + '</text>';
@@ -1149,7 +1122,7 @@ footer { padding: 30px 0 20px; font-family: var(--ui); font-size: 15px; color: v
       { z: d.zmt + d.Ho / 2, t: 'Two sliding doors', y: D },
       { z: d.zmt + d.Ho * 0.72, t: 'Center divider', y: D - 0.6 },
       { z: d.zm + T / 2, t: 'Mid deck, shallow grooves', y: D },
-      { z: cdz + d.Hend * 0.75, t: 'Drawer box and divider', y: D - d.S - 0.3 },
+      { z: cdz + d.Hend * 0.75, t: 'Drawer box', y: D - d.S - 0.3 },
       { z: d.latchZ + 0.3, t: 'Hidden magnetic latch', y: T + 0.3 },
       { z: P.BBh * 0.35, t: 'Existing baseboard', y: D },
       { z: T / 2, t: 'Base deck with felt', y: D - d.S }
@@ -1166,6 +1139,55 @@ footer { padding: 30px 0 20px; font-family: var(--ui); font-size: 15px; color: v
     o += '<g stroke="' + COL.ink + '" stroke-width="1"><line x1="' + (X(-ext) + 2) + '" y1="' + Z(0) + '" x2="' + (X(-ext) + 2) + '" y2="' + Z(Ht) + '"/><line x1="' + (X(-ext) - 3) + '" y1="' + Z(0) + '" x2="' + (X(-ext) + 7) + '" y2="' + Z(0) + '"/><line x1="' + (X(-ext) - 3) + '" y1="' + Z(Ht) + '" x2="' + (X(-ext) + 7) + '" y2="' + Z(Ht) + '"/></g>';
     o += '<text x="' + (X(-ext) + 14) + '" y="' + Z(Ht / 2) + '" class="dimtxt" transform="rotate(-90 ' + (X(-ext) + 14) + ' ' + Z(Ht / 2) + ')" text-anchor="middle">' + fmt(Ht, 1) + ' in tall</text>';
     o += '<text x="' + fmt(X(-d.travel / 2), 1) + '" y="' + fmt(Z(1.6), 1) + '" class="seclbl" id="sec-hint" text-anchor="middle" opacity="0">drawer out</text>';
+    o += '</svg>';
+    return o;
+  }
+
+
+  function drawerDetailSVG(P, d) {
+    const s = 46, m = 36, D = P.D, T = P.T, H = P.H, Q = P.Q;
+    const ext = d.travel + 0.8, zTop = d.zm + T + 1.7;
+    const X = (y) => m + (y + ext) * s, Z = (z) => m + (zTop - z) * s;
+    const labelCol = 290;
+    const w = m + (D + ext + 0.8) * s + labelCol, h = m + (zTop + 0.25) * s + 70;
+    const EDGE = '#5E3118', WOOD = '#D79A5C', STEEL = '#6E7B84';
+    const R = (y0, z0, y1, z1, fill, stroke, extra) => '<rect x="' + fmt(X(y0), 2) + '" y="' + fmt(Z(z1), 2) + '" width="' + fmt((y1 - y0) * s, 2) + '" height="' + fmt((z1 - z0) * s, 2) + '" fill="' + fill + '" stroke="' + (stroke === undefined ? EDGE : stroke) + '" stroke-width="1.3" ' + (extra || '') + '/>';
+    let o = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ' + fmt(w, 1) + ' ' + fmt(h, 1) + '" class="ddsvg" role="img" aria-label="Close-up of the drawer pulled out with the divider lifted to reveal the hidden compartment">';
+    o += '<defs><pattern id="ddhatch" width="7" height="7" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><line x1="0" y1="0" x2="0" y2="7" stroke="#8A8579" stroke-width="1.4"/></pattern></defs>';
+    // wall, floor, baseboard
+    o += '<rect x="' + fmt(X(D), 1) + '" y="' + fmt(Z(zTop), 1) + '" width="' + fmt(0.6 * s, 1) + '" height="' + fmt((zTop + 0.25) * s, 1) + '" fill="url(#ddhatch)" stroke="#8A8579"/>';
+    o += '<rect x="' + fmt(X(-ext), 1) + '" y="' + fmt(Z(0), 1) + '" width="' + fmt((D + ext) * s, 1) + '" height="' + fmt(0.25 * s, 1) + '" fill="#C9C2B3" stroke="#8A8579"/>';
+    o += R(D - P.BBt, 0, D, P.BBh, '#EEE9DF', '#8A8579');
+    // base deck, felt, mid deck, strike, stop screw
+    o += R(T, 0, D - d.S, T, WOOD) + R(T, T, D - d.S, d.zb, '#8A7A68', '#4F4438');
+    o += R(0, d.zm, D, d.zmt, WOOD);
+    o += R(T + 0.05, d.zm - 0.3, T + 0.75, d.zm, STEEL, '#2B3A44');
+    o += R(d.stopY - 0.085, d.zm - d.stopTip, d.stopY + 0.085, d.zmt, '#2B3A44', '#2B3A44');
+    // ghost: closed position
+    const cdz = d.zb + H;
+    o += '<g id="dd-ghost" style="opacity:0;transition:opacity .5s" fill="none" stroke="#17252F" stroke-width="1.2" stroke-dasharray="5 4">' +
+      '<rect x="' + fmt(X(0), 1) + '" y="' + fmt(Z(d.fr + d.DF), 1) + '" width="' + fmt(T * s, 1) + '" height="' + fmt(d.DF * s, 1) + '"/>' +
+      '<rect x="' + fmt(X(T), 1) + '" y="' + fmt(Z(d.zb + H), 1) + '" width="' + fmt((d.yb1 - T) * s, 1) + '" height="' + fmt(H * s, 1) + '"/></g>';
+    // drawer group
+    o += '<g id="dd-drawer" class="mvd" data-dx="' + fmt(-d.travel * s, 2) + '" data-dy="0">';
+    o += R(0, d.fr, T, d.fr + d.DF, WOOD);
+    o += R(T, d.latchZ - 0.55, T + 0.5, d.latchZ + 0.55, STEEL, '#2B3A44');
+    o += R(T, d.zb, d.yb1, d.zb + H, WOOD);
+    o += R(d.yb1 - H, cdz, d.yb1, cdz + d.Hend, WOOD);
+    o += '</g>';
+    // static labels
+    const lx = X(D) + 0.6 * s + 16;
+    const labs = [
+      { z: d.zm - 0.15, y: d.stopY, t: 'Stop screw sets travel' },
+      { z: d.latchZ, y: T + 0.25, t: 'Hidden magnetic latch and strike' },
+      { z: (T + d.zb) / 2, y: D - d.S - 0.8, t: 'Felt strips on base deck' }
+    ];
+    labs.sort((a, b) => b.z - a.z); let py = -1e9;
+    labs.forEach((L) => { L.ty = Math.max(Z(L.z), py + 19); py = L.ty; });
+    labs.forEach((L) => { o += '<polyline points="' + fmt(X(L.y), 1) + ',' + fmt(Z(L.z), 1) + ' ' + fmt(lx - 14, 1) + ',' + fmt(Z(L.z), 1) + ' ' + fmt(lx - 4, 1) + ',' + fmt(L.ty, 1) + '" fill="none" stroke="#6A7B86" stroke-width="1"/><circle cx="' + fmt(X(L.y), 1) + '" cy="' + fmt(Z(L.z), 1) + '" r="2.4" fill="#17252F"/><text x="' + fmt(lx, 1) + '" y="' + fmt(L.ty + 4, 1) + '" class="seclbl">' + L.t + '</text>'; });
+    // travel dimension
+    const yy = Z(-0.25) + 30;
+    o += '<g stroke="' + COL.ink + '" stroke-width="1"><line x1="' + X(-d.travel) + '" y1="' + (yy - 5) + '" x2="' + X(-d.travel) + '" y2="' + (yy + 5) + '"/><line x1="' + X(0) + '" y1="' + (yy - 5) + '" x2="' + X(0) + '" y2="' + (yy + 5) + '"/><line x1="' + X(-d.travel) + '" y1="' + yy + '" x2="' + X(0) + '" y2="' + yy + '"/></g><text x="' + fmt((X(-d.travel) + X(0)) / 2, 1) + '" y="' + fmt(yy + 20, 1) + '" text-anchor="middle" class="dimtxt big">' + fmt(d.travel, 1) + ' in of travel</text>';
     o += '</svg>';
     return o;
   }
@@ -1189,7 +1211,6 @@ footer { padding: 30px 0 20px; font-family: var(--ui); font-size: 15px; color: v
     B('Drawer end L', T + 0.0625, T + 0.0625 + H, T, d.yb1, d.zb + H, d.zb + H + d.Hend, '#D9A56E', 0, fy, fz);
     B('Drawer end R', W - T - 0.0625 - H, W - T - 0.0625, T, d.yb1, d.zb + H, d.zb + H + d.Hend, '#D9A56E', 0, fy, fz);
     B('Drawer back', T + 0.0625 + H, W - T - 0.0625 - H, d.yb1 - H, d.yb1, d.zb + H, d.zb + H + d.Hend, '#D4A06A', 0, fy, fz);
-    B('Divider', T + 0.0625 + H, W - T - 0.0625 - H, T + d.cd, T + d.cd + Q, d.zb + H, d.zb + H + d.Hdiv, '#B8E2DD', 0, fy, fz + 3.6);
     B('Drawer front', T + 0.0625, W - T - 0.0625, 0, T, d.fr, d.fr + d.DF, '#E0AC74', 0, fy, fz);
     const k = 0.5, c45 = Math.SQRT1_2;
     const sc = 8.6; const pr = (x, y, z) => [(x + k * c45 * y) * sc, -(z + k * c45 * y) * sc];
@@ -1216,7 +1237,7 @@ footer { padding: 30px 0 20px; font-family: var(--ui); font-size: 15px; color: v
       o += '<polygon points="' + f.front.map(tr).join(' ') + '" fill="' + f.b.fill + '" ' + st + '/>';
     });
     // callout labels in a right-hand column
-    const groups = { 'Top panel': ['Top'], 'Two doors': ['Door R'], 'Center divider': ['Center divider'], 'Eight shelves': ['Shelf'], 'Sides, left and right': ['Side R'], 'Mid deck': ['Mid deck'], 'Base deck': ['Base deck'], 'Divider': ['Divider'], 'Drawer front': ['Drawer front'], 'Drawer box': ['Drawer end R'] };
+    const groups = { 'Top panel': ['Top'], 'Two doors': ['Door R'], 'Center divider': ['Center divider'], 'Eight shelves': ['Shelf'], 'Sides, left and right': ['Side R'], 'Mid deck': ['Mid deck'], 'Base deck': ['Base deck'], 'Drawer front': ['Drawer front'], 'Drawer box': ['Drawer end R'] };
     const names = Object.keys(groups).map((k) => {
       const f = faces.find((q) => q.b.id === groups[k][0]); const b = f.b;
       const a = pr((b.x0 + b.x1) / 2, (b.y0 + b.y1) / 2, b.z1);
@@ -1242,7 +1263,7 @@ footer { padding: 30px 0 20px; font-family: var(--ui); font-size: 15px; color: v
     return { P, d, parts, sheets, checks: check(P, d), nestIssues: checkNesting(sheets, parts), cuts: cutList(parts) };
   }
 
-  return { elevationSVG, sectionSVG, explodedSVG, DEFAULTS, derive, check, build, buildParts, layoutSheets, placedGeometry, dxfSheet, partSVG, sheetSVG, fmt, frac, r4, rect, bboxOf, opBox, COL, esc };
+  return { elevationSVG, sectionSVG, explodedSVG, drawerDetailSVG, DEFAULTS, derive, check, build, buildParts, layoutSheets, placedGeometry, dxfSheet, partSVG, sheetSVG, fmt, frac, r4, rect, bboxOf, opBox, COL, esc };
 });
 
 </script>
@@ -1293,7 +1314,6 @@ function makeZip(files) {
   const FIELDS = [
     { g: 'f-ply', k: 'T', label: '3/4 in sheet', min: 0.5, max: 0.85 },
     { g: 'f-ply', k: 'H', label: '1/2 in sheet', min: 0.35, max: 0.6 },
-    { g: 'f-ply', k: 'Q', label: '1/4 in sheet', min: 0.15, max: 0.3 },
     { g: 'f-nook', k: 'W', label: 'Length', min: 40, max: 120 },
     { g: 'f-nook', k: 'Ht', label: 'Height', min: 20, max: 48 },
     { g: 'f-nook', k: 'D', label: 'Depth, wall to front', min: 6, max: 16 },
@@ -1355,11 +1375,12 @@ function makeZip(files) {
   function recompute() { state.R = Cab.build(state.p); renderAll(); }
   function renderAll() {
     const R = state.R, P = R.P, d = R.d;
-    $('#titleblock').innerHTML = [['Size', fmt(P.W, 1) + ' by ' + fmt(P.Ht, 1) + ' by ' + fmt(P.D, 1) + ' in'], ['Material', 'Cherry plywood, 3 sheets'], ['Parts', R.parts.reduce((n, p) => n + p.qty, 0) + ' pieces on ' + R.sheets.length + ' sheets'], ['Bit', '1/4 in compression'], ['Joinery', 'Dado, rabbet, tab and slot']].map((r) => '<div><dt>' + r[0] + '</dt><dd>' + r[1] + '</dd></div>').join('');
-    $('#partcount').textContent = R.parts.reduce((n, p) => n + p.qty, 0) + ' pieces from ' + R.parts.length + ' different parts, on three sheets.';
+    $('#titleblock').innerHTML = [['Size', fmt(P.W, 1) + ' by ' + fmt(P.Ht, 1) + ' by ' + fmt(P.D, 1) + ' in'], ['Material', 'Cherry plywood, 2 sheets'], ['Parts', R.parts.reduce((n, p) => n + p.qty, 0) + ' pieces on ' + R.sheets.length + ' sheets'], ['Bit', '1/4 in compression'], ['Joinery', 'Dado, rabbet, tab and slot']].map((r) => '<div><dt>' + r[0] + '</dt><dd>' + r[1] + '</dd></div>').join('');
+    $('#partcount').textContent = R.parts.reduce((n, p) => n + p.qty, 0) + ' pieces from ' + R.parts.length + ' different parts, on two sheets.';
     $('#hero-fig').innerHTML = Cab.elevationSVG(P, d);
     const ex = Cab.explodedSVG(P, d); $('#exp-fig').innerHTML = ex.svg;
     $('#sec-fig').innerHTML = Cab.sectionSVG(P, d);
+    $('#dd-fig').innerHTML = Cab.drawerDetailSVG(P, d);
     applyMotion();
     // checks
     const bad = R.nestIssues.map((m) => ({ level: 'error', msg: m }));
@@ -1375,8 +1396,7 @@ function makeZip(files) {
       ['Baseboard notch in each side', fmt(d.S) + ' deep by ' + fmt(d.zm) + ' tall at the back bottom corner'],
       ['Drawer front', fmt(d.Wf) + ' by ' + fmt(d.DF) + ' in, ' + fmt(d.fr) + ' in off the floor'],
       ['Drawer box', fmt(d.Wbot) + ' wide including tongues, ' + fmt(d.Lb) + ' long, ' + fmt(d.Hend) + ' high walls'],
-      ['Drawer travel', fmt(d.travel) + ' in, set by two stop screws'],
-      ['Hidden compartment', fmt(d.Wbk) + ' by ' + fmt(d.cd) + ' by ' + fmt(d.Hdiv) + ' in, behind the divider']
+      ['Drawer travel', fmt(d.travel) + ' in, set by two stop screws']
     ];
     $('#keynums').innerHTML = kn.map((r) => '<tr><td>' + r[0] + '</td><td>' + r[1] + '</td></tr>').join('');
     // cut list
@@ -1424,14 +1444,17 @@ function makeZip(files) {
       dr.style.transform = 'translate(' + (state.drawer * dx) + 'px,' + (state.drawer * dy) + 'px)';
       if (top) { top.setAttribute('points', topPoly(dr, dx, dy)); top.style.opacity = state.drawer ? '0.9' : '0'; }
     }
-    const sd = $('#sec-drawer'), dv = $('#sec-divider');
+    const sd = $('#sec-drawer');
     if (sd) sd.style.transform = 'translate(' + (state.sdrawer * parseFloat(sd.dataset.dx)) + 'px,0)';
-    if (dv) dv.style.transform = 'translateY(' + (state.divider * parseFloat(dv.dataset.dy)) + 'px)';
+    const dd = $('#dd-drawer'), gh = $('#dd-ghost');
+    if (dd) dd.style.transform = 'translate(' + (state.sdrawer * parseFloat(dd.dataset.dx)) + 'px,0)';
+    if (gh) gh.style.opacity = state.sdrawer ? '1' : '0';
+    const cap = $('#dd-caption');
+    if (cap) cap.textContent = state.sdrawer ? 'Drawer out to its stop. The dashed outline is where it sat when closed.' : 'Closed. The front is flush and the hidden latch holds it. Nothing shows from the outside.';
     $('#b-doorL').setAttribute('aria-pressed', String(!!state.doorL)); $('#b-doorL').textContent = state.doorL ? 'Close left door' : 'Slide left door';
     $('#b-doorR').setAttribute('aria-pressed', String(!!state.doorR)); $('#b-doorR').textContent = state.doorR ? 'Close right door' : 'Slide right door';
     $('#b-drawer').setAttribute('aria-pressed', String(!!state.drawer)); $('#b-drawer').textContent = state.drawer ? 'Push the drawer in' : 'Pull the drawer';
     $('#s-drawer').setAttribute('aria-pressed', String(!!state.sdrawer)); $('#s-drawer').textContent = state.sdrawer ? 'Push the drawer in' : 'Pull the drawer';
-    $('#s-divider').setAttribute('aria-pressed', String(!!state.divider)); $('#s-divider').textContent = state.divider ? 'Set the divider back' : 'Lift the divider';
   }
   function topPoly(dr, dx, dy) {
     const poly = dr.querySelector('polygon:not(#el-drawerTop)'); if (!poly) return '0,0 0,0 0,0 0,0';
@@ -1443,8 +1466,7 @@ function makeZip(files) {
   $('#b-doorL').addEventListener('click', () => { state.doorL = state.doorL ? 0 : 1; applyMotion(); });
   $('#b-doorR').addEventListener('click', () => { state.doorR = state.doorR ? 0 : 1; applyMotion(); });
   $('#b-drawer').addEventListener('click', () => { state.drawer = state.drawer ? 0 : 1; applyMotion(); });
-  $('#s-drawer').addEventListener('click', () => { state.sdrawer = state.sdrawer ? 0 : 1; if (!state.sdrawer) state.divider = 0; applyMotion(); });
-  $('#s-divider').addEventListener('click', () => { state.divider = state.divider ? 0 : 1; if (state.divider) state.sdrawer = 1; applyMotion(); });
+  $('#s-drawer').addEventListener('click', () => { state.sdrawer = state.sdrawer ? 0 : 1; applyMotion(); });
 
   /* ---------------- downloads ---------------- */
   function csv() {
@@ -1453,7 +1475,7 @@ function makeZip(files) {
     return o;
   }
   function readme() {
-    const P = state.R.P; return 'Nook cabinet CNC plans\nAll units are inches.\n\nSheet thickness used: 3/4 in sheet = ' + fmt(P.T, 4) + ', 1/2 in sheet = ' + fmt(P.H, 4) + ', 1/4 in sheet = ' + fmt(P.Q, 4) + '\nNook: ' + fmt(P.W, 3) + ' x ' + fmt(P.Ht, 3) + ' x ' + fmt(P.D, 3) + '\nBaseboard: ' + fmt(P.BBt, 3) + ' thick, ' + fmt(P.BBclr, 3) + ' clearance\n\nEach DXF is one 96 x 48 in sheet, viewed from above with the machined face up.\nLayers: PROFILE_OUTSIDE (cut outside the line), POCKET_<depth> (cut inside, depth in inches), DRILL_* (pilot marks), SHEET_BORDER and LABEL_NOCUT (do not cut).\nApply dogbone relief to mortises, pockets and tab roots in your CAM software.\nTest cut a dado and a door groove in scrap before cutting full sheets.\n';
+    const P = state.R.P; return 'Nook cabinet CNC plans\nAll units are inches.\n\nSheet thickness used: 3/4 in sheet = ' + fmt(P.T, 4) + ', 1/2 in sheet = ' + fmt(P.H, 4) + '\nNook: ' + fmt(P.W, 3) + ' x ' + fmt(P.Ht, 3) + ' x ' + fmt(P.D, 3) + '\nBaseboard: ' + fmt(P.BBt, 3) + ' thick, ' + fmt(P.BBclr, 3) + ' clearance\n\nEach DXF is one 96 x 48 in sheet, viewed from above with the machined face up.\nLayers: PROFILE_OUTSIDE (cut outside the line), POCKET_<depth> (cut inside, depth in inches), DRILL_* (pilot marks), SHEET_BORDER and LABEL_NOCUT (do not cut).\nApply dogbone relief to mortises, pockets and tab roots in your CAM software.\nTest cut a dado and a door groove in scrap before cutting full sheets.\n';
   }
   let capChecked = !(window.claude && window.claude.use);
   function renderFiles() {
