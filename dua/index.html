@@ -1,0 +1,1097 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Prayers for the Land and Its People, Volume 2 | IslamicFamily</title>
+<meta name="description" content="Add your land acknowledging dua to Volume 2 of Prayers for the Land and Its People, a project of IslamicFamily.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Alegreya:ital,wght@0,400;0,600;0,700;1,400;1,500&family=Alegreya+Sans:wght@400;500;700&family=Noto+Naskh+Arabic:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.js"></script>
+<style>
+  :root {
+    --green: #275D43;      /* Nabawi Green */
+    --green-dark: #1C4433; /* Nabawi Dark */
+    --green-mid: #326B50;  /* Nabawi Mid */
+    --accent: #E09964;     /* Pinecone Brown */
+    --bg: #FAFAF2;         /* New Moon Mist */
+    --text: #353535;       /* Kiswah Black */
+    --red: #BB2D37;        /* Yaqoot Red */
+    --sun: #F7AF29;
+    --sand: #EECBAF;       /* Warm Sand */
+    --arabica: #DCD9B8;
+    --line: rgba(39, 93, 67, .22);
+    --serif: "Alegreya", Georgia, "Times New Roman", serif;
+    --sans: "Alegreya Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+    --arabic: "Noto Naskh Arabic", "Geeza Pro", "Traditional Arabic", serif;
+  }
+  *, *::before, *::after { box-sizing: border-box; }
+  html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+  body {
+    margin: 0; background: var(--bg); color: var(--text);
+    font-family: var(--sans); font-size: 1.125rem; line-height: 1.6;
+  }
+  h1, h2, h3 { font-family: var(--serif); color: var(--green); line-height: 1.12; margin: 0; font-weight: 700; }
+  p { margin: 0 0 1em; }
+  a { color: var(--green); text-underline-offset: 3px; }
+  :focus-visible { outline: 3px solid var(--sun); outline-offset: 3px; border-radius: 3px; }
+  .wrap { width: min(1080px, 100% - 2.5rem); margin-inline: auto; }
+  .narrow { width: min(720px, 100% - 2.5rem); margin-inline: auto; }
+  section { padding: clamp(3rem, 7vw, 5.5rem) 0; }
+  .section-head { margin-bottom: 2rem; max-width: 40rem; }
+  .section-head h2 { font-size: clamp(2rem, 4.6vw, 3rem); margin-bottom: .6rem; }
+  .section-head p { margin: 0; font-size: 1.2rem; }
+
+  /* Buttons */
+  .btn {
+    display: inline-flex; align-items: center; justify-content: center; gap: .5rem;
+    font: 700 1.05rem var(--sans); padding: .8rem 1.4rem; border-radius: 999px;
+    border: 2px solid transparent; cursor: pointer; text-decoration: none; min-height: 48px;
+  }
+  .btn-accent { background: var(--accent); color: var(--green-dark); }
+  .btn-accent:hover { background: #e8a977; }
+  .btn-ghost { background: transparent; color: #fff; border-color: rgba(255,255,255,.7); }
+  .btn-ghost:hover { background: rgba(255,255,255,.12); }
+  .btn-green { background: var(--green); color: #fff; }
+  .btn-green:hover { background: var(--green-mid); }
+  .btn-outline { background: transparent; color: var(--green); border-color: var(--green); }
+  .btn-outline:hover { background: rgba(39,93,67,.08); }
+  .btn[disabled] { opacity: .6; cursor: progress; }
+
+  /* Hero */
+  .hero { background: var(--green-dark); color: var(--bg); position: relative; overflow: hidden; height: 100vh; height: 100dvh; min-height: 0; align-items: center; padding: clamp(1rem, 4vh, 3rem) 0; }
+  .hero-in { position: relative; z-index: 1; }
+  .hero-grid { display: grid; grid-template-columns: minmax(0, 1fr); }
+  .bismillah { font-family: var(--arabic); font-size: clamp(.72rem, 1.92vh, 1.14rem); color: var(--sand); margin: 0 0 clamp(.4rem, 2.1vh, 1.6rem); line-height: 1.3; text-align: center; }
+  .hero h1 { color: #fff; font-size: var(--t, clamp(2.4rem, min(11.5vw, 15.5vh), 9.5rem)); letter-spacing: -.02em; line-height: 1; white-space: nowrap; }
+  .hero .vol { font-family: var(--serif); font-style: italic; font-size: calc(var(--s, 1) * clamp(1rem, 2.6vh, 1.4rem)); color: var(--sand); margin: clamp(.5rem, 2vh, 1.2rem) 0 clamp(.6rem, 2.4vh, 1.5rem); }
+  .hero .lede { max-width: 32rem; font-size: calc(var(--s, 1) * clamp(.85rem, 2.1vh, 1.05rem)); line-height: 1.5; }
+  .hero .actions .btn { font-size: .95rem; min-height: 44px; padding: .6rem 1.2rem; }
+  .hero .lede p { margin-bottom: .8em; }
+  .hero .lede p:last-child { margin-bottom: 0; }
+  .hero .actions { display: flex; flex-wrap: wrap; gap: .7rem; margin-top: clamp(1rem, 3.6vh, 2rem); }
+
+  /* Guide */
+  .guide { background: var(--bg); }
+  .principles { list-style: none; padding: 0; margin: 0 0 2rem; display: grid; gap: .9rem; max-width: 46rem; }
+  .principles li { position: relative; padding-left: 1.9rem; }
+  .principles li::before { content: "\2738"; position: absolute; left: 0; top: 0; color: var(--accent); font-size: 1.15rem; }
+  .callout { background: var(--green); color: #fff; padding: clamp(2.5rem, 6vw, 4.5rem) 0; margin: 3rem 0; }
+  .callout-in { width: min(1080px, 100% - 2.5rem); margin-inline: auto; display: grid; gap: 2.2rem 4rem; grid-template-columns: 1fr 1fr; }
+  .callout blockquote { margin: 0; font-family: var(--serif); font-size: clamp(1.4rem, 3vw, 2rem); line-height: 1.3; font-style: italic; }
+  .callout cite { display: block; margin-top: .7rem; font-family: var(--sans); font-style: normal; font-size: 1.05rem; color: var(--sand); }
+  /* Roman hanging punctuation: opening quote marks sit in the margin so the text edge stays straight */
+  @supports (hanging-punctuation: first) { .hang { hanging-punctuation: first allow-end; } }
+  @supports not (hanging-punctuation: first) { .hang { text-indent: -0.42em; } }
+  .steps-title { font-size: 1.7rem; margin-bottom: 1.2rem; }
+  .steps { list-style: none; padding: 0; margin: 0 0 3.5rem; display: grid; gap: 0; max-width: 46rem; counter-reset: step; border-top: 1px solid var(--line); }
+  .steps > li { counter-increment: step; padding: 1.2rem 0 1.2rem 3.2rem; border-bottom: 1px solid var(--line); position: relative; }
+  .steps > li::before {
+    content: counter(step); position: absolute; left: 0; top: 1.15rem; width: 2.2rem; height: 2.2rem; border-radius: 50%;
+    background: var(--green); color: #fff; display: grid; place-items: center; font: 700 1.05rem var(--serif);
+  }
+  .steps h4 { font: 700 1.3rem var(--serif); color: var(--green); margin: 0 0 .2rem; }
+  .steps p { margin: 0 0 .4rem; }
+  .eg { margin-top: .4rem; }
+  .eg summary { cursor: pointer; font-weight: 700; color: var(--green); padding: .3rem 0; min-height: 44px; display: flex; align-items: center; }
+  .eg .eg-body { background: #fff; border-left: 4px solid var(--accent); padding: .9rem 1.1rem; margin-top: .3rem; }
+  .eg .eg-body p { font-family: var(--serif); font-style: italic; font-size: 1.15rem; margin: 0 0 .8rem; }
+  .eg .eg-body .ask { font-family: var(--sans); font-style: normal; font-size: 1rem; color: #555; margin: 0; }
+  .eg .eg-body .ask b { color: var(--green); }
+
+  /* Carousel */
+  .gallery-head { display: flex; align-items: end; justify-content: space-between; flex-wrap: wrap; gap: 1rem; margin-bottom: 1.2rem; }
+  .gallery-head h3 { font-size: 1.9rem; }
+  .gallery-head p { margin: .3rem 0 0; font-size: 1.05rem; color: #555; }
+  .carousel { background: var(--sand); border-radius: 8px; padding: clamp(1rem, 3vw, 1.6rem); }
+  .viewport { overflow: hidden; border-radius: 4px; }
+  .track { display: flex; transition: transform .45s ease; }
+  .slide { flex: 0 0 100%; padding: clamp(1.2rem, 4vw, 2.4rem); background: var(--bg); min-height: 20rem; display: flex; flex-direction: column; justify-content: space-between; gap: 1.5rem; }
+  .slide .dua p { font-family: var(--serif); font-size: clamp(1.2rem, 2.4vw, 1.5rem); line-height: 1.5; margin: 0 0 1em; font-style: italic; color: var(--green-dark); }
+  .slide .by { border-top: 2px solid var(--accent); padding-top: .8rem; }
+  .slide .by strong { display: block; font-size: 1.1rem; color: var(--text); }
+  .slide .by span { font-size: 1rem; color: #555; }
+  .controls { display: flex; align-items: center; justify-content: space-between; gap: 1rem; margin-top: 1rem; flex-wrap: wrap; }
+  .arrows { display: flex; gap: .5rem; }
+  .arrow { width: 48px; height: 48px; border-radius: 50%; border: 2px solid var(--green); background: transparent; color: var(--green); font-size: 1.4rem; cursor: pointer; display: grid; place-items: center; }
+  .arrow:hover { background: var(--green); color: #fff; }
+  .dots { display: flex; gap: .2rem; }
+  .dot { width: 44px; height: 44px; background: none; border: 0; cursor: pointer; display: grid; place-items: center; }
+  .dot::after { content: ""; width: 12px; height: 12px; border-radius: 50%; background: rgba(39,93,67,.3); }
+  .dot[aria-current="true"]::after { background: var(--green); }
+  .gallery-note { font-size: .98rem; color: #555; margin: .8rem 0 0; min-height: 1.4em; }
+  .shuffle[hidden] { display: none; }
+
+  /* Land */
+  .land { background: var(--arabica); }
+  .lookup { display: grid; gap: 1rem; max-width: 46rem; margin-bottom: 1.4rem; }
+  .lookup-row { display: flex; gap: .6rem; flex-wrap: wrap; }
+  .lookup-row input { flex: 1 1 16rem; }
+  .chips { display: flex; flex-wrap: wrap; gap: .5rem; align-items: center; }
+  .chips span { font-weight: 700; margin-right: .2rem; }
+  .chip { font: 500 1rem var(--sans); background: transparent; border: 1.5px solid var(--green); color: var(--green); border-radius: 999px; padding: .3rem .9rem; min-height: 40px; cursor: pointer; }
+  .chip:hover { background: var(--green); color: #fff; }
+  .map-status { font-weight: 700; color: var(--green-dark); margin: 0 0 .6rem; min-height: 1.6em; }
+  .map-frame { background: #fff; border-block: 2px solid var(--green); overflow: hidden; margin-bottom: 1.2rem; }
+  .map-frame iframe { display: block; width: 100%; height: min(80vh, 640px); min-height: 380px; border: 0; }
+  #leaflet { width: 100%; height: min(80vh, 640px); min-height: 380px; z-index: 0; }
+  .nations { background: #fff; border-left: 4px solid var(--accent); padding: 1rem 1.2rem; margin: 0 0 1rem; max-width: 46rem; }
+  .nations h3 { font-size: 1.25rem; margin: 0 0 .3rem; }
+  .nations h3:not(:first-child) { margin-top: .9rem; }
+  .nations ul { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: .4rem .9rem; }
+  .nations li::before { content: "\2738"; color: var(--accent); margin-right: .35rem; }
+  .nations .none { margin: 0; }
+  .map-fallback { padding: 2rem 1.5rem; text-align: center; }
+  .map-fallback p { max-width: 34rem; margin-inline: auto; }
+  .land-note { font-size: 1rem; max-width: 46rem; margin: 1rem 0 0; }
+
+  /* Form */
+  .submit { background: var(--bg); }
+  form { display: grid; gap: 1.3rem; }
+  .field { display: grid; gap: .35rem; }
+  .field label, .legend { font-weight: 700; color: var(--green-dark); }
+  .opt { font-weight: 400; color: #666; }
+  .hint { font-size: 1rem; color: #555; margin: 0; }
+  input[type="text"], textarea {
+    font: inherit; color: var(--text); background: #fff; border: 2px solid #b9b9a6; border-radius: 6px; padding: .7rem .85rem; width: 100%; min-height: 48px;
+  }
+  textarea { min-height: 16rem; resize: vertical; font-family: var(--serif); font-size: 1.2rem; line-height: 1.5; }
+  input:focus, textarea:focus { border-color: var(--green); outline: 3px solid rgba(247,175,41,.55); outline-offset: 0; }
+  .grid-2 { display: grid; gap: 1.3rem; grid-template-columns: 1fr 1fr; }
+  .counter { text-align: right; font-size: .95rem; color: #666; margin: 0; }
+  .checks { display: grid; gap: .9rem; padding: 1.2rem; background: #fff; border: 1px solid var(--line); border-radius: 6px; }
+  .check { display: grid; grid-template-columns: 1.6rem 1fr; gap: .7rem; align-items: start; }
+  .check input { width: 1.4rem; height: 1.4rem; margin: .2rem 0 0; accent-color: var(--green); }
+  .check label { font-weight: 400; color: var(--text); }
+  .check .sub { display: block; font-size: 1rem; color: #555; }
+  .error { color: var(--red); font-weight: 700; font-size: 1rem; margin: 0; }
+  .field.invalid input, .field.invalid textarea { border-color: var(--red); }
+  .form-error { background: #fbeaec; border-left: 4px solid var(--red); padding: .8rem 1rem; color: #7d1d25; font-weight: 700; }
+  .fine { font-size: 1rem; color: #555; margin: 0; }
+  .trap { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
+  .thanks { background: var(--green); color: #fff; padding: clamp(1.8rem, 5vw, 3rem); border-radius: 6px; }
+  .thanks h3 { color: #fff; font-size: 2rem; margin-bottom: .6rem; }
+  .thanks p { max-width: 36rem; }
+
+  footer { background: var(--green-dark); color: var(--arabica); padding: 2.2rem 0; font-size: 1rem; }
+  footer p { margin: 0 0 .4rem; }
+  footer a { color: var(--sand); }
+
+  @media (max-width: 640px) {
+    body { font-size: 1.06rem; }
+    .grid-2 { grid-template-columns: 1fr; }
+    .hero-grid { grid-template-columns: 1fr; }
+    .slide { min-height: 18rem; }
+    .callout-in { grid-template-columns: 1fr; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    .track { transition: none; }
+  }
+
+  .hero-bg { position: absolute; left: 0; top: 0; width: 100%; height: 100%; overflow: hidden; z-index: 0; pointer-events: none; }
+  .hero-star { position: absolute; right: 0; bottom: 0; height: 216%; aspect-ratio: 1; z-index: 0; pointer-events: none; transform: translate(50%, 50%) scale(1); transform-origin: center; }
+  .hero-star svg { width: 100%; height: 100%; display: block; }
+  .quilt polygon { vector-effect: non-scaling-stroke; }
+  .quilt .q { opacity: 0; transform-box: fill-box; transform-origin: center; animation: cellIn 1.6s ease-out var(--d, 0s) forwards; }
+  @keyframes cellIn { from { opacity: 0; transform: scale(.7); } to { opacity: 1; transform: scale(1); } }
+  .hero .step-nav { margin-top: clamp(3rem, 7vw, 5rem); border-top-color: rgba(255,255,255,.22); }
+  .hero .step-nav .sn b, .hero .step-nav .sn { color: #fff; }
+  .hero .step-nav .sn small { color: var(--sand); }
+  .hero .step-dots button::after { background: rgba(255,255,255,.35); }
+  .hero .step-dots button[aria-current="step"]::after { background: #fff; }
+  /* ---- Sections, spacing, step navigation ---- */
+  [hidden] { display: none !important; }
+  [data-step] { display: none; }
+  [data-step].active { display: block; animation: panelIn .55s ease both; }
+  .hero[data-step].active { display: flex; }
+  @keyframes panelIn { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: none; } }
+  section { padding: clamp(4.5rem, 11vw, 9rem) 0; }
+  .section-head { margin-bottom: clamp(2.5rem, 6vw, 4.5rem); max-width: 36rem; }
+  .section-head h2 { margin-bottom: 1.1rem; }
+  .narrow { width: min(680px, 100% - 2.5rem); }
+  .principles { gap: 1.7rem; margin-bottom: 0; }
+  .callout { margin: clamp(4rem, 9vw, 7rem) 0; padding: clamp(3rem, 7vw, 5.5rem) 0; }
+  .steps-title { margin-bottom: 1.8rem; }
+  .steps { margin-bottom: 0; }
+  .steps > li { padding: 1.9rem 0 1.9rem 3.4rem; }
+  .steps > li::before { top: 1.85rem; }
+  .gallery-head { justify-content: flex-end; margin-bottom: 1.6rem; }
+  .slide { padding: clamp(2rem, 6vw, 4rem); min-height: 22rem; }
+  .carousel { padding: clamp(1.2rem, 3.5vw, 2.2rem); }
+  .gallery-note { margin-top: 1.4rem; }
+  .lookup { gap: 1.6rem; margin-bottom: 2.4rem; }
+  .map-status { margin-bottom: 1.2rem; }
+  .map-frame { margin-bottom: 2rem; }
+  .land-note { margin-top: 1.6rem; }
+  form { gap: 1.9rem; }
+  .checks { padding: 1.7rem; gap: 1.3rem; }
+  .step-nav { display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; gap: 1rem; margin-top: clamp(4rem, 9vw, 7rem); padding-top: 1.8rem; border-top: 1px solid var(--line); }
+  .step-nav .sn { background: none; border: 0; cursor: pointer; font: inherit; color: var(--green); padding: .6rem .2rem; min-height: 56px; display: inline-flex; align-items: center; gap: .9rem; text-align: left; }
+  .step-nav .sn.next { justify-self: end; text-align: right; }
+  .step-nav .sn.prev { justify-self: start; }
+  .step-nav .sn small { display: block; font-size: .85rem; letter-spacing: .04em; color: #6a6a6a; }
+  .step-nav .sn b { display: block; font: 700 1.25rem var(--serif); color: var(--green); }
+  .step-nav .sn .ar { font-size: 1.5rem; line-height: 1; transition: transform .2s ease; }
+  .step-nav .sn.prev:hover .ar { transform: translateX(-5px); }
+  .step-nav .sn.next:hover .ar { transform: translateX(5px); }
+  .step-nav .sn:hover b { text-decoration: underline; text-underline-offset: 4px; }
+  .step-dots { display: flex; gap: .3rem; }
+  .step-dots button { width: 32px; height: 40px; background: none; border: 0; cursor: pointer; display: grid; place-items: center; }
+  .step-dots button::after { content: ""; width: 9px; height: 9px; border-radius: 50%; background: rgba(39,93,67,.28); transition: background .2s, transform .2s; }
+  .step-dots button[aria-current="step"]::after { background: var(--green); transform: scale(1.35); }
+  @media (max-width: 640px) {
+    .step-nav { grid-template-columns: 1fr 1fr; }
+    .step-dots { display: none; }
+    .step-nav .sn b { font-size: 1.1rem; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    [data-step].active { animation: none; }
+    .quilt .q { animation: none; opacity: 1; }
+  }
+
+  /* ---- Hero fits the window; sections act as their own pages ---- */
+  html.on-hero, html.on-hero body { overflow: hidden; }
+  .btn-next { gap: .65rem; animation: ringPulse 4.4s ease-out 30.8s infinite; }
+  .dash-arrow { display: inline-block; font-size: 1.45em; line-height: 1; flex: none; clip-path: inset(0 100% 0 0); animation: arrowOpen 1.9s cubic-bezier(.3, .1, .2, 1) 1.2s forwards, arrowNudge 4.4s ease-in-out 30.8s infinite; }
+  @keyframes arrowOpen { to { clip-path: inset(0 0 0 0); } }
+  @keyframes arrowNudge { 0%, 100% { transform: translateX(0); } 45% { transform: translateX(5px); } }
+  @keyframes ringPulse { 0% { box-shadow: 0 0 0 0 rgba(255,255,255,.34); } 65%, 100% { box-shadow: 0 0 0 16px rgba(255,255,255,0); } }
+  section[data-step].active { display: flex; flex-direction: column; min-height: 100vh; min-height: 100svh; }
+  section[data-step].active > .wrap:last-child, section[data-step].active > .narrow:last-child { flex: 1; display: flex; flex-direction: column; }
+  section[data-step].active .step-nav { margin-top: auto; }
+  section[data-step].active .section-head, section[data-step].active .carousel, section[data-step].active form { flex: none; }
+  .step-nav { padding-top: 1.8rem; }
+  section[data-step].active > .wrap:last-child > .step-nav, section[data-step].active > .narrow:last-child > .step-nav { margin-top: auto; }
+  .review[data-step].active { min-height: 0; }
+  @media (prefers-reduced-motion: reduce) {
+    .btn-next { animation: none; }
+    .dash-arrow { animation: none; clip-path: none; }
+  }
+  h1[tabindex="-1"]:focus, h2[tabindex="-1"]:focus { outline: none; }
+
+  /* ---- Full-screen carousel page ---- */
+  html:not(.on-last) footer { display: none; }
+  section.duas { background: var(--green-dark); color: #fff; padding: 0 0 clamp(.8rem, 2.5vh, 1.6rem); }
+  section.duas[data-step].active { height: 100vh; height: 100svh; min-height: 0; overflow: hidden; }
+  .duas .duas-top { display: flex; align-items: center; justify-content: space-between; gap: 1rem; padding-top: clamp(1rem, 3vh, 2rem); padding-bottom: .5rem; flex: none; }
+  .duas .duas-top h2 { color: var(--sand); font-size: clamp(1.2rem, 2.2vw, 1.6rem); font-weight: 500; font-style: italic; }
+  .duas .duas-top .btn { font-size: .95rem; min-height: 44px; padding: .55rem 1.2rem; }
+  .duas .carousel { flex: 1; min-height: 0; position: relative; display: flex; background: none; padding: 0; border-radius: 0; }
+  .duas .viewport { flex: 1; min-width: 0; display: flex; border-radius: 0; }
+  .duas .track { flex: 0 0 100%; min-width: 0; }
+  .duas .slide { flex: 0 0 100%; min-height: 0; background: transparent; justify-content: center; align-items: flex-start; overflow-y: auto; padding: clamp(1.2rem, 4vh, 3rem) clamp(4.5rem, 12vw, 11rem); gap: clamp(1.2rem, 4vh, 2.4rem); }
+  .duas .slide .dua, .duas .slide .by { width: min(100%, 54rem); margin-inline: auto; }
+  .duas .slide .dua p { color: #fff; font-size: clamp(1.2rem, min(2.5vw, 4.2vh), 2.2rem); line-height: 1.45; }
+  .duas .slide .by { border-top-color: var(--accent); }
+  .duas .slide .by strong { color: #fff; }
+  .duas .slide .by span { color: var(--sand); }
+  .duas .arrow { position: absolute; top: 50%; transform: translateY(-50%); border-color: rgba(255,255,255,.5); color: #fff; z-index: 2; }
+  .duas .arrow:hover { background: #fff; color: var(--green-dark); }
+  .duas .arrow.prev { left: clamp(.6rem, 2.5vw, 2.5rem); }
+  .duas .arrow.next { right: clamp(.6rem, 2.5vw, 2.5rem); }
+  .duas .dots { position: absolute; bottom: .2rem; left: 50%; transform: translateX(-50%); z-index: 2; }
+  .duas .dot::after { background: rgba(255,255,255,.35); }
+  .duas .dot[aria-current="true"]::after { background: #fff; }
+  .duas .gallery-note { color: var(--sand); text-align: center; margin: .2rem 0 0; min-height: 0; font-size: .95rem; }
+  .duas .step-nav { margin-top: .4rem; padding-top: .8rem; border-top-color: rgba(255,255,255,.22); }
+  .duas .step-nav .sn, .duas .step-nav .sn b { color: #fff; }
+  .duas .step-nav .sn small { color: var(--sand); }
+  .duas .step-dots button::after { background: rgba(255,255,255,.35); }
+  .duas .step-dots button[aria-current="step"]::after { background: #fff; }
+  @media (max-width: 700px) {
+    .duas .slide { padding: 1.2rem 1.4rem 4.6rem; }
+    .duas .arrow { top: auto; bottom: .1rem; transform: none; width: 44px; height: 44px; }
+    .duas .arrow.prev { left: 1rem; }
+    .duas .arrow.next { right: 1rem; }
+  }
+  section.duas[data-step].active > .wrap.duas-bottom { flex: none; display: block; }
+  section.duas[data-step].active .step-nav { margin-top: .4rem; }
+  section.duas[data-step].active .carousel { flex: 1 1 0; min-height: 0; }
+  .step-nav .sn b { white-space: nowrap; }
+  .duas .duas-top { padding-bottom: .9rem; }
+
+  /* ---- Qur'an quotes: one opens the section, one closes it ---- */
+  section.guide { padding-top: 0; padding-bottom: clamp(2rem, 6vw, 4rem); }
+  .guide-top { padding-top: clamp(5rem, 12vw, 10rem); }
+  .steps-wrap { padding-top: clamp(4rem, 9vw, 7rem); }
+  .guide-end { padding-top: clamp(3rem, 7vw, 5rem); }
+  .qf { margin: 0; }
+  .qf blockquote { margin: 0; font-family: var(--serif); font-style: italic; font-weight: 400; line-height: 1.22; color: #fff; }
+  .qf figcaption { margin-top: clamp(1.4rem, 4vh, 2.6rem); font: 500 1.05rem var(--sans); letter-spacing: .07em; color: var(--sand); }
+  .qf figcaption::before { content: ""; display: block; width: 3.2rem; height: 2px; background: var(--accent); margin-bottom: 1rem; }
+  .quote-full { min-height: 100vh; min-height: 100svh; flex: none; background: var(--green-dark); display: flex; align-items: center; justify-content: center; position: relative; padding: clamp(3rem, 9vh, 7rem) clamp(2rem, 9vw, 9rem); }
+  .quote-full blockquote { font-size: clamp(1.8rem, min(4.9vw, 6.8vh), 4.4rem); max-width: 20em; }
+  .scroll-cue { position: absolute; left: 50%; bottom: clamp(1.2rem, 4vh, 2.4rem); margin-left: -.5em; color: var(--sand); font-size: 1.7rem; line-height: 1; }
+  .quote-band { background: var(--green); margin-top: clamp(4rem, 9vw, 7rem); padding: clamp(5rem, 13vw, 10rem) clamp(2rem, 9vw, 9rem); display: flex; justify-content: center; }
+  .quote-band blockquote { font-size: clamp(1.6rem, 3.8vw, 3rem); max-width: 22em; }
+  .q-fade { opacity: 0; transform: translateY(20px); transition: opacity 2.6s cubic-bezier(.22, .61, .36, 1), transform 2.6s cubic-bezier(.22, .61, .36, 1); }
+  .q-fade.late { transition-delay: 1.5s; }
+  .q-fade.later { transition-delay: 3.4s; }
+  .q-fade.in { opacity: 1; transform: none; }
+  .scroll-cue.in { animation: cueBob 3.2s ease-in-out 5s infinite; }
+  @keyframes cueBob { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(7px); } }
+  @media (prefers-reduced-motion: reduce) {
+    .q-fade { opacity: 1; transform: none; transition: none; }
+    .scroll-cue.in { animation: none; }
+  }
+
+  /* ---- Carousel: small chevrons mid-page, counter and progress line ---- */
+  .duas .chev { position: absolute; top: 50%; transform: translateY(-50%); background: none; border: 0; color: rgba(255,255,255,.55); font: 300 2.6rem/1 var(--serif); padding: .2rem .7rem .5rem; min-width: 44px; min-height: 64px; cursor: pointer; z-index: 2; transition: color .2s ease; }
+  .duas .chev:hover { color: #fff; }
+  .duas .chev.prev { left: clamp(.1rem, 1.5vw, 1.2rem); }
+  .duas .chev.next { right: clamp(.1rem, 1.5vw, 1.2rem); }
+  .duas .duas-status { position: absolute; bottom: .6rem; left: 50%; transform: translateX(-50%); width: min(220px, 60%); text-align: center; color: var(--sand); font: 500 .95rem var(--sans); letter-spacing: .06em; z-index: 2; pointer-events: none; }
+  .duas .dua-progress { height: 2px; background: rgba(255,255,255,.2); margin-top: .55rem; border-radius: 2px; overflow: hidden; }
+  .duas #slide-bar { display: block; height: 100%; width: 0; background: var(--accent); transition: width .5s ease; }
+  @media (max-width: 700px) { .duas .slide { padding: 1.2rem 2.8rem 3.6rem; } }
+  .duas .slide { padding-bottom: 3.8rem; }
+  .duas .slide .dua p { font-size: clamp(1.15rem, min(2.3vw, 3.5vh), 1.95rem); }
+  .sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+  .duas .duas-status { bottom: .5rem; }
+  .duas .dua-progress { margin-top: 0; }
+  .duas .slide { padding-bottom: 2.8rem; }
+  .eg { margin-top: 1rem; }
+  .eg .eg-body { padding: 1.1rem 1.3rem; }
+  .eg .eg-body p:last-child { margin-bottom: 0; }
+  @media (min-width: 920px) {
+    .steps { max-width: none; }
+    .steps > li { display: grid; grid-template-columns: minmax(0, .85fr) minmax(0, 1.15fr); column-gap: clamp(2rem, 5vw, 4.5rem); align-items: start; padding-top: 2.2rem; padding-bottom: 2.2rem; }
+    .steps > li > h4, .steps > li > p { grid-column: 1; }
+    .steps > li > .eg { grid-column: 2; grid-row: 1 / span 3; margin-top: 0; }
+    .steps > li > p { margin-bottom: 0; }
+  }
+  /* Highlighter swipe on the closing phrase of the opening quote, drawn after the fade-in */
+  .quote-full .brush { padding: 0 .1em; margin: 0 -.1em; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 300 24' preserveAspectRatio='none'%3E%3Cpath fill='%23E09964' fill-opacity='.62' d='M4 6 C 40 3, 110 7, 180 4 S 270 5, 297 3 L 295 19 C 250 22, 190 18, 140 21 S 40 20, 6 22 C 2 17, 6 12, 4 6 Z'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: 0 88%; background-size: 0% .62em; -webkit-box-decoration-break: clone; box-decoration-break: clone; }
+  .quote-full .q-fade.in .brush { animation: brushDraw 1.9s cubic-bezier(.55, .05, .25, 1) 3.1s forwards; }
+  @keyframes brushDraw { to { background-size: 100% .62em; } }
+  @media (prefers-reduced-motion: reduce) { .quote-full .brush { background-size: 100% .62em; } .quote-full .q-fade.in .brush { animation: none; } }
+
+  /* ---- Map page: compact, map first, dark green like the other full-screen pages ---- */
+  section.land { background: var(--green-dark); color: #fff; padding: 0; }
+  section.land[data-step].active { height: 100vh; height: 100svh; min-height: 0; overflow: hidden; }
+  .land .land-top { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: .8rem 2rem; padding-top: clamp(1rem, 3vh, 2rem); padding-bottom: .9rem; flex: none; }
+  .land .land-top h2 { color: var(--sand); font-size: clamp(1.2rem, 2.2vw, 1.6rem); font-weight: 500; font-style: italic; }
+  .land .lookup-row { display: flex; flex-wrap: wrap; align-items: center; gap: .6rem; }
+  .land .lookup-row input { flex: 1 1 10rem; min-width: 8rem; width: auto; background: #fff; border: 2px solid transparent; font-size: 1rem; min-height: 44px; padding: .5rem .85rem; }
+  .land .lookup-row .btn { font-size: .95rem; min-height: 44px; padding: .55rem 1.2rem; }
+  .land .land-sub { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: .6rem 1rem; padding-bottom: .8rem; flex: none; }
+  .land .map-status { margin: 0; min-height: 0; color: var(--sand); font-weight: 500; font-size: .98rem; }
+  .land .map-tabs { margin: 0; }
+  .land .map-tabs button { border-color: rgba(255,255,255,.55); color: #fff; font-size: .95rem; min-height: 40px; padding: .35rem 1rem; }
+  .land .map-tabs button[aria-selected="true"] { background: var(--accent); border-color: var(--accent); color: var(--green-dark); }
+  .land .map-hint { display: none; }
+  section.land[data-step].active > .map-frame { flex: 1 1 0; min-height: 180px; position: relative; margin: 0; border: 0; background: var(--green-mid); }
+  .land .map-frame iframe, .land #leaflet { position: absolute; inset: 0; width: 100%; height: 100%; min-height: 0; }
+  .land .map-fallback { position: absolute; inset: 0; display: grid; place-content: center; justify-items: center; background: var(--green-mid); color: #fff; }
+  .land .map-fallback .btn { background: var(--accent); color: var(--green-dark); }
+  .land .nations { position: absolute; left: 1rem; bottom: 1rem; z-index: 700; margin: 0; max-width: min(22rem, calc(100% - 2rem)); max-height: 45%; overflow: auto; padding: .8rem 1rem; background: rgba(28,68,51,.94); color: #fff; border-left: 4px solid var(--accent); }
+  .land .nations h3 { color: var(--sand); font-size: 1.05rem; }
+  .land .nations a { color: #fff; }
+  section.land[data-step].active > .wrap.land-bottom { flex: none; display: block; padding-top: .7rem; padding-bottom: clamp(.6rem, 2vh, 1rem); }
+  .land .land-note { margin: 0 0 .3rem; max-width: none; font-size: .85rem; line-height: 1.4; color: var(--sand); }
+  .land .land-note a { color: #fff; }
+  section.land[data-step].active .step-nav { margin-top: .2rem; padding-top: .7rem; border-top-color: rgba(255,255,255,.22); }
+  .land .step-nav .sn, .land .step-nav .sn b { color: #fff; }
+  .land .step-nav .sn small { color: var(--sand); }
+  .land .step-dots button::after { background: rgba(255,255,255,.35); }
+  .land .step-dots button[aria-current="step"]::after { background: #fff; }
+  /* ---- Post-submission thank-you: full-screen image, one pulsing button ---- */
+  .thanks { position: fixed; inset: 0; z-index: 2000; display: block; padding: 0; border-radius: 0; background: #E09964; color: inherit; }
+  .thanks img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; display: block; }
+  .thanks .btn { position: absolute; left: 50%; bottom: clamp(1.2rem, 5vh, 3rem); transform: translateX(-50%); z-index: 1; background: #275D43; color: #fff; border-color: #275D43; animation: thanksPulse 3.8s ease-in-out infinite; }
+  .thanks .btn:hover { background: #1C4433; border-color: #1C4433; }
+  @keyframes thanksPulse { 0%, 100% { box-shadow: 0 0 0 0 rgba(39,93,67,.5); transform: translateX(-50%) scale(1); } 50% { box-shadow: 0 0 0 16px rgba(39,93,67,0); transform: translateX(-50%) scale(1.045); } }
+  @media (prefers-reduced-motion: reduce) { .thanks .btn { animation: none; } }
+</style>
+</head>
+<body>
+
+<!-- ============ PART 1: HERO ============ -->
+<header class="hero panel" id="top" data-step="0">
+  <div class="hero-bg" aria-hidden="true">
+  <div class="hero-star" aria-hidden="true">
+  <svg class="quilt" viewBox="-200 -200 400 400" xmlns="http://www.w3.org/2000/svg" focusable="false">
+        <g stroke="#1C4433" stroke-width="1.6" stroke-linejoin="round">
+          <polygon class="q" style="--d:0.83s" fill="#326B50" points="0.0,-0.0 -9.6,-23.1 0.0,-46.2 9.6,-23.1"/><polygon class="q" style="--d:0.00s" fill="#275D43" points="9.6,-23.1 0.0,-46.2 9.6,-69.3 19.1,-46.2"/><polygon class="q" style="--d:0.00s" fill="#326B50" points="19.1,-46.2 9.6,-69.3 19.1,-92.4 28.7,-69.3"/><polygon class="q" style="--d:0.00s" fill="#E09964" fill-opacity="0.5" points="28.7,-69.3 19.1,-92.4 28.7,-115.5 38.3,-92.4"/><polygon class="q" style="--d:4.97s" fill="#275D43" points="-9.6,-23.1 -19.1,-46.2 -9.6,-69.3 0.0,-46.2"/><polygon class="q" style="--d:9.94s" fill="#326B50" points="0.0,-46.2 -9.6,-69.3 0.0,-92.4 9.6,-69.3"/><polygon class="q" style="--d:0.00s" fill="#E09964" fill-opacity="0.5" points="9.6,-69.3 0.0,-92.4 9.6,-115.5 19.1,-92.4"/><polygon class="q" style="--d:0.00s" fill="#326B50" points="19.1,-92.4 9.6,-115.5 19.1,-138.6 28.7,-115.5"/><polygon class="q" style="--d:7.46s" fill="#326B50" points="-19.1,-46.2 -28.7,-69.3 -19.1,-92.4 -9.6,-69.3"/><polygon class="q" style="--d:14.09s" fill="#E09964" fill-opacity="0.5" points="-9.6,-69.3 -19.1,-92.4 -9.6,-115.5 0.0,-92.4"/><polygon class="q" style="--d:19.06s" fill="#326B50" points="0.0,-92.4 -9.6,-115.5 0.0,-138.6 9.6,-115.5"/><polygon class="q" style="--d:0.00s" fill="#275D43" points="9.6,-115.5 0.0,-138.6 9.6,-161.7 19.1,-138.6"/><polygon class="q" style="--d:13.26s" fill="#E09964" fill-opacity="0.5" points="-28.7,-69.3 -38.3,-92.4 -28.7,-115.5 -19.1,-92.4"/><polygon class="q" style="--d:19.89s" fill="#326B50" points="-19.1,-92.4 -28.7,-115.5 -19.1,-138.6 -9.6,-115.5"/><polygon class="q" style="--d:24.03s" fill="#275D43" points="-9.6,-115.5 -19.1,-138.6 -9.6,-161.7 0.0,-138.6"/><polygon class="q" style="--d:29.00s" fill="#326B50" points="0.0,-138.6 -9.6,-161.7 0.0,-184.8 9.6,-161.7"/><polygon class="q" style="--d:0.00s" fill="#275D43" points="0.0,-0.0 9.6,-23.1 32.7,-32.7 23.1,-9.6"/><polygon class="q" style="--d:0.00s" fill="#326B50" points="23.1,-9.6 32.7,-32.7 55.8,-42.2 46.2,-19.1"/><polygon class="q" style="--d:0.00s" fill="#275D43" points="46.2,-19.1 55.8,-42.2 78.9,-51.8 69.3,-28.7"/><polygon class="q" style="--d:0.00s" fill="#EECBAF" fill-opacity="0.22" points="69.3,-28.7 78.9,-51.8 102.0,-61.4 92.4,-38.3"/><polygon class="q" style="--d:0.00s" fill="#326B50" points="9.6,-23.1 19.1,-46.2 42.2,-55.8 32.7,-32.7"/><polygon class="q" style="--d:0.00s" fill="#275D43" points="32.7,-32.7 42.2,-55.8 65.3,-65.3 55.8,-42.2"/><polygon class="q" style="--d:0.00s" fill="#EECBAF" fill-opacity="0.22" points="55.8,-42.2 65.3,-65.3 88.4,-74.9 78.9,-51.8"/><polygon class="q" style="--d:0.00s" fill="#275D43" points="78.9,-51.8 88.4,-74.9 111.5,-84.5 102.0,-61.4"/><polygon class="q" style="--d:0.00s" fill="#275D43" points="19.1,-46.2 28.7,-69.3 51.8,-78.9 42.2,-55.8"/><polygon class="q" style="--d:0.00s" fill="#EECBAF" fill-opacity="0.22" points="42.2,-55.8 51.8,-78.9 74.9,-88.4 65.3,-65.3"/><polygon class="q" style="--d:0.00s" fill="#275D43" points="65.3,-65.3 74.9,-88.4 98.0,-98.0 88.4,-74.9"/><polygon class="q" style="--d:0.00s" fill="#326B50" points="88.4,-74.9 98.0,-98.0 121.1,-107.6 111.5,-84.5"/><polygon class="q" style="--d:0.00s" fill="#EECBAF" fill-opacity="0.22" points="28.7,-69.3 38.3,-92.4 61.4,-102.0 51.8,-78.9"/><polygon class="q" style="--d:0.00s" fill="#275D43" points="51.8,-78.9 61.4,-102.0 84.5,-111.5 74.9,-88.4"/><polygon class="q" style="--d:0.00s" fill="#326B50" points="74.9,-88.4 84.5,-111.5 107.6,-121.1 98.0,-98.0"/><polygon class="q" style="--d:0.00s" fill="#275D43" points="98.0,-98.0 107.6,-121.1 130.7,-130.7 121.1,-107.6"/><polygon class="q" style="--d:0.00s" fill="#326B50" points="0.0,0.0 23.1,-9.6 46.2,0.0 23.1,9.6"/><polygon class="q" style="--d:0.00s" fill="#275D43" points="23.1,9.6 46.2,0.0 69.3,9.6 46.2,19.1"/><polygon class="q" style="--d:0.00s" fill="#326B50" points="46.2,19.1 69.3,9.6 92.4,19.1 69.3,28.7"/><polygon class="q" style="--d:0.00s" fill="#E09964" fill-opacity="0.5" points="69.3,28.7 92.4,19.1 115.5,28.7 92.4,38.3"/><polygon class="q" style="--d:0.00s" fill="#275D43" points="23.1,-9.6 46.2,-19.1 69.3,-9.6 46.2,0.0"/><polygon class="q" style="--d:0.00s" fill="#326B50" points="46.2,0.0 69.3,-9.6 92.4,0.0 69.3,9.6"/><polygon class="q" style="--d:0.00s" fill="#E09964" fill-opacity="0.5" points="69.3,9.6 92.4,0.0 115.5,9.6 92.4,19.1"/><polygon class="q" style="--d:0.00s" fill="#326B50" points="92.4,19.1 115.5,9.6 138.6,19.1 115.5,28.7"/><polygon class="q" style="--d:0.00s" fill="#326B50" points="46.2,-19.1 69.3,-28.7 92.4,-19.1 69.3,-9.6"/><polygon class="q" style="--d:0.00s" fill="#E09964" fill-opacity="0.5" points="69.3,-9.6 92.4,-19.1 115.5,-9.6 92.4,0.0"/><polygon class="q" style="--d:0.00s" fill="#326B50" points="92.4,0.0 115.5,-9.6 138.6,0.0 115.5,9.6"/><polygon class="q" style="--d:0.00s" fill="#275D43" points="115.5,9.6 138.6,0.0 161.7,9.6 138.6,19.1"/><polygon class="q" style="--d:0.00s" fill="#E09964" fill-opacity="0.5" points="69.3,-28.7 92.4,-38.3 115.5,-28.7 92.4,-19.1"/><polygon class="q" style="--d:0.00s" fill="#326B50" points="92.4,-19.1 115.5,-28.7 138.6,-19.1 115.5,-9.6"/><polygon class="q" style="--d:0.00s" fill="#275D43" points="115.5,-9.6 138.6,-19.1 161.7,-9.6 138.6,0.0"/><polygon class="q" style="--d:0.00s" fill="#326B50" points="138.6,0.0 161.7,-9.6 184.8,0.0 161.7,9.6"/><polygon class="q" style="--d:0.00s" fill="#275D43" points="0.0,0.0 23.1,9.6 32.7,32.7 9.6,23.1"/><polygon class="q" style="--d:0.00s" fill="#326B50" points="9.6,23.1 32.7,32.7 42.2,55.8 19.1,46.2"/><polygon class="q" style="--d:0.00s" fill="#275D43" points="19.1,46.2 42.2,55.8 51.8,78.9 28.7,69.3"/><polygon class="q" style="--d:0.00s" fill="#EECBAF" fill-opacity="0.22" points="28.7,69.3 51.8,78.9 61.4,102.0 38.3,92.4"/><polygon class="q" style="--d:0.00s" fill="#326B50" points="23.1,9.6 46.2,19.1 55.8,42.2 32.7,32.7"/><polygon class="q" style="--d:0.00s" fill="#275D43" points="32.7,32.7 55.8,42.2 65.3,65.3 42.2,55.8"/><polygon class="q" style="--d:0.00s" fill="#EECBAF" fill-opacity="0.22" points="42.2,55.8 65.3,65.3 74.9,88.4 51.8,78.9"/><polygon class="q" style="--d:0.00s" fill="#275D43" points="51.8,78.9 74.9,88.4 84.5,111.5 61.4,102.0"/><polygon class="q" style="--d:0.00s" fill="#275D43" points="46.2,19.1 69.3,28.7 78.9,51.8 55.8,42.2"/><polygon class="q" style="--d:0.00s" fill="#EECBAF" fill-opacity="0.22" points="55.8,42.2 78.9,51.8 88.4,74.9 65.3,65.3"/><polygon class="q" style="--d:0.00s" fill="#275D43" points="65.3,65.3 88.4,74.9 98.0,98.0 74.9,88.4"/><polygon class="q" style="--d:0.00s" fill="#326B50" points="74.9,88.4 98.0,98.0 107.6,121.1 84.5,111.5"/><polygon class="q" style="--d:0.00s" fill="#EECBAF" fill-opacity="0.22" points="69.3,28.7 92.4,38.3 102.0,61.4 78.9,51.8"/><polygon class="q" style="--d:0.00s" fill="#275D43" points="78.9,51.8 102.0,61.4 111.5,84.5 88.4,74.9"/><polygon class="q" style="--d:0.00s" fill="#326B50" points="88.4,74.9 111.5,84.5 121.1,107.6 98.0,98.0"/><polygon class="q" style="--d:0.00s" fill="#275D43" points="98.0,98.0 121.1,107.6 130.7,130.7 107.6,121.1"/><polygon class="q" style="--d:0.00s" fill="#326B50" points="0.0,0.0 9.6,23.1 0.0,46.2 -9.6,23.1"/><polygon class="q" style="--d:0.00s" fill="#275D43" points="-9.6,23.1 0.0,46.2 -9.6,69.3 -19.1,46.2"/><polygon class="q" style="--d:0.00s" fill="#326B50" points="-19.1,46.2 -9.6,69.3 -19.1,92.4 -28.7,69.3"/><polygon class="q" style="--d:0.00s" fill="#E09964" fill-opacity="0.5" points="-28.7,69.3 -19.1,92.4 -28.7,115.5 -38.3,92.4"/><polygon class="q" style="--d:0.00s" fill="#275D43" points="9.6,23.1 19.1,46.2 9.6,69.3 0.0,46.2"/><polygon class="q" style="--d:0.00s" fill="#326B50" points="0.0,46.2 9.6,69.3 0.0,92.4 -9.6,69.3"/><polygon class="q" style="--d:0.00s" fill="#E09964" fill-opacity="0.5" points="-9.6,69.3 0.0,92.4 -9.6,115.5 -19.1,92.4"/><polygon class="q" style="--d:0.00s" fill="#326B50" points="-19.1,92.4 -9.6,115.5 -19.1,138.6 -28.7,115.5"/><polygon class="q" style="--d:0.00s" fill="#326B50" points="19.1,46.2 28.7,69.3 19.1,92.4 9.6,69.3"/><polygon class="q" style="--d:0.00s" fill="#E09964" fill-opacity="0.5" points="9.6,69.3 19.1,92.4 9.6,115.5 0.0,92.4"/><polygon class="q" style="--d:0.00s" fill="#326B50" points="0.0,92.4 9.6,115.5 0.0,138.6 -9.6,115.5"/><polygon class="q" style="--d:0.00s" fill="#275D43" points="-9.6,115.5 0.0,138.6 -9.6,161.7 -19.1,138.6"/><polygon class="q" style="--d:0.00s" fill="#E09964" fill-opacity="0.5" points="28.7,69.3 38.3,92.4 28.7,115.5 19.1,92.4"/><polygon class="q" style="--d:0.00s" fill="#326B50" points="19.1,92.4 28.7,115.5 19.1,138.6 9.6,115.5"/><polygon class="q" style="--d:0.00s" fill="#275D43" points="9.6,115.5 19.1,138.6 9.6,161.7 0.0,138.6"/><polygon class="q" style="--d:0.00s" fill="#326B50" points="0.0,138.6 9.6,161.7 0.0,184.8 -9.6,161.7"/><polygon class="q" style="--d:0.00s" fill="#275D43" points="-0.0,0.0 -9.6,23.1 -32.7,32.7 -23.1,9.6"/><polygon class="q" style="--d:0.00s" fill="#326B50" points="-23.1,9.6 -32.7,32.7 -55.8,42.2 -46.2,19.1"/><polygon class="q" style="--d:0.00s" fill="#275D43" points="-46.2,19.1 -55.8,42.2 -78.9,51.8 -69.3,28.7"/><polygon class="q" style="--d:0.00s" fill="#EECBAF" fill-opacity="0.22" points="-69.3,28.7 -78.9,51.8 -102.0,61.4 -92.4,38.3"/><polygon class="q" style="--d:0.00s" fill="#326B50" points="-9.6,23.1 -19.1,46.2 -42.2,55.8 -32.7,32.7"/><polygon class="q" style="--d:0.00s" fill="#275D43" points="-32.7,32.7 -42.2,55.8 -65.3,65.3 -55.8,42.2"/><polygon class="q" style="--d:0.00s" fill="#EECBAF" fill-opacity="0.22" points="-55.8,42.2 -65.3,65.3 -88.4,74.9 -78.9,51.8"/><polygon class="q" style="--d:0.00s" fill="#275D43" points="-78.9,51.8 -88.4,74.9 -111.5,84.5 -102.0,61.4"/><polygon class="q" style="--d:0.00s" fill="#275D43" points="-19.1,46.2 -28.7,69.3 -51.8,78.9 -42.2,55.8"/><polygon class="q" style="--d:0.00s" fill="#EECBAF" fill-opacity="0.22" points="-42.2,55.8 -51.8,78.9 -74.9,88.4 -65.3,65.3"/><polygon class="q" style="--d:0.00s" fill="#275D43" points="-65.3,65.3 -74.9,88.4 -98.0,98.0 -88.4,74.9"/><polygon class="q" style="--d:0.00s" fill="#326B50" points="-88.4,74.9 -98.0,98.0 -121.1,107.6 -111.5,84.5"/><polygon class="q" style="--d:0.00s" fill="#EECBAF" fill-opacity="0.22" points="-28.7,69.3 -38.3,92.4 -61.4,102.0 -51.8,78.9"/><polygon class="q" style="--d:0.00s" fill="#275D43" points="-51.8,78.9 -61.4,102.0 -84.5,111.5 -74.9,88.4"/><polygon class="q" style="--d:0.00s" fill="#326B50" points="-74.9,88.4 -84.5,111.5 -107.6,121.1 -98.0,98.0"/><polygon class="q" style="--d:0.00s" fill="#275D43" points="-98.0,98.0 -107.6,121.1 -130.7,130.7 -121.1,107.6"/><polygon class="q" style="--d:0.00s" fill="#326B50" points="-0.0,0.0 -23.1,9.6 -46.2,0.0 -23.1,-9.6"/><polygon class="q" style="--d:3.31s" fill="#275D43" points="-23.1,-9.6 -46.2,0.0 -69.3,-9.6 -46.2,-19.1"/><polygon class="q" style="--d:9.11s" fill="#326B50" points="-46.2,-19.1 -69.3,-9.6 -92.4,-19.1 -69.3,-28.7"/><polygon class="q" style="--d:17.40s" fill="#E09964" fill-opacity="0.5" points="-69.3,-28.7 -92.4,-19.1 -115.5,-28.7 -92.4,-38.3"/><polygon class="q" style="--d:0.00s" fill="#275D43" points="-23.1,9.6 -46.2,19.1 -69.3,9.6 -46.2,0.0"/><polygon class="q" style="--d:6.63s" fill="#326B50" points="-46.2,0.0 -69.3,9.6 -92.4,0.0 -69.3,-9.6"/><polygon class="q" style="--d:11.60s" fill="#E09964" fill-opacity="0.5" points="-69.3,-9.6 -92.4,0.0 -115.5,-9.6 -92.4,-19.1"/><polygon class="q" style="--d:21.54s" fill="#326B50" points="-92.4,-19.1 -115.5,-9.6 -138.6,-19.1 -115.5,-28.7"/><polygon class="q" style="--d:0.00s" fill="#326B50" points="-46.2,19.1 -69.3,28.7 -92.4,19.1 -69.3,9.6"/><polygon class="q" style="--d:0.00s" fill="#E09964" fill-opacity="0.5" points="-69.3,9.6 -92.4,19.1 -115.5,9.6 -92.4,0.0"/><polygon class="q" style="--d:23.20s" fill="#326B50" points="-92.4,0.0 -115.5,9.6 -138.6,0.0 -115.5,-9.6"/><polygon class="q" style="--d:26.51s" fill="#275D43" points="-115.5,-9.6 -138.6,0.0 -161.7,-9.6 -138.6,-19.1"/><polygon class="q" style="--d:0.00s" fill="#E09964" fill-opacity="0.5" points="-69.3,28.7 -92.4,38.3 -115.5,28.7 -92.4,19.1"/><polygon class="q" style="--d:0.00s" fill="#326B50" points="-92.4,19.1 -115.5,28.7 -138.6,19.1 -115.5,9.6"/><polygon class="q" style="--d:0.00s" fill="#275D43" points="-115.5,9.6 -138.6,19.1 -161.7,9.6 -138.6,0.0"/><polygon class="q" style="--d:28.17s" fill="#326B50" points="-138.6,0.0 -161.7,9.6 -184.8,0.0 -161.7,-9.6"/><polygon class="q" style="--d:1.66s" fill="#275D43" points="-0.0,-0.0 -23.1,-9.6 -32.7,-32.7 -9.6,-23.1"/><polygon class="q" style="--d:2.49s" fill="#326B50" points="-9.6,-23.1 -32.7,-32.7 -42.2,-55.8 -19.1,-46.2"/><polygon class="q" style="--d:10.77s" fill="#275D43" points="-19.1,-46.2 -42.2,-55.8 -51.8,-78.9 -28.7,-69.3"/><polygon class="q" style="--d:14.91s" fill="#EECBAF" fill-opacity="0.22" points="-28.7,-69.3 -51.8,-78.9 -61.4,-102.0 -38.3,-92.4"/><polygon class="q" style="--d:4.14s" fill="#326B50" points="-23.1,-9.6 -46.2,-19.1 -55.8,-42.2 -32.7,-32.7"/><polygon class="q" style="--d:5.80s" fill="#275D43" points="-32.7,-32.7 -55.8,-42.2 -65.3,-65.3 -42.2,-55.8"/><polygon class="q" style="--d:12.43s" fill="#EECBAF" fill-opacity="0.22" points="-42.2,-55.8 -65.3,-65.3 -74.9,-88.4 -51.8,-78.9"/><polygon class="q" style="--d:22.37s" fill="#275D43" points="-51.8,-78.9 -74.9,-88.4 -84.5,-111.5 -61.4,-102.0"/><polygon class="q" style="--d:8.29s" fill="#275D43" points="-46.2,-19.1 -69.3,-28.7 -78.9,-51.8 -55.8,-42.2"/><polygon class="q" style="--d:15.74s" fill="#EECBAF" fill-opacity="0.22" points="-55.8,-42.2 -78.9,-51.8 -88.4,-74.9 -65.3,-65.3"/><polygon class="q" style="--d:20.71s" fill="#275D43" points="-65.3,-65.3 -88.4,-74.9 -98.0,-98.0 -74.9,-88.4"/><polygon class="q" style="--d:25.69s" fill="#326B50" points="-74.9,-88.4 -98.0,-98.0 -107.6,-121.1 -84.5,-111.5"/><polygon class="q" style="--d:16.57s" fill="#EECBAF" fill-opacity="0.22" points="-69.3,-28.7 -92.4,-38.3 -102.0,-61.4 -78.9,-51.8"/><polygon class="q" style="--d:18.23s" fill="#275D43" points="-78.9,-51.8 -102.0,-61.4 -111.5,-84.5 -88.4,-74.9"/><polygon class="q" style="--d:24.86s" fill="#326B50" points="-88.4,-74.9 -111.5,-84.5 -121.1,-107.6 -98.0,-98.0"/><polygon class="q" style="--d:27.34s" fill="#275D43" points="-98.0,-98.0 -121.1,-107.6 -130.7,-130.7 -107.6,-121.1"/>
+        </g>
+      </svg>
+  </div>
+  </div>
+  <div class="wrap hero-in">
+    <p class="bismillah" lang="ar" dir="rtl">﷽</p>
+    <div class="hero-grid">
+      <div class="hero-copy">
+        <h1>Prayers for<br>the land &amp;<br>its people</h1>
+        <p class="vol">IslamicFamily is gathering land acknowledging duas (volume 2). We invite you to reflect, pray and share.</p>
+        <div class="lede">
+          <p>A land acknowledgment is more than a statement. For us it can be an act of worship: an opportunity to turn to the Creator, and share gratitude to the peoples who have cared for the land we’re on, to reflect on our impact, and ask for what’s best.</p>
+        </div>
+        <div class="actions">
+          <a class="btn btn-accent" href="#duas">Read Duas</a>
+          <a class="btn btn-ghost btn-next" href="#write">How to write one <span class="dash-arrow" aria-hidden="true">⇢</span></a>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main>
+
+<!-- ============ PART 2: HOW TO WRITE + CAROUSEL ============ -->
+<section class="guide panel" id="write" data-step="1" aria-labelledby="write-h">
+  <div class="quote-full">
+    <figure class="qf">
+      <blockquote class="hang q-fade">“O mankind, indeed We have created you from male and female and made you peoples and tribes <span class="brush">that you may know one another.</span>”</blockquote>
+      <figcaption class="q-fade late">Qur’an 49:13</figcaption>
+    </figure>
+    <span class="scroll-cue q-fade later" aria-hidden="true">&#8595;</span>
+  </div>
+  <div class="wrap guide-top">
+    <div class="section-head">
+      <h2 id="write-h">How to write a land acknowledging dua</h2>
+      <p>A dua is a prayer, not a script. Speak to Allah about the land, the people who have cared for it, and what you are responsible for.</p>
+    </div>
+
+    <ul class="principles">
+      <li><b>Turn toward God and set your intention.</b> Approach the dua with sincerity (tawajjuh and niyyah). Your goal is to honour the land and its peoples, not just to read words.</li>
+      <li><b>Remember whose earth it is.</b> Allah is the Creator and Owner of the earth. Acknowledging the land is a religious and ethical act, a reflection of your responsibility (amanah) and the duty to uphold justice.</li>
+      <li><b>Speak to Allah, not to an audience.</b> Dua is an intimate conversation with your Creator. Use the names and attributes that fit your prayer: the Most Merciful, the Most Just, the Most Wise.</li>
+      <li><b>Make it specific.</b> Find the treaty and nations where you are with the <a href="#land">Know your land</a> tool below, then bring in nature, heritage or local features.</li>
+    </ul>
+
+  </div>
+  <div class="wrap steps-wrap">
+    <h3 class="steps-title">A recipe</h3>
+    <ol class="steps">
+      <li>
+        <h4>Begin with gratitude and praise</h4>
+        <p>Thank Allah for your blessings and for the gathering. Reflect on the qualities of Allah and the guidance of the messengers that inspire you.</p>
+        <div class="eg">
+          <div class="eg-body">
+            <p class="hang">“In the name of Allah, the Most Gracious, the Most Merciful. All praise is due to Allah, the Creator of the heavens, the earth, and all nations within it.”</p>
+            <p class="ask"><b>Ask yourself:</b> Which attributes of Allah feel most relevant to this gathering or land?</p>
+          </div>
+        </div>
+      </li>
+      <li>
+        <h4>Acknowledge the land and its peoples</h4>
+        <p>Name specific nations and communities, and think about your responsibilities: treaties, shared humanity and stewardship.</p>
+        <div class="eg">
+          <div class="eg-body">
+            <p><b style="font-style:normal">Justice:</b> “Ya Allah, grant justice and healing to those affected by historical and ongoing injustices, including the families of the Missing and Murdered Indigenous Women and Girls.”</p>
+            <p><b style="font-style:normal">Stewardship:</b> “Oh Lord, help us walk gently upon this earth as faithful stewards (khalifa), honouring the care of its original guardians and working in partnership with them.”</p>
+            <p><b style="font-style:normal">Truth and reconciliation:</b> “Ya Haqq (The Truth), guide us to the truth of this land’s history and help us work sincerely toward reconciliation and mutual respect.”</p>
+            <p class="ask"><b>Ask yourself:</b> What does this land and its history call you to uphold in your words and actions? How can your actions bring ease or justice?</p>
+          </div>
+        </div>
+      </li>
+      <li>
+        <h4>Ask for blessing in your actions or gathering</h4>
+        <p>Seek Allah’s guidance in your work and your place in the community.</p>
+        <div class="eg">
+          <div class="eg-body"><p class="ask"><b>Ask yourself:</b> How can I be a source of light, care or sustenance today?</p></div>
+        </div>
+      </li>
+      <li>
+        <h4>Honour ancestors and heritage</h4>
+        <p>Remember the efforts of those who came before you, and connect with the Prophet ﷺ and his actions.</p>
+        <div class="eg">
+          <div class="eg-body">
+            <p class="hang">“O Allah, bless the Prophet Muhammad ﷺ and all who strive for justice and care for the earth.”</p>
+            <p class="ask"><b>Ask yourself:</b> What wisdom or gifts have they left for me, and how can I carry them forward?</p>
+          </div>
+        </div>
+      </li>
+      <li>
+        <h4>Close with intention and gratitude</h4>
+        <p>End with praise and gratitude, and a general Āmīn.</p>
+        <div class="eg">
+          <div class="eg-body"><p class="ask"><b>Ask yourself:</b> What is my personal hope or intention for this moment?</p></div>
+        </div>
+      </li>
+    </ol>
+  </div>
+  <div class="quote-band">
+    <figure class="qf">
+      <blockquote class="hang q-fade">“Indeed, the earth belongs to Allah. He causes to inherit it whom He wills of His servants.”</blockquote>
+      <figcaption class="q-fade late">Qur’an 7:128</figcaption>
+    </figure>
+  </div>
+  <div class="wrap guide-end">
+    <nav class="step-nav" aria-label="Section navigation"></nav>
+  </div>
+</section>
+
+<section class="duas panel" id="duas" data-step="2" aria-labelledby="duas-h">
+  <div class="wrap duas-top">
+    <h2 id="duas-h">Duas from the community</h2>
+    <button class="btn btn-ghost shuffle" id="shuffle" type="button" hidden>Show different duas</button>
+  </div>
+  <div class="carousel" role="region" aria-roledescription="carousel" aria-labelledby="duas-h">
+    <div class="viewport" id="viewport" tabindex="0" aria-label="Duas. Use left and right arrow keys to move between them.">
+      <div class="track" id="track"></div>
+    </div>
+    <button class="chev prev" id="prev" type="button" aria-label="Previous dua">&#8249;</button>
+    <button class="chev next" id="next" type="button" aria-label="Next dua">&#8250;</button>
+    <span id="slide-count" class="sr-only" aria-live="polite"></span>
+  </div>
+  <div class="wrap duas-bottom">
+    <nav class="step-nav" aria-label="Section navigation"></nav>
+  </div>
+</section>
+
+<!-- ============ PART 3: KNOW YOUR LAND ============ -->
+<section class="land panel" id="land" data-step="3" aria-labelledby="land-h">
+  <div class="wrap land-top">
+    <h2 id="land-h">Know your land</h2>
+    <div class="lookup-row">
+      <label for="place" class="sr-only">Search for a place</label>
+      <input type="text" id="place" placeholder="Search" autocomplete="off">
+      <button class="btn btn-accent" id="find" type="button">Find this land</button>
+      <button class="btn btn-ghost" id="locate" type="button">Use my location</button>
+    </div>
+  </div>
+  <div class="wrap land-sub">
+    <p class="map-status" id="map-status" aria-live="polite"></p>
+  </div>
+  <div class="map-frame" id="map-frame">
+      <div id="leaflet" role="region" aria-label="Map of Indigenous territories and treaties"></div>
+      <iframe id="map" title="Native Land map of Indigenous territories and treaties" loading="lazy" hidden referrerpolicy="no-referrer-when-downgrade"></iframe>
+      <div class="nations" id="nations" aria-live="polite" hidden></div>
+      <div class="map-fallback" id="map-fallback" hidden>
+        <p>Open the Native Land map to see the territories, treaties and languages for your location.</p>
+        <a class="btn btn-accent" id="map-link" href="https://native-land.ca/" target="_blank" rel="noopener">Open native-land.ca</a>
+      </div>
+  </div>
+  <div class="wrap land-bottom">
+    <p class="land-note">Map data from <a href="https://native-land.ca/" target="_blank" rel="noopener">Native Land Digital</a>. It is a starting point, not a legal or academic authority. When you can, speak with local Indigenous communities about how they name themselves and their lands.</p>
+    <nav class="step-nav" aria-label="Section navigation"></nav>
+  </div>
+</section>
+
+<!-- ============ PART 4: SUBMIT ============ -->
+<section class="submit panel" id="share" data-step="4" aria-labelledby="submit-h">
+  <div class="narrow">
+    <div class="section-head">
+      <h2 id="submit-h">Share your dua</h2>
+      <p>Honouring Indigenous protocol is honouring our own tradition. The exercise of writing a dua specific to time, place and people is something that nurtures sincerity, spirituality and belonging.</p>
+    </div>
+
+    <form id="form" novalidate>
+      <div class="field" id="f-dua">
+        <label for="dua">Your dua</label>
+        <textarea id="dua" name="dua" maxlength="3000" aria-describedby="dua-err dua-count" required></textarea>
+        <p class="counter" id="dua-count">0 / 3000</p>
+        <p class="error" id="dua-err" hidden></p>
+      </div>
+
+      <div class="grid-2">
+        <div class="field" id="f-first">
+          <label for="first">First name</label>
+          <input type="text" id="first" name="firstName" autocomplete="given-name" maxlength="80" aria-describedby="first-err" required>
+          <p class="error" id="first-err" hidden></p>
+        </div>
+        <div class="field" id="f-last">
+          <label for="last">Last name</label>
+          <input type="text" id="last" name="lastName" autocomplete="family-name" maxlength="80" aria-describedby="last-err" required>
+          <p class="error" id="last-err" hidden></p>
+        </div>
+      </div>
+
+      <div class="field">
+        <label for="title">Title <span class="opt">(optional)</span></label>
+        <input type="text" id="title" name="title" maxlength="60" placeholder="Imam, Dr, Hajja">
+      </div>
+      <div class="field">
+        <label for="job">Job title <span class="opt">(optional)</span></label>
+        <input type="text" id="job" name="jobTitle" maxlength="120" placeholder="Student, Executive Director">
+      </div>
+      <div class="field">
+        <label for="org">Organization or affiliation <span class="opt">(optional)</span></label>
+        <input type="text" id="org" name="organization" maxlength="160">
+      </div>
+      <div class="field">
+        <label for="postal">Postal code <span class="opt">(optional)</span></label>
+        <input type="text" id="postal" name="postalCode" maxlength="10" autocomplete="postal-code" placeholder="A1A 1A1">
+      </div>
+
+      <div class="checks">
+        <div class="field" id="f-perm" style="gap:.2rem">
+          <div class="check">
+            <input type="checkbox" id="perm" name="permission" aria-describedby="perm-err">
+            <label for="perm">I give IslamicFamily permission to share and publish my dua, including in Volume 2 of the book and on this page.</label>
+          </div>
+          <p class="error" id="perm-err" hidden></p>
+        </div>
+        <div class="check">
+          <input type="checkbox" id="anon" name="anonymous">
+          <label for="anon">Make my submission anonymous.<span class="sub">By default, your name is shown with your dua.</span></label>
+        </div>
+      </div>
+
+      <div class="trap" aria-hidden="true">
+        <label for="website">Leave this field empty</label>
+        <input type="text" id="website" name="website" tabindex="-1" autocomplete="off">
+      </div>
+
+      <div class="form-error" id="form-error" role="alert" hidden></div>
+      <div>
+        <button class="btn btn-green" id="send" type="submit">Send my dua</button>
+      </div>
+      <p class="fine">If you choose anonymous, we still keep your name for our review, but it is never shown on this page.</p>
+    </form>
+
+    <nav class="step-nav" aria-label="Section navigation"></nav>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <p>IslamicFamily. Edmonton, on Treaty 6 territory.</p>
+    <p>Land and treaty information from <a href="https://native-land.ca/" target="_blank" rel="noopener">Native Land Digital</a>.</p>
+  </div>
+</footer>
+
+<div class="thanks" id="thanks" role="status" tabindex="-1" hidden>
+  <img src="thankyou.jpg" alt="Thank you">
+  <button class="btn btn-green" id="again" type="button">Submit another dua</button>
+</div>
+
+<script>
+/* ============================================================
+   SETTINGS: fill these in
+   APPS_SCRIPT_URL : the Web app URL from the Google Apps Script deployment (ends in /exec)
+   NATIVE_LAND_KEY : free API key from native-land.ca (needed for the embedded map)
+   ============================================================ */
+const CONFIG = {
+  APPS_SCRIPT_URL: 'https://script.google.com/macros/s/AKfycbwt0R9WMu-I5ns2HYssUjHYGpWyELKnEBu53sj7FkJMlB9rVC91v9SkKiuCPRoOYXPu/exec',
+  NATIVE_LAND_KEY: 'ZTimKIiaTQEXeUPRMGaYC'
+};
+
+/* ---------- Sample duas (shown until community duas are approved) ---------- */
+const SEEDS = [
+  {
+    seed: true,
+    dua: "O Allah, bless this gathering and bless the venerated land upon which we gather, the land of the Métis and many Indigenous peoples: the Cree, Blackfoot, Nakota Sioux, Iroquois, Dene, Ojibway, Saulteaux, Anishinaabe, Inuit, and many others. They are peoples to whom we are bound by treaty, by our shared humanity, and by a sacred call to brotherhood, sisterhood, and civic responsibility.\n\nO Allah, relieve the suffering of the occupied and the oppressed, across the world and here among us. Protect us from causing harm or misfortune to others. Make us people who bring ease to those who suffer.",
+    name: "IslamicFamily",
+    role: "Sample dua, Edmonton (Treaty 6)"
+  },
+  {
+    seed: true,
+    dua: "O Allah, you are our Creator. Bless the land we are living on today and the people you first created on this land, our Indigenous, Métis and Inuit brothers and sisters. O Allah, you have created us in different tribes and nations so that we may know one another. Help us come to know each other through kindness, love, and generosity. Protect us from being judgemental, rude and selfish. Let us be sources of love and light, and let us treat all of your creation with respect.",
+    name: "IslamicFamily",
+    role: "Sample dua for Grades 4 to 6"
+  },
+  {
+    seed: true,
+    dua: "O Allah, you are our Creator. Help us be kind to all of your creation: the plants, animals, rocks, rivers, birds, and especially our human family, our Indigenous brothers and sisters, the people of the land we are living on. Please help us to love each other.",
+    name: "IslamicFamily",
+    role: "Sample dua for Grades 1 to 3"
+  }
+];
+
+/* ---------- Carousel ---------- */
+const track = document.getElementById('track');
+const slideCountEl = document.getElementById('slide-count');
+const viewport = document.getElementById('viewport');
+const shuffleBtn = document.getElementById('shuffle');
+let pool = [], shown = [], idx = 0;
+
+function shuffled(a) {
+  a = a.slice();
+  for (let i = a.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [a[i], a[j]] = [a[j], a[i]]; }
+  return a;
+}
+function pickThree() {
+  const prev = new Set(shown.map(x => x.key));
+  const fresh = shuffled(pool.filter(x => !prev.has(x.key)));
+  const rest = shuffled(pool.filter(x => prev.has(x.key)));
+  return fresh.concat(rest).slice(0, 3);
+}
+function render() {
+  track.textContent = '';
+  shown.forEach((item, i) => {
+    const slide = document.createElement('article');
+    slide.className = 'slide';
+    slide.setAttribute('role', 'group');
+    slide.setAttribute('aria-roledescription', 'slide');
+    slide.setAttribute('aria-label', (i + 1) + ' of ' + shown.length);
+    const body = document.createElement('div');
+    body.className = 'dua';
+    item.dua.split(/\n{2,}/).forEach(par => { const p = document.createElement('p'); p.textContent = par; body.appendChild(p); });
+    const by = document.createElement('div');
+    by.className = 'by';
+    const strong = document.createElement('strong');
+    strong.textContent = item.name || 'Anonymous';
+    by.appendChild(strong);
+    if (item.role) { const s = document.createElement('span'); s.textContent = item.role; by.appendChild(s); }
+    slide.append(body, by);
+    track.appendChild(slide);
+
+  });
+  idx = 0;
+  go(0);
+}
+function go(i) {
+  if (!shown.length) return;
+  idx = (i + shown.length) % shown.length;
+  track.style.transform = 'translateX(' + (-100 * idx) + '%)';
+  [...track.children].forEach((s, n) => s.setAttribute('aria-hidden', n === idx ? 'false' : 'true'));
+  slideCountEl.textContent = (idx + 1) + ' of ' + shown.length;
+}
+document.getElementById('prev').addEventListener('click', () => go(idx - 1));
+document.getElementById('next').addEventListener('click', () => go(idx + 1));
+viewport.addEventListener('keydown', e => {
+  if (e.key === 'ArrowLeft') { go(idx - 1); e.preventDefault(); }
+  if (e.key === 'ArrowRight') { go(idx + 1); e.preventDefault(); }
+});
+let sx = null;
+viewport.addEventListener('touchstart', e => { sx = e.touches[0].clientX; }, { passive: true });
+viewport.addEventListener('touchend', e => {
+  if (sx === null) return;
+  const dx = e.changedTouches[0].clientX - sx;
+  if (Math.abs(dx) > 40) go(idx + (dx < 0 ? 1 : -1));
+  sx = null;
+});
+
+/* Arrow keys move between duas whenever the duas page is showing */
+document.addEventListener('keydown', e => {
+  const page = document.getElementById('duas');
+  if (e.defaultPrevented || !page || !page.classList.contains('active')) return;
+  if (e.target && /^(INPUT|TEXTAREA|SELECT)$/.test(e.target.tagName)) return;
+  if (e.key === 'ArrowLeft') { go(idx - 1); }
+  if (e.key === 'ArrowRight') { go(idx + 1); }
+});
+/* Tap or click the left or right half of the dua to move */
+viewport.addEventListener('click', e => {
+  if (e.target.closest('a, button')) return;
+  const sel = window.getSelection && window.getSelection().toString();
+  if (sel) return;
+  const r = viewport.getBoundingClientRect();
+  go(idx + (e.clientX < r.left + r.width / 2 ? -1 : 1));
+});
+shuffleBtn.addEventListener('click', () => { shown = pickThree(); render(); });
+
+function setPool(list) {
+  pool = list.map((x, i) => Object.assign({ key: i }, x));
+  if (pool.length < 3) {
+    SEEDS.forEach(s => { if (pool.length < 3) pool.push(Object.assign({ key: pool.length }, s)); });
+  }
+  shown = pickThree();
+  shuffleBtn.hidden = pool.length <= 3;
+  render();
+}
+async function loadApproved() {
+  if (!CONFIG.APPS_SCRIPT_URL) { setPool(SEEDS); return; }
+  try {
+    const r = await fetch(CONFIG.APPS_SCRIPT_URL + '?action=approved');
+    const d = await r.json();
+    const list = (d.duas || []).filter(x => x && typeof x.dua === 'string' && x.dua.trim());
+    setPool(list.length ? list : SEEDS);
+  } catch (err) {
+    setPool(SEEDS);
+  }
+}
+loadApproved();
+
+/* ---------- Know your land ---------- */
+const placeInput = document.getElementById('place');
+const statusEl = document.getElementById('map-status');
+const mapEl = document.getElementById('map');
+const fallbackEl = document.getElementById('map-fallback');
+const mapLink = document.getElementById('map-link');
+const CITIES = [
+  ['Edmonton', 53.5461, -113.4938], ['Calgary', 51.0447, -114.0719], ['Vancouver', 49.2827, -123.1207],
+  ['Saskatoon', 52.1332, -106.67], ['Winnipeg', 49.8951, -97.1384], ['Toronto', 43.6532, -79.3832],
+  ['Ottawa', 45.4215, -75.6972], ['Montréal', 45.5017, -73.5673], ['Halifax', 44.6488, -63.5752]
+];
+const nationsEl = document.getElementById('nations');
+const leafletEl = document.getElementById('leaflet');
+let lmap = null, layers = null, marker = null, lookupId = 0;
+
+function initLeaflet() {
+  if (lmap) return true;
+  if (!window.L) return false;
+  lmap = L.map('leaflet', { scrollWheelZoom: false }).setView([56, -96], 4);
+  L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', { maxZoom: 18, attribution: '&copy; OpenStreetMap contributors' }).addTo(lmap);
+  layers = L.layerGroup().addTo(lmap);
+  return true;
+}
+async function getNations(type, lat, lng) {
+  const url = 'https://native-land.ca/api/index.php?maps=' + type + '&position=' + lat + ',' + lng + '&key=' + encodeURIComponent(CONFIG.NATIVE_LAND_KEY);
+  const r = await fetch(url);
+  if (!r.ok) throw new Error('Native Land ' + r.status);
+  const d = await r.json();
+  if (!Array.isArray(d)) throw new Error('Unexpected response');
+  return d;
+}
+function drawNations(list, dashed) {
+  list.forEach(f => {
+    const p = f.properties || {};
+    L.geoJSON(f, { style: { color: p.color || '#275D43', weight: 2, fillOpacity: dashed ? 0.08 : 0.22, dashArray: dashed ? '6 4' : null } })
+      .bindPopup(p.Name || 'Unnamed').addTo(layers);
+  });
+}
+function nationGroup(title, list) {
+  const frag = document.createDocumentFragment();
+  const h = document.createElement('h3'); h.textContent = title; frag.appendChild(h);
+  if (!list.length) { const p = document.createElement('p'); p.className = 'none'; p.textContent = 'None listed for this point.'; frag.appendChild(p); return frag; }
+  const ul = document.createElement('ul');
+  list.forEach(f => {
+    const p = f.properties || {};
+    const li = document.createElement('li');
+    if (typeof p.description === 'string' && p.description.indexOf('https://native-land.ca/') === 0) {
+      const a = document.createElement('a'); a.href = p.description; a.target = '_blank'; a.rel = 'noopener'; a.textContent = p.Name || 'Unnamed'; li.appendChild(a);
+    } else { li.textContent = p.Name || 'Unnamed'; }
+    ul.appendChild(li);
+  });
+  frag.appendChild(ul);
+  return frag;
+}
+function useEmbed(lat, lng) {
+  leafletEl.hidden = true; nationsEl.hidden = true;
+  if (CONFIG.NATIVE_LAND_KEY) {
+    mapEl.src = 'https://native-land.ca/api/embed/embed.html?maps=territories,treaties&position=' +
+      encodeURIComponent(lat + ',' + lng) + '&key=' + encodeURIComponent(CONFIG.NATIVE_LAND_KEY);
+    mapEl.hidden = false; fallbackEl.hidden = true;
+  } else {
+    mapEl.hidden = true; fallbackEl.hidden = false;
+  }
+}
+async function showLand(lat, lng, label) {
+  const token = ++lookupId;
+  statusEl.textContent = 'Showing: ' + label;
+  if (!CONFIG.NATIVE_LAND_KEY || !initLeaflet()) { useEmbed(lat, lng); return; }
+  mapEl.hidden = true; fallbackEl.hidden = true; leafletEl.hidden = false;
+  layers.clearLayers();
+  if (marker) { lmap.removeLayer(marker); }
+  marker = L.circleMarker([lat, lng], { radius: 8, color: '#BB2D37', fillColor: '#BB2D37', fillOpacity: 1 }).addTo(lmap);
+  lmap.setView([lat, lng], 10);
+  lmap.invalidateSize();
+  try {
+    const [terr, tre] = await Promise.all([getNations('territories', lat, lng), getNations('treaties', lat, lng)]);
+    if (token !== lookupId) return;
+    drawNations(terr, false); drawNations(tre, true);
+    nationsEl.textContent = '';
+    nationsEl.appendChild(nationGroup('Territories here', terr));
+    nationsEl.appendChild(nationGroup('Treaties here', tre));
+    nationsEl.hidden = false;
+  } catch (err) {
+    if (token !== lookupId) return;
+    useEmbed(lat, lng);
+  }
+}
+async function findPlace() {
+  const q = placeInput.value.trim();
+  if (!q) { statusEl.textContent = 'Type a city, address or postal code first.'; placeInput.focus(); return; }
+  statusEl.textContent = 'Looking up ' + q + '...';
+  try {
+    const r = await fetch('https://nominatim.openstreetmap.org/search?format=jsonv2&limit=1&q=' + encodeURIComponent(q), { headers: { 'Accept': 'application/json' } });
+    const d = await r.json();
+    if (!d.length) { statusEl.textContent = 'We could not find that place. Try a nearby city or add the province.'; return; }
+    showLand(parseFloat(d[0].lat), parseFloat(d[0].lon), d[0].display_name);
+  } catch (err) {
+    statusEl.textContent = 'The place lookup is not available right now. Try again in a moment or open native-land.ca directly.';
+    if (!CONFIG.NATIVE_LAND_KEY) { fallbackEl.hidden = false; }
+  }
+}
+document.getElementById('find').addEventListener('click', findPlace);
+placeInput.addEventListener('keydown', e => { if (e.key === 'Enter') { e.preventDefault(); findPlace(); } });
+document.getElementById('locate').addEventListener('click', () => {
+  if (!navigator.geolocation) { statusEl.textContent = 'Your browser cannot share your location. Type a place instead.'; return; }
+  statusEl.textContent = 'Finding your location...';
+  navigator.geolocation.getCurrentPosition(
+    pos => showLand(pos.coords.latitude, pos.coords.longitude, 'your current location'),
+    () => { statusEl.textContent = 'We could not get your location. Type a place instead.'; },
+    { timeout: 10000 }
+  );
+});
+/* Start on Edmonton so the map is never empty */
+showLand(53.5461, -113.4938, 'Edmonton, as a starting point. Search above to find your own land.');
+
+/* ---------- Form ---------- */
+const form = document.getElementById('form');
+const thanks = document.getElementById('thanks');
+const sendBtn = document.getElementById('send');
+const formError = document.getElementById('form-error');
+const duaEl = document.getElementById('dua');
+const countEl = document.getElementById('dua-count');
+duaEl.addEventListener('input', () => { countEl.textContent = duaEl.value.length + ' / 3000'; });
+
+function setErr(fieldId, errId, msg) {
+  const f = document.getElementById(fieldId), e = document.getElementById(errId);
+  if (msg) { e.textContent = msg; e.hidden = false; f.classList.add('invalid'); }
+  else { e.hidden = true; f.classList.remove('invalid'); }
+  return !msg;
+}
+form.addEventListener('submit', async ev => {
+  ev.preventDefault();
+  formError.hidden = true;
+  const v = id => document.getElementById(id).value.trim();
+  const checks = [
+    setErr('f-dua', 'dua-err', v('dua').length < 20 ? 'Please write your dua (at least a few sentences).' : ''),
+    setErr('f-first', 'first-err', v('first') ? '' : 'Please enter your first name.'),
+    setErr('f-last', 'last-err', v('last') ? '' : 'Please enter your last name.'),
+    setErr('f-perm', 'perm-err', document.getElementById('perm').checked ? '' : 'Please tick the box to give permission to share.')
+  ];
+  if (checks.includes(false)) {
+    const firstBad = form.querySelector('.invalid input, .invalid textarea');
+    if (firstBad) firstBad.focus();
+    return;
+  }
+  if (!CONFIG.APPS_SCRIPT_URL) {
+    formError.textContent = 'This form is not connected to its spreadsheet yet, so your dua was not sent.';
+    formError.hidden = false;
+    return;
+  }
+  const payload = {
+    dua: v('dua'), firstName: v('first'), lastName: v('last'),
+    title: v('title'), jobTitle: v('job'), organization: v('org'), postalCode: v('postal'),
+    anonymous: document.getElementById('anon').checked,
+    permission: document.getElementById('perm').checked,
+    website: document.getElementById('website').value
+  };
+  sendBtn.disabled = true; sendBtn.textContent = 'Sending...';
+  try {
+    const r = await fetch(CONFIG.APPS_SCRIPT_URL, {
+      method: 'POST',
+      headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+      body: JSON.stringify(payload)
+    });
+    const d = await r.json();
+    if (!d.ok) throw new Error(d.error || 'Something went wrong.');
+    form.hidden = true; thanks.hidden = false;
+    document.documentElement.style.overflow = 'hidden'; document.body.style.overflow = 'hidden';
+    ['main', 'footer'].forEach(s => { const el = document.querySelector(s); if (el) el.setAttribute('inert', ''); });
+    thanks.focus({ preventScroll: true });
+  } catch (err) {
+    formError.textContent = (err && err.message && err.message !== 'Failed to fetch')
+      ? err.message
+      : 'Your dua could not be sent. Check your connection and try again. Your text is still here.';
+    formError.hidden = false;
+  } finally {
+    sendBtn.disabled = false; sendBtn.textContent = 'Send my dua';
+  }
+});
+document.getElementById('again').addEventListener('click', () => {
+  form.reset(); countEl.textContent = '0 / 3000';
+  thanks.hidden = true; form.hidden = false;
+  document.documentElement.style.overflow = ''; document.body.style.overflow = '';
+  ['main', 'footer'].forEach(s => { const el = document.querySelector(s); if (el) el.removeAttribute('inert'); });
+  duaEl.focus();
+});
+
+/* ---------- Sections and step navigation ---------- */
+const STEPS = [
+  { id: 'top', title: 'Overview' },
+  { id: 'write', title: 'How to write' },
+  { id: 'duas', title: 'Community duas' },
+  { id: 'land', title: 'Know your land' },
+  { id: 'share', title: 'Share your dua' }
+];
+let cur = 0;
+function stepIndex(id) { return STEPS.findIndex(s => s.id === id); }
+function goStep(n, opts) {
+  opts = opts || {};
+  n = Math.max(0, Math.min(STEPS.length - 1, n));
+  cur = n;
+  document.querySelectorAll('[data-step]').forEach(el => el.classList.toggle('active', Number(el.dataset.step) === n));
+  document.documentElement.classList.toggle('on-hero', n === 0);
+  document.documentElement.classList.toggle('on-last', n === STEPS.length - 1);
+  document.querySelectorAll('.step-dots button').forEach(b => b.setAttribute('aria-current', Number(b.dataset.n) === n ? 'step' : 'false'));
+  if (n === 0 && typeof fitHero === 'function') { fitHero(); }
+  if (n === 3 && typeof lmap !== 'undefined' && lmap) { setTimeout(() => lmap.invalidateSize(), 80); }
+  if (!opts.noHash) { try { history.replaceState(null, '', '#' + STEPS[n].id); } catch (e) { /* ignore */ } }
+  if (!opts.initial) {
+    window.scrollTo(0, 0);
+    const active = document.querySelector('[data-step="' + n + '"]');
+    const h = active && active.querySelector('h1, h2');
+    if (h) { h.setAttribute('tabindex', '-1'); h.focus({ preventScroll: true }); }
+  }
+}
+function navButton(kind, n) {
+  const b = document.createElement('button');
+  b.type = 'button'; b.className = 'sn ' + kind;
+  const txt = document.createElement('span');
+  const sm = document.createElement('small'); sm.textContent = kind === 'prev' ? 'Back' : 'Next';
+  const t = document.createElement('b'); t.textContent = STEPS[n].title;
+  txt.append(sm, t);
+  const ar = document.createElement('span'); ar.className = 'ar'; ar.setAttribute('aria-hidden', 'true'); ar.textContent = kind === 'prev' ? '\u2190' : '\u2192';
+  if (kind === 'prev') b.append(ar, txt); else b.append(txt, ar);
+  b.addEventListener('click', () => goStep(n));
+  return b;
+}
+document.querySelectorAll('.step-nav').forEach(nav => {
+  const n = Number(nav.closest('[data-step]').dataset.step);
+  const left = document.createElement('div'), mid = document.createElement('div'), right = document.createElement('div');
+  if (n > 0) left.appendChild(navButton('prev', n - 1));
+  mid.className = 'step-dots'; mid.setAttribute('role', 'group'); mid.setAttribute('aria-label', 'Sections');
+  STEPS.forEach((s, i) => {
+    const d = document.createElement('button'); d.type = 'button'; d.dataset.n = i; d.setAttribute('aria-label', s.title);
+    d.addEventListener('click', () => goStep(i)); mid.appendChild(d);
+  });
+  if (n < STEPS.length - 1) right.appendChild(navButton('next', n + 1));
+  right.style.justifySelf = 'end'; right.style.gridColumn = '3';
+  left.style.gridColumn = '1'; mid.style.gridColumn = '2';
+  nav.append(left, mid, right);
+});
+document.addEventListener('click', e => {
+  const a = e.target.closest && e.target.closest('a[href^="#"]');
+  if (!a) return;
+  const i = stepIndex(a.getAttribute('href').slice(1));
+  if (i >= 0) { e.preventDefault(); goStep(i); }
+});
+window.addEventListener('hashchange', () => {
+  const i = stepIndex(location.hash.slice(1));
+  if (i >= 0) goStep(i, { noHash: true });
+});
+goStep(Math.max(0, stepIndex(location.hash.slice(1))), { noHash: true, initial: true });
+
+/* ---------- Fit the hero to the window: biggest title that still fits ---------- */
+function fitHero() {
+  const hero = document.querySelector('.hero');
+  if (!hero || !hero.classList.contains('active')) return;
+  const inner = hero.querySelector('.hero-in');
+  const h1 = hero.querySelector('h1');
+  const cs = getComputedStyle(hero);
+  const availH = hero.clientHeight - parseFloat(cs.paddingTop) - parseFloat(cs.paddingBottom);
+  const rng = document.createRange();
+  function fits() {
+    const ib = inner.getBoundingClientRect();
+    rng.selectNodeContents(h1);
+    return ib.height <= availH + 0.5 && rng.getBoundingClientRect().right <= ib.right + 0.5;
+  }
+  function setT(px) { hero.style.setProperty('--t', px.toFixed(1) + 'px'); }
+  const MIN = 32;
+  hero.style.setProperty('--s', '1');
+  setT(MIN);
+  let s = 1;
+  while (!fits() && s > 0.45) { s -= 0.03; hero.style.setProperty('--s', s.toFixed(2)); }
+  let lo = MIN, hi = Math.max(MIN, availH);
+  for (let i = 0; i < 16; i++) {
+    const mid = (lo + hi) / 2;
+    setT(mid);
+    if (fits()) { lo = mid; } else { hi = mid; }
+  }
+  setT(lo);
+}
+window.addEventListener('resize', fitHero);
+if (document.fonts && document.fonts.ready) { document.fonts.ready.then(fitHero); }
+fitHero();
+
+/* ---------- Gentle fade-in for the Qur'an quotes ---------- */
+(function () {
+  const els = document.querySelectorAll('.q-fade');
+  if (!('IntersectionObserver' in window)) { els.forEach(e => e.classList.add('in')); return; }
+  const io = new IntersectionObserver(entries => {
+    entries.forEach(en => en.target.classList.toggle('in', en.isIntersecting));
+  }, { threshold: 0.35 });
+  els.forEach(e => io.observe(e));
+})();
+</script>
+</body>
+</html>
