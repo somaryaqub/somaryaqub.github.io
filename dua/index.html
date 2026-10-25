@@ -405,6 +405,33 @@
   .thanks .btn:hover { background: #1C4433; border-color: #1C4433; }
   @keyframes thanksPulse { 0%, 100% { box-shadow: 0 0 0 0 rgba(39,93,67,.5); transform: translateX(-50%) scale(1); } 50% { box-shadow: 0 0 0 16px rgba(39,93,67,0); transform: translateX(-50%) scale(1.045); } }
   @media (prefers-reduced-motion: reduce) { .thanks .btn { animation: none; } }
+  .duas .slide .dua p { font-size: var(--dfs, clamp(1.15rem, min(2.3vw, 3.5vh), 1.95rem)); }
+  .duas .slide .dua p.ar { font-family: var(--arabic); font-style: normal; color: var(--sand); font-size: calc(var(--dfs, 1.5rem) * 2.1); line-height: 1.3; }
+  /* ---- Examples as pure typography with a faded quote mark; "Ask yourself" as a card with a tab ---- */
+  .eg { position: relative; margin-top: 1.4rem; padding-top: 1.5rem; border-top: 1px solid var(--line); }
+  .eg:not(.has-quote) { border-top: 0; padding-top: .8rem; }
+  .eg.has-quote::before { content: "\201C"; position: absolute; top: -.2rem; left: -.35rem; font: 700 9.5rem/1 var(--serif); color: var(--accent); opacity: .2; pointer-events: none; z-index: 0; }
+  .eg .eg-body { position: relative; z-index: 1; background: none; border: 0; padding: 0; }
+  .eg .eg-body p { font-family: var(--serif); font-style: italic; font-size: 1.32rem; line-height: 1.42; color: var(--green-dark); margin: 0 0 1.15rem; }
+  .eg .eg-body p b { display: block; margin-bottom: .25rem; font: 700 .78rem var(--sans); font-style: normal; letter-spacing: .12em; text-transform: uppercase; color: var(--green); }
+  .reflect { position: relative; margin-top: 2rem; padding: 1.55rem 1.4rem 1.2rem; background: #fff; border: 1px solid var(--line); border-radius: 12px; box-shadow: 0 8px 22px rgba(28,68,51,.08); }
+  .reflect-tab { position: absolute; top: -.85rem; left: 1.1rem; display: inline-flex; align-items: center; gap: .4rem; background: var(--green); color: #fff; font: 700 .78rem var(--sans); letter-spacing: .1em; text-transform: uppercase; padding: .38rem .85rem; border-radius: 999px; }
+  .reflect-tab::before { content: "\2738"; color: var(--accent); font-size: .9rem; letter-spacing: 0; }
+  .eg .eg-body .reflect p { margin: 0; font: italic 500 1.2rem/1.42 var(--serif); color: var(--green); }
+  .eg.has-quote::before { top: .1rem; left: -3.4rem; font-size: 6.4rem; opacity: .3; }
+  @media (max-width: 919px) {
+    .eg.has-quote { padding-top: 2.6rem; }
+    .eg.has-quote::before { top: -.6rem; left: -.2rem; font-size: 5.2rem; opacity: .28; }
+  }
+  .eg.has-quote::before { content: none; }
+  .eg.has-quote { padding-top: 1.5rem; }
+  .eg .eg-body p { font-size: 1em; line-height: 1.6; margin-bottom: 1rem; }
+  /* Review changes: dotted "Example" rule, quotes with the mark flush at the edge and wrapped lines aligned after it */
+  .eg.has-quote { border-top: 0; padding-top: 0; }
+  .eg-rule { display: flex; align-items: center; gap: .8rem; margin: 0 0 1.2rem; }
+  .eg-rule span { flex: none; font: 700 .78rem var(--sans); letter-spacing: .12em; text-transform: uppercase; color: var(--green); }
+  .eg-rule::after { content: ""; flex: 1; border-top: 2px dotted rgba(39,93,67,.5); }
+  .eg .eg-body p.hang, .eg .eg-body .q { display: block; padding-left: .45em; text-indent: -.45em; hanging-punctuation: none; }
 </style>
 </head>
 <body>
@@ -444,7 +471,7 @@
 <section class="guide panel" id="write" data-step="1" aria-labelledby="write-h">
   <div class="quote-full">
     <figure class="qf">
-      <blockquote class="hang q-fade">“O mankind, indeed We have created you from male and female and made you peoples and tribes <span class="brush">that you may know one another.</span>”</blockquote>
+      <blockquote class="hang q-fade">“O mankind, indeed We have created you from male and female and made you peoples and tribes that you may <span class="brush">know one another.</span>”</blockquote>
       <figcaption class="q-fade late">Qur’an 49:13</figcaption>
     </figure>
     <span class="scroll-cue q-fade later" aria-hidden="true">&#8595;</span>
@@ -469,22 +496,24 @@
       <li>
         <h4>Begin with gratitude and praise</h4>
         <p>Thank Allah for your blessings and for the gathering. Reflect on the qualities of Allah and the guidance of the messengers that inspire you.</p>
-        <div class="eg">
+        <div class="eg has-quote">
+          <div class="eg-rule"><span>Example</span></div>
           <div class="eg-body">
             <p class="hang">“In the name of Allah, the Most Gracious, the Most Merciful. All praise is due to Allah, the Creator of the heavens, the earth, and all nations within it.”</p>
-            <p class="ask"><b>Ask yourself:</b> Which attributes of Allah feel most relevant to this gathering or land?</p>
+            <div class="reflect"><span class="reflect-tab">Ask yourself</span><p>Which attributes of Allah, the Creator, feel most relevant to this gathering or land?</p></div>
           </div>
         </div>
       </li>
       <li>
         <h4>Acknowledge the land and its peoples</h4>
         <p>Name specific nations and communities, and think about your responsibilities: treaties, shared humanity and stewardship.</p>
-        <div class="eg">
+        <div class="eg has-quote">
+          <div class="eg-rule"><span>Examples</span></div>
           <div class="eg-body">
-            <p><b style="font-style:normal">Justice:</b> “Ya Allah, grant justice and healing to those affected by historical and ongoing injustices, including the families of the Missing and Murdered Indigenous Women and Girls.”</p>
-            <p><b style="font-style:normal">Stewardship:</b> “Oh Lord, help us walk gently upon this earth as faithful stewards (khalifa), honouring the care of its original guardians and working in partnership with them.”</p>
-            <p><b style="font-style:normal">Truth and reconciliation:</b> “Ya Haqq (The Truth), guide us to the truth of this land’s history and help us work sincerely toward reconciliation and mutual respect.”</p>
-            <p class="ask"><b>Ask yourself:</b> What does this land and its history call you to uphold in your words and actions? How can your actions bring ease or justice?</p>
+            <p><b style="font-style:normal">Justice</b><span class="q">“Ya Allah, grant justice and healing to those affected by historical and ongoing injustices, including the families of the Missing and Murdered Indigenous Women and Girls.”</span></p>
+            <p><b style="font-style:normal">Stewardship</b><span class="q">“Oh Lord, help us walk gently upon this earth as faithful stewards (khalifa), honouring the care of its original guardians and working in partnership with them.”</span></p>
+            <p><b style="font-style:normal">Truth and reconciliation</b><span class="q">“Ya Haqq (The Truth), guide us to the truth of this land’s history and help us work sincerely toward reconciliation and mutual respect.”</span></p>
+            <div class="reflect"><span class="reflect-tab">Ask yourself</span><p>What does this land and its history call you to uphold in your words and actions? How can your actions bring ease or justice?</p></div>
           </div>
         </div>
       </li>
@@ -492,16 +521,17 @@
         <h4>Ask for blessing in your actions or gathering</h4>
         <p>Seek Allah’s guidance in your work and your place in the community.</p>
         <div class="eg">
-          <div class="eg-body"><p class="ask"><b>Ask yourself:</b> How can I be a source of light, care or sustenance today?</p></div>
+          <div class="eg-body"><div class="reflect"><span class="reflect-tab">Ask yourself</span><p>How can I be a source of light, care or sustenance today?</p></div></div>
         </div>
       </li>
       <li>
         <h4>Honour ancestors and heritage</h4>
         <p>Remember the efforts of those who came before you, and connect with the Prophet ﷺ and his actions.</p>
-        <div class="eg">
+        <div class="eg has-quote">
+          <div class="eg-rule"><span>Example</span></div>
           <div class="eg-body">
             <p class="hang">“O Allah, bless the Prophet Muhammad ﷺ and all who strive for justice and care for the earth.”</p>
-            <p class="ask"><b>Ask yourself:</b> What wisdom or gifts have they left for me, and how can I carry them forward?</p>
+            <div class="reflect"><span class="reflect-tab">Ask yourself</span><p>What wisdom or gifts have they left for me, and how can I carry them forward?</p></div>
           </div>
         </div>
       </li>
@@ -509,7 +539,7 @@
         <h4>Close with intention and gratitude</h4>
         <p>End with praise and gratitude, and a general Āmīn.</p>
         <div class="eg">
-          <div class="eg-body"><p class="ask"><b>Ask yourself:</b> What is my personal hope or intention for this moment?</p></div>
+          <div class="eg-body"><div class="reflect"><span class="reflect-tab">Ask yourself</span><p>What is my personal hope or intention for this moment?</p></div></div>
         </div>
       </li>
     </ol>
@@ -676,7 +706,7 @@ const CONFIG = {
 const SEEDS = [
   {
     seed: true,
-    dua: "O Allah, bless this gathering and bless the venerated land upon which we gather, the land of the Métis and many Indigenous peoples: the Cree, Blackfoot, Nakota Sioux, Iroquois, Dene, Ojibway, Saulteaux, Anishinaabe, Inuit, and many others. They are peoples to whom we are bound by treaty, by our shared humanity, and by a sacred call to brotherhood, sisterhood, and civic responsibility.\n\nO Allah, relieve the suffering of the occupied and the oppressed, across the world and here among us. Protect us from causing harm or misfortune to others. Make us people who bring ease to those who suffer.",
+    dua: "﷽\n\nO Allah, You who are known by many names, the Most Gracious, the Most Merciful, the Creator, You who have sent messengers and prophets to all peoples.\n\nO Allah, bless this gathering and bless the venerated land upon which we gather, the land of the Métis and many Indigenous peoples (the Cree, Blackfoot, Nakota Sioux, Iroquois, Dene, Ojibway, Saulteaux, Anishinaabe, Inuit, and many others), peoples to whom we are bound by treaty, by our shared humanity, and by a sacred call to brotherhood, sisterhood, and civic responsibility.\n\nO Allah, relieve the suffering of the occupied and the oppressed, across the world and here among us. Protect us from causing harm or misfortune to others. Make us people who bring ease to those who suffer: through our collective action, through our patience, through our persistence, through our commitment to noble principles, through our voices, through bridge-building, and by being faithful in all our actions.\n\nO Allah, in Your mercy and generosity, support us in our work with one another. Help us remember the efforts of those who came before us. Shower mercy upon our ancestors whose prayers and sacrifices bear fruit in our lives today. Allow us to honour their legacy by sharing the gifts they entrusted to us and by carrying forward the work that remains.\n\nO Allah, bless us on this day and send us forth as sources of light, care, and sustenance in our homes and in our communities.",
     name: "IslamicFamily",
     role: "Sample dua, Edmonton (Treaty 6)"
   },
@@ -722,7 +752,11 @@ function render() {
     slide.setAttribute('aria-label', (i + 1) + ' of ' + shown.length);
     const body = document.createElement('div');
     body.className = 'dua';
-    item.dua.split(/\n{2,}/).forEach(par => { const p = document.createElement('p'); p.textContent = par; body.appendChild(p); });
+    item.dua.split(/\n{2,}/).forEach(par => {
+      const p = document.createElement('p'); p.textContent = par;
+      if (/^[\u0600-\u06FF\uFDFD\s]+$/.test(par)) { p.className = 'ar'; p.lang = 'ar'; }
+      body.appendChild(p);
+    });
     const by = document.createElement('div');
     by.className = 'by';
     const strong = document.createElement('strong');
@@ -735,6 +769,7 @@ function render() {
   });
   idx = 0;
   go(0);
+  fitSlides();
 }
 function go(i) {
   if (!shown.length) return;
@@ -776,6 +811,23 @@ viewport.addEventListener('click', e => {
 });
 shuffleBtn.addEventListener('click', () => { shown = pickThree(); render(); });
 
+function fitSlides() {
+  const page = document.getElementById('duas');
+  if (!page || !page.classList.contains('active')) return;
+  const cap = Math.max(13, Math.min(window.innerWidth * 0.023, window.innerHeight * 0.035, 31));
+  [...track.children].forEach(slide => {
+    let lo = 13, hi = cap;
+    slide.style.setProperty('--dfs', hi.toFixed(1) + 'px');
+    if (slide.scrollHeight <= slide.clientHeight + 1) return;
+    for (let i = 0; i < 10; i++) {
+      const mid = (lo + hi) / 2;
+      slide.style.setProperty('--dfs', mid.toFixed(1) + 'px');
+      if (slide.scrollHeight <= slide.clientHeight + 1) { lo = mid; } else { hi = mid; }
+    }
+    slide.style.setProperty('--dfs', lo.toFixed(1) + 'px');
+  });
+}
+window.addEventListener('resize', fitSlides);
 function setPool(list) {
   pool = list.map((x, i) => Object.assign({ key: i }, x));
   if (pool.length < 3) {
@@ -1004,6 +1056,7 @@ function goStep(n, opts) {
   document.documentElement.classList.toggle('on-last', n === STEPS.length - 1);
   document.querySelectorAll('.step-dots button').forEach(b => b.setAttribute('aria-current', Number(b.dataset.n) === n ? 'step' : 'false'));
   if (n === 0 && typeof fitHero === 'function') { fitHero(); }
+  if (n === 2 && typeof fitSlides === 'function') { fitSlides(); }
   if (n === 3 && typeof lmap !== 'undefined' && lmap) { setTimeout(() => lmap.invalidateSize(), 80); }
   if (!opts.noHash) { try { history.replaceState(null, '', '#' + STEPS[n].id); } catch (e) { /* ignore */ } }
   if (!opts.initial) {
