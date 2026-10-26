@@ -399,7 +399,7 @@
   .land .step-dots button::after { background: rgba(255,255,255,.35); }
   .land .step-dots button[aria-current="step"]::after { background: #fff; }
   /* ---- Post-submission thank-you: full-screen image, one pulsing button ---- */
-  .thanks { position: fixed; inset: 0; z-index: 2000; display: block; padding: 0; border-radius: 0; background: #E09964; color: inherit; }
+  .thanks { position: fixed; inset: 0; z-index: 2000; display: block; padding: 0; border-radius: 0; background: #DA955E; color: inherit; }
   .thanks img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; display: block; }
   .thanks .btn { position: absolute; left: 50%; bottom: clamp(1.2rem, 5vh, 3rem); transform: translateX(-50%); z-index: 1; background: #275D43; color: #fff; border-color: #275D43; animation: thanksPulse 3.8s ease-in-out infinite; }
   .thanks .btn:hover { background: #1C4433; border-color: #1C4433; }
@@ -431,6 +431,8 @@
   .eg-rule { display: flex; align-items: center; gap: .8rem; margin: 0 0 1.2rem; }
   .eg-rule span { flex: none; font: 700 .78rem var(--sans); letter-spacing: .12em; text-transform: uppercase; color: var(--green); }
   .eg .eg-body p.hang, .eg .eg-body .q { display: block; padding-left: .45em; text-indent: -.45em; hanging-punctuation: none; }
+  .duas .slide .continued { width: min(100%, 54rem); margin-inline: auto; text-align: right; font: italic 500 1.05rem var(--serif); color: var(--sand); }
+  .duas .slide .dua p.ar { font-size: calc(var(--dfs, 1.5rem) * 0.63); text-align: center; }
 </style>
 </head>
 <body>
@@ -453,7 +455,7 @@
         <h1>Prayers for<br>the land &amp;<br>its people</h1>
         <p class="vol">IslamicFamily is gathering land acknowledging duas (volume 2). We invite you to reflect, pray and share.</p>
         <div class="lede">
-          <p>A land acknowledgment is more than a statement. For us it can be an act of worship: an opportunity to turn to the Creator, and share gratitude to the peoples who have cared for the land we’re on, to reflect on our impact, and ask for what’s best.</p>
+          <p>A land acknowledgment is more than a statement. For us it can be an act of worship: an opportunity to turn to the Creator, and seek goodness for the peoples who have cared for the land we’re on, to reflect on our impact, and ask for what’s best.</p>
         </div>
         <div class="actions">
           <a class="btn btn-accent" href="#duas">Read Duas</a>
@@ -470,7 +472,7 @@
 <section class="guide panel" id="write" data-step="1" aria-labelledby="write-h">
   <div class="quote-full">
     <figure class="qf">
-      <blockquote class="hang q-fade">“O mankind, indeed We have created you from male and female and made you peoples and tribes that you may <span class="brush">know one another.</span>”</blockquote>
+      <blockquote class="hang q-fade">“O humanity, indeed We have created you from male and female and made you peoples and tribes that you may <span class="brush">know one another.</span>”</blockquote>
       <figcaption class="q-fade late">Qur’an 49:13</figcaption>
     </figure>
     <span class="scroll-cue q-fade later" aria-hidden="true">&#8595;</span>
@@ -482,8 +484,8 @@
     </div>
 
     <ul class="principles">
-      <li><b>Turn toward God and set your intention.</b> Approach the dua with sincerity (tawajjuh and niyyah). Your goal is to honour the land and its peoples, not just to read words.</li>
-      <li><b>Remember whose earth it is.</b> Allah is the Creator and Owner of the earth. Acknowledging the land is a religious and ethical act, a reflection of your responsibility (amanah) and the duty to uphold justice.</li>
+      <li><b>Turn toward God and set your intention (tawajjuh and niyyah).</b> Establish a connection with the Creator. Approach the dua with sincerity. Your goal is to honour the land and its peoples, not just to read words.</li>
+      <li><b>Remember whose earth it is.</b> Allah is the Creator and Owner of the earth. Acknowledging the land is a religious and ethical act, stewardship (khelifa), a reflection of your responsibility (amanah) and the duty to uphold justice.</li>
       <li><b>Speak to Allah, not to an audience.</b> Dua is an intimate conversation with your Creator. Use the names and attributes that fit your prayer: the Most Merciful, the Most Just, the Most Wise.</li>
       <li><b>Make it specific.</b> Find the treaty and nations where you are with the <a href="#land">Know your land</a> tool below, then bring in nature, heritage or local features.</li>
     </ul>
@@ -530,7 +532,7 @@
           <div class="eg-rule"><span>Example</span></div>
           <div class="eg-body">
             <p class="hang">“O Allah, bless the Prophet Muhammad ﷺ and all who strive for justice and care for the earth.”</p>
-            <div class="reflect"><span class="reflect-tab">Ask yourself</span><p>What wisdom or gifts have they left for me, and how can I carry them forward?</p></div>
+            <div class="reflect"><span class="reflect-tab">Ask yourself</span><p>What wisdom or gifts have been left for me, and how can I carry it forward?</p></div>
           </div>
         </div>
       </li>
@@ -606,7 +608,7 @@
   <div class="narrow">
     <div class="section-head">
       <h2 id="submit-h">Share your dua</h2>
-      <p>Honouring Indigenous protocol is honouring our own tradition. The exercise of writing a dua specific to time, place and people is something that nurtures sincerity, spirituality and belonging.</p>
+      <p>Honouring Indigenous protocol is honouring our own tradition. The exercise of writing a dua specific to time, place and people is something that nurtures belonging, sincerity, &amp; spirituality.</p>
     </div>
 
     <form id="form" novalidate>
@@ -741,41 +743,54 @@ function pickThree() {
   const rest = shuffled(pool.filter(x => prev.has(x.key)));
   return fresh.concat(rest).slice(0, 3);
 }
-function render() {
+const MAX_PAGES = 6;
+let pages = [];
+function drawSlides() {
   track.textContent = '';
-  shown.forEach((item, i) => {
+  pages.forEach((pg, i) => {
     const slide = document.createElement('article');
     slide.className = 'slide';
     slide.setAttribute('role', 'group');
     slide.setAttribute('aria-roledescription', 'slide');
-    slide.setAttribute('aria-label', (i + 1) + ' of ' + shown.length);
+    slide.setAttribute('aria-label', (i + 1) + ' of ' + pages.length);
     const body = document.createElement('div');
     body.className = 'dua';
-    item.dua.split(/\n{2,}/).forEach(par => {
+    pg.paras.forEach(par => {
       const p = document.createElement('p'); p.textContent = par;
       if (/^[\u0600-\u06FF\uFDFD\s]+$/.test(par)) { p.className = 'ar'; p.lang = 'ar'; }
       body.appendChild(p);
     });
-    const by = document.createElement('div');
-    by.className = 'by';
-    const strong = document.createElement('strong');
-    strong.textContent = item.name || 'Anonymous';
-    by.appendChild(strong);
-    if (item.role) { const s = document.createElement('span'); s.textContent = item.role; by.appendChild(s); }
-    slide.append(body, by);
+    slide.appendChild(body);
+    if (pg.last) {
+      const by = document.createElement('div');
+      by.className = 'by';
+      const strong = document.createElement('strong');
+      strong.textContent = pg.item.name || 'Anonymous';
+      by.appendChild(strong);
+      if (pg.item.role) { const s = document.createElement('span'); s.textContent = pg.item.role; by.appendChild(s); }
+      slide.appendChild(by);
+    } else {
+      const c = document.createElement('div');
+      c.className = 'continued';
+      c.textContent = 'Continued\u2026';
+      slide.appendChild(c);
+    }
     track.appendChild(slide);
-
   });
+}
+function render() {
+  pages = shown.map(item => ({ item: item, paras: item.dua.split(/\n{2,}/), last: true }));
+  drawSlides();
   idx = 0;
   go(0);
   fitSlides();
 }
 function go(i) {
-  if (!shown.length) return;
-  idx = (i + shown.length) % shown.length;
+  if (!pages.length) return;
+  idx = (i + pages.length) % pages.length;
   track.style.transform = 'translateX(' + (-100 * idx) + '%)';
   [...track.children].forEach((s, n) => s.setAttribute('aria-hidden', n === idx ? 'false' : 'true'));
-  slideCountEl.textContent = (idx + 1) + ' of ' + shown.length;
+  slideCountEl.textContent = (idx + 1) + ' of ' + pages.length;
 }
 document.getElementById('prev').addEventListener('click', () => go(idx - 1));
 document.getElementById('next').addEventListener('click', () => go(idx + 1));
@@ -810,21 +825,74 @@ viewport.addEventListener('click', e => {
 });
 shuffleBtn.addEventListener('click', () => { shown = pickThree(); render(); });
 
+/* Largest font size (within lo..hi) at which the slide's text fits without scrolling */
+function slideBest(slide, lo, hi) {
+  slide.style.setProperty('--dfs', hi.toFixed(1) + 'px');
+  if (slide.scrollHeight <= slide.clientHeight + 1) return hi;
+  let a = lo, b = hi;
+  for (let i = 0; i < 10; i++) {
+    const mid = (a + b) / 2;
+    slide.style.setProperty('--dfs', mid.toFixed(1) + 'px');
+    if (slide.scrollHeight <= slide.clientHeight + 1) { a = mid; } else { b = mid; }
+  }
+  slide.style.setProperty('--dfs', a.toFixed(1) + 'px');
+  return a;
+}
+/* Split a page in two at the paragraph (or, for one long paragraph, sentence) nearest the middle */
+function splitPage(pg) {
+  let units = pg.paras, joiner = null;
+  if (units.length < 2) {
+    units = units[0].replace(/([.!?]["\u201D\u2019)]*)\s+/g, '$1\u0001').split('\u0001');
+    if (units.length < 2) return null;
+    joiner = ' ';
+  }
+  const total = units.reduce((n, u) => n + u.length, 0);
+  let acc = 0, best = 1, bestDiff = Infinity;
+  for (let k = 1; k < units.length; k++) {
+    acc += units[k - 1].length;
+    const diff = Math.abs(total / 2 - acc);
+    if (diff < bestDiff) { bestDiff = diff; best = k; }
+  }
+  const a = units.slice(0, best), b = units.slice(best);
+  return [
+    { item: pg.item, paras: joiner ? [a.join(joiner)] : a, last: false },
+    { item: pg.item, paras: joiner ? [b.join(joiner)] : b, last: pg.last }
+  ];
+}
 function fitSlides() {
   const page = document.getElementById('duas');
   if (!page || !page.classList.contains('active')) return;
-  const cap = Math.max(13, Math.min(window.innerWidth * 0.023, window.innerHeight * 0.035, 31));
-  [...track.children].forEach(slide => {
-    let lo = 13, hi = cap;
-    slide.style.setProperty('--dfs', hi.toFixed(1) + 'px');
-    if (slide.scrollHeight <= slide.clientHeight + 1) return;
-    for (let i = 0; i < 10; i++) {
-      const mid = (lo + hi) / 2;
-      slide.style.setProperty('--dfs', mid.toFixed(1) + 'px');
-      if (slide.scrollHeight <= slide.clientHeight + 1) { lo = mid; } else { hi = mid; }
+  const cap = Math.min(31, Math.max(18, Math.min(window.innerWidth * 0.023, window.innerHeight * 0.035)));
+  const comfy = Math.max(16, cap * 0.66);
+  const current = pages[idx];
+  /* Long duas that would force small text are broken into pages with "Continued..." */
+  for (let guard = 0; guard < 40; guard++) {
+    const slides = [...track.children];
+    let split = false;
+    for (let i = 0; i < pages.length; i++) {
+      const pg = pages[i];
+      if (pages.filter(p => p.item === pg.item).length >= MAX_PAGES) continue;
+      if (slideBest(slides[i], 13, cap) >= comfy) continue;
+      const parts = splitPage(pg);
+      if (!parts) continue;
+      pages.splice(i, 1, parts[0], parts[1]);
+      split = true;
+      break;
     }
-    slide.style.setProperty('--dfs', lo.toFixed(1) + 'px');
+    if (!split) break;
+    drawSlides();
+  }
+  /* Pages of one dua share one size so it reads consistently across "Continued" pages */
+  const slides = [...track.children];
+  const sizes = new Map();
+  pages.forEach((pg, i) => {
+    const s = slideBest(slides[i], 13, cap);
+    sizes.set(pg.item, sizes.has(pg.item) ? Math.min(sizes.get(pg.item), s) : s);
   });
+  pages.forEach((pg, i) => slides[i].style.setProperty('--dfs', sizes.get(pg.item).toFixed(1) + 'px'));
+  let k = pages.indexOf(current);
+  if (k < 0) k = pages.findIndex(p => current && p.item === current.item);
+  go(k < 0 ? 0 : k);
 }
 window.addEventListener('resize', fitSlides);
 function setPool(list) {
