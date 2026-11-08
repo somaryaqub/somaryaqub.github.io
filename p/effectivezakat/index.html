@@ -7,7 +7,7 @@
 <title>Effective Zakat in Canada · IslamicFamily</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Alegreya:ital,wght@0,400;0,500;0,700;0,800;1,400;1,500&family=Alegreya+Sans:ital,wght@0,400;0,500;0,700;1,400&family=Noto+Naskh+Arabic:wght@400;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Alegreya:ital,wght@0,400;0,500;0,700;0,800;1,400;1,500&family=Alegreya+Sans:ital,wght@0,400;0,500;0,700;1,400&family=Noto+Naskh+Arabic:wght@400..700&display=swap" rel="stylesheet">
 <style>
 :root{
   --nabawi:#275D43; --nabawi-dark:#1C4433; --nabawi-mid:#326B50;
@@ -20,8 +20,8 @@
   --shadow:0 1px 0 rgba(28,68,51,.06), 0 14px 32px -18px rgba(28,68,51,.28);
 
   --ease:cubic-bezier(.22,.61,.36,1);
-  --serif:"Alegreya", Georgia, "Times New Roman", serif;
-  --sans:"Alegreya Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --serif:"Alegreya", "Noto Naskh Arabic", Georgia, "Times New Roman", serif;
+  --sans:"Alegreya Sans", "Noto Naskh Arabic", system-ui, -apple-system, "Segoe UI", sans-serif;
   --arabic:"Noto Naskh Arabic", "Geeza Pro", "Traditional Arabic", serif;
 
   --photo:url("images/cover.jpg");
@@ -515,6 +515,14 @@ h3,h4,.rt,.cats h4,.pillars a{line-height:var(--lh-title)}
 @media (max-width:860px){.hero__star{opacity:.3;right:-30%}}
 @media (prefers-reduced-motion: reduce){.hero__star path{animation:none;stroke-dashoffset:0}.hero__star .spin{animation:none}}
 @media print{.hero__star{display:none!important}}
+/* ---------- v9: Arabic chapter letters, rail appears at chapter alif ---------- */
+.bigmark{font-family:var(--arabic);font-weight:700;font-size:clamp(12rem,30vw,28rem);line-height:.8;bottom:-.02em}
+.chband h2{font-feature-settings:"kern","liga"}
+@media (min-width:1024px){
+  .rail{opacity:0;visibility:hidden;transition:opacity .5s ease,visibility 0s linear .5s}
+  .rail.show{opacity:1;visibility:visible;transition:opacity .5s ease}
+  .rail a b{font-family:var(--arabic);font-weight:700;font-size:1.25rem;line-height:1;transform:translateY(-.06em)}
+}
 /* ---------- Motion + print ---------- */
 @media (prefers-reduced-motion: reduce){
   html{scroll-behavior:auto}
@@ -707,17 +715,17 @@ h3,h4,.rt,.cats h4,.pillars a{line-height:var(--lh-title)}
   <div class="wrap">
     <div class="sec-head" style="margin-bottom:0"><span class="title-rule"></span><h2>Best Practices &amp; Recommendations</h2></div>
     <ul class="pillars">
-      <li><a href="#a">a. Begin with intentions/Educate ourselves &amp; those we serve</a></li>
-      <li><a href="#b">b. Determine zakat eligibility with dignity &amp; diligence</a></li>
-      <li><a href="#c">c. Provide supports that disrupt the cycle</a></li>
-      <li><a href="#d">d. Nür: Transparency</a></li>
+      <li><a href="#a">ا. Begin with intentions/Educate ourselves &amp; those we serve</a></li>
+      <li><a href="#b">ب. Determine zakat eligibility with dignity &amp; diligence</a></li>
+      <li><a href="#c">ت. Provide supports that disrupt the cycle</a></li>
+      <li><a href="#d">ث. Nür: Transparency</a></li>
     </ul>
   </div>
 </section>
 
 <div class="strip s2" data-set="team" aria-hidden="true"><figure class="ph"><img src="images/volunteer.jpeg" alt="" loading="lazy" onerror="this.parentNode.hidden=true"></figure><figure class="ph"><img src="images/give.jpeg" alt="" loading="lazy" onerror="this.parentNode.hidden=true"></figure></div>
-<section class="chapter ch-a" id="a" data-wp="a. Begin with intentions" data-mark="a">
-  <header class="chband"><div class="wrap wide"><span class="bigmark" aria-hidden="true">a</span><h2>a. Begin with intentions/Educate ourselves &amp; those we serve</h2></div></header>
+<section class="chapter ch-a" id="a" data-wp="ا. Begin with intentions" data-mark="ا">
+  <header class="chband"><div class="wrap wide"><span class="bigmark" lang="ar" aria-hidden="true">ا</span><h2>ا. Begin with intentions/Educate ourselves &amp; those we serve</h2></div></header>
   <div class="chbody"><div class="wrap wide"><div class="chgrid">
     <div class="argument">
             <p class="lead" style="max-width:none">All team members should be reminded Zakat is the right of the poor.</p>
@@ -752,8 +760,8 @@ h3,h4,.rt,.cats h4,.pillars a{line-height:var(--lh-title)}
   </div></div></div>
 </section>
 
-<section class="chapter ch-b" id="b" data-wp="b. Determine eligibility" data-mark="b">
-  <header class="chband"><div class="wrap wide"><span class="bigmark" aria-hidden="true">b</span><h2>b. Determine zakat eligibility with dignity &amp; diligence</h2></div></header>
+<section class="chapter ch-b" id="b" data-wp="ب. Determine eligibility" data-mark="ب">
+  <header class="chband"><div class="wrap wide"><span class="bigmark" lang="ar" aria-hidden="true">ب</span><h2>ب. Determine zakat eligibility with dignity &amp; diligence</h2></div></header>
   <div class="chbody"><div class="wrap wide"><div class="chgrid">
     <div class="argument">
       <div class="prose">
@@ -784,8 +792,8 @@ h3,h4,.rt,.cats h4,.pillars a{line-height:var(--lh-title)}
 </section>
 
 <div class="strip s3" data-set="skills" aria-hidden="true"><figure class="ph"><img src="images/sew.jpeg" alt="" loading="lazy" onerror="this.parentNode.hidden=true"></figure><figure class="ph"><img src="images/grad.jpeg" alt="" loading="lazy" onerror="this.parentNode.hidden=true"></figure><figure class="ph"><img src="images/accomplish.jpeg" alt="" loading="lazy" onerror="this.parentNode.hidden=true"></figure></div>
-<section class="chapter ch-c" id="c" data-wp="c. Provide supports" data-mark="c">
-  <header class="chband"><div class="wrap wide"><span class="bigmark" aria-hidden="true">c</span><h2>c. Provide supports that disrupt the cycle</h2></div></header>
+<section class="chapter ch-c" id="c" data-wp="ت. Provide supports" data-mark="ت">
+  <header class="chband"><div class="wrap wide"><span class="bigmark" lang="ar" aria-hidden="true">ت</span><h2>ت. Provide supports that disrupt the cycle</h2></div></header>
   <div class="chbody"><div class="wrap wide"><div class="chgrid">
     <div class="argument">
       <div class="prose">
@@ -816,8 +824,8 @@ h3,h4,.rt,.cats h4,.pillars a{line-height:var(--lh-title)}
   </div></div></div>
 </section>
 
-<section class="chapter ch-d" id="d" data-wp="d. Nür: Transparency" data-mark="d">
-  <header class="chband"><div class="wrap wide"><span class="bigmark" aria-hidden="true">d</span><h2>d. Nür: Transparency</h2></div></header>
+<section class="chapter ch-d" id="d" data-wp="ث. Nür: Transparency" data-mark="ث">
+  <header class="chband"><div class="wrap wide"><span class="bigmark" lang="ar" aria-hidden="true">ث</span><h2>ث. Nür: Transparency</h2></div></header>
   <div class="chbody"><div class="wrap wide"><div class="chgrid">
     <div class="argument">
       <div class="prose">
@@ -956,6 +964,7 @@ h3,h4,.rt,.cats h4,.pillars a{line-height:var(--lh-title)}
       m.a.classList.toggle('done',r.bottom<=line);
     });
     topbar.style.setProperty('--p',(p*100)+'%');
+    var first=document.getElementById('a'); railEl.classList.toggle('show',first.getBoundingClientRect().top<=vh*0.5);
   }
   function req(){ if(!ticking){ ticking=true; requestAnimationFrame(update); } }
   window.addEventListener('scroll',req,{passive:true});
