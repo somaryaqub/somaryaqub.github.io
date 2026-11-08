@@ -125,7 +125,6 @@ p{margin:0 0 1.15em}
 .hero .date{font-family:var(--serif);font-size:1.5rem;font-variant-numeric:lining-nums}
 .hero .brand{position:absolute;z-index:3;top:calc(env(safe-area-inset-top,0px) + 22px);left:0;right:0}
 .hero .brand .wrap{display:flex;justify-content:space-between;align-items:center}
-@media (max-width:1023px){.hero .brand{display:none}}
 .hero .mark{font-size:1.6rem;color:#fff}
 .btn{font:700 1rem var(--sans);color:inherit;background:transparent;border:1.5px solid currentColor;border-radius:999px;padding:.4rem 1.1rem;cursor:pointer}
 .btn:hover{background:rgba(255,255,255,.14)}
@@ -489,10 +488,20 @@ h3,h4,.rt,.cats h4,.pillars a{line-height:var(--lh-title)}
 .bigmark{font-family:var(--arabic);font-weight:700;font-size:clamp(12rem,30vw,28rem);line-height:.8;bottom:-.02em}
 .chband h2{font-feature-settings:"kern","liga"}
 /* ---------- v10: Contents bar everywhere ---------- */
-.hero .brand{display:none}
 .topbar{padding-inline:max(clamp(20px,5vw,64px),calc((100% - 1180px)/2 + clamp(20px,5vw,64px)))}
 @media (min-width:900px){.sheet{padding-inline:max(24px,calc((100vw - 720px)/2))}}
 .sheet li a[aria-current="true"]{color:var(--sun)}
+/* ---------- v11: quiet Contents button ---------- */
+.topbar{inset:0 0 auto 0;height:0;padding:0;background:transparent;display:block;pointer-events:none}
+.topbar::after{top:0;bottom:auto;height:2px;opacity:.9}
+.topbar button{pointer-events:auto;position:fixed;top:calc(env(safe-area-inset-top,0px) + 14px);right:clamp(14px,3vw,28px);
+  background:rgba(28,68,51,.78);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);
+  border:1px solid rgba(255,255,255,.26);color:#fff;font-size:.92rem;padding:.55em 1em;opacity:.88;
+  transition:transform .35s cubic-bezier(.22,.61,.36,1),opacity .25s ease,background .2s}
+.topbar button:hover,.topbar button:focus-visible{opacity:1;background:rgba(28,68,51,.95)}
+.topbar.away button{transform:translateY(-190%);opacity:0;pointer-events:none}
+.topbar:focus-within button{transform:none;opacity:1;pointer-events:auto}
+@media (prefers-reduced-motion: reduce){.topbar button{transition:none}}
 /* ---------- Motion + print ---------- */
 @media (prefers-reduced-motion: reduce){
   html{scroll-behavior:auto}
@@ -524,10 +533,7 @@ h3,h4,.rt,.cats h4,.pillars a{line-height:var(--lh-title)}
 <body>
 
 <!-- Small-screen bar -->
-<div class="topbar" id="topbar">
-  <a class="mark" href="#top">Islamic<b>Family</b></a>
-  <button type="button" id="openSheet" aria-haspopup="dialog" aria-controls="sheet">Contents</button>
-</div>
+<div class="topbar" id="topbar"><button type="button" id="openSheet" aria-haspopup="dialog" aria-controls="sheet">Contents</button></div>
 <div class="sheet" id="sheet" role="dialog" aria-modal="true" aria-label="Contents" hidden>
   <header><span class="mark">Islamic<b>Family</b></span><button type="button" id="closeSheet">Close</button></header>
   <ol id="sheetList"></ol>
@@ -910,11 +916,12 @@ h3,h4,.rt,.cats h4,.pillars a{line-height:var(--lh-title)}
   qs('#openSheet').addEventListener('click',openSheet); qs('#closeSheet').addEventListener('click',closeSheet);
 
   /* ---- Top bar progress, and the current section in the Contents menu ---- */
-  var topbar=qs('#topbar'), sheetLinks=qsa('#sheetList a'), wpEls=qsa('[data-wp]'), ticking=false;
+  var topbar=qs('#topbar'), sheetLinks=qsa('#sheetList a'), wpEls=qsa('[data-wp]'), ticking=false, lastY=0;
   function update(){
     ticking=false;
     var vh=window.innerHeight, line=vh*0.4, max=Math.max(1,document.documentElement.scrollHeight-vh), p=Math.min(1,Math.max(0,window.scrollY/max)), cur=0;
     topbar.style.setProperty('--p',(p*100)+'%');
+    var y=window.scrollY; if(y>160&&y>lastY+3) topbar.classList.add('away'); else if(y<lastY-3||y<=160) topbar.classList.remove('away'); lastY=y;
     for(var i=0;i<wpEls.length;i++){ if(wpEls[i].getBoundingClientRect().top<=line) cur=i; }
     sheetLinks.forEach(function(a,i){ if(i===cur) a.setAttribute('aria-current','true'); else a.removeAttribute('aria-current'); });
   }
