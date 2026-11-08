@@ -72,7 +72,6 @@ p{margin:0 0 1.15em}
 
 /* ---------- Layout ---------- */
 .wrap{width:100%;max-width:1180px;margin:0 auto;padding-inline:clamp(20px,5vw,64px)}
-@media (min-width:1024px){.wrap{padding-left:104px}}
 .band{position:relative;padding-block:clamp(64px,10vw,120px)}
 .band--cream{background:var(--bg)}
 .band--alt{background:var(--bg-2)}
@@ -97,7 +96,7 @@ p{margin:0 0 1.15em}
 .band--green .badge{--badge:var(--pine);color:var(--nabawi-dark)}
 .badge.no{--badge:var(--red)}
 
-/* ---------- Top bar (small screens) and rail (wide) ---------- */
+/* ---------- Top bar with Contents menu (all screen sizes) ---------- */
 .topbar{position:fixed;inset:0 0 auto 0;z-index:50;display:flex;align-items:center;justify-content:space-between;
   padding:calc(env(safe-area-inset-top,0px) + 8px) 16px 8px;background:var(--nabawi-dark);color:#fff}
 .topbar::after{content:"";position:absolute;left:0;bottom:0;height:3px;width:var(--p,0%);background:var(--sun)}
@@ -111,23 +110,6 @@ p{margin:0 0 1.15em}
 .sheet li a{display:block;padding:.65rem 0;border-bottom:1px solid rgba(255,255,255,.16);color:#fff;text-decoration:none;font-family:var(--serif);font-size:1.35rem}
 .sheet li a.sub{padding-left:1.25rem;font-family:var(--sans);font-size:1.1rem;color:#E4EBE5}
 .sheet button{font:700 1rem var(--sans);color:#fff;background:transparent;border:1.5px solid rgba(255,255,255,.55);border-radius:999px;padding:.3rem .95rem}
-.rail{display:none}
-@media (min-width:1024px){
-  .topbar{display:none}
-  .rail{display:block;position:fixed;left:30px;top:50%;transform:translateY(-50%);height:min(80vh,680px);width:18px;z-index:40}
-  .rail .track{position:absolute;left:8px;top:0;bottom:0;width:2px;background:rgba(140,140,140,.38);border-radius:2px}
-  .rail .fill{position:absolute;left:8px;top:0;width:2px;height:var(--fill,0px);background:var(--sun);border-radius:2px}
-  .rail ol{list-style:none;margin:0;padding:0;position:absolute;inset:0}
-  .rail li{position:absolute;left:0;transform:translateY(-50%)}
-  .rail a{position:relative;display:block;width:18px;height:18px}
-  .rail a::before{content:"";position:absolute;inset:3px;border-radius:50%;background:var(--bg);border:2px solid var(--sun);transition:background .2s,transform .2s}
-  .rail a.sub::before{inset:5px;border-width:1.5px}
-  .rail a.on::before,.rail a.done::before{background:var(--sun)}
-  .rail a.on::before{transform:scale(1.35)}
-  .rail a span{position:absolute;left:30px;top:50%;transform:translateY(-50%);white-space:nowrap;background:var(--nabawi-dark);color:#fff;
-    font:700 .95rem var(--sans);padding:.28rem .7rem;border-radius:6px;opacity:0;pointer-events:none;transition:opacity .18s}
-  .rail a:hover span,.rail a:focus-visible span{opacity:1}
-}
 
 /* ---------- Hero ---------- */
 .hero{position:relative;min-height:100svh;display:flex;flex-direction:column;justify-content:flex-end;color:#fff;overflow:hidden;
@@ -392,18 +374,6 @@ sup.fn a:hover{background:var(--nabawi-mid)}
 .nsheet-actions{display:flex;justify-content:space-between;align-items:center;margin-top:.9rem}
 .nsheet button{font:700 1rem var(--sans);color:#fff;background:transparent;border:1.5px solid rgba(255,255,255,.55);border-radius:999px;padding:.3rem .95rem}
 
-/* rail: four chapter marks on a whole-page progress line */
-@media (min-width:1024px){
-  .rail li{left:-6px}
-  .rail a{display:grid;place-items:center;width:28px;height:28px}
-  .rail a::before{inset:0}
-  .rail a b{position:relative;font-family:var(--serif);font-weight:800;font-size:1.02rem;line-height:1;color:var(--head)}
-  .rail a.done::before,.rail a.on::before{background:var(--sun)}
-  .rail a.done b,.rail a.on b{color:#1C4433}
-  .rail a.on::before{transform:scale(1.12)}
-  .rail a span{left:42px}
-  .rail a,.rail a b{text-decoration:none}
-}
 /* ---------- v4: fewer numbers; bullets and rules instead ---------- */
 .rec{display:block;padding:1.5rem 0 .4rem;border-top:0}
 .rec::before{content:"";display:block;width:2.8rem;height:4px;background:var(--chi);margin-bottom:.85rem}
@@ -515,14 +485,14 @@ h3,h4,.rt,.cats h4,.pillars a{line-height:var(--lh-title)}
 @media (max-width:860px){.hero__star{opacity:.3;right:-30%}}
 @media (prefers-reduced-motion: reduce){.hero__star path{animation:none;stroke-dashoffset:0}.hero__star .spin{animation:none}}
 @media print{.hero__star{display:none!important}}
-/* ---------- v9: Arabic chapter letters, rail appears at chapter alif ---------- */
+/* ---------- v9: Arabic chapter letters ---------- */
 .bigmark{font-family:var(--arabic);font-weight:700;font-size:clamp(12rem,30vw,28rem);line-height:.8;bottom:-.02em}
 .chband h2{font-feature-settings:"kern","liga"}
-@media (min-width:1024px){
-  .rail{opacity:0;visibility:hidden;transition:opacity .5s ease,visibility 0s linear .5s}
-  .rail.show{opacity:1;visibility:visible;transition:opacity .5s ease}
-  .rail a b{font-family:var(--arabic);font-weight:700;font-size:1.25rem;line-height:1;transform:translateY(-.06em)}
-}
+/* ---------- v10: Contents bar everywhere ---------- */
+.hero .brand{display:none}
+.topbar{padding-inline:max(clamp(20px,5vw,64px),calc((100% - 1180px)/2 + clamp(20px,5vw,64px)))}
+@media (min-width:900px){.sheet{padding-inline:max(24px,calc((100vw - 720px)/2))}}
+.sheet li a[aria-current="true"]{color:var(--sun)}
 /* ---------- Motion + print ---------- */
 @media (prefers-reduced-motion: reduce){
   html{scroll-behavior:auto}
@@ -531,7 +501,7 @@ h3,h4,.rt,.cats h4,.pillars a{line-height:var(--lh-title)}
 }
 @media print{
   :root{--bg:#fff;--bg-2:#fff;--surface:#fff;--text:#222;--head:#1C4433;--link:#1C4433;--rule:#ccc;padding:0}
-  .topbar,.rail,.sheet,.pop,.cue,.btn,.break,.star{display:none!important}
+  .topbar,.sheet,.pop,.cue,.btn,.break,.star{display:none!important}
   .hero{min-height:0;background:#1C4433!important;-webkit-print-color-adjust:exact;print-color-adjust:exact;padding-top:24px}
   .hero-inner{padding-bottom:28px}
   .band{padding-block:28px}
@@ -562,8 +532,6 @@ h3,h4,.rt,.cats h4,.pillars a{line-height:var(--lh-title)}
   <header><span class="mark">Islamic<b>Family</b></span><button type="button" id="closeSheet">Close</button></header>
   <ol id="sheetList"></ol>
 </div>
-<!-- Wide-screen rail -->
-<nav class="rail" id="rail" aria-label="Sections"><div class="track"></div><div class="fill" id="railFill"></div><ol id="railList"></ol></nav>
 
 <main id="top">
 
@@ -941,30 +909,14 @@ h3,h4,.rt,.cats h4,.pillars a{line-height:var(--lh-title)}
   function closeSheet(){ sheet.hidden=true; document.body.style.overflow=''; }
   qs('#openSheet').addEventListener('click',openSheet); qs('#closeSheet').addEventListener('click',closeSheet);
 
-  /* ---- Rail: whole-page progress, four chapter marks ---- */
-  var railList=qs('#railList'), railEl=qs('#rail'), fill=qs('#railFill'), topbar=qs('#topbar');
-  var marks=qsa('[data-mark]').map(function(el){
-    var li=document.createElement('li'), a=document.createElement('a'), b=document.createElement('b'), sp=document.createElement('span');
-    a.href='#'+el.id; a.setAttribute('aria-label',el.getAttribute('data-wp')); b.textContent=el.getAttribute('data-mark'); sp.textContent=el.getAttribute('data-wp');
-    a.appendChild(b); a.appendChild(sp); li.appendChild(a); railList.appendChild(li);
-    return {el:el,li:li,a:a};
-  });
-  function layoutRail(){
-    var max=Math.max(1,document.documentElement.scrollHeight-window.innerHeight);
-    marks.forEach(function(m){ var y=m.el.getBoundingClientRect().top+window.scrollY; m.li.style.top=Math.min(100,Math.max(0,y/max*100))+'%'; });
-  }
-  var ticking=false;
+  /* ---- Top bar progress, and the current section in the Contents menu ---- */
+  var topbar=qs('#topbar'), sheetLinks=qsa('#sheetList a'), wpEls=qsa('[data-wp]'), ticking=false;
   function update(){
     ticking=false;
-    var vh=window.innerHeight, line=vh*0.4, max=Math.max(1,document.documentElement.scrollHeight-vh), p=Math.min(1,Math.max(0,window.scrollY/max));
-    fill.style.setProperty('--fill',(p*railEl.getBoundingClientRect().height)+'px');
-    marks.forEach(function(m){
-      var r=m.el.getBoundingClientRect();
-      m.a.classList.toggle('on',r.top<=line&&r.bottom>line);
-      m.a.classList.toggle('done',r.bottom<=line);
-    });
+    var vh=window.innerHeight, line=vh*0.4, max=Math.max(1,document.documentElement.scrollHeight-vh), p=Math.min(1,Math.max(0,window.scrollY/max)), cur=0;
     topbar.style.setProperty('--p',(p*100)+'%');
-    var first=document.getElementById('a'); railEl.classList.toggle('show',first.getBoundingClientRect().top<=vh*0.5);
+    for(var i=0;i<wpEls.length;i++){ if(wpEls[i].getBoundingClientRect().top<=line) cur=i; }
+    sheetLinks.forEach(function(a,i){ if(i===cur) a.setAttribute('aria-current','true'); else a.removeAttribute('aria-current'); });
   }
   function req(){ if(!ticking){ ticking=true; requestAnimationFrame(update); } }
   window.addEventListener('scroll',req,{passive:true});
@@ -1030,7 +982,7 @@ h3,h4,.rt,.cats h4,.pillars a{line-height:var(--lh-title)}
     hi.forEach(function(h){ io.observe(h); });
   } else { hi.forEach(function(h){ h.classList.add('go'); }); }
 
-  function relayout(){ layoutRail(); placeNotes(); update(); }
+  function relayout(){ placeNotes(); update(); }
   window.addEventListener('resize',relayout);
   window.addEventListener('load',relayout);
   if(wide.addEventListener) wide.addEventListener('change',function(){ closeNote(); relayout(); });
