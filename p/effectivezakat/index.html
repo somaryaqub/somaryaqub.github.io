@@ -1,0 +1,1033 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<script>document.documentElement.className+=" js"</script>
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Effective Zakat in Canada · IslamicFamily</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Alegreya:ital,wght@0,400;0,500;0,700;0,800;1,400;1,500&family=Alegreya+Sans:ital,wght@0,400;0,500;0,700;1,400&family=Noto+Naskh+Arabic:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --nabawi:#275D43; --nabawi-dark:#1C4433; --nabawi-mid:#326B50;
+  --pine:#E09964; --mist:#FAFAF2; --kiswah:#353535;
+  --red:#BB2D37; --sun:#F7AF29; --sand:#EECBAF; --arabica:#DCD9B8;
+
+  --bg:#FAFAF2; --bg-2:#F1F0E0; --surface:#FFFFFF;
+  --text:#353535; --muted:#5A5F57; --head:#1C4433; --link:#275D43;
+  --rule:#DCD9B8; --note-bg:#F4F0D6; --no-bg:#FBF0EF; --no-line:#BB2D37;
+  --shadow:0 1px 0 rgba(28,68,51,.06), 0 14px 32px -18px rgba(28,68,51,.28);
+
+  --ease:cubic-bezier(.22,.61,.36,1);
+  --serif:"Alegreya", Georgia, "Times New Roman", serif;
+  --sans:"Alegreya Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --arabic:"Noto Naskh Arabic", "Geeza Pro", "Traditional Arabic", serif;
+
+  --photo:url("images/cover.jpg");
+
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px);
+  padding-bottom:env(safe-area-inset-bottom,0px);
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#0F1C16; --bg-2:#12241B; --surface:#193027;
+    --text:#E6E7DA; --muted:#A8B2A6; --head:#FAFAF2; --link:#EECBAF;
+    --rule:#2B4437; --note-bg:#2A2E1C; --no-bg:#2A1A1C; --no-line:#E4636D;
+    --shadow:0 1px 0 rgba(0,0,0,.3), 0 14px 32px -18px rgba(0,0,0,.6);
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#0F1C16; --bg-2:#12241B; --surface:#193027;
+  --text:#E6E7DA; --muted:#A8B2A6; --head:#FAFAF2; --link:#EECBAF;
+  --rule:#2B4437; --note-bg:#2A2E1C; --no-bg:#2A1A1C; --no-line:#E4636D;
+  --shadow:0 1px 0 rgba(0,0,0,.3), 0 14px 32px -18px rgba(0,0,0,.6);
+}
+
+*,*::before,*::after{box-sizing:inherit}
+html{scroll-behavior:smooth;scroll-padding-top:calc(env(safe-area-inset-top,0px) + 72px);-webkit-text-size-adjust:100%}
+body{
+  margin:0;background:var(--bg);color:var(--text);
+  font-family:var(--sans);font-size:1.1875rem;line-height:1.68;
+  font-feature-settings:"kern","liga";text-rendering:optimizeLegibility;
+  overflow-x:hidden;
+}
+a{color:var(--link);text-decoration-thickness:1px;text-underline-offset:.18em}
+a:hover{text-decoration-thickness:2px}
+:focus-visible{outline:3px solid var(--sun);outline-offset:3px;border-radius:3px}
+em{font-style:italic}
+.ar{font-family:var(--arabic);font-style:normal}
+.pbuh{font-family:var(--arabic);font-size:1.05em;line-height:1}
+.lining{font-variant-numeric:lining-nums}
+
+/* ---------- Type ---------- */
+h1,h2,h3,h4{font-family:var(--serif);color:var(--head);margin:0;text-wrap:balance}
+h2{font-size:clamp(2.1rem,4.6vw,3.3rem);line-height:1.08;font-weight:700;letter-spacing:-.01em}
+h3{font-family:var(--sans);font-size:clamp(1.45rem,2.6vw,1.8rem);line-height:1.2;font-weight:700;margin:3rem 0 1rem}
+h4{font-family:var(--sans);font-size:1.25rem;font-weight:700;line-height:1.25}
+p{margin:0 0 1.15em}
+.prose{max-width:66ch}
+.lead{font-family:var(--serif);font-size:clamp(1.45rem,2.6vw,1.85rem);line-height:1.4;color:var(--head);max-width:34ch}
+
+/* ---------- Layout ---------- */
+.wrap{width:100%;max-width:1180px;margin:0 auto;padding-inline:clamp(20px,5vw,64px)}
+@media (min-width:1024px){.wrap{padding-left:104px}}
+.band{position:relative;padding-block:clamp(64px,10vw,120px)}
+.band--cream{background:var(--bg)}
+.band--alt{background:var(--bg-2)}
+.band--green{
+  background:var(--nabawi-dark);
+  color:#F4F4EA;
+  --head:#FFFFFF; --link:#F7D9BF; --text:#F4F4EA; --muted:#C9D6CC; --rule:rgba(255,255,255,.18);
+}
+.band--green h2,.band--green h3,.band--green h4{color:#fff}
+.title-rule{display:block;width:64px;height:5px;background:var(--nabawi);border-radius:2px;margin-bottom:1.1rem}
+.band--green .title-rule{background:var(--sun)}
+.sec-head{margin-bottom:clamp(28px,4vw,48px)}
+
+/* ---------- Star badge (numbers) ---------- */
+.badge{position:relative;isolation:isolate;flex:none;display:inline-grid;place-items:center;
+  width:2.7rem;height:2.7rem;color:#fff;font-family:var(--sans);font-weight:700;font-size:1.05rem;
+  font-variant-numeric:lining-nums;line-height:1}
+.badge::before,.badge::after{content:"";position:absolute;inset:.28rem;background:var(--badge,var(--nabawi));border-radius:.22rem;z-index:-1}
+.badge::after{transform:rotate(45deg)}
+.badge.sm{width:2.2rem;height:2.2rem;font-size:.9rem}
+.badge.sm::before,.badge.sm::after{inset:.22rem}
+.band--green .badge{--badge:var(--pine);color:var(--nabawi-dark)}
+.badge.no{--badge:var(--red)}
+
+/* ---------- Top bar (small screens) and rail (wide) ---------- */
+.topbar{position:fixed;inset:0 0 auto 0;z-index:50;display:flex;align-items:center;justify-content:space-between;
+  padding:calc(env(safe-area-inset-top,0px) + 8px) 16px 8px;background:var(--nabawi-dark);color:#fff}
+.topbar::after{content:"";position:absolute;left:0;bottom:0;height:3px;width:var(--p,0%);background:var(--sun)}
+.topbar button{font:700 1rem var(--sans);color:#fff;background:transparent;border:1.5px solid rgba(255,255,255,.55);border-radius:999px;padding:.3rem .95rem;cursor:pointer}
+.mark{font-family:var(--serif);font-size:1.35rem;font-weight:500;letter-spacing:.005em;color:inherit;text-decoration:none}
+.mark b{font-weight:800}
+.sheet{position:fixed;inset:0;z-index:60;background:var(--nabawi-dark);color:#fff;padding:calc(env(safe-area-inset-top,0px) + 20px) 24px 32px;overflow:auto}
+.sheet[hidden]{display:none}
+.sheet header{display:flex;justify-content:space-between;align-items:center;margin-bottom:1.25rem}
+.sheet ol{list-style:none;margin:0;padding:0}
+.sheet li a{display:block;padding:.65rem 0;border-bottom:1px solid rgba(255,255,255,.16);color:#fff;text-decoration:none;font-family:var(--serif);font-size:1.35rem}
+.sheet li a.sub{padding-left:1.25rem;font-family:var(--sans);font-size:1.1rem;color:#E4EBE5}
+.sheet button{font:700 1rem var(--sans);color:#fff;background:transparent;border:1.5px solid rgba(255,255,255,.55);border-radius:999px;padding:.3rem .95rem}
+.rail{display:none}
+@media (min-width:1024px){
+  .topbar{display:none}
+  .rail{display:block;position:fixed;left:30px;top:50%;transform:translateY(-50%);height:min(80vh,680px);width:18px;z-index:40}
+  .rail .track{position:absolute;left:8px;top:0;bottom:0;width:2px;background:rgba(140,140,140,.38);border-radius:2px}
+  .rail .fill{position:absolute;left:8px;top:0;width:2px;height:var(--fill,0px);background:var(--sun);border-radius:2px}
+  .rail ol{list-style:none;margin:0;padding:0;position:absolute;inset:0}
+  .rail li{position:absolute;left:0;transform:translateY(-50%)}
+  .rail a{position:relative;display:block;width:18px;height:18px}
+  .rail a::before{content:"";position:absolute;inset:3px;border-radius:50%;background:var(--bg);border:2px solid var(--sun);transition:background .2s,transform .2s}
+  .rail a.sub::before{inset:5px;border-width:1.5px}
+  .rail a.on::before,.rail a.done::before{background:var(--sun)}
+  .rail a.on::before{transform:scale(1.35)}
+  .rail a span{position:absolute;left:30px;top:50%;transform:translateY(-50%);white-space:nowrap;background:var(--nabawi-dark);color:#fff;
+    font:700 .95rem var(--sans);padding:.28rem .7rem;border-radius:6px;opacity:0;pointer-events:none;transition:opacity .18s}
+  .rail a:hover span,.rail a:focus-visible span{opacity:1}
+}
+
+/* ---------- Hero ---------- */
+.hero{position:relative;min-height:100svh;display:flex;flex-direction:column;justify-content:flex-end;color:#fff;overflow:hidden;
+  background:
+    linear-gradient(270deg,rgba(20,50,37,.62) 0%,rgba(20,50,37,0) 62%),
+    linear-gradient(180deg,rgba(28,68,51,.55) 0%,rgba(28,68,51,.72) 45%,rgba(20,50,37,.96) 100%),
+    var(--photo) 50% 38%/cover no-repeat, var(--nabawi-dark);
+  padding-top:calc(env(safe-area-inset-top,0px) + 64px)}
+.hero-inner{position:relative;z-index:2;padding-bottom:clamp(48px,9vh,96px)}
+.hero .bism{text-align:left;font-family:var(--arabic);font-size:clamp(1.8rem,3.4vw,2.6rem);color:var(--sun);line-height:1.5;margin:0 0 .6rem}
+.hero h1{color:#fff;font-weight:800;font-size:clamp(3.3rem,10.5vw,8.2rem);line-height:.94;letter-spacing:-.02em;max-width:9ch;margin:0 0 1.4rem}
+.hero .meta{display:flex;flex-wrap:wrap;gap:1rem 1.75rem;align-items:center;font-size:1.25rem}
+.hero .date{font-family:var(--serif);font-size:1.5rem;font-variant-numeric:lining-nums}
+.hero .brand{position:absolute;z-index:3;top:calc(env(safe-area-inset-top,0px) + 22px);left:0;right:0}
+.hero .brand .wrap{display:flex;justify-content:space-between;align-items:center}
+@media (max-width:1023px){.hero .brand{display:none}}
+.hero .mark{font-size:1.6rem;color:#fff}
+.btn{font:700 1rem var(--sans);color:inherit;background:transparent;border:1.5px solid currentColor;border-radius:999px;padding:.4rem 1.1rem;cursor:pointer}
+.btn:hover{background:rgba(255,255,255,.14)}
+.cue{position:absolute;z-index:3;right:clamp(20px,5vw,64px);bottom:clamp(28px,6vh,56px);font-size:2rem;color:var(--sun);animation:nudge 2.4s ease-in-out infinite}
+@keyframes nudge{50%{transform:translateY(8px)}}
+
+/* ---------- Image breaks (crops of the cover photo) ---------- */
+.break{height:clamp(220px,38vh,440px);background:var(--photo) var(--pos,50% 50%)/var(--size,cover) no-repeat var(--nabawi-dark);position:relative}
+.break::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(28,68,51,.18),rgba(28,68,51,0) 40%,rgba(28,68,51,.22))}
+.break.b1{--size:190%;--pos:58% 36%}
+.break.b2{--size:170%;--pos:72% 98%}
+.break.b3{--size:230%;--pos:22% 94%}
+.break.b4{--size:210%;--pos:46% 100%}
+
+/* ---------- Key questions ---------- */
+.kq{list-style:none;margin:0;padding:0;display:grid;gap:clamp(18px,2.5vw,30px);counter-reset:none}
+.kq li{display:grid;grid-template-columns:auto 1fr;gap:1.25rem;align-items:start;padding-bottom:clamp(18px,2.5vw,30px);border-bottom:1px solid var(--rule)}
+.kq li:last-child{border-bottom:0;padding-bottom:0}
+.kq .n{font-family:var(--serif);font-weight:800;font-size:clamp(2.6rem,5vw,4rem);line-height:.9;color:var(--sun);font-variant-numeric:lining-nums;min-width:1.1ch}
+.kq p{margin:0;font-family:var(--serif);font-size:clamp(1.35rem,2.5vw,1.8rem);line-height:1.32;color:#fff;max-width:36ch}
+.mark-hi{background:linear-gradient(transparent 62%,rgba(247,175,41,.55) 62% 92%,transparent 92%) no-repeat 0 0/0% 100%;font-weight:700;transition:background-size 1s cubic-bezier(.5,0,.2,1)}
+.mark-hi.go{background-size:100% 100%}
+.mark-hi.d2{transition-delay:.55s}
+
+/* ---------- Authors ---------- */
+.people{display:grid;grid-template-columns:1fr;gap:18px;max-width:860px;margin:1.5rem 0 3rem;padding:0;list-style:none}
+.people li{background:var(--surface);border:1px solid var(--rule);border-top:5px solid var(--nabawi);border-radius:12px;padding:1.3rem 1.4rem 1.2rem;box-shadow:var(--shadow)}
+.people h4{font-family:var(--serif);font-size:1.55rem;margin-bottom:.35rem}
+.people p{margin:0;color:var(--muted);line-height:1.55}
+.thanks{list-style:none;padding:0;margin:1rem 0 2rem;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:.55rem 2rem}
+.thanks li,.star-list li{position:relative;padding-left:1.7rem}
+.thanks li::before,.star-list li::before{content:"✸";position:absolute;left:0;top:.02em;color:var(--pine);font-size:1.05em}
+.fine{max-width:66ch;padding-top:1.25rem;border-top:1px solid var(--rule)}
+
+@media (min-width:700px){.people{grid-template-columns:1fr 1fr}}
+/* ---------- Footnote refs ---------- */
+sup.fn{line-height:0;font-size:.72em;margin-left:.12em}
+sup.fn a{display:inline-block;min-width:1.55em;padding:.12em .3em .08em;text-align:center;border-radius:99px;background:var(--nabawi);color:#fff;
+  font:700 1em var(--sans);font-variant-numeric:lining-nums;text-decoration:none;line-height:1.25;transform:translateY(-.2em)}
+.band--green sup.fn a{background:var(--pine);color:var(--nabawi-dark)}
+sup.fn a:hover{background:var(--nabawi-mid)}
+.pop{position:absolute;z-index:80;max-width:min(420px,calc(100vw - 24px));background:var(--nabawi-dark);color:#fff;border-radius:12px;padding:.95rem 1.1rem 1rem;
+  font-size:.98rem;line-height:1.5;box-shadow:0 18px 40px -14px rgba(0,0,0,.55);border-top:4px solid var(--sun)}
+.pop[hidden]{display:none}
+.pop b{display:block;font-family:var(--sans);color:var(--sun);margin-bottom:.25rem}
+.pop a{color:var(--sand);overflow-wrap:anywhere}
+
+/* ---------- Cards: categories ---------- */
+.quran{margin:0 0 clamp(40px,6vw,64px);max-width:58ch;padding-left:clamp(18px,3vw,32px);border-left:5px solid var(--sun)}
+.quran p{font-family:var(--serif);font-style:italic;font-size:clamp(1.35rem,2.4vw,1.8rem);line-height:1.4;color:#fff;margin:0 0 .6rem}
+.quran cite{font-style:normal;font-family:var(--sans);font-weight:700;color:var(--sun)}
+.cards{display:grid;gap:18px;grid-template-columns:repeat(auto-fit,minmax(min(100%,320px),1fr))}
+.card{background:var(--surface);color:var(--text);border-radius:14px;padding:1.45rem 1.5rem 1.4rem;box-shadow:var(--shadow);border:1px solid var(--rule);
+  --head:#1C4433;--muted:#5A5F57}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .band:not(.band--green) .card{--head:#FAFAF2;--muted:#A8B2A6}}
+:root[data-theme="dark"] .band:not(.band--green) .card{--head:#FAFAF2;--muted:#A8B2A6}
+.band--green .card{--text:#353535}
+.card h4{font-family:var(--serif);font-size:1.6rem;line-height:1.15;color:var(--head)}
+.card .top{display:flex;align-items:center;gap:.7rem;margin-bottom:.9rem}
+.card .top .badge+.badge{margin-left:-.7rem}
+.card.wide{grid-column:1/-1}
+.card p{margin:0 0 .7rem}
+.card .det{color:var(--muted);font-size:1.05rem;line-height:1.55;margin:.15rem 0 0}
+.subs{list-style:none;margin:.5rem 0 0;padding:0;display:grid;gap:.9rem}
+.cards .wide .subs{grid-template-columns:repeat(auto-fit,minmax(min(100%,250px),1fr));gap:1.2rem}
+.subs li{display:grid;grid-template-columns:auto 1fr;gap:.6rem;align-items:start}
+.subs .l{font-weight:700;color:var(--nabawi);width:1.55rem;height:1.55rem;border:1.5px solid currentColor;border-radius:50%;display:grid;place-items:center;font-size:.85rem;line-height:1;margin-top:.22em}
+.card.no .subs .l{color:var(--red)}
+.card.no{background:var(--no-bg);border-color:transparent;border-top:6px solid var(--no-line);--head:#7E1D25}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .card.no{--head:#F4B9BE;--text:#E6E7DA;--muted:#C9B3B5}}
+:root[data-theme="dark"] .card.no{--head:#F4B9BE;--text:#E6E7DA;--muted:#C9B3B5}
+.pair{display:grid;gap:18px;grid-template-columns:repeat(auto-fit,minmax(min(100%,360px),1fr))}
+
+/* ---------- Callouts, scripture, pull quote ---------- */
+.callout{background:var(--nabawi);color:#fff;border-radius:14px;padding:1.5rem 1.75rem;margin:2rem 0;max-width:66ch;font-family:var(--serif);font-size:1.4rem;line-height:1.4;position:relative}
+.callout::before{content:"✸";color:var(--sun);font-size:1.4rem;display:block;margin-bottom:.35rem;line-height:1}
+.callout p{margin:0}
+.scripture{background:var(--surface);border:1px solid var(--rule);border-left:6px solid var(--pine);border-radius:12px;padding:1.4rem 1.6rem;margin:1.5rem 0 0;max-width:72ch;box-shadow:var(--shadow)}
+.scripture p{margin:0}
+.pull{margin:2.5rem 0;padding:.25rem 0 .25rem clamp(18px,3vw,32px);border-left:6px solid var(--sun);max-width:30ch}
+.pull p{font-family:var(--serif);font-style:italic;font-weight:500;font-size:clamp(1.9rem,4vw,2.9rem);line-height:1.15;color:var(--head);margin:0 0 .5rem}
+.pull cite{font-style:normal;font-weight:700;color:var(--muted)}
+.note{background:var(--note-bg);border-left:6px solid var(--sun);border-radius:0 12px 12px 0;padding:1rem 1.3rem;margin:1.1rem 0;max-width:66ch}
+.note p{margin:0}
+
+/* ---------- Pillars (best practices) ---------- */
+
+/* ---------- Chapter heads for a-d ---------- */
+.ltr-head{display:flex;gap:clamp(14px,2.5vw,28px);align-items:baseline}
+.ltr-head .ltr{font-family:var(--serif);font-weight:800;font-size:clamp(3.2rem,8vw,6rem);line-height:.8;color:var(--nabawi)}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .band:not(.band--green) .ltr-head .ltr{color:var(--pine)}}
+:root[data-theme="dark"] .band:not(.band--green) .ltr-head .ltr{color:var(--pine)}
+.ltr-head h2{font-size:clamp(1.9rem,4vw,3rem)}
+
+/* ---------- Playbooks (How to lists) ---------- */
+.play{margin:3.25rem 0 0;border-radius:16px;overflow:hidden;background:var(--surface);border:1px solid var(--rule);box-shadow:var(--shadow);max-width:860px;color:var(--text)}
+.play>h3{margin:0;background:var(--nabawi);color:#fff;padding:1.15rem 1.6rem;font-size:clamp(1.35rem,2.4vw,1.7rem)}
+.play>h3::before{content:"✸";color:var(--sun);margin-right:.6rem}
+.play-body{padding:clamp(1rem,2.5vw,1.8rem)}
+.play-body>p.intro{margin:0 0 1.2rem;color:var(--muted)}
+.steps{list-style:none;margin:0;padding:0}
+.steps>li{display:grid;grid-template-columns:auto 1fr;gap:1rem;padding:1.1rem 0;border-top:1px solid var(--rule)}
+.steps>li:first-child{border-top:0;padding-top:.2rem}
+.steps h5{font:700 1.12rem var(--sans);color:var(--head);margin:.2rem 0 .3rem;line-height:1.35}
+.steps p{margin:0 0 .6rem}
+.steps p:last-child{margin-bottom:0}
+.steps .body>p.det{color:var(--muted)}
+.sub{list-style:none;margin:.7rem 0 0;padding:0}
+.sub>li{display:grid;grid-template-columns:3.1rem 1fr;gap:.4rem;padding:.3rem 0}
+.sub .no{font-weight:700;color:var(--nabawi);font-variant-numeric:lining-nums}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .sub .no{color:var(--pine)}}
+:root[data-theme="dark"] .sub .no{color:var(--pine)}
+.sub .sub{margin:.2rem 0 0 -1.2rem}
+.sub .sub>li{grid-template-columns:3.9rem 1fr}
+.sub p{margin:0}
+.sub .det{margin-top:.5rem;color:var(--muted)}
+
+/* ---------- References ---------- */
+.refs{margin:0;padding:0;list-style:none;display:grid;gap:1rem;max-width:80ch}
+.refs li{display:grid;grid-template-columns:auto 1fr;gap:1rem;align-items:start;padding-bottom:1rem;border-bottom:1px solid var(--rule);font-size:1.05rem;line-height:1.55}
+.refs li:target{background:var(--note-bg);outline:6px solid var(--note-bg)}
+.refs .t{overflow-wrap:anywhere}
+.refs .back{margin-left:.4rem;text-decoration:none;font-weight:700}
+
+/* ---------- About / footer ---------- */
+.about p{max-width:62ch}
+.access{display:flex;flex-wrap:wrap;gap:.6rem 2.2rem;margin-top:2rem;padding-top:1.4rem;border-top:1px solid rgba(255,255,255,.22);font-size:1.15rem}
+.access p{margin:0;max-width:none}
+.access a{font-weight:700}
+.contact{margin-top:clamp(36px,6vw,64px)}
+.contact h3{margin:0 0 .4rem}
+.contact a{font-family:var(--serif);font-size:clamp(1.6rem,3.6vw,2.4rem);font-weight:700;color:var(--sun);text-decoration:none;overflow-wrap:anywhere}
+.contact a:hover{text-decoration:underline}
+.foot{background:var(--nabawi-dark);color:#fff;padding:1.25rem 0 calc(1.25rem + env(safe-area-inset-bottom,0px));border-top:1px solid rgba(255,255,255,.14)}
+.foot .wrap{display:flex;justify-content:space-between;align-items:center;gap:1rem}
+.foot .mark{font-size:1.5rem}
+
+/* ---------- v2: flat lists, quiet quotes, fewer curves ---------- */
+.num{flex:none;font-family:var(--serif);font-weight:800;font-size:2rem;line-height:1;color:var(--head);font-variant-numeric:lining-nums}
+.num.sm{font-size:1.45rem}
+.band--green .num{color:var(--sun)}
+.cats{list-style:none;margin:0;padding:0;max-width:860px}
+.cats>li{display:grid;grid-template-columns:3.4rem 1fr;gap:0 .4rem;padding:1.5rem 0;border-top:1px solid var(--rule)}
+.cats>li:last-child{border-bottom:1px solid var(--rule)}
+.cats h4{font-family:var(--serif);font-size:clamp(1.4rem,2.4vw,1.7rem);line-height:1.2;color:var(--head);margin-top:.15rem}
+.cats p{margin:.5rem 0 0}
+.cats .det{color:var(--muted);font-size:1.05rem;line-height:1.55}
+.cats--no .num{color:var(--no-line)}
+.abc{list-style:none;margin:.9rem 0 0;padding:0}
+.abc>li{display:grid;grid-template-columns:1.8rem 1fr;gap:.3rem;padding:.4rem 0}
+.abc .l{font-weight:700;color:var(--muted)}
+.abc p{margin:0}
+.abc .det{margin-top:.3rem}
+.star-list{list-style:none;padding:0;margin:1.25rem 0 2.5rem;display:grid;gap:.9rem;max-width:66ch}
+.pillars{list-style:none;margin:2rem 0 0;padding:0;max-width:760px}
+.pillars li{border-top:1px solid rgba(255,255,255,.22)}
+.pillars li:last-child{border-bottom:1px solid rgba(255,255,255,.22)}
+.pillars a{display:block;padding:1rem 0;color:#fff;text-decoration:none;font-family:var(--serif);font-size:clamp(1.3rem,2.4vw,1.6rem);line-height:1.25}
+.pillars a:hover{color:var(--sun)}
+.remind{list-style:none;margin:1.25rem 0 2rem;padding:0;display:grid;gap:.8rem;max-width:66ch}
+.remind li{display:grid;grid-template-columns:2.4rem 1fr;gap:.5rem;align-items:baseline}
+.quran{border:0;padding:0;max-width:60ch}
+.quran p{font-size:clamp(1.5rem,2.8vw,2.1rem);line-height:1.38}
+.pull{border:0;padding:0;max-width:26ch;margin:2.75rem 0}
+.scripture{background:none;border:0;border-radius:0;box-shadow:none;padding:0;margin:1.5rem 0 0}
+.note{background:none;border:0;border-radius:0;padding:0 0 0 1.7rem;position:relative;color:var(--muted);margin:.8rem 0}
+.note::before{content:"✸";position:absolute;left:0;color:var(--pine)}
+.callout{border-radius:3px}
+.play{border-radius:4px;box-shadow:none}
+.play>h3{border-radius:0}
+.refs li{grid-template-columns:2.2rem 1fr}
+
+/* ---------- v3: chapters, pinned recommendations, margin notes ---------- */
+.wrap.wide{width:auto;max-width:1400px;margin-left:max(0px,calc((100% - 1180px)/2));margin-right:0}
+.chapter{--chi:#275D43}
+.ch-b{--chi:#A85A22}.ch-c{--chi:#8F6100}.ch-d{--chi:#BB2D37}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]) .ch-a{--chi:#7FC4A1}
+  :root:not([data-theme="light"]) .ch-b{--chi:#E09964}
+  :root:not([data-theme="light"]) .ch-c{--chi:#F7AF29}
+  :root:not([data-theme="light"]) .ch-d{--chi:#F08A92}
+}
+:root[data-theme="dark"] .ch-a{--chi:#7FC4A1}
+:root[data-theme="dark"] .ch-b{--chi:#E09964}
+:root[data-theme="dark"] .ch-c{--chi:#F7AF29}
+:root[data-theme="dark"] .ch-d{--chi:#F08A92}
+
+.chband{position:relative;overflow:hidden;background:var(--ch);color:var(--on);padding-block:clamp(56px,9vw,104px)}
+.ch-a .chband{--ch:#275D43;--on:#FFFFFF}
+.ch-b .chband{--ch:#E09964;--on:#1C4433}
+.ch-c .chband{--ch:#F7AF29;--on:#1C4433}
+.ch-d .chband{--ch:#BB2D37;--on:#FFFFFF}
+.chband h2{position:relative;z-index:1;color:var(--on);font-size:clamp(2.3rem,5.2vw,4rem);font-weight:800;line-height:1.04;max-width:20ch}
+.bigmark{position:absolute;right:clamp(-16px,3vw,56px);bottom:-.1em;font-family:var(--serif);font-weight:800;font-size:clamp(13rem,34vw,31rem);line-height:.72;color:var(--on);opacity:.16;pointer-events:none;user-select:none}
+.chbody{background:var(--bg);padding-block:clamp(48px,7vw,88px)}
+.ch-c .chbody{background:var(--bg-2)}
+.chgrid{display:grid;gap:clamp(36px,5vw,64px);align-items:start}
+@media (min-width:1100px){
+  .chgrid{grid-template-columns:minmax(0,1fr) minmax(400px,470px)}
+  .pin{position:sticky;top:88px;max-height:calc(100vh - 112px);overflow:auto;overscroll-behavior:contain;padding-right:.75rem;scrollbar-width:thin}
+}
+.argument .prose{max-width:62ch}
+.pin>h3{margin:0 0 .4rem;padding-top:1rem;border-top:5px solid var(--chi);font-size:clamp(1.3rem,2vw,1.6rem);line-height:1.2}
+.pin>p.intro{color:var(--muted);margin:.5rem 0 0}
+
+.recs{list-style:none;margin:0;padding:0}
+.rec{display:grid;grid-template-columns:4rem 1fr;gap:0 .5rem;padding:1.3rem 0;border-top:1px solid var(--rule)}
+.pin>.recs>.rec:first-child{border-top:0}
+.pin>p.intro+.recs>.rec:first-child{border-top:1px solid var(--rule);margin-top:.9rem}
+.rn{font-family:var(--serif);font-weight:800;font-size:clamp(2.7rem,3.8vw,3.4rem);line-height:.9;color:var(--chi);font-variant-numeric:lining-nums;letter-spacing:-.02em}
+.rt{font-family:var(--sans);font-size:1.15rem;font-weight:700;line-height:1.35;color:var(--head);margin:.1rem 0 .35rem}
+.rb p{margin:.4rem 0 0}
+.rb .det{color:var(--muted);font-size:1.02rem}
+.perma{margin-left:.45rem;font-weight:700;text-decoration:none;color:var(--chi);opacity:0;transition:opacity .15s}
+.rec:hover .perma,.rec:focus-within .perma,.perma:focus-visible{opacity:1}
+@media (hover:none){.perma{opacity:.55}}
+.perma.copied::after{content:" Copied";font-weight:500;font-size:.85em}
+.subr{list-style:none;margin:.6rem 0 0;padding:0}
+.subr>li{display:grid;grid-template-columns:2.6rem 1fr;gap:.35rem;padding:.3rem 0;font-size:1.02rem;line-height:1.55}
+.subr .sm{font-size:.78rem;font-weight:700;color:var(--muted);padding-top:.3em;font-variant-numeric:lining-nums}
+.subr .subr{margin:.2rem 0 0}
+.subr .subr>li{grid-template-columns:3.2rem 1fr}
+.subr p{margin:0}
+.subr .det{margin-top:.4rem}
+.rec:target{animation:flash 2.6s ease-out}
+@keyframes flash{0%{background:rgba(247,175,41,.42)}100%{background:rgba(247,175,41,0)}}
+@media (max-width:1099px){.rec{grid-template-columns:3.4rem 1fr}}
+
+/* margin notes (wide) / bottom sheet (narrow) */
+.ctxwrap{position:relative}
+.mnote{display:none;font-size:.92rem;line-height:1.5;color:var(--muted)}
+.mnote .k{display:inline-block;min-width:1.5em;margin-right:.5em;padding:0 .35em;border-radius:99px;background:var(--nabawi);color:#fff;font-weight:700;text-align:center;font-size:.85em;font-variant-numeric:lining-nums}
+.mnote a{overflow-wrap:anywhere}
+@media (min-width:1100px){
+  .mnote{display:block}
+  .mnote:not(.side){margin:-.5rem 0 1.25rem;max-width:62ch}
+  .mnote.side{position:absolute}
+  .mnote.hl{color:var(--text)}
+  .mnote.hl .k{background:var(--sun);color:#1C4433}
+}
+.nsheet{position:fixed;left:0;right:0;bottom:0;z-index:70;background:var(--nabawi-dark);color:#fff;border-top:4px solid var(--sun);
+  padding:1.1rem 1.25rem calc(1.1rem + env(safe-area-inset-bottom,0px));max-height:58vh;overflow:auto;font-size:1rem;line-height:1.5;box-shadow:0 -18px 40px -18px rgba(0,0,0,.5)}
+.nsheet[hidden]{display:none}
+.nsheet .k{display:inline-block;min-width:1.5em;margin-right:.5em;padding:0 .35em;border-radius:99px;background:var(--pine);color:#1C4433;font-weight:700;text-align:center;font-size:.9em}
+.nsheet a{color:var(--sand);overflow-wrap:anywhere}
+.nsheet-actions{display:flex;justify-content:space-between;align-items:center;margin-top:.9rem}
+.nsheet button{font:700 1rem var(--sans);color:#fff;background:transparent;border:1.5px solid rgba(255,255,255,.55);border-radius:999px;padding:.3rem .95rem}
+
+/* rail: four chapter marks on a whole-page progress line */
+@media (min-width:1024px){
+  .rail li{left:-6px}
+  .rail a{display:grid;place-items:center;width:28px;height:28px}
+  .rail a::before{inset:0}
+  .rail a b{position:relative;font-family:var(--serif);font-weight:800;font-size:1.02rem;line-height:1;color:var(--head)}
+  .rail a.done::before,.rail a.on::before{background:var(--sun)}
+  .rail a.done b,.rail a.on b{color:#1C4433}
+  .rail a.on::before{transform:scale(1.12)}
+  .rail a span{left:42px}
+  .rail a,.rail a b{text-decoration:none}
+}
+/* ---------- v4: fewer numbers; bullets and rules instead ---------- */
+.rec{display:block;padding:1.5rem 0 .4rem;border-top:0}
+.rec::before{content:"";display:block;width:2.8rem;height:4px;background:var(--chi);margin-bottom:.85rem}
+.pin>.recs>.rec:first-child,.pin>p.intro+.recs>.rec:first-child{border-top:0;margin-top:0}
+.pin>p.intro+.recs>.rec:first-child{margin-top:.4rem}
+.rt{font-size:1.22rem;margin:0 0 .4rem}
+.subr>li{display:block;position:relative;padding:.3rem 0 .3rem 1.6rem}
+.subr>li::before{content:"○";position:absolute;left:0;top:.28rem;color:var(--chi);font-size:.95em}
+.subr .subr{margin:.2rem 0 0}
+.subr .subr>li{display:block}
+.kq li{grid-template-columns:2.2rem 1fr}
+.kq .n{font-size:1.5rem;line-height:1.55;min-width:0;font-weight:400}
+.remind li{grid-template-columns:1.9rem 1fr}
+.remind .num{font-size:1.15rem;color:var(--pine);font-weight:400}
+.cats--no .num{font-size:1.6rem;line-height:1.2;font-weight:400}
+.abc>li{grid-template-columns:1.6rem 1fr}
+.abc .l{font-weight:400;color:var(--muted)}
+@media (max-width:1099px){.rec{display:block}}
+.recs>.rec:first-child{padding-top:.6rem}
+.recs>.rec:first-child::before{display:none}
+/* ---------- v5: one line-height scale + text-box-trim ---------- */
+:root{--lh-display:1.1;--lh-title:1.25;--lh-ui:1.5;--lh-body:1.65}
+body{line-height:var(--lh-body)}
+h2,.chband h2{line-height:var(--lh-display)}
+h3,h4,.rt,.cats h4,.pillars a{line-height:var(--lh-title)}
+.hero h1{line-height:1}
+.lead{line-height:1.35}
+.kq p{line-height:1.3}
+.quran p{line-height:1.35}
+.callout{line-height:1.4}
+.det,.rb .det,.subr>li,.abc>li,.mnote,.refs li,.cats .det,.thanks li,.star-list li,.nsheet{line-height:var(--lh-ui)}
+.btn,.topbar button,.sheet button,.nsheet button{line-height:1.2}
+.kq li,.abc>li{align-items:baseline}
+
+@supports (text-box: trim-both cap alphabetic){
+  /* display and title text: the box hugs the capitals and the baseline */
+  h1,h2,h3,h4,.lead,.kq p,.pull p,.quran p,.pillars a,.cats h4,.rt,.num{text-box:trim-both cap alphabetic}
+  h3{margin:2.75rem 0 .9rem}
+  .pin>h3{margin:0 0 .5rem;padding-top:1.1rem}
+  .pin>h3:first-child{margin-top:0}
+  .cats h4{margin-top:0}
+  .rt{margin:0 0 .55rem}
+  .rec::before{margin-bottom:1rem}
+  .recs>.rec:first-child{padding-top:.9rem}
+  .sec-head{margin-bottom:clamp(32px,4.4vw,52px)}
+  .title-rule{margin-bottom:1.2rem}
+  .lead{margin-bottom:1.5rem}
+  .pull{margin:3rem 0}
+  .pull p{margin-bottom:.8rem}
+  .quran p{margin-bottom:1rem}
+  .cats>li{padding-block:1.7rem}
+  .pillars a{padding-block:1.15rem}
+  .kq li{padding-bottom:clamp(22px,3vw,34px)}
+  /* wrapper trim: the first line of a column lines up with the top of its neighbour */
+  .argument{text-box:trim-start cap alphabetic}
+  /* padded elements get the removed space handed back as padding */
+  .btn,.topbar button,.sheet button,.nsheet button{text-box:trim-both cap alphabetic;padding:.6em 1.15em}
+  .topbar button{padding:.55em 1em}
+  .callout{text-box:trim-both cap alphabetic;padding-block:2.1rem}
+  .hero h1{margin-bottom:2rem}
+  .hero .bism{margin-bottom:1.1rem}
+  .rt{margin-bottom:.75rem}
+  .quran p{margin-bottom:1.3rem}
+}
+/* ---------- v6: comment fixes ---------- */
+.hang{font-style:normal;margin-left:-.42em}
+.abc{margin:.8rem 0 0}
+.abc .pt{margin:0 0 .85rem}
+.abc .pt:last-child{margin-bottom:0}
+.abc .pt p{margin:0}
+.abc .det{margin-top:.2rem}
+.cats h4+.det{margin-top:.8rem}
+.cats h4+.abc{margin-top:1rem}
+#categories .cats>li:nth-child(1){border-bottom:0;padding-bottom:.45rem}
+#categories .cats>li:nth-child(2){border-top:0;padding-top:.45rem}
+.js .reveal{opacity:0;transform:translateY(22px);filter:blur(3px);transition:opacity 1.2s cubic-bezier(.2,.7,.2,1),transform 1.2s cubic-bezier(.2,.7,.2,1),filter 1.2s ease}
+.js .reveal.in{opacity:1;transform:none;filter:none}
+.js .reveal cite{opacity:0;transition:opacity .9s ease .55s}
+.js .reveal.in cite{opacity:1}
+@media (prefers-reduced-motion: reduce){.js .reveal,.js .reveal cite{opacity:1;transform:none;filter:none;transition:none}}
+@media print{.js .reveal,.js .reveal cite{opacity:1!important;transform:none!important;filter:none!important}}
+/* ---------- v7: original photos, loaded from /images ---------- */
+[hidden]{display:none!important}
+.strip{display:flex;gap:4px;margin:0;padding:0;background:var(--bg)}
+.strip .ph{flex:1 1 0;min-width:0;margin:0;height:clamp(200px,30vw,380px);background:var(--nabawi-dark)}
+.strip .ph img{display:block;width:100%;height:100%;object-fit:cover;object-position:center 30%}
+.strip:not(:has(.ph:not([hidden]))){display:none}
+.imgwide{margin:clamp(28px,5vw,48px) 0 0}
+.imgwide img{display:block;width:100%;max-height:440px;object-fit:cover;border-radius:3px}
+@media (max-width:640px){.strip{flex-wrap:wrap}.strip .ph{flex:1 1 calc(50% - 2px);height:46vw}.strip .ph:last-child:nth-child(odd){flex-basis:100%;height:54vw}}
+@media print{.strip,.imgwide{break-inside:avoid}}
+/* ---------- v8: IslamicFamily logomark, self-tracing (from the 1453 plan) ---------- */
+.hero__star{position:absolute;right:clamp(-120px,-6vw,-40px);top:50%;transform:translateY(-50%);
+  width:min(58vw,620px);height:min(58vw,620px);opacity:.7;pointer-events:none;z-index:0}
+.hero__star svg{width:100%;height:100%;overflow:visible}
+.hero__star path{stroke:var(--sun);fill:none;stroke-width:14;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:1;stroke-dashoffset:1}
+.hero__star .p1{animation:trace 2.4s var(--ease) 1.10s forwards}
+.hero__star .p2{animation:trace 2.4s var(--ease) 1.24s forwards}
+.hero__star .p3{animation:trace 2.4s var(--ease) 1.38s forwards}
+.hero__star .p4{animation:trace 2.4s var(--ease) 1.52s forwards}
+.hero__star .p5{animation:trace 2.4s var(--ease) 1.66s forwards}
+.hero__star .p6{animation:trace 2.4s var(--ease) 1.80s forwards}
+.hero__star .p7{animation:trace 2.4s var(--ease) 1.94s forwards}
+.hero__star .p8{animation:trace 2.4s var(--ease) 2.08s forwards}
+.hero__star .p9{animation:trace 2.6s var(--ease) 2.22s forwards}
+.hero__star .spin{transform-origin:center;animation:spin 90s linear infinite}
+@keyframes trace{to{stroke-dashoffset:0}}
+@keyframes spin{to{transform:rotate(360deg)}}
+@media (max-width:860px){.hero__star{opacity:.3;right:-30%}}
+@media (prefers-reduced-motion: reduce){.hero__star path{animation:none;stroke-dashoffset:0}.hero__star .spin{animation:none}}
+@media print{.hero__star{display:none!important}}
+/* ---------- Motion + print ---------- */
+@media (prefers-reduced-motion: reduce){
+  html{scroll-behavior:auto}
+  .cue{animation:none}
+  .mark-hi{transition:none;background-size:100% 100%}
+}
+@media print{
+  :root{--bg:#fff;--bg-2:#fff;--surface:#fff;--text:#222;--head:#1C4433;--link:#1C4433;--rule:#ccc;padding:0}
+  .topbar,.rail,.sheet,.pop,.cue,.btn,.break,.star{display:none!important}
+  .hero{min-height:0;background:#1C4433!important;-webkit-print-color-adjust:exact;print-color-adjust:exact;padding-top:24px}
+  .hero-inner{padding-bottom:28px}
+  .band{padding-block:28px}
+  .band--green{background:#fff!important;color:#222;--head:#1C4433;--text:#222;--muted:#555;--link:#1C4433}
+  .band--green h2,.band--green h3,.band--green h4,.kq p{color:#1C4433!important}
+  .pillars a{color:#1C4433;border-color:#999}
+  .callout,.play>h3,.badge::before,.badge::after,sup.fn a{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  .card,.play,.people li,.note,.scripture,.callout{break-inside:avoid;box-shadow:none}
+  body{font-size:11.5pt}
+  .chgrid{display:block}
+  .pin{position:static;max-height:none;overflow:visible}
+  .chband{background:#fff!important;color:#1C4433;padding-block:20px}
+  .chband h2{color:#1C4433}.bigmark{display:none}
+  .mnote{display:block!important;position:static!important;margin:-.4rem 0 1rem!important}
+  .nsheet{display:none!important}
+  .rec{break-inside:avoid}
+}
+</style>
+</head>
+<body>
+
+<!-- Small-screen bar -->
+<div class="topbar" id="topbar">
+  <a class="mark" href="#top">Islamic<b>Family</b></a>
+  <button type="button" id="openSheet" aria-haspopup="dialog" aria-controls="sheet">Contents</button>
+</div>
+<div class="sheet" id="sheet" role="dialog" aria-modal="true" aria-label="Contents" hidden>
+  <header><span class="mark">Islamic<b>Family</b></span><button type="button" id="closeSheet">Close</button></header>
+  <ol id="sheetList"></ol>
+</div>
+<!-- Wide-screen rail -->
+<nav class="rail" id="rail" aria-label="Sections"><div class="track"></div><div class="fill" id="railFill"></div><ol id="railList"></ol></nav>
+
+<main id="top">
+
+<!-- ================= HERO ================= -->
+<header class="hero" data-wp="Effective Zakat in Canada">
+  <div class="brand"><div class="wrap"><a class="mark" href="https://islamicfamily.ca">Islamic<b>Family</b></a></div></div>
+  <div class="hero__star">
+        <svg viewBox="0 0 3000 3000" aria-hidden="true">
+          <g class="spin">
+            <path class="p1" pathLength="1" d="m2033.95,1500.08c29.67-28,54.48-54.26,81.06-85.24,58.83-69.68,109.65-143.23,150.28-231.76-91.32-33.87-179.27-49.95-270.05-57.39-40.8-3.34-76.91-4.36-117.69-3.19,1.18-40.78.16-76.89-2.96-117.59-7.67-90.87-23.75-178.82-57.62-270.14-88.52,40.63-162.08,91.45-231.53,150.37-31.21,26.48-57.47,51.3-85.47,80.96-28-29.67-54.26-54.48-85.24-81.06-69.68-58.83-143.23-109.65-231.76-150.28-33.87,91.32-49.95,179.27-57.39,270.05-3.34,40.8-4.36,76.91-3.18,117.69-40.78-1.18-76.89-.16-117.59,2.96-90.87,7.67-178.82,23.75-270.14,57.62,40.63,88.52,91.45,162.08,150.37,231.53,26.48,31.21,51.3,57.47,80.96,85.47-29.67,28-54.48,54.26-81.06,85.24-58.83,69.68-109.65,143.24-150.28,231.76,91.32,33.87,179.27,49.95,270.05,57.39,40.8,3.34,76.91,4.36,117.69,3.19-1.18,40.77-.16,76.89,2.96,117.59,7.67,90.87,23.75,178.82,57.62,270.14,88.52-40.62,162.08-91.45,231.53-150.37,31.21-26.48,57.47-51.3,85.47-80.96,28,29.67,54.26,54.48,85.24,81.06,69.68,58.82,143.23,109.65,231.76,150.27,33.87-91.32,49.95-179.27,57.39-270.05,3.34-40.8,4.36-76.91,3.18-117.68,40.78,1.18,76.89.16,117.59-2.96,90.87-7.67,178.82-23.75,270.14-57.62-40.63-88.52-91.45-162.08-150.37-231.53-26.48-31.21-51.3-57.47-80.96-85.47Z"/>
+            <path class="p2" pathLength="1" d="m1078.86,2516.71c6.91.07,13.85.07,20.77-.14,2.31-.05,4.61-.13,6.87-.16,62.3-2.48,125.2-15.6,186.27-40.43,82.42-33.52,152.32-84.63,207.19-147.31,99.96,114.08,243.01,181.65,393.27,187.67,2.37.11,4.76.18,7.12.24,6.91.22,13.85.22,20.77.14-1.27,4.23-2.59,8.37-3.96,12.53-36.61,116.18-101.34,225.4-194.14,316.97-66.72,65.88-142.41,117.17-223.07,153.79-197.94-90.2-351.03-261.34-417.3-470.81-1.32-4.1-2.64-8.24-3.82-12.48"/>
+            <path class="p3" pathLength="1" d="m483.29,1921.13c4.86,4.94,9.76,9.84,14.79,14.59,1.68,1.59,3.34,3.2,4.97,4.72,45.81,42.34,99.56,77.54,160.31,103.14,81.99,34.59,167.53,47.89,250.66,42.32-9.96,151.36,43.39,300.3,145.41,410.81,1.57,1.77,3.2,3.47,4.83,5.21,4.75,5.04,9.65,9.94,14.63,14.81-3.89,2.08-7.76,4.09-11.68,6.04-108.03,56.3-231.04,87.72-361.41,86.85-93.76-.6-183.58-17.84-266.48-49-76.19-203.76-63.41-432.97,37.86-627.96,1.97-3.83,3.96-7.72,6.11-11.53"/>
+            <path class="p4" pathLength="1" d="m483.29,1078.86c-.07,6.91-.07,13.85.14,20.77.05,2.31.13,4.61.16,6.87,2.48,62.3,15.6,125.2,40.43,186.27,33.52,82.43,84.63,152.32,147.31,207.19-114.08,99.96-181.66,243.01-187.67,393.27-.11,2.37-.18,4.75-.24,7.12-.22,6.91-.22,13.85-.14,20.77-4.23-1.26-8.37-2.58-12.53-3.96-116.18-36.61-225.4-101.34-316.97-194.14-65.88-66.71-117.17-142.41-153.79-223.07,90.2-197.94,261.34-351.03,470.81-417.3,4.1-1.32,8.24-2.64,12.48-3.81"/>
+            <path class="p5" pathLength="1" d="m1078.87,483.29c-4.93,4.86-9.83,9.76-14.59,14.79-1.59,1.66-3.2,3.34-4.72,4.97-42.34,45.81-77.54,99.56-103.14,160.31-34.59,81.99-47.89,167.53-42.34,250.66-151.34-9.96-300.29,43.39-410.79,145.42-1.77,1.55-3.47,3.2-5.21,4.83-5.04,4.75-9.94,9.65-14.81,14.63-2.08-3.89-4.09-7.76-6.04-11.68-56.3-108.04-87.72-231.04-86.85-361.41.6-93.76,17.84-183.58,49-266.48,203.76-76.19,432.97-63.41,627.96,37.86,3.83,1.97,7.72,3.96,11.53,6.11"/>
+            <path class="p6" pathLength="1" d="m1921.14,483.29c-6.91-.07-13.85-.07-20.77.14-2.31.05-4.61.13-6.87.16-62.3,2.48-125.2,15.6-186.27,40.43-82.42,33.52-152.32,84.59-207.19,147.31-99.96-114.08-243.01-181.66-393.27-187.67-2.37-.11-4.76-.18-7.12-.24-6.91-.22-13.85-.22-20.77-.14,1.27-4.23,2.59-8.37,3.96-12.53,36.61-116.18,101.34-225.4,194.14-316.97C1343.68,87.9,1419.37,36.61,1500.03,0c197.94,90.2,351.03,261.34,417.3,470.81,1.32,4.1,2.64,8.24,3.82,12.48"/>
+            <path class="p7" pathLength="1" d="m2516.71,1078.86c-4.86-4.94-9.76-9.84-14.79-14.59-1.66-1.59-3.35-3.2-4.97-4.72-45.81-42.34-99.56-77.54-160.31-103.14-81.99-34.59-167.53-47.89-250.66-42.32,9.96-151.36-43.39-300.3-145.41-410.81-1.56-1.77-3.2-3.47-4.83-5.21-4.75-5.04-9.65-9.94-14.63-14.81,3.89-2.08,7.76-4.09,11.68-6.04,108.03-56.3,231.04-87.72,361.41-86.85,93.78.6,183.58,17.84,266.48,49,76.19,203.76,63.4,432.97-37.86,627.96-1.97,3.83-3.96,7.72-6.11,11.53"/>
+            <path class="p8" pathLength="1" d="m2516.71,1921.14c.07-6.91.07-13.85-.15-20.77-.05-2.31-.13-4.61-.16-6.87-2.48-62.3-15.6-125.2-40.43-186.27-33.52-82.43-84.63-152.32-147.31-207.19,114.08-99.96,181.66-243.01,187.67-393.27.11-2.37.18-4.75.23-7.12.22-6.91.22-13.85.15-20.77,4.23,1.27,8.37,2.59,12.53,3.96,116.18,36.61,225.4,101.34,316.97,194.14,65.88,66.71,117.18,142.41,153.79,223.07-90.2,197.94-261.34,351.03-470.81,417.3-4.1,1.32-8.24,2.64-12.47,3.81"/>
+            <path class="p9" pathLength="1" d="m1921.13,2516.71c4.93-4.86,9.83-9.76,14.59-14.79,1.59-1.68,3.2-3.34,4.72-4.97,42.34-45.81,77.54-99.56,103.14-160.31,34.59-81.99,47.89-167.53,42.34-250.66,151.34,9.96,300.29-43.39,410.79-145.42,1.77-1.55,3.47-3.2,5.21-4.83,5.04-4.75,9.94-9.66,14.81-14.63,2.08,3.89,4.09,7.76,6.04,11.68,56.3,108.03,87.72,231.04,86.89,361.41-.63,93.76-17.88,183.58-49.03,266.48-203.76,76.19-432.97,63.41-627.96-37.86-3.83-1.97-7.72-3.96-11.53-6.11"/>
+          </g>
+        </svg>
+      </div>
+  <div class="wrap hero-inner">
+    <p class="bism" lang="ar" dir="rtl">﷽</p>
+    <h1>Effective Zakat in Canada</h1>
+    <div class="meta">
+      <span class="date">7 May 2024</span>
+    </div>
+  </div>
+  <div class="cue" aria-hidden="true">⇣</div>
+</header>
+
+<!-- ================= WHO IS THIS FOR ================= -->
+<section class="band band--cream" id="who" data-wp="Who is this document for?">
+  <div class="wrap">
+    <div class="sec-head"><span class="title-rule"></span><h2>Who is this document for?</h2></div>
+    <p class="lead">This document is intended for Canadian organizations who distribute zakat locally.</p>
+    <div class="prose">
+      <p>Zakat is the third pillar of Islam. As such it needs to be given the heft and weight of a major life decision; like choosing whom to marry or what career to embark on. What are its obligations? What should our intentions be towards it?</p>
+      <p>It is easy to imagine what good intentions look like for the one giving zakat, as well as the one receiving, but what should intentions be for the modern Canadian zakat distributor?</p>
+      <p>To understand what our intention should be we need to understand how zakat has been understood throughout its history, its purpose, responsibilities &amp; the nuance of applying it effectively in our time &amp; place. We need to interrogate underlying assumptions such as the idea that zakat mirrors other systems for poverty relief, e.g. welfare. Crucially, we also need to ask how to practically use zakat to maximize community betterment. Doing this will help us understand how to integrate zakat in our context &amp; how to balance competing needs for finite resources.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ================= KEY QUESTIONS ================= -->
+<section class="band band--green" id="questions" data-wp="Key Questions">
+  <div class="wrap">
+    <div class="sec-head"><span class="title-rule"></span><h2>Key Questions</h2></div>
+    <ol class="kq">
+      <li><span class="n">✸</span><p>How should zakat distributors <em>think about zakat</em>; its responsibilities, ownership, and the rights of those entitled to it?</p></li>
+      <li><span class="n">✸</span><p>How can community-service organizations that collect and distribute zakat maximize the impact of zakat to alleviate poverty in our local community?</p></li>
+      <li><span class="n">✸</span><p>How can we distribute zakat in a way that balances a) the <span class="mark-hi">dignity</span> of recipients and b) the need for <span class="mark-hi d2">diligence</span>?</p></li>
+      <li><span class="n">✸</span><p>How can we achieve those goals in a manner compliant with Islamic legal requirements?</p></li>
+    </ol>
+  </div>
+</section>
+
+<div class="strip s2" data-set="community" aria-hidden="true"><figure class="ph"><img src="images/connect.jpeg" alt="" loading="lazy" onerror="this.parentNode.hidden=true"></figure><figure class="ph"><img src="images/kids.jpeg" alt="" loading="lazy" onerror="this.parentNode.hidden=true"></figure></div>
+<!-- ================= CANADIAN CONTEXT ================= -->
+<section class="band band--cream" id="context" data-wp="Zakat in the Canadian Context">
+  <div class="wrap">
+    <div class="sec-head"><span class="title-rule"></span><h2>Zakat in the Canadian Context</h2></div>
+    <div class="ctxwrap"><div class="prose">
+      <p><strong>The Challenge:</strong> Being a person of faith, and by extension a community of faith, comes with challenges in every age. Facing and dealing with those challenges to become closer to the Creator is, for a Muslim, the purpose of our existence. Doing so in the modern Canadian context is where zakat-distributing organizations can help Muslims in our communities, and society-at-large.</p>
+
+      <h3>Zakat &amp; Society</h3>
+      <p>In the Muslim faith, <em>zakat</em> is a religious obligation commanded by God in the Qur’an, the Muslim holy book. From the earliest days of Islam, zakat was given by the wealthy to the poor, indigent, and other disenfranchised individuals. Often this was done on an individual and independent basis. At the same time, the leader of the community would also assist with zakat distribution by offering that service for those who could not distribute their zakat themselves. Later, other zakat-distributing organizations emerged separate and apart from government institutions. In sum, while zakat is a religious obligation, there is flexibility in how it is collected, how it is distributed, and whom it is distributed to. This has been so from the earliest days of Islam.</p>
+      <p>A strong theme in Muslim scholarship of zakat is its importance not only as a rightful, Qur’anically mandated, transfer of wealth (59:7), but as having important beneficial psychological effects for individuals and the community at large: zakat payers purify their wealth and learn to control negative emotions such as greed and hoarding (which are condemned in the Qur’an as sinful); at the same time, zakat recipients feel relief from the indignity of poverty which can lead to despair and jealousy; between the two, zakat builds feelings of brotherhood/sisterhood, benevolence, generosity, solidarity and unity in community.<sup class="fn"><a href="#fn1" data-fn="fn1" aria-label="Citation 1">1</a></sup> Zakat is a dignified institution for poverty alleviation and social justice.</p>
+      <p>The Prophet Muhammad <span class="pbuh" lang="ar">ﷺ</span> taught that beneficial actions begin with a good intention. The above spiritual benefits of effective zakat distribution should be primary goals and intentions for zakat-distributing organizations and workers. It is easy to imagine what good intentions look like for the one giving zakat, and the one receiving, but what should intentions look like for zakat distributors? Should the zakat distributor err on the side of being incredibly diligent or should they favour the dignity of recipients? One option means some eligible parties would be turned away, the other the converse. Furthermore, how should the zakat distributor think about addressing systemic issues, and their interactions and engagement with Canadian systems?</p>
+
+      <h3>Zakat Distribution</h3>
+      <p>Zakat-distributing organizations should see themselves as <em>facilitators</em> and <em>conduits</em> of good, in much the same way that prayer-leaders (<em>imams</em>) are facilitators: like zakat, prayer is a religious obligation and a means of coming closer to the Creator. It is incumbent on some people (not all), and its performance is flexible. Like a prayer-leader at a mosque, the zakat-distributor is not a <em>necessary</em> part of the equation – they can either add value, or, if the task is not done properly, diminish it. When done properly, communal prayer – and zakat-distribution – has many benefits; when it is done poorly, people often feel they would be better off just doing things on their own, and often the whole community suffers.</p>
+      <p>For instance, some social scientists have suggested that institutionalised distribution is better able to address long term poverty alleviation than private giving, because an institution will have a better community reach and insight into the causes of poverty.<sup class="fn"><a href="#fn2" data-fn="fn2" aria-label="Citation 2">2</a></sup> This of course depends on the zakat-distributor competently fulfilling its role.</p>
+
+      <h3>Modern Challenges</h3>
+      <p>Our modern context presents certain challenges for zakat collection and distribution. For instance, how and to what extent do we (re)define traditional zakat-eligibility? What is the ruling on modern financial instruments such as salaries, stocks, bonds, RRSPs? The need to disburse under CRA guidelines also complicates the picture. For instance, traditional zakat distribution can be cash, something not <em>generally</em> advisable in the Canadian context as it can affect a client’s eligibility for income supports. Cash equivalents, like gift cards, poorly address this issue because they limit choice and have high admin cost – traditionally zakat is given in the form it was originally taken (so money received would be distributed as money).</p>
+      <p>Many scholars have opined on how traditional rules can be extended to deal with these and other issues. This report offers suggestions on how to incorporate scholarly advice in these and other areas.</p>
+      <p>Another challenge is how modern conceptions of zakat differ from “charity” or “social assistance programming”, and the extent to which this unique Islamic obligation should be viewed through those lenses. For instance, modern discourse on charity and social assistance often draws a distinction between the concepts of “charity” and “justice”. These distinctions impact State policies and regulations governing what counts as charitable activities, where <em>“charity”</em> is about voluntary giving of money or goods to the poor, and <em>“justice”</em> is about addressing underlying structural reasons that might create a class of poor, such as racism or classism.<sup class="fn"><a href="#fn3" data-fn="fn3" aria-label="Citation 3">3</a></sup> Activities addressing justice are often considered political advocacy rather than “charity.” Social justice advocates, however, criticize this distinction as arbitrary, given that as defined, “charitable giving” could end up being a band-aid solution to deeper structural issues that cause poverty.</p>
+      <p>In the Canadian context, a study of zakat workers found that, by and large, such distinctions were not made, and the common understanding of zakat was to use it for poverty relief.<sup class="fn"><a href="#fn4" data-fn="fn4" aria-label="Citation 4">4</a></sup> This has implications for what activities a zakat organisation may choose to fund; if we think of zakat as only charity without considering justice, we miss critical elements of our obligations and a larger opportunity to positively increase impact.</p>
+
+      <h3>Modern Misunderstandings</h3>
+      <p>Zakat distributors are often compelled to serve because of gaps they identify in the community, but most are not equipped to navigate the dual complexities of Islamic tradition and social service.</p>
+      <p>Zakat <u>cannot</u> be adequately understood through directly reading the Qur’an; personal interpretation misses the context in which verses were revealed and how they have been historically understood for nearly 1500 years. e.g. One may read verse 9:60, and infer that zakat can go to administrators (<em>amilina</em>) &amp; anyone who supports zakat collection, but this is a highly contestable, ahistorical opinion.</p>
+      <p>Properly understanding zakat requires engaging in dialogue with those who have specialized in the field. Local scholars are an important conduit for accessing those with in-depth knowledge. Specialists should provide historical examples, citations, reasoning, and be comfortable engaging in nuanced discussions; they may also need compensation for their time.</p>
+      <p>This is similar to medicine. Trusting the internet for medical advice is flawed – even dangerous. Your family doctor is a helpful, obvious first step, but depending on the subject and the level of need, they may refer you to a specialist, like a cardiologist. A reasonable expectation is that the cardiologist will spend time with you (and potentially your family doctor) to explain a diagnosis, their reasoning, options &amp; answer questions.</p>
+    </div></div>
+    <div class="callout"><p>Zakat distributors should begin by engaging local scholars, developing detailed questions, expecting elaboration/dialogue, &amp; asking for referrals to experts.</p></div>
+  </div>
+</section>
+
+<!-- ================= CATEGORIES ================= -->
+<section class="band band--green" id="categories" data-wp="Background: Zakat Categories">
+  <div class="wrap">
+    <div class="sec-head"><span class="title-rule"></span><h2>Background: Zakat Categories</h2></div>
+    <blockquote class="quran reveal" style="margin-left:0;margin-right:0">
+      <p><span class="hang">“</span>The alms are meant only for the poor and the needy and those who are in charge thereof, those whose hearts are to be reconciled, and to free those in bondage, and to help those burdened with debt, and for expenditure in the Way of Allah and for the wayfarer. This is an obligation from Allah. Allah is All-Knowing, All-Wise.”</p>
+      <cite>(Qur’an 9:60)</cite>
+    </blockquote>
+    <ol class="cats">
+      <li><span class="num">1</span><div><h4>The Poor &amp;</h4></div></li>
+      <li><span class="num">2</span><div><h4>Needy</h4>
+        <div class="abc">
+          <div class="pt"><p>Do not have enough to suffice their (&amp; their dependents) basic needs</p><p class="det">“Basic needs” should be assessed according to local standards &amp; based on reliable sources. See recommendations that follow.</p></div>
+          <div class="pt"><p>Are unable to earn a living through suitable work</p><p class="det">“Suitable work” takes into consideration health &amp; social position</p></div>
+          <div class="pt"><p>May have wealth, but be separated from it</p><p class="det">This <em>may</em> include refugees, people with holdings abroad, or others cut off or unable to access their wealth</p></div>
+        </div></div></li>
+      <li><span class="num">3</span><div><h4>Zakat Workers</h4>
+        <p class="det">Our recommendation, as will be detailed further below, is to minimize or obviate the need for using zakat in this manner through planning and alternative funding.</p>
+        <div class="abc">
+          <div class="pt"><p>Traditionally/historically this category applies only if appointed/overseen by the caliph.</p></div>
+          <div class="pt"><p>Some zakat-distributing organizations use this category to responsibly cover overhead for zakat distribution<em>.</em></p></div>
+        </div></div></li>
+      <li><span class="num">4</span><div><h4>Those whose hearts are to be reconciled</h4><p class="det">e.g. New Muslims</p></div></li>
+      <li><span class="num">5</span><div><h4>Those purchasing their freedom</h4><p class="det">e.g. Slaves who are purchasing their freedom from their owners.</p></div></li>
+      <li><span class="num">6</span><div><h4>Those in debt</h4>
+        <div class="abc">
+          <div class="pt"><p>A person who incurs debts in order to settle trouble between parties that involves bloodshed or property (even if they are affluent)</p></div>
+          <div class="pt"><p>A poor/needy person who incurs debt to support themselves (or their dependents)</p></div>
+        </div></div></li>
+      <li><span class="num">7</span><div><h4>Those Striving in the path of God</h4><p class="det">Traditionally understood to apply to a martial context, some modern scholarship has considered this a broad category that can include any project that helps the Muslim community or champions Islamic causes; however, this is not a widely held opinion.</p></div></li>
+      <li><span class="num">8</span><div><h4>Travellers needing money</h4><p class="det">If a traveller is in need they should be given enough to cover their expenses &amp; complete their travels.</p></div></li>
+    </ol>
+  </div>
+</section>
+
+<!-- ================= NON-ELIGIBLE ================= -->
+<section class="band band--cream" id="noneligible" data-wp="Non-Zakat Eligible Categories">
+  <div class="wrap">
+    <div class="sec-head"><span class="title-rule" style="background:var(--red)"></span><h2>Non-Zakat Eligible Categories</h2></div>
+    <ol class="cats cats--no">
+      <li><span class="num">✸</span><div><h4>Programs – Zakat is for People, not Programs</h4>
+        <div class="abc">
+          <div class="pt"><p>Zakat should not be used to build/create programs; even if the programs are intended for those who are zakat eligible.</p></div>
+          <div class="pt"><p>Zakat recipients can choose to allow zakat collectors to spend on their behalf. E.g. They can authorize an organization to use zakat to purchase food, the cost of counselling, housing, etc on their behalf.</p></div>
+        </div></div></li>
+      <li><span class="num">✸</span><div><h4>Non-Muslims</h4>
+        <div class="abc">
+          <div class="pt"><p>Zakat is a specific type of giving only intended for Muslims.</p></div>
+          <div class="pt"><p>Zakat is not the only form of giving Muslims are encouraged to do.</p></div>
+          <div class="pt"><p>Giving general charity, <em>sadaqa</em>, is highly encouraged, praiseworthy, and not restricted.</p></div>
+          <div class="pt"><p>A parallel can be made to taxes; taxes are for local residents/specific uses. If something is not covered by our taxes we have numerous other means to pursue it.</p></div>
+        </div></div></li>
+    </ol>
+  </div>
+</section>
+
+<!-- ================= BEST PRACTICES ================= -->
+<section class="band band--green" id="practices" data-wp="Best Practices &amp; Recommendations">
+  <div class="wrap">
+    <div class="sec-head" style="margin-bottom:0"><span class="title-rule"></span><h2>Best Practices &amp; Recommendations</h2></div>
+    <ul class="pillars">
+      <li><a href="#a">a. Begin with intentions/Educate ourselves &amp; those we serve</a></li>
+      <li><a href="#b">b. Determine zakat eligibility with dignity &amp; diligence</a></li>
+      <li><a href="#c">c. Provide supports that disrupt the cycle</a></li>
+      <li><a href="#d">d. Nür: Transparency</a></li>
+    </ul>
+  </div>
+</section>
+
+<div class="strip s2" data-set="team" aria-hidden="true"><figure class="ph"><img src="images/volunteer.jpeg" alt="" loading="lazy" onerror="this.parentNode.hidden=true"></figure><figure class="ph"><img src="images/give.jpeg" alt="" loading="lazy" onerror="this.parentNode.hidden=true"></figure></div>
+<section class="chapter ch-a" id="a" data-wp="a. Begin with intentions" data-mark="a">
+  <header class="chband"><div class="wrap wide"><span class="bigmark" aria-hidden="true">a</span><h2>a. Begin with intentions/Educate ourselves &amp; those we serve</h2></div></header>
+  <div class="chbody"><div class="wrap wide"><div class="chgrid">
+    <div class="argument">
+            <p class="lead" style="max-width:none">All team members should be reminded Zakat is the right of the poor.</p>
+      <ol class="remind">
+        <li><span class="num sm">✸</span><span>to treat clients as brothers and sisters in faith &amp;/or humanity &amp;</span></li>
+        <li><span class="num sm">✸</span><span>not to feel arrogant or superior, as poverty can strike anyone of us at any time.</span></li>
+      </ol>
+      <div class="scripture">
+      <p>The Qur’an says that the Muslims are an <em>umma</em>, a community (3:110). Sahl ibn Sa’d reported: The Prophet <span class="pbuh" lang="ar">ﷺ</span> said, <em>“Verily, the believer among the people of faith is in the position of the head to the body. The believer feels pain for the people of faith, just as the body feels pain in its head.”</em> (Musnad Aḥmad 22370). Other hadith remind us of the importance of helping alleviate others’ needs. Abu Hurairah narrated that the Prophet <span class="pbuh" lang="ar">ﷺ</span> said: <em>“Whoever relieves a Muslim of a burden from the burdens of the world, Allah will relieve him of a burden from the burdens on the Day of Judgement. And whoever helps ease a difficulty in the world, Allah will grant him ease from a difficulty in the world and in the Hereafter”</em> (Jami‘ at-Tirmidhi 1930). Finally, we are told, <em>“Smiling in your brother’s face is an act of charity”</em> (At-Tirmidhi).</p>
+    </div>
+    </div>
+    <aside class="pin">
+      <h3>How to Educate</h3>
+      <ol class="recs">
+        <li class="rec" id="train-team"><div class="rb">
+          <h4 class="rt">Train team on zakat; including technical &amp; spiritual perspectives.<a class="perma" href="#train-team" aria-label="Link to this recommendation">#</a></h4><p class="det">Training should cover…</p><ol class="subr"><li><p>Current zakat policies.</p></li><li><p>Meanings and practical application of the values enumerated above, perhaps through case studies</p></li><li><p>Relevant Qur’anic verses and hadith about zakat; the benefits of zakat from the point of view of the giver; the benefits from the point of view of the recipient; the benefits from the point of view of the society as a whole, including psychological and economic effects</p></li><li><p>Important similarities and differences with the modern welfare system and policy alternatives, such as Basic Income</p></li><li><p>Zakat implementation in history and its sister institutions of <em>waqf</em></p></li><li><p>Self-reflection as a group on how working at the organization has changed their understanding of zakat (if at all).</p></li></ol>
+        </div></li>
+        <li class="rec" id="integrate-values"><div class="rb">
+          <h4 class="rt">Integrate zakat awareness &amp; values: <em>Rahma/Guiding Mercy, Nür/Light, Ihsan/Beneficence, True Partnership, Heartfelt Ingenuity</em> into team code of conduct.<a class="perma" href="#integrate-values" aria-label="Link to this recommendation">#</a></h4>
+        </div></li>
+        <li class="rec" id="support-the-team"><div class="rb">
+          <h4 class="rt">Holistically support the team<a class="perma" href="#support-the-team" aria-label="Link to this recommendation">#</a></h4><p>Dispensing zakat is an act of worship, requiring heart work, non-judgement, &amp; compassion. Organizations need to invest in care for those on the frontline as well as those being served. Those who dispense zakat should also be trained in self-care, supported with self-reflection, and other practices like journaling.</p>
+        </div></li>
+        <li class="rec" id="community-training"><div class="rb">
+          <h4 class="rt">Provide team/community training on<a class="perma" href="#community-training" aria-label="Link to this recommendation">#</a></h4><ol class="subr"><li><p>Zakat, antiracism, domestic violence, anti-misogyny, ethics of care. The dispensing of zakat cannot be separated from antiracism and other illnesses.</p></li></ol>
+        </div></li>
+        <li class="rec" id="educate-clients"><div class="rb">
+          <h4 class="rt">Educate clients<a class="perma" href="#educate-clients" aria-label="Link to this recommendation">#</a></h4><p class="det">The following should be incorporated into intake, reassessments &amp; the client oath…</p><ol class="subr"><li><p>Rights: The rights of the poor to be treated with dignity, the rights of the poor to zakat</p></li><li><p>Responsibilities: Client obligations, acceptable behaviour, etc</p></li><li><p>Funding: Clients should know where funding comes from and who it’s intended for</p></li><li><p>Additional resources: team members should begin with the assumption that our role is to listen, and connect people with resources – zakat is only one resource.</p></li><li><p>Feedback: How to give feedback on duty of care, conduct</p></li></ol>
+        </div></li>
+      </ol>
+    </aside>
+  </div></div></div>
+</section>
+
+<section class="chapter ch-b" id="b" data-wp="b. Determine eligibility" data-mark="b">
+  <header class="chband"><div class="wrap wide"><span class="bigmark" aria-hidden="true">b</span><h2>b. Determine zakat eligibility with dignity &amp; diligence</h2></div></header>
+  <div class="chbody"><div class="wrap wide"><div class="chgrid">
+    <div class="argument">
+      <div class="prose">
+      <p>What constitutes “<em>poverty</em>” depends on time and place and must be constantly revised to take account of changing economic situations, such as unemployment and inflation.<sup class="fn"><a href="#fn5" data-fn="fn5" aria-label="Citation 5">5</a></sup> Zakat eligibility can capture a wider group of people than eligibility for provincial income support programs. For example, Alberta Works requires a recipient’s assets not exceed $10,000 equity in a car, but an asset used for personal need is not part of zakat calculations. Civida’s affordable housing grants are based on total household income, whereas zakat is distributed on an individual basis. In addition, a head of household is responsible for the basic needs of his/her dependants, irrespective of their own personal income. Thus, folding a wife’s income into the husband’s to calculate zakat eligibility is not to be done. Organizations can use third parties to verify low-income eligibility but must recognise that some individuals may not qualify with these third parties and still be considered poor within the Canadian context and zakat eligible.</p>
+      <p>Many jurists advised against telling recipients they were receiving zakat, as this was thought to be humiliating for them.<sup class="fn"><a href="#fn6" data-fn="fn6" aria-label="Citation 6">6</a></sup> Preserving the dignity of the recipient is thus an utmost value in zakat. Dignity comes from autonomy in choices, and from being treated with courtesy and kindness, including not being treated as a suspect. Privacy and confidentiality are important values here as well.</p>
+      <p>Criticisms of the modern welfare state argue that modern welfare systems are patronising and dehumanising, with invasive investigations and conditionalities attached to income support.<sup class="fn"><a href="#fn7" data-fn="fn7" aria-label="Citation 7">7</a></sup> Pre-modern Muslim practices of not requiring proof of poverty or even taking an oath to establish eligibility<sup class="fn"><a href="#fn8" data-fn="fn8" aria-label="Citation 8">8</a></sup> are not easily transposed to a contemporary system where CRA regulations require exact documentation, and where Muslims can live as strangers to each other in huge multi-cultural urban cities, creating easier conditions for fraudulent claims. To balance dignity with due diligence that does not consume too much of an organization’s resources, the following recommendations are made:</p>
+    </div>
+    </div>
+    <aside class="pin">
+      <h3>How to determine eligibility with Dignity &amp; Diligence</h3>
+      <p class="intro">To determine if someone qualifies as low-income…</p>
+      <ol class="recs">
+        <li class="rec" id="triage"><div class="rb">
+          <h4 class="rt">Triage and (re)assess<a class="perma" href="#triage" aria-label="Link to this recommendation">#</a></h4><ol class="subr"><li><p>Use an escalating system of required documentation to establish client eligibility based on the level of resources required to address a need, e.g. one time, vs short-term, vs long term; small versus large dollar amount. Give frontline workers the ability to quickly and easily dispense funds based on assessed urgency and need. (See Zakat Fund criteria)</p></li><li><div><p>For long-term clients</p><ol class="subr"><li><p>Reassess client eligibility at least annually</p></li><li><p>Reserve a portion of funds for long-term clients</p></li></ol></div></li></ol>
+        </div></li>
+        <li class="rec" id="avoid-interrogation"><div class="rb">
+          <h4 class="rt">Avoid interrogative interviews<a class="perma" href="#avoid-interrogation" aria-label="Link to this recommendation">#</a></h4><p>Determining zakat eligibility can be demeaning, invasive, inefficient and ineffective.</p><p>Asking frontline workers to determine zakat eligibility generally involves asking very invasive personal questions, reviewing bank statements, tax info, etc. This approach is grounded in the idea that we must deter those trying to be fraudulent; however, it also deters legitimate help seekers, is easy to game, and pits workers and clients against one another; it is also a departure from tradition which prioritizes dignity and respect when dispensing zakat.</p>
+        </div></li>
+        <li class="rec" id="word-of-honour"><div class="rb">
+          <h4 class="rt">For small amounts/emergencies rely on word of honour while still conducting a partial intake<a class="perma" href="#word-of-honour" aria-label="Link to this recommendation">#</a></h4>
+        </div></li>
+        <li class="rec" id="third-party-criteria"><div class="rb">
+          <h4 class="rt">Use third-party objective criteria to determine eligibility<a class="perma" href="#third-party-criteria" aria-label="Link to this recommendation">#</a></h4><p class="det">Using third-party criteria to determine low-income verification serves multiple purposes…</p><ol class="subr"><li><p>Ensures eligibility – often to a stricter standard than would be possible internally. Government sources can do a more thorough investigation into claims.</p></li><li><p>Defers confrontational work to a third party thereby allowing frontline workers to build stronger relationships with those requesting assistance.</p></li><li><p>Frees up organizational time that can be better spent on assisting clients.</p></li><li><div><p>Supports connections to systems that can provide long-term support without drawing from zakat.</p><p class="det">Asking about third-party eligibility leads clients to find out about resources they may be eligible for. e.g. The question “Do you have the low-income transit/leisure pass?” can lead to connecting a client to resources &amp; supports that would benefit them.</p></div></li><li><div><p><strong>Use objective criteria</strong></p><p class="det">The following criteria can help to determine if someone is zakat eligible…</p><ol class="subr"><li><p>Third-Party: Alberta Works, Civida’s (affordable housing eligibility), Edmonton’s Low-income Leisure/Transit pass</p></li><li><div><p>Calculated: Statistics Canada <a href="https://www150.statcan.gc.ca/t1/tbl1/en/tv.action?pid=1110023201">Low Income Measure (LIM)</a>, defined at 50% of median household income in Canada, this measures zakat eligible “essential costs of living.”</p><p class="det">It can be determined by asking for after-tax income (for LIM-AT) or before-tax income (for LIM-BT).</p></div></li></ol><div class="note"><p>Note 1: Someone may not qualify for the low-income verification measures identified, but still be zakat eligible (e.g. because a family member’s income makes them ineligible).</p></div><div class="note"><p>Note 2: Asylum seekers/non-status individuals are ineligible for most government services and cannot be assessed via third-party criteria.</p></div></div></li><li><p>Prioritize the poor &amp; destitute; these categories can also include the refugee/wayfarer, the indebted &amp; the bonded.</p></li></ol>
+        </div></li>
+      </ol>
+    </aside>
+  </div></div></div>
+</section>
+
+<div class="strip s3" data-set="skills" aria-hidden="true"><figure class="ph"><img src="images/sew.jpeg" alt="" loading="lazy" onerror="this.parentNode.hidden=true"></figure><figure class="ph"><img src="images/grad.jpeg" alt="" loading="lazy" onerror="this.parentNode.hidden=true"></figure><figure class="ph"><img src="images/accomplish.jpeg" alt="" loading="lazy" onerror="this.parentNode.hidden=true"></figure></div>
+<section class="chapter ch-c" id="c" data-wp="c. Provide supports" data-mark="c">
+  <header class="chband"><div class="wrap wide"><span class="bigmark" aria-hidden="true">c</span><h2>c. Provide supports that disrupt the cycle</h2></div></header>
+  <div class="chbody"><div class="wrap wide"><div class="chgrid">
+    <div class="argument">
+      <div class="prose">
+      <p>As mentioned, zakat is the right of the poor. But it is not meant to be a long-term situation unless unavoidable. Muslims are meant to look after themselves as much as possible. So, ideally, zakat is meant to be given to lift people out of poverty, not create dependencies. There was consensus in the literature and amongst the scholars and practitioners we consulted that making decisions about how to distribute limited funds to a large pool of clients was very difficult and shaped by the case-by-case situation of the organisation and clients.</p>
+      <p>Jurists differed on how much should be given, as ‘Umar (may God be pleased with him) said <em>“When you give, make the recipient rich.”</em> Al Qardawi discusses two main opinions: Give what is sufficient to remove them from poverty forever, so they will not need zakat in the future (Shafi‘i and the majority of his disciples, Ahmad and some Hanbalis). Malikis, most Hanbalis, and most other jurists say give one year’s sustenance, based on a hadith that the Prophet <span class="pbuh" lang="ar">ﷺ</span> used to keep for his family the amount of food needed for one year, and zakat is annual, so distribution should be too (p. 354–58).</p>
+    </div>
+      <blockquote class="pull reveal" style="margin-left:0"><p><span class="hang">“</span>When you give, make the recipient rich.”</p><cite>‘Umar</cite></blockquote>
+      <div class="prose">
+      <p>There was also a consensus amongst the scholars and practitioners we consulted that urgent needs came first, but that in non-urgent needs a triage system could be established based on the principle of helping clients reach self-sufficiency. Giving enough for clients to earn and reach sufficiency was also a goal in pre-modern jurisprudence, e.g. by helping them in their trade or profession. In a Canadian context, with extremely limited zakat funds at their disposal, organizations should balance immediate needs with longer term programs that can lift clients out of poverty.</p>
+      <p>It is important to stress that programming to reach self-sufficiency is not a conditionality of receiving zakat. It is not permissible to attach any conditions or to stipulate participation in activities to be entitled to zakat, nor is it given as a wage for work they do.<sup class="fn"><a href="#fn9" data-fn="fn9" aria-label="Citation 9">9</a></sup> According to Islamic law, zakat can be given to students of knowledge or others if they have met the descriptions of those who are entitled to it, such as poverty, but this is different from education as a requirement for zakat eligibility.</p>
+      <p>A story from the time of Caliph Umar bin Abdul Al-Aziz (682–720) recounts an order of priority during a time of abundance: Caliph Umar bin Abdul Al-Aziz wrote to Abd al-Hamid bin Abd al-Rahman while he was in Iraq: To give people their gifts, and Abd al-Hamid wrote to him: I have given people their gifts, and there is money left in the treasury. On his behalf, he said: I have spent on their behalf and there is money left in the treasury, so he wrote to him: get every young man who wants to marry and pay the expenses of their marriage, so he wrote to him: I have got everyone married that I found and there is money left in the house of the Muslims’ house of treasury, so he wrote to him after the exit of this: See every one he/she who owed a tribute or he was unable to invest on his land as a result of having no money, lend money to strengthen him in working in his land, and we do provide support not only for one or two years only but continually.<sup class="fn"><a href="#fn10" data-fn="fn10" aria-label="Citation 10">10</a></sup></p>
+    </div>
+    </div>
+    <aside class="pin">
+      <h3>How to Provide Supports that Disrupt the Cycle of Poverty</h3>
+      <ol class="recs">
+        <li class="rec" id="dedicate-funds"><div class="rb">
+          <h4 class="rt">Dedicate a portion of zakat funds (e.g. 30%) for intensive, high(er) dollar value, non-emergency interventions.<a class="perma" href="#dedicate-funds" aria-label="Link to this recommendation">#</a></h4>
+        </div></li>
+        <li class="rec" id="develop-criterion"><div class="rb">
+          <h4 class="rt">Develop a criterion to identify clients who can get out of long-term poverty if they were provided with financial support; e.g. people looking to start a small business, gain certification, upgrade skills, buy a work vehicle, etc.<a class="perma" href="#develop-criterion" aria-label="Link to this recommendation">#</a></h4><ol class="subr"><li><p>The criterion should be developed alongside social service partners to fill gaps not covered by other programs.</p></li><li><p>The criterion should prioritize objectivity &amp; speed with decision making – a criterion is a better tool than a committee or a priority list because it reduces subjectivity, bureaucracy, wait times &amp; stress for frontline workers and clients.</p></li></ol>
+        </div></li>
+        <li class="rec" id="connect-supports"><div class="rb">
+          <h4 class="rt">Connect/offer clients supports that ease their ongoing need<a class="perma" href="#connect-supports" aria-label="Link to this recommendation">#</a></h4><p class="det">e.g. Financial literacy training, affordable housing, social connection &amp; mental health supports</p>
+        </div></li>
+      </ol>
+    </aside>
+  </div></div></div>
+</section>
+
+<section class="chapter ch-d" id="d" data-wp="d. Nür: Transparency" data-mark="d">
+  <header class="chband"><div class="wrap wide"><span class="bigmark" aria-hidden="true">d</span><h2>d. Nür: Transparency</h2></div></header>
+  <div class="chbody"><div class="wrap wide"><div class="chgrid">
+    <div class="argument">
+      <div class="prose">
+      <p>The Canadian government, donors, and accountability before Allah all require a zakat organisation to practice due diligence and only give zakat to those who are eligible. Zakat must reach the needy people, without political bias or favouritism toward friends and family. Zakat funds must be given to the categories mentioned in the Qur’an. Al Qardawi argues “officials charged with the distribution of <em>zakat</em> must do their utmost to be sure that recipients truly deserve <em>zakat</em>, and that it is fairly distributed among those who deserve it (p. 368).” Al Qardawi maintains that zakat distributors “must be trained to exert their best efforts to seek out those who deserve it, discover the degree of their need, and assure that the distributed <em>zakat</em> reaches them quickly. An-Nawawi says, ‘The state and its <em>zakat</em> distribution officials should keep records of those who deserve, their number, and their individual needs, so that their due <em>zakat</em> can reach them quickly, especially since some collected items may be perishable (p. 367).’”</p>
+    </div>
+    </div>
+    <aside class="pin">
+      <h3>How to be transparent with how zakat is used and how decisions are made</h3>
+      <ol class="recs">
+        <li class="rec" id="post-policies"><div class="rb">
+          <h4 class="rt">Post policies where community can access them<a class="perma" href="#post-policies" aria-label="Link to this recommendation">#</a></h4>
+        </div></li>
+        <li class="rec" id="restricted-fund"><div class="rb">
+          <h4 class="rt">Treat zakat as an internally restricted fund, and let auditors know as such – this will ensure greater scrutiny &amp; accountability<a class="perma" href="#restricted-fund" aria-label="Link to this recommendation">#</a></h4>
+        </div></li>
+        <li class="rec" id="share-expenditures"><div class="rb">
+          <h4 class="rt">Detail &amp; share zakat related expenditures<a class="perma" href="#share-expenditures" aria-label="Link to this recommendation">#</a></h4>
+        </div></li>
+      </ol>
+    </aside>
+  </div></div></div>
+</section>
+
+<!-- ================= REFERENCES ================= -->
+<section class="band band--alt" id="references" data-wp="References">
+  <div class="wrap">
+    <div class="sec-head"><span class="title-rule"></span><h2>References</h2></div>
+    <ol class="refs" id="refs">
+      <li id="fn1"><span class="num sm">1</span><span class="t">Ahmad and Hassan, “Distributive Justice;” Amin Mohseni-Cheraghlou, “Socio-economic Justice and Poverty in Nahj Al-Balagha,” <em>International Journal of Islamic and Middle Eastern Finance and Management</em>, 8:1, 2015, pp. 20–35. Al-Qardawi, <em>Fiqh az-Zakat</em>, p. 209, <em>passim</em>; Muhammad Nejatullah Siddiqui, “The Guarantee of a Minimum Level of Living in an Islamic State,” in Munawar Iqbal (ed), <em>Distributive Justice and Need Fulfilment in an Islamic Economy</em>, Leicester, U.K, The Islamic Foundation, 1988. <a class="back" href="#fnr1" aria-label="Back to text">↩</a></span></li>
+      <li id="fn2"><span class="num sm">2</span><span class="t">Powell, “Zakat,” p. 60. Ram Al Jaffri Saad, and Abubakar Umar Farouk, “A Comprehensive Review of Barriers to a Functional Zakat System in Nigeria. What Needs to Be Done?” <em>International Journal of Ethics and Systems</em>, 35:1, 2019, pp. 24–42. <a class="back" href="#fnr2" aria-label="Back to text">↩</a></span></li>
+      <li id="fn3"><span class="num sm">3</span><span class="t">Robert E. Goodin, “Duties of Charity, Duties of Justice,” <em>Political Studies</em>, 65:2, 2017, pp. 268–283; Will Kymlicka, “Altruism in Philosophical and Ethical Traditions: Two Views” in Jim Phillips, Bruce Chapman, and David Stevens (eds), <em>Between State and Market: Essays on Charities Law and Policy in Canada</em>, Montreal: Kahanoff Foundation Non-profit Sector Research Initiative, McGill-Queen’s University Press, 2001. <a class="back" href="#fnr3" aria-label="Back to text">↩</a></span></li>
+      <li id="fn4"><span class="num sm">4</span><span class="t">Katherine Bullock and Areeb Daimee, “Justice and Charity: A Study of Zakat Work in Canada,” Yaqeen Institute, <a href="https://yaqeeninstitute.ca/read/paper/justice-and-charity-a-study-of-zakat-work-in-canada">https://yaqeeninstitute.ca/read/paper/justice-and-charity-a-study-of-zakat-work-in-canada</a> <a class="back" href="#fnr4" aria-label="Back to text">↩</a></span></li>
+      <li id="fn5"><span class="num sm">5</span><span class="t">The Honourable Jean-Yves Duclos, Minister of Families, Children and Social Development, <em>Opportunity for All – Canada’s First Poverty Reduction Strategy</em>, 2018, <a href="https://www.canada.ca/en/employment-social-development/programs/poverty-reduction/reports/strategy.html">https://www.canada.ca/en/employment-social-development/programs/poverty-reduction/reports/strategy.html</a> <a class="back" href="#fnr5" aria-label="Back to text">↩</a></span></li>
+      <li id="fn6"><span class="num sm">6</span><span class="t">Al-Qardawi, <em>Fiqh az-Zakat</em>, pp. 531–532. <a class="back" href="#fnr6" aria-label="Back to text">↩</a></span></li>
+      <li id="fn7"><span class="num sm">7</span><span class="t">Vera Chouinard and Valorie A. Crooks (2005) “‘Because <em>They</em> Have All the Power and I Have None’: State Restructuring of Income and Employment Supports and Disabled Women’s Lives in Ontario, Canada,” <em>Disability &amp; Society</em>, 2005, 20:1, 19–32; Aaron Reeves and Rachel Loopstra, “‘Set Up to Fail’? How Welfare Conditionality Undermines Citizenship for Vulnerable Groups,” <em>Social Policy &amp; Society</em>, 2017, 16:2, 327–338; Hugh Segal, <em>Finding a Better Way: A Basic Income Pilot Project for Ontario</em>, discussion paper, 2016. <a class="back" href="#fnr7" aria-label="Back to text">↩</a></span></li>
+      <li id="fn8"><span class="num sm">8</span><span class="t">Fadel, “Islam, Inequality, Morality, and Justice;” Al-Qardawi, <em>Fiqh az-Zakat</em>, p. 369. <a class="back" href="#fnr8" aria-label="Back to text">↩</a></span></li>
+      <li id="fn9"><span class="num sm">9</span><span class="t"><em>Ahkam wa Fatawa al-Zakah</em> (<em>Rule and Fatwas for Zakat</em>), fatwa no. 20, p. 197, published by the House of Zakah. Kuwait, 2019. <a class="back" href="#fnr9" aria-label="Back to text">↩</a></span></li>
+      <li id="fn10"><span class="num sm">10</span><span class="t">Ibn Salam, Abu Ubaidah, <em>al-Amwal</em>, Dar al-Hadi Al-Nabawi, Egypt, 2007, 1, p. 363. <a class="back" href="#fnr10" aria-label="Back to text">↩</a></span></li>
+    </ol>
+  </div>
+</section>
+
+<!-- ================= AUTHORS ================= -->
+<section class="band band--cream" id="authors" data-wp="Authors &amp; Contributors">
+  <div class="wrap">
+    <div class="sec-head"><span class="title-rule"></span><h2>Authors &amp; Contributors</h2></div>
+    <p class="prose" style="margin-bottom:0">The report’s authors are:</p>
+    <ul class="star-list authors">
+      <li><strong><a href="https://yaqeeninstitute.ca/team/katherine-bullock">Dr Katherine Bullock</a></strong>, a political scientist whose work includes research on the relationship between zakat and Basic Income, and the institution of zakat in a Canadian context.</li>
+      <li><strong>Prof. Dr Abdulla Al Shami</strong>, an Islamic law scholar who has written on Islamic economics &amp; Islamic banking and finance. He has acted as a consultant on Islamic banking and finance for numerous institutions.</li>
+      <li><strong><a href="https://twitter.com/ZaKhatib">Zacharia al-Khatib</a></strong>, a student of Sacred Knowledge.</li>
+      <li><strong><a href="https://twitter.com/somaryaqub">Omar Yaqub</a></strong>, Servant of Servants with <a href="http://islamicfamily.ca">IslamicFamily</a>.</li>
+    </ul>
+    <p class="prose" style="margin-bottom:0">We are also grateful for the assistance of:</p>
+    <ul class="thanks">
+      <li>Dr Imad-ad-Dean Ahmad, Islamic-American Zakat Foundation</li>
+      <li>Mohamed Abu Asaker, UNHCR Zakat Refugee Fund</li>
+      <li>Muneeb Nasir, Olive Tree Foundation</li>
+      <li>Dr Hamid Slimi, Centre for Deen Studies</li>
+      <li>Imam Abu Nouman Tarek, ICNA Relief</li>
+    </ul>
+    <div class="fine">
+      <p>This report represents Drs Bullock and Al Shami’s synthesis of research and consultations and is not endorsed explicitly by any of the above people.</p>
+      <p style="margin:0"><a href="http://islamicfamily.ca">IslamicFamily</a> commissioned this report to continue a process of improving its <a href="http://islamicfamily.ca/zakat">zakat distribution policies</a>.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ================= ABOUT ================= -->
+<section class="band band--green about" id="about" data-wp="About IslamicFamily">
+  <div class="wrap">
+    <div class="sec-head"><span class="title-rule"></span><h2>About IslamicFamily</h2></div>
+    <p class="lead" style="color:#fff;max-width:30ch">IslamicFamily supports the mother who is fleeing abuse without making her compromise her identity or safety.</p>
+    <p>We support the man seeking counselling that respects his values. We support youth looking for a creative platform that appreciates and amplifies their voice. We support families beginning new lives amidst hardship. We are IslamicFamily &amp; we are created to serve.</p>
+    <p>IslamicFamily is an Imagine Canada &amp; Great Places to Work™ accredited charity, the winner of the Government of Alberta’s Inspiration Award for its work combatting domestic violence (2020), the Canadian Mental Health Association’s Professional Service Award (2020), Justice Innovation Award (2022) &amp; YEG Startup Community Award (2022).</p>
+    <p>For more than 30 years, we have been driven to disrupt systemic inequity, to reflect a rich tradition with beauty, to innovate &amp; to serve with excellence. IslamicFamily serves 5,000 clients every month, runs Edmonton’s second largest food bank, provides aid in financial crisis, supports victims of gender-based violence, settles refugees, and delivers a range of preventative programming for youth. IslamicFamily is rooted on Treaty 6 and proudly serves all of Alberta.</p>
+    <figure class="imgwide ph" data-set="grow"><img src="images/grow.jpeg" alt="" loading="lazy" onerror="this.parentNode.hidden=true"></figure>
+    <div class="access">
+      <p>Access support: <a href="http://islamicfamily.ca/">IslamicFamily.ca</a> | Helpline <a href="tel:+17809002777">780.900.2777</a>, 7 days a week.</p>
+      <p>Beautify your home: <a href="http://canadianprayerrug.ca/">CanadianPrayerRug.ca</a></p>
+    </div>
+    <div class="contact">
+      <h3>Questions &amp; Comments</h3>
+      <a href="mailto:zakat@islamicfamily.ca">zakat@islamicfamily.ca</a>
+    </div>
+  </div>
+</section>
+
+</main>
+<footer class="foot"><div class="wrap"><a class="mark" href="https://islamicfamily.ca">Islamic<b>Family</b></a></div></footer>
+
+<div class="nsheet" id="nsheet" role="dialog" aria-label="Citation" hidden>
+  <div id="nsBody"></div>
+  <div class="nsheet-actions"><a href="#references" id="nsAll">All references</a><button type="button" id="nsClose">Close</button></div>
+</div>
+
+<script>
+(function(){
+  var qs=function(s,r){return (r||document).querySelector(s)}, qsa=function(s,r){return Array.prototype.slice.call((r||document).querySelectorAll(s))};
+  var wide=window.matchMedia('(min-width:1100px)');
+
+  qsa('sup.fn a').forEach(function(a){ a.id='fnr'+a.getAttribute('data-fn').replace('fn',''); });
+
+  /* ---- Contents sheet (small screens): every section ---- */
+  var sheetList=qs('#sheetList'), sheet=qs('#sheet');
+  qsa('[data-wp]').forEach(function(el){
+    var li=document.createElement('li'), a=document.createElement('a');
+    a.href='#'+(el.id||'top'); a.textContent=el.getAttribute('data-wp');
+    if(el.hasAttribute('data-mark')) a.className='sub';
+    a.addEventListener('click',closeSheet); li.appendChild(a); sheetList.appendChild(li);
+  });
+  function openSheet(){ sheet.hidden=false; document.body.style.overflow='hidden'; qs('#closeSheet').focus(); }
+  function closeSheet(){ sheet.hidden=true; document.body.style.overflow=''; }
+  qs('#openSheet').addEventListener('click',openSheet); qs('#closeSheet').addEventListener('click',closeSheet);
+
+  /* ---- Rail: whole-page progress, four chapter marks ---- */
+  var railList=qs('#railList'), railEl=qs('#rail'), fill=qs('#railFill'), topbar=qs('#topbar');
+  var marks=qsa('[data-mark]').map(function(el){
+    var li=document.createElement('li'), a=document.createElement('a'), b=document.createElement('b'), sp=document.createElement('span');
+    a.href='#'+el.id; a.setAttribute('aria-label',el.getAttribute('data-wp')); b.textContent=el.getAttribute('data-mark'); sp.textContent=el.getAttribute('data-wp');
+    a.appendChild(b); a.appendChild(sp); li.appendChild(a); railList.appendChild(li);
+    return {el:el,li:li,a:a};
+  });
+  function layoutRail(){
+    var max=Math.max(1,document.documentElement.scrollHeight-window.innerHeight);
+    marks.forEach(function(m){ var y=m.el.getBoundingClientRect().top+window.scrollY; m.li.style.top=Math.min(100,Math.max(0,y/max*100))+'%'; });
+  }
+  var ticking=false;
+  function update(){
+    ticking=false;
+    var vh=window.innerHeight, line=vh*0.4, max=Math.max(1,document.documentElement.scrollHeight-vh), p=Math.min(1,Math.max(0,window.scrollY/max));
+    fill.style.setProperty('--fill',(p*railEl.getBoundingClientRect().height)+'px');
+    marks.forEach(function(m){
+      var r=m.el.getBoundingClientRect();
+      m.a.classList.toggle('on',r.top<=line&&r.bottom>line);
+      m.a.classList.toggle('done',r.bottom<=line);
+    });
+    topbar.style.setProperty('--p',(p*100)+'%');
+  }
+  function req(){ if(!ticking){ ticking=true; requestAnimationFrame(update); } }
+  window.addEventListener('scroll',req,{passive:true});
+
+  /* ---- Citations: margin notes (wide) or bottom sheet (narrow) ---- */
+  var notes=[];
+  qsa('sup.fn a').forEach(function(a){
+    var id=a.getAttribute('data-fn'), li=document.getElementById(id); if(!li) return;
+    var n=id.replace('fn',''), t=qs('.t',li).cloneNode(true), b=qs('.back',t); if(b) b.remove();
+    var note=document.createElement('aside'); note.className='mnote'; note.id='mn'+n; note.setAttribute('aria-label','Citation '+n);
+    note.innerHTML='<span class="k">'+n+'</span>'+t.innerHTML;
+    var p=a.closest('p'), ctx=a.closest('.ctxwrap');
+    if(ctx){ note.classList.add('side'); ctx.appendChild(note); notes.push({a:a,note:note,ctx:ctx}); }
+    else { var after=p._after||p; after.parentNode.insertBefore(note,after.nextSibling); p._after=note; }
+    a._note=note;
+    a.addEventListener('mouseenter',function(){ if(wide.matches) note.classList.add('hl'); });
+    a.addEventListener('mouseleave',function(){ note.classList.remove('hl'); });
+    a.addEventListener('click',function(e){
+      e.preventDefault();
+      if(wide.matches){ note.classList.add('hl'); note.scrollIntoView({block:'nearest',behavior:'smooth'}); setTimeout(function(){ note.classList.remove('hl'); },2200); }
+      else openNote(n,note);
+    });
+  });
+  function placeNotes(){
+    var last=[];
+    notes.forEach(function(o){
+      if(!wide.matches){ o.note.style.top=o.note.style.left=o.note.style.width=''; return; }
+      var prose=qs('.prose',o.ctx), left=prose.offsetWidth+44, cr=o.ctx.getBoundingClientRect(), ar=o.a.getBoundingClientRect();
+      var idx=notes.indexOf(o), prev=idx>0&&notes[idx-1].ctx===o.ctx?last[idx-1]:-1e9;
+      var top=Math.max(ar.top-cr.top-4,prev+16);
+      o.note.style.left=left+'px'; o.note.style.width=Math.min(280,o.ctx.clientWidth-left)+'px'; o.note.style.top=top+'px';
+      last[idx]=top+o.note.offsetHeight;
+    });
+  }
+  var ns=qs('#nsheet'), nsBody=qs('#nsBody');
+  function openNote(n,note){ nsBody.innerHTML=note.innerHTML; ns.hidden=false; }
+  function closeNote(){ ns.hidden=true; }
+  qs('#nsClose').addEventListener('click',closeNote);
+  qs('#nsAll').addEventListener('click',closeNote);
+  document.addEventListener('keydown',function(e){ if(e.key==='Escape'){ closeSheet(); closeNote(); } });
+  document.addEventListener('click',function(e){ if(!ns.hidden && !ns.contains(e.target) && !e.target.closest('sup.fn')) closeNote(); });
+
+  /* ---- Shareable links for the 15 recommendations ---- */
+  qsa('.perma').forEach(function(a){
+    a.addEventListener('click',function(){
+      var url=window.location.href.split('#')[0]+a.getAttribute('href');
+      try{ if(navigator.clipboard&&navigator.clipboard.writeText) navigator.clipboard.writeText(url).catch(function(){}); }catch(err){}
+      a.classList.add('copied'); setTimeout(function(){ a.classList.remove('copied'); },1600);
+    });
+  });
+
+  /* ---- Quotes ease in on scroll ---- */
+  var rv=qsa('.reveal');
+  if('IntersectionObserver' in window){
+    var ro=new IntersectionObserver(function(es){ es.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('in'); ro.unobserve(e.target); } }); },{threshold:.3,rootMargin:'0px 0px -8% 0px'});
+    rv.forEach(function(q){ ro.observe(q); });
+  } else { rv.forEach(function(q){ q.classList.add('in'); }); }
+
+  /* ---- Highlighter on "dignity" and "diligence" ---- */
+  var hi=qsa('.mark-hi');
+  if('IntersectionObserver' in window){
+    var io=new IntersectionObserver(function(es){ es.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('go'); io.unobserve(e.target); } }); },{threshold:.9});
+    hi.forEach(function(h){ io.observe(h); });
+  } else { hi.forEach(function(h){ h.classList.add('go'); }); }
+
+  function relayout(){ layoutRail(); placeNotes(); update(); }
+  window.addEventListener('resize',relayout);
+  window.addEventListener('load',relayout);
+  if(wide.addEventListener) wide.addEventListener('change',function(){ closeNote(); relayout(); });
+  if(document.fonts&&document.fonts.ready) document.fonts.ready.then(relayout);
+  relayout();
+})();
+</script>
+</body>
+</html>
