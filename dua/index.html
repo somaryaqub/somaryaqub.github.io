@@ -433,6 +433,9 @@
   .eg .eg-body p.hang, .eg .eg-body .q { display: block; padding-left: .45em; text-indent: -.45em; hanging-punctuation: none; }
   .duas .slide .continued { width: min(100%, 54rem); margin-inline: auto; text-align: right; font: italic 500 1.05rem var(--serif); color: var(--sand); }
   .duas .slide .dua p.ar { font-size: calc(var(--dfs, 1.5rem) * 0.63); text-align: center; }
+  .duas .duas-actions { display: flex; align-items: center; flex-wrap: wrap; gap: .6rem 1.4rem; }
+  .duas .duas-link { color: var(--sand); font: 500 1rem var(--sans); text-decoration: underline; text-underline-offset: 4px; }
+  .duas .duas-link:hover { color: #fff; }
 </style>
 </head>
 <body>
@@ -559,7 +562,10 @@
 <section class="duas panel" id="duas" data-step="2" aria-labelledby="duas-h">
   <div class="wrap duas-top">
     <h2 id="duas-h">Duas from the community</h2>
-    <button class="btn btn-ghost shuffle" id="shuffle" type="button" hidden>Show different duas</button>
+    <div class="duas-actions">
+      <a class="duas-link" href="https://servanting.ca/dua/book1" target="_blank" rel="noopener">Read Volume 1 ⇢</a>
+      <button class="btn btn-ghost shuffle" id="shuffle" type="button" hidden>Show different duas</button>
+    </div>
   </div>
   <div class="carousel" role="region" aria-roledescription="carousel" aria-labelledby="duas-h">
     <div class="viewport" id="viewport" tabindex="0" aria-label="Duas. Use left and right arrow keys to move between them.">
