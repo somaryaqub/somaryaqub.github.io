@@ -1,0 +1,1366 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>AI &amp; Human Services</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Alegreya:ital,wght@0,400;0,500;0,700;1,400;1,500&family=Alegreya+Sans:ital,wght@0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    /* IslamicFamily brand tokens */
+    --nabawi: #275D43;
+    --nabawi-dark: #1C4433;
+    --nabawi-mid: #326B50;
+    --pinecone: #E09964;
+    --mist: #FAFAF2;
+    --kiswah: #353535;
+    --yaqoot: #BB2D37;
+    --sun: #F7AF29;
+    --sand: #EECBAF;
+    --arabica: #DCD9B8;
+
+    --bg: var(--mist);
+    --ink: var(--kiswah);
+    --head: var(--nabawi-dark);
+    --accent: var(--pinecone);
+    --link: var(--nabawi-mid);
+    --rule: rgba(53, 53, 53, 0.18);
+    --tint: rgba(220, 217, 184, 0.35);
+    --agent-bg: rgba(220, 217, 184, 0.6);
+    --callout-bg: var(--nabawi);
+    --callout-ink: #ffffff;
+    --callout-label: var(--sand);
+    --ctl-bg: rgba(250, 250, 242, 0.94);
+    --ctl-line: rgba(53, 53, 53, 0.28);
+
+    box-sizing: border-box;
+    padding-top: env(safe-area-inset-top, 0px);
+    padding-bottom: env(safe-area-inset-bottom, 0px);
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #14251d;
+      --ink: #FAFAF2;
+      --head: #FAFAF2;
+      --link: var(--pinecone);
+      --rule: rgba(250, 250, 242, 0.22);
+      --tint: rgba(250, 250, 242, 0.06);
+      --agent-bg: rgba(250, 250, 242, 0.1);
+      --ctl-bg: rgba(20, 37, 29, 0.94);
+      --ctl-line: rgba(250, 250, 242, 0.3);
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #14251d;
+    --ink: #FAFAF2;
+    --head: #FAFAF2;
+    --link: var(--pinecone);
+    --rule: rgba(250, 250, 242, 0.22);
+    --tint: rgba(250, 250, 242, 0.06);
+    --agent-bg: rgba(250, 250, 242, 0.1);
+    --ctl-bg: rgba(20, 37, 29, 0.94);
+    --ctl-line: rgba(250, 250, 242, 0.3);
+  }
+
+  html { scroll-padding-top: calc(env(safe-area-inset-top, 0px) + 1rem); }
+  html, body { margin: 0; background: var(--bg); }
+  body {
+    color: var(--ink);
+    font-family: "Alegreya Sans", "Gill Sans", "Trebuchet MS", sans-serif;
+    font-size: clamp(1.15rem, 1.05rem + 0.5vw, 1.35rem);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+
+  .col { max-width: 48rem; margin: 0 auto; padding: 0 1.5rem; }
+
+  h1, h2, h3, .num { font-family: "Alegreya", Garamond, "Iowan Old Style", Georgia, serif; }
+  h1 {
+    color: var(--head);
+    font-weight: 500;
+    font-size: clamp(2.8rem, 2rem + 4.4vw, 4.8rem);
+    line-height: 1.02;
+    letter-spacing: -0.01em;
+    margin: 0 0 0.7rem;
+  }
+  .dek { font-family: "Alegreya", Georgia, serif; font-style: italic; font-size: 1.25em; margin: 0 0 1.2rem; color: var(--nabawi-mid); }
+  :root[data-theme="dark"] .dek { color: var(--sand); }
+  @media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .dek { color: var(--sand); } }
+  .hint { font-size: 0.9rem; font-style: italic; opacity: 0.6; margin: 0; }
+
+  .hero { min-height: 100vh; min-height: 100svh; display: flex; flex-direction: column; padding: 20vh 1.5rem 2.5rem; padding-top: 20svh; box-sizing: border-box; }
+  .hero .col { flex: 1; display: flex; flex-direction: column; width: 100%; max-width: none; padding: 0; }
+  .hero h1 { font-size: min(31vh, 20vw); font-size: min(31svh, 20vw); line-height: 0.92; letter-spacing: -0.025em; margin: 0 0 1.6rem; }
+  .hero h1 .l3 { display: block; }
+  .hero .hint { margin-top: auto; padding-top: 1.5rem; }
+  @media (max-aspect-ratio: 1/1) {
+    .hero h1 { font-size: min(17vh, 24vw); font-size: min(17svh, 24vw); }
+    .hero h1 .l1, .hero h1 .l2 { display: block; }
+  }
+
+  h2 {
+    color: var(--head);
+    font-weight: 500;
+    font-size: clamp(2rem, 1.6rem + 2vw, 2.9rem);
+    line-height: 1.1;
+    margin: 0 0 1.6rem;
+  }
+  .num {
+    display: block;
+    color: var(--accent);
+    font-style: italic;
+    font-weight: 400;
+    font-size: 0.55em;
+    letter-spacing: 0.04em;
+    margin-bottom: 0.25rem;
+  }
+  h3 { color: var(--head); font-weight: 700; font-size: 1.35em; line-height: 1.2; margin: 2.6rem 0 0.8rem; }
+  h3.small {
+    font-family: "Alegreya Sans", sans-serif;
+    font-size: 0.85em;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-top: 0;
+  }
+  p { margin: 0 0 1.25rem; }
+  a { color: var(--link); text-decoration: none; }
+  a .w, a.plain { text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 0.18em; }
+  s .w { text-decoration: line-through; }
+  strong { font-weight: 700; }
+
+  .ornament {
+    text-align: center;
+    color: var(--accent);
+    font-family: "Alegreya Sans", Georgia, serif;
+    font-size: 1.7rem;
+    margin: 3.5rem 0;
+    letter-spacing: 0.6em;
+    padding-left: 0.6em;
+  }
+
+  /* Bands */
+  .band { position: relative; padding: 5rem 0; overflow: hidden; }
+  .band.tight-top { padding-top: 2rem; }
+  section.part + section.part { margin-top: 5.5rem; }
+
+  .band.case {
+    background: var(--nabawi-dark);
+    color: var(--mist);
+    --ink: var(--mist);
+    --head: var(--mist);
+    --accent: var(--pinecone);
+    --link: var(--sand);
+    --rule: rgba(250, 250, 242, 0.25);
+    font-family: "Alegreya", Georgia, serif;
+    font-size: 1.1em;
+    padding: 7rem 0;
+  }
+  .band.case::before {
+    content: "\2738";
+    position: absolute;
+    right: -4rem;
+    top: -3rem;
+    font-family: "Alegreya Sans", sans-serif;
+    font-size: 26rem;
+    line-height: 1;
+    color: var(--mist);
+    opacity: 0.05;
+    pointer-events: none;
+  }
+  .band.case .col { position: relative; }
+  .band.case h2 { font-size: clamp(2.3rem, 1.8rem + 2.6vw, 3.6rem); }
+  .band.case h3 { color: var(--sand); font-size: 1.15em; letter-spacing: 0.02em; }
+
+  .band.policy {
+    background: var(--arabica);
+    color: var(--kiswah);
+    --ink: var(--kiswah);
+    --head: var(--nabawi-dark);
+    --accent: var(--nabawi-mid);
+    --link: var(--nabawi-mid);
+    --rule: rgba(39, 93, 67, 0.25);
+    padding: 6rem 0;
+  }
+
+  /* Bios side by side */
+  .bios { display: grid; grid-template-columns: 1fr 1fr; gap: 2.2rem; margin-bottom: 1rem; }
+  .bio { font-size: 0.86em; line-height: 1.55; border-top: 3px solid var(--accent); padding-top: 1rem; }
+  .bio p { margin: 0; }
+  @media (max-width: 42rem) { .bios { grid-template-columns: 1fr; gap: 1.6rem; } }
+
+  /* Chat: bubbles grow as the text arrives */
+  .chat { display: flex; flex-direction: column; gap: 1.1rem; margin: 2rem 0 1rem; }
+  .msg { display: grid; grid-template-columns: 2rem minmax(0, auto); column-gap: 0.6rem; align-items: end; width: fit-content; max-width: 92%; }
+  .msg.me { align-self: flex-end; grid-template-columns: minmax(0, auto) 2rem; max-width: 86%; }
+  .msg.agent { align-self: flex-start; }
+  .msg > .who, .msg > .dots, .msg > .bubble, .msg > .meta { grid-column: 2; justify-self: start; }
+  .msg.me > .who, .msg.me > .dots, .msg.me > .bubble, .msg.me > .meta { grid-column: 1; justify-self: end; }
+  .who {
+    font-size: 0.74rem;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin: 0 0.5rem 0.35rem;
+  }
+  .js .who { display: none; }
+  .js .msg.show .who, .js .msg.thinking .who { display: block; }
+  .avatar {
+    display: none;
+    grid-row: 2;
+    align-self: end;
+    width: 2rem;
+    height: 2rem;
+    border-radius: 50%;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.05rem;
+    line-height: 1;
+    background: var(--agent-bg);
+  }
+  .msg.agent > .avatar { grid-column: 1; }
+  .msg.me > .avatar { grid-column: 2; background: var(--nabawi); }
+  .js .msg.show .avatar, .js .msg.thinking .avatar { display: flex; }
+  .meta { font-size: 0.7rem; letter-spacing: 0.02em; opacity: 0.75; margin: 0.3rem 0.5rem 0; }
+  .meta:empty { display: none; }
+  .meta .read { color: var(--link); opacity: 1; font-weight: 700; }
+  .bubble {
+    box-sizing: border-box;
+    padding: 0.9rem 1.2rem;
+    border-radius: 1.3rem;
+    font-size: 1em;
+    line-height: 1.55;
+  }
+  .bubble p { margin: 0; }
+  .bubble p + p { margin-top: 0.8rem; }
+  .js .bubble { display: none; }
+  .js .bubble p:not(.on) { display: none; }
+  .js .msg.show .bubble { display: block; animation: pop 0.18s ease-out; }
+  @keyframes pop { from { opacity: 0; transform: scale(0.94); } to { opacity: 1; transform: none; } }
+  .msg.me .bubble { background: var(--nabawi); color: #fff; border-bottom-right-radius: 0.35rem; transform-origin: bottom right; }
+  .msg.agent .bubble { background: var(--agent-bg); color: var(--ink); border-bottom-left-radius: 0.35rem; transform-origin: bottom left; }
+  /* Each line is laid out in advance at the bubble's final width, so words never jump between lines. */
+  .ln { display: block; white-space: nowrap; overflow: hidden; min-height: 1.55em; animation: lnIn 0.16s ease-out; }
+  @keyframes lnIn { from { opacity: 0; max-height: 0; transform: translateY(3px); } to { opacity: 1; max-height: 2em; transform: none; } }
+  .bubble p.move > span:not(.lead) { display: block; }
+  .bubble .ln.cur::after {
+    content: "";
+    display: inline-block;
+    width: 0;
+    height: 1em;
+    margin-right: -2px;
+    border-right: 2px solid currentColor;
+    vertical-align: -0.12em;
+    animation: blink 0.8s steps(1) infinite;
+  }
+  @keyframes blink { 50% { opacity: 0; } }
+
+  .dots {
+    display: none;
+    gap: 0.3rem;
+    padding: 0.85rem 1.05rem;
+    border-radius: 1.3rem;
+    border-bottom-left-radius: 0.35rem;
+    background: var(--agent-bg);
+  }
+  .msg.thinking .dots { display: inline-flex; }
+  .dots i { width: 0.5rem; height: 0.5rem; border-radius: 50%; background: var(--ink); opacity: 0.35; animation: dot 1s infinite; }
+  .dots i:nth-child(2) { animation-delay: 0.15s; }
+  .dots i:nth-child(3) { animation-delay: 0.3s; }
+  @keyframes dot { 0%, 60%, 100% { opacity: 0.25; transform: none; } 30% { opacity: 0.9; transform: translateY(-3px); } }
+
+
+  /* Measure */
+  section.part > p, .band > .col > p { max-width: 66ch; }
+
+  /* Reading time and progress */
+  .readtime { font-size: 0.85rem; letter-spacing: 0.1em; text-transform: uppercase; opacity: 0.7; margin: 0 0 1.4rem; }
+  .readtime:empty { display: none; }
+  .progress { position: fixed; top: env(safe-area-inset-top, 0px); left: 0; right: 0; height: 3px; z-index: 45; background: var(--pinecone); transform: scaleX(0); transform-origin: 0 50%; pointer-events: none; }
+
+  /* Stat strips */
+  .stats { list-style: none; margin: 2.2rem 0; padding: 1.6rem 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(11rem, 1fr)); gap: 1.6rem; border-top: 1px solid var(--rule); border-bottom: 1px solid var(--rule); }
+  .stats .big { display: block; font-family: "Alegreya", Georgia, serif; font-weight: 700; font-size: clamp(2.4rem, 2rem + 2vw, 3.4rem); line-height: 1; color: var(--nabawi); }
+  .stats .big small { font-size: 0.38em; font-weight: 500; font-style: italic; margin-right: 0.15em; }
+  .stats .cap { display: block; margin-top: 0.55rem; font-size: 0.85rem; line-height: 1.4; }
+  :root[data-theme="dark"] .stats .big { color: var(--pinecone); }
+  @media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .stats .big { color: var(--pinecone); } }
+  .band.case .stats .big { color: var(--pinecone); }
+
+  /* Program data vs People data */
+  .compare { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin: 1.8rem 0 0.8rem; }
+  @media (max-width: 40rem) { .compare { grid-template-columns: 1fr; } }
+  .cmp { border-radius: 8px; padding: 1.4rem 1.5rem 1.2rem; }
+  .cmp p { margin: 0; }
+  .cmp .k { font-size: 0.78rem; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; }
+  .cmp .n { font-family: "Alegreya", Georgia, serif; font-style: italic; font-size: 2.2rem; line-height: 1.1; margin: 0.3rem 0 0.8rem; }
+  .cmp ul { list-style: none; margin: 0; padding: 0; }
+  .cmp li { position: relative; padding-left: 1.6rem; margin-bottom: 0.5rem; }
+  .cmp li::before { content: "\2738"; position: absolute; left: 0; font-size: 0.85em; top: 0.12em; }
+  .cmp.program { border: 2px solid var(--rule); }
+  .cmp.program .k, .cmp.program li::before { color: var(--accent); }
+  .cmp.people { background: var(--nabawi); color: #fff; }
+  .cmp.people .k, .cmp.people li::before { color: var(--sand); }
+  .compare-note { font-style: italic; }
+
+  /* Agent "moves" as cards */
+  .bubble { counter-reset: mv; }
+  .bubble p.move { counter-increment: mv; position: relative; padding: 0.75rem 1rem 0.75rem 3.1rem; background: rgba(39, 93, 67, 0.09); border-left: 3px solid var(--nabawi); border-radius: 0 0.8rem 0.8rem 0; }
+  .bubble p.move::before { content: counter(mv); position: absolute; left: 0.9rem; top: 0.55rem; font: italic 700 1.6rem/1 "Alegreya", Georgia, serif; color: var(--nabawi-mid); }
+  .bubble p.move .lead { display: block; font-weight: 700; margin-bottom: 0.15rem; }
+  :root[data-theme="dark"] .bubble p.move { background: rgba(250, 250, 242, 0.07); border-left-color: var(--sand); }
+  :root[data-theme="dark"] .bubble p.move::before { color: var(--pinecone); }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) .bubble p.move { background: rgba(250, 250, 242, 0.07); border-left-color: var(--sand); }
+    :root:not([data-theme="light"]) .bubble p.move::before { color: var(--pinecone); }
+  }
+
+  /* Case study: flow, big number, checklist */
+  .flow { list-style: none; margin: 1.6rem 0 1.4rem; padding: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(9.5rem, 1fr)); gap: 0.9rem; counter-reset: st; }
+  .flow li { counter-increment: st; background: rgba(250, 250, 242, 0.07); border: 1px solid rgba(250, 250, 242, 0.2); border-radius: 8px; padding: 2.6rem 1rem 1rem; position: relative; font-size: 0.92em; line-height: 1.35; }
+  .flow li::before { content: counter(st); position: absolute; top: 0.8rem; left: 1rem; width: 1.6rem; height: 1.6rem; border-radius: 50%; background: var(--pinecone); color: var(--nabawi-dark); font: 700 0.95rem/1.6rem "Alegreya Sans", sans-serif; text-align: center; }
+  .bignum { display: flex; align-items: baseline; gap: 0.9rem; margin: 0 0 1.6rem; }
+  .bignum .big { font-family: "Alegreya", Georgia, serif; font-weight: 700; font-size: 3.4rem; line-height: 1; color: var(--pinecone); }
+  .bignum .cap { font-size: 0.9rem; line-height: 1.35; max-width: 16rem; }
+  .checks { list-style: none; margin: 0.4rem 0 1.4rem; padding: 0; }
+  .checks li { position: relative; padding: 0.55rem 0 0.55rem 2.1rem; border-bottom: 1px solid rgba(250, 250, 242, 0.16); }
+  .checks li:last-child { border-bottom: 0; }
+  .checks li::before { content: "\2713"; position: absolute; left: 0; top: 0.5rem; color: var(--sun); font-weight: 700; }
+
+  /* Pull quote */
+  .pullquote { max-width: 40rem; margin: 4.2rem auto; padding: 2.6rem 0 2.4rem; text-align: center; position: relative; border-top: 1px solid var(--rule); border-bottom: 1px solid var(--rule); }
+  .pullquote::before { content: "\2738"; position: absolute; top: -0.85rem; left: 50%; transform: translateX(-50%); padding: 0 0.9rem; background: var(--bg); color: var(--pinecone); font-size: 1.3rem; line-height: 1.2rem; }
+  .pullquote p { max-width: none; margin: 0; font-family: "Alegreya", Georgia, serif; font-style: italic; font-weight: 500; font-size: clamp(1.9rem, 1.4rem + 2.4vw, 3.1rem); line-height: 1.15; color: var(--head); }
+
+  /* Highlighter: sweeps in as a line scrolls into view */
+  mark.hl {
+    color: inherit;
+    background-color: transparent;
+    background-image: linear-gradient(120deg, rgba(247, 175, 41, 0.62), rgba(247, 175, 41, 0.62));
+    background-repeat: no-repeat;
+    background-size: 0% 42%;
+    background-position: 0 82%;
+    transition: background-size 0.9s cubic-bezier(0.4, 0, 0.2, 1);
+    padding: 0 3px;
+    margin: 0 -3px;
+    -webkit-box-decoration-break: clone;
+    box-decoration-break: clone;
+  }
+  mark.hl.in { background-size: 100% 42%; }
+  :root[data-theme="dark"] mark.hl { background-image: linear-gradient(120deg, rgba(247, 175, 41, 0.42), rgba(247, 175, 41, 0.42)); }
+  @media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) mark.hl { background-image: linear-gradient(120deg, rgba(247, 175, 41, 0.42), rgba(247, 175, 41, 0.42)); } }
+  @media (prefers-reduced-motion: reduce) { mark.hl { transition: none; } }
+
+  /* Footnote pop-ups */
+  .fnpop { position: fixed; z-index: 38; width: min(24rem, calc(100vw - 1.5rem)); box-sizing: border-box; background: var(--nabawi-dark); color: var(--mist); padding: 1rem 1.15rem; border-radius: 8px; box-shadow: 0 14px 36px rgba(0, 0, 0, 0.28); font-family: "Alegreya Sans", sans-serif; font-size: 0.88rem; line-height: 1.5; }
+  .fnpop[hidden] { display: none; }
+  .fnpop .fnnum { display: block; font-size: 0.7rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--pinecone); margin-bottom: 0.4rem; }
+  .fnpop a { color: var(--sand); text-decoration: underline; }
+  .fnpop .fnjump { display: inline-block; margin-top: 0.6rem; font-size: 0.8rem; }
+
+  /* Sarah's questions */
+  .sarah { margin: 2rem 0; padding: 0 0 0 1.2rem; border-left: 3px solid var(--sun); }
+  .sarah p { font-family: "Alegreya", Georgia, serif; font-style: italic; font-size: 1.2em; margin: 0 0 0.7rem; }
+
+  /* Reflection: end-of-chapter section, in the manner of a textbook */
+  .reflect { max-width: 66ch; margin: 4rem 0 0; padding-top: 1.1rem; border-top: 4px double rgba(53, 53, 53, 0.5); }
+  .reflect-label { font-family: "Alegreya Sans", sans-serif; font-size: 0.8rem; font-weight: 700; letter-spacing: 0.22em; text-transform: uppercase; color: var(--nabawi-mid); margin: 0 0 1.3rem; }
+  .reflect ol { list-style: none; counter-reset: q; margin: 0; padding: 0; }
+  .reflect li { counter-increment: q; position: relative; padding-left: 2.6rem; margin: 0 0 1.5rem; }
+  .reflect li::before { content: counter(q); position: absolute; left: 0; top: -0.08em; font-family: "Alegreya", Georgia, serif; font-style: italic; font-size: 1.8rem; line-height: 1; color: var(--nabawi-mid); }
+  .reflect .q { display: block; font-family: "Alegreya", Georgia, serif; font-weight: 700; font-size: 1.1em; line-height: 1.35; color: var(--head); }
+  .reflect .cmt { display: block; margin-top: 0.45rem; font-size: 0.9em; line-height: 1.6; }
+  .reflect-close { font-style: italic; font-size: 0.92em; margin: 0.4rem 0 0 2.6rem; }
+  :root[data-theme="dark"] .reflect { border-top-color: rgba(250, 250, 242, 0.45); }
+  :root[data-theme="dark"] .reflect-label, :root[data-theme="dark"] .reflect li::before { color: var(--pinecone); }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) .reflect { border-top-color: rgba(250, 250, 242, 0.45); }
+    :root:not([data-theme="light"]) .reflect-label, :root:not([data-theme="light"]) .reflect li::before { color: var(--pinecone); }
+  }
+
+  /* Data Charter figure beside text */
+  .with-fig { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.05fr); gap: 2rem; align-items: center; margin: 0 0 1.25rem; }
+  .with-fig > p { margin: 0; }
+  @media (max-width: 44rem) { .with-fig { grid-template-columns: 1fr; gap: 1.4rem; } }
+  .site-shot { margin: 0; }
+  .site-shot a { display: block; }
+  .site-shot figcaption { font-size: 0.72rem; font-style: italic; opacity: 0.65; margin-top: 0.6rem; }
+  .shot {
+    container-type: inline-size;
+    background: var(--mist);
+    color: var(--kiswah);
+    border: 1px solid rgba(53, 53, 53, 0.22);
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 12px 32px rgba(28, 68, 51, 0.22);
+    font-family: "Alegreya", Georgia, serif;
+  }
+  .shot p { margin: 0; }
+  .chrome { display: flex; align-items: center; gap: 1.2cqw; padding: 1.6cqw 2.2cqw; background: #ECEBDD; border-bottom: 1px solid rgba(53, 53, 53, 0.15); }
+  .chrome i { width: 1.6cqw; height: 1.6cqw; border-radius: 50%; background: rgba(53, 53, 53, 0.25); }
+  .chrome span { margin-left: 2cqw; flex: 1; background: var(--mist); border-radius: 2cqw; padding: 0.7cqw 2cqw; font: 400 1.5cqw "Alegreya Sans", sans-serif; color: rgba(53, 53, 53, 0.7); }
+  .pg { aspect-ratio: 1151 / 760; display: flex; flex-direction: column; }
+  .shot-top { display: flex; justify-content: space-between; align-items: center; padding: 2.2cqw 4.5cqw; border-bottom: 1px solid rgba(39, 93, 67, 0.28); }
+  .shot-top b { font: 700 1.45cqw "Alegreya Sans", sans-serif; letter-spacing: 0.14em; text-transform: uppercase; color: var(--nabawi); }
+  .shot-top u { text-decoration: none; background: var(--nabawi); color: var(--mist); font: 700 1.3cqw "Alegreya Sans", sans-serif; letter-spacing: 0.12em; text-transform: uppercase; padding: 1cqw 2cqw; }
+  .shot-hero { flex: 1; position: relative; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; }
+  .shot-data { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; font: 700 27cqw/1 "Alegreya", serif; color: transparent; -webkit-text-stroke: 0.14cqw rgba(39, 93, 67, 0.3); letter-spacing: 0.02em; }
+  .shot-k { position: relative; font: 700 1.3cqw "Alegreya Sans", sans-serif; letter-spacing: 0.2em; text-transform: uppercase; color: var(--nabawi); margin-bottom: 2cqw; }
+  .shot-t { position: relative; font: 700 8.4cqw/1.02 "Alegreya", serif; color: var(--kiswah); margin-bottom: 2cqw; }
+  .shot-t em { color: var(--nabawi); font-style: italic; }
+  .shot-s { position: relative; font: italic 400 2.3cqw/1.5 "Alegreya", serif; }
+  .shot-s strong { font-style: normal; color: var(--nabawi); font-weight: 700; }
+  .shot-r { position: relative; font: 700 1.3cqw "Alegreya Sans", sans-serif; letter-spacing: 0.16em; text-transform: uppercase; margin-top: 3cqw; }
+  .shot-r::before { content: ""; display: block; width: 1px; height: 4cqw; background: rgba(53, 53, 53, 0.4); margin: 0 auto 1.2cqw; }
+
+  /* Four rules */
+  .policy-title { font-size: 1.7em; margin: 0 0 0.3rem; }
+  .rules { list-style: none; counter-reset: r; padding: 0; margin: 1.6rem 0 2.4rem; display: grid; gap: 1rem; }
+  .rules li {
+    counter-increment: r;
+    display: grid;
+    grid-template-columns: 3.2rem 1fr;
+    gap: 0.4rem;
+    padding: 1.2rem 1.4rem;
+    background: var(--mist);
+    border-left: 5px solid var(--nabawi);
+    border-radius: 0 8px 8px 0;
+  }
+  .rules li::before {
+    content: counter(r);
+    font-family: "Alegreya", Georgia, serif;
+    font-style: italic;
+    font-size: 2.6rem;
+    line-height: 1;
+    color: var(--nabawi-mid);
+  }
+  .rules li > div > p { margin: 0; }
+
+  /* Brand bullets */
+  ul.star { list-style: none; padding: 0; margin: 1.2rem 0 1.5rem; }
+  ul.star li { position: relative; padding-left: 1.9rem; margin-bottom: 1rem; }
+  ul.star li::before { content: "\2738"; position: absolute; left: 0; top: 0.05em; color: var(--accent); }
+
+  sup.fn { font-size: 0.65em; line-height: 0; vertical-align: super; font-weight: 700; margin-left: 0.08em; }
+  sup.fn a .w { text-decoration: none; }
+
+  .notes { margin-top: 6rem; padding-top: 1.6rem; border-top: 1px solid var(--rule); font-size: 0.82em; line-height: 1.5; }
+  .notes ol { padding-left: 1.4rem; margin: 0; }
+  .notes li { margin-bottom: 0.8rem; }
+  .notes li:target { background: var(--tint); }
+
+  /* Each word is moved on its own, depending on where it sits in the viewport. */
+  .w { display: inline-block; transform-origin: 50% 50%; }
+
+  /* Menu */
+  .menu-btn {
+    position: fixed;
+    top: calc(env(safe-area-inset-top, 0px) + 0.8rem);
+    right: 1rem;
+    z-index: 40;
+    width: 2.9rem;
+    height: 2.9rem;
+    border-radius: 50%;
+    border: 1px solid var(--ctl-line);
+    background: var(--ctl-bg);
+    -webkit-backdrop-filter: blur(6px);
+    backdrop-filter: blur(6px);
+    color: var(--ink);
+    cursor: pointer;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.28rem;
+  }
+  .menu-btn span { display: block; width: 1.15rem; height: 2px; background: var(--kiswah); border-radius: 2px; transition: transform 0.25s, opacity 0.2s; }
+  :root[data-theme="dark"] .menu-btn span { background: var(--mist); }
+  @media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .menu-btn span { background: var(--mist); } }
+  .menu-btn[aria-expanded="true"] span:nth-child(1) { transform: translateY(0.4rem) rotate(45deg); }
+  .menu-btn[aria-expanded="true"] span:nth-child(2) { opacity: 0; }
+  .menu-btn[aria-expanded="true"] span:nth-child(3) { transform: translateY(-0.4rem) rotate(-45deg); }
+  .menu-btn:focus-visible, .menu a:focus-visible { outline: 2px solid var(--pinecone); outline-offset: 3px; }
+
+  .scrim { position: fixed; inset: 0; z-index: 30; background: rgba(0, 0, 0, 0.35); opacity: 0; pointer-events: none; transition: opacity 0.3s; }
+  .scrim.open { opacity: 1; pointer-events: auto; }
+
+  .menu {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 35;
+    width: min(22rem, 88vw);
+    box-sizing: border-box;
+    background: var(--nabawi-dark);
+    color: var(--mist);
+    padding: calc(env(safe-area-inset-top, 0px) + 5rem) 1.8rem calc(env(safe-area-inset-bottom, 0px) + 2rem);
+    overflow-y: auto;
+    transform: translateX(100%);
+    visibility: hidden;
+    transition: transform 0.3s ease, visibility 0.3s;
+  }
+  .menu.open { transform: none; visibility: visible; }
+  .menu-title { font-family: "Alegreya", Georgia, serif; font-style: italic; color: var(--sand); margin: 0 0 1.4rem; font-size: 1.1rem; }
+  .menu ol { list-style: none; margin: 0; padding: 0; }
+  .menu li { margin: 0; }
+  .menu a {
+    display: block;
+    position: relative;
+    font-family: "Alegreya", Georgia, serif;
+    font-size: 1.35rem;
+    line-height: 1.25;
+    color: var(--mist);
+    padding: 0.7rem 0 0.7rem 1.6rem;
+    border-bottom: 1px solid rgba(250, 250, 242, 0.14);
+  }
+  .menu a.active { color: var(--pinecone); }
+  .menu a.active::before { content: "\2738"; position: absolute; left: 0; top: 0.78rem; font-size: 0.9rem; }
+
+  @media (prefers-reduced-motion: reduce) {
+    .menu, .scrim, .menu-btn span { transition: none; }
+    .js .msg.show .bubble { animation: none; }
+  }
+</style>
+<script>document.documentElement.classList.add("js");</script>
+</head>
+<body>
+
+<div class="progress" id="progress" aria-hidden="true"></div>
+
+<button class="menu-btn" id="menuBtn" type="button" aria-label="Open navigation" aria-expanded="false" aria-controls="menu"><span></span><span></span><span></span></button>
+<div class="scrim" id="scrim"></div>
+<nav class="menu" id="menu" aria-label="Sections" inert>
+  <p class="menu-title">AI &amp; Human Services</p>
+  <ol>
+    <li><a href="#fail">1. How to fail with AI</a></li>
+    <li><a href="#goal">2. AI is not a goal</a></li>
+    <li><a href="#fear">3. You’re not paranoid</a></li>
+    <li><a href="#data">4. Fix data or skip AI</a></li>
+    <li><a href="#case-study">Case study: Refugee sponsorship</a></li>
+    <li><a href="#ai-policy">5. AI policy sample</a></li>
+    <li><a href="#stewardship">6. Stewardship as sacred trust</a></li>
+    <li><a href="#authors">Authors</a></li>
+    <li><a href="#notes">Notes</a></li>
+  </ol>
+</nav>
+
+<header class="hero">
+  <div class="col">
+    <h1 data-fx><span class="l1">AI &amp;</span> <span class="l2">Human</span> <span class="l3">Services</span></h1>
+    <p class="dek" data-fx>Ben Weinlick and Omar Yaqub</p>
+    <p class="readtime" id="readtime"></p>
+    <p class="hint">Scroll to begin</p>
+  </div>
+</header>
+
+<div class="band tight-top">
+  <div class="col">
+
+    <!-- 1 -->
+    <section class="part" id="fail">
+      <h2 data-fx><span class="num">1</span>How to fail with AI</h2>
+
+      <div class="chat" data-chat>
+        <div class="msg me">
+          <span class="who">🍊 Me</span>
+          <div class="bubble">
+            <p>How can I fail spectacularly with AI? I want any attempt to use AI to feel superficial and fizzle. Respond as if you were a seasoned corporate IT head with decades of experience.</p>
+          </div>
+        </div>
+        <div class="msg agent">
+          <span class="who">🤖 Agent</span>
+          <div class="dots" aria-hidden="true"><i></i><i></i><i></i></div>
+          <div class="bubble">
+            <p>Good news! Failing in this way doesn’t require additional work, just maintaining the status quo should allow you to not only fail, but fail spectacularly.</p>
+            <p>You’ve also spotted that failure needs a technology partner. Doomsaying wears thin. A superficial embrace is better: you get credit for innovating without conceding that anything must change.</p>
+            <p>Start by limiting AI to administrative functions like communications and report writing. Quadruple your newsletter and grant application output. Resist bringing AI anywhere near frontline services, on the grounds of safety.</p>
+            <p>Would you like me to tell you how you can frustrate clients, staff and funders?</p>
+            <p>…</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 2 -->
+    <section class="part" id="goal">
+      <h2 data-fx><span class="num">2</span>AI is not a goal</h2>
+
+      <p data-fx>AI is a means, not a goal.</p>
+
+      <p data-fx>Most organizations have approached AI as an add-on: a set of new features, a staff training session, a line in the annual report. It feels like progress, but it mostly entrenches existing habits. Our sector rewards busyness and reporting, so the first wave of AI in human services has produced more grant applications, more newsletters and more reports, all with better polish.</p>
+
+      <blockquote class="pullquote"><p data-fx>AI has made us faster at the things we were already counting.</p></blockquote>
+
+      <p data-fx>What our sector rewards, overwhelmingly, is busyness and reporting. Added uncritically, AI accelerates feeling overwhelmed and pushing out more uncritical content that’ll be left unread. That is why the first wave of AI in human services has mostly produced more grant applications, more newsletters, and more reports all be it with more polish. AI has made us faster at the things we were already counting.</p>
+
+      <p data-fx>We’ve been asking AI to help us do what we already do. We need to ask whether what we do, and how we do it, is right in the first place.</p>
+
+      <aside class="reflect" aria-label="Reflection">
+        <p class="reflect-label" data-fx>Reflection</p>
+        <ol>
+          <li><span class="q" data-fx><mark class="hl">If we were starting from scratch, how would we serve people with the tools available today?</mark></span><span class="cmt" data-fx>We need to critically assess how our intake process, our client reviews, our assessments, etc operate. Almost nothing we use was purposefully designed: it was accreted, over time without questioning. Everything we ask of someone was in response to some well meaning funder’s request and then another’s. Taken together, do they still make sense? Much of what we would change has nothing to do with new technology; it’s about whose needs are centered (clients or funders). AI did not create the problem of interrogative intakes, disconnected data, and making clients repeat their trauma, and AI will not solve it. What it may do is remove our last excuse for living with it.</span></li>
+          <li><span class="q" data-fx><mark class="hl">What do our clients and staff complain about that we can now do something about?</mark></span><span class="cmt" data-fx>Clients tell us they repeat their story at every door, that they do not understand what’s being asked, that they waited and heard nothing. Staff tell us they enter the same information three times, that paperwork crowds out the work, that they refer someone and never learn what happened. None of this is new. We mostly stopped hearing it, because a complaint you cannot act on becomes background noise. What has changed is not the list. It is that a few items on it have moved from impossible to merely difficult. Those items are your actual agenda.</span></li>
+        </ol>
+        <p class="reflect-close" data-fx>Don’t start by asking how to add AI to your processes. Start by asking how the system should work, for clients and for staff, and what new tools make possible.</p>
+      </aside>
+    </section>
+
+    <!-- 3 -->
+    <section class="part" id="fear">
+      <h2 data-fx><span class="num">3</span>You’re not paranoid</h2>
+
+      <p data-fx>Fear of AI is warranted and reasonable.</p>
+
+      <p data-fx>Asking tough questions will not make the fear go away. Tell people that AI will help decide who is allowed to immigrate, who qualifies for emergency funds or who gets into a program, and alarm bells go off. That reaction is more than a change management problem to be solved with a webinar. It is moral perception expressing what argument cannot: the sense that something sacred is being handled by something that cannot care. When Sarah walks in seeking help for the first time and tells a worker why she cannot go home tonight, she is not submitting an input. She is extending trust, hoping someone who cares will receive it. A system may score her case faster and more consistently, but it cannot carry the moral weight.</p>
+
+      <p data-fx>Whose interest does efficiency serve? By automating moral decisions are we losing part of our soul? Do our clients want to be processed or listened to? Are we demoting the wisdom of our team? What accountability do the systems we build have, what recourse is there to algorithmic choices?</p>
+
+      <p data-fx>The costs of error are not shared evenly. A bad recommendation in retail is a wasted purchase. In human services, a mistake about eligibility is a critical benefit denied. History supports the distrust. Automation in welfare systems has often been built to restrict rather than to serve.<sup class="fn"><a id="ref-1" href="#note-1">1</a></sup> Australia’s Robodebt scheme raised unlawful debts against hundreds of thousands of welfare recipients.<sup class="fn"><a id="ref-2" href="#note-2">2</a></sup> Michigan’s MiDAS system wrongly accused tens of thousands of people of unemployment fraud.<sup class="fn"><a id="ref-3" href="#note-3">3</a></sup> The Dutch childcare benefits scandal drove thousands of families, many targeted because of their ethnicity or dual nationality, into financial ruin and brought down a government.<sup class="fn"><a id="ref-4" href="#note-4">4</a></sup> None of these systems were rogue. Each was designed, funded and defended by institutions that wanted fraud found cheaply and at scale. Systems built on our records inherit our biases and entrench injustice.<sup class="fn"><a id="ref-5" href="#note-5">5</a></sup></p>
+
+      <blockquote class="pullquote" aria-hidden="true"><p data-fx>Are we losing part of our soul?</p></blockquote>
+
+      <p data-fx>Dysfunction has been an accidental protective factor from algorithmic decision making. Silos and poor data have shielded our clients from potential AI use, but how long can this last? More importantly, are we righteously protecting people from the perceived threat of AI or being complacent with a presently dysfunctional status quo, perhaps it is both.</p>
+
+      <aside class="reflect" aria-label="Reflection">
+        <p class="reflect-label" data-fx>Reflection</p>
+        <ol>
+          <li><span class="q" data-fx>Name one decision your organization makes about who gets in, who waits, and <mark class="hl">who is turned away</mark>.</span></li>
+          <li><span class="q" data-fx>Who would notice if a system started making the decision, and <mark class="hl">what would they notice?</mark></span></li>
+        </ol>
+      </aside>
+    </section>
+
+    <!-- 4 -->
+    <section class="part" id="data">
+      <h2 data-fx><span class="num">4</span>Fix data or skip AI</h2>
+
+      <div class="chat" data-chat>
+        <div class="msg me">
+          <span class="who">🍊 Me</span>
+          <div class="bubble">
+            <p>I’d like to frustrate the people we serve, burn out my team and leave my funders bewildered. What’s the move? How can I entrench AI resistance into the DNA of my organization?</p>
+          </div>
+        </div>
+        <div class="msg agent">
+          <span class="who">🤖 Agent</span>
+          <div class="dots" aria-hidden="true"><i></i><i></i><i></i></div>
+          <div class="bubble">
+            <p>The key to frustrating funders, workers and clients is data, specifically data collection. Thankfully, the status quo has already done the heavy lifting for you. Carrying on as usual is enough. Here are the key moves to ensuring this is entrenched…</p>
+            <p class="move">Move one: measure extractively. Build your intake form backward from the reporting requirements, and make every field mandatory. Ask the woman at your door about her income, status, household and history, ideally while she is in crisis, ideally before you offer her anything. The data exists to be collected, not to be read.</p>
+            <p class="move">Move two: treat data as compliance. Make it a quarterly burden or, better, an annual scramble. Your team will reconstruct from memory, and AI will turn almost nothing into a polished report, so the gap between what you did and what you claim becomes invisible to everyone, including you.</p>
+            <p class="move">Move three: collect in silos. Give each program its own system on its own renewal cycle; interoperability creates accountability. A client at your third program should tell her story a third time, and no one should see it is the same story. If you must use AI, layer it on each silo separately so no larger pattern emerges.</p>
+            <p>Do this consistently and your funders won’t know what they’re supporting, your frontline workers will want to quit, and your clients will feel interrogated and dismissed.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="ornament" data-fx aria-hidden="true">✸</div>
+
+      <p data-fx>Let’s return to Sarah, a mother of 3, trying to flee abuse, coming to you seeking help, you can see that she wants to break down in tears, you’d like to close your laptop, offer her tea, and sit beside her and build her trust, but the bureaucracy, the waiting line of people means you must persist with a series of questions…</p>
+
+      <div class="sarah">
+        <p data-fx>“Sarah, how much money do you have in your account”</p>
+        <p data-fx>“Sarah, what’s the nature of the abuse”</p>
+        <p data-fx>“Sarah, have you contemplated suicide?”</p>
+      </div>
+
+      <p data-fx>After thirty minutes of asking Sarah questions you realize she doesn’t qualify for your program and you have to send her off somewhere else. You don’t know if she’ll go. You don’t know why you stay in your job, and you still have more reporting to do after she leaves.</p>
+
+      <p data-fx>Despite this, your data doesn’t tell you anything useful. The data was never for you, nor was it for Sarah, it was for a funder, a funder who receives it as a stale data point a year from now, and who will probably never read the report associated with it.</p>
+
+      <h3 data-fx>The System is Already Broken</h3>
+
+      <p data-fx>The system is already broken. People tell the same story again and again without resolution. Frontline workers spend their time trying to help vulnerable people navigate increasingly complex problems, but this is not what burns them out. They spend just ~20% of their time interacting with clients.<sup class="fn"><a id="ref-6" href="#note-6">6</a></sup> The rest of their time is trapped in admin, paperwork, and oppressive systems that burns them out faster than trauma and crisis care.</p>
+
+      <p data-fx>The general way the sector collects data is antithetical to the outcomes we want to achieve. Despite being relational by nature, we default to interrogative methods of intake.</p>
+
+      <h3 data-fx>The Alternative</h3>
+
+      <p data-fx>Between us we have built tools that put people at the center of intake, assessment and planning, because data was not working for us or the people we serve. Ben led the team behind MyCompass Planning, which emerged from Skills Society, a tool that puts clients in charge of their journey through the system. Omar co-founded Flourishing Systems, whose Transform platform offers trauma-informed case management, reporting, and omni-channel communication for the social sector.</p>
+
+      <p data-fx>This has made our teams happier, freed up time to be better spent (up to 20%), and also given funders better insights than they’ve ever had.</p>
+
+      <blockquote class="pullquote" aria-hidden="true"><p data-fx>The way the sector collects data is antithetical to the outcomes we want to achieve.</p></blockquote>
+
+      <p data-fx>What we also learned is that a new tool does not undo years of muscle memory from oppressive data systems. People often want to make the new tools behave like the old ones; they assume every question they used to ask is still mandatory. No one had given them the chance to imagine working differently: asking only what is essential, making seamless referrals, or proactively informing clients about services through well timed automations.</p>
+
+      <div class="with-fig">
+        <p data-fx>What this looks like in practice is skipping interrogative assessments for clients who have already been assessed by a partner org, waiting for the right time to ask questions by text or voice note, letting clients know in their own language they prequalify for a program, and giving funders real time data on how different programs interact and seeing what’s happening in real-time at a neighbourhood and human level. Those lessons became the People-First Data Charter (<a href="https://datacharter.ca/">DataCharter.ca</a>), with resources for frontline agencies and a companion for funders.</p>
+
+        <figure class="site-shot">
+          <a href="https://datacharter.ca/" aria-label="Preview of the datacharter.ca homepage: Make Data Work for People">
+            <div class="shot" aria-hidden="true">
+              <div class="chrome"><i></i><i></i><i></i><span>datacharter.ca</span></div>
+              <div class="pg">
+                <div class="shot-top"><b>IslamicFamily × Flourishing Systems</b><u>Sign the Charter</u></div>
+                <div class="shot-hero">
+                  <div class="shot-data">DATA</div>
+                  <p class="shot-k">A Data Justice Initiative</p>
+                  <p class="shot-t">Make Data<br>Work for <em>People</em></p>
+                  <p class="shot-s">Practical ways to ensure social service data<br><strong>meaningfully drives outcomes and insights.</strong></p>
+                  <p class="shot-r">Read the charters</p>
+                </div>
+              </div>
+            </div>
+          </a>
+          <figcaption>datacharter.ca, the People-First Data Charter</figcaption>
+        </figure>
+      </div>
+
+      <h3 data-fx>Program data vs People data</h3>
+
+      <p data-fx>Almost everything our sector collects is program data. A grant arrives with questions, the questions become fields, and the fields become an intake form. The focus is collecting data so that we can show the success of a program, not remove steps for people, or trying to understand them and their whole situation. A woman who goes to four programs, employment, counselling, financial aid, and a food bank is four different data points, not a single person with holistic needs. Her record is fragmented, and shaped around what is wrong with her. It doesn’t show her progress (or failure) through systems. It cannot tell her how long she will wait or what happens next, because it was never built to tell her anything.</p>
+
+      <div class="compare">
+        <div class="cmp program">
+          <p class="k">Program data</p>
+          <p class="n">1 question</p>
+          <ul><li>What did you do with our money?</li></ul>
+        </div>
+        <div class="cmp people">
+          <p class="k">People data</p>
+          <p class="n">3 questions</p>
+          <ul><li>What are your (measurable) goals?</li><li>Where are you now?</li><li>What’s (not) working?</li></ul>
+        </div>
+      </div>
+      <p class="compare-note" data-fx>The funder’s question can be derived from these, but not the reverse.</p>
+
+      <p data-fx><strong>People data</strong> is one record that follows her across programs and time. It holds her goals in her own words (rarely housing, usually stability for her children), what moved, what we promised and whether we delivered, and where we referred her. It also records the exits we currently ignore: who we turned away and who stopped coming.</p>
+
+      <p data-fx>This means less collection, not more; most fields cannot survive the question of whether anyone will use the answer to help her. And it does not mean refusing to report. Report from the record. Do not build the record from the report.</p>
+
+      <p data-fx>There is a cost. A single record of a vulnerable person’s life is more useful than fragments, and more dangerous. Without data mobility, meaningful consent and a firewall against encroachment, it is just a better surveillance file. Data governance, rooted in data justice, is not an add-on; it is the condition of doing this at all.</p>
+
+      <p data-fx>And the sequence matters. AI learns from the record of what we did and what happened next, program data is not that record. Fix the data and the tools become useful. Apply AI first and you have a faster broken system.</p>
+
+      <aside class="reflect" aria-label="Reflection">
+        <p class="reflect-label" data-fx>Reflection</p>
+        <ol>
+          <li><span class="q" data-fx>Choose one question from your intake form. <mark class="hl">How does the answer help the person who gave it?</mark> If no one, what would you lose by deleting it?</span></li>
+          <li><span class="q" data-fx>How could the use of AI for automation <mark class="hl">reduce the work</mark> expected from frontline and support clients?</span></li>
+        </ol>
+      </aside>
+    </section>
+
+  </div>
+</div>
+
+<!-- Case study -->
+<div class="band case" id="case-study">
+  <div class="col">
+    <h2 data-fx><span class="num">Case Study</span>Adjudicating Refugee Sponsorship</h2>
+
+    <p data-fx>We started out thinking we’d never use AI to make major decisions, but when confronted with another year of trying to train volunteers with the excruciating tasks of assessing who we prioritize we paused, and realized that our humanity wasn’t in getting people to score to a rubric, our humanity was questioning systems, and asking how we can serve better.</p>
+
+    <div class="ornament" data-fx aria-hidden="true">✸</div>
+
+    <p data-fx>Refugee sponsorship helps make families whole, and it has made IslamicFamily who we are. It is also emotionally heavy, time consuming and entirely unfunded. Recruiting, training and calibrating volunteer panels to read heartwrenching cases took months and cost volunteers dearly. Meanwhile, families waited.</p>
+
+    <p data-fx>To shorten that wait, we replaced the volunteer panel with AI. This is the decision the previous section warns about, and we made it knowing the fear was warranted. The volunteer panel connected our community to the work and raised awareness of refugee sponsorship.</p>
+
+    <h3 data-fx>The fear</h3>
+    <p data-fx>We feared AI’s record of promising efficiency while promoting bias, shifting accountability and hiding human cost. For more than a decade our approach has been equitable access grounded in transparency, for people facing language barriers, rejection and systemic racism. Who you knew did not matter, and arm’s length reviewers never saw the names on the cases. What we stand for has not changed.</p>
+
+    <h3 data-fx>The trade-offs</h3>
+    <p data-fx>Families now hear decisions days after a deadline instead of months. Staff time moves from coordinating judges to direct service and home visits. Scoring is steadier, and fewer volunteers absorb vicarious trauma. We also lost something: the panel connected our community to the work and raised awareness of refugee sponsorship.</p>
+
+    <h3 data-fx>How it works</h3>
+    <ol class="flow" aria-label="How scoring works">
+      <li>Applications arrive</li>
+      <li>Every case is scored by multiple models</li>
+      <li>Discrepancies are flagged for human review</li>
+      <li>Highest scores take the spaces, until they run out</li>
+    </ol>
+    <p class="bignum"><span class="big">3%</span><span class="cap">is how closely, at most, the system consistently scores to human reviewers</span></p>
+    <p data-fx>AI scores applications. The system consistently scores within 3% of human reviewers. We take the highest scores until the spaces run out. Nobody is refused because the system judges them unworthy. They’re turned down because there are not enough spots. That was true when volunteers judged, it’s still true with AI.</p>
+
+    <h3 data-fx>Safeguards</h3>
+    <ul class="checks">
+      <li data-fx>Scoring is trained on four years of our own human adjudication (not external LLMs).</li>
+      <li data-fx>Every case is scored by multiple models, and discrepancies are flagged for human review.</li>
+      <li data-fx>Staff and leadership audit how decisions are reached.</li>
+      <li data-fx>The process is disclosed.</li>
+      <li data-fx>Case data is protected to healthcare level privacy standards.</li>
+    </ul>
+
+    <h3 data-fx>Bias &amp; Openness</h3>
+    <p data-fx>Bias is the central risk. A system built on past decisions can repeat past blind spots, and consistency is not fairness. We keep reviewing outcomes for bias, welcome questions from the community, and change course as needed. If speed or consistency ever costs dignity or fairness, the change has failed.</p>
+
+    <h3 data-fx>The result</h3>
+    <p data-fx style="margin-bottom:0">Automated adjudication has increased efficiency, but that’s not the result that matters most. What it’s allowed us is the opportunity to examine our processes, question what we prioritize, and articulate what we value. The result is a more sustainable and transparent program.</p>
+  </div>
+</div>
+
+<!-- Policy -->
+<div class="band policy" id="ai-policy">
+  <div class="col">
+    <h2 data-fx><span class="num">5</span>AI policy Sample</h2>
+
+    <h3 class="policy-title" data-fx style="margin-top:0">IslamicFamily’s September 2026 AI Policy: Embrace Efficiency, Skeptically</h3>
+    <h3 class="small" data-fx style="margin-top:1.6rem">The four rules</h3>
+
+    <ol class="rules">
+      <li><div><p data-fx><strong>Use AI wisely and joyfully.</strong> AI is a tool, not a replacement. Use it to draft, summarize and brainstorm, and experiment: technology is a chance to learn and be creative. Keep humans in the loop, especially when decisions affect clients, donors or staff.</p></div></li>
+      <li><div><p data-fx><strong>Protect sensitive data.</strong> Never put client, donor or staff personal information into AI unless the tool is approved. Treat AI like a public chalkboard: share only what is safe for anyone to see.</p></div></li>
+      <li><div><p data-fx><strong>Be honest.</strong> If you used AI for a task, say so. Transparency builds trust with clients, colleagues and funders.</p></div></li>
+      <li><div><p data-fx><strong>Check everything.</strong> AI is smart, but it is not perfect. Scrutinize outputs for accuracy, tone, cultural fit and alignment with our values. AI suggestions are advice, not decisions. Compare results across models.</p></div></li>
+    </ol>
+
+    <p data-fx>Four rules are easy to remember, and a policy people can remember is a policy they can follow. But short rules need firmer ground beneath them, so we added standards for the moments that matter most.</p>
+
+    <p data-fx><strong>Client information is a sacred trust.</strong> Before identifiable client data goes into any AI tool, staff confirm three things. The tool is approved: it is on a list maintained by Operations and vetted for security, data residency, no training on our inputs, encryption and PIPEDA (Healthcare level) compliance. Consent covers it: the client’s intake consent explicitly authorizes AI-assisted processes, or we have obtained separate consent. And the purpose is beneficial: following the <a href="https://datacharter.ca/">Data Charter</a> principle that questions should benefit those being asked, any AI use involving client data must serve the client, not only our efficiency. If any test fails, the data stays out. De-identified aggregate data can be used if it cannot be re-identified.</p>
+
+    <p data-fx><strong>AI outputs are not records.</strong> A summary, draft, case note suggestion or translation is not a record of fact. A person reviews, verifies and approves it before it enters our case management system, and from then on it is governed like any other client information.</p>
+
+    <p data-fx><strong>Bias is reviewed, not assumed away.</strong> AI tools used in client-facing work (intake, referral matching, eligibility, communications) get an annual equity review, looking for patterns by demographic group, language or circumstance. Findings go to the Executive Director, and we seek external review.</p>
+
+    <p data-fx><strong>Mistakes are reported, not buried.</strong> If client, donor or staff data goes into an unapproved tool, we treat it as a security incident: stop, tell the Executive Director the same day, and follow the breach process.</p>
+
+    <p data-fx><strong>In practice.</strong> For assessments that are intrusive, time intensive or emotionally taxing, we use AI to reduce strain and bias, but only after documenting the framework, writing rubrics and standardizing the process so a human could do the same work with consistent results. We never trust a single agent, we keep the work auditable, and we share the process openly. Counselling and social work staff use AI as a mirror, not an oracle. They can ask, “What bias might I be unintentionally perpetuating?” It struggles with local context and lived experience, so it never replaces professional judgment or human connection. In grants and reporting, AI can improve clarity and structure but never invents outcomes: every figure and story is checked against source data.</p>
+
+    <p data-fx>Policy is not the point. Practice is. AI is a helper, not a boss. Our full guidelines are at <a href="http://share.islamicfamily.ca/AIPolicy">share.islamicfamily.ca/AIPolicy</a>. Take them, adapt them, and tell us what we got wrong.</p>
+
+    <h3 data-fx>Recommendations: writing your own AI policy</h3>
+
+    <ul class="star" style="margin-bottom:0">
+      <li data-fx><strong>Keep the rules few enough to remember.</strong> If staff cannot recite it, they cannot follow it under deadline pressure. Put the detail in standards underneath.</li>
+      <li data-fx><strong>Start from the decisions, not the tools.</strong> List the decisions where an error costs a person the most: who gets in, who waits, who is turned away. Draw your red lines there first, then write rules for everything else.</li>
+      <li data-fx><strong>Write it with the people it affects.</strong> Test the draft with frontline staff and with clients or community members, and ask one question: what should AI never do here? Their red lines will differ from yours.</li>
+      <li data-fx><strong>Pair it with training and approved tools.</strong> Rules without a safe, approved option push staff toward personal accounts and free tools.</li>
+      <li data-fx><strong>Publish it.</strong> Share your policy, your audit method and your mistakes so the next organization starts further along. That is how a sector builds a commons.</li>
+    </ul>
+  </div>
+</div>
+
+<!-- 6 -->
+<div class="band">
+  <div class="col">
+    <section class="part" id="stewardship">
+      <h2 data-fx><span class="num">6</span>Stewardship as sacred trust</h2>
+
+      <p data-fx>Sarah, and any client who comes to us, should get the best help possible. That means ethically using tools that reduce waiting and harm, while finding better ways to serve and engage.</p>
+
+      <p data-fx>What led me to work in the human services sector was and is deeply spiritual, it’s a belief that serving people well is a soul calling. That belief has left me frustrated with systems, and skeptical about the promise of technology to do more than perpetuate the status quo. The calling is not to use new tools, AI, or spreadsheets but the opportunity to lift our heads over the parapet and explore what might be different now.</p>
+
+      <p data-fx>The starting point with AI is building on a failed system and faulty foundation, the promise of AI is not necessarily a (totally) dystopian future where AI replaces human decision making but one where we can more closely examine the decisions we make. What puts the humanity in human services is not humans making every decision, the service outputs we’re contracted to deliver, its critically examining systems and centering people.</p>
+
+      <div class="chat" data-chat style="margin-top:2.4rem">
+        <div class="msg agent">
+          <span class="who">🤖 Agent</span>
+          <div class="dots" aria-hidden="true"><i></i><i></i><i></i></div>
+          <div class="bubble">
+            <p>I guess humans might still have some usefulness.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="ornament" data-fx aria-hidden="true">✸</div>
+    </section>
+
+    <section id="authors" style="margin-top:5rem">
+      <h3 class="small" data-fx>Authors</h3>
+      <div class="bios">
+        <div class="bio">
+          <p data-fx>Ben Weinlick [PLACEHOLDER BIO] is, by most reliable accounts, a national treasure who hasn’t been officially designated as one <em>yet</em>. A designer, systems thinker, and recovering idealist (the recovery isn’t going well), Ben has spent his career showing that social innovation can be rigorous, humane, and occasionally fun, which is still controversial in some circles. He can turn a room of skeptical stakeholders into a co-design workshop before the coffee gets cold, and he can find the hidden assumption in a logic model faster than most people find the Wi-Fi. Colleagues describe him as “<s>annoyingly</s> insightful,” “suspiciously kind,” and “the reason we have sticky notes on the ceiling.” When he isn’t reimagining how human services could work, he is probably reading three books at once and recommending four. He lives in Edmonton, where he insists the winters are “character-building.”</p>
+        </div>
+        <div class="bio">
+          <p data-fx>Omar Yaqub ICD.D DSL(Hon) MBA BSc (@somaryaqub <a href="https://www.linkedin.com/in/somaryaqub/">LinkedIn</a>), is the co-founder of <a href="https://flourishing.systems">flourishing.systems</a>, where he uses design, data justice and innovation to unlock the superpowers of frontline workers. He also serves the team at IslamicFamily, a social change organization that is disrupting systemic inequity through service, research &amp; beauty. During his time with <a href="http://islamicfamily.ca/">IslamicFamily</a> the organization has become a multi-award winning Imagine Canada accredited charity. He is a former Historian Co-Laureate for the City of Edmonton &amp; past instructor in the MBA program at the University of Alberta. He has two decades of experience in the for-benefit sector. Omar has helped design postage stamps, makes his own hot sauce, been awarded an honorary doctorate from St Stephen’s College, and is probably looking for ice cream as you read this. He is a settler on Treaty 6.</p>
+        </div>
+      </div>
+    </section>
+
+    <aside class="notes" id="notes" aria-label="Notes">
+      <h3 class="small">Notes</h3>
+      <ol>
+        <li id="note-1">Virginia Eubanks, <em>Automating Inequality: How High-Tech Tools Profile, Police, and Punish the Poor</em> (New York: St. Martin’s Press, 2018); Philip Alston, <em>Report of the Special Rapporteur on Extreme Poverty and Human Rights</em>, UN General Assembly, A/74/493 (2019), on the “digital welfare state.” <a class="plain" href="#ref-1" aria-label="Back to text">↩</a></li>
+        <li id="note-2">Royal Commission into the Robodebt Scheme, <em>Report</em> (Canberra: Commonwealth of Australia, 7 July 2023). Reporting on the Commission puts the unlawful recovery at more than $750 million from about 381,000 people. <a class="plain" href="#ref-2" aria-label="Back to text">↩</a></li>
+        <li id="note-3">Paul Egan, “State will refund close to $21 million to Michigan residents,” <em>Detroit Free Press</em>, August 2017 (reprinted by <em>Governing</em>). The agency reviewed 62,784 fraud findings and found more than 44,000 (about 70%) did not involve fraud. See also “Broken: The human toll of Michigan’s unemployment fraud saga,” <em>Bridge Michigan</em>, February 2017. <a class="plain" href="#ref-3" aria-label="Back to text">↩</a></li>
+        <li id="note-4">Parliamentary Inquiry Committee on Childcare Allowance, <em>Ongekend onrecht</em> [Unprecedented Injustice] (Dutch House of Representatives, December 2020); “Dutch PM Rutte and his government quit over child welfare scandal,” <em>Al Jazeera</em>, January 15, 2021. <a class="plain" href="#ref-4" aria-label="Back to text">↩</a></li>
+        <li id="note-5">Amnesty International, <em>Xenophobic Machines: Discrimination through Unregulated Use of Algorithms in the Dutch Childcare Benefits Scandal</em> (October 2021). <a class="plain" href="#ref-5" aria-label="Back to text">↩</a></li>
+        <li id="note-6">British Association of Social Workers (BASW) England, 80-20 Campaign: How Much “Direct” Time Do Social Workers Spend with Children and Families? (Birmingham: BASW, 2022). In the survey, social workers spent about 20% of their working week (11 hours) in face-to-face contact with children and families. <a class="plain" href="https://new.basw.co.uk/sites/default/files/2023-08/FINAL%2080-20%20report.pdf">new.basw.co.uk</a> <a class="plain" href="#ref-6" aria-label="Back to text">↩</a></li>
+      </ol>
+    </aside>
+  </div>
+</div>
+
+<script>
+(function () {
+  var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  var strength = reduce ? 0 : 0.2;   // lens intensity fixed at 20%
+
+  /* ---------- Lens effect ---------- */
+  var words = [];
+  var chatEls = Array.prototype.slice.call(document.querySelectorAll("[data-chat]"));
+  document.querySelectorAll("[data-fx]").forEach(function (block) {
+    var textNodes = [];
+    var walker = document.createTreeWalker(block, NodeFilter.SHOW_TEXT);
+    while (walker.nextNode()) textNodes.push(walker.currentNode);
+    textNodes.forEach(function (node) {
+      var parts = node.nodeValue.split(/(\s+)/);
+      var frag = document.createDocumentFragment();
+      parts.forEach(function (part) {
+        if (!part) return;
+        if (/^\s+$/.test(part)) { frag.appendChild(document.createTextNode(part)); return; }
+        var span = document.createElement("span");
+        span.className = "w";
+        span.textContent = part;
+        frag.appendChild(span);
+        words.push({ el: span, x: 0, y: 0, on: false });
+      });
+      node.parentNode.replaceChild(frag, node);
+    });
+  });
+
+  function measure() {
+    var sy = window.scrollY;
+    words.forEach(function (w) { w.el.style.transform = ""; w.el.style.textShadow = ""; w.on = false; });
+    var rects = words.map(function (w) { return w.el.getBoundingClientRect(); });
+    words.forEach(function (w, i) {
+      w.x = rects[i].left + rects[i].width / 2;
+      w.y = rects[i].top + sy + rects[i].height / 2;
+    });
+    chatEls.forEach(function (c) { c._h = c.offsetHeight; });
+  }
+  measure();
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(measure);
+  var rt;
+  window.addEventListener("resize", function () { clearTimeout(rt); rt = setTimeout(measure, 120); });
+  window.addEventListener("load", function () { setTimeout(measure, 60); });
+
+  var lastY = window.scrollY;
+  var v = 0;
+  var running = false;
+  var FRINGE_A = "rgba(224,153,100,0.9)";   // Pinecone
+  var FRINGE_B = "rgba(187,45,55,0.8)";     // Yaqoot Red
+
+  function clearWord(w) { w.el.style.transform = ""; w.el.style.textShadow = ""; w.on = false; }
+
+  function frame(t) {
+    var y = window.scrollY;
+    var dy = y - lastY;
+    lastY = y;
+    if (Math.abs(dy) > Math.abs(v)) v += (dy - v) * 0.4; else v *= 0.94;
+
+    var mag = Math.pow(Math.min(1, Math.abs(v) / 55), 0.8) * strength;
+    var vh = window.innerHeight, vw = window.innerWidth, half = vh / 2, cxPage = vw / 2;
+
+    if (mag < 0.01) {
+      for (var i = 0; i < words.length; i++) if (words[i].on) clearWord(words[i]);
+      if (Math.abs(dy) < 0.01 && Math.abs(v) < 0.05) { running = false; v = 0; return; }
+      requestAnimationFrame(frame);
+      return;
+    }
+
+    for (var j = 0; j < words.length; j++) {
+      var w = words[j];
+      var p = (w.y - y - half) / half;
+      var ap = Math.abs(p);
+      if (ap > 1.3) { if (w.on) clearWord(w); continue; }
+
+      var e = Math.max(0, (ap - 0.3) / 0.7);
+      e = Math.pow(Math.min(1.2, e), 1.7);
+      if (e * mag < 0.002) { if (w.on) clearWord(w); continue; }
+      var f = e * mag;
+
+      var sy = 1 + f * 1.0;
+      var sx = 1 + f * 0.28;
+      var ty = Math.sign(p) * f * 46;
+      var tx = (w.x - cxPage) * f * 0.2 + Math.sin(w.y * 0.09 + t * 0.012) * f * 7;
+      var split = f * 5;
+      var glow = f * 7;
+
+      w.el.style.transform = "translate(" + tx.toFixed(2) + "px," + ty.toFixed(2) + "px) scale(" + sx.toFixed(3) + "," + sy.toFixed(3) + ")";
+      w.el.style.textShadow =
+        (-split).toFixed(2) + "px 0 " + FRINGE_A + "," +
+        split.toFixed(2) + "px 0 " + FRINGE_B + "," +
+        "0 0 " + glow.toFixed(2) + "px currentColor";
+      w.on = true;
+    }
+    requestAnimationFrame(frame);
+  }
+  function kick() { if (!running) { running = true; requestAnimationFrame(frame); } }
+  window.addEventListener("scroll", kick, { passive: true });
+
+  /* ---------- Chat typing ---------- */
+  function sleep(ms) { return new Promise(function (r) { setTimeout(r, ms); }); }
+  function rand(a, b) { return a + Math.random() * (b - a); }
+
+  // When a bubble grows, push the lens positions of everything below it down by the same amount.
+  function syncChat(chat) {
+    var h = chat.offsetHeight, d = h - chat._h;
+    if (!d) return;
+    chat._h = h;
+    var top = chat.getBoundingClientRect().top + window.scrollY;
+    for (var i = 0; i < words.length; i++) if (words[i].y > top) words[i].y += d;
+  }
+
+  var ROWS = ["qwertyuiop", "asdfghjkl", "zxcvbnm"];
+  function neighbour(ch) {
+    var low = ch.toLowerCase();
+    for (var r = 0; r < ROWS.length; r++) {
+      var c = ROWS[r].indexOf(low);
+      if (c > -1) {
+        var opts = [];
+        if (c > 0) opts.push(ROWS[r][c - 1]);
+        if (c < ROWS[r].length - 1) opts.push(ROWS[r][c + 1]);
+        var pick = opts[Math.floor(Math.random() * opts.length)];
+        return ch === low ? pick : pick.toUpperCase();
+      }
+    }
+    return ch;
+  }
+
+  // A person typing, planned up front as a timeline of keystrokes, then played back on animation frames
+  // so every update lands on a frame boundary (no timer jitter).
+  function humanPlan(txt) {
+    var steps = [], t = rand(350, 600), buf = "", i = 0, typos = 0, burst = Math.round(rand(4, 9));
+    function push() { steps.push([t, buf]); }
+    while (i < txt.length) {
+      var ch = txt.charAt(i);
+      if (typos < 2 && i > 10 && i < txt.length - 5 && /[a-z]/i.test(ch) && Math.random() < 0.024) {
+        typos++;
+        var extra = Math.random() < 0.5 ? 0 : Math.floor(rand(1, 3));
+        buf += neighbour(ch); push(); t += rand(45, 80);
+        for (var j = 1; j <= extra; j++) { buf += txt.charAt(i + j); push(); t += rand(40, 70); }
+        t += rand(200, 350);                                   // notices
+        for (var k = 0; k <= extra; k++) { buf = buf.slice(0, -1); push(); t += rand(35, 55); }
+        t += rand(80, 160);
+      }
+      buf += ch; push(); i++;
+      var d = rand(8, 26);
+      if (--burst <= 0) { d += rand(40, 110); burst = Math.round(rand(4, 9)); }
+      if (ch === ",") d += rand(120, 220);
+      else if (/[.?!]/.test(ch)) d += rand(220, 380);
+      else if (ch === " " && Math.random() < 0.012) d += rand(350, 650);   // thinking mid-sentence
+      t += d;
+    }
+    steps.push([t, txt]);
+    return steps;
+  }
+
+  // Plays a keystroke timeline on animation frames, so every update lands on a frame boundary.
+  function runPlan(render, steps, chat) {
+    return new Promise(function (res) {
+      var start = null, idx = 0;
+      function tick(now) {
+        if (start === null) start = now;
+        var e = now - start, val = null;
+        while (idx < steps.length && steps[idx][0] <= e) { val = steps[idx][1]; idx++; }
+        if (val !== null) render(val);
+        syncChat(chat);
+        if (idx < steps.length) requestAnimationFrame(tick); else res();
+      }
+      requestAnimationFrame(tick);
+    });
+  }
+
+  function humanType(render, txt, chat) { return runPlan(render, humanPlan(txt), chat); }
+
+  // The agent answers quickly, but at a pace the eye can follow: about 700 characters a second.
+  function streamType(render, txt, chat) {
+    return new Promise(function (res) {
+      var start = null, shown = 0, cps = 700;
+      function tick(now) {
+        if (start === null) start = now;
+        var n = Math.min(txt.length, Math.floor((now - start) * cps / 1000) + 1);
+        if (n !== shown) { shown = n; render(txt.slice(0, n)); }
+        syncChat(chat);
+        if (shown < txt.length) requestAnimationFrame(tick); else res();
+      }
+      requestAnimationFrame(tick);
+    });
+  }
+
+  // Work out, once, where each line of a paragraph breaks at its final width.
+  function computeLines(el, txt) {
+    var node = el.firstChild, lines = [], start = 0, lastTop = null, m, re = /\S+\s*/g;
+    if (!node) return [txt];
+    var range = document.createRange();
+    while ((m = re.exec(txt))) {
+      range.setStart(node, m.index); range.setEnd(node, m.index + 1);
+      var rc = range.getClientRects()[0];
+      var top = rc ? Math.round(rc.top) : lastTop;
+      if (lastTop !== null && top !== null && top > lastTop + 2) { lines.push(txt.slice(start, m.index)); start = m.index; }
+      lastTop = top;
+    }
+    lines.push(txt.slice(start));
+    return lines;
+  }
+
+  // Show the full text invisibly, record the bubble's final width and each paragraph's line breaks, then clear it.
+  function measureMsg(msg) {
+    var bubble = msg.querySelector(".bubble");
+    var ps = bubble.querySelectorAll("p");
+    bubble.style.animation = "none";
+    bubble.style.width = "";
+    bubble.style.visibility = "hidden";
+    ps.forEach(function (p) {
+      p.classList.add("on");
+      if (p._leadEl) p._leadEl.textContent = p._lead;
+      (p._out || p).textContent = p._txt;
+    });
+    var w = bubble.offsetWidth;
+    ps.forEach(function (p) { p._lines = computeLines(p._out || p, p._txt); });
+    ps.forEach(function (p) {
+      p.classList.remove("on");
+      if (p._leadEl) p._leadEl.textContent = "";
+      (p._out || p).textContent = "";
+    });
+    bubble.style.width = w + "px";
+    bubble.style.visibility = "";
+    bubble.style.animation = "";
+  }
+
+  // Draws the text typed so far into its pre-computed lines; a new line appears only when its first character is typed.
+  function makeRenderer(target, txt, lines) {
+    var els = [], cache = [], starts = [], acc = 0;
+    lines.forEach(function (l) { starts.push(acc); acc += l.length; });
+    target.textContent = "";
+    return function render(buf) {
+      var cp = 0, max = Math.min(buf.length, txt.length);
+      while (cp < max && buf.charCodeAt(cp) === txt.charCodeAt(cp)) cp++;
+      var tail = buf.slice(cp), cur = 0;
+      if (cp > 0) for (var i = lines.length - 1; i >= 0; i--) { if (starts[i] < cp) { cur = i; break; } }
+      for (var l = 0; l < lines.length; l++) {
+        var want = l < cur ? lines[l] : (l === cur ? txt.slice(starts[l], cp) + tail : null);
+        if (want === null) { if (els[l]) { els[l].remove(); els[l] = null; cache[l] = null; } continue; }
+        if (!els[l]) {
+          var e = document.createElement("span"); e.className = "ln";
+          target.appendChild(e); els[l] = e; cache[l] = "";
+        }
+        if (cache[l] !== want) { els[l].textContent = want; cache[l] = want; }
+        els[l].classList.toggle("cur", l === cur);
+      }
+    };
+  }
+
+  function nowStr() { return new Date().toLocaleTimeString([], { hour: "numeric", minute: "2-digit" }); }
+  function setMeta(msg) { msg._meta.innerHTML = "<span>" + nowStr() + "</span>"; }
+
+  async function typeMsg(msg, chat, human) {
+    msg.classList.remove("thinking");
+    msg.classList.add("show");
+    measureMsg(msg);
+    syncChat(chat);
+    var ps = msg.querySelectorAll(".bubble p");
+    for (var k = 0; k < ps.length; k++) {
+      var p = ps[k];
+      p.classList.add("on");
+      if (p._leadEl) p._leadEl.textContent = p._lead;
+      var target = p._out || p;
+      var render = makeRenderer(target, p._txt, p._lines);
+      render("");
+      syncChat(chat);
+      if (human) await humanType(render, p._txt, chat); else await streamType(render, p._txt, chat);
+      target.textContent = p._txt;      // settle into plain text; the layout is identical
+      syncChat(chat);
+      await sleep(human ? 120 : 40);
+    }
+  }
+
+  async function play(chat) {
+    var msgs = chat.querySelectorAll(".msg");
+    for (var m = 0; m < msgs.length; m++) {
+      var msg = msgs[m];
+      if (msg.classList.contains("agent")) {
+        msg.classList.add("thinking");
+        syncChat(chat);
+        await sleep(m === 0 ? 450 : 350);
+        await typeMsg(msg, chat, false);
+        setMeta(msg);
+        syncChat(chat);
+      } else {
+        await sleep(120);
+        await typeMsg(msg, chat, true);
+        setMeta(msg);
+        syncChat(chat);
+        await sleep(220);
+      }
+    }
+  }
+
+  function prepareP(p) {
+    var txt = p.textContent;
+    p._txt = txt;
+    p.textContent = "";
+    if (p.classList.contains("move")) {
+      var i = txt.indexOf(". ");
+      var lead = document.createElement("span"); lead.className = "lead";
+      var body = document.createElement("span");
+      p.appendChild(lead); p.appendChild(body);
+      p._lead = txt.slice(0, i + 1); p._txt = txt.slice(i + 2);
+      p._leadEl = lead; p._out = body;
+    }
+  }
+  function fillP(p) {
+    if (p._leadEl) p._leadEl.textContent = p._lead;
+    (p._out || p).textContent = p._txt;
+  }
+
+  window.addEventListener("resize", function () {
+    document.querySelectorAll("[data-chat] .bubble").forEach(function (b) { b.style.width = ""; });
+  });
+
+  chatEls.forEach(function (c) {
+    c.querySelectorAll(".msg").forEach(function (msg) {
+      var who = msg.querySelector(".who");
+      var t = who.textContent.trim();
+      var emoji = t.split(" ")[0];
+      who.textContent = t.slice(emoji.length).trim();
+      var av = document.createElement("span");
+      av.className = "avatar"; av.setAttribute("aria-hidden", "true"); av.textContent = emoji;
+      msg.insertBefore(av, msg.firstChild);
+      var meta = document.createElement("span");
+      meta.className = "meta";
+      msg.appendChild(meta);
+      msg._meta = meta;
+    });
+    c.querySelectorAll(".bubble p").forEach(prepareP);
+  });
+
+  /* ---------- Reading time ---------- */
+  (function () {
+    var rtEl = document.getElementById("readtime");
+    if (!rtEl) return;
+    function count(str) { return (str.trim().split(/\s+/).filter(Boolean).length); }
+    var total = 0;
+    document.querySelectorAll(".col").forEach(function (c) { total += count(c.textContent); });
+    var notes = document.getElementById("notes");
+    if (notes) total -= count(notes.textContent);
+    document.querySelectorAll("[data-chat] .bubble p").forEach(function (p) { total += count((p._lead || "") + " " + p._txt); });
+    rtEl.textContent = "About " + Math.max(1, Math.round(total / 230)) + " min read";
+  })();
+  measure();
+
+  if (reduce || !("IntersectionObserver" in window)) {
+    chatEls.forEach(function (c) {
+      c.querySelectorAll(".msg").forEach(function (msg) {
+        msg.classList.add("show");
+        setMeta(msg);
+      });
+      c.querySelectorAll(".bubble p").forEach(function (p) { p.classList.add("on"); fillP(p); });
+    });
+    measure();
+  } else {
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (en) {
+        if (en.isIntersecting) { io.unobserve(en.target); play(en.target); }
+      });
+    }, { rootMargin: "0px 0px -25% 0px", threshold: 0 });
+    chatEls.forEach(function (c) { io.observe(c); });
+  }
+
+  /* ---------- Reading progress ---------- */
+  var bar = document.getElementById("progress");
+  function setProgress() {
+    var h = document.documentElement.scrollHeight - window.innerHeight;
+    var pr = h > 0 ? Math.min(1, Math.max(0, window.scrollY / h)) : 0;
+    bar.style.transform = "scaleX(" + pr.toFixed(4) + ")";
+  }
+  window.addEventListener("scroll", setProgress, { passive: true });
+  window.addEventListener("resize", setProgress);
+  setProgress();
+
+  /* ---------- Footnote pop-ups ---------- */
+  var pop = document.createElement("div");
+  pop.className = "fnpop"; pop.setAttribute("role", "tooltip"); pop.hidden = true;
+  document.body.appendChild(pop);
+  var popTimer = null, popFor = null;
+
+  function hidePop() { pop.hidden = true; popFor = null; }
+  function schedHide() { clearTimeout(popTimer); popTimer = setTimeout(hidePop, 220); }
+  function showPop(a) {
+    var id = a.getAttribute("href").slice(1);
+    var li = document.getElementById(id);
+    if (!li) return;
+    clearTimeout(popTimer);
+    var clone = li.cloneNode(true);
+    clone.removeAttribute("id");
+    clone.querySelectorAll('a[href^="#ref-"]').forEach(function (x) { x.remove(); });
+    pop.innerHTML = '<span class="fnnum">Note ' + a.textContent.trim() + "</span>" + clone.innerHTML +
+      '<br><a class="fnjump" href="#' + id + '">See in notes</a>';
+    pop.querySelector(".fnjump").addEventListener("click", hidePop);
+    pop.hidden = false;
+    popFor = a;
+    var r = a.getBoundingClientRect(), pw = pop.offsetWidth, ph = pop.offsetHeight;
+    var vw = window.innerWidth, vh = window.innerHeight;
+    var top = r.bottom + 8;
+    if (top + ph > vh - 12) top = Math.max(12, r.top - ph - 8);
+    var left = Math.min(Math.max(12, r.left - 20), vw - pw - 12);
+    pop.style.top = top + "px";
+    pop.style.left = left + "px";
+  }
+  document.querySelectorAll("sup.fn a").forEach(function (a) {
+    a.addEventListener("pointerenter", function (e) { if (e.pointerType === "mouse") showPop(a); });
+    a.addEventListener("pointerleave", function (e) { if (e.pointerType === "mouse") schedHide(); });
+    a.addEventListener("focus", function () { showPop(a); });
+    a.addEventListener("blur", schedHide);
+    a.addEventListener("click", function (e) {
+      e.preventDefault();
+      if (popFor === a && !pop.hidden) hidePop(); else showPop(a);
+    });
+  });
+  pop.addEventListener("pointerenter", function () { clearTimeout(popTimer); });
+  pop.addEventListener("pointerleave", schedHide);
+  document.addEventListener("keydown", function (e) { if (e.key === "Escape") hidePop(); });
+  document.addEventListener("click", function (e) { if (!pop.hidden && !pop.contains(e.target) && !(e.target.closest && e.target.closest("sup.fn"))) hidePop(); });
+  window.addEventListener("scroll", function () { if (!pop.hidden) hidePop(); }, { passive: true });
+
+  /* ---------- Highlighter ---------- */
+  var hlMarks = Array.prototype.slice.call(document.querySelectorAll("mark.hl"));
+  if (reduce || !("IntersectionObserver" in window)) {
+    hlMarks.forEach(function (m) { m.classList.add("in"); });
+  } else {
+    var hlIO = new IntersectionObserver(function (entries) {
+      entries.forEach(function (en) {
+        if (en.isIntersecting) {
+          var t = en.target;
+          hlIO.unobserve(t);
+          setTimeout(function () { t.classList.add("in"); }, 250);
+        }
+      });
+    }, { rootMargin: "0px 0px -18% 0px", threshold: 0.6 });
+    hlMarks.forEach(function (m) { hlIO.observe(m); });
+  }
+
+  /* ---------- Menu ---------- */
+  var btn = document.getElementById("menuBtn");
+  var menu = document.getElementById("menu");
+  var scrim = document.getElementById("scrim");
+  var links = Array.prototype.slice.call(menu.querySelectorAll("a"));
+
+  function setMenu(open) {
+    btn.setAttribute("aria-expanded", open ? "true" : "false");
+    btn.setAttribute("aria-label", open ? "Close navigation" : "Open navigation");
+    menu.classList.toggle("open", open);
+    scrim.classList.toggle("open", open);
+    if (open) { menu.removeAttribute("inert"); links[0].focus(); }
+    else { menu.setAttribute("inert", ""); }
+  }
+  btn.addEventListener("click", function () { setMenu(btn.getAttribute("aria-expanded") !== "true"); });
+  scrim.addEventListener("click", function () { setMenu(false); btn.focus(); });
+  document.addEventListener("keydown", function (e) {
+    if (e.key === "Escape" && menu.classList.contains("open")) { setMenu(false); btn.focus(); }
+  });
+  links.forEach(function (a) { a.addEventListener("click", function () { setMenu(false); }); });
+
+  var targets = links.map(function (a) { return document.getElementById(a.getAttribute("href").slice(1)); });
+  var ticking = false;
+  function markActive() {
+    ticking = false;
+    var line = window.innerHeight * 0.35, cur = 0;
+    targets.forEach(function (t, i) { if (t && t.getBoundingClientRect().top <= line) cur = i; });
+    links.forEach(function (a, i) { a.classList.toggle("active", i === cur); });
+  }
+  window.addEventListener("scroll", function () { if (!ticking) { ticking = true; requestAnimationFrame(markActive); } }, { passive: true });
+  markActive();
+})();
+</script>
+</body>
+</html>
